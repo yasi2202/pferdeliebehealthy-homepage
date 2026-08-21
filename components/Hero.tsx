@@ -10,9 +10,9 @@ export default function Hero() {
         fill
         priority
         sizes="100vw"
-        className="object-cover object-[50%_22%]"
+        className="object-cover object-[68%_22%]"
       />
-      <div className="absolute inset-0 bg-gradient-to-b from-ink/55 via-ink/15 via-55% to-ink/75" />
+      <div className="absolute inset-0 bg-gradient-to-b from-ink/70 via-ink/40 via-55% to-ink/85" />
 
       <div className="relative z-10 w-full max-w-6xl mx-auto px-6 sm:px-8 pt-36 pb-20 sm:pb-24">
         <span className="inline-block text-[13px] tracking-[0.14em] uppercase text-rose font-semibold mb-4">
