@@ -1,25 +1,93 @@
-export default function CtaFinal() {
+"use client";
+
+import Link from "next/link";
+import { useEffect, useState } from "react";
+import { usePathname } from "next/navigation";
+
+const links = [
+  { href: "/#wege", label: "Angebote" },
+  { href: "/#warum", label: "Meine Haltung" },
+  { href: "/#ueber-mich", label: "Über mich" },
+  { href: "/#kontakt", label: "Kontakt" },
+];
+
+export default function Header() {
+  const [scrolled, setScrolled] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
+  const pathname = usePathname();
+  const isHome = pathname === "/";
+
+  useEffect(() => {
+    if (!isHome) return;
+    const hero = document.getElementById("hero");
+    if (!hero) {
+      setScrolled(false);
+      return;
+    }
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setScrolled(entry.boundingClientRect.bottom <= 90);
+      },
+      { threshold: 0, rootMargin: "-90px 0px 0px 0px" }
+    );
+    observer.observe(hero);
+    return () => observer.disconnect();
+  }, [isHome]);
+
+  useEffect(() => {
+    document.body.style.overflow = menuOpen ? "hidden" : "";
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [menuOpen]);
+
+  const transparent = isHome && !scrolled && !menuOpen;
+
   return (
-    <section id="kontakt" className="py-16 sm:py-20 px-6 sm:px-8">
-      <div className="bg-rose-deep text-cream rounded-[32px] px-8 sm:px-16 py-16 sm:py-20 text-center fade-in">
-        <span className="block text-[13px] tracking-[0.14em] uppercase text-gold font-semibold mb-4">
-          Bereit für den nächsten Schritt?
-        </span>
-        <h2 className="font-serif font-normal text-cream text-[26px] sm:text-[38px] leading-tight max-w-2xl mx-auto mb-5">
-          Lass uns herausfinden, welcher Weg zu dir und deinem Pferd passt
-        </h2>
-        <p className="text-cream/80 max-w-md mx-auto mb-9 text-base">
-          Egal ob du mit dem kostenlosen Futter-Check startest oder direkt
-          Fragen zur Ausbildung oder zu Pferdeliebe 365 hast, schreib mir
-          einfach.
-        </p>
-        
-          href="mailto:info@pferdeliebehealthy.de"
-          className="inline-block bg-cream text-ink px-8 py-4 rounded-full text-[15px] font-medium hover:bg-gold transition-colors"
+    <>
+    <header
+      className={`${
+        isHome ? "absolute" : "sticky"
+      } top-0 left-0 right-0 z-50 transition-colors duration-300 ${
+        transparent
+          ? "bg-transparent border-transparent"
+          : "bg-cream/90 backdrop-blur-md border-b border-line"
+      }`}
+    >
+      <nav className="flex items-center justify-between max-w-6xl mx-auto px-6 sm:px-8 py-5">
+        <Link
+          href="/"
+          onClick={() => setMenuOpen(false)}
+          className={`font-serif text-xl font-medium ${
+            transparent
+              ? "text-cream drop-shadow-[0_1px_6px_rgba(59,42,40,0.8)]"
+              : "text-ink"
+          }`}
         >
-          Nachricht schreiben
-        </a>
-      </div>
-    </section>
-  );
-}
+          Pferdeliebe
+          <span className={transparent ? "text-gold" : "text-rose-deep"}>
+            healthy
+          </span>
+        </Link>
+
+        <div
+          className={`hidden md:flex gap-9 text-[14.5px] ${
+            transparent
+              ? "text-cream drop-shadow-[0_1px_6px_rgba(59,42,40,0.8)]"
+              : "text-ink"
+          }`}
+        >
+          {links.map((l) => (
+            <Link key={l.href} href={l.href} className="hover:opacity-70 transition-opacity">
+              {l.label}
+            </Link>
+          ))}
+        </div>
+
+        <div className="flex items-center gap-3">
+          <Link
+            href="/#kontakt"
+            onClick={() => setMenuOpen(false)}
+            className={`hidden sm:inline-block text-sm font-medium px-5 py-2.5 rounded-full transition-colors ${
+              transparent
+                ? "bg-white text-ink
