@@ -12,7 +12,8 @@ export default function Hero() {
         sizes="100vw"
         className="object-cover object-[68%_22%]"
       />
-      <div className="absolute inset-0 bg-gradient-to-b from-cream/55 via-cream/35 via-55% to-ink/70" />
+      <div className="absolute inset-0 bg-gradient-to-r from-ink/80 via-ink/40 via-45% to-transparent" />
+      <div className="absolute inset-0 bg-gradient-to-t from-ink/50 via-transparent via-30% to-transparent" />
 
       <div className="relative z-10 w-full max-w-6xl mx-auto px-6 sm:px-8 pt-36 pb-20 sm:pb-24">
         <span className="inline-block text-[13px] tracking-[0.14em] uppercase text-rose font-semibold mb-4 drop-shadow-[0_1px_8px_rgba(59,42,40,0.9)]">
