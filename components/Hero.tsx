@@ -12,18 +12,18 @@ export default function Hero() {
         sizes="100vw"
         className="object-cover object-[68%_22%]"
       />
-      <div className="absolute inset-0 bg-gradient-to-b from-ink/70 via-ink/40 via-55% to-ink/85" />
+      <div className="absolute inset-0 bg-gradient-to-b from-cream/55 via-cream/35 via-55% to-ink/70" />
 
       <div className="relative z-10 w-full max-w-6xl mx-auto px-6 sm:px-8 pt-36 pb-20 sm:pb-24">
-        <span className="inline-block text-[13px] tracking-[0.14em] uppercase text-rose font-semibold mb-4">
+        <span className="inline-block text-[13px] tracking-[0.14em] uppercase text-rose font-semibold mb-4 drop-shadow-[0_1px_8px_rgba(59,42,40,0.9)]">
           Ernährungsberaterin für Pferde · Odenwald
         </span>
-        <h1 className="font-serif font-normal text-cream text-[34px] sm:text-5xl lg:text-[62px] leading-[1.12] tracking-tight max-w-3xl mb-6">
+        <h1 className="font-serif font-normal text-cream text-[34px] sm:text-5xl lg:text-[62px] leading-[1.12] tracking-tight max-w-3xl mb-6 drop-shadow-[0_2px_12px_rgba(59,42,40,0.9)]">
           Dein Pferd verdient keine{" "}
           <em className="italic text-rose">Vermutungen</em>, sondern ein
           Fundament, das wirklich trägt
         </h1>
-        <p className="text-cream/85 text-lg max-w-xl mb-8">
+        <p className="text-cream/85 text-lg max-w-xl mb-8 drop-shadow-[0_1px_8px_rgba(59,42,40,0.9)]">
           Ich begleite Pferdebesitzerinnen und angehende Beraterinnen dabei,
           Fütterung nicht mehr dem Zufall zu überlassen. Ganzheitlich,
           individuell und mit einem System, das auch dann für dein Pferd
