@@ -10,15 +10,12 @@ export default function TestimonialSection() {
         </h2>
         <div className="fade-in bg-cream-deep rounded-[18px] p-9 sm:p-12 mt-14">
           <p className="font-serif italic text-[22px] leading-snug max-w-2xl mb-6">
-            „Hier kommt später eine echte Kundenstimme hin, zum Beispiel von
-            einer Teilnehmerin der Ausbildung oder einer Pferdeliebe 365
-            Kundin.“
+            „Ich habe meine Ausbildung bei euch gemacht und dabei unglaublich
+            viel gelernt. So viel, dass ich mich mittlerweile sogar noch zur
+            Aromatherapeutin bei euch ausbilden lasse.“
           </p>
           <div className="text-sm text-ink-soft">
-            Name · Bezug zur Zusammenarbeit
-          </div>
-          <div className="text-xs text-rose-deep font-semibold mt-3.5 tracking-wide">
-            Platzhalter — bitte mit echtem Testimonial ersetzen
+            Marion · Teilnehmerin der Ausbildung
           </div>
         </div>
       </div>
