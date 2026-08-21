@@ -1,93 +1,82 @@
-"use client";
-
+import Image from "next/image";
 import Link from "next/link";
-import { useEffect, useState } from "react";
-import { usePathname } from "next/navigation";
 
-const links = [
-  { href: "/#wege", label: "Angebote" },
-  { href: "/#warum", label: "Meine Haltung" },
-  { href: "/#ueber-mich", label: "Über mich" },
-  { href: "/#kontakt", label: "Kontakt" },
-];
-
-export default function Header() {
-  const [scrolled, setScrolled] = useState(false);
-  const [menuOpen, setMenuOpen] = useState(false);
-  const pathname = usePathname();
-  const isHome = pathname === "/";
-
-  useEffect(() => {
-    if (!isHome) return;
-    const hero = document.getElementById("hero");
-    if (!hero) {
-      setScrolled(false);
-      return;
-    }
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        setScrolled(entry.boundingClientRect.bottom <= 90);
-      },
-      { threshold: 0, rootMargin: "-90px 0px 0px 0px" }
-    );
-    observer.observe(hero);
-    return () => observer.disconnect();
-  }, [isHome]);
-
-  useEffect(() => {
-    document.body.style.overflow = menuOpen ? "hidden" : "";
-    return () => {
-      document.body.style.overflow = "";
-    };
-  }, [menuOpen]);
-
-  const transparent = isHome && !scrolled && !menuOpen;
-
+export default function Hero() {
   return (
-    <>
-    <header
-      className={`${
-        isHome ? "absolute" : "sticky"
-      } top-0 left-0 right-0 z-50 transition-colors duration-300 ${
-        transparent
-          ? "bg-transparent border-transparent"
-          : "bg-cream/90 backdrop-blur-md border-b border-line"
-      }`}
-    >
-      <nav className="flex items-center justify-between max-w-6xl mx-auto px-6 sm:px-8 py-5">
-        <Link
-          href="/"
-          onClick={() => setMenuOpen(false)}
-          className={`font-serif text-xl font-medium ${
-            transparent
-              ? "text-cream drop-shadow-[0_1px_6px_rgba(59,42,40,0.8)]"
-              : "text-ink"
-          }`}
-        >
-          Pferdeliebe
-          <span className={transparent ? "text-gold" : "text-rose-deep"}>
-            healthy
-          </span>
-        </Link>
-
-        <div
-          className={`hidden md:flex gap-9 text-[14.5px] ${
-            transparent
-              ? "text-cream drop-shadow-[0_1px_6px_rgba(59,42,40,0.8)]"
-              : "text-ink"
-          }`}
-        >
-          {links.map((l) => (
-            <Link key={l.href} href={l.href} className="hover:opacity-70 transition-opacity">
-              {l.label}
-            </Link>
-          ))}
+    <section id="hero" className="relative overflow-hidden bg-rose-deep">
+      <div className="grid lg:grid-cols-2">
+        {/* Image side — full photo, no crop */}
+        <div className="relative order-1 lg:order-2 flex items-center justify-center bg-rose-deep">
+          <Image
+            src="/images/yasi-helena.jpg"
+            alt="Yasi mit ihrer Stute Helena"
+            width={1122}
+            height={1402}
+            priority
+            sizes="(min-width: 1024px) 50vw, 100vw"
+            className="w-full h-auto"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-rose-deep/50 via-transparent to-transparent lg:hidden" />
+          <div className="hidden lg:block absolute inset-y-0 left-0 w-32 bg-gradient-to-r from-rose-deep to-transparent" />
+          <div className="hidden lg:block absolute inset-x-0 top-0 h-24 bg-gradient-to-b from-rose-deep/60 to-transparent" />
+          <div className="hidden lg:block absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-rose-deep/60 to-transparent" />
         </div>
 
-        <div className="flex items-center gap-3">
-          <Link
-            href="/#kontakt"
-            onClick={() => setMenuOpen(false)}
-            className={`hidden sm:inline-block text-sm font-medium px-5 py-2.5 rounded-full transition-colors ${
-              transparent
-                ? "bg-white text-ink
+        {/* Text side */}
+        <div className="relative order-2 lg:order-1 flex items-center">
+          <div className="w-full px-6 sm:px-10 lg:px-16 py-16 lg:py-24">
+            <span className="inline-block text-[13px] tracking-[0.14em] uppercase text-gold font-semibold mb-4">
+              Ernährungsberaterin für Pferde · Odenwald
+            </span>
+            <h1 className="font-serif font-normal text-cream text-[34px] sm:text-5xl lg:text-[52px] leading-[1.12] tracking-tight mb-6">
+              Dein Pferd verdient keine{" "}
+              <em className="italic text-gold">Vermutungen</em>, sondern ein
+              Fundament, das wirklich trägt
+            </h1>
+            <p className="text-cream/85 text-lg max-w-xl mb-8">
+              Ich begleite Pferdebesitzerinnen und angehende Beraterinnen
+              dabei, Fütterung nicht mehr dem Zufall zu überlassen.
+              Ganzheitlich, individuell und mit einem System, das auch dann
+              für dein Pferd oder deine Kundinnen arbeitet, wenn du gerade
+              selbst keine Zeit dafür hast.
+            </p>
+            <div className="flex flex-wrap gap-4 mb-10">
+              <Link
+                href="#kontakt"
+                className="bg-cream text-ink px-7 py-4 rounded-full text-[15px] font-medium hover:bg-rose transition-colors"
+              >
+                Kostenlosen Futter-Check machen
+              </Link>
+              <Link
+                href="#wege"
+                className="border border-cream text-cream px-7 py-3.5 rounded-full text-[15px] font-medium hover:bg-cream/15 transition-colors"
+              >
+                Alle Angebote ansehen
+              </Link>
+            </div>
+            <div className="flex gap-10 flex-wrap">
+              <div>
+                <div className="font-serif text-[30px] text-gold">28</div>
+                <div className="text-[13px] text-cream/75">
+                  Jahre Erfahrung mit Helena
+                </div>
+              </div>
+              <div>
+                <div className="font-serif text-[30px] text-gold">8</div>
+                <div className="text-[13px] text-cream/75">
+                  Module in der Ausbildung
+                </div>
+              </div>
+              <div>
+                <div className="font-serif text-[30px] text-gold">1:1</div>
+                <div className="text-[13px] text-cream/75">
+                  Individuelle Gesundheitsakten
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
