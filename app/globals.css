@@ -1,0 +1,103 @@
+@import "tailwindcss";
+
+:root {
+  --cream: #F9EDED;
+  --cream-deep: #F3E1E1;
+  --rose: #DFA9A9;
+  --rose-deep: #B87878;
+  --ink: #3B2A28;
+  --ink-soft: #6B5450;
+  --gold: #C9A467;
+  --white: #FFFFFF;
+  --line: rgba(59, 42, 40, 0.12);
+}
+
+@theme inline {
+  --color-cream: var(--cream);
+  --color-cream-deep: var(--cream-deep);
+  --color-rose: var(--rose);
+  --color-rose-deep: var(--rose-deep);
+  --color-ink: var(--ink);
+  --color-ink-soft: var(--ink-soft);
+  --color-gold: var(--gold);
+  --color-line: var(--line);
+  --font-serif: "Fraunces", serif;
+  --font-sans: "Work Sans", sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--cream);
+  color: var(--ink);
+}
+
+.fade-in {
+  opacity: 1;
+  transform: none;
+}
+
+.js-fade-ready .fade-in {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity .7s ease, transform .7s ease;
+}
+
+.js-fade-ready .fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.legal-prose h2 {
+  font-family: "Fraunces", serif;
+  font-size: 20px;
+  font-weight: 500;
+  margin: 34px 0 10px;
+  color: var(--ink);
+}
+
+.legal-prose h3 {
+  font-size: 15.5px;
+  font-weight: 600;
+  margin: 22px 0 6px;
+  color: var(--rose-deep);
+}
+
+.legal-prose p {
+  font-size: 15px;
+  color: var(--ink-soft);
+  margin-bottom: 13px;
+  line-height: 1.7;
+}
+
+.legal-prose ul {
+  margin: 0 0 14px 20px;
+  color: var(--ink-soft);
+  font-size: 15px;
+}
+
+.legal-prose li {
+  margin-bottom: 6px;
+}
+
+.legal-prose strong {
+  color: var(--ink);
+  font-weight: 600;
+}
+
+.legal-prose a {
+  color: var(--rose-deep);
+  text-decoration: none;
+}
+
+.legal-prose a:hover {
+  text-decoration: underline;
+}
+
+.legal-prose hr {
+  border: none;
+  border-top: 1px solid var(--line);
+  margin: 30px 0;
+}
