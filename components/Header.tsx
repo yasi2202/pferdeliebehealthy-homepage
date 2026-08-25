@@ -40,6 +40,25 @@ export default function Header() {
 
   const transparent = isHome && !scrolled && !menuOpen;
 
+  // Sprungmarken auf der Startseite selbst ansteuern.
+  // Ueberliesse man das dem Browser, passierte beim zweiten Klick auf
+  // denselben Menuepunkt nichts: der Hash steht dann schon in der Adresse
+  // und der Browser sieht keinen Grund, erneut zu springen.
+  const springeZu = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    setMenuOpen(false);
+    if (!isHome || !href.startsWith("/#")) return;
+    const ziel = document.getElementById(href.slice(2));
+    if (!ziel) return;
+    e.preventDefault();
+    // Erst im naechsten Frame scrollen: das Mobilmenue setzt beim Schliessen
+    // overflow auf dem body zurueck, und solange das noch hidden ist,
+    // laeuft der Scroll ins Leere.
+    requestAnimationFrame(() => {
+      ziel.scrollIntoView({ behavior: "smooth", block: "start" });
+      history.replaceState(null, "", href);
+    });
+  };
+
   return (
     <>
     <header
@@ -92,7 +111,12 @@ export default function Header() {
           }`}
         >
           {links.map((l) => (
-            <Link key={l.href} href={l.href} className="hover:opacity-70 transition-opacity">
+            <Link
+              key={l.href}
+              href={l.href}
+              onClick={(e) => springeZu(e, l.href)}
+              className="hover:opacity-70 transition-opacity"
+            >
               {l.label}
             </Link>
           ))}
@@ -152,7 +176,7 @@ export default function Header() {
           <Link
             key={l.href}
             href={l.href}
-            onClick={() => setMenuOpen(false)}
+            onClick={(e) => springeZu(e, l.href)}
             className="font-serif text-3xl text-cream"
           >
             {l.label}
