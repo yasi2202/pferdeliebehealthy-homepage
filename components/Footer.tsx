@@ -19,7 +19,7 @@ export default function Footer() {
           </h4>
           <ul className="space-y-2.5 text-sm text-ink-soft">
             <li>
-              <Link href="/#kontakt" className="hover:text-ink">
+              <Link href="/futter-check" className="hover:text-ink">
                 Der Futter-Check
               </Link>
             </li>
@@ -35,12 +35,17 @@ export default function Footer() {
             </li>
             <li>
               <Link href="/#ausbildung" className="hover:text-ink">
-                Die Ausbildung
+                Die Masterclass
               </Link>
             </li>
             <li>
               <Link href="/#kontakt" className="hover:text-ink">
-                Pferdeliebe 365
+                Futterberatung 365
+              </Link>
+            </li>
+            <li>
+              <Link href="/empfehlungen" className="hover:text-ink">
+                Rabattcodes &amp; Empfehlungen
               </Link>
             </li>
           </ul>

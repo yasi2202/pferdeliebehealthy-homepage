@@ -1,13 +1,38 @@
 import type { Metadata } from "next";
+import { Fraunces, Work_Sans } from "next/font/google";
+import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import ScrollFade from "@/components/ScrollFade";
+import InsiderBar from "@/components/InsiderBar";
+
+// ---------------------------------------------------------------------------
+// Die Schriften werden beim Bauen heruntergeladen und von der eigenen Domain
+// ausgeliefert. Der Browser der Besucherin fragt damit nichts mehr bei Google
+// an — keine IP-Adresse geht in die USA, kein Cookie-Banner nötig.
+//
+// Vorher standen hier <link>-Tags auf fonts.googleapis.com.
+// ---------------------------------------------------------------------------
+
+const fraunces = Fraunces({
+  subsets: ["latin"],
+  style: ["normal", "italic"],
+  axes: ["opsz"],
+  display: "swap",
+  variable: "--font-fraunces",
+});
+
+const workSans = Work_Sans({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-work-sans",
+});
 
 export const metadata: Metadata = {
   title: "Pferdeliebehealthy | Ganzheitliche Pferdefütterung mit Yasemin Halac",
   description:
-    "Ernährungsberaterin für Pferde. Ganzheitliche Pferdefütterung für Pferdebesitzerinnen und angehende Beraterinnen. Kostenloser Futter-Check, Mineral-Klarheit, die Ausbildung und Pferdeliebe 365.",
+    "Ernährungsberaterin für Pferde aus dem Odenwald. Kostenloser Futter-Check, Mineral-Klarheit, RatioPro, Futterberatung 365 und die Masterclass zur Pferdefütterung.",
 };
 
 export default function RootLayout({
@@ -16,24 +41,17 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="de">
-      <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link
-          rel="preconnect"
-          href="https://fonts.gstatic.com"
-          crossOrigin="anonymous"
-        />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Work+Sans:wght@300;400;500;600&display=swap"
-          rel="stylesheet"
-        />
-      </head>
+    <html lang="de" className={`${fraunces.variable} ${workSans.variable}`}>
       <body className="font-sans antialiased text-ink bg-cream">
         <Header />
         {children}
         <Footer />
         <ScrollFade />
+        <InsiderBar />
+        {/* Besucherzählung ohne Cookies: erkennt niemanden wieder, speichert
+            keine Kennung im Browser, deshalb ohne Einwilligung zulässig.
+            Zählt erst, wenn Web Analytics im Vercel-Konto aktiviert ist. */}
+        <Analytics />
       </body>
     </html>
   );

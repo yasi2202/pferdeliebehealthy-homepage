@@ -1,0 +1,24 @@
+# Abhängigkeiten
+/node_modules
+/.pnp
+.pnp.*
+
+# Next.js Build-Ausgabe
+/.next/
+/out/
+/build
+next-env.d.ts
+
+# Umgebungsvariablen (niemals ins Repo!)
+.env
+.env*.local
+
+# Vercel
+.vercel
+
+# TypeScript
+*.tsbuildinfo
+
+# Betriebssystem
+.DS_Store
+Thumbs.db

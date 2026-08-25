@@ -38,9 +38,8 @@ export default function AboutSection() {
             Pferde auf genau diesem Weg, mit meinen zwei Pferden Helena und
             Donni und drei Hunden immer irgendwo in der Nähe.
           </p>
-          <p className="font-serif italic text-lg mt-6">
-            Dein Pferd, gut versorgt. Dein Wissen, gut fundiert.
-          </p>
+          {/* Der Slogan steht jetzt im Hero — hier stünde er ein zweites Mal
+              und verlöre dort oben an Gewicht. */}
         </div>
       </div>
     </section>

@@ -25,24 +25,42 @@ export default function Hero() {
         {/* Text side */}
         <div className="relative order-2 lg:order-1 flex items-center">
           <div className="w-full px-6 sm:px-10 lg:px-16 py-16 lg:py-24">
-            <span className="inline-block text-[13px] tracking-[0.14em] uppercase text-gold font-semibold mb-4">
+            {/* Creme statt Gold: Gold auf Rosé erreicht nur 1,5:1 Kontrast
+                und ist auf hellen Bildschirmen kaum zu lesen. */}
+            <span className="inline-block text-[13px] tracking-[0.14em] uppercase text-cream/90 font-semibold mb-4">
               Ernährungsberaterin für Pferde · Odenwald
             </span>
+            {/* Anrede: spricht eine konkrete Person an, statt allgemein zu
+                behaupten. Danach erst das Versprechen. */}
+            <p className="text-cream/75 text-[17px] sm:text-lg max-w-lg mb-5">
+              Zehn Ratschläge aus dem Stall, drei Zusatzfutter im Schrank — und
+              du weißt immer noch nicht, ob es reicht?
+            </p>
+
             <h1 className="font-serif font-normal text-cream text-[34px] sm:text-5xl lg:text-[52px] leading-[1.12] tracking-tight mb-6">
               Dein Pferd verdient keine{" "}
-              <em className="italic text-gold">Vermutungen</em>, sondern ein
-              Fundament, das wirklich trägt
+              <em className="italic text-cream underline decoration-gold decoration-2 underline-offset-[6px]">
+                Vermutungen
+              </em>
+              , sondern ein Fundament, das wirklich trägt
             </h1>
-            <p className="text-cream/85 text-lg max-w-xl mb-8">
-              Ich begleite Pferdebesitzerinnen und angehende Beraterinnen
-              dabei, Fütterung nicht mehr dem Zufall zu überlassen.
-              Ganzheitlich, individuell und mit einem System, das auch dann
-              für dein Pferd oder deine Kundinnen arbeitet, wenn du gerade
-              selbst keine Zeit dafür hast.
+
+            {/* Der Slogan stand bisher versteckt unter „Über mich". */}
+            <p className="font-serif italic text-cream text-[19px] sm:text-[22px] mb-7">
+              Dein Pferd, gut versorgt. Dein Wissen, gut fundiert.
             </p>
-            <div className="flex flex-wrap gap-4 mb-10">
+
+            <p className="text-cream/85 text-lg max-w-xl mb-8">
+              Ich schaue mir an, was dein Pferd tatsächlich bekommt, gleiche es
+              mit dem ab, was es braucht, und schreibe auf, wo die Lücke ist.
+              Danach weißt du, woran du bist.
+            </p>
+            {/* Die drei Zahlen 28 / 8 / 1:1 standen hier wie eine Statistik,
+                messen aber Verschiedenes. An ihre Stelle tritt der Auszug aus
+                der Gesundheitsakte direkt unter dem Hero. */}
+            <div className="flex flex-wrap gap-4 pb-6 sm:pb-10">
               <Link
-                href="#kontakt"
+                href="/futter-check"
                 className="bg-cream text-ink px-7 py-4 rounded-full text-[15px] font-medium hover:bg-rose transition-colors"
               >
                 Kostenlosen Futter-Check machen
@@ -53,26 +71,6 @@ export default function Hero() {
               >
                 Alle Angebote ansehen
               </Link>
-            </div>
-            <div className="flex gap-10 flex-wrap">
-              <div>
-                <div className="font-serif text-[30px] text-gold">28</div>
-                <div className="text-[13px] text-cream/75">
-                  Jahre Erfahrung mit Helena
-                </div>
-              </div>
-              <div>
-                <div className="font-serif text-[30px] text-gold">8</div>
-                <div className="text-[13px] text-cream/75">
-                  Module in der Ausbildung
-                </div>
-              </div>
-              <div>
-                <div className="font-serif text-[30px] text-gold">1:1</div>
-                <div className="text-[13px] text-cream/75">
-                  Individuelle Gesundheitsakten
-                </div>
-              </div>
             </div>
           </div>
         </div>

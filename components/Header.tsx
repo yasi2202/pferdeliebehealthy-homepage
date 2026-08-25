@@ -3,9 +3,12 @@
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
+import { insider } from "@/lib/insider";
 
 const links = [
   { href: "/#wege", label: "Angebote" },
+  { href: "/insider", label: "Insider" },
+  { href: "/empfehlungen", label: "Empfehlungen" },
   { href: "/#warum", label: "Meine Haltung" },
   { href: "/#ueber-mich", label: "Über mich" },
   { href: "/#kontakt", label: "Kontakt" },
@@ -48,6 +51,27 @@ export default function Header() {
           : "bg-cream/90 backdrop-blur-md border-b border-line"
       }`}
     >
+      {/* Schmales Insider-Banner, nur auf der Startseite und ganz oben.
+          Es liegt innerhalb der Kopfzeile, damit deren Positionierung
+          (über dem Hero) unverändert bleibt. Text: lib/insider.ts */}
+      {isHome && (
+        <Link
+          href="/insider"
+          onClick={() => setMenuOpen(false)}
+          className="group block bg-ink text-cream"
+        >
+          <div className="max-w-6xl mx-auto px-6 sm:px-8 py-2.5 flex items-center justify-center gap-2.5 sm:gap-3.5 text-[13px] sm:text-[13.5px] text-center">
+            <span className="hidden sm:inline-block bg-pfirsich text-ink font-semibold px-2.5 py-0.5 rounded-full text-[11px] tracking-wide uppercase shrink-0">
+              {insider.kopfBanner.hinweis}
+            </span>
+            <span className="text-cream/90">{insider.kopfBanner.text}</span>
+            <span className="font-medium underline underline-offset-4 decoration-pfirsich group-hover:decoration-cream shrink-0">
+              {insider.kopfBanner.button}
+            </span>
+          </div>
+        </Link>
+      )}
+
       <nav className="flex items-center justify-between max-w-6xl mx-auto px-6 sm:px-8 py-5">
         <Link
           href="/"
@@ -63,7 +87,7 @@ export default function Header() {
         </Link>
 
         <div
-          className={`hidden md:flex gap-9 text-[14.5px] ${
+          className={`hidden lg:flex gap-7 text-[14.5px] ${
             transparent ? "text-cream" : "text-ink"
           }`}
         >
@@ -76,7 +100,7 @@ export default function Header() {
 
         <div className="flex items-center gap-3">
           <Link
-            href="/#kontakt"
+            href="/futter-check"
             onClick={() => setMenuOpen(false)}
             className={`hidden sm:inline-block text-sm font-medium px-5 py-2.5 rounded-full transition-colors ${
               transparent
@@ -90,7 +114,7 @@ export default function Header() {
           <button
             aria-label={menuOpen ? "Menü schließen" : "Menü öffnen"}
             onClick={() => setMenuOpen((v) => !v)}
-            className={`md:hidden relative z-[60] w-10 h-10 flex flex-col items-center justify-center gap-[5px] ${
+            className={`lg:hidden relative z-[60] w-10 h-10 flex flex-col items-center justify-center gap-[5px] ${
               transparent ? "text-cream" : "text-ink"
             }`}
           >
@@ -117,7 +141,7 @@ export default function Header() {
     {/* Mobile menu overlay, rendered as a sibling so it is never inside a
        backdrop-filter containing block (which would break position:fixed) */}
     <div
-      className={`md:hidden fixed inset-0 bg-ink transition-opacity duration-300 z-50 ${
+      className={`lg:hidden fixed inset-0 bg-ink transition-opacity duration-300 z-50 ${
         menuOpen
           ? "opacity-100 pointer-events-auto"
           : "opacity-0 pointer-events-none"
@@ -135,7 +159,7 @@ export default function Header() {
           </Link>
         ))}
         <Link
-          href="/#kontakt"
+          href="/futter-check"
           onClick={() => setMenuOpen(false)}
           className="mt-4 bg-rose text-ink px-8 py-3.5 rounded-full text-[15px] font-medium"
         >

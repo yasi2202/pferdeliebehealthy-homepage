@@ -1,6 +1,7 @@
 @import "tailwindcss";
 
 :root {
+  /* Deine Farben, unverändert. */
   --cream: #F9EDED;
   --cream-deep: #F3E1E1;
   --rose: #DFA9A9;
@@ -10,6 +11,12 @@
   --gold: #C9A467;
   --white: #FFFFFF;
   --line: rgba(59, 42, 40, 0.12);
+
+  /* Neu und bewusst sparsam: der Pfirsichton von deiner alfima-Seite.
+     Er markiert alles, was zum Insider-Kanal gehört — also genau das,
+     was auch bei alfima liegt. Nur als Fläche verwenden, nie als Textfarbe
+     auf hellem Grund (dafür ist er zu hell). */
+  --pfirsich: #F0B9A5;
 }
 
 @theme inline {
@@ -20,9 +27,12 @@
   --color-ink: var(--ink);
   --color-ink-soft: var(--ink-soft);
   --color-gold: var(--gold);
+  --color-pfirsich: var(--pfirsich);
   --color-line: var(--line);
-  --font-serif: "Fraunces", serif;
-  --font-sans: "Work Sans", sans-serif;
+  /* Die Namen kommen aus next/font in app/layout.tsx — die Schriften
+     liegen damit auf der eigenen Domain statt bei Google. */
+  --font-serif: var(--font-fraunces), Georgia, serif;
+  --font-sans: var(--font-work-sans), system-ui, sans-serif;
 }
 
 html {
@@ -50,8 +60,90 @@ body {
   transform: translateY(0);
 }
 
+/* --- Insider-Beiträge: Formatierung des Textes aus den Markdown-Dateien --- */
+.beitrag-prose {
+  font-size: 17px;
+  line-height: 1.75;
+  color: var(--ink);
+}
+
+.beitrag-prose h2 {
+  font-family: var(--font-fraunces), Georgia, serif;
+  font-size: 26px;
+  font-weight: 500;
+  line-height: 1.25;
+  margin: 44px 0 14px;
+}
+
+.beitrag-prose h3 {
+  font-family: var(--font-fraunces), Georgia, serif;
+  font-size: 21px;
+  font-weight: 500;
+  margin: 32px 0 10px;
+}
+
+.beitrag-prose p {
+  margin-bottom: 20px;
+}
+
+.beitrag-prose ul,
+.beitrag-prose ol {
+  margin: 0 0 20px 22px;
+}
+
+.beitrag-prose ul { list-style: disc; }
+.beitrag-prose ol { list-style: decimal; }
+
+.beitrag-prose li {
+  margin-bottom: 8px;
+  padding-left: 4px;
+}
+
+.beitrag-prose strong { font-weight: 600; }
+.beitrag-prose em { font-style: italic; }
+
+.beitrag-prose a {
+  color: var(--rose-deep);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.beitrag-prose a:hover { color: var(--ink); }
+
+.beitrag-prose blockquote {
+  border-left: 3px solid var(--rose);
+  padding: 4px 0 4px 22px;
+  margin: 30px 0;
+  font-family: var(--font-fraunces), Georgia, serif;
+  font-style: italic;
+  font-size: 20px;
+  line-height: 1.5;
+}
+
+.beitrag-prose blockquote p:last-child { margin-bottom: 0; }
+
+.beitrag-prose hr {
+  border: none;
+  border-top: 1px solid var(--line);
+  margin: 40px 0;
+}
+
+.beitrag-prose img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 14px;
+  margin: 30px 0;
+}
+
+.beitrag-prose code {
+  background: var(--cream-deep);
+  padding: 2px 6px;
+  border-radius: 5px;
+  font-size: 0.9em;
+}
+
 .legal-prose h2 {
-  font-family: "Fraunces", serif;
+  font-family: var(--font-fraunces), Georgia, serif;
   font-size: 20px;
   font-weight: 500;
   margin: 34px 0 10px;
