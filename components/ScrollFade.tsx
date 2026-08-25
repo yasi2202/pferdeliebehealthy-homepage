@@ -1,8 +1,18 @@
 "use client";
 
 import { useEffect } from "react";
+import { usePathname } from "next/navigation";
 
 export default function ScrollFade() {
+  // Der Pfad steht bewusst in den Abhaengigkeiten des Effekts weiter unten.
+  //
+  // Ohne ihn lief das hier nur ein einziges Mal, beim allerersten Laden.
+  // Wer auf eine Unterseite ging und ueber das Menue zurueckkam, bekam eine
+  // vollstaendig leere Startseite: der Inhalt war neu aufgebaut, der
+  // Beobachter kannte ihn nicht mehr, und "js-fade-ready" stand weiterhin
+  // am html-Element -- also blieb alles auf opacity 0 stehen.
+  const pfad = usePathname();
+
   useEffect(() => {
     // Only hide/animate elements once we know JS is actually running.
     // Without this, a slow or blocked script would leave content stuck
@@ -33,7 +43,7 @@ export default function ScrollFade() {
       obs.disconnect();
       window.clearTimeout(fallback);
     };
-  }, []);
+  }, [pfad]);
 
   return null;
 }
