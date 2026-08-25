@@ -22,13 +22,24 @@ export default function Header() {
 
   useEffect(() => {
     if (!isHome) return;
-    const onScroll = () => {
-      const heroHeight = window.innerHeight;
-      setScrolled(window.scrollY > heroHeight - 90);
+    // Solange der dunkle Hero hinter der Kopfzeile liegt, bleibt sie
+    // durchsichtig mit hellem Text. Ist er durchgelaufen, bekommt sie creme
+    // Hintergrund — sonst staende heller Text auf hellem Inhalt.
+    //
+    // Die Hoehe wird gemessen statt geschaetzt: auf dem Handy liegen Bild und
+    // Text untereinander, der Hero ist dort weit hoeher als der Bildschirm.
+    const pruefen = () => {
+      const hero = document.getElementById("hero");
+      const grenze = (hero ? hero.offsetHeight : window.innerHeight) - 90;
+      setScrolled(window.scrollY > grenze);
     };
-    onScroll();
-    window.addEventListener("scroll", onScroll);
-    return () => window.removeEventListener("scroll", onScroll);
+    pruefen();
+    window.addEventListener("scroll", pruefen, { passive: true });
+    window.addEventListener("resize", pruefen);
+    return () => {
+      window.removeEventListener("scroll", pruefen);
+      window.removeEventListener("resize", pruefen);
+    };
   }, [isHome]);
 
   useEffect(() => {
@@ -63,17 +74,19 @@ export default function Header() {
     <>
     <header
       className={`${
-        isHome ? "absolute" : "sticky"
+        isHome ? "fixed" : "sticky"
       } top-0 left-0 right-0 z-50 transition-colors duration-300 ${
         transparent
           ? "bg-transparent border-transparent"
           : "bg-cream/90 backdrop-blur-md border-b border-line"
       }`}
     >
-      {/* Schmales Insider-Banner, nur auf der Startseite und ganz oben.
-          Es liegt innerhalb der Kopfzeile, damit deren Positionierung
-          (über dem Hero) unverändert bleibt. Text: lib/insider.ts */}
-      {isHome && (
+      {/* Schmales Insider-Banner, nur auf der Startseite und nur am Anfang.
+          Seit die Kopfzeile mitlaeuft, wuerde es sonst dauerhaft Platz
+          wegnehmen; beim Scrollen bleibt nur die Navigation. Ausgeblendet
+          wird es ohne Layoutsprung, weil die Kopfzeile ueber dem Inhalt
+          schwebt. Text: lib/insider.ts */}
+      {isHome && !scrolled && !menuOpen && (
         <Link
           href="/insider"
           onClick={() => setMenuOpen(false)}

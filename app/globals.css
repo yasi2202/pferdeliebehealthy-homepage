@@ -37,6 +37,9 @@
 
 html {
   scroll-behavior: smooth;
+  /* Die Kopfzeile laeuft mit und liegt ueber dem Inhalt. Ohne diesen Abstand
+     verschwaenden die Sprungmarken ihre ersten Zeilen darunter. */
+  scroll-padding-top: 96px;
 }
 
 body {
