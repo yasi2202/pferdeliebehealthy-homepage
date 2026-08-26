@@ -51,6 +51,6 @@ export const insider = {
     ],
     button: "Insider werden — kostenlos",
     kleingedrucktes:
-      "Anmeldung über meine Kursplattform alfima. Abmeldung jederzeit mit einem Klick, deine Adresse gebe ich nicht weiter.",
+      "Du bekommst eine Mail, in der du deine Adresse einmal bestätigst — erst danach schreibe ich dir. Abmeldung jederzeit mit einem Klick, deine Adresse gebe ich nicht weiter.",
   },
 } as const;

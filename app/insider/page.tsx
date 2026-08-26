@@ -4,6 +4,8 @@ import { insider } from "@/lib/insider";
 import InsiderFormular from "@/components/InsiderFormular";
 import BeitragsListe from "@/components/BeitragsListe";
 import MonatsEmpfehlung from "@/components/MonatsEmpfehlung";
+import InsiderMerken from "@/components/InsiderMerken";
+import { aktuellerInsider } from "@/lib/insider-zugang";
 import NurFuerNichtInsider from "@/components/NurFuerNichtInsider";
 
 export const metadata: Metadata = {
@@ -13,8 +15,14 @@ export const metadata: Metadata = {
     "Kostenloses Wissen zur Pferdefütterung: was in Rationen wirklich schiefgeht, Zusatzfutter ehrlich eingeordnet und wie du Laborwerte liest.",
 };
 
-export default function InsiderSeite() {
+export default async function InsiderSeite() {
   const beitraege = alleBeitraege();
+
+  // Auf dem Server gefragt, nicht im Browser geraten: Wer angemeldet ist,
+  // bekommt die Einladung gar nicht erst geschickt. Der Merker im Browser
+  // allein reichte nicht — er fehlt zum Beispiel, wenn jemand den
+  // Anmeldelink auf einem anderen Geraet geoeffnet hat.
+  const angemeldet = await aktuellerInsider();
 
   return (
     <main className="py-14 sm:py-20 px-6 sm:px-8">
@@ -26,35 +34,43 @@ export default function InsiderSeite() {
           {insider.name}
         </h1>
         <p className="text-[17px] text-ink-soft max-w-xl">
-          {insider.abschnitt.einleitung}
+          {angemeldet
+            ? `Schön, dass du da bist, ${angemeldet.vorname}. Alle Beiträge stehen dir offen.`
+            : insider.abschnitt.einleitung}
         </p>
 
-        {/* Anmeldung — läuft über die eigene Seite, die Adressen landen in
-            der Tabelle insider_anmeldungen in Supabase. Wer schon dabei ist,
-            sieht diesen Kasten nicht. */}
-        <NurFuerNichtInsider>
-        <div className="bg-ink text-cream rounded-[24px] p-8 sm:p-10 mt-10">
-          <div className="text-[11px] tracking-[0.16em] uppercase text-pfirsich font-semibold mb-3">
-            Nichts verpassen
-          </div>
-          <h2 className="font-serif text-[24px] sm:text-[28px] leading-snug mb-4">
-            Neue Beiträge direkt ins Postfach
-          </h2>
-          <p className="text-[15px] text-cream/75 max-w-lg mb-7">
-            Die Beiträge sind für Insider. Trag dich ein, dann kannst du alle
-            lesen — auch die älteren — und ich schreibe dir, sobald es etwas
-            Neues gibt. Kostet nichts.
-          </p>
-          <InsiderFormular
-            quelle="insider-uebersicht"
-            variante="dunkel"
-            knopfText={insider.abschnitt.button}
-          />
-          <p className="text-[13px] text-cream/60 mt-5 max-w-md">
-            {insider.abschnitt.kleingedrucktes}
-          </p>
-        </div>
-        </NurFuerNichtInsider>
+        {angemeldet ? (
+          /* Gleicht den Merker im Browser ab, damit auch die Startseite und
+             der Balken unten wissen, dass hier jemand dabei ist. */
+          <InsiderMerken />
+        ) : (
+          /* Der Merker im Browser bleibt als zweites Netz: Wer sich gerade
+             eingetragen, aber noch nicht bestaetigt hat, hat noch keinen
+             Zugang — soll aber auch nicht sofort wieder gefragt werden. */
+          <NurFuerNichtInsider>
+            <div className="bg-ink text-cream rounded-[24px] p-8 sm:p-10 mt-10">
+              <div className="text-[11px] tracking-[0.16em] uppercase text-pfirsich font-semibold mb-3">
+                Nichts verpassen
+              </div>
+              <h2 className="font-serif text-[24px] sm:text-[28px] leading-snug mb-4">
+                Neue Beiträge direkt ins Postfach
+              </h2>
+              <p className="text-[15px] text-cream/75 max-w-lg mb-7">
+                Die Beiträge sind für Insider. Trag dich ein, dann kannst du
+                alle lesen — auch die älteren — und ich schreibe dir, sobald es
+                etwas Neues gibt. Kostet nichts.
+              </p>
+              <InsiderFormular
+                quelle="insider-uebersicht"
+                variante="dunkel"
+                knopfText={insider.abschnitt.button}
+              />
+              <p className="text-[13px] text-cream/60 mt-5 max-w-md">
+                {insider.abschnitt.kleingedrucktes}
+              </p>
+            </div>
+          </NurFuerNichtInsider>
+        )}
 
         {/* Empfehlung des Monats. Steht nach dem Anmeldekasten: Wer noch
             nicht dabei ist, soll zuerst die Anmeldung sehen. Fuer alle, die

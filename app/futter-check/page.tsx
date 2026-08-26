@@ -93,8 +93,8 @@ export default function FutterCheckSeite() {
               Jetzt kostenlos starten
             </Link>
             <p className="text-[13px] text-cream/65 mt-4">
-              Anmeldung über meine Kursplattform alfima. Kostet nichts, deine
-              Adresse gebe ich nicht weiter.
+              Du bekommst eine Mail, in der du deine Adresse einmal bestätigst.
+              Kostet nichts, deine Adresse gebe ich nicht weiter.
             </p>
           </div>
 
