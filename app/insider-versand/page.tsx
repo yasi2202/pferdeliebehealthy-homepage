@@ -2,9 +2,15 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { alleBeitraege, datumDeutsch } from "@/lib/beitraege";
 import { aktuellerInsider } from "@/lib/insider-zugang";
-import { istAdmin, alleVersandvermerke } from "@/lib/insider-versand";
+import {
+  istAdmin,
+  alleVersandvermerke,
+  offeneUebernahmen,
+  nachfrageSchonRaus,
+} from "@/lib/insider-versand";
 import { supabase } from "@/lib/versand";
 import VersandKnopf from "@/components/VersandKnopf";
+import NachfrageKnopf from "@/components/NachfrageKnopf";
 
 // ---------------------------------------------------------------------------
 // Yasis Versandseite: alle Beiträge, daneben ein Knopf "An alle Insider
@@ -59,6 +65,8 @@ export default async function VersandSeite() {
   const beitraege = alleBeitraege();
   const vermerke = await alleVersandvermerke();
   const anzahl = await empfaengerZaehlen();
+  const offen = await offeneUebernahmen();
+  const nachfrage = await nachfrageSchonRaus();
 
   return (
     <main className="py-14 sm:py-20 px-6 sm:px-8">
@@ -84,6 +92,36 @@ export default async function VersandSeite() {
             geht der Knopf wieder.
           </p>
         </div>
+
+        {/* Die einmalige Nachfrage an die aus alfima übernommenen Adressen.
+            Verschwindet, sobald niemand mehr darauf wartet. */}
+        {offen > 0 && (
+          <div className="bg-cream-deep rounded-[18px] p-6 sm:p-7 mt-6">
+            <div className="text-[11px] tracking-[0.16em] uppercase text-rose-deep font-semibold mb-3">
+              Aus alfima übernommen
+            </div>
+            <h2 className="font-serif text-[20px] sm:text-[23px] leading-snug mb-3">
+              {offen} {offen === 1 ? "Adresse wartet" : "Adressen warten"} noch
+              auf ihre Bestätigung
+            </h2>
+            <p className="text-[14.5px] text-ink-soft leading-relaxed max-w-xl mb-5">
+              Diese Leute haben sich damals bei alfima eingetragen, aber es ist
+              kein Bestätigungsklick dokumentiert. Sie bekommen deshalb nichts
+              von dir — außer dieser einen Nachfrage. Wer darauf klickt, ist
+              danach normal dabei; wer nicht, hört nichts mehr.
+            </p>
+
+            {nachfrage ? (
+              <p className="text-[14px] text-ink-soft">
+                ✓ Nachfrage verschickt am{" "}
+                {datumDeutsch(nachfrage.versendet_am.slice(0, 10))} an{" "}
+                {nachfrage.empfaenger} Adressen
+              </p>
+            ) : (
+              <NachfrageKnopf anzahl={offen} />
+            )}
+          </div>
+        )}
 
         <ul className="divide-y divide-line border-t border-line mt-10">
           {beitraege.map((b) => {

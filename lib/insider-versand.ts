@@ -54,6 +54,7 @@ async function vermerkFinden(slug: string): Promise<Versandvermerk | null> {
 // ---------------------------------------------------------------------------
 
 const RESEND_API_KEY = process.env.RESEND_API_KEY;
+const TABELLE = "insider_anmeldungen";
 const VON = "Yasi von Pferdeliebehealthy <info@updates.pferdeliebehealthy.de>";
 
 /** Resend nimmt bis zu 100 Mails pro Anfrage entgegen. Einzeln verschickt
@@ -205,4 +206,123 @@ export async function anmeldungZuToken(token: string): Promise<InsiderAnmeldung 
   return ersteZeile<InsiderAnmeldung>(
     `insider_anmeldungen?token=eq.${encodeURIComponent(token)}&select=*&limit=1`
   );
+}
+
+// ---------------------------------------------------------------------------
+// Die einmalige Nachfrage an die übernommenen Anmeldungen.
+//
+// Beim Umzug von alfima kamen Adressen mit, bei denen kein Bestätigungsklick
+// dokumentiert ist. Die stehen als `bestaetigt = false` in der Tabelle und
+// bekommen deshalb nichts — bis auf diese eine Mail, die fragt, ob sie noch
+// dabei sein möchten.
+//
+// Wer nicht klickt, hört nichts mehr. Das ist der Sinn der Sache: Am Ende
+// steht eine Liste, bei der für jede einzelne Adresse ein Klick belegt ist.
+// ---------------------------------------------------------------------------
+
+/** Unter diesem Namen wird die Nachfrage in insider_versand vermerkt, damit
+ *  sie nicht zweimal rausgeht. Der Unterstrich macht sichtbar, dass es kein
+ *  Beitrag ist. */
+const NACHFRAGE = "_nachfrage-uebernahme";
+
+/** Wie viele übernommene Anmeldungen noch auf ihre Bestätigung warten. */
+export async function offeneUebernahmen(): Promise<number> {
+  const res = await supabase(
+    `${TABELLE}?bestaetigt=eq.false&quelle=eq.alfima-uebernahme-offen&select=id`
+  );
+  if (!res.ok) return 0;
+  const zeilen = await res.json();
+  return Array.isArray(zeilen) ? zeilen.length : 0;
+}
+
+export async function nachfrageSchonRaus(): Promise<Versandvermerk | null> {
+  return vermerkFinden(NACHFRAGE);
+}
+
+export async function nachfrageVersenden(basisUrl: string): Promise<VersandErgebnis> {
+  if (await vermerkFinden(NACHFRAGE)) {
+    return {
+      ok: false,
+      grund: "schon-versendet",
+      text: "Die Nachfrage ist schon einmal rausgegangen.",
+    };
+  }
+
+  const res = await supabase(
+    `${TABELLE}?bestaetigt=eq.false&quelle=eq.alfima-uebernahme-offen&select=vorname,email,token`
+  );
+  if (!res.ok) {
+    return { ok: false, grund: "fehler", text: "Die Adressliste war nicht erreichbar." };
+  }
+  const empfaenger: InsiderAnmeldung[] = await res.json();
+  if (!Array.isArray(empfaenger) || empfaenger.length === 0) {
+    return { ok: false, grund: "keine-empfaenger", text: "Es wartet niemand auf eine Nachfrage." };
+  }
+
+  let verschickt = 0;
+
+  for (let i = 0; i < empfaenger.length; i += BUENDEL) {
+    const buendel = empfaenger.slice(i, i + BUENDEL);
+
+    const mails = buendel.map((e) => {
+      const link = `${basisUrl}/insider-bestaetigt?token=${encodeURIComponent(e.token)}`;
+      return {
+        from: VON,
+        to: [e.email],
+        reply_to: ANTWORT_AN,
+        subject: `Möchtest du bei den ${insider.name} dabei bleiben?`,
+        html: rahmen(`
+          <p style="font-size:17px;">Hallo ${esc(e.vorname)},</p>
+          <p style="font-size:16px;line-height:1.6;">
+            du hast dich vor einiger Zeit für die ${esc(insider.name)}
+            eingetragen. Der Kanal ist inzwischen auf meine eigene Seite
+            umgezogen, und ich möchte das zum Anlass nehmen, einmal
+            nachzufragen statt einfach weiterzuschreiben.
+          </p>
+          <p style="font-size:16px;line-height:1.6;">
+            Wenn du weiter dabei sein möchtest, klick einmal hier — dann
+            bekommst du wie bisher regelmäßig ein Thema aus meiner Praxis, und
+            alle Beiträge stehen dir offen.
+          </p>
+          <p style="margin:28px 0;">
+            <a href="${link}" style="background:#B87878;color:#fff;padding:14px 28px;border-radius:999px;text-decoration:none;font-size:16px;display:inline-block;">
+              Ja, ich bleibe dabei
+            </a>
+          </p>
+          <p style="font-size:15px;line-height:1.6;color:#8a7070;">
+            Und wenn nicht: Dann musst du gar nichts tun. Ohne deinen Klick
+            hörst du nichts mehr von mir — das ist keine Abmeldung, die du
+            beantragen musst, sondern einfach das, was passiert.
+          </p>
+          <p style="font-size:16px;line-height:1.6;">Alles Gute für dich und dein Pferd,<br>Yasi</p>
+        `),
+      };
+    });
+
+    const antwort = await fetch("https://api.resend.com/emails/batch", {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${RESEND_API_KEY}`,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(mails),
+    });
+
+    if (!antwort.ok) {
+      console.error("Nachfrage fehlgeschlagen:", antwort.status, (await antwort.text()).slice(0, 300));
+      break;
+    }
+    verschickt += buendel.length;
+  }
+
+  if (verschickt === 0) {
+    return { ok: false, grund: "fehler", text: "Es ist keine Mail rausgegangen. Versuch es noch einmal." };
+  }
+
+  await supabase("insider_versand", {
+    method: "POST",
+    body: JSON.stringify({ slug: NACHFRAGE, empfaenger: verschickt }),
+  });
+
+  return { ok: true, empfaenger: verschickt };
 }
