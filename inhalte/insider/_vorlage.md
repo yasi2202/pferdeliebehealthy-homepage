@@ -38,7 +38,7 @@ Nummerierte Listen so:
 1. Erster Schritt
 2. Zweiter Schritt
 
-Ein Link sieht so aus: [zum Futter-Check](/futter-check).
+Ein Link sieht so aus: [zum Futter-Check](https://alfima.com/pferdeliebehealthy/der-kostenlose-futter-check).
 
 > So sieht ein hervorgehobenes Zitat aus. Gut geeignet für den einen Satz,
 > den die Leserin mitnehmen soll.

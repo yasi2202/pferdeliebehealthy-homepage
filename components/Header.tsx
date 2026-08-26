@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 import { insider } from "@/lib/insider";
+import { futterCheck } from "@/lib/seite";
 
 const links = [
   { href: "/#wege", label: "Angebote" },
@@ -136,9 +137,10 @@ export default function Header() {
         </div>
 
         <div className="flex items-center gap-3">
-          <Link
-            href="/futter-check"
-            prefetch={false}
+          <a
+            href={futterCheck.anmeldung}
+            target="_blank"
+            rel="noopener"
             onClick={() => setMenuOpen(false)}
             className={`hidden sm:inline-block text-sm font-medium px-5 py-2.5 rounded-full transition-colors ${
               transparent
@@ -147,7 +149,7 @@ export default function Header() {
             }`}
           >
             Zum Futter-Check
-          </Link>
+          </a>
 
           <button
             aria-label={menuOpen ? "Menü schließen" : "Menü öffnen"}
@@ -196,14 +198,15 @@ export default function Header() {
             {l.label}
           </Link>
         ))}
-        <Link
-          href="/futter-check"
-          prefetch={false}
+        <a
+          href={futterCheck.anmeldung}
+          target="_blank"
+          rel="noopener"
           onClick={() => setMenuOpen(false)}
           className="mt-4 bg-rose text-ink px-8 py-3.5 rounded-full text-[15px] font-medium"
         >
           Zum Futter-Check
-        </Link>
+        </a>
       </div>
     </div>
     </>

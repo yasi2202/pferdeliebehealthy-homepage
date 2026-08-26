@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { futterCheck } from "@/lib/seite";
 
 export default function Footer() {
   return (
@@ -19,9 +20,14 @@ export default function Footer() {
           </h4>
           <ul className="space-y-2.5 text-sm text-ink-soft">
             <li>
-              <Link href="/futter-check" prefetch={false} className="hover:text-ink">
+              <a
+                href={futterCheck.anmeldung}
+                target="_blank"
+                rel="noopener"
+                className="hover:text-ink"
+              >
                 Der Futter-Check
-              </Link>
+              </a>
             </li>
             <li>
               <a

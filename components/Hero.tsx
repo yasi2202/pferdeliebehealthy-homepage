@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import { futterCheck } from "@/lib/seite";
 
 export default function Hero() {
   return (
@@ -59,13 +60,14 @@ export default function Hero() {
                 messen aber Verschiedenes. An ihre Stelle tritt der Auszug aus
                 der Gesundheitsakte direkt unter dem Hero. */}
             <div className="flex flex-wrap gap-4 pb-6 sm:pb-10">
-              <Link
-                href="/futter-check"
-                prefetch={false}
+              <a
+                href={futterCheck.anmeldung}
+                target="_blank"
+                rel="noopener"
                 className="bg-cream text-ink px-7 py-4 rounded-full text-[15px] font-medium hover:bg-rose transition-colors"
               >
                 Kostenlosen Futter-Check machen
-              </Link>
+              </a>
               <Link
                 href="#wege"
                 className="border border-cream text-cream px-7 py-3.5 rounded-full text-[15px] font-medium hover:bg-cream/15 transition-colors"

@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { fuerDeinPferd, masterclass } from "@/lib/angebote";
+import { futterCheck } from "@/lib/seite";
 
 // ---------------------------------------------------------------------------
 // Die Angebote, nach Zielgruppe getrennt.
@@ -79,13 +80,14 @@ export default function WegeSection() {
               })}
             </div>
 
-            <Link
-              href="/futter-check"
-              prefetch={false}
+            <a
+              href={futterCheck.anmeldung}
+              target="_blank"
+              rel="noopener"
               className="mt-8 w-full text-center bg-rose-deep text-cream px-7 py-3.5 rounded-full text-[15px] font-medium hover:bg-ink transition-colors"
             >
               Kostenlos starten: der Futter-Check
-            </Link>
+            </a>
           </div>
 
           {/* ------------------------------------------------- Die Masterclass */}

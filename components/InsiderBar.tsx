@@ -55,7 +55,10 @@ export default function InsiderBar() {
     }
   }
 
-  if (geschlossen || pfad === "/futter-check") return null;
+  // Auf dem Fragebogen und auf der Dankesseite bleibt der Balken weg: dort
+  // hat die Besucherin genau eine Aufgabe, und die soll nichts ueberlagern.
+  if (geschlossen || pfad === "/futter-check" || pfad === "/danke-futter-check")
+    return null;
 
   return (
     <div

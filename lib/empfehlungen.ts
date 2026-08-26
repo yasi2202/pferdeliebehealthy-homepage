@@ -9,11 +9,11 @@
 //   warum     Ein Satz, warum du es empfiehlst. Optional, wirkt aber stark.
 //   bezahlt   true = du bekommst eine Provision.
 //
-// ▸ OFFEN (Stand 25.08.2026): Bei Natusat, Foten, CDVet, Naturanima und
-//   Bäralis fehlen noch der Shop-Link (`url`) und der Satz (`warum`). Bei
-//   allen ausser Mycelium fehlt ausserdem die Rabatthöhe (`rabatt`).
-//   Sobald du sie hast, hier eintragen — die Seite zeigt sie dann von selbst
-//   an, es muss sonst nichts angefasst werden.
+// ▸ OFFEN (Stand 25.08.2026): Alle Shop-Links und Beschreibungen sind da.
+//   Es fehlt nur noch bei allen ausser Mycelium die Rabatthöhe (`rabatt`),
+//   also was der Code jeweils bringt. Sobald du sie hast, hier eintragen —
+//   die Seite zeigt sie dann von selbst an, sonst muss nichts angefasst
+//   werden.
 //
 // ▸ Die Sätze bei `warum` beschreiben, was der Shop führt. Sie stehen unter
 //   deinem Namen auf der Seite — änder sie so, dass sie nach dir klingen.
@@ -67,12 +67,47 @@ export const empfehlungen: Empfehlung[] = [
       "Einzelkräuter und fertige Kräutermischungen für Pferde — praktisch, wenn du eine Mischung selbst zusammenstellen möchtest.",
     bezahlt: true,
   },
-  { partner: "Natusat", code: "pferdeliebehealthy7", bezahlt: true },
+  {
+    partner: "Natusat",
+    code: "pferdeliebehealthy7",
+    url: "https://natusat.de/",
+    warum:
+      "Einzelstoffe wie Aminosäuren, Algen und Kräuter, dazu Mischungen für Bewegungsapparat und Stoffwechsel — gut, wenn du eine Ration gezielt ergänzen willst.",
+    bezahlt: true,
+  },
   // Schreibweise ist korrekt so — kein Tippfehler, bitte nicht "korrigieren".
-  { partner: "Foten", code: "pferdeliebehealthy", bezahlt: true },
-  { partner: "CDVet", code: "pferdeliebe", bezahlt: true },
-  { partner: "Naturanima", code: "pferdeliebehealthy", bezahlt: true },
-  { partner: "Bäralis", code: "D9A6A233", bezahlt: true },
+  {
+    partner: "Foten",
+    code: "pferdeliebehealthy",
+    url: "https://foten.net/shop/",
+    warum:
+      "Spezialist für Omega-3, wahlweise aus Algen oder aus Fisch — der richtige Ort, wenn es dir gezielt um die Fettsäureversorgung geht.",
+    bezahlt: true,
+  },
+  {
+    partner: "CDVet",
+    code: "pferdeliebe",
+    url: "https://www.cdvet.de/",
+    warum:
+      "Breites Sortiment für Pferd, Hund und Katze: Futterergänzungen, Pflege und Stallhygiene aus einer Hand.",
+    bezahlt: true,
+  },
+  {
+    partner: "Naturanima",
+    code: "pferdeliebehealthy",
+    url: "https://naturanima.de/",
+    warum:
+      "Kräutermischungen nach Themen sortiert — Bewegungsapparat, Stoffwechsel, Darm, Atemwege, Haut und Hufe —, wenn du nicht selbst mischen möchtest.",
+    bezahlt: true,
+  },
+  {
+    partner: "Bäralis",
+    code: "D9A6A233",
+    url: "https://baeralis.de/",
+    warum:
+      "Pflege und Wundversorgung fürs Pferd, mit einer eigenen Ecke für schnelle Hilfe — praktisch für die Stallapotheke.",
+    bezahlt: true,
+  },
   {
     partner: "Mycelium Vitalpilze",
     code: "Pferdeliebehealthy",
