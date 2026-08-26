@@ -3,6 +3,7 @@ import { alleBeitraege } from "@/lib/beitraege";
 import { insider } from "@/lib/insider";
 import InsiderFormular from "@/components/InsiderFormular";
 import BeitragsListe from "@/components/BeitragsListe";
+import MonatsEmpfehlung from "@/components/MonatsEmpfehlung";
 import NurFuerNichtInsider from "@/components/NurFuerNichtInsider";
 
 export const metadata: Metadata = {
@@ -55,8 +56,16 @@ export default function InsiderSeite() {
         </div>
         </NurFuerNichtInsider>
 
+        {/* Empfehlung des Monats. Steht nach dem Anmeldekasten: Wer noch
+            nicht dabei ist, soll zuerst die Anmeldung sehen. Fuer alle, die
+            schon dabei sind, ist der Kasten ausgeblendet — dann steht der
+            Banner ganz oben, und genau dort gehoert er hin. */}
+        <div className="mt-12">
+          <MonatsEmpfehlung />
+        </div>
+
         {/* Die Beiträge */}
-        <div className="mt-16">
+        <div className="mt-4">
           {beitraege.length === 0 ? (
             <div className="border border-dashed border-line rounded-[18px] p-10 text-center">
               <p className="font-serif text-[22px] mb-3">
