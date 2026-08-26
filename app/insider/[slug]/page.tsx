@@ -41,17 +41,26 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
-/** Der Anriss für alle, die noch nicht angemeldet sind: die ersten beiden
- *  Absätze, mehr nicht.
+/** Der Anriss für alle, die noch nicht angemeldet sind.
  *
  *  Geschnitten wird an `</p>`, nicht nach einer Zeichenzahl. Ein Schnitt
  *  mitten im Text würde offene Formatierungen hinterlassen, und der Browser
  *  müsste raten, wie er sie schliesst — meist auf Kosten des restlichen
- *  Seitenaufbaus. */
+ *  Seitenaufbaus.
+ *
+ *  Wie viel gezeigt wird, hängt von der Länge ab: höchstens ein Drittel des
+ *  Beitrags, höchstens zwei Absätze. Eine feste Zahl wäre bei einem kurzen
+ *  Beitrag der halbe Text — und wer die Antwort schon vor der Schranke
+ *  bekommt, trägt sich nicht mehr ein. */
 function anriss(html: string): string {
   const teile = html.split("</p>");
-  if (teile.length <= 2) return html;
-  return teile.slice(0, 2).join("</p>") + "</p>";
+  const absaetze = teile.length - 1;
+  if (absaetze <= 1) return html;
+
+  const zeigen = Math.max(1, Math.min(2, Math.floor(absaetze / 3)));
+  if (zeigen >= absaetze) return html;
+
+  return teile.slice(0, zeigen).join("</p>") + "</p>";
 }
 
 export default async function BeitragSeite({ params }: Props) {
