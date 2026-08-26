@@ -4,8 +4,6 @@ datum: 2026-08-24
 beschreibung: "Fast alle unterschätzen ihre Heumenge — und zwar nicht um ein bisschen. Warum das die wichtigste Zahl in der Fütterung ist und wie du sie in fünf Minuten herausfindest."
 ---
 
-**ENTWURF — bitte fachlich gegenlesen, bevor dieser Beitrag online geht.**
-
 Wenn ich Pferdebesitzerinnen frage, wie viel Heu ihr Pferd bekommt, höre ich
 fast immer dieselbe Antwort: *„So zwei, drei Scheiben."*
 
