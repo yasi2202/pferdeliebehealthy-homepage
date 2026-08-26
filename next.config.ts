@@ -7,11 +7,13 @@ const nextConfig: NextConfig = {
   // Netlify und ist unverändert übernommen worden — Fragen, Auswertung und
   // Ergebnistexte sind deine.
   //
-  // Diese Umschreibung sorgt dafür, dass die Adresse sauber
-  // pferdeliebehealthy.de/futter-check lautet statt .../futter-check.html.
+  // Seit 26.08.2026 liegt er hinter der Anmeldung: Unter /futter-check steht
+  // jetzt die Infoseite, die bei Google gefunden werden soll und zur alfima-
+  // Anmeldung führt. Der Fragebogen selbst hat die unauffällige Adresse
+  // /futter-check-start und steht nicht mehr im Suchindex.
   // -------------------------------------------------------------------------
   async rewrites() {
-    return [{ source: "/futter-check", destination: "/futter-check.html" }];
+    return [{ source: "/futter-check-start", destination: "/futter-check.html" }];
   },
 };
 

@@ -39,6 +39,10 @@ export const futterCheck = {
   /** Die Dankesseite nach der Anmeldung. In alfima als „Externer Link". */
   danke: "/danke-futter-check",
 
-  /** Der Fragebogen selbst (public/futter-check.html). */
-  fragebogen: "/futter-check",
+  /** Die Infoseite fuer Google — von dort geht es zur Anmeldung. */
+  infoseite: "/futter-check",
+
+  /** Der Fragebogen selbst (public/futter-check.html). Bewusst unauffaellig
+   *  und nicht im Suchindex: er soll nur nach der Anmeldung erreicht werden. */
+  fragebogen: "/futter-check-start",
 };

@@ -57,7 +57,13 @@ export default function InsiderBar() {
 
   // Auf dem Fragebogen und auf der Dankesseite bleibt der Balken weg: dort
   // hat die Besucherin genau eine Aufgabe, und die soll nichts ueberlagern.
-  if (geschlossen || pfad === "/futter-check" || pfad === "/danke-futter-check")
+  // Auf der Infoseite /futter-check darf er stehen — das ist eine normale
+  // Seite, auf der auch der Insider-Kanal passt.
+  if (
+    geschlossen ||
+    pfad === "/futter-check-start" ||
+    pfad === "/danke-futter-check"
+  )
     return null;
 
   return (

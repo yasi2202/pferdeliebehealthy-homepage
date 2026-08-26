@@ -20,14 +20,12 @@ export default function Footer() {
           </h4>
           <ul className="space-y-2.5 text-sm text-ink-soft">
             <li>
-              <a
-                href={futterCheck.anmeldung}
-                target="_blank"
-                rel="noopener"
-                className="hover:text-ink"
-              >
+              {/* Zeigt bewusst auf die Infoseite, nicht direkt zu alfima:
+                  sie braucht Links von der eigenen Seite, um bei Google
+                  sichtbar zu bleiben. */}
+              <Link href={futterCheck.infoseite} className="hover:text-ink">
                 Der Futter-Check
-              </a>
+              </Link>
             </li>
             <li>
               <a
