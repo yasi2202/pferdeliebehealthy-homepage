@@ -41,13 +41,13 @@ export const fuerDeinPferd: Angebot[] = [
     name: "RatioPro",
     untertitel: "Die einfache Rationsberechnung für dein Pferd",
     // preis: "",  ← fehlt noch
-    // url: "",    ← fehlt noch
+    url: "https://alfima.com/pferdeliebehealthy/ratiopro-die-einfache-rationsberechnung-fur-dein-pferd",
   },
   {
     name: "Ganzjahresfutterplan",
     untertitel: "Natürlich durchs Jahr",
     // preis: "",  ← fehlt noch
-    // url: "",    ← fehlt noch
+    url: "https://alfima.com/pferdeliebehealthy/ganzjahresfutterplan-fur-pferde-naturlich-durchs-jahr",
   },
   {
     name: "Futterberatung 365",
