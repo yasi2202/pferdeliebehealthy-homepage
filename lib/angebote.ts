@@ -40,13 +40,17 @@ export const fuerDeinPferd: Angebot[] = [
   {
     name: "RatioPro",
     untertitel: "Die einfache Rationsberechnung für dein Pferd",
-    // preis: "",  ← fehlt noch
+    // Preis von der alfima-Seite abgelesen, 26.08.2026. Dort steht ein
+    // Streichpreis von 199 € daneben — hier bewusst nur der echte Preis,
+    // die Liste hat pro Zeile Platz fuer eine Zahl.
+    preis: "69 €",
     url: "https://alfima.com/pferdeliebehealthy/ratiopro-die-einfache-rationsberechnung-fur-dein-pferd",
   },
   {
     name: "Ganzjahresfutterplan",
     untertitel: "Natürlich durchs Jahr",
-    // preis: "",  ← fehlt noch
+    // Preis von der alfima-Seite abgelesen, 26.08.2026. Streichpreis dort: 99 €.
+    preis: "29 €",
     url: "https://alfima.com/pferdeliebehealthy/ganzjahresfutterplan-fur-pferde-naturlich-durchs-jahr",
   },
   {
