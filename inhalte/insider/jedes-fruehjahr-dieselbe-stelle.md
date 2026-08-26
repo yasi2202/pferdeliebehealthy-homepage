@@ -4,7 +4,7 @@ datum: 2026-08-26
 kategorie: "Aus meiner Praxis"
 angebot: "masterclass"
 beschreibung: "Ein Pferd scheuert sich seit Jahren jedes Frühjahr exakt dieselbe Stelle am Mähnenkamm kurz. Kein Ekzem, keine Schuppen, keine offene Stelle. Warum das kein Problem ist, das eine Lösung braucht — und was man stattdessen daran sehen kann."
-bild: ""
+bild: "/images/insider/maehnenkamm.jpg"
 bildText: "Die immer gleiche Stelle am Mähnenkamm, sauber abgegrenzt zur übrigen Mähne."
 ---
 
