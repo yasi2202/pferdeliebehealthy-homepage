@@ -3,9 +3,8 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { alleBeitraege, beitragLesen, datumDeutsch } from "@/lib/beitraege";
 import { url } from "@/lib/seo";
-import { insider } from "@/lib/insider";
-import InsiderFormular from "@/components/InsiderFormular";
-import NurFuerNichtInsider from "@/components/NurFuerNichtInsider";
+import InsiderSchranke from "@/components/InsiderSchranke";
+import { aktuellerInsider } from "@/lib/insider-zugang";
 
 type Props = { params: Promise<{ slug: string }> };
 
@@ -42,10 +41,27 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
+/** Der Anriss für alle, die noch nicht angemeldet sind: die ersten beiden
+ *  Absätze, mehr nicht.
+ *
+ *  Geschnitten wird an `</p>`, nicht nach einer Zeichenzahl. Ein Schnitt
+ *  mitten im Text würde offene Formatierungen hinterlassen, und der Browser
+ *  müsste raten, wie er sie schliesst — meist auf Kosten des restlichen
+ *  Seitenaufbaus. */
+function anriss(html: string): string {
+  const teile = html.split("</p>");
+  if (teile.length <= 2) return html;
+  return teile.slice(0, 2).join("</p>") + "</p>";
+}
+
 export default async function BeitragSeite({ params }: Props) {
   const { slug } = await params;
   const beitrag = beitragLesen(slug);
   if (!beitrag) notFound();
+
+  // Auf dem Server geprüft, bevor die Seite gebaut wird: Der volle Text
+  // verlässt den Server gar nicht erst, wenn niemand angemeldet ist.
+  const angemeldet = await aktuellerInsider();
 
   return (
     <main className="py-14 sm:py-20 px-6 sm:px-8">
@@ -73,29 +89,35 @@ export default async function BeitragSeite({ params }: Props) {
           </p>
         )}
 
-        {/* Der Text aus der Markdown-Datei. Styling: .beitrag-prose in globals.css */}
-        <div
-          className="beitrag-prose"
-          dangerouslySetInnerHTML={{ __html: beitrag.html }}
-        />
+        {angemeldet ? (
+          <>
+            {/* Der Text aus der Markdown-Datei. Styling: .beitrag-prose in globals.css */}
+            <div
+              className="beitrag-prose"
+              dangerouslySetInnerHTML={{ __html: beitrag.html }}
+            />
 
-        {/* Anmeldung am Ende — wer bis hierher gelesen hat, ist bereit dafür.
-            Wer schon dabei ist, sieht den Kasten nicht. */}
-        <NurFuerNichtInsider>
-        <div className="bg-ink text-cream rounded-[24px] p-8 sm:p-10 mt-16">
-          <h2 className="font-serif text-[23px] sm:text-[27px] leading-snug mb-4">
-            Solche Beiträge direkt ins Postfach?
-          </h2>
-          <p className="text-[15px] text-cream/75 max-w-lg mb-7">
-            {insider.abschnitt.einleitung}
-          </p>
-          <InsiderFormular
-            quelle={`beitrag-${beitrag.slug}`}
-            variante="dunkel"
-            knopfText={insider.abschnitt.button}
-          />
-        </div>
-        </NurFuerNichtInsider>
+            <p className="text-[13.5px] text-ink-soft mt-14 pt-7 border-t border-line">
+              Du liest als Insider, {angemeldet.vorname}. Schön, dass du da
+              bist.
+            </p>
+          </>
+        ) : (
+          <>
+            {/* Der Anriss läuft nach unten aus, statt hart abzubrechen. Ein
+                harter Schnitt liest sich wie ein Fehler, ein auslaufender
+                Text wie eine Tür. */}
+            <div className="relative">
+              <div
+                className="beitrag-prose"
+                dangerouslySetInnerHTML={{ __html: anriss(beitrag.html) }}
+              />
+              <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-b from-transparent to-cream pointer-events-none" />
+            </div>
+
+            <InsiderSchranke />
+          </>
+        )}
       </article>
     </main>
   );

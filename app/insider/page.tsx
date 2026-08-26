@@ -40,8 +40,9 @@ export default function InsiderSeite() {
             Neue Beiträge direkt ins Postfach
           </h2>
           <p className="text-[15px] text-cream/75 max-w-lg mb-7">
-            Trag dich ein, dann schreibe ich dir, sobald es etwas Neues gibt.
-            Du musst dann nicht selbst nachsehen.
+            Die Beiträge sind für Insider. Trag dich ein, dann kannst du alle
+            lesen — auch die älteren — und ich schreibe dir, sobald es etwas
+            Neues gibt. Kostet nichts.
           </p>
           <InsiderFormular
             quelle="insider-uebersicht"
@@ -90,8 +91,11 @@ export default function InsiderSeite() {
                           {b.beschreibung}
                         </p>
                       )}
+                      {/* Sagt vor dem Klick, was danach kommt. Ohne diesen
+                          Hinweis wirkt die Schranke auf der nächsten Seite
+                          wie eine Überraschung statt wie eine Bedingung. */}
                       <span className="inline-block text-[14px] font-medium text-rose-deep mt-3">
-                        Lesen →
+                        Für Insider lesen →
                       </span>
                     </Link>
                   </li>
