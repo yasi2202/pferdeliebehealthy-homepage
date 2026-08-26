@@ -22,7 +22,12 @@ export default function AboutSection() {
           </h2>
           {/* Der Text ist Yasis eigener, Stand 26.08.2026, nur in Absätze
               gesetzt. Bitte nicht "glätten" — er trägt, weil er ihre Sprache
-              ist und nicht die einer Werbeagentur. */}
+              ist und nicht die einer Werbeagentur.
+
+              Zwei Angaben sind mit ihr abgestimmt geändert: Helena ist 28,
+              nicht 27, und sie hat PPID zusätzlich zu Arthrose und COPD.
+              Ihr Alter steht auch in components/Gesundheitsakte.tsx — die
+              beiden Stellen müssen zusammenpassen. */}
           <p className="text-ink-soft text-base mb-4.5">
             Ich bin Yasi, Ernährungsberaterin für Pferde aus Baden-Württemberg,
             und Pferde begleiten mich, seit ich denken kann. Ihre Sensibilität,
@@ -41,7 +46,8 @@ export default function AboutSection() {
             Und es hat sich gelohnt. Mit der richtigen, individuell
             abgestimmten Fütterung und natürlicher Unterstützung gewann Helena
             Stück für Stück ihre Lebensqualität zurück. Heute ist sie trotz
-            Arthrose und COPD fröhlich, wach und lebensfroh. Mit 27 Jahren.
+            PPID, Arthrose und COPD fröhlich, wach und lebensfroh. Mit 28
+            Jahren.
           </p>
           <p className="text-ink-soft text-base mb-4.5">
             Diese Erfahrung hat meinen Weg definiert. Ich kenne das Gefühl,
