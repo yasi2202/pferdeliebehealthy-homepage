@@ -9,9 +9,14 @@
 //   warum     Ein Satz, warum du es empfiehlst. Optional, wirkt aber stark.
 //   bezahlt   true = du bekommst eine Provision.
 //
-// ▸ OFFEN: Bei den Einträgen unten fehlen noch die Shop-Links (`url`) und
-//   die Rabatthöhen. Sobald du sie hast, hier eintragen — die Seite zeigt
-//   sie dann automatisch an.
+// ▸ OFFEN (Stand 25.08.2026): Bei Natusat, Foten, CDVet, Naturanima und
+//   Bäralis fehlen noch der Shop-Link (`url`) und der Satz (`warum`). Bei
+//   allen ausser Mycelium fehlt ausserdem die Rabatthöhe (`rabatt`).
+//   Sobald du sie hast, hier eintragen — die Seite zeigt sie dann von selbst
+//   an, es muss sonst nichts angefasst werden.
+//
+// ▸ Die Sätze bei `warum` beschreiben, was der Shop führt. Sie stehen unter
+//   deinem Namen auf der Seite — änder sie so, dass sie nach dir klingen.
 //
 // ▸ `bezahlt` steht überall auf true, weil Partner-Rabattcodes in aller
 //   Regel mit einer Provision verbunden sind und eine Kennzeichnung zu viel
@@ -29,11 +34,39 @@ export type Empfehlung = {
 };
 
 export const empfehlungen: Empfehlung[] = [
-  { partner: "Biohof Elmengrund", code: "yasi05", bezahlt: true },
-  { partner: "PerNaturam", code: "1677E54156", bezahlt: true },
+  {
+    partner: "Biohof Elmengrund",
+    code: "yasi05",
+    url: "https://biohof-elmengrund.de/",
+    warum:
+      "Bio-Grundfutter direkt vom Hof — Kräuterheu, Heulage und Cobs, wenn du schon bei der Basis der Ration auf Qualität achten willst.",
+    bezahlt: true,
+  },
+  {
+    partner: "PerNaturam",
+    code: "1677E54156",
+    url: "https://www.pernaturam.de/",
+    warum:
+      "Breites Sortiment an Kräutern, Mineralstoffen und Ergänzungsfutter auf naturheilkundlicher Basis, für Pferde ebenso wie für Hund und Katze.",
+    bezahlt: true,
+  },
   // Schreibweise ohne Umlaut ist korrekt so — bitte nicht zu "Grün" ändern.
-  { partner: "Mo's Grun", code: "Pferdeliebe", bezahlt: true },
-  { partner: "Hotte Maxe", code: "Pferdeliebe", bezahlt: true },
+  {
+    partner: "Mo's Grun",
+    code: "Pferdeliebe",
+    url: "https://mos-grun.de/",
+    warum:
+      "Sortenreine Pellets direkt vom Feld, etwa Grünhanf, Melisse, Brennnessel oder Echinacea, wenn du gezielt eine einzelne Pflanze füttern möchtest.",
+    bezahlt: true,
+  },
+  {
+    partner: "Hotte Maxe",
+    code: "Pferdeliebe",
+    url: "https://www.hottemaxe.de/neu/",
+    warum:
+      "Einzelkräuter und fertige Kräutermischungen für Pferde — praktisch, wenn du eine Mischung selbst zusammenstellen möchtest.",
+    bezahlt: true,
+  },
   { partner: "Natusat", code: "pferdeliebehealthy7", bezahlt: true },
   // Schreibweise ist korrekt so — kein Tippfehler, bitte nicht "korrigieren".
   { partner: "Foten", code: "pferdeliebehealthy", bezahlt: true },
