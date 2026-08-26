@@ -1,24 +1,13 @@
-import { istEingerichtet, EMAIL_MUSTER, kuerzen } from "@/lib/versand";
-import {
-  speichereAnmeldung,
-  sendeBestaetigungsMail,
-} from "@/lib/futter-check-server";
+import { istEingerichtet, EMAIL_MUSTER, kuerzen, ANTWORT_AN } from "@/lib/versand";
+import { speichereInsider, sendeInsiderBestaetigung } from "@/lib/insider-server";
 
 // ---------------------------------------------------------------------------
-// Nimmt die Anmeldung aus dem Futter-Check entgegen.
+// Nimmt die Anmeldung für den Insider-Kanal entgegen.
 //
-// Ablauf:
-//   1. Der Fragebogen schickt Name, E-Mail und das errechnete Ergebnis hierher.
-//   2. Wir speichern das in der Datenbank — zunaechst als unbestaetigt.
-//   3. Wir schicken eine Bestaetigungsmail mit einem Link.
-//   4. Erst der Klick auf diesen Link macht die Adresse zu einer, an die
-//      geworben werden darf. Das passiert in app/futter-check-bestaetigt.
-//
-// Das Ergebnis wird bewusst vom Browser mitgeschickt statt hier noch einmal
-// berechnet: die Auswertungslogik steht komplett im Fragebogen, und sie
-// zweimal zu pflegen waere eine sichere Quelle fuer Abweichungen. Die Texte
-// werden gekuerzt und beim Versand maskiert, damit ueber dieses Feld nichts
-// in deine Mails geschmuggelt werden kann.
+// Gleicher Ablauf wie beim Futter-Check: speichern als unbestaetigt, dann
+// eine Bestaetigungsmail. Erst der Klick auf den Link darin macht die Adresse
+// zu einer, an die geworben werden darf — das passiert in
+// app/insider-bestaetigt.
 // ---------------------------------------------------------------------------
 
 export async function POST(request: Request) {
@@ -38,6 +27,7 @@ export async function POST(request: Request) {
 
   const vorname = kuerzen(daten.vorname, 60);
   const email = kuerzen(daten.email, 200).toLowerCase();
+  const quelle = kuerzen(daten.quelle, 60) || "insider";
 
   if (vorname.length < 2) {
     return Response.json(
@@ -57,33 +47,25 @@ export async function POST(request: Request) {
     // Kein stiller Fehlschlag: stuende hier ein "hat geklappt", wuerde sich
     // die Interessentin auf eine Mail verlassen, die nie ankommt.
     console.error(
-      "Futter-Check: SUPABASE_URL, SUPABASE_SECRET_KEY oder RESEND_API_KEY fehlt in den Vercel-Einstellungen."
+      "Insider: SUPABASE_URL, SUPABASE_SECRET_KEY oder RESEND_API_KEY fehlt in den Vercel-Einstellungen."
     );
     return Response.json(
       {
         ok: false,
-        fehler:
-          "Die Anmeldung ist gerade nicht möglich. Schreib mir bitte kurz an info@pferdeliebehealthy.de, dann schicke ich dir dein Ergebnis von Hand.",
+        fehler: `Die Anmeldung ist gerade nicht möglich. Schreib mir bitte kurz an ${ANTWORT_AN}.`,
       },
       { status: 503 }
     );
   }
 
-  const anmeldung = await speichereAnmeldung({
-    vorname,
-    email,
-    ergebnisTitel: kuerzen(daten.ergebnisTitel, 200),
-    ergebnisText: kuerzen(daten.ergebnisText, 4000),
-    antworten: daten.antworten ?? null,
-  });
+  const anmeldung = await speichereInsider(vorname, email, quelle);
 
   if (!anmeldung) {
-    console.error("Futter-Check: Speichern in Supabase fehlgeschlagen.");
+    console.error("Insider: Speichern in Supabase fehlgeschlagen.");
     return Response.json(
       {
         ok: false,
-        fehler:
-          "Das hat gerade nicht geklappt. Versuch es bitte gleich noch einmal oder schreib mir an info@pferdeliebehealthy.de.",
+        fehler: `Das hat gerade nicht geklappt. Versuch es bitte gleich noch einmal oder schreib mir an ${ANTWORT_AN}.`,
       },
       { status: 502 }
     );
@@ -93,9 +75,9 @@ export async function POST(request: Request) {
   // waere unnoetig und wirkt wie ein Fehler.
   if (!anmeldung.bestaetigt) {
     const basisUrl = new URL(request.url).origin;
-    const verschickt = await sendeBestaetigungsMail(anmeldung, basisUrl);
+    const verschickt = await sendeInsiderBestaetigung(anmeldung, basisUrl);
     if (!verschickt) {
-      console.error("Futter-Check: Bestaetigungsmail konnte nicht versendet werden.");
+      console.error("Insider: Bestaetigungsmail konnte nicht versendet werden.");
     }
   }
 

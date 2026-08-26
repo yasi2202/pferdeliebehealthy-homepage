@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { insider } from "@/lib/insider";
 
@@ -55,14 +56,18 @@ export default function InsiderBar() {
     }
   }
 
-  // Im Fragebogen und auf der Bestaetigungsseite bleibt der Balken weg: dort
+  // Im Fragebogen und auf den Bestaetigungsseiten bleibt der Balken weg: dort
   // hat die Besucherin genau eine Aufgabe, und die soll nichts ueberlagern.
-  // Auf der Infoseite /futter-check darf er stehen — das ist eine normale
+  // Auf den Insider-Seiten selbst steht das Anmeldeformular schon gross auf
+  // der Seite — ein Balken, der auf dieselbe Anmeldung zeigt, waere Laerm.
+  // Auf der Infoseite /futter-check darf er stehen, das ist eine normale
   // Seite, auf der auch der Insider-Kanal passt.
   if (
     geschlossen ||
     pfad === "/futter-check-start" ||
-    pfad === "/futter-check-bestaetigt"
+    pfad === "/futter-check-bestaetigt" ||
+    pfad === "/insider-bestaetigt" ||
+    pfad.startsWith("/insider")
   )
     return null;
 
@@ -81,14 +86,14 @@ export default function InsiderBar() {
           <span className="block sm:inline text-cream/75">{insider.balken.text}</span>
         </p>
 
-        <a
-          href={insider.anmeldeUrl}
-          target="_blank"
-          rel="noopener"
+        {/* Fuehrt zum Abschnitt mit dem Anmeldeformular. In den Balken selbst
+            passt kein Formular, ohne dass er den halben Bildschirm einnimmt. */}
+        <Link
+          href="/#insider"
           className="shrink-0 bg-pfirsich text-ink px-5 py-2.5 rounded-full text-[14px] font-medium hover:bg-cream transition-colors"
         >
           {insider.balken.button}
-        </a>
+        </Link>
 
         <button
           type="button"

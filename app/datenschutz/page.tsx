@@ -112,12 +112,23 @@ export default function Datenschutz() {
         6 Abs. 1 lit. f DSGVO. Sie können jederzeit widersprechen, die
         Kontaktdaten finden Sie im Impressum.
       </p>
-      <h3>Newsletter</h3>
+      <h3>Newsletter „Pferdeliebe Insider"</h3>
       <p>
-        Wir nutzen Ihre E-Mail-Adresse zur Übersendung von Newslettern,
-        sofern Sie ausdrücklich zugestimmt haben, auf Grundlage des Art. 6
-        Abs. 1 lit. a DSGVO. Sie können diese Einwilligung jederzeit über
-        den Abmeldelink im Newsletter oder per Mitteilung an uns widerrufen.
+        Wenn Sie sich für den Insider-Kanal eintragen, verarbeiten wir Ihren
+        Vornamen und Ihre E-Mail-Adresse, um Ihnen regelmäßig Informationen zur
+        Pferdefütterung zu senden. Grundlage ist Ihre Einwilligung nach Art. 6
+        Abs. 1 lit. a DSGVO, die Sie beim Absenden des Formulars erteilen.
+        Zusätzlich speichern wir, an welcher Stelle unserer Website Sie sich
+        eingetragen haben, sowie den Zeitpunkt Ihrer Anmeldung und Ihrer
+        Bestätigung — dies dient dem Nachweis der Einwilligung.
+      </p>
+      <p>
+        Nach der Anmeldung erhalten Sie eine E-Mail mit einem Bestätigungslink
+        (Double-Opt-in-Verfahren). Erst nach Ihrer Bestätigung versenden wir den
+        Newsletter. Ohne Bestätigung erfolgt kein Versand. Sie können Ihre
+        Einwilligung jederzeit über den Abmeldelink im Newsletter oder per
+        Mitteilung an uns widerrufen; wir löschen Ihre Daten dann unverzüglich.
+        Nicht bestätigte Anmeldungen löschen wir spätestens nach zwei Monaten.
       </p>
       <h3>Futter-Check</h3>
       <p>
@@ -136,12 +147,15 @@ export default function Datenschutz() {
         dann unverzüglich. Nicht bestätigte Anmeldungen löschen wir spätestens
         nach zwei Monaten.
       </p>
+      <h3>Speicherung und Versand (Insider-Kanal und Futter-Check)</h3>
       <p>
-        Die Daten werden in einer Datenbank des Anbieters Supabase Inc., USA,
-        gespeichert. Für den Versand der E-Mails nutzen wir Resend, Inc., USA.
-        Beide Anbieter verarbeiten die Daten in unserem Auftrag auf Grundlage
-        eines Auftragsverarbeitungsvertrags; die Übermittlung in die USA erfolgt
-        auf Grundlage von Standardvertragsklauseln. Nähere Informationen unter{" "}
+        Die Daten aus beiden vorgenannten Anmeldungen werden in einer Datenbank
+        des Anbieters Supabase Inc., USA, gespeichert. Für den Versand der
+        E-Mails nutzen wir Resend, Inc., USA. Beide Anbieter verarbeiten die
+        Daten in unserem Auftrag auf Grundlage eines
+        Auftragsverarbeitungsvertrags; die Übermittlung in die USA erfolgt auf
+        Grundlage von Standardvertragsklauseln. Ein Tracking-Pixel oder
+        Öffnungs-Tracking setzen wir nicht ein. Nähere Informationen unter{" "}
         <a href="https://supabase.com/privacy" target="_blank" rel="noopener">
           supabase.com/privacy
         </a>{" "}
@@ -159,24 +173,6 @@ export default function Datenschutz() {
         widersprochen haben, auf Grundlage des Art. 6 Abs. 1 lit. f DSGVO.
         Ein Widerspruch ist jederzeit über den Link in der Werbe-E-Mail oder
         per Mitteilung an uns möglich.
-      </p>
-      <h3>Mailchimp</h3>
-      <p>
-        Für den Newsletterversand nutzen wir Mailchimp der Rocket Science
-        Group LLC, USA, im Rahmen einer Auftragsverarbeitung auf Grundlage
-        des Art. 6 Abs. 1 lit. f DSGVO. Newsletter enthalten ein
-        Tracking-Pixel oder einen Tracking-Link zur statistischen
-        Auswertung. Die Datenübermittlung in die USA erfolgt unter anderem
-        auf Grundlage von Standardvertragsklauseln. Nähere Informationen
-        unter{" "}
-        <a
-          href="https://mailchimp.com/de/legal/"
-          target="_blank"
-          rel="noopener"
-        >
-          mailchimp.com/de/legal
-        </a>
-        .
       </p>
 
       <h2>Versanddienstleister</h2>

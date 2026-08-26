@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { insider } from "@/lib/insider";
+import InsiderFormular from "@/components/InsiderFormular";
 
 // ---------------------------------------------------------------------------
 // Der Insider-Abschnitt auf der Startseite.
@@ -23,15 +24,9 @@ export default function InsiderSection() {
             </h2>
             <p className="text-[17px] text-ink-soft max-w-lg mb-9">{a.einleitung}</p>
 
-            <div className="flex flex-wrap items-center gap-x-7 gap-y-4">
-              <a
-                href={insider.anmeldeUrl}
-                target="_blank"
-                rel="noopener"
-                className="inline-block bg-rose-deep text-cream px-8 py-4 rounded-full text-[15px] font-medium hover:bg-ink transition-colors"
-              >
-                {a.button}
-              </a>
+            <InsiderFormular quelle="startseite" knopfText={a.button} />
+
+            <div className="mt-6">
               <Link
                 href="/insider"
                 className="text-[15px] font-medium text-rose-deep hover:text-ink transition-colors"

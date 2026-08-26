@@ -1,13 +1,10 @@
 // ---------------------------------------------------------------------------
-// Der Insider-Kanal: alle Texte und die Anmelde-Adresse an einer Stelle.
+// Der Insider-Kanal: alle Texte an einer Stelle.
 //
-// ▸ HIER MUSST DU RAN:
-//   Trag unten bei `anmeldeUrl` die Adresse deiner alfima-Anmeldeseite ein.
-//   Solange dort die allgemeine Adresse steht, landen Interessentinnen auf
-//   deiner alfima-Übersicht statt direkt im Insider-Formular.
-//
-//   In alfima legst du dafür eine Seite oder ein Opt-in an. Die Adresse sieht
-//   dann etwa so aus: https://alfima.com/pferdeliebehealthy/p/insider
+// Seit 26.08.2026 läuft die Anmeldung auf der eigenen Seite, nicht mehr über
+// alfima. Das Formular steht in components/InsiderFormular.tsx, die Adressen
+// landen in der Supabase-Tabelle `insider_anmeldungen`, und erst der Klick auf
+// den Link in der Bestätigungsmail macht eine Adresse verwendbar.
 //
 // ▸ Die Texte darunter sind ein Vorschlag. Vor allem den Rhythmus
 //   („alle zwei Wochen") solltest du auf das ändern, was du wirklich
@@ -16,8 +13,6 @@
 
 export const insider = {
   name: "Pferdeliebe Insider",
-
-  anmeldeUrl: "https://alfima.com/pferdeliebehealthy",
 
   /** Schmales Banner ganz oben auf der Startseite.
    *  Führt zum Abschnitt auf der Seite, damit man erst liest, worum es geht. */

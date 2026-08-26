@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import { alleBeitraege, beitragLesen, datumDeutsch } from "@/lib/beitraege";
 import { url } from "@/lib/seo";
 import { insider } from "@/lib/insider";
+import InsiderFormular from "@/components/InsiderFormular";
 
 type Props = { params: Promise<{ slug: string }> };
 
@@ -85,14 +86,11 @@ export default async function BeitragSeite({ params }: Props) {
           <p className="text-[15px] text-cream/75 max-w-lg mb-7">
             {insider.abschnitt.einleitung}
           </p>
-          <a
-            href={insider.anmeldeUrl}
-            target="_blank"
-            rel="noopener"
-            className="inline-block bg-pfirsich text-ink px-8 py-4 rounded-full text-[15px] font-medium hover:bg-cream transition-colors"
-          >
-            {insider.abschnitt.button}
-          </a>
+          <InsiderFormular
+            quelle={`beitrag-${beitrag.slug}`}
+            variante="dunkel"
+            knopfText={insider.abschnitt.button}
+          />
         </div>
       </article>
     </main>

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { alleBeitraege, datumDeutsch } from "@/lib/beitraege";
 import { insider } from "@/lib/insider";
+import InsiderFormular from "@/components/InsiderFormular";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/insider" },
@@ -26,7 +27,8 @@ export default function InsiderSeite() {
           {insider.abschnitt.einleitung}
         </p>
 
-        {/* Anmeldung — läuft über alfima, damit die Adresse in deiner Liste landet */}
+        {/* Anmeldung — läuft über die eigene Seite, die Adressen landen in
+            der Tabelle insider_anmeldungen in Supabase */}
         <div className="bg-ink text-cream rounded-[24px] p-8 sm:p-10 mt-10">
           <div className="text-[11px] tracking-[0.16em] uppercase text-pfirsich font-semibold mb-3">
             Nichts verpassen
@@ -38,14 +40,11 @@ export default function InsiderSeite() {
             Trag dich ein, dann schreibe ich dir, sobald es etwas Neues gibt.
             Du musst dann nicht selbst nachsehen.
           </p>
-          <a
-            href={insider.anmeldeUrl}
-            target="_blank"
-            rel="noopener"
-            className="inline-block bg-pfirsich text-ink px-8 py-4 rounded-full text-[15px] font-medium hover:bg-cream transition-colors"
-          >
-            {insider.abschnitt.button}
-          </a>
+          <InsiderFormular
+            quelle="insider-uebersicht"
+            variante="dunkel"
+            knopfText={insider.abschnitt.button}
+          />
           <p className="text-[13px] text-cream/60 mt-5 max-w-md">
             {insider.abschnitt.kleingedrucktes}
           </p>
