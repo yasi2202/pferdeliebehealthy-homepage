@@ -24,7 +24,9 @@ export const fuerDeinPferd: Angebot[] = [
   {
     name: "Die Basis einer guten Versorgung",
     untertitel: "Der Einstieg in eine durchdachte Fütterung",
-    // preis: "",  ← fehlt noch
+    // Bei alfima ein 0-€-Produkt. Auf der Seite steht "kostenlos" statt
+    // "0 €" — das liest sich wie ein Angebot und nicht wie ein Restposten.
+    preis: "kostenlos",
     url: "https://alfima.com/pferdeliebehealthy/was-dein-mineralfutter-dir-nicht-sagt",
   },
   {
