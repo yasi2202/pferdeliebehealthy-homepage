@@ -9,11 +9,13 @@
 //   warum     Ein Satz, warum du es empfiehlst. Optional, wirkt aber stark.
 //   bezahlt   true = du bekommst eine Provision.
 //
-// ▸ OFFEN (Stand 25.08.2026): Alle Shop-Links und Beschreibungen sind da.
-//   Es fehlt nur noch bei allen ausser Mycelium die Rabatthöhe (`rabatt`),
-//   also was der Code jeweils bringt. Sobald du sie hast, hier eintragen —
-//   die Seite zeigt sie dann von selbst an, sonst muss nichts angefasst
-//   werden.
+// ▸ Stand 25.08.2026: Alle zehn Partner haben Shop-Link und Beschreibung.
+//
+// ▸ Die Rabatthöhe (`rabatt`) steht nur bei Mycelium, weil sie bei den
+//   anderen nicht bekannt ist. Das ist Absicht und kein Versehen: Lieber
+//   gar keine Angabe als eine geratene, denn eine falsche Prozentzahl auf
+//   einer Werbeseite ist abmahnfähig. Die Karten sehen ohne die Zeile
+//   genauso gut aus. Wenn du eine Höhe erfährst, hier nachtragen.
 //
 // ▸ Die Sätze bei `warum` beschreiben, was der Shop führt. Sie stehen unter
 //   deinem Namen auf der Seite — änder sie so, dass sie nach dir klingen.
@@ -112,6 +114,9 @@ export const empfehlungen: Empfehlung[] = [
     partner: "Mycelium Vitalpilze",
     code: "Pferdeliebehealthy",
     rabatt: "5 % Rabatt",
+    url: "https://www.mycelium-vitalpilze.de/",
+    warum:
+      "Vitalpilze als Kapseln und Pulver, mit eigenen Varianten für Pferd, Hund und Katze — Reishi, Cordyceps, Hericium und weitere.",
     bezahlt: true,
   },
 ];
