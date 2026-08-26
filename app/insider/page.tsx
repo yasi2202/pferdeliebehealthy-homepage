@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { alleBeitraege } from "@/lib/beitraege";
 import { insider } from "@/lib/insider";
 import InsiderFormular from "@/components/InsiderFormular";
@@ -6,6 +7,7 @@ import BeitragsListe from "@/components/BeitragsListe";
 import MonatsEmpfehlung from "@/components/MonatsEmpfehlung";
 import InsiderMerken from "@/components/InsiderMerken";
 import { aktuellerInsider } from "@/lib/insider-zugang";
+import { istAdmin } from "@/lib/insider-versand";
 import NurFuerNichtInsider from "@/components/NurFuerNichtInsider";
 
 export const metadata: Metadata = {
@@ -40,9 +42,22 @@ export default async function InsiderSeite() {
         </p>
 
         {angemeldet ? (
-          /* Gleicht den Merker im Browser ab, damit auch die Startseite und
-             der Balken unten wissen, dass hier jemand dabei ist. */
-          <InsiderMerken />
+          <>
+            {/* Gleicht den Merker im Browser ab, damit auch die Startseite und
+                der Balken unten wissen, dass hier jemand dabei ist. */}
+            <InsiderMerken />
+
+            {/* Nur Yasi sieht das — damit sie die Versandseite findet, ohne
+                sich die Adresse merken zu müssen. */}
+            {istAdmin(angemeldet) && (
+              <Link
+                href="/insider-versand"
+                className="inline-block text-[14px] font-medium text-rose-deep hover:text-ink transition-colors mt-6"
+              >
+                Beiträge verschicken →
+              </Link>
+            )}
+          </>
         ) : (
           /* Der Merker im Browser bleibt als zweites Netz: Wer sich gerade
              eingetragen, aber noch nicht bestaetigt hat, hat noch keinen
