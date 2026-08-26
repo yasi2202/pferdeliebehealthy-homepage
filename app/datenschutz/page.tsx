@@ -119,6 +119,39 @@ export default function Datenschutz() {
         Abs. 1 lit. a DSGVO. Sie können diese Einwilligung jederzeit über
         den Abmeldelink im Newsletter oder per Mitteilung an uns widerrufen.
       </p>
+      <h3>Futter-Check</h3>
+      <p>
+        Beim kostenlosen Futter-Check verarbeiten wir Ihren Vornamen, Ihre
+        E-Mail-Adresse sowie Ihre Antworten auf die fünf Fragen und das daraus
+        errechnete Ergebnis. Grundlage ist Ihre Einwilligung nach Art. 6 Abs. 1
+        lit. a DSGVO, die Sie beim Absenden des Formulars erteilen. Nach der
+        Anmeldung erhalten Sie eine E-Mail mit einem Bestätigungslink
+        (Double-Opt-in-Verfahren); erst nach Ihrer Bestätigung senden wir Ihnen
+        Ihr Ergebnis und weitere Informationen zur Pferdefütterung zu. Ohne
+        Bestätigung erfolgt kein weiterer Versand.
+      </p>
+      <p>
+        Sie können Ihre Einwilligung jederzeit formlos widerrufen, etwa per
+        Nachricht an die im Impressum genannte Adresse. Wir löschen Ihre Daten
+        dann unverzüglich. Nicht bestätigte Anmeldungen löschen wir spätestens
+        nach zwei Monaten.
+      </p>
+      <p>
+        Die Daten werden in einer Datenbank des Anbieters Supabase Inc., USA,
+        gespeichert. Für den Versand der E-Mails nutzen wir Resend, Inc., USA.
+        Beide Anbieter verarbeiten die Daten in unserem Auftrag auf Grundlage
+        eines Auftragsverarbeitungsvertrags; die Übermittlung in die USA erfolgt
+        auf Grundlage von Standardvertragsklauseln. Nähere Informationen unter{" "}
+        <a href="https://supabase.com/privacy" target="_blank" rel="noopener">
+          supabase.com/privacy
+        </a>{" "}
+        und{" "}
+        <a href="https://resend.com/legal/privacy-policy" target="_blank" rel="noopener">
+          resend.com/legal/privacy-policy
+        </a>
+        .
+      </p>
+
       <h3>Direktwerbung per E-Mail</h3>
       <p>
         Wir nutzen Ihre E-Mail-Adresse aus einem Kaufvorgang für Werbung zu

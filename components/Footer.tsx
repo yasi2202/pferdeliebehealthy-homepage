@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { futterCheck } from "@/lib/seite";
+import { futterCheck, mineralKlarheit } from "@/lib/seite";
 
 export default function Footer() {
   return (
@@ -28,14 +28,9 @@ export default function Footer() {
               </Link>
             </li>
             <li>
-              <a
-                href="https://alfima.com/pferdeliebehealthy/p/ai-page-8-2"
-                target="_blank"
-                rel="noopener"
-                className="hover:text-ink"
-              >
+              <Link href={mineralKlarheit.seite} className="hover:text-ink">
                 Mineral-Klarheit
-              </a>
+              </Link>
             </li>
             <li>
               <Link href="/#ausbildung" className="hover:text-ink">

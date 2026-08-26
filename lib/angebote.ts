@@ -31,7 +31,9 @@ export const fuerDeinPferd: Angebot[] = [
     name: "Mineral-Klarheit",
     untertitel: "Kurs mit Rechner, du rechnest selbst",
     preis: "27 €",
-    url: "https://alfima.com/pferdeliebehealthy/p/ai-page-8-2",
+    // Fuehrt auf die eigene Seite, nicht direkt zu alfima: dort steht die
+    // ausfuehrliche Beschreibung, und gekauft wird von dort aus weiter.
+    url: "/mineral-klarheit",
   },
   {
     name: "RatioPro",

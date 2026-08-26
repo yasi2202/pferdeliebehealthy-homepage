@@ -17,32 +17,47 @@ export const mitgliederbereich = {
 // ---------------------------------------------------------------------------
 // Der Futter-Check.
 //
-// Seit 26.08.2026 laeuft er ueber alfima, damit du die E-Mail-Adressen
-// bekommst. Der Weg ist:
+// Seit 26.08.2026 laeuft er komplett auf der eigenen Seite, ohne alfima. Der
+// Weg ist:
 //
-//   1. Alle Knoepfe auf der Seite fuehren zu `anmeldung` — dort traegt sich
-//      die Interessentin bei alfima mit Namen und E-Mail ein (kostenlos).
-//   2. alfima leitet danach auf `danke` weiter. Diese Adresse traegst du in
-//      alfima beim Produkt unter „Externer Link" ein.
-//   3. Auf der Dankesseite steht der Knopf zum `fragebogen` — den fuenf
-//      Fragen selbst.
+//   1. `infoseite` erklaert den Check und steht bei Google. Von der Startseite
+//      geht es ueber die Knoepfe direkt zum `fragebogen`.
+//   2. Im Fragebogen kommt nach der fuenften Frage das Feld fuer Name und
+//      E-Mail. Es geht an app/api/futter-check und landet in Supabase.
+//   3. Die Interessentin bekommt eine Bestaetigungsmail. Erst der Klick auf
+//      den Link darin (`bestaetigt`) macht die Adresse zu einer, an die
+//      geworben werden darf — und loest die Ergebnismail aus.
+//   4. Danach fuehrt alles zu `mineralKlarheit` weiter, dem Angebot.
 //
-// Der Fragebogen bleibt technisch fuer jeden erreichbar, wer die Adresse
-// kennt. Deshalb: ueberall (Instagram, TikTok, Facebook) nur noch `anmeldung`
-// teilen, nie die direkte Adresse des Fragebogens.
+// Die Adressliste liegt in deiner eigenen Datenbank. Wie du sie ansiehst und
+// exportierst, steht in datenbank/futter-check.sql.
 // ---------------------------------------------------------------------------
 
 export const futterCheck = {
-  /** Die kostenlose Anmeldung bei alfima — hierhin fuehren alle Knoepfe. */
-  anmeldung: "https://alfima.com/pferdeliebehealthy/der-kostenlose-futter-check",
-
-  /** Die Dankesseite nach der Anmeldung. In alfima als „Externer Link". */
-  danke: "/danke-futter-check",
-
-  /** Die Infoseite fuer Google — von dort geht es zur Anmeldung. */
+  /** Die Infoseite fuer Google — erklaert den Check und startet ihn. */
   infoseite: "/futter-check",
 
-  /** Der Fragebogen selbst (public/futter-check.html). Bewusst unauffaellig
-   *  und nicht im Suchindex: er soll nur nach der Anmeldung erreicht werden. */
+  /** Der Fragebogen selbst (public/futter-check.html). Bewusst nicht im
+   *  Suchindex, damit er der Infoseite bei Google keinen Rang wegnimmt. */
   fragebogen: "/futter-check-start",
+
+  /** Ziel des Links aus der Bestaetigungsmail. */
+  bestaetigt: "/futter-check-bestaetigt",
+};
+
+// ---------------------------------------------------------------------------
+// Mineral-Klarheit — das Angebot, auf das der Futter-Check hinauslaeuft.
+// ---------------------------------------------------------------------------
+
+export const mineralKlarheit = {
+  /** Die Seite auf deiner eigenen Adresse. Hierhin fuehren alle Knoepfe. */
+  seite: "/mineral-klarheit",
+
+  // ▸ HIER MUSST DU RAN, falls sich die Kursadresse bei alfima aendert:
+  //   Der Kauf laeuft weiter ueber alfima, nur gelesen wird auf der eigenen
+  //   Seite. Achtung, im alten Fragebogen stand eine andere Adresse
+  //   (.../mineralwissen-pro) — pruef bitte, welche der beiden stimmt.
+  kauf: "https://alfima.com/pferdeliebehealthy/p/ai-page-8-2",
+
+  preis: "27 €",
 };

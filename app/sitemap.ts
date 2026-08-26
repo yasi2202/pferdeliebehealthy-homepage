@@ -8,6 +8,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const feste: Array<{ pfad: string; prioritaet: number; takt: "weekly" | "monthly" | "yearly" }> = [
     { pfad: "/", prioritaet: 1.0, takt: "weekly" },
     { pfad: "/futter-check", prioritaet: 0.9, takt: "monthly" },
+    { pfad: "/mineral-klarheit", prioritaet: 0.8, takt: "monthly" },
     { pfad: "/insider", prioritaet: 0.8, takt: "weekly" },
     { pfad: "/empfehlungen", prioritaet: 0.6, takt: "monthly" },
     { pfad: "/impressum", prioritaet: 0.2, takt: "yearly" },

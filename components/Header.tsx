@@ -137,10 +137,9 @@ export default function Header() {
         </div>
 
         <div className="flex items-center gap-3">
-          <a
-            href={futterCheck.anmeldung}
-            target="_blank"
-            rel="noopener"
+          <Link
+            href={futterCheck.fragebogen}
+            prefetch={false}
             onClick={() => setMenuOpen(false)}
             className={`hidden sm:inline-block text-sm font-medium px-5 py-2.5 rounded-full transition-colors ${
               transparent
@@ -149,7 +148,7 @@ export default function Header() {
             }`}
           >
             Zum Futter-Check
-          </a>
+          </Link>
 
           <button
             aria-label={menuOpen ? "Menü schließen" : "Menü öffnen"}
@@ -198,15 +197,14 @@ export default function Header() {
             {l.label}
           </Link>
         ))}
-        <a
-          href={futterCheck.anmeldung}
-          target="_blank"
-          rel="noopener"
+        <Link
+          href={futterCheck.fragebogen}
+          prefetch={false}
           onClick={() => setMenuOpen(false)}
           className="mt-4 bg-rose text-ink px-8 py-3.5 rounded-full text-[15px] font-medium"
         >
           Zum Futter-Check
-        </a>
+        </Link>
       </div>
     </div>
     </>

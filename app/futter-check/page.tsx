@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
+import Link from "next/link";
 import { futterCheck } from "@/lib/seite";
 
 // ---------------------------------------------------------------------------
@@ -84,14 +85,13 @@ export default function FutterCheckSeite() {
               Ich bin Yasemin, Ernährungsberaterin für Pferde. Die Auswertung
               ist die, die ich auch einer Kundin am Telefon geben würde.
             </p>
-            <a
-              href={futterCheck.anmeldung}
-              target="_blank"
-              rel="noopener"
+            <Link
+              href={futterCheck.fragebogen}
+              prefetch={false}
               className="inline-block bg-cream text-ink px-8 py-4 rounded-full text-[15px] font-medium hover:bg-rose transition-colors"
             >
               Jetzt kostenlos starten
-            </a>
+            </Link>
             <p className="text-[13px] text-cream/65 mt-4">
               Anmeldung über meine Kursplattform alfima. Kostet nichts, deine
               Adresse gebe ich nicht weiter.
@@ -216,14 +216,13 @@ export default function FutterCheckSeite() {
               Postfach und melde mich ein paar Tage später noch einmal, um es mit
               dir einzuordnen.
             </p>
-            <a
-              href={futterCheck.anmeldung}
-              target="_blank"
-              rel="noopener"
+            <Link
+              href={futterCheck.fragebogen}
+              prefetch={false}
               className="inline-block bg-rose text-ink px-8 py-4 rounded-full text-[15px] font-medium hover:bg-cream transition-colors"
             >
               Jetzt kostenlos starten
-            </a>
+            </Link>
           </div>
         </div>
       </section>

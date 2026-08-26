@@ -60,14 +60,13 @@ export default function Hero() {
                 messen aber Verschiedenes. An ihre Stelle tritt der Auszug aus
                 der Gesundheitsakte direkt unter dem Hero. */}
             <div className="flex flex-wrap gap-4 pb-6 sm:pb-10">
-              <a
-                href={futterCheck.anmeldung}
-                target="_blank"
-                rel="noopener"
+              <Link
+                href={futterCheck.fragebogen}
+                prefetch={false}
                 className="bg-cream text-ink px-7 py-4 rounded-full text-[15px] font-medium hover:bg-rose transition-colors"
               >
                 Kostenlosen Futter-Check machen
-              </a>
+              </Link>
               <Link
                 href="#wege"
                 className="border border-cream text-cream px-7 py-3.5 rounded-full text-[15px] font-medium hover:bg-cream/15 transition-colors"

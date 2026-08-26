@@ -62,7 +62,26 @@ export default function WegeSection() {
                   i > 0 ? "border-t border-line" : ""
                 }`;
 
-                return a.url ? (
+                if (!a.url) {
+                  return (
+                    <div key={a.name} className={klassen}>
+                      {zeile}
+                    </div>
+                  );
+                }
+
+                // Angebote auf der eigenen Seite oeffnen im selben Tab, fremde
+                // bei alfima in einem neuen. Sonst reisst ein Klick auf
+                // Mineral-Klarheit die Besucherin ohne Grund aus der Uebersicht.
+                return a.url.startsWith("/") ? (
+                  <Link
+                    key={a.name}
+                    href={a.url}
+                    className={`${klassen} group hover:text-rose-deep transition-colors`}
+                  >
+                    {zeile}
+                  </Link>
+                ) : (
                   <a
                     key={a.name}
                     href={a.url}
@@ -72,22 +91,17 @@ export default function WegeSection() {
                   >
                     {zeile}
                   </a>
-                ) : (
-                  <div key={a.name} className={klassen}>
-                    {zeile}
-                  </div>
                 );
               })}
             </div>
 
-            <a
-              href={futterCheck.anmeldung}
-              target="_blank"
-              rel="noopener"
+            <Link
+              href={futterCheck.fragebogen}
+              prefetch={false}
               className="mt-8 w-full text-center bg-rose-deep text-cream px-7 py-3.5 rounded-full text-[15px] font-medium hover:bg-ink transition-colors"
             >
               Kostenlos starten: der Futter-Check
-            </a>
+            </Link>
           </div>
 
           {/* ------------------------------------------------- Die Masterclass */}

@@ -64,4 +64,4 @@ Wieg eine Woche. Notier die längste Pause. Diese zwei Zahlen sind die
 Grundlage für alles, worüber wir danach reden können.
 
 Wenn du wissen willst, wo bei euch sonst noch Lücken sind:
-[der Futter-Check dauert zwei Minuten](https://alfima.com/pferdeliebehealthy/der-kostenlose-futter-check) und ist kostenlos.
+[der Futter-Check dauert zwei Minuten](/futter-check-start) und ist kostenlos.

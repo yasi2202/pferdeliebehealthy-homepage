@@ -257,6 +257,64 @@
     padding: 0;
   }
   .restart-link:hover { opacity: 0.8; }
+  .feld { display: flex; flex-direction: column; gap: 6px; }
+  .feld label {
+    font-size: 0.8rem;
+    color: var(--dark);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+  .feld input {
+    font-family: inherit;
+    font-size: 1rem;
+    color: var(--text);
+    padding: 14px;
+    border-radius: 6px;
+    border: 1px solid var(--linelight);
+    background: white;
+    width: 100%;
+  }
+  .feld input:focus {
+    outline: 2px solid var(--main);
+    outline-offset: 1px;
+  }
+  .zustimmung {
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+    font-size: 0.85rem;
+    line-height: 1.6;
+    opacity: 0.85;
+    cursor: pointer;
+  }
+  .zustimmung input {
+    margin: 3px 0 0 0;
+    width: 18px;
+    height: 18px;
+    flex-shrink: 0;
+    accent-color: var(--dark);
+    cursor: pointer;
+  }
+  .zustimmung a { color: var(--dark); }
+  .fehler {
+    color: #9c3b3b;
+    font-size: 0.85rem;
+    line-height: 1.5;
+  }
+  .kleingedrucktes {
+    font-size: 0.78rem;
+    line-height: 1.6;
+    opacity: 0.6;
+  }
+  /* Der Honigtopf gegen Spam-Skripte: fuer Menschen unsichtbar, fuer
+     automatische Ausfueller nicht. Wer ihn ausfuellt, wird aussortiert. */
+  .honigtopf {
+    position: absolute;
+    left: -9999px;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+  }
 </style>
 </head>
 <body>
@@ -492,6 +550,16 @@ let state = {
   },
 };
 
+// Alles, was im E-Mail-Schritt eingetragen wird. Steht bewusst neben
+// state.answers und nicht darin, damit die Auswertungslogik unberuehrt bleibt.
+var kontakt = {
+  vorname: "",
+  email: "",
+  einwilligung: false,
+  laeuft: false,
+  fehler: "",
+};
+
 function isAnswered(q) {
   if (q.multi) return state.answers[q.id].length > 0;
   return state.answers[q.id] !== null;
@@ -526,6 +594,7 @@ function render() {
 
   if (state.stage === "start") renderStart(inner);
   else if (state.stage === "quiz") renderQuiz(inner);
+  else if (state.stage === "email") renderEmail(inner);
   else if (state.stage === "result") renderResult(inner);
 }
 
@@ -616,7 +685,7 @@ function renderQuiz(container) {
     if (state.step < total - 1) {
       state.step += 1;
     } else {
-      state.stage = "result";
+      state.stage = "email";
     }
     render();
   });
@@ -644,6 +713,170 @@ function toggleMulti(qid, optionId) {
   }
 }
 
+function renderEmail(container) {
+  var d = document.createElement("div");
+  d.className = "col gap-5";
+  d.innerHTML = `
+    <div class="col gap-2">
+      <p class="progress-label">Fast geschafft</p>
+      <h2 class="qtitle">Wohin darf ich dein Ergebnis schicken?</h2>
+      <p class="hint">
+        Du siehst es gleich hier auf dem Bildschirm. Zusätzlich schicke ich es
+        dir per Mail, damit du es in Ruhe nachlesen kannst.
+      </p>
+    </div>
+
+    <div class="feld">
+      <label for="feld-vorname">Dein Vorname</label>
+      <input id="feld-vorname" type="text" autocomplete="given-name" value="${esc(kontakt.vorname)}">
+    </div>
+
+    <div class="feld">
+      <label for="feld-email">Deine E-Mail-Adresse</label>
+      <input id="feld-email" type="email" autocomplete="email" inputmode="email" value="${esc(kontakt.email)}">
+    </div>
+
+    <div class="honigtopf">
+      <label for="feld-webseite">Website</label>
+      <input id="feld-webseite" type="text" tabindex="-1" autocomplete="off">
+    </div>
+
+    <label class="zustimmung" for="feld-einwilligung">
+      <input id="feld-einwilligung" type="checkbox" ${kontakt.einwilligung ? "checked" : ""}>
+      <span>
+        Ja, schick mir mein Ergebnis und ab und zu Fütterungswissen per Mail.
+        Ich kann mich jederzeit wieder abmelden.
+        <a href="/datenschutz" target="_blank" rel="noopener">Datenschutz</a>
+      </span>
+    </label>
+
+    ${kontakt.fehler ? `<p class="fehler">${esc(kontakt.fehler)}</p>` : ""}
+
+    <button class="btn-primary" id="senden-btn">
+      ${kontakt.laeuft ? "Einen Moment ..." : "Ergebnis anzeigen"}
+    </button>
+
+    <button class="btn-secondary" id="back-btn">Zurück</button>
+
+    <p class="kleingedrucktes">
+      Deine Adresse bekommt nur Yasi. Sie wird nicht weitergegeben und nicht
+      verkauft.
+    </p>
+  `;
+
+  container.innerHTML = "";
+  container.appendChild(d);
+
+  var vornameFeld = d.querySelector("#feld-vorname");
+  var emailFeld = d.querySelector("#feld-email");
+  var einwilligungFeld = d.querySelector("#feld-einwilligung");
+  var webseiteFeld = d.querySelector("#feld-webseite");
+  var sendenBtn = d.querySelector("#senden-btn");
+
+  sendenBtn.disabled = kontakt.laeuft;
+
+  // Der Zustand wird beim Tippen mitgeschrieben, damit nach einer Fehlermeldung
+  // nicht alles noch einmal eingetippt werden muss.
+  vornameFeld.addEventListener("input", function () {
+    kontakt.vorname = vornameFeld.value;
+  });
+  emailFeld.addEventListener("input", function () {
+    kontakt.email = emailFeld.value;
+  });
+  einwilligungFeld.addEventListener("change", function () {
+    kontakt.einwilligung = einwilligungFeld.checked;
+  });
+
+  d.querySelector("#back-btn").addEventListener("click", function () {
+    state.stage = "quiz";
+    state.step = QUESTIONS.length - 1;
+    render();
+  });
+
+  sendenBtn.addEventListener("click", function () {
+    if (kontakt.laeuft) return;
+
+    kontakt.vorname = vornameFeld.value.trim();
+    kontakt.email = emailFeld.value.trim();
+    kontakt.einwilligung = einwilligungFeld.checked;
+
+    if (kontakt.vorname.length < 2) {
+      kontakt.fehler = "Bitte trag deinen Vornamen ein.";
+      render();
+      return;
+    }
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(kontakt.email)) {
+      kontakt.fehler = "Diese E-Mail-Adresse sieht nicht vollständig aus.";
+      render();
+      return;
+    }
+    if (!kontakt.einwilligung) {
+      kontakt.fehler = "Ohne dein Häkchen darf ich dir leider nichts schicken.";
+      render();
+      return;
+    }
+
+    var typeKey = computeResult(state.answers);
+    var type = TYPES[typeKey];
+
+    kontakt.fehler = "";
+    kontakt.laeuft = true;
+    render();
+
+    fetch("/api/futter-check", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        vorname: kontakt.vorname,
+        email: kontakt.email,
+        webseite: webseiteFeld ? webseiteFeld.value : "",
+        ergebnisTitel: type.title,
+        ergebnisText: type.text(state.answers),
+        antworten: state.answers,
+      }),
+    })
+      .then(function (res) {
+        return res.json().catch(function () {
+          return { ok: false };
+        });
+      })
+      .then(function (antwort) {
+        kontakt.laeuft = false;
+        if (antwort && antwort.ok) {
+          state.stage = "result";
+          kontakt.fehler = "";
+        } else {
+          kontakt.fehler =
+            (antwort && antwort.fehler) ||
+            "Das hat gerade nicht geklappt. Versuch es bitte noch einmal.";
+          // Kein Nachhausegehen mit leeren Händen: wenn bei mir etwas
+          // schiefläuft, soll sie ihr Ergebnis trotzdem sehen dürfen.
+          kontakt.notausgang = true;
+        }
+        render();
+      })
+      .catch(function () {
+        kontakt.laeuft = false;
+        kontakt.fehler =
+          "Ich konnte dich gerade nicht erreichen. Prüf kurz deine Verbindung und versuch es noch einmal.";
+        kontakt.notausgang = true;
+        render();
+      });
+  });
+
+  // Erscheint erst, wenn wirklich etwas schiefgegangen ist.
+  if (kontakt.notausgang) {
+    var notausgang = document.createElement("button");
+    notausgang.className = "restart-link";
+    notausgang.textContent = "Ergebnis trotzdem ansehen";
+    notausgang.addEventListener("click", function () {
+      state.stage = "result";
+      render();
+    });
+    d.appendChild(notausgang);
+  }
+}
+
 function renderResult(container) {
   const typeKey = computeResult(state.answers);
   const type = TYPES[typeKey];
@@ -661,6 +894,18 @@ function renderResult(container) {
         ${hinweis ? `<p class="alter-note">${esc(hinweis)}</p>` : ""}
         <div class="callout"><p>${esc(type.step)}</p></div>
       </div>
+      ${
+        kontakt.email && !kontakt.notausgang
+          ? `<div class="card col gap-2">
+              <p class="result-kicker">Noch ein Klick</p>
+              <p>
+                Ich habe dir gerade eine Mail geschickt, in der du kurz
+                bestätigst, dass du das bist. Erst danach darf ich dir dein
+                Ergebnis schicken. Schau auch im Spam-Ordner nach.
+              </p>
+            </div>`
+          : ""
+      }
       <div class="card-cta col gap-4">
         <p class="cta-text">
           Dein F\ütterungstyp zeigt dir, wo die gr\ö\ßte L\ücke bei deinem Pferd
@@ -668,7 +913,7 @@ function renderResult(container) {
           und individuell verstehen und gezielt schlie\ßen m\öchtest, ist genau
           das dein n\ächster Schritt im Mineralfinder Kurs.
         </p>
-        <a class="cta-btn" href="https://alfima.com/pferdeliebehealthy/mineralwissen-pro" target="_blank" rel="noopener noreferrer">Zum Mineralfinder Kurs</a>
+        <a class="cta-btn" href="/mineral-klarheit">Mineral-Klarheit ansehen</a>
       </div>
       <button class="restart-link" id="restart-btn">Check noch einmal durchlaufen</button>
       <p class="signature" style="text-align:center;">Alles Gute f\ür dich und dein Pferd, Yasi von Pferdeliebehealthy</p>
@@ -676,6 +921,13 @@ function renderResult(container) {
   `;
 
   container.querySelector("#restart-btn").addEventListener("click", () => {
+    kontakt = {
+      vorname: "",
+      email: "",
+      einwilligung: false,
+      laeuft: false,
+      fehler: "",
+    };
     state = {
       stage: "start",
       step: 0,
