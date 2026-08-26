@@ -25,7 +25,7 @@ export const fuerDeinPferd: Angebot[] = [
     name: "Die Basis einer guten Versorgung",
     untertitel: "Der Einstieg in eine durchdachte Fütterung",
     // preis: "",  ← fehlt noch
-    // url: "",    ← fehlt noch
+    url: "https://alfima.com/pferdeliebehealthy/was-dein-mineralfutter-dir-nicht-sagt",
   },
   {
     name: "Mineral-Klarheit",
