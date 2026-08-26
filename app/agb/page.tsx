@@ -1,7 +1,8 @@
 import LegalLayout from "@/components/LegalLayout";
 import type { Metadata } from "next";
 
-export const metadata: Metadata = { title: "AGB | Pferdeliebehealthy" };
+export const metadata: Metadata = {
+  alternates: { canonical: "/agb" }, title: "AGB | Pferdeliebehealthy" };
 
 export default function Agb() {
   return (

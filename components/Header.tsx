@@ -138,6 +138,7 @@ export default function Header() {
         <div className="flex items-center gap-3">
           <Link
             href="/futter-check"
+            prefetch={false}
             onClick={() => setMenuOpen(false)}
             className={`hidden sm:inline-block text-sm font-medium px-5 py-2.5 rounded-full transition-colors ${
               transparent
@@ -197,6 +198,7 @@ export default function Header() {
         ))}
         <Link
           href="/futter-check"
+          prefetch={false}
           onClick={() => setMenuOpen(false)}
           className="mt-4 bg-rose text-ink px-8 py-3.5 rounded-full text-[15px] font-medium"
         >

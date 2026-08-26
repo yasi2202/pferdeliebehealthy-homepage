@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <!-- Symbol fuer den Browser-Tab. Roséfarbener Kreis mit cremefarbenem P,
+       den Farben der Seite entnommen: Rosé #B87878 auf Creme #F9EDED.
+       Bewusst nur ein Buchstabe -- bei 16 Pixeln bleibt von einem Motiv
+       nichts Erkennbares uebrig. -->
+  <circle cx="32" cy="32" r="32" fill="#B87878"/>
+  <text x="32" y="33" fill="#F9EDED"
+        font-family="Georgia, 'Times New Roman', serif"
+        font-size="42" font-weight="400"
+        text-anchor="middle" dominant-baseline="central">P</text>
+</svg>

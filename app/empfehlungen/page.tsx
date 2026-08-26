@@ -3,6 +3,7 @@ import RabattCode from "@/components/RabattCode";
 import { empfehlungen, werbehinweis } from "@/lib/empfehlungen";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/empfehlungen" },
   title: "Rabattcodes auf einen Blick | Pferdeliebehealthy",
   description:
     "Alle Codes, mit denen du bei meinen Partnern sparst — Biohof Elmengrund, PerNaturam, Natusat, CDVet und weitere.",

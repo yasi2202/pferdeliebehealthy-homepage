@@ -19,7 +19,7 @@ export default function Footer() {
           </h4>
           <ul className="space-y-2.5 text-sm text-ink-soft">
             <li>
-              <Link href="/futter-check" className="hover:text-ink">
+              <Link href="/futter-check" prefetch={false} className="hover:text-ink">
                 Der Futter-Check
               </Link>
             </li>

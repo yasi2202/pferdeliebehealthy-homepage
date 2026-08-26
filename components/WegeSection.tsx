@@ -81,6 +81,7 @@ export default function WegeSection() {
 
             <Link
               href="/futter-check"
+              prefetch={false}
               className="mt-8 w-full text-center bg-rose-deep text-cream px-7 py-3.5 rounded-full text-[15px] font-medium hover:bg-ink transition-colors"
             >
               Kostenlos starten: der Futter-Check

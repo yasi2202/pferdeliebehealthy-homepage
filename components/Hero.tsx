@@ -61,6 +61,7 @@ export default function Hero() {
             <div className="flex flex-wrap gap-4 pb-6 sm:pb-10">
               <Link
                 href="/futter-check"
+                prefetch={false}
                 className="bg-cream text-ink px-7 py-4 rounded-full text-[15px] font-medium hover:bg-rose transition-colors"
               >
                 Kostenlosen Futter-Check machen

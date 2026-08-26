@@ -1,7 +1,8 @@
 import LegalLayout from "@/components/LegalLayout";
 import type { Metadata } from "next";
 
-export const metadata: Metadata = { title: "Impressum | Pferdeliebehealthy" };
+export const metadata: Metadata = {
+  alternates: { canonical: "/impressum" }, title: "Impressum | Pferdeliebehealthy" };
 
 export default function Impressum() {
   return (

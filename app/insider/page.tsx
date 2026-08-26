@@ -4,6 +4,7 @@ import { alleBeitraege, datumDeutsch } from "@/lib/beitraege";
 import { insider } from "@/lib/insider";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/insider" },
   title: "Pferdeliebe Insider | Kostenloses Futterwissen",
   description:
     "Kostenloses Wissen zur Pferdefütterung: was in Rationen wirklich schiefgeht, Zusatzfutter ehrlich eingeordnet und wie du Laborwerte liest.",

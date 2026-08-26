@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { alleBeitraege, beitragLesen, datumDeutsch } from "@/lib/beitraege";
+import { url } from "@/lib/seo";
 import { insider } from "@/lib/insider";
 
 type Props = { params: Promise<{ slug: string }> };
@@ -16,9 +17,26 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const beitrag = beitragLesen(slug);
   if (!beitrag) return { title: "Nicht gefunden | Pferdeliebehealthy" };
 
+  const adresse = `/insider/${slug}`;
+
   return {
     title: `${beitrag.titel} | Pferdeliebe Insider`,
     description: beitrag.beschreibung,
+    alternates: { canonical: adresse },
+    openGraph: {
+      type: "article",
+      title: beitrag.titel,
+      description: beitrag.beschreibung,
+      url: adresse,
+      publishedTime: beitrag.datum || undefined,
+      authors: ["Yasemin Halac"],
+      images: [{ url: url("/images/yasi-helena.jpg"), width: 1122, height: 1402 }],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: beitrag.titel,
+      description: beitrag.beschreibung,
+    },
   };
 }
 

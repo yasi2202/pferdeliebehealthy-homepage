@@ -2,6 +2,7 @@ import LegalLayout from "@/components/LegalLayout";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/datenschutz" },
   title: "Datenschutzerklärung | Pferdeliebehealthy",
 };
 
