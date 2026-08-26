@@ -73,17 +73,12 @@ export default function AboutSection() {
           </blockquote>
 
           <p className="text-[15px] font-medium">Yasemin Halac</p>
-          <p className="text-[14px] text-ink-soft">
-            Tierheilpraktikerin und Pferdeernährungsberaterin
-          </p>
+          <p className="text-[14px] text-ink-soft">Pferdeernährungsberaterin</p>
 
-          {/* Bleibt aus dem alten Text stehen: „Buchen im Odenwald" ist die
-              Angabe, über die dich Leute aus der Gegend bei Google finden.
-              Steht auch in den strukturierten Daten in app/layout.tsx. */}
-          <p className="text-[14px] text-ink-soft mt-4">
-            Zuhause in Buchen im Odenwald, mit meinen zwei Pferden Helena und
-            Donni und drei Hunden immer irgendwo in der Nähe.
-          </p>
+          {/* Der Hinweis auf Buchen im Odenwald und die Tiere stand hier
+              früher — auf Yasis Wunsch raus. Der Ort steht weiterhin in der
+              Fußzeile und in den strukturierten Daten in app/layout.tsx, für
+              Suchen wie „Ernährungsberaterin Pferd Odenwald". */}
         </div>
       </div>
     </section>
