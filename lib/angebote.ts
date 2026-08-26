@@ -75,6 +75,6 @@ export const masterclass: Masterclass = {
   schnupperkurs: {
     name: "Kostenloser Schnupperkurs",
     untertitel: "Schau erst rein, bevor du dich entscheidest",
-    // url: "",  ← alfima-Link fehlt noch
+    url: "https://alfima.com/pferdeliebehealthy/kostenloser-einblick-in-die-ausbildung-zur-ganzheitlichen-pferdefutterung",
   },
 };
