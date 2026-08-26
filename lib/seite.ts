@@ -55,9 +55,9 @@ export const mineralKlarheit = {
 
   // ▸ HIER MUSST DU RAN, falls sich die Kursadresse bei alfima aendert:
   //   Der Kauf laeuft weiter ueber alfima, nur gelesen wird auf der eigenen
-  //   Seite. Achtung, im alten Fragebogen stand eine andere Adresse
-  //   (.../mineralwissen-pro) — pruef bitte, welche der beiden stimmt.
-  kauf: "https://alfima.com/pferdeliebehealthy/p/ai-page-8-2",
+  //   Seite. Von Yasi bestaetigt am 26.08.2026 — sie fuehrt direkt in den
+  //   Kaufvorgang, nicht auf eine Zwischenseite.
+  kauf: "https://alfima.com/pferdeliebehealthy/mineralwissen-pro/purchase",
 
   preis: "27 €",
 };
