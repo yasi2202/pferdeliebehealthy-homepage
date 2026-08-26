@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Fraunces, Work_Sans } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import "./globals.css";
 import { seitenUrl, url } from "@/lib/seo";
 import Header from "@/components/Header";
@@ -171,6 +172,10 @@ export default function RootLayout({
             keine Kennung im Browser, deshalb ohne Einwilligung zulässig.
             Zählt erst, wenn Web Analytics im Vercel-Konto aktiviert ist. */}
         <Analytics />
+        {/* Misst, wie schnell die Seite bei echten Besucherinnen lädt.
+            Ebenfalls ohne Cookies, zeigt Werte im Vercel-Konto unter
+            "Speed Insights" -- dort muss es einmal aktiviert werden. */}
+        <SpeedInsights />
       </body>
     </html>
   );
