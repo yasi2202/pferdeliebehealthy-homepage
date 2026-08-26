@@ -26,6 +26,16 @@ export type Beitrag = {
   titel: string;
   datum: string;
   beschreibung: string;
+  /** Womit sich die Uebersicht filtern laesst, z. B. "Aus meiner Praxis".
+   *  Frei waehlbar: was in den Dateien steht, taucht als Knopf auf. */
+  kategorie: string;
+  /** Schluessel eines Angebots aus lib/angebote.ts, das unter dem Beitrag
+   *  empfohlen wird. Leer lassen, wenn keins passt — ein aufgezwungener
+   *  Verkaufskasten unter einem Fachtext schadet mehr, als er bringt. */
+  angebot: string;
+  /** Bild oben im Beitrag, z. B. "/images/insider/maehnenkamm.jpg" */
+  bild: string;
+  bildText: string;
   /** Fertiges HTML, aus dem Markdown erzeugt */
   html: string;
 };
@@ -56,6 +66,10 @@ export function alleBeitraege(): BeitragKopf[] {
         titel: String(data.titel ?? datei.replace(/\.md$/, "")),
         datum: datumLesbar(data.datum),
         beschreibung: String(data.beschreibung ?? ""),
+        kategorie: String(data.kategorie ?? "Sonstiges"),
+        angebot: String(data.angebot ?? ""),
+        bild: String(data.bild ?? ""),
+        bildText: String(data.bildText ?? ""),
       };
     })
     .sort((a, b) => b.datum.localeCompare(a.datum));
@@ -77,6 +91,10 @@ export function beitragLesen(slug: string): Beitrag | null {
     titel: String(data.titel ?? slug),
     datum: datumLesbar(data.datum),
     beschreibung: String(data.beschreibung ?? ""),
+    kategorie: String(data.kategorie ?? "Sonstiges"),
+    angebot: String(data.angebot ?? ""),
+    bild: String(data.bild ?? ""),
+    bildText: String(data.bildText ?? ""),
     html: marked.parse(content, { async: false }) as string,
   };
 }

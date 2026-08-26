@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
-import Link from "next/link";
-import { alleBeitraege, datumDeutsch } from "@/lib/beitraege";
+import { alleBeitraege } from "@/lib/beitraege";
 import { insider } from "@/lib/insider";
 import InsiderFormular from "@/components/InsiderFormular";
+import BeitragsListe from "@/components/BeitragsListe";
 import NurFuerNichtInsider from "@/components/NurFuerNichtInsider";
 
 export const metadata: Metadata = {
@@ -69,38 +69,9 @@ export default function InsiderSeite() {
           ) : (
             <>
               <h2 className="text-[13px] tracking-[0.14em] uppercase text-rose-deep font-semibold mb-8">
-                Alle Beiträge
+                Worüber möchtest du lesen?
               </h2>
-              <ul className="divide-y divide-line border-t border-line">
-                {beitraege.map((b) => (
-                  <li key={b.slug}>
-                    <Link
-                      href={`/insider/${b.slug}`}
-                      className="group block py-7 transition-colors hover:bg-white/60 -mx-4 px-4 rounded-xl"
-                    >
-                      {b.datum && (
-                        <div className="text-[12.5px] text-ink-soft tabular-nums mb-2">
-                          {datumDeutsch(b.datum)}
-                        </div>
-                      )}
-                      <h3 className="font-serif text-[22px] sm:text-[25px] leading-snug group-hover:text-rose-deep transition-colors">
-                        {b.titel}
-                      </h3>
-                      {b.beschreibung && (
-                        <p className="text-[15px] text-ink-soft mt-2 max-w-xl">
-                          {b.beschreibung}
-                        </p>
-                      )}
-                      {/* Sagt vor dem Klick, was danach kommt. Ohne diesen
-                          Hinweis wirkt die Schranke auf der nächsten Seite
-                          wie eine Überraschung statt wie eine Bedingung. */}
-                      <span className="inline-block text-[14px] font-medium text-rose-deep mt-3">
-                        Für Insider lesen →
-                      </span>
-                    </Link>
-                  </li>
-                ))}
-              </ul>
+              <BeitragsListe beitraege={beitraege} />
             </>
           )}
         </div>

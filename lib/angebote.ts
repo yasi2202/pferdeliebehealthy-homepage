@@ -84,3 +84,65 @@ export const masterclass: Masterclass = {
     url: "https://alfima.com/pferdeliebehealthy/kostenloser-einblick-in-die-ausbildung-zur-ganzheitlichen-pferdefutterung",
   },
 };
+
+// ---------------------------------------------------------------------------
+// Angebote, die unter einem Insider-Beitrag empfohlen werden können.
+//
+// In der Kopfzeile einer Beitragsdatei steht dafür z. B. `angebot: mineral`.
+// Passt keins, lässt du die Zeile weg — ein aufgezwungener Verkaufskasten
+// unter einem Fachtext schadet mehr, als er bringt.
+// ---------------------------------------------------------------------------
+
+export type Angebotshinweis = {
+  augenbraue: string;
+  name: string;
+  text: string;
+  knopf: string;
+  url: string;
+};
+
+export const angebotsHinweise: Record<string, Angebotshinweis> = {
+  mineral: {
+    augenbraue: "Dazu passend",
+    name: "Mineral-Klarheit",
+    text: "Der Kurs mit Rechner: Du liest eine Deklaration nicht mehr nur, du verstehst sie — und rechnest selbst durch, ob ein Mineralfutter zu deinem Pferd passt.",
+    knopf: "Mineral-Klarheit ansehen",
+    url: "/mineral-klarheit",
+  },
+  "futter-check": {
+    augenbraue: "Kostenlos",
+    name: "Der Futter-Check",
+    text: "Fünf Fragen, keine drei Minuten, und danach weißt du, ob die Fütterung deines Pferdes wirklich zu seiner Situation passt.",
+    knopf: "Zum Futter-Check",
+    url: "/futter-check",
+  },
+  ratiopro: {
+    augenbraue: "Dazu passend",
+    name: "RatioPro",
+    text: "Die einfache Rationsberechnung für dein Pferd — damit du siehst, was tatsächlich im Trog landet und was fehlt.",
+    knopf: "RatioPro ansehen",
+    url: "https://alfima.com/pferdeliebehealthy/ratiopro-die-einfache-rationsberechnung-fur-dein-pferd",
+  },
+  ganzjahresfutterplan: {
+    augenbraue: "Dazu passend",
+    name: "Ganzjahresfutterplan",
+    text: "Natürlich durchs Jahr: was dein Pferd wann braucht, saisonal gedacht statt das ganze Jahr über gleich.",
+    knopf: "Ganzjahresfutterplan ansehen",
+    url: "https://alfima.com/pferdeliebehealthy/ganzjahresfutterplan-fur-pferde-naturlich-durchs-jahr",
+  },
+  masterclass: {
+    augenbraue: "Für angehende Beraterinnen",
+    name: "Die Masterclass",
+    text: "Von den Grundlagen bis zur eigenen Beratungspraxis — mit Zertifikat und einem System, mit dem du sofort arbeiten kannst. Kostenlos reinschnuppern geht auch.",
+    knopf: "In die Masterclass schnuppern",
+    url: masterclass.schnupperkurs.url ?? "/#ausbildung",
+  },
+};
+
+/** Findet den Angebotshinweis zu einem Schlüssel. Null, wenn keiner passt.
+ *
+ *  Nicht mit `empfehlungen` aus lib/empfehlungen.ts verwechseln — das sind
+ *  die Rabattcodes der Partner, etwas ganz anderes. */
+export function angebotshinweisFinden(schluessel: string): Angebotshinweis | null {
+  return angebotsHinweise[schluessel] ?? null;
+}

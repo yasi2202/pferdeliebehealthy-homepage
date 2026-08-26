@@ -1,6 +1,8 @@
 ---
 titel: "Wie viel Heu bekommt dein Pferd wirklich?"
 datum: 2026-08-24
+kategorie: "Heu und Grundfutter"
+angebot: "ratiopro"
 beschreibung: "Fast alle unterschätzen ihre Heumenge — und zwar nicht um ein bisschen. Warum das die wichtigste Zahl in der Fütterung ist und wie du sie in fünf Minuten herausfindest."
 ---
 

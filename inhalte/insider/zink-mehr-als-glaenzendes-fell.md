@@ -1,6 +1,8 @@
 ---
 titel: "Zink – das unterschätzte Spurenelement, das über glänzendes Fell hinausgeht"
 datum: 2026-08-26
+kategorie: "Nährstoffe"
+angebot: "mineral"
 beschreibung: "Zink steckt in über 300 Enzymen, und die Versorgungslage im Heu hat sich in den letzten Jahrzehnten deutlich verschlechtert. Warum die Milligrammzahl auf dem Sack nicht das ist, was im Pferd ankommt."
 ---
 

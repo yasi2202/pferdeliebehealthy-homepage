@@ -1,6 +1,7 @@
 ---
 titel: "Warum dein Pferd beim Schwitzen schäumt"
 datum: 2026-08-26
+kategorie: "Körper verstehen"
 beschreibung: "Der weiße Schaum ist kein Zeichen schlechter Kondition, sondern ein eingebautes Kühlsystem mit einem eigenen Namen. Und es gibt einen Fall, in dem fehlender Schweiß ein echtes Warnsignal ist."
 ---
 

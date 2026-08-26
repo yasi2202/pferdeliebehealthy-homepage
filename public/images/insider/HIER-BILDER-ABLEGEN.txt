@@ -1,0 +1,11 @@
+In diesen Ordner kommen die Fotos fuer die Insider-Beitraege.
+
+Dateiname: nur Kleinbuchstaben und Bindestriche, keine Umlaute und keine
+Leerzeichen. Zum Beispiel: maehnenkamm.jpg
+
+In der Beitragsdatei traegst du dann oben ein:
+
+  bild: "/images/insider/maehnenkamm.jpg"
+  bildText: "Kurze Beschreibung, was auf dem Bild zu sehen ist"
+
+Diese Textdatei kann stehen bleiben, sie stoert nicht.

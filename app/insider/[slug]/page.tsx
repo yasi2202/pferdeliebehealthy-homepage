@@ -1,10 +1,12 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
 import { notFound } from "next/navigation";
 import { alleBeitraege, beitragLesen, datumDeutsch } from "@/lib/beitraege";
 import { url } from "@/lib/seo";
 import InsiderSchranke from "@/components/InsiderSchranke";
 import { aktuellerInsider } from "@/lib/insider-zugang";
+import { angebotshinweisFinden } from "@/lib/angebote";
 
 type Props = { params: Promise<{ slug: string }> };
 
@@ -71,6 +73,7 @@ export default async function BeitragSeite({ params }: Props) {
   // Auf dem Server geprüft, bevor die Seite gebaut wird: Der volle Text
   // verlässt den Server gar nicht erst, wenn niemand angemeldet ist.
   const angemeldet = await aktuellerInsider();
+  const hinweis = angebotshinweisFinden(beitrag.angebot);
 
   return (
     <main className="py-14 sm:py-20 px-6 sm:px-8">
@@ -93,10 +96,32 @@ export default async function BeitragSeite({ params }: Props) {
         </h1>
 
         {beitrag.beschreibung && (
-          <p className="text-[18px] text-ink-soft leading-relaxed mb-10 pb-10 border-b border-line">
+          <p className="text-[18px] text-ink-soft leading-relaxed mb-10">
             {beitrag.beschreibung}
           </p>
         )}
+
+        {/* Das Bild steht vor der Schranke: Es macht neugierig, ohne den Text
+            zu verraten — genau das, was ein Anriss leisten soll. */}
+        {beitrag.bild && (
+          <figure className="mb-10">
+            <Image
+              src={beitrag.bild}
+              alt={beitrag.bildText || beitrag.titel}
+              width={1600}
+              height={1200}
+              sizes="(max-width: 768px) 100vw, 672px"
+              className="w-full h-auto rounded-[18px] border border-line"
+            />
+            {beitrag.bildText && (
+              <figcaption className="text-[13.5px] text-ink-soft mt-3">
+                {beitrag.bildText}
+              </figcaption>
+            )}
+          </figure>
+        )}
+
+        <div className="border-b border-line mb-10" />
 
         {angemeldet ? (
           <>
@@ -105,6 +130,41 @@ export default async function BeitragSeite({ params }: Props) {
               className="beitrag-prose"
               dangerouslySetInnerHTML={{ __html: beitrag.html }}
             />
+
+            {/* Der Angebotshinweis steht nur, wenn in der Beitragsdatei einer
+                eingetragen ist. Passt keins, bleibt es leer — ein
+                aufgezwungener Verkaufskasten unter einem Fachtext schadet
+                mehr, als er bringt. */}
+            {hinweis && (
+              <aside className="bg-cream-deep rounded-[24px] p-7 sm:p-9 mt-14">
+                <div className="text-[11px] tracking-[0.16em] uppercase text-rose-deep font-semibold mb-3">
+                  {hinweis.augenbraue}
+                </div>
+                <h2 className="font-serif text-[22px] sm:text-[26px] leading-snug mb-3">
+                  {hinweis.name}
+                </h2>
+                <p className="text-[15px] text-ink-soft leading-relaxed max-w-lg mb-6">
+                  {hinweis.text}
+                </p>
+                {hinweis.url.startsWith("/") ? (
+                  <Link
+                    href={hinweis.url}
+                    className="inline-block bg-ink text-cream px-7 py-3.5 rounded-full text-[15px] font-medium hover:bg-rose-deep transition-colors"
+                  >
+                    {hinweis.knopf}
+                  </Link>
+                ) : (
+                  <a
+                    href={hinweis.url}
+                    target="_blank"
+                    rel="noopener"
+                    className="inline-block bg-ink text-cream px-7 py-3.5 rounded-full text-[15px] font-medium hover:bg-rose-deep transition-colors"
+                  >
+                    {hinweis.knopf}
+                  </a>
+                )}
+              </aside>
+            )}
 
             <p className="text-[13.5px] text-ink-soft mt-14 pt-7 border-t border-line">
               Du liest als Insider, {angemeldet.vorname}. Schön, dass du da
