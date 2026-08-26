@@ -6,6 +6,7 @@ import {
   sendeInsiderBenachrichtigung,
 } from "@/lib/insider-server";
 import { insider } from "@/lib/insider";
+import InsiderMerken from "@/components/InsiderMerken";
 import { seitenUrl } from "@/lib/seo";
 
 // ---------------------------------------------------------------------------
@@ -44,6 +45,8 @@ export default async function InsiderBestaetigtSeite({
       <div className="max-w-2xl mx-auto">
         {ergebnis ? (
           <>
+            {/* Ab jetzt verschwinden die Anmelde-Aufforderungen fuer sie. */}
+            <InsiderMerken />
             <span className="block text-[13px] tracking-[0.14em] uppercase text-rose-deep font-semibold mb-4">
               Bestätigt
             </span>

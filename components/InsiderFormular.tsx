@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { merkeInsider } from "@/lib/insider-merker";
 
 // ---------------------------------------------------------------------------
 // Das Anmeldeformular für den Insider-Kanal.
@@ -79,6 +80,8 @@ export default function InsiderFormular({
       });
       const antwort = await res.json().catch(() => ({ ok: false }));
       if (antwort.ok) {
+        // Ab jetzt verschwinden die Anmelde-Aufforderungen in diesem Browser.
+        merkeInsider();
         setFertig(true);
       } else {
         setFehler(

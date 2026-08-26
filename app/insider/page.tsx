@@ -3,6 +3,7 @@ import Link from "next/link";
 import { alleBeitraege, datumDeutsch } from "@/lib/beitraege";
 import { insider } from "@/lib/insider";
 import InsiderFormular from "@/components/InsiderFormular";
+import NurFuerNichtInsider from "@/components/NurFuerNichtInsider";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/insider" },
@@ -28,7 +29,9 @@ export default function InsiderSeite() {
         </p>
 
         {/* Anmeldung — läuft über die eigene Seite, die Adressen landen in
-            der Tabelle insider_anmeldungen in Supabase */}
+            der Tabelle insider_anmeldungen in Supabase. Wer schon dabei ist,
+            sieht diesen Kasten nicht. */}
+        <NurFuerNichtInsider>
         <div className="bg-ink text-cream rounded-[24px] p-8 sm:p-10 mt-10">
           <div className="text-[11px] tracking-[0.16em] uppercase text-pfirsich font-semibold mb-3">
             Nichts verpassen
@@ -49,6 +52,7 @@ export default function InsiderSeite() {
             {insider.abschnitt.kleingedrucktes}
           </p>
         </div>
+        </NurFuerNichtInsider>
 
         {/* Die Beiträge */}
         <div className="mt-16">

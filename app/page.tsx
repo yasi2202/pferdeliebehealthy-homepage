@@ -7,6 +7,7 @@ import PillarsSection from "@/components/PillarsSection";
 import AboutSection from "@/components/AboutSection";
 import TestimonialSection from "@/components/TestimonialSection";
 import InsiderSection from "@/components/InsiderSection";
+import NurFuerNichtInsider from "@/components/NurFuerNichtInsider";
 import CtaFinal from "@/components/CtaFinal";
 
 export default function Home() {
@@ -20,7 +21,10 @@ export default function Home() {
       <PillarsSection />
       <AboutSection />
       <TestimonialSection />
-      <InsiderSection />
+      {/* Wer schon Insider ist, wird nicht noch einmal eingeladen. */}
+      <NurFuerNichtInsider>
+        <InsiderSection />
+      </NurFuerNichtInsider>
       <CtaFinal />
     </main>
   );

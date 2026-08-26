@@ -5,6 +5,7 @@ import { alleBeitraege, beitragLesen, datumDeutsch } from "@/lib/beitraege";
 import { url } from "@/lib/seo";
 import { insider } from "@/lib/insider";
 import InsiderFormular from "@/components/InsiderFormular";
+import NurFuerNichtInsider from "@/components/NurFuerNichtInsider";
 
 type Props = { params: Promise<{ slug: string }> };
 
@@ -78,7 +79,9 @@ export default async function BeitragSeite({ params }: Props) {
           dangerouslySetInnerHTML={{ __html: beitrag.html }}
         />
 
-        {/* Anmeldung am Ende — wer bis hierher gelesen hat, ist bereit dafür */}
+        {/* Anmeldung am Ende — wer bis hierher gelesen hat, ist bereit dafür.
+            Wer schon dabei ist, sieht den Kasten nicht. */}
+        <NurFuerNichtInsider>
         <div className="bg-ink text-cream rounded-[24px] p-8 sm:p-10 mt-16">
           <h2 className="font-serif text-[23px] sm:text-[27px] leading-snug mb-4">
             Solche Beiträge direkt ins Postfach?
@@ -92,6 +95,7 @@ export default async function BeitragSeite({ params }: Props) {
             knopfText={insider.abschnitt.button}
           />
         </div>
+        </NurFuerNichtInsider>
       </article>
     </main>
   );

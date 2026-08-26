@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { insider } from "@/lib/insider";
+import { istInsider } from "@/lib/insider-merker";
 
 // ---------------------------------------------------------------------------
 // Der Balken am unteren Bildschirmrand.
@@ -27,9 +28,11 @@ export default function InsiderBar() {
   const [geschlossen, setGeschlossen] = useState(true); // bis geprüft: nicht zeigen
 
   useEffect(() => {
-    let schonGeschlossen = false;
+    // Wer schon Insider ist, wird nicht mehr eingeladen — auch wenn er den
+    // Balken nie weggeklickt hat.
+    let schonGeschlossen = istInsider();
     try {
-      schonGeschlossen = window.localStorage.getItem(SCHALTER) === "ja";
+      schonGeschlossen = schonGeschlossen || window.localStorage.getItem(SCHALTER) === "ja";
     } catch {
       // Privater Modus oder Speicher gesperrt: dann eben ohne Merken.
     }
