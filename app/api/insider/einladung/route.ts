@@ -10,6 +10,12 @@ import { istAdmin, einladungVersenden } from "@/lib/insider-versand";
 // leerer.
 // ---------------------------------------------------------------------------
 
+// Über tausend Adressen gehen in elf Bündeln raus, mit kurzer Pause
+// dazwischen. Die üblichen zehn Sekunden reichen dafür nicht — ohne diese
+// Zeile bricht Vercel mittendrin ab, und der Browser meldet nur, dass er den
+// Server nicht erreicht.
+export const maxDuration = 60;
+
 export async function POST(request: Request) {
   const angemeldet = await aktuellerInsider();
   if (!istAdmin(angemeldet)) {
@@ -29,5 +35,9 @@ export async function POST(request: Request) {
     return Response.json({ ok: false, fehler: ergebnis.text }, { status: 409 });
   }
 
-  return Response.json({ ok: true, empfaenger: ergebnis.empfaenger });
+  return Response.json({
+    ok: true,
+    empfaenger: ergebnis.empfaenger,
+    uebersprungen: ergebnis.uebersprungen,
+  });
 }

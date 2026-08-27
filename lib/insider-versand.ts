@@ -1,4 +1,14 @@
-import { supabase, ersteZeile, esc, rahmen, anrede, ANTWORT_AN } from "@/lib/versand";
+import {
+  supabase,
+  supabaseAlle,
+  supabaseZaehlen,
+  ersteZeile,
+  esc,
+  rahmen,
+  anrede,
+  ANTWORT_AN,
+  EMAIL_MUSTER,
+} from "@/lib/versand";
 import { insider } from "@/lib/insider";
 import type { InsiderAnmeldung } from "@/lib/insider-server";
 import type { Beitrag } from "@/lib/beitraege";
@@ -63,8 +73,99 @@ const VON = "Yasi von Pferdeliebehealthy <info@updates.pferdeliebehealthy.de>";
 const BUENDEL = 100;
 
 export type VersandErgebnis =
-  | { ok: true; empfaenger: number }
+  | { ok: true; empfaenger: number; uebersprungen: number }
   | { ok: false; grund: "schon-versendet" | "keine-empfaenger" | "fehler"; text: string };
+
+// ---------------------------------------------------------------------------
+// Der gemeinsame Unterbau der drei Versandarten
+// ---------------------------------------------------------------------------
+
+/** Eine fertige Mail, so wie Resend sie erwartet. */
+type Mail = Record<string, unknown>;
+
+/** Holt die Empfaengerliste und sortiert unbrauchbare Adressen aus.
+ *
+ *  Das Aussortieren ist der Punkt, an dem der Versand am 27.08.2026 gehangen
+ *  hat: In den uebernommenen Adressen standen zwei mit einem Leerzeichen
+ *  mittendrin ("belinda. knott@web.de"). Resend prueft ein Buendel als Ganzes
+ *  und weist es komplett zurueck, sobald eine einzige Adresse nicht stimmt —
+ *  eine kaputte Adresse hat also hundert Mails verhindert.
+ *
+ *  Zurueck kommt `null`, wenn die Datenbank nicht erreichbar war. Das ist
+ *  etwas anderes als eine leere Liste und muss auch anders gemeldet werden. */
+async function empfaengerHolen(
+  pfad: string
+): Promise<{ liste: InsiderAnmeldung[]; aussortiert: string[] } | null> {
+  const zeilen = await supabaseAlle<InsiderAnmeldung>(pfad);
+  if (!zeilen) return null;
+
+  const liste: InsiderAnmeldung[] = [];
+  const aussortiert: string[] = [];
+
+  for (const e of zeilen) {
+    const adresse = (e.email ?? "").trim();
+    if (EMAIL_MUSTER.test(adresse)) liste.push({ ...e, email: adresse });
+    else aussortiert.push(e.email);
+  }
+
+  if (aussortiert.length > 0) {
+    console.warn(
+      `Insider-Versand: ${aussortiert.length} unbrauchbare Adressen uebersprungen:`,
+      aussortiert.join(", ")
+    );
+  }
+
+  return { liste, aussortiert };
+}
+
+/** Kurze Pause zwischen zwei Buendeln. Resend nimmt zwei Anfragen pro
+ *  Sekunde entgegen; ohne Pause laufen wir bei elf Buendeln in die Bremse. */
+function warte(ms: number): Promise<void> {
+  return new Promise((fertig) => setTimeout(fertig, ms));
+}
+
+/** Verschickt eine Liste in Buendeln zu hundert.
+ *
+ *  Geht ein Buendel schief, macht sie mit dem naechsten weiter statt alles
+ *  abzubrechen — ein Problem bei hundert Adressen soll nicht neunhundert
+ *  andere aufhalten. Erst wenn zweimal hintereinander nichts durchgeht, ist
+ *  offenbar etwas Grundsaetzliches kaputt und sie hoert auf. */
+async function inBuendelnVerschicken(
+  liste: InsiderAnmeldung[],
+  mailBauen: (e: InsiderAnmeldung) => Mail,
+  wofuer: string
+): Promise<{ verschickt: number; fehler: string | null }> {
+  let verschickt = 0;
+  let fehler: string | null = null;
+  let hintereinander = 0;
+
+  for (let i = 0; i < liste.length; i += BUENDEL) {
+    if (i > 0) await warte(600);
+
+    const buendel = liste.slice(i, i + BUENDEL);
+    const antwort = await fetch("https://api.resend.com/emails/batch", {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${RESEND_API_KEY}`,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(buendel.map(mailBauen)),
+    });
+
+    if (!antwort.ok) {
+      const text = (await antwort.text()).slice(0, 300);
+      console.error(`${wofuer} fehlgeschlagen:`, antwort.status, text);
+      fehler ??= `${antwort.status} — ${text}`;
+      if (++hintereinander >= 2) break;
+      continue;
+    }
+
+    hintereinander = 0;
+    verschickt += buendel.length;
+  }
+
+  return { verschickt, fehler };
+}
 
 export async function beitragVersenden(
   beitrag: Beitrag,
@@ -79,15 +180,13 @@ export async function beitragVersenden(
     };
   }
 
-  const res = await supabase(
+  const geholt = await empfaengerHolen(
     "insider_anmeldungen?bestaetigt=eq.true&select=vorname,email,token"
   );
-  if (!res.ok) {
+  if (!geholt) {
     return { ok: false, grund: "fehler", text: "Die Adressliste war nicht erreichbar." };
   }
-  const empfaenger: InsiderAnmeldung[] = await res.json();
-
-  if (!Array.isArray(empfaenger) || empfaenger.length === 0) {
+  if (geholt.liste.length === 0) {
     return {
       ok: false,
       grund: "keine-empfaenger",
@@ -95,12 +194,9 @@ export async function beitragVersenden(
     };
   }
 
-  let verschickt = 0;
-
-  for (let i = 0; i < empfaenger.length; i += BUENDEL) {
-    const buendel = empfaenger.slice(i, i + BUENDEL);
-
-    const mails = buendel.map((e) => {
+  const { verschickt, fehler } = await inBuendelnVerschicken(
+    geholt.liste,
+    (e) => {
       // Persönlich: Der Link meldet sie unterwegs gleich an, damit sie nicht
       // vor der Schranke steht, obwohl sie dabei ist.
       const beitragsLink =
@@ -144,28 +240,9 @@ export async function beitragVersenden(
           </p>
         `),
       };
-    });
-
-    const antwort = await fetch("https://api.resend.com/emails/batch", {
-      method: "POST",
-      headers: {
-        Authorization: `Bearer ${RESEND_API_KEY}`,
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(mails),
-    });
-
-    if (!antwort.ok) {
-      const text = await antwort.text();
-      console.error("Insider-Versand fehlgeschlagen:", antwort.status, text.slice(0, 300));
-      // Was schon raus ist, ist raus. Deshalb wird der Vermerk trotzdem
-      // gesetzt — sonst schickt der nächste Klick alles noch einmal an die,
-      // die es bereits haben.
-      break;
-    }
-
-    verschickt += buendel.length;
-  }
+    },
+    "Insider-Versand"
+  );
 
   if (verschickt === 0) {
     // Kein Vermerk: Es ist nichts rausgegangen, also muss sich der Beitrag
@@ -174,7 +251,7 @@ export async function beitragVersenden(
     return {
       ok: false,
       grund: "fehler",
-      text: "Der Versand hat nicht geklappt, es ist keine Mail rausgegangen. Versuch es noch einmal.",
+      text: `Der Versand hat nicht geklappt, es ist keine Mail rausgegangen. ${fehler ?? ""}`.trim(),
     };
   }
 
@@ -186,7 +263,7 @@ export async function beitragVersenden(
     body: JSON.stringify({ slug: beitrag.slug, empfaenger: verschickt }),
   });
 
-  return { ok: true, empfaenger: verschickt };
+  return { ok: true, empfaenger: verschickt, uebersprungen: geholt.aussortiert.length };
 }
 
 /** Meldet eine Adresse ab. Die Zeile wird gelöscht, nicht markiert — so
@@ -227,12 +304,10 @@ const NACHFRAGE = "_nachfrage-uebernahme";
 
 /** Wie viele übernommene Anmeldungen noch auf ihre Bestätigung warten. */
 export async function offeneUebernahmen(): Promise<number> {
-  const res = await supabase(
-    `${TABELLE}?bestaetigt=eq.false&quelle=eq.alfima-uebernahme-offen&select=id`
+  const anzahl = await supabaseZaehlen(
+    `${TABELLE}?bestaetigt=eq.false&quelle=eq.alfima-uebernahme-offen`
   );
-  if (!res.ok) return 0;
-  const zeilen = await res.json();
-  return Array.isArray(zeilen) ? zeilen.length : 0;
+  return Math.max(anzahl, 0);
 }
 
 export async function nachfrageSchonRaus(): Promise<Versandvermerk | null> {
@@ -248,23 +323,19 @@ export async function nachfrageVersenden(basisUrl: string): Promise<VersandErgeb
     };
   }
 
-  const res = await supabase(
+  const geholt = await empfaengerHolen(
     `${TABELLE}?bestaetigt=eq.false&quelle=eq.alfima-uebernahme-offen&select=vorname,email,token`
   );
-  if (!res.ok) {
+  if (!geholt) {
     return { ok: false, grund: "fehler", text: "Die Adressliste war nicht erreichbar." };
   }
-  const empfaenger: InsiderAnmeldung[] = await res.json();
-  if (!Array.isArray(empfaenger) || empfaenger.length === 0) {
+  if (geholt.liste.length === 0) {
     return { ok: false, grund: "keine-empfaenger", text: "Es wartet niemand auf eine Nachfrage." };
   }
 
-  let verschickt = 0;
-
-  for (let i = 0; i < empfaenger.length; i += BUENDEL) {
-    const buendel = empfaenger.slice(i, i + BUENDEL);
-
-    const mails = buendel.map((e) => {
+  const { verschickt, fehler } = await inBuendelnVerschicken(
+    geholt.liste,
+    (e) => {
       const link = `${basisUrl}/insider-bestaetigt?token=${encodeURIComponent(e.token)}`;
       return {
         from: VON,
@@ -297,26 +368,16 @@ export async function nachfrageVersenden(basisUrl: string): Promise<VersandErgeb
           <p style="font-size:16px;line-height:1.6;">Alles Gute für dich und dein Pferd,<br>Yasi</p>
         `),
       };
-    });
-
-    const antwort = await fetch("https://api.resend.com/emails/batch", {
-      method: "POST",
-      headers: {
-        Authorization: `Bearer ${RESEND_API_KEY}`,
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(mails),
-    });
-
-    if (!antwort.ok) {
-      console.error("Nachfrage fehlgeschlagen:", antwort.status, (await antwort.text()).slice(0, 300));
-      break;
-    }
-    verschickt += buendel.length;
-  }
+    },
+    "Nachfrage"
+  );
 
   if (verschickt === 0) {
-    return { ok: false, grund: "fehler", text: "Es ist keine Mail rausgegangen. Versuch es noch einmal." };
+    return {
+      ok: false,
+      grund: "fehler",
+      text: `Es ist keine Mail rausgegangen. ${fehler ?? ""}`.trim(),
+    };
   }
 
   await supabase("insider_versand", {
@@ -324,7 +385,7 @@ export async function nachfrageVersenden(basisUrl: string): Promise<VersandErgeb
     body: JSON.stringify({ slug: NACHFRAGE, empfaenger: verschickt }),
   });
 
-  return { ok: true, empfaenger: verschickt };
+  return { ok: true, empfaenger: verschickt, uebersprungen: geholt.aussortiert.length };
 }
 
 // ---------------------------------------------------------------------------
@@ -350,12 +411,10 @@ const EINLADUNG = "_einladung-bestandskunden";
 
 /** Wie viele Eingeladene noch auf ihre Bestätigung warten. */
 export async function offeneEinladungen(): Promise<number> {
-  const res = await supabase(
-    `${TABELLE}?bestaetigt=eq.false&quelle=eq.${EINLADUNG_QUELLE}&select=id`
+  const anzahl = await supabaseZaehlen(
+    `${TABELLE}?bestaetigt=eq.false&quelle=eq.${EINLADUNG_QUELLE}`
   );
-  if (!res.ok) return 0;
-  const zeilen = await res.json();
-  return Array.isArray(zeilen) ? zeilen.length : 0;
+  return Math.max(anzahl, 0);
 }
 
 export async function einladungSchonRaus(): Promise<Versandvermerk | null> {
@@ -371,23 +430,19 @@ export async function einladungVersenden(basisUrl: string): Promise<VersandErgeb
     };
   }
 
-  const res = await supabase(
+  const geholt = await empfaengerHolen(
     `${TABELLE}?bestaetigt=eq.false&quelle=eq.${EINLADUNG_QUELLE}&select=vorname,email,token`
   );
-  if (!res.ok) {
+  if (!geholt) {
     return { ok: false, grund: "fehler", text: "Die Adressliste war nicht erreichbar." };
   }
-  const empfaenger: InsiderAnmeldung[] = await res.json();
-  if (!Array.isArray(empfaenger) || empfaenger.length === 0) {
+  if (geholt.liste.length === 0) {
     return { ok: false, grund: "keine-empfaenger", text: "Es wartet niemand auf eine Einladung." };
   }
 
-  let verschickt = 0;
-
-  for (let i = 0; i < empfaenger.length; i += BUENDEL) {
-    const buendel = empfaenger.slice(i, i + BUENDEL);
-
-    const mails = buendel.map((e) => {
+  const { verschickt, fehler } = await inBuendelnVerschicken(
+    geholt.liste,
+    (e) => {
       const link = `${basisUrl}/insider-bestaetigt?token=${encodeURIComponent(e.token)}`;
       return {
         from: VON,
@@ -424,26 +479,16 @@ export async function einladungVersenden(basisUrl: string): Promise<VersandErgeb
           <p style="font-size:16px;line-height:1.6;">Alles Gute für dich und dein Pferd,<br>Yasi</p>
         `),
       };
-    });
-
-    const antwort = await fetch("https://api.resend.com/emails/batch", {
-      method: "POST",
-      headers: {
-        Authorization: `Bearer ${RESEND_API_KEY}`,
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(mails),
-    });
-
-    if (!antwort.ok) {
-      console.error("Einladung fehlgeschlagen:", antwort.status, (await antwort.text()).slice(0, 300));
-      break;
-    }
-    verschickt += buendel.length;
-  }
+    },
+    "Einladung"
+  );
 
   if (verschickt === 0) {
-    return { ok: false, grund: "fehler", text: "Es ist keine Mail rausgegangen. Versuch es noch einmal." };
+    return {
+      ok: false,
+      grund: "fehler",
+      text: `Es ist keine Mail rausgegangen. ${fehler ?? ""}`.trim(),
+    };
   }
 
   await supabase("insider_versand", {
@@ -451,5 +496,5 @@ export async function einladungVersenden(basisUrl: string): Promise<VersandErgeb
     body: JSON.stringify({ slug: EINLADUNG, empfaenger: verschickt }),
   });
 
-  return { ok: true, empfaenger: verschickt };
+  return { ok: true, empfaenger: verschickt, uebersprungen: geholt.aussortiert.length };
 }

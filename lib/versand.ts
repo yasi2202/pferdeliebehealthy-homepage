@@ -49,6 +49,45 @@ export async function supabase(pfad: string, optionen: RequestInit = {}) {
   });
 }
 
+/** Holt **alle** Zeilen einer Abfrage, auch wenn es mehr als tausend sind.
+ *
+ *  Supabase liefert pro Anfrage hoechstens 1000 Zeilen zurueck — ohne Fehler,
+ *  ohne Hinweis, einfach abgeschnitten. Bei einem Verteiler mit 1023 Adressen
+ *  hiesse das: 23 Leute bekommen nichts, und niemand merkt es. Deshalb wird
+ *  hier so lange in Bloecken nachgeladen, bis nichts mehr kommt. */
+export async function supabaseAlle<T>(pfad: string): Promise<T[] | null> {
+  const BLOCK = 1000;
+  const alle: T[] = [];
+  const trenner = pfad.includes("?") ? "&" : "?";
+
+  for (let start = 0; ; start += BLOCK) {
+    const res = await supabase(`${pfad}${trenner}offset=${start}&limit=${BLOCK}`);
+    if (!res.ok) return null;
+    const zeilen = await res.json();
+    if (!Array.isArray(zeilen)) return null;
+    alle.push(...zeilen);
+    if (zeilen.length < BLOCK) return alle;
+  }
+}
+
+/** Zaehlt Zeilen, ohne sie zu holen.
+ *
+ *  Wichtig aus demselben Grund wie oben: Wer die Liste holt und `.length`
+ *  nimmt, bekommt bei mehr als tausend Zeilen immer 1000 heraus. Supabase
+ *  nennt die echte Zahl im Kopf `Content-Range`. Bei einem Fehler kommt -1
+ *  zurueck, damit sich das von "wirklich keine" unterscheiden laesst. */
+export async function supabaseZaehlen(pfad: string): Promise<number> {
+  const trenner = pfad.includes("?") ? "&" : "?";
+  const res = await supabase(`${pfad}${trenner}select=id`, {
+    method: "HEAD",
+    headers: { Prefer: "count=exact", Range: "0-0" },
+  });
+  if (!res.ok) return -1;
+  const bereich = res.headers.get("content-range");        // z. B. "0-0/1023"
+  const zahl = Number(bereich?.split("/")[1]);
+  return Number.isFinite(zahl) ? zahl : -1;
+}
+
 /** Holt die erste Zeile einer Abfrage, oder null. */
 export async function ersteZeile<T>(pfad: string): Promise<T | null> {
   const res = await supabase(pfad);

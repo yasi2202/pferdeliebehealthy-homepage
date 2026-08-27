@@ -10,7 +10,7 @@ import {
   offeneEinladungen,
   einladungSchonRaus,
 } from "@/lib/insider-versand";
-import { supabase } from "@/lib/versand";
+import { supabaseZaehlen } from "@/lib/versand";
 import VersandKnopf from "@/components/VersandKnopf";
 import NachfrageKnopf from "@/components/NachfrageKnopf";
 import EinladungKnopf from "@/components/EinladungKnopf";
@@ -34,10 +34,8 @@ export const metadata: Metadata = {
  *  Holt nur die Kennungen, keine Adressen — für eine Zahl auf einer Seite
  *  braucht niemand die Liste selbst im Speicher zu haben. */
 async function empfaengerZaehlen(): Promise<number> {
-  const res = await supabase("insider_anmeldungen?bestaetigt=eq.true&select=id");
-  if (!res.ok) return 0;
-  const zeilen = await res.json();
-  return Array.isArray(zeilen) ? zeilen.length : 0;
+  const anzahl = await supabaseZaehlen("insider_anmeldungen?bestaetigt=eq.true");
+  return Math.max(anzahl, 0);
 }
 
 export default async function VersandSeite() {

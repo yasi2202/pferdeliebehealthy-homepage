@@ -22,7 +22,13 @@ export default function NachfrageKnopf({ anzahl }: { anzahl: number }) {
       const res = await fetch("/api/insider/nachfrage", { method: "POST" });
       const antwort = await res.json().catch(() => ({ ok: false }));
       if (antwort.ok) {
-        setMeldung(`An ${antwort.empfaenger} Adressen verschickt.`);
+        const uebersprungen = antwort.uebersprungen ?? 0;
+        setMeldung(
+          `An ${antwort.empfaenger} Adressen verschickt.` +
+            (uebersprungen > 0
+              ? ` ${uebersprungen} ${uebersprungen === 1 ? "Adresse war" : "Adressen waren"} fehlerhaft und ${uebersprungen === 1 ? "wurde" : "wurden"} übersprungen.`
+              : "")
+        );
         setStand("fertig");
       } else {
         setMeldung(antwort.fehler ?? "Das hat nicht geklappt.");
