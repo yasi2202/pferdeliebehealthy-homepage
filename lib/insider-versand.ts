@@ -326,3 +326,130 @@ export async function nachfrageVersenden(basisUrl: string): Promise<VersandErgeb
 
   return { ok: true, empfaenger: verschickt };
 }
+
+// ---------------------------------------------------------------------------
+// Die einmalige Einladung an die Bestandskundinnen aus Tentary.
+//
+// Am 27.08.2026 kamen 1023 Adressen dazu: Menschen, die bei Yasi gekauft
+// haben, deren Produkt es aber in der Akademie nicht gibt — Fliegenspray,
+// Fellwechsel, Arthrose und so weiter. Sie stehen als `bestaetigt = false`
+// in der Tabelle und bekommen deshalb nichts, bis auf diese eine Einladung.
+//
+// Gleiche Regel wie bei der alfima-Nachfrage: Wer klickt, ist danach normal
+// dabei. Wer nicht klickt, hört nichts mehr. Am Ende steht eine Liste, bei
+// der für jede Adresse ein Klick belegt ist.
+// ---------------------------------------------------------------------------
+
+/** Woran die eingeladenen Adressen zu erkennen sind. */
+const EINLADUNG_QUELLE = "bestandskunden-2026-08";
+
+/** Unter diesem Namen wird die Einladung in insider_versand vermerkt, damit
+ *  sie nicht zweimal rausgeht. Der Unterstrich macht sichtbar, dass es kein
+ *  Beitrag ist. */
+const EINLADUNG = "_einladung-bestandskunden";
+
+/** Wie viele Eingeladene noch auf ihre Bestätigung warten. */
+export async function offeneEinladungen(): Promise<number> {
+  const res = await supabase(
+    `${TABELLE}?bestaetigt=eq.false&quelle=eq.${EINLADUNG_QUELLE}&select=id`
+  );
+  if (!res.ok) return 0;
+  const zeilen = await res.json();
+  return Array.isArray(zeilen) ? zeilen.length : 0;
+}
+
+export async function einladungSchonRaus(): Promise<Versandvermerk | null> {
+  return vermerkFinden(EINLADUNG);
+}
+
+export async function einladungVersenden(basisUrl: string): Promise<VersandErgebnis> {
+  if (await vermerkFinden(EINLADUNG)) {
+    return {
+      ok: false,
+      grund: "schon-versendet",
+      text: "Die Einladung ist schon einmal rausgegangen.",
+    };
+  }
+
+  const res = await supabase(
+    `${TABELLE}?bestaetigt=eq.false&quelle=eq.${EINLADUNG_QUELLE}&select=vorname,email,token`
+  );
+  if (!res.ok) {
+    return { ok: false, grund: "fehler", text: "Die Adressliste war nicht erreichbar." };
+  }
+  const empfaenger: InsiderAnmeldung[] = await res.json();
+  if (!Array.isArray(empfaenger) || empfaenger.length === 0) {
+    return { ok: false, grund: "keine-empfaenger", text: "Es wartet niemand auf eine Einladung." };
+  }
+
+  let verschickt = 0;
+
+  for (let i = 0; i < empfaenger.length; i += BUENDEL) {
+    const buendel = empfaenger.slice(i, i + BUENDEL);
+
+    const mails = buendel.map((e) => {
+      const link = `${basisUrl}/insider-bestaetigt?token=${encodeURIComponent(e.token)}`;
+      return {
+        from: VON,
+        to: [e.email],
+        reply_to: ANTWORT_AN,
+        subject: `Magst du dabei sein? Die ${insider.name}`,
+        html: rahmen(`
+          <p style="font-size:17px;">Hallo ${esc(e.vorname)},</p>
+          <p style="font-size:16px;line-height:1.6;">
+            du hast vor einiger Zeit etwas bei mir gekauft, und dafür möchte ich
+            mich bedanken. Seitdem hat sich einiges getan, und deshalb melde ich
+            mich noch einmal.
+          </p>
+          <p style="font-size:16px;line-height:1.6;">
+            Ich schreibe inzwischen regelmäßig über das, was mir in der Praxis
+            begegnet: was in echten Rationen schiefgeht, wie man Zusatzfutter
+            ehrlich einordnet, wie man Laborwerte liest. Das sind die
+            ${esc(insider.name)}. Sie kosten nichts, und ich lade dich dazu ein.
+          </p>
+          <p style="margin:28px 0;">
+            <a href="${link}" style="background:#B87878;color:#fff;padding:14px 28px;border-radius:999px;text-decoration:none;font-size:16px;display:inline-block;">
+              Ja, ich bin dabei
+            </a>
+          </p>
+          <p style="font-size:15px;line-height:1.6;color:#8a7070;">
+            Ein Klick genügt. Danach kommen die Beiträge in dein Postfach, und
+            alle bisherigen stehen dir offen.
+          </p>
+          <p style="font-size:15px;line-height:1.6;color:#8a7070;">
+            Und wenn nicht: Dann musst du gar nichts tun. Ohne deinen Klick
+            hörst du nichts mehr von mir. Das ist keine Abmeldung, die du
+            beantragen musst, sondern einfach das, was passiert.
+          </p>
+          <p style="font-size:16px;line-height:1.6;">Alles Gute für dich und dein Pferd,<br>Yasi</p>
+        `),
+      };
+    });
+
+    const antwort = await fetch("https://api.resend.com/emails/batch", {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${RESEND_API_KEY}`,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(mails),
+    });
+
+    if (!antwort.ok) {
+      console.error("Einladung fehlgeschlagen:", antwort.status, (await antwort.text()).slice(0, 300));
+      break;
+    }
+    verschickt += buendel.length;
+  }
+
+  if (verschickt === 0) {
+    return { ok: false, grund: "fehler", text: "Es ist keine Mail rausgegangen. Versuch es noch einmal." };
+  }
+
+  await supabase("insider_versand", {
+    method: "POST",
+    body: JSON.stringify({ slug: EINLADUNG, empfaenger: verschickt }),
+  });
+
+  return { ok: true, empfaenger: verschickt };
+}

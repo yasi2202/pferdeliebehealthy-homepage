@@ -7,10 +7,13 @@ import {
   alleVersandvermerke,
   offeneUebernahmen,
   nachfrageSchonRaus,
+  offeneEinladungen,
+  einladungSchonRaus,
 } from "@/lib/insider-versand";
 import { supabase } from "@/lib/versand";
 import VersandKnopf from "@/components/VersandKnopf";
 import NachfrageKnopf from "@/components/NachfrageKnopf";
+import EinladungKnopf from "@/components/EinladungKnopf";
 
 // ---------------------------------------------------------------------------
 // Yasis Versandseite: alle Beiträge, daneben ein Knopf "An alle Insider
@@ -67,6 +70,8 @@ export default async function VersandSeite() {
   const anzahl = await empfaengerZaehlen();
   const offen = await offeneUebernahmen();
   const nachfrage = await nachfrageSchonRaus();
+  const eingeladen = await offeneEinladungen();
+  const einladung = await einladungSchonRaus();
 
   return (
     <main className="py-14 sm:py-20 px-6 sm:px-8">
@@ -119,6 +124,37 @@ export default async function VersandSeite() {
               </p>
             ) : (
               <NachfrageKnopf anzahl={offen} />
+            )}
+          </div>
+        )}
+
+        {/* Die einmalige Einladung an die Bestandskundinnen aus Tentary.
+            Verschwindet, sobald niemand mehr darauf wartet. */}
+        {eingeladen > 0 && (
+          <div className="bg-cream-deep rounded-[18px] p-6 sm:p-7 mt-6">
+            <div className="text-[11px] tracking-[0.16em] uppercase text-rose-deep font-semibold mb-3">
+              Bestandskundinnen
+            </div>
+            <h2 className="font-serif text-[20px] sm:text-[23px] leading-snug mb-3">
+              {eingeladen} {eingeladen === 1 ? "Adresse wartet" : "Adressen warten"}{" "}
+              noch auf ihre Einladung
+            </h2>
+            <p className="text-[14.5px] text-ink-soft leading-relaxed max-w-xl mb-5">
+              Diese Leute haben bei dir gekauft, aber ihr Produkt gibt es in der
+              Akademie nicht — Fliegenspray, Fellwechsel, Arthrose und so weiter.
+              Sie bekommen deshalb nichts von dir, außer dieser einen Einladung.
+              Wer darauf klickt, ist danach normal dabei; wer nicht, hört nichts
+              mehr.
+            </p>
+
+            {einladung ? (
+              <p className="text-[14px] text-ink-soft">
+                ✓ Einladung verschickt am{" "}
+                {datumDeutsch(einladung.versendet_am.slice(0, 10))} an{" "}
+                {einladung.empfaenger} Adressen
+              </p>
+            ) : (
+              <EinladungKnopf anzahl={eingeladen} />
             )}
           </div>
         )}
