@@ -10,7 +10,7 @@ export default function CtaFinal() {
         </h2>
         <p className="text-cream/70 max-w-md mx-auto mb-9 text-base">
           Egal ob du mit dem kostenlosen Futter-Check startest oder direkt
-          Fragen zur Masterclass oder zur Futterberatung 365 hast, schreib mir
+          Fragen zur Ausbildung oder zur Futterberatung 365 hast, schreib mir
           einfach.
         </p>
         <a

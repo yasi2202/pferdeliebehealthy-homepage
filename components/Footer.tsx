@@ -33,8 +33,8 @@ export default function Footer() {
               </Link>
             </li>
             <li>
-              <Link href="/#ausbildung" className="hover:text-ink">
-                Die Masterclass
+              <Link href="/ausbildung" className="hover:text-ink">
+                Die Ausbildung
               </Link>
             </li>
             <li>

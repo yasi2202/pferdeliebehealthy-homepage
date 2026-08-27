@@ -8,6 +8,7 @@ import { futterCheck } from "@/lib/seite";
 
 const links = [
   { href: "/#wege", label: "Angebote" },
+  { href: "/ausbildung", label: "Ausbildung" },
   { href: "/insider", label: "Insider" },
   { href: "/empfehlungen", label: "Empfehlungen" },
   { href: "/#warum", label: "Meine Haltung" },

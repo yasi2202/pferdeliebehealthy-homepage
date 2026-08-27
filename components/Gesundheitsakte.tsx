@@ -51,8 +51,8 @@ export default function Gesundheitsakte() {
             Futterberatung 365
           </Link>{" "}
           für dein eigenes Pferd — und lernst sie in der{" "}
-          <Link href="#ausbildung" className="text-ink font-medium hover:text-rose-deep">
-            Masterclass
+          <Link href="/ausbildung" className="text-ink font-medium hover:text-rose-deep">
+            Ausbildung
           </Link>{" "}
           selbst zu erstellen.
         </p>

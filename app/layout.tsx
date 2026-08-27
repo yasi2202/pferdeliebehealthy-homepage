@@ -33,7 +33,7 @@ const workSans = Work_Sans({
 
 const TITEL = "Pferdeliebehealthy | Ganzheitliche Pferdefütterung mit Yasemin Halac";
 const BESCHREIBUNG =
-  "Ernährungsberaterin für Pferde aus dem Odenwald. Kostenloser Futter-Check, Mineral-Klarheit, RatioPro, Futterberatung 365 und die Masterclass zur Pferdefütterung.";
+  "Ernährungsberaterin für Pferde aus dem Odenwald. Kostenloser Futter-Check, Mineral-Klarheit, RatioPro, Futterberatung 365 und die Ausbildung Ganzheitliche Pferdefütterung.";
 
 export const metadata: Metadata = {
   // metadataBase macht aus allen relativen Angaben unten vollstaendige

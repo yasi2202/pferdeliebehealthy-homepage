@@ -145,14 +145,15 @@ export default function WegeSection() {
               </div>
             </div>
 
+            {/* Der Knopf führt seit 27.08.2026 auf die eigene Seite /ausbildung
+                und nicht mehr direkt zu alfima. Grund: Dort steht erklärt,
+                was die Ausbildung ist, und die Seite kann bei Google gefunden
+                werden. Der kostenlose Schnupperkurs steht dort ganz oben. */}
             <Link
-              href={masterclass.schnupperkurs.url ?? "#kontakt"}
-              {...(masterclass.schnupperkurs.url
-                ? { target: "_blank", rel: "noopener" }
-                : {})}
+              href="/ausbildung"
               className="w-full text-center bg-cream text-ink px-7 py-3.5 rounded-full text-[15px] font-medium hover:bg-rose transition-colors"
             >
-              Zum kostenlosen Schnupperkurs
+              Die Ausbildung ansehen
             </Link>
           </div>
         </div>

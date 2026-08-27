@@ -56,7 +56,7 @@ export default function AboutSection() {
             den Körper ganzheitlich betrachtet und gezielt unterstützt.
           </p>
           <p className="text-ink-soft text-base mb-4.5">
-            Genau deshalb habe ich die Masterclass und meine Futterkurse
+            Genau deshalb habe ich die Ausbildung und meine Futterkurse
             entwickelt. Damit du nicht Jahre brauchst, um das zu verstehen, was
             ich mir mühsam erarbeitet habe.
           </p>
