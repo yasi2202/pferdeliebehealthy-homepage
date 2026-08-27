@@ -4,6 +4,7 @@ import {
   sendeMail,
   esc,
   rahmen,
+  anrede,
   knopf,
   ANTWORT_AN,
 } from "@/lib/versand";
@@ -102,7 +103,7 @@ export async function sendeInsiderBestaetigung(
     anmeldung.email,
     "Bitte bestätige kurz deine E-Mail-Adresse",
     rahmen(`
-      <p style="font-size:17px;">Hallo ${esc(anmeldung.vorname)},</p>
+      <p style="font-size:17px;">${anrede(anmeldung.vorname)}</p>
       <p style="font-size:16px;line-height:1.6;">
         schön, dass du bei den ${esc(insider.name)} dabei sein willst. Ein
         Klick noch, damit ich sicher bin, dass die Adresse wirklich dir gehört:
@@ -130,7 +131,7 @@ export async function sendeInsiderWillkommen(
     anmeldung.email,
     `Willkommen bei den ${insider.name}`,
     rahmen(`
-      <p style="font-size:17px;">Hallo ${esc(anmeldung.vorname)},</p>
+      <p style="font-size:17px;">${anrede(anmeldung.vorname)}</p>
       <p style="font-size:16px;line-height:1.6;">
         du bist dabei. Ab jetzt schreibe ich dir regelmäßig ein Thema aus
         meiner Praxis — was in echten Rationen schiefgeht, wie man Zusatzfutter

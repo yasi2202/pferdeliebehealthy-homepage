@@ -1,4 +1,4 @@
-import { supabase, ersteZeile, esc, rahmen, ANTWORT_AN } from "@/lib/versand";
+import { supabase, ersteZeile, esc, rahmen, anrede, ANTWORT_AN } from "@/lib/versand";
 import { insider } from "@/lib/insider";
 import type { InsiderAnmeldung } from "@/lib/insider-server";
 import type { Beitrag } from "@/lib/beitraege";
@@ -118,7 +118,7 @@ export async function beitragVersenden(
         // stattdessen auf "Spam" drückt.
         headers: { "List-Unsubscribe": `<${abmeldeLink}>` },
         html: rahmen(`
-          <p style="font-size:17px;">Hallo ${esc(e.vorname)},</p>
+          <p style="font-size:17px;">${anrede(e.vorname)}</p>
           <p style="font-size:16px;line-height:1.6;">
             es gibt einen neuen Beitrag für dich:
           </p>
@@ -272,7 +272,7 @@ export async function nachfrageVersenden(basisUrl: string): Promise<VersandErgeb
         reply_to: ANTWORT_AN,
         subject: `Möchtest du bei den ${insider.name} dabei bleiben?`,
         html: rahmen(`
-          <p style="font-size:17px;">Hallo ${esc(e.vorname)},</p>
+          <p style="font-size:17px;">${anrede(e.vorname)}</p>
           <p style="font-size:16px;line-height:1.6;">
             du hast dich vor einiger Zeit für die ${esc(insider.name)}
             eingetragen. Der Kanal ist inzwischen auf meine eigene Seite
@@ -395,7 +395,7 @@ export async function einladungVersenden(basisUrl: string): Promise<VersandErgeb
         reply_to: ANTWORT_AN,
         subject: `Magst du dabei sein? Die ${insider.name}`,
         html: rahmen(`
-          <p style="font-size:17px;">Hallo ${esc(e.vorname)},</p>
+          <p style="font-size:17px;">${anrede(e.vorname)}</p>
           <p style="font-size:16px;line-height:1.6;">
             du hast vor einiger Zeit etwas bei mir gekauft, und dafür möchte ich
             mich bedanken. Seitdem hat sich einiges getan, und deshalb melde ich

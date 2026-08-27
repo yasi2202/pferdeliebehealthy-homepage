@@ -89,6 +89,18 @@ export function esc(text: string): string {
     .replace(/"/g, "&quot;");
 }
 
+/** Die Anrede einer Mail: „Hallo Anna," oder einfach „Hallo,".
+ *
+ *  Wer sich selbst anmeldet, tippt seinen Vornamen ein. Bei den aus den
+ *  Shops uebernommenen Adressen stand aber nicht ueberall einer, und in
+ *  diesen Faellen ist „du" als Platzhalter eingetragen. Ohne diese Weiche
+ *  stuende dort woertlich „Hallo du," in der Mail. */
+export function anrede(vorname: string | null | undefined): string {
+  const v = (vorname ?? "").trim();
+  if (!v || v.toLowerCase() === "du") return "Hallo,";
+  return `Hallo ${esc(v)},`;
+}
+
 /** Der gemeinsame Rahmen aller Mails — schlicht gehalten, weil viele
  *  Postfaecher aufwendiges Layout ohnehin zerlegen. */
 export function rahmen(inhalt: string): string {
