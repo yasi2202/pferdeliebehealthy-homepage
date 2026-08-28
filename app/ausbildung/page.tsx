@@ -181,12 +181,6 @@ export default function AusbildungSeite() {
               Rechnung. Andere wollen einfach nie wieder abhängig sein von
               jemandem, der ihr Pferd nicht kennt. Beides ist ein guter Grund.
             </p>
-            <p>
-              <strong className="text-ink">Nicht</strong> für dich, wenn du
-              schnell ein Zertifikat für die Wand brauchst. Dafür gibt es
-              kürzere Lehrgänge, und die sind dann auch ehrlicher zu dir als
-              ich es wäre.
-            </p>
           </div>
         </div>
       </section>
@@ -380,10 +374,7 @@ export default function AusbildungSeite() {
             </h2>
             <div className="text-[16px] text-ink-soft leading-relaxed space-y-4">
               <p>
-                Ich bin Yasemin, Futtermittelberaterin für Pferde und
-                Tierheilpraktikerin in Ausbildung. Pferde habe ich seit 2006,
-                Pferdeliebehealthy gibt es seit Februar 2022, hauptberuflich
-                mache ich das seit Mai 2025.
+                Ich bin Yasemin, Futtermittelberaterin für Pferde.
               </p>
               <p>
                 Angefangen hat alles mit Helena, meiner Stute. Sie ist heute 28
