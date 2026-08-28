@@ -11,8 +11,6 @@ const links = [
   { href: "https://shop.pferdeliebehealthy.de/", label: "Shop" },
   { href: "/ausbildung", label: "Ausbildung" },
   { href: "/insider", label: "Insider" },
-  { href: "/empfehlungen", label: "Empfehlungen" },
-  { href: "/#warum", label: "Meine Haltung" },
   { href: "/#ueber-mich", label: "Über mich" },
   { href: "/#kontakt", label: "Kontakt" },
 ];
@@ -76,12 +74,17 @@ export default function Header() {
     if (!isHome || !href.startsWith("/#")) return;
 
     const ziel = document.getElementById(href.slice(2));
+
     if (!ziel) return;
 
     e.preventDefault();
 
     requestAnimationFrame(() => {
-      ziel.scrollIntoView({ behavior: "smooth", block: "start" });
+      ziel.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
+
       history.replaceState(null, "", href);
     });
   };
@@ -194,6 +197,7 @@ export default function Header() {
             </Link>
 
             <button
+              type="button"
               aria-label={menuOpen ? "Menü schließen" : "Menü öffnen"}
               onClick={() => setMenuOpen((value) => !value)}
               className={`lg:hidden relative z-[60] w-10 h-10 flex flex-col items-center justify-center gap-[5px] ${
