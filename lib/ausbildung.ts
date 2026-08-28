@@ -50,7 +50,11 @@ export const ausbildung = {
   mindestbearbeitung: "6 Monate",
 
   module: 8,
-  lektionen: 104,
+  /** Stand 28.08.2026: Alle acht Module haben Inhalt, Modul 4 seit dem 28.08.
+   *  Vorher stand hier 104 — das war die Zahl aus dem Zulassungsantrag vom
+   *  20.08.2026. Die Unterlagen, die seither bei der ZFU liegen, zeigen 110
+   *  Lektionen; beide Seiten müssen dieselbe Zahl nennen. */
+  lektionen: 110,
 
   /** Die Lernplattform. Nicht die Website, sondern die Akademie. */
   plattform: "akademieapp.vercel.app",
@@ -95,11 +99,15 @@ export const werkzeugeDauerhaft = true;
 // über scripts/zfu-export.mjs. Sie sind also nicht ausgedacht, sondern das,
 // was wirklich im Kurs steht.
 //
-// ▸ MODUL 4 FEHLT und muss von dir ergänzt werden. In der Akademie hatte es
-//   am 27.08.2026 keine einzige veröffentlichte Lektion, deshalb kennt weder
-//   der Export noch diese Datei seinen Titel. Solange `titel` leer ist, lässt
-//   die Seite das Modul einfach weg — sie zeigt lieber sieben ehrliche Module
-//   als ein achtes, das es noch nicht gibt.
+// ▸ MODUL 4 IST SEIT DEM 28.08.2026 DA. Am 27.08. hatte es in der Akademie
+//   keine einzige veröffentlichte Lektion und fehlte deshalb hier; inzwischen
+//   stehen seine neun Lektionen zur Sichtanalyse geschrieben. Die Seite zeigt
+//   ein Modul weiterhin nur, solange sein `titel` gefüllt ist — leert man ihn,
+//   verschwindet es wieder und die Überschrift nennt keine Zahl mehr.
+//
+//   Die Lektionszahlen sind der Stand der Akademie vom 28.08.2026 und zählen
+//   die geschriebenen Lektionen, nicht nur die schon freigeschalteten. Summe:
+//   110, dieselbe Zahl wie oben und dieselbe wie in den ZFU-Unterlagen.
 // ---------------------------------------------------------------------------
 
 export type Modul = {
@@ -108,7 +116,7 @@ export type Modul = {
   verb: string;
   titel: string;
   text: string;
-  /** Veröffentlichte Lektionen, Stand 27.08.2026. */
+  /** Geschriebene Lektionen, Stand 28.08.2026. */
   lektionen: number;
 };
 
@@ -118,58 +126,56 @@ export const module: Modul[] = [
     verb: "Verstehen",
     titel: "Wie der Pferdekörper funktioniert",
     text: "Von der Zelle bis zum Huf: Stoffwechselorgane, Verdauung, Zähne, Kreislauf, Haut und Nervensystem. Und wie diese Systeme zusammenarbeiten, statt einzeln betrachtet zu werden.",
-    lektionen: 10,
+    lektionen: 11,
   },
   {
     nummer: 2,
     verb: "Lesen",
     titel: "Nährstoffe, Energie und echte Bedarfe",
     text: "Makronährstoffe, Aminosäuren, Mengen- und Spurenelemente mit ihren Wechselwirkungen, Vitamine, Mineralspeicher. Hier lernst du, einen Bedarf zu berechnen statt zu schätzen.",
-    lektionen: 9,
+    lektionen: 10,
   },
   {
     nummer: 3,
     verb: "Beurteilen",
     titel: "Futtermittel und Rationsbasis",
     text: "Raufutter im Detail, Rohfaser und was artgerechte Fütterung praktisch bedeutet. Die Grundlage jeder Ration, bevor überhaupt ein Zusatz ins Spiel kommt.",
-    lektionen: 2,
+    lektionen: 15,
   },
-  // ▸ HIER FEHLT MODUL 4. Trag Titel, Verb und Text ein, sobald das Modul in
-  //   der Akademie steht. Solange `titel` leer bleibt, wird es nicht angezeigt.
   {
     nummer: 4,
-    verb: "",
-    titel: "",
-    text: "",
-    lektionen: 0,
+    verb: "Erkennen",
+    titel: "Sichtanalyse und körperliche Hinweise",
+    text: "Ein Pferd lesen, bevor ein Blutbild auffällig wird: Fellbild, Hufqualität, Bemuskelung, Körperhaltung, Schleimhäute. Dazu die häufigsten Fehldeutungen und eine Übung an echten Pferdebildern.",
+    lektionen: 9,
   },
   {
     nummer: 5,
     verb: "Diagnostizieren",
     titel: "Befunde, Frühmarker und Analysen",
     text: "Heuanalysen, Fellmineralanalysen, Blutbilder, Kotbefunde, Allergietests und Urintests selbstständig auswerten. Und Frühmarker erkennen, bevor ein Pferd wirklich krank ist.",
-    lektionen: 7,
+    lektionen: 8,
   },
   {
     nummer: 6,
     verb: "Anwenden",
     titel: "Krankheitsbilder und Fütterungsstrategien",
     text: "Das größte Modul: Atemwege, Stoffwechsel, KPU, Haut, Magen und Darm, Muskeln, Leber, Nieren, Parasiten, toxische Belastungen. Dazu zwei durchgerechnete Fallbeispiele aus der Praxis.",
-    lektionen: 21,
+    lektionen: 36,
   },
   {
     nummer: 7,
     verb: "Ergänzen",
     titel: "Phyto, Myko und der Werkzeugkasten Zusätze",
     text: "Wann ein Pferd überhaupt Zusätze braucht, welche vier Kategorien es gibt, und wie Phytotherapie in der Praxis eingesetzt wird. Vor allem aber: wann eben nicht.",
-    lektionen: 3,
+    lektionen: 11,
   },
   {
     nummer: 8,
     verb: "Beraten",
     titel: "Praxisaufbau und Selbstständigkeit",
     text: "Rechtliche Grundlagen, Beratungsablauf, Umgang mit Kundinnen, Organisation der eigenen Praxis, Sichtbarkeit auf Instagram und wie du neue Forschung selbst einordnest.",
-    lektionen: 7,
+    lektionen: 10,
   },
 ];
 

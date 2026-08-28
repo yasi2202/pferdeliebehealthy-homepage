@@ -52,6 +52,9 @@ export const metadata: Metadata = {
  *  nicht gezeigt, statt eine leere Karte zu hinterlassen. */
 const sichtbareModule = module.filter((m) => m.titel !== "");
 
+/** Liegt in public/ und wird von akademieapp/scripts/lehrplan.mjs gebaut. */
+const lehrplanDatei = "Lehrplan-Ausbildung-Ganzheitliche-Pferdefuetterung.pdf";
+
 /** Solange nicht alle Module beschrieben sind, nennt die Überschrift keine
  *  Zahl. Sonst stünde oben „8 Module" und darunter zählte man sieben Karten,
  *  und das fällt genau der Leserin auf, die 899 € ausgeben soll. Sobald du
@@ -231,6 +234,41 @@ export default function AusbildungSeite() {
               </li>
             ))}
           </ol>
+
+          {/* Der Lehrplan zum Mitnehmen.
+              Auf die Kacheln oben passen nur die Modultitel — wer 899 € ausgibt,
+              will aber die 110 Lektionstitel sehen. Die PDF-Datei liegt in
+              public/ und wird von akademieapp/scripts/lehrplan.mjs erzeugt, das
+              die Titel direkt aus der Akademie zieht. Nach jeder Umbenennung
+              einer Lektion also einmal neu laufen lassen, sonst veraltet sie
+              still. */}
+          <a
+            href={`/${lehrplanDatei}`}
+            target="_blank"
+            rel="noopener"
+            className="mt-8 inline-flex items-center gap-3 bg-ink text-cream px-7 py-4 rounded-full text-[15px] font-medium hover:bg-rose-deep transition-colors"
+          >
+            <svg
+              width="17"
+              height="17"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              aria-hidden="true"
+            >
+              <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4" />
+              <polyline points="7 10 12 15 17 10" />
+              <line x1="12" y1="15" x2="12" y2="3" />
+            </svg>
+            Den vollständigen Lehrplan ansehen
+          </a>
+          <p className="text-[13.5px] text-ink-soft mt-3">
+            Alle {ausbildung.lektionen} Lektionstitel, Modul für Modul, als PDF
+            zum Lesen und Ausdrucken.
+          </p>
         </div>
       </section>
 
