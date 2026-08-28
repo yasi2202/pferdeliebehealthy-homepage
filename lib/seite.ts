@@ -5,13 +5,13 @@
 export const mitgliederbereich = {
   label: "Mitgliederbereich",
 
-  // ▸ HIER MUSST DU RAN:
-  //   Aktuell zeigt der Button auf die allgemeine alfima-Anmeldung. Sobald
-  //   deine Akademie eine eigene Adresse hat (z. B.
-  //   https://alfima.com/pferdeliebehealthy/login oder eine eigene Domain),
-  //   trag sie hier ein — der Button in der Kopfzeile und im Menü folgt
+  // Seit 28.08.2026 führt der Knopf in die eigene Akademie statt zu alfima.
+  //
+  // ▸ HIER MUSST DU RAN, sobald die Akademie eine eigene Domain bekommt
+  //   (z. B. https://akademie.pferdeliebehealthy.de/login): einfach die
+  //   Adresse hier austauschen, der Knopf im Mitglieder-Streifen folgt
   //   automatisch.
-  url: "https://alfima.io/login",
+  url: "https://akademieapp.vercel.app/login",
 };
 
 // ---------------------------------------------------------------------------
