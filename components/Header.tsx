@@ -8,10 +8,9 @@ import { futterCheck, mitgliederbereich } from "@/lib/seite";
 
 const links = [
   { href: "/#wege", label: "Angebote" },
-  { href: "https://shop.pferdeliebehealthy.de/", label: "Shop" },
+  { href: "https://shop.pferdeliebehealthy.de/", label: "Shop", extern: true },
   { href: "/ausbildung", label: "Ausbildung" },
   { href: "/insider", label: "Insider" },
-  { href: "/#ueber-mich", label: "Über mich" },
   { href: "/#kontakt", label: "Kontakt" },
 ];
 
@@ -126,7 +125,7 @@ export default function Header() {
                 target="_blank"
                 rel="noopener"
                 onClick={() => setMenuOpen(false)}
-                className="hidden lg:flex absolute right-6 sm:right-8 top-0 bottom-0 items-center gap-1.5 text-[13px] text-cream/80 hover:text-cream transition-colors whitespace-nowrap"
+                className="hidden xl:flex absolute right-6 sm:right-8 top-0 bottom-0 items-center gap-1.5 text-[13px] text-cream/80 hover:text-cream transition-colors whitespace-nowrap"
               >
                 <Schloss groesse={13} />
                 {mitgliederbereich.label}
@@ -139,7 +138,7 @@ export default function Header() {
           <Link
             href="/"
             onClick={() => setMenuOpen(false)}
-            className={`font-serif text-xl font-medium ${
+            className={`font-serif text-xl font-medium shrink-0 ${
               transparent ? "text-cream" : "text-ink"
             }`}
           >
@@ -150,23 +149,34 @@ export default function Header() {
           </Link>
 
           <div
-            className={`hidden lg:flex gap-5 xl:gap-6 text-[14.5px] ${
+            className={`hidden lg:flex items-center gap-4 xl:gap-6 text-[14px] ${
               transparent ? "text-cream" : "text-ink"
             }`}
           >
-            {links.map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                onClick={(e) => springeZu(e, link.href)}
-                className="hover:opacity-70 transition-opacity"
-              >
-                {link.label}
-              </Link>
-            ))}
+            {links.map((link) =>
+              link.extern ? (
+                <a
+                  key={link.href}
+                  href={link.href}
+                  onClick={() => setMenuOpen(false)}
+                  className="hover:opacity-70 transition-opacity whitespace-nowrap"
+                >
+                  {link.label}
+                </a>
+              ) : (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  onClick={(e) => springeZu(e, link.href)}
+                  className="hover:opacity-70 transition-opacity whitespace-nowrap"
+                >
+                  {link.label}
+                </Link>
+              ),
+            )}
           </div>
 
-          <div className="flex items-center gap-2 sm:gap-3">
+          <div className="flex items-center gap-2 sm:gap-3 shrink-0">
             <a
               href={mitgliederbereich.url}
               target="_blank"
@@ -174,7 +184,7 @@ export default function Header() {
               aria-label={`Zum ${mitgliederbereich.label}`}
               title={`Zum ${mitgliederbereich.label}`}
               onClick={() => setMenuOpen(false)}
-              className={`w-9 h-9 flex items-center justify-center rounded-full transition-colors ${
+              className={`hidden sm:flex w-9 h-9 items-center justify-center rounded-full transition-colors ${
                 transparent
                   ? "text-cream hover:bg-white/15"
                   : "text-ink hover:bg-cream-deep"
@@ -187,7 +197,7 @@ export default function Header() {
               href={futterCheck.fragebogen}
               prefetch={false}
               onClick={() => setMenuOpen(false)}
-              className={`hidden sm:inline-block text-sm font-medium px-5 py-2.5 rounded-full whitespace-nowrap transition-colors ${
+              className={`hidden xl:inline-block text-sm font-medium px-5 py-2.5 rounded-full whitespace-nowrap transition-colors ${
                 transparent
                   ? "bg-white text-ink hover:bg-rose"
                   : "bg-ink text-cream hover:bg-rose-deep"
@@ -234,16 +244,27 @@ export default function Header() {
         }`}
       >
         <div className="flex flex-col items-center justify-center h-full gap-8 px-8">
-          {links.map((link) => (
-            <Link
-              key={link.href}
-              href={link.href}
-              onClick={(e) => springeZu(e, link.href)}
-              className="font-serif text-3xl text-cream"
-            >
-              {link.label}
-            </Link>
-          ))}
+          {links.map((link) =>
+            link.extern ? (
+              <a
+                key={link.href}
+                href={link.href}
+                onClick={() => setMenuOpen(false)}
+                className="font-serif text-3xl text-cream"
+              >
+                {link.label}
+              </a>
+            ) : (
+              <Link
+                key={link.href}
+                href={link.href}
+                onClick={(e) => springeZu(e, link.href)}
+                className="font-serif text-3xl text-cream"
+              >
+                {link.label}
+              </Link>
+            ),
+          )}
 
           <Link
             href={futterCheck.fragebogen}
