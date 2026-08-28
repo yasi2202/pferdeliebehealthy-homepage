@@ -3,9 +3,13 @@ import { mitgliederbereich } from "@/lib/seite";
 // ---------------------------------------------------------------------------
 // Eigener Block für den Mitgliederbereich.
 //
-// Steht bewusst direkt hinter den Angeboten: Wer dort erkennt, dass er das
-// Gebuchte schon hat, findet hier den Weg hinein — ohne dass der Login oben
-// in der Kopfzeile mit dem kostenlosen Einstieg konkurriert.
+// Steht direkt hinter den Angeboten: Wer dort erkennt, dass er das Gebuchte
+// schon hat, findet hier den Weg hinein.
+//
+// Seit 28.08.2026 gibt es denselben Weg zusaetzlich oben in der Kopfzeile,
+// dort aber bewusst nur als leiser Textlink mit Schloss. So sieht eine
+// Kundin den Zugang sofort, ohne dass er dem Futter-Check die Aufmerksamkeit
+// nimmt. Beide Stellen holen die Adresse aus lib/seite.ts.
 //
 // Adresse: lib/seite.ts
 // ---------------------------------------------------------------------------

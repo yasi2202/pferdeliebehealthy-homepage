@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 import { insider } from "@/lib/insider";
-import { futterCheck } from "@/lib/seite";
+import { futterCheck, mitgliederbereich } from "@/lib/seite";
 
 const links = [
   { href: "/#wege", label: "Angebote" },
@@ -15,6 +15,27 @@ const links = [
   { href: "/#ueber-mich", label: "Über mich" },
   { href: "/#kontakt", label: "Kontakt" },
 ];
+
+// Das Schloss neben dem Mitglieder-Zugang. Dasselbe Zeichen wie im Streifen
+// "Du bist schon dabei?" weiter unten auf der Startseite, damit beide Wege
+// erkennbar zusammengehoeren.
+function Schloss({ groesse = 15 }: { groesse?: number }) {
+  return (
+    <svg
+      width={groesse}
+      height={groesse}
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      aria-hidden="true"
+    >
+      <rect x="4" y="10.5" width="16" height="10" rx="2.5" />
+      <path d="M8 10.5V7a4 4 0 0 1 8 0v3.5" />
+    </svg>
+  );
+}
 
 export default function Header() {
   const [scrolled, setScrolled] = useState(false);
@@ -89,21 +110,39 @@ export default function Header() {
           wird es ohne Layoutsprung, weil die Kopfzeile ueber dem Inhalt
           schwebt. Text: lib/insider.ts */}
       {isHome && !scrolled && !menuOpen && (
-        <Link
-          href="/insider"
-          onClick={() => setMenuOpen(false)}
-          className="group block bg-ink text-cream"
-        >
-          <div className="max-w-6xl mx-auto px-6 sm:px-8 py-2.5 flex items-center justify-center gap-2.5 sm:gap-3.5 text-[13px] sm:text-[13.5px] text-center">
-            <span className="hidden sm:inline-block bg-pfirsich text-ink font-semibold px-2.5 py-0.5 rounded-full text-[11px] tracking-wide uppercase shrink-0">
-              {insider.kopfBanner.hinweis}
-            </span>
-            <span className="text-cream/90">{insider.kopfBanner.text}</span>
-            <span className="font-medium underline underline-offset-4 decoration-pfirsich group-hover:decoration-cream shrink-0">
-              {insider.kopfBanner.button}
-            </span>
+        <div className="bg-ink text-cream">
+          <div className="relative max-w-6xl mx-auto px-6 sm:px-8">
+            <Link
+              href="/insider"
+              onClick={() => setMenuOpen(false)}
+              className="group py-2.5 flex items-center justify-center gap-2.5 sm:gap-3.5 text-[13px] sm:text-[13.5px] text-center"
+            >
+              <span className="hidden sm:inline-block bg-pfirsich text-ink font-semibold px-2.5 py-0.5 rounded-full text-[11px] tracking-wide uppercase shrink-0">
+                {insider.kopfBanner.hinweis}
+              </span>
+              <span className="text-cream/90">{insider.kopfBanner.text}</span>
+              <span className="font-medium underline underline-offset-4 decoration-pfirsich group-hover:decoration-cream shrink-0">
+                {insider.kopfBanner.button}
+              </span>
+            </Link>
+
+            {/* Der Zugang fuer alle, die schon Kundin sind. Er steht hier oben
+                und nicht in der Navigation darunter: dort ist die Zeile bereits
+                randvoll, ein weiterer Begriff wuerde sie umbrechen lassen. Hier
+                faellt er sofort ins Auge, ohne dem Futter-Check die
+                Aufmerksamkeit zu nehmen. Adresse: lib/seite.ts */}
+            <a
+              href={mitgliederbereich.url}
+              target="_blank"
+              rel="noopener"
+              onClick={() => setMenuOpen(false)}
+              className="hidden lg:flex absolute right-6 sm:right-8 top-0 bottom-0 items-center gap-1.5 text-[13px] text-cream/80 hover:text-cream transition-colors whitespace-nowrap"
+            >
+              <Schloss groesse={13} />
+              {mitgliederbereich.label}
+            </a>
           </div>
-        </Link>
+        </div>
       )}
 
       <nav className="flex items-center justify-between max-w-6xl mx-auto px-6 sm:px-8 py-5">
@@ -121,7 +160,7 @@ export default function Header() {
         </Link>
 
         <div
-          className={`hidden lg:flex gap-7 text-[14.5px] ${
+          className={`hidden lg:flex gap-5 xl:gap-6 text-[14.5px] ${
             transparent ? "text-cream" : "text-ink"
           }`}
         >
@@ -137,12 +176,32 @@ export default function Header() {
           ))}
         </div>
 
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-2 sm:gap-3">
+          {/* Dasselbe Ziel als kompaktes Schloss. Es bleibt auch sichtbar,
+              wenn die dunkle Leiste beim Scrollen verschwindet, und auf jeder
+              Unterseite. Fuer den ausgeschriebenen Begriff ist in dieser Zeile
+              kein Platz; auf dem Handy steht er im aufgeklappten Menue. */}
+          <a
+            href={mitgliederbereich.url}
+            target="_blank"
+            rel="noopener"
+            aria-label={`Zum ${mitgliederbereich.label}`}
+            title={`Zum ${mitgliederbereich.label}`}
+            onClick={() => setMenuOpen(false)}
+            className={`w-9 h-9 flex items-center justify-center rounded-full transition-colors ${
+              transparent
+                ? "text-cream hover:bg-white/15"
+                : "text-ink hover:bg-cream-deep"
+            }`}
+          >
+            <Schloss groesse={17} />
+          </a>
+
           <Link
             href={futterCheck.fragebogen}
             prefetch={false}
             onClick={() => setMenuOpen(false)}
-            className={`hidden sm:inline-block text-sm font-medium px-5 py-2.5 rounded-full transition-colors ${
+            className={`hidden sm:inline-block text-sm font-medium px-5 py-2.5 rounded-full whitespace-nowrap transition-colors ${
               transparent
                 ? "bg-white text-ink hover:bg-rose"
                 : "bg-ink text-cream hover:bg-rose-deep"
@@ -206,6 +265,17 @@ export default function Header() {
         >
           Zum Futter-Check
         </Link>
+
+        <a
+          href={mitgliederbereich.url}
+          target="_blank"
+          rel="noopener"
+          onClick={() => setMenuOpen(false)}
+          className="flex items-center gap-2 text-cream/80 text-[15px] underline underline-offset-4 decoration-cream/40"
+        >
+          <Schloss groesse={16} />
+          Zum {mitgliederbereich.label}
+        </a>
       </div>
     </div>
     </>
