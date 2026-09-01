@@ -434,6 +434,67 @@ export const digitalprodukte: DigitalProdukt[] = [
       },
     ],
   },
+  {
+    slug: "equidesk",
+    name: "EquiDesk · Kundenverwaltung für Futterberaterinnen",
+    kurzname: "EquiDesk",
+    preis: 2900,
+    mwst: 19,
+    art: "kurs",
+    kurz: "Deine Kundinnen, ihre Pferde und die ganze Beratung an einer Stelle.",
+    leistung:
+      "Dauerhafter Zugang zu EquiDesk in der Pferdeliebehealthy Akademie, " +
+      "der Kundenverwaltung für die Futterberatung.",
+    // Trifft die Regel /equidesk/i in akademieapp/lib/produkt-zugang.ts.
+    // Geprüft am 01.09.2026: keine der vorherigen Regeln greift auf diesen
+    // Namen, und keine NIEMALS-Regel schliesst ihn aus.
+    akademieName: "EquiDesk · Kundenverwaltung für Futterberaterinnen",
+    erwarteterZugang: "equidesk",
+    // Bewusst KEIN `statt`: EquiDesk wurde noch nie verkauft, weder für 19 €
+    // im Monat noch für sonst etwas. Ein durchgestrichener Preis wäre Werbung
+    // mit einer Ersparnis, die es nie gab. Dass es danach 19 € im Monat
+    // kostet, steht als Satz im Text, und das ist auch die ehrliche Form.
+    beschreibung: [
+      {
+        art: "absatz",
+        text: "Du hast die Ausbildung gemacht und fängst an, eigene Kundinnen zu beraten. Und dann sitzt du da: die Anamnese liegt im Postfach, der Futterplan in Word, die Fotos auf dem Handy, die Rechnung in einer Tabelle, und wann du dich noch mal melden wolltest, weißt nur du. Genau da setzt EquiDesk an.",
+      },
+      { art: "ueberschrift", text: "Was drin ist" },
+      {
+        art: "liste",
+        punkte: [
+          "Kundinnen und ihre Pferde mit Haltung, Fütterung, Gesundheit und Medikamenten",
+          "Beratungsverlauf auf einem Zeitstrahl: Erstberatung, Nachkontrolle, Blutbild, Heuanalyse, Telefonat",
+          "Anamnesebogen zum Verschicken, deine Kundin füllt ihn am Handy aus",
+          "Futterpläne mit Nährstoffrechnung nach GfE, dazu ein Blatt für die Stallwand",
+          "Zehn fertige Textbausteine, mit einem Klick eingefügt",
+          "Wiedervorlage mit Erinnerung per E-Mail",
+          "Rechnungen mit fortlaufender Nummer, Kleinunternehmerregelung und eigenem Logo",
+          "Nachrichten und Fotos deiner Kundin direkt am Pferd, mit Antwort per Mail",
+          "Datenexport und Löschung je Kundin, dazu ein Muster für den AV-Vertrag",
+        ],
+      },
+      { art: "ueberschrift", text: "Was es nicht kann" },
+      {
+        art: "liste",
+        punkte: [
+          "Keine App zum Herunterladen, EquiDesk läuft im Browser",
+          "Kein Terminkalender mit Online-Buchung, es gibt die Wiedervorlage",
+          "Keine Abrechnung nach GebüH, du schreibst deine Beträge selbst",
+        ],
+      },
+      { art: "ueberschrift", text: "Was es kostet" },
+      {
+        art: "absatz",
+        betont: true,
+        text: "Einmalig 29 € für Testkundinnen. Danach gibt es EquiDesk nur noch als monatlichen Zugang für 19 € im Monat. Wer jetzt kauft, zahlt einmal und behält es.",
+      },
+      {
+        art: "absatz",
+        text: "Zum Vergleich: Praxissoftware für Tierheilpraxen beginnt bei 48 bis 62 € im Monat, und die Rationsberechnung fehlt dort überall.",
+      },
+    ],
+  },
 ];
 
 // ---------------------------------------------------------------------------
