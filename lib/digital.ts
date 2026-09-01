@@ -194,6 +194,12 @@ export const digitalprodukte: DigitalProdukt[] = [
     // Trifft /mineral-klarheit|mineral mastery/i.
     akademieName: "Mineral-Klarheit",
     erwarteterZugang: "mineral-klarheit",
+    bild: {
+      datei: "/images/mineral-klarheit/rechner.webp",
+      alt: "Der Mineralfutter-Eignungscheck im Kurs, mit Eingabefeldern für Gewicht und Lebensphase",
+      breite: 1100,
+      hoehe: 820,
+    },
     beschreibung: [
       {
         art: "absatz",
@@ -270,6 +276,12 @@ export const digitalprodukte: DigitalProdukt[] = [
     // Trifft /basisfutterkurs/i.
     akademieName: "Basisfutterkurs",
     erwarteterZugang: "basisfutterkurs",
+    bild: {
+      datei: "/images/basisfutterkurs/lektionen.webp",
+      alt: "Der Basisfutterkurs mit der Lektionsliste links und dem Kurstext rechts",
+      breite: 1100,
+      hoehe: 820,
+    },
     beschreibung: [
       {
         art: "absatz",

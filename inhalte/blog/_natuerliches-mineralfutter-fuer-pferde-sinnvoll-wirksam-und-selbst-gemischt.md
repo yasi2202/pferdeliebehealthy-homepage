@@ -95,13 +95,13 @@ Sekundäre Pflanzenstoffe können:
 
 Einige Beispiele:
 
-- **Brennnessel & Löwenzahn** → stoffwechselaktivierend, mineralstoffreich
+- **Brennnessel & Löwenzahn**: stoffwechselaktivierend, mineralstoffreich
 
-- **Hagebutte** → antioxidativ, unterstützt Gelenke & Abwehr
+- **Hagebutte**: antioxidativ, unterstützt Gelenke & Abwehr
 
-- **Salbei & Thymian** → antimikrobiell, gut für Atemwege & Darm
+- **Salbei & Thymian**: antimikrobiell, gut für Atemwege & Darm
 
-- **Brombeerblätter** → stärken die Darmschleimhaut
+- **Brombeerblätter**: stärken die Darmschleimhaut
 
 Kräuter liefern also nicht nur selbst Nährstoffe, sondern sorgen dafür, dass
 dein Pferd **das Vorhandene besser verwerten kann**.
@@ -134,11 +134,11 @@ Je vielfältiger die Fütterung, desto stabiler sind:
 
 Samen liefern neben Energie auch Mineralstoffe und Spurenelemente:
 
-- **Hanfsamen** → Zink, Magnesium, hochwertige Fettsäuren
+- **Hanfsamen**: Zink, Magnesium, hochwertige Fettsäuren
 
-- **Leinsamen** → Schleimstoffe, Darmgesundheit
+- **Leinsamen**: Schleimstoffe, Darmgesundheit
 
-- **Sesam** → Calcium, Spurenelemente
+- **Sesam**: Calcium, Spurenelemente
 
 Sie sind **keine isolierten Hochdosislieferanten**, sondern perfekt geeignet
 für eine **natürliche, moderate Ergänzung**.

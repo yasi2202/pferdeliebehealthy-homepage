@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import ProduktKarte from "@/components/ProduktKarte";
 import { kategorien, produkte, shopSichtbar, versandhinweis } from "@/lib/shop";
@@ -88,35 +89,88 @@ function DigitalKarte({ p }: { p: DigitalProdukt }) {
     <li>
       <Link
         href={`/${p.slug}`}
-        className="flex h-full flex-col rounded-[18px] border border-line bg-white p-7 transition-colors hover:border-rose-deep"
+        className="flex h-full flex-col overflow-hidden rounded-[18px] border border-line bg-white transition-colors hover:border-rose-deep"
       >
-        <h3 className="mb-2 font-serif text-[21px] leading-snug">
-          {p.kurzname}
-        </h3>
+        {/* ▸ DAS BILD, WO ES EINES GIBT.
+            Bei den Werkzeugen und Kursen ist es eine echte Aufnahme aus dem
+            Produkt. Die drei E-Books haben keine: Ein PDF sieht auf einem
+            Bild aus wie jedes andere PDF, da fehlt lieber eines als ein
+            nichtssagendes. Die Kachel bleibt dann einfach ohne, das sieht
+            neben den anderen ruhig aus und nicht kaputt.
 
-        <p className="mb-5 flex-grow text-[14.5px] leading-relaxed text-ink-soft">
-          {p.kurz}
-        </p>
+            Der Ausschnitt zeigt den oberen Rand des Bildes (object-top).
+            Mittig beschnitten wären bei einem Bildschirmfoto Kopfzeile und
+            Überschrift weg, also genau das, woran man das Produkt erkennt. */}
+        <div className="relative aspect-[16/9] w-full overflow-hidden border-b border-line bg-cream-deep">
+          {p.bild ? (
+            <Image
+              src={p.bild.datei}
+              alt={p.bild.alt}
+              fill
+              sizes="(min-width: 1024px) 380px, (min-width: 768px) 50vw, 100vw"
+              className="object-cover object-top"
+            />
+          ) : (
+            /* ▸ WAS HIER STEHT, WENN ES KEIN BILD GIBT
+               Die E-Books haben keine Programmansicht, und eine Seite aus
+               einem PDF sieht aus wie jedes andere PDF. Statt einer Lücke
+               steht hier ein Buchsymbol auf ruhiger Fläche. Es behauptet
+               kein Produktbild, sagt aber ehrlich, um welche Art Angebot es
+               sich handelt, und hält die Reihen gleich hoch -- sonst stünde
+               eine hohe Kachel neben einer flachen, und das sieht nach
+               Fehler aus.
 
-        <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
-          {rabatt && (
-            <span className="text-[14px] text-ink-soft line-through tabular-nums">
-              {preisText(p.statt!)}
+               Der Produktname steht bewusst NICHT hier: Er steht schon
+               direkt darunter, und zweimal dasselbe wirkt wie ein Versehen. */
+            <span className="flex h-full items-center justify-center text-rose-deep/40">
+              <svg
+                width="52"
+                height="52"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="1.4"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                aria-hidden="true"
+              >
+                <path d="M4 4.5A1.5 1.5 0 0 1 5.5 3H19v16H5.5A1.5 1.5 0 0 0 4 20.5Z" />
+                <path d="M4 20.5A1.5 1.5 0 0 1 5.5 19H19v2.5H5.5A1.5 1.5 0 0 1 4 20.5Z" />
+                <path d="M8.5 7.5h6M8.5 11h6" />
+              </svg>
             </span>
           )}
-          <span className="font-serif text-[22px] tabular-nums">
-            {preisText(p.preis)}
-          </span>
+        </div>
+
+        <div className="flex flex-grow flex-col p-7">
+          <h3 className="mb-2 font-serif text-[21px] leading-snug">
+            {p.kurzname}
+          </h3>
+
+          <p className="mb-5 flex-grow text-[14.5px] leading-relaxed text-ink-soft">
+            {p.kurz}
+          </p>
+
+          <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
+            {rabatt && (
+              <span className="text-[14px] text-ink-soft line-through tabular-nums">
+                {preisText(p.statt!)}
+              </span>
+            )}
+            <span className="font-serif text-[22px] tabular-nums">
+              {preisText(p.preis)}
+            </span>
 
           {/* Ein Angebot, das noch nicht buchbar ist, gehört trotzdem in die
               Übersicht: Es baut Vorfreude auf. Verschwiegen werden darf der
               Starttermin aber nicht, sonst klickt jemand und stößt an der
               Kasse auf eine Absage. */}
-          {start && (
-            <span className="text-[13.5px] text-rose-deep">
-              ab {start.toLocaleDateString("de-DE")}
-            </span>
-          )}
+            {start && (
+              <span className="text-[13.5px] text-rose-deep">
+                ab {start.toLocaleDateString("de-DE")}
+              </span>
+            )}
+          </div>
         </div>
       </Link>
     </li>

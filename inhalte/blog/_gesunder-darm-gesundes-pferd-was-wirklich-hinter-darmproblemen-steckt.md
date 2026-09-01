@@ -19,7 +19,7 @@ allgemeiner Unruhe**, doch die Ursache bleibt oft unentdeckt.
 Spoiler: Es ist selten „ein Pülverchen zu wenig„, sondern **eine Kette an
 kleinen Störungen**, die das Mikrobiom aus dem Gleichgewicht bringen.
 
-**🔍 Was die Darmflora beeinflusst, oft unterschätzt:**
+**Was die Darmflora beeinflusst, oft unterschätzt:**
 
 Die Mikroorganismen im Dickdarm haben einen klaren Job: **Fasern
 fermentieren**, Energie bereitstellen, Vitamine produzieren, die Immunabwehr
@@ -27,29 +27,29 @@ stabilisieren.
 Aber sie sind wählerisch. Und sie hassen Überraschungen.
 **Diese Faktoren bringen sie aus dem Takt:**
 
-🌀 **Futterwechsel ohne Übergangszeit**
-→ Auch beim Wechsel von Heuchargen oder Koppelzeiten!
+- **Futterwechsel ohne Übergangszeit**
+- Auch beim Wechsel von Heuchargen oder Koppelzeiten!
 
-🍬 **Zu viel Zucker & Stärke**
-→ Nicht nur im Krippenfutter, auch im Heu kann’s schnell zu viel werden.
+- **Zu viel Zucker & Stärke**
+- Nicht nur im Krippenfutter, auch im Heu kann’s schnell zu viel werden.
 
-🥩 **Unausgewogene Eiweißversorgung**
-→ Sowohl Mangel als auch Überschuss können Gärprozesse fördern.
+- **Unausgewogene Eiweißversorgung**
+- Sowohl Mangel als auch Überschuss können Gärprozesse fördern.
 
-🦠 **Schimmel, Keime oder verdorbenes Raufutter**
-→ Ja, selbst bei „optisch gutem Heu„, kontrollier regelmäßig!
+- **Schimmel, Keime oder verdorbenes Raufutter**
+- Ja, selbst bei „optisch gutem Heu„, kontrollier regelmäßig!
 
-💊 **Antibiotika & Medikamente**
-→ Töten nicht nur „schlechte“, sondern auch wichtige Darmbakterien.
+- **Antibiotika & Medikamente**
+- Töten nicht nur „schlechte“, sondern auch wichtige Darmbakterien.
 
-😵 **Stress**
-→ Stallwechsel, Schmerz, Turniere, Gruppendynamik, wirkt immer auch auf den
+- **Stress**
+- Stallwechsel, Schmerz, Turniere, Gruppendynamik, wirkt immer auch auf den
 Darm.
 
-🐛 **Parasiten**
-→ Auch sie verändern das mikrobielle Gleichgewicht massiv.
+- **Parasiten**
+- Auch sie verändern das mikrobielle Gleichgewicht massiv.
 
-**⚠️ Wenn das Gleichgewicht kippt: Dysbiose**
+**Wenn das Gleichgewicht kippt: Dysbiose**
 
 In der Fachsprache nennt man das eine **Dysbiose**, ein Zustand, bei dem
 **gute und schlechte Bakterien in ein ungesundes Verhältnis geraten**.
@@ -84,21 +84,21 @@ schrittweise wieder Stabilität schafft**.
 Mit meiner 3-Phasen-Darmsanierung bekommst du einen **konkreten Fahrplan**,
 wie du:
 
-🟡 **den Darm vorbereitest**,
-🟢 **gezielt aufbaust**
-🔵 und langfristig stabilisierst.
+- **den Darm vorbereitest**,
+- **gezielt aufbaust**
+- und langfristig stabilisierst.
 
 Und zwar **ohne unnötige Zusätze oder „Wunderpülverchen“**, sondern mit
-✔️ Klarheit,
-✔️ Struktur
-✔️ und nachhaltigen Empfehlungen aus der Praxis.
+- Klarheit,
+- Struktur
+- und nachhaltigen Empfehlungen aus der Praxis.
 
 ### **Bonus: 14 Tage Audiobegleitung**
 
 Damit du dich nicht allein durch Fachtexte wühlen musst, sondern jeden Tag
 konkrete Impulse bekommst.
 
-📘 👉 Hier geht’s zur 3-Phasen-Darmsanierung
+Hier geht’s zur 3-Phasen-Darmsanierung
 
 ### Gesunder Darm braucht keinen Hokus-Pokus
 

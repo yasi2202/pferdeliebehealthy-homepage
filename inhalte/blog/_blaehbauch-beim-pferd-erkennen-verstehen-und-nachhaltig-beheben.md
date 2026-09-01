@@ -84,7 +84,7 @@ sind:
 
 - Veränderte Darmgeräusche oder völlige Stille im Bauchbereich
 
-⚠️ **Bei Verdacht auf Gaskolik sofort einen Tierarzt rufen!**
+**Bei Verdacht auf Gaskolik sofort einen Tierarzt rufen!**
 Je schneller behandelt wird, desto geringer das Risiko für Folgeschäden.
 
 ## Soforthilfe und Vorbeugung
@@ -139,7 +139,7 @@ geeignet**, nicht nur für akute Fälle.
 Denn: Ein gesunder Darm ist die Basis für Leistungsfähigkeit, Wohlbefinden und
 ein starkes Immunsystem.
 
-➡️ Hier geht’s zu deinem 3-Phasen-Darmsanierungsplan
+Hier geht’s zu deinem 3-Phasen-Darmsanierungsplan
 
 ###
 
