@@ -234,6 +234,31 @@ export default async function AuswertungSeite() {
           </p>
         </div>
 
+        {/* ------------------------------------------------ Für die Steuer */}
+        <div className="mb-10 rounded-[18px] bg-ink p-6 text-cream sm:p-7">
+          <h2 className="mb-3 font-serif text-[21px]">Für deine Buchhaltung</h2>
+
+          <p className="mb-6 text-[15px] leading-relaxed text-cream/80">
+            Alle bezahlten Verkäufe als Tabelle, mit Rechnungsnummer, Datum,
+            Brutto, Netto und dem enthaltenen Steuerbetrag. Das ist die Datei,
+            die dein Steuerbüro einlesen kann.
+          </p>
+
+          <a
+            href="/api/admin-bestellungen"
+            className="inline-block rounded-full bg-rose px-7 py-3.5 text-[15px] font-medium text-ink transition-colors hover:bg-cream"
+          >
+            Verkäufe als CSV
+          </a>
+
+          <p className="mt-5 text-[13px] leading-relaxed text-cream/60">
+            Das ist ein Journal, also die Liste aller Vorgänge. Die einzelnen
+            Rechnungen sind die Mails, die deine Kundinnen bekommen haben. Für
+            die laufende Buchhaltung reicht diese Liste, für eine Prüfung
+            solltest du auch die Rechnungen selbst vorlegen können.
+          </p>
+        </div>
+
         {/* ------------------------------------------------------- Fusszeile */}
         <div className="rounded-[18px] border border-line bg-cream-deep p-6">
           <div className="grid grid-cols-1 gap-4 text-[14.5px] sm:grid-cols-3">
