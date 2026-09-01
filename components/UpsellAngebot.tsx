@@ -37,6 +37,7 @@ export default function UpsellAngebot({
   grund,
   ablehnenZiel,
   ablehnenText,
+  kaufZiel,
 }: {
   nummer: string;
   token: string;
@@ -54,12 +55,22 @@ export default function UpsellAngebot({
    *  einen gibt, sonst direkt zur Dankeseite. */
   ablehnenZiel: string;
   ablehnenText: string;
+  /**
+   * Wohin es geht, wenn ANGENOMMEN wurde.
+   *
+   * ▸ DAS MUSS GETRENNT VOM ABLEHNEN-ZIEL SEIN, und genau daran hat es
+   *   gefehlt: Vorher führte beides an dieselbe Stelle. Wer das Angebot
+   *   annahm, landete danach beim Ersatzangebot, das nur für Ablehnende
+   *   gedacht ist. Sie hatte gerade gekauft und bekam sofort das nächste
+   *   Angebot vorgesetzt.
+   */
+  kaufZiel: string;
 }) {
   const router = useRouter();
   const [laeuft, setLaeuft] = useState(false);
   const [hinweis, setHinweis] = useState<string | null>(null);
 
-  const weiter = () => router.push(ablehnenZiel);
+  const ablehnen = () => router.push(ablehnenZiel);
 
   const annehmen = async () => {
     if (laeuft) return;
@@ -76,10 +87,11 @@ export default function UpsellAngebot({
 
       const daten = await antwort.json();
 
-      // Durchgelaufen, oder es war schon angenommen. In beiden Fällen ist
-      // alles in Ordnung und es geht weiter.
+      // Durchgelaufen, oder sie hatte es schon. In beiden Fällen ist alles
+      // in Ordnung, und es geht zur Dankeseite -- NICHT zum Ersatzangebot.
+      // Das ist nur für die gedacht, die abgelehnt haben.
       if (daten.ergebnis === "bezahlt" || daten.ergebnis === "schon_gekauft") {
-        weiter();
+        router.push(kaufZiel);
         return;
       }
 
@@ -162,7 +174,7 @@ export default function UpsellAngebot({
 
       <button
         type="button"
-        onClick={weiter}
+        onClick={ablehnen}
         disabled={laeuft}
         className="mt-3 w-full rounded-full px-6 py-3 text-[14.5px] text-ink-soft underline underline-offset-4 transition-colors hover:text-ink disabled:opacity-40"
       >

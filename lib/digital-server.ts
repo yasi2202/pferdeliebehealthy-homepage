@@ -102,6 +102,10 @@ export type DigitalBestellung = {
   /** Die fortlaufende Nummer, die die Datenbank bei der Zahlung vergibt.
    *  Vorher null. Siehe den Auslöser in datenbank/digitalbestellungen.sql. */
   rechnungsnummer?: string | null;
+  /** Wann die Bestellung angelegt und wann sie bezahlt wurde. Die Datenbank
+   *  füllt beides selbst, deshalb stehen sie nur beim Lesen zur Verfügung. */
+  angelegt_am?: string;
+  bezahlt_am?: string | null;
   artikel: DigitalArtikel[];
   /** Was tatsächlich zu zahlen war, nach Abzug eines Rabatts. In Cent. */
   gesamt: number;

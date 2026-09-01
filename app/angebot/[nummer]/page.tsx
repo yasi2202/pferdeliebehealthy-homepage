@@ -98,6 +98,7 @@ export default async function AngebotSeite({
           // Wer ablehnt, sieht das günstigere Angebot, sofern die Kette eines
           // vorsieht. Der Text sagt schon hier, was kommt: Ein "Nein danke",
           // hinter dem noch ein Angebot wartet, ärgert sonst.
+          kaufZiel={`/danke/${nummer}?t=${t}`}
           ablehnenZiel={
             hatDownsell ? `/downsell/${nummer}?t=${t}` : `/danke/${nummer}?t=${t}`
           }

@@ -3,6 +3,7 @@ import Link from "next/link";
 import AdminAnmeldung from "@/components/AdminAnmeldung";
 import { adminEingerichtet, istAngemeldet } from "@/lib/admin-zugang";
 import { auswerten } from "@/lib/auswertung";
+import { supabaseAlle } from "@/lib/versand";
 import { preisText } from "@/lib/shop";
 
 // ---------------------------------------------------------------------------
@@ -75,6 +76,21 @@ export default async function AuswertungSeite() {
   }
 
   const a = await auswerten();
+
+  // Die letzten Verkaefe mit Rechnungsnummer, fuer die Ablage. Bewusst nur
+  // die letzten fuenfzig: Wer aeltere braucht, nimmt den CSV-Export.
+  const rechnungen =
+    (await supabaseAlle<{
+      nummer: string;
+      rechnungsnummer: string | null;
+      bezahlt_am: string | null;
+      angelegt_am: string;
+      vorname: string;
+      nachname: string;
+      gesamt: number;
+    }>(
+      "digitalbestellungen?status=eq.bezahlt&select=nummer,rechnungsnummer,bezahlt_am,angelegt_am,vorname,nachname,gesamt&order=bezahlt_am.desc&limit=50",
+    )) ?? [];
 
   if (!a.gelesen) {
     return (
@@ -233,6 +249,61 @@ export default async function AuswertungSeite() {
             Produkt sich allein verkauft und welches nur im Windschatten.
           </p>
         </div>
+
+        {/* -------------------------------------------------- Die Rechnungen */}
+        {/* Die letzten Verkäufe mit einem Weg zur einzelnen Rechnung. Die
+            Mail geht an die Kundin, du brauchst dasselbe Papier aber auch
+            für deine Ablage. */}
+        {rechnungen.length > 0 && (
+          <div className="mb-10 rounded-[18px] border border-line bg-white p-6 sm:p-7">
+            <h2 className="mb-1 font-serif text-[21px]">Deine Rechnungen</h2>
+
+            <p className="mb-5 text-[13.5px] leading-relaxed text-ink-soft">
+              Zum Ansehen und als PDF speichern. Im Browser mit Strg und P
+              drucken, dort „Als PDF speichern" wählen.
+            </p>
+
+            <div className="overflow-x-auto">
+              <table className="w-full text-[14.5px]">
+                <thead>
+                  <tr className="border-b border-line text-left text-[13px] uppercase tracking-[0.08em] text-ink-soft">
+                    <th className="pb-2 pr-5 font-normal">Rechnung</th>
+                    <th className="pb-2 pr-5 font-normal">Datum</th>
+                    <th className="pb-2 pr-5 font-normal">Kundin</th>
+                    <th className="pb-2 pl-5 text-right font-normal">Betrag</th>
+                    <th className="pb-2 pl-5 text-right font-normal"></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {rechnungen.map((r) => (
+                    <tr key={r.nummer} className="border-b border-line last:border-0">
+                      <td className="py-2.5 pr-5 tabular-nums">
+                        {r.rechnungsnummer ?? "–"}
+                      </td>
+                      <td className="py-2.5 pr-5 whitespace-nowrap text-ink-soft">
+                        {new Date(r.bezahlt_am ?? r.angelegt_am).toLocaleDateString("de-DE")}
+                      </td>
+                      <td className="py-2.5 pr-5">
+                        {r.vorname} {r.nachname}
+                      </td>
+                      <td className="py-2.5 pl-5 text-right tabular-nums whitespace-nowrap">
+                        {preisText(r.gesamt)}
+                      </td>
+                      <td className="py-2.5 pl-5 text-right whitespace-nowrap">
+                        <Link
+                          href={`/admin/rechnung/${r.nummer}`}
+                          className="text-[13.5px] text-rose-deep underline underline-offset-2"
+                        >
+                          ansehen
+                        </Link>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        )}
 
         {/* ------------------------------------------------ Für die Steuer */}
         <div className="mb-10 rounded-[18px] bg-ink p-6 text-cream sm:p-7">

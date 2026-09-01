@@ -90,6 +90,7 @@ export default async function DownsellSeite({
           grund={anschluss.downsellGrund ?? ""}
           ersparnis={ersparnis(anschluss, "downsell")}
           stufe="downsell"
+          kaufZiel={`/danke/${nummer}?t=${t}`}
           ablehnenZiel={`/danke/${nummer}?t=${t}`}
           ablehnenText="Nein danke, weiter zu meinem Zugang"
         />
