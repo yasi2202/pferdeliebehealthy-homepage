@@ -83,6 +83,10 @@ export default function DigitalKasse({
   const [laeuft, setLaeuft] = useState(false);
   const [fehler, setFehler] = useState<string | null>(null);
 
+  // Bei einem Fernlehrgang gibt es kein Verzichtshäkchen, deshalb darf es
+  // dort auch nicht Voraussetzung für den Kauf sein.
+  const brauchtVerzicht = produkt.art !== "fernunterricht";
+
   const vollstaendig =
     vorname.trim().length >= 2 &&
     nachname.trim().length >= 2 &&
@@ -91,7 +95,7 @@ export default function DigitalKasse({
     plz.trim().length >= 4 &&
     ort.trim().length >= 2 &&
     einverstanden &&
-    sofort;
+    (sofort || !brauchtVerzicht);
 
   const zuZahlen = rabatt ? rabatt.endpreis : produkt.preis;
 
@@ -420,8 +424,21 @@ export default function DigitalKasse({
             }`}
           >
             <span className="text-[16px] font-medium">Gesamt</span>
-            <span className="font-serif text-[26px] tabular-nums">
-              {preisText(zuZahlen)}
+
+            <span className="flex items-baseline gap-3">
+              {/* Der frühere Preis, falls es einen gibt und gerade kein
+                  Rabattcode läuft. Bei aktivem Code stünden sonst zwei
+                  durchgestrichene Beträge nebeneinander, und niemand wüsste,
+                  worauf sich was bezieht. Wann ein Streichpreis überhaupt
+                  gesetzt werden darf, steht bei `statt` in lib/digital.ts. */}
+              {!rabatt && produkt.statt && produkt.statt > produkt.preis && (
+                <span className="text-[16px] text-ink-soft line-through tabular-nums">
+                  {preisText(produkt.statt)}
+                </span>
+              )}
+              <span className="font-serif text-[26px] tabular-nums">
+                {preisText(zuZahlen)}
+              </span>
             </span>
           </div>
 
@@ -488,6 +505,25 @@ export default function DigitalKasse({
                 das hier vorher bestätigt hat. Ohne diesen Satz arbeitest du
                 bis zu vierzehn Werktage an einer Akte und bekommst bei einem
                 Widerruf nichts. */}
+          {/* ▸ BEI EINEM FERNLEHRGANG STEHT HIER KEIN HÄKCHEN, SONDERN EIN
+              HINWEIS. Das ist kein Versehen und auch keine Bequemlichkeit:
+              § 4 FernUSG gibt der Teilnehmerin ein eigenes Widerrufsrecht,
+              und § 8 FernUSG erklärt jede Abweichung zu ihrem Nachteil für
+              unwirksam. Ein Häkchen "mein Widerrufsrecht erlischt" hätte
+              hier also keine Wirkung. Es stehen zu lassen wäre schlimmer als
+              es wegzulassen: Es sähe nach einer Absicherung aus, die es
+              nicht gibt, und im Streitfall stünde die Frage im Raum, ob die
+              Teilnehmerin bewusst falsch informiert wurde. */}
+          {!brauchtVerzicht && (
+            <p className="mt-4 rounded-[12px] bg-cream-deep p-4 text-[13.5px] leading-relaxed text-ink-soft">
+              Für diesen Lehrgang gilt das Widerrufsrecht nach dem
+              Fernunterrichtsschutzgesetz: Du kannst innerhalb von vierzehn
+              Tagen widerrufen, auch wenn du schon angefangen hast. Nach sechs
+              Monaten kannst du den Vertrag ausserdem jederzeit kündigen.
+            </p>
+          )}
+
+          {brauchtVerzicht && (
           <label className="mt-4 flex cursor-pointer gap-3 text-[13.5px] leading-relaxed text-ink-soft">
             <input
               type="checkbox"
@@ -516,6 +552,7 @@ export default function DigitalKasse({
               )}
             </span>
           </label>
+          )}
 
           {/* --------------------------------------------------- Häkchen 3 */}
           <label className="mt-4 flex cursor-pointer gap-3 text-[13.5px] leading-relaxed text-ink-soft">

@@ -70,6 +70,35 @@ export async function POST(request: Request) {
     );
   }
 
+  // ▸ DER VERTRIEBSBEGINN, UND WARUM ER HIER GEPRÜFT WIRD UND NICHT NUR AUF
+  //   DER SEITE
+  //   Zulassungspflichtiger Fernunterricht darf erst vertrieben werden, wenn
+  //   die Zulassung der ZFU vorliegt. Ein Vertrag davor ist nach § 7 FernUSG
+  //   nichtig: Die Teilnehmerin könnte ihr Geld zurückverlangen, und zwar
+  //   auch noch nach Monaten, während der Lehrgang längst gelaufen ist.
+  //
+  //   Ein Hinweis auf der Verkaufsseite würde das nicht verhindern, weil die
+  //   Adresse der Kasse bekannt sein kann. Deshalb steht die Prüfung hier,
+  //   wo der Vertrag tatsächlich zustande kommt.
+  //
+  //   Freigeschaltet wird über `verkaufAb` in lib/digital.ts. Sobald die
+  //   Zulassung da ist, kann dort das Datum weg.
+  if (produkt.verkaufAb) {
+    const start = new Date(`${produkt.verkaufAb}T00:00:00+02:00`);
+
+    if (new Date() < start) {
+      return Response.json(
+        {
+          fehler:
+            `Dieses Angebot ist noch nicht buchbar. Es startet am ` +
+            `${start.toLocaleDateString("de-DE")}. Schreib mir gern an ` +
+            `info@pferdeliebehealthy.de, dann sage ich dir Bescheid.`,
+        },
+        { status: 403 },
+      );
+    }
+  }
+
   const vorname = kuerzen(daten.vorname, 60);
   const nachname = kuerzen(daten.nachname, 60);
   const email = kuerzen(daten.email, 200).toLowerCase();

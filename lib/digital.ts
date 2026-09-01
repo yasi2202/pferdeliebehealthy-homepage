@@ -72,8 +72,26 @@ export type DigitalProdukt = {
    *             Widerruf bleiben also bestehen, egal was angekreuzt wird, und
    *             die Kundin bekommt anteilig Geld zurück. Das lässt sich nicht
    *             wegankreuzen, deshalb steht dort ein anderer Häkchentext.
+   *   "fernunterricht" = ein Lehrgang nach dem Fernunterrichtsschutzgesetz,
+   *             also die Ausbildung. Dort gilt ein EIGENES Widerrufsrecht aus
+   *             § 4 FernUSG, und § 8 FernUSG macht jede Abweichung zum
+   *             Nachteil der Teilnehmerin unwirksam. Ein Häkchen "mein
+   *             Widerrufsrecht erlischt" hätte dort also schlicht keine
+   *             Wirkung, es würde nur so aussehen. Deshalb steht in der Kasse
+   *             bei dieser Art gar kein Verzichtshäkchen, sondern ein
+   *             ehrlicher Hinweis auf die vierzehn Tage.
    */
-  art: "kurs" | "dienstleistung";
+  art: "kurs" | "dienstleistung" | "fernunterricht";
+  /**
+   * Ab wann verkauft werden darf, als "2026-10-01". Fehlt der Wert, gilt das
+   * Angebot sofort.
+   *
+   * ▸ WOZU DAS DA IST: Zulassungspflichtiger Fernunterricht darf erst
+   *   vertrieben werden, wenn die Zulassung vorliegt. Die Kasse weist einen
+   *   Kauf vor diesem Datum ab, statt sich darauf zu verlassen, dass niemand
+   *   die Adresse kennt.
+   */
+  verkaufAb?: string;
   /** Die Zeile unter dem Namen, kurz. */
   kurz: string;
   /** Was in der Kasse als Leistungsbeschreibung über dem Knopf steht. */
@@ -297,6 +315,52 @@ export const digitalprodukte: DigitalProdukt[] = [
       {
         art: "absatz",
         text: "Rationen berechnen, Nährstoffe ausgleichen und die Fütterung deines Pferdes optimieren. Der Rechner, der versteht, was dein Pferd wirklich braucht.",
+      },
+    ],
+  },
+  {
+    slug: "ausbildung",
+    name: "Ausbildung Ganzheitliche Pferdefütterung",
+    kurzname: "Ausbildung",
+    // 899 € einmalig, so im ZFU-Antrag vom 20.08.2026 verbindlich angegeben.
+    // Der Streichpreis ist belegt, es wurde nachweislich zu 1.050 und 1.100 €
+    // verkauft.
+    preis: 89900,
+    statt: 110000,
+    mwst: 19,
+    // ▸ FERNUNTERRICHT, und das ändert mehr, als man denkt. Siehe oben beim
+    //   Typ. Kein Verzichtshäkchen, dafür ein ehrlicher Hinweis.
+    art: "fernunterricht",
+    // ▸ VERTRIEBSBEGINN AUS DEM ZFU-ANTRAG. Vorher weist die Kasse jeden
+    //   Kauf ab. Warum das wichtig ist, steht ausführlich in
+    //   app/api/digitalkasse/route.ts.
+    verkaufAb: "2026-10-01",
+    kurz:
+      "Zwölf Monate, acht Module, 104 Lektionen, mit Abschlussprüfung und " +
+      "Zertifikat.",
+    leistung:
+      "Fernlehrgang Ganzheitliche Pferdefütterung über zwölf Monate, acht " +
+      "Module mit 104 Lektionen, Lernerfolgskontrollen, persönliche " +
+      "Betreuung, Abschlussprüfung und Zertifikat. Umfang rund 155 " +
+      "Zeitstunden, etwa drei Wochenstunden.",
+    // Trifft in der Akademie die Regel
+    // /ausbildung (nat[üu]rliche|ganzheitliche) pferdef[üu]tterung/i.
+    // Geprüft gegen die Ausschlussliste: weder /warteliste/i noch
+    // /schnupperkurs/i noch /^info ausbildung/i greifen.
+    akademieName: "Ausbildung Ganzheitliche Pferdefütterung",
+    erwarteterZugang: "ausbildung",
+    beschreibung: [
+      {
+        art: "absatz",
+        text: "Die mehrstufige Ausbildung zur ganzheitlichen Pferdefütterung. Acht Module, die dich Schritt für Schritt vom Anatomie-Verständnis bis zur eigenständigen Rationsgestaltung führen.",
+      },
+      {
+        art: "absatz",
+        text: "Zwölf Monate Lehrgangsdauer bei etwa drei Wochenstunden, das sind rund 155 Zeitstunden. Du kannst jederzeit beginnen und in deinem Tempo arbeiten.",
+      },
+      {
+        art: "absatz",
+        text: "Am Ende steht eine Abschlussprüfung aus Fallbeispielen, einem Fragekatalog aus drei Modulen, einem Futterplan und einer Anamnese-Aufgabe. Zehn Tage Bearbeitungszeit, zu Hause, Rückfragen ausdrücklich erwünscht.",
       },
     ],
   },
