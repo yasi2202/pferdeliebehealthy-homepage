@@ -92,6 +92,15 @@ export type DigitalProdukt = {
    *   die Adresse kennt.
    */
   verkaufAb?: string;
+  /**
+   * Wohin das Angebot auf der Uebersichtsseite gehoert.
+   *
+   * ▸ Das ist eine THEMATISCHE Einordnung, nicht dieselbe wie `art`. `art`
+   *   sagt, welches Widerrufsrecht gilt; `gruppe` sagt, wo eine Besucherin
+   *   danach sucht. Ein Kurs und ein E-Book haben dasselbe Widerrufsrecht,
+   *   aber wer ein Nachschlagewerk sucht, sucht nicht in den Kursen.
+   */
+  gruppe: "einstieg" | "kurs" | "werkzeug" | "begleitung";
   /** Die Zeile unter dem Namen, kurz. */
   kurz: string;
   /** Was in der Kasse als Leistungsbeschreibung über dem Knopf steht. */
@@ -120,6 +129,7 @@ export type DigitalProdukt = {
 export const digitalprodukte: DigitalProdukt[] = [
   {
     slug: "salzratgeber",
+    gruppe: "einstieg",
     name: "Natürliche Salzversorgung für dein Pferd",
     kurzname: "Salzratgeber",
     preis: 799,
@@ -143,6 +153,7 @@ export const digitalprodukte: DigitalProdukt[] = [
   },
   {
     slug: "magen-reset",
+    gruppe: "einstieg",
     name: "Magen Reset",
     kurzname: "Magen Reset",
     preis: 799,
@@ -165,6 +176,7 @@ export const digitalprodukte: DigitalProdukt[] = [
   },
   {
     slug: "mineral-klarheit",
+    gruppe: "kurs",
     name: "Mineral-Klarheit",
     kurzname: "Mineral-Klarheit",
     // 27 € statt regulär 49 €, von Yasemin am 01.09.2026 festgelegt.
@@ -191,6 +203,7 @@ export const digitalprodukte: DigitalProdukt[] = [
   },
   {
     slug: "ganzjahresfutterplan",
+    gruppe: "kurs",
     name: "Ganzjahresfutterplan für Pferde, natürlich durchs Jahr",
     kurzname: "Ganzjahresfutterplan",
     preis: 2900,
@@ -238,6 +251,7 @@ export const digitalprodukte: DigitalProdukt[] = [
   },
   {
     slug: "basisfutterkurs",
+    gruppe: "kurs",
     name: "Basisfutterkurs",
     kurzname: "Basisfutterkurs",
     // Regulärer Einzelpreis 39 €, von Yasemin am 01.09.2026 festgelegt.
@@ -269,6 +283,7 @@ export const digitalprodukte: DigitalProdukt[] = [
   },
   {
     slug: "darmaufbau",
+    gruppe: "kurs",
     name: "Darmaufbau beim Pferd",
     kurzname: "Darmaufbau",
     preis: 3900,
@@ -292,6 +307,7 @@ export const digitalprodukte: DigitalProdukt[] = [
   },
   {
     slug: "symptom-navigator",
+    gruppe: "werkzeug",
     name: "Symptom-Navigator",
     kurzname: "Symptom-Navigator",
     preis: 3900,
@@ -319,6 +335,7 @@ export const digitalprodukte: DigitalProdukt[] = [
   },
   {
     slug: "ratiopro",
+    gruppe: "werkzeug",
     name: "RatioPro",
     kurzname: "RatioPro",
     preis: 6900,
@@ -346,6 +363,7 @@ export const digitalprodukte: DigitalProdukt[] = [
   },
   {
     slug: "ausbildung",
+    gruppe: "begleitung",
     name: "Ausbildung Ganzheitliche Pferdefütterung",
     kurzname: "Ausbildung",
     // 899 € einmalig, so im ZFU-Antrag vom 20.08.2026 verbindlich angegeben.
@@ -392,6 +410,7 @@ export const digitalprodukte: DigitalProdukt[] = [
   },
   {
     slug: "pferdeliebe-365",
+    gruppe: "begleitung",
     name: "Pferdeliebe 365 – deine 1:1 Futterberatung als Gesundheitsakte",
     kurzname: "Pferdeliebe 365",
     // 249 € statt 399 €, von Yasemin am 01.09.2026 so festgelegt. Der
@@ -462,6 +481,7 @@ export const digitalprodukte: DigitalProdukt[] = [
   },
   {
     slug: "equidesk",
+    gruppe: "werkzeug",
     name: "EquiDesk · Kundenverwaltung für Futterberaterinnen",
     kurzname: "EquiDesk",
     preis: 2900,

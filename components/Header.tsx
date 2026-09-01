@@ -6,17 +6,19 @@ import { usePathname } from "next/navigation";
 import { insider } from "@/lib/insider";
 import { futterCheck, mitgliederbereich } from "@/lib/seite";
 import WarenkorbKnopf from "@/components/WarenkorbKnopf";
-import { shopSichtbar } from "@/lib/shop";
 
 const links = [
   { href: "/#wege", label: "Angebote", extern: false },
-  // Der eigene Shop steht erst dann hier, wenn er freigeschaltet ist.
-  // Solange nicht, zeigt der Menüpunkt weiter auf den alten Shop, damit
-  // Besucherinnen nicht ins Leere laufen. Der Schalter dafür sitzt in
-  // lib/shop.ts, dort steht auch die Begründung.
-  shopSichtbar
-    ? { href: "/shop", label: "Shop", extern: false }
-    : { href: "https://shop.pferdeliebehealthy.de/", label: "Shop", extern: true },
+  // ▸ SEIT DEM 01.09.2026 FÜHRT „Shop" AUF DIE EIGENE ÜBERSICHT, und zwar
+  //   unabhängig von `shopSichtbar`. Dort stehen jetzt alle digitalen
+  //   Angebote, ein Klick auf eine Kachel führt auf die Produktseite.
+  //   Vorher zeigte der Punkt auf den alten WooCommerce-Shop, und die
+  //   Produktseiten waren nirgends verlinkt.
+  //
+  //   `shopSichtbar` steuert weiterhin, ob auf dieser Seite auch die
+  //   Futtermittel erscheinen. Solange der alte Shop läuft, tun sie es
+  //   nicht.
+  { href: "/shop", label: "Shop", extern: false },
   { href: "/ausbildung", label: "Ausbildung", extern: false },
   { href: "/blog", label: "Blog", extern: false },
   { href: "/insider", label: "Insider", extern: false },
