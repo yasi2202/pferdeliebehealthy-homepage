@@ -30,6 +30,10 @@ import { marked } from "marked";
 
 const ORDNER = path.join(process.cwd(), "inhalte", "blog");
 
+/** Ein Kapitel im Beitrag, also eine `##`-Ueberschrift. Daraus entsteht oben
+ *  im Beitrag das Inhaltsverzeichnis. */
+export type Kapitel = { anker: string; titel: string };
+
 export type BlogBeitrag = {
   slug: string;
   titel: string;
@@ -43,18 +47,25 @@ export type BlogBeitrag = {
   /** Der Satz, der bei Google unter dem Titel steht. Das Wichtigste am
    *  ganzen Beitrag: Er entscheidet, ob jemand klickt. */
   beschreibung: string;
-  /** Wird auf der Uebersicht zum Filterknopf. */
+  /** Wird auf der Uebersicht zum Filterknopf und bestimmt die Farbe der
+   *  Karte. Siehe `kategorieFarbe()`. */
   kategorie: string;
   /** Schluessel eines Angebots aus lib/angebote.ts, das unter dem Beitrag
    *  empfohlen wird. Leer lassen, wenn keins wirklich passt. */
   angebot: string;
   bild: string;
   bildText: string;
+  /** Geschaetzte Lesezeit in Minuten. Steht auf der Karte und im Kopf des
+   *  Beitrags: Wer weiss, dass es sechs Minuten dauert, faengt eher an als
+   *  jemand, der vor einer Textwand unbekannter Laenge steht. */
+  lesezeit: number;
   /** Fertiges HTML, aus dem Markdown erzeugt */
   html: string;
+  /** Die `##`-Ueberschriften des Beitrags, fuer das Inhaltsverzeichnis. */
+  kapitel: Kapitel[];
 };
 
-export type BlogKopf = Omit<BlogBeitrag, "html">;
+export type BlogKopf = Omit<BlogBeitrag, "html" | "kapitel">;
 
 function datumLesbar(wert: unknown): string {
   if (!wert) return "";
@@ -70,7 +81,57 @@ function dateienLesen(): string[] {
     .filter((f) => f.endsWith(".md") && !f.startsWith("_"));
 }
 
-function kopfBauen(slug: string, data: Record<string, unknown>): BlogKopf {
+/** Aus einer Ueberschrift eine Sprungmarke machen: "Die vier Dinge" wird zu
+ *  "die-vier-dinge". Umlaute werden ausgeschrieben, damit in der Adresse
+ *  keine Prozentzeichen landen. */
+function ankerName(text: string): string {
+  return text
+    .toLowerCase()
+    .replace(/ä/g, "ae")
+    .replace(/ö/g, "oe")
+    .replace(/ü/g, "ue")
+    .replace(/ß/g, "ss")
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-+|-+$/g, "");
+}
+
+/** Lesezeit in Minuten, aufgerundet. 200 Woerter je Minute ist der Wert, mit
+ *  dem ueblicherweise gerechnet wird; genauer geht es nicht, und genauer
+ *  muss es auch nicht sein. */
+function lesezeitSchaetzen(text: string): number {
+  const woerter = text.trim().split(/\s+/).filter(Boolean).length;
+  return Math.max(1, Math.round(woerter / 200));
+}
+
+/** Haengt an jede `<h2>` eine Sprungmarke und sammelt sie ein.
+ *
+ *  marked vergibt selbst keine Kennungen mehr, ohne sie kann das
+ *  Inhaltsverzeichnis aber nirgendwohin springen. Die Kennung wird aus der
+ *  Ueberschrift gebildet und bei Dopplungen durchnummeriert. */
+function ankerSetzen(html: string): { html: string; kapitel: Kapitel[] } {
+  const kapitel: Kapitel[] = [];
+  const vergeben = new Set<string>();
+
+  const neu = html.replace(
+    /<h2>([\s\S]*?)<\/h2>/g,
+    (_treffer, inhalt: string) => {
+      const titel = inhalt.replace(/<[^>]+>/g, "").trim();
+      let anker = ankerName(titel) || `abschnitt-${kapitel.length + 1}`;
+      while (vergeben.has(anker)) anker = `${anker}-2`;
+      vergeben.add(anker);
+      kapitel.push({ anker, titel });
+      return `<h2 id="${anker}">${inhalt}</h2>`;
+    }
+  );
+
+  return { html: neu, kapitel };
+}
+
+function kopfBauen(
+  slug: string,
+  data: Record<string, unknown>,
+  inhalt: string
+): BlogKopf {
   return {
     slug,
     titel: String(data.titel ?? slug),
@@ -81,6 +142,7 @@ function kopfBauen(slug: string, data: Record<string, unknown>): BlogKopf {
     angebot: String(data.angebot ?? ""),
     bild: String(data.bild ?? ""),
     bildText: String(data.bildText ?? ""),
+    lesezeit: lesezeitSchaetzen(inhalt),
   };
 }
 
@@ -89,8 +151,8 @@ export function alleBlogBeitraege(): BlogKopf[] {
   return dateienLesen()
     .map((datei) => {
       const roh = fs.readFileSync(path.join(ORDNER, datei), "utf8");
-      const { data } = matter(roh);
-      return kopfBauen(datei.replace(/\.md$/, ""), data);
+      const { data, content } = matter(roh);
+      return kopfBauen(datei.replace(/\.md$/, ""), data, content);
     })
     .sort((a, b) => b.datum.localeCompare(a.datum));
 }
@@ -105,10 +167,10 @@ export function blogBeitragLesen(slug: string): BlogBeitrag | null {
   if (!fs.existsSync(pfad)) return null;
 
   const { data, content } = matter(fs.readFileSync(pfad, "utf8"));
-  return {
-    ...kopfBauen(slug, data),
-    html: marked.parse(content, { async: false }) as string,
-  };
+  const roh = marked.parse(content, { async: false }) as string;
+  const { html, kapitel } = ankerSetzen(roh);
+
+  return { ...kopfBauen(slug, data, content), html, kapitel };
 }
 
 /** Andere Beitraege derselben Kategorie, hoechstens drei.
@@ -123,6 +185,9 @@ export function verwandteBeitraege(slug: string, kategorie: string): BlogKopf[] 
   const rest = alle.filter((b) => b.kategorie !== kategorie);
   return [...gleiche, ...rest].slice(0, 3);
 }
+
+// Die Kartenfarben stehen in lib/blog-farben.ts, weil die Liste im Browser
+// laeuft und diese Datei hier nicht dorthin darf (sie liest den Ordner).
 
 /** Fuer die Anzeige: 01.09.2026 statt 2026-09-01 */
 export function datumDeutsch(datum: string): string {

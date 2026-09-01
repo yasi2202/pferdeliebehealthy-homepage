@@ -8,6 +8,7 @@ import {
   verwandteBeitraege,
   datumDeutsch,
 } from "@/lib/blog";
+import { kategorieFarbe } from "@/lib/blog-farben";
 import { url } from "@/lib/seo";
 import { insider } from "@/lib/insider";
 import InsiderFormular from "@/components/InsiderFormular";
@@ -63,183 +64,264 @@ export default async function BlogBeitragSeite({ params }: Props) {
   const bild = beitrag.bild || "/images/yasi-helena.jpg";
 
   return (
-    <main className="py-14 sm:py-20 px-6 sm:px-8">
-      <article className="max-w-2xl mx-auto">
-        {/* Sagt Google in seiner eigenen Sprache, was hier steht, von wem es
-            ist und wann es zuletzt geprüft wurde. Ohne diese Angaben taucht
-            in den Suchtreffern weder Datum noch Autorin auf. */}
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "Article",
-              headline: beitrag.titel,
-              description: beitrag.beschreibung,
-              inLanguage: "de-DE",
-              ...(beitrag.datum ? { datePublished: beitrag.datum } : {}),
-              ...(beitrag.aktualisiert
-                ? { dateModified: beitrag.aktualisiert }
-                : {}),
-              author: {
-                "@type": "Person",
-                name: "Yasemin Halac",
-                jobTitle: "Ernährungsberaterin für Pferde",
-                url: url("/"),
-              },
-              publisher: {
-                "@type": "Organization",
-                name: "Pferdeliebehealthy",
-                url: url("/"),
-              },
-              image: url(bild),
-              mainEntityOfPage: url(`/blog/${slug}`),
-            }),
-          }}
-        />
+    <main>
+      {/* Sagt Google in seiner eigenen Sprache, was hier steht, von wem es
+          ist und wann es zuletzt geprüft wurde. Ohne diese Angaben taucht in
+          den Suchtreffern weder Datum noch Autorin auf. */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Article",
+            headline: beitrag.titel,
+            description: beitrag.beschreibung,
+            inLanguage: "de-DE",
+            ...(beitrag.datum ? { datePublished: beitrag.datum } : {}),
+            ...(beitrag.aktualisiert
+              ? { dateModified: beitrag.aktualisiert }
+              : {}),
+            author: {
+              "@type": "Person",
+              name: "Yasemin Halac",
+              jobTitle: "Ernährungsberaterin für Pferde",
+              url: url("/"),
+            },
+            publisher: {
+              "@type": "Organization",
+              name: "Pferdeliebehealthy",
+              url: url("/"),
+            },
+            image: url(bild),
+            mainEntityOfPage: url(`/blog/${slug}`),
+          }),
+        }}
+      />
 
-        <Link
-          href="/blog"
-          className="inline-block text-[14px] text-ink-soft hover:text-ink mb-9"
-        >
-          ← Alle Beiträge
-        </Link>
+      {/* Kopfbereich in Farbe. Er trennt den Beitrag sichtbar vom Rest der
+          Seite, und er gibt dem Titel Raum: Wer über Google kommt, soll im
+          ersten Moment sehen, dass er richtig ist. */}
+      <section className="bg-rose-deep px-6 sm:px-8 py-12 sm:py-16">
+        <div className="max-w-2xl mx-auto">
+          <Link
+            href="/blog"
+            className="inline-block text-[14px] text-cream/70 hover:text-cream transition-colors mb-8"
+          >
+            ← Alle Beiträge
+          </Link>
 
-        <div className="flex flex-wrap items-center gap-x-3 gap-y-1 mb-4">
-          {beitrag.datum && (
-            <span className="text-[12.5px] tracking-[0.1em] uppercase text-rose-deep font-semibold tabular-nums">
-              {datumDeutsch(beitrag.datum)}
+          <div className="flex flex-wrap items-center gap-x-2.5 gap-y-1 text-[11.5px] tracking-[0.1em] uppercase font-semibold mb-4">
+            <span className="text-cream">{beitrag.kategorie}</span>
+            <span className="text-cream/40">·</span>
+            <span className="text-cream/75 tabular-nums">
+              {beitrag.lesezeit} Min. Lesezeit
             </span>
+            {beitrag.datum && (
+              <>
+                <span className="text-cream/40">·</span>
+                <span className="text-cream/75 tabular-nums">
+                  {datumDeutsch(beitrag.datum)}
+                </span>
+              </>
+            )}
+          </div>
+
+          <h1 className="font-serif font-normal text-cream text-[30px] sm:text-[44px] leading-[1.12] tracking-tight mb-5">
+            {beitrag.titel}
+          </h1>
+
+          {beitrag.beschreibung && (
+            <p className="text-[17.5px] text-cream/80 leading-relaxed max-w-xl">
+              {beitrag.beschreibung}
+            </p>
           )}
-          <span className="text-[12.5px] tracking-[0.1em] uppercase text-ink-soft">
-            {beitrag.kategorie}
-          </span>
+        </div>
+      </section>
+
+      <article className="px-6 sm:px-8 py-14 sm:py-16">
+        <div className="max-w-2xl mx-auto">
+          {beitrag.bild && (
+            <figure className="mb-12 -mt-24 sm:-mt-28">
+              <Image
+                src={beitrag.bild}
+                alt={beitrag.bildText || beitrag.titel}
+                width={1600}
+                height={1200}
+                priority
+                sizes="(max-width: 768px) 100vw, 672px"
+                className="w-full h-auto rounded-[22px] shadow-[0_24px_60px_-30px_rgba(59,42,40,0.5)]"
+              />
+              {beitrag.bildText && (
+                <figcaption className="text-[13.5px] text-ink-soft mt-3">
+                  {beitrag.bildText}
+                </figcaption>
+              )}
+            </figure>
+          )}
+
+          {/* Das Inhaltsverzeichnis. Erst ab drei Kapiteln, darunter ist es
+              keine Hilfe, sondern eine Wiederholung des Textes. Bei langen
+              Fachtexten zeigt Google die Sprungmarken teilweise direkt im
+              Suchtreffer an. */}
+          {beitrag.kapitel.length >= 3 && (
+            <nav
+              aria-label="Inhalt des Beitrags"
+              className="bg-white border border-line rounded-[20px] p-6 sm:p-7 mb-12"
+            >
+              <h2 className="text-[11px] tracking-[0.16em] uppercase text-rose-deep font-semibold mb-4">
+                Inhalt
+              </h2>
+              <ol className="space-y-2.5">
+                {beitrag.kapitel.map((k, i) => (
+                  <li key={k.anker} className="flex gap-3">
+                    <span className="text-[13px] text-rose-deep font-semibold tabular-nums pt-[3px] shrink-0">
+                      {String(i + 1).padStart(2, "0")}
+                    </span>
+                    <a
+                      href={`#${k.anker}`}
+                      className="text-[15.5px] text-ink hover:text-rose-deep transition-colors"
+                    >
+                      {k.titel}
+                    </a>
+                  </li>
+                ))}
+              </ol>
+            </nav>
+          )}
+
+          {/* Der Text aus der Markdown-Datei. Styling: .beitrag-prose in globals.css */}
+          <div
+            className="beitrag-prose"
+            dangerouslySetInnerHTML={{ __html: beitrag.html }}
+          />
+
+          {beitrag.aktualisiert && (
+            <p className="text-[13px] text-ink-soft mt-10">
+              Zuletzt fachlich überarbeitet am{" "}
+              {datumDeutsch(beitrag.aktualisiert)}.
+            </p>
+          )}
+
+          {/* Wer das hier geschrieben hat. Das ist keine Höflichkeit: Bei
+              Gesundheitsthemen bewertet Google, ob hinter einem Text eine
+              nachvollziehbare Person steht, und Leserinnen tun das auch. */}
+          <aside className="flex items-start gap-5 mt-14 pt-9 border-t border-line">
+            <Image
+              src="/images/yasi-portrait.jpg"
+              alt="Yasemin Halac"
+              width={160}
+              height={160}
+              sizes="72px"
+              className="w-[72px] h-[72px] rounded-full object-cover shrink-0"
+            />
+            <div>
+              <p className="font-serif text-[19px] mb-1.5">Yasemin Halac</p>
+              <p className="text-[14.5px] text-ink-soft leading-relaxed">
+                Ernährungsberaterin für Pferde im Odenwald. Ich schaue mir an,
+                was ein Pferd tatsächlich bekommt, gleiche es mit dem ab, was es
+                braucht, und schreibe auf, wo die Lücke ist.{" "}
+                <Link
+                  href="/#ueber-mich"
+                  className="text-rose-deep underline underline-offset-2 hover:text-ink"
+                >
+                  Mehr über mich
+                </Link>
+              </p>
+            </div>
+          </aside>
+
+          {/* Der Angebotshinweis steht nur, wenn in der Beitragsdatei einer
+              eingetragen ist. Passt keins, bleibt es leer. */}
+          {hinweis && (
+            <aside className="bg-cream-deep rounded-[24px] p-7 sm:p-9 mt-10">
+              <div className="text-[11px] tracking-[0.16em] uppercase text-rose-deep font-semibold mb-3">
+                {hinweis.augenbraue}
+              </div>
+              <h2 className="font-serif text-[22px] sm:text-[26px] leading-snug mb-3">
+                {hinweis.name}
+              </h2>
+              <p className="text-[15px] text-ink-soft leading-relaxed max-w-lg mb-6">
+                {hinweis.text}
+              </p>
+              {hinweis.url.startsWith("/") ? (
+                <Link
+                  href={hinweis.url}
+                  className="inline-block bg-ink text-cream px-7 py-3.5 rounded-full text-[15px] font-medium hover:bg-rose-deep transition-colors"
+                >
+                  {hinweis.knopf}
+                </Link>
+              ) : (
+                <a
+                  href={hinweis.url}
+                  target="_blank"
+                  rel="noopener"
+                  className="inline-block bg-ink text-cream px-7 py-3.5 rounded-full text-[15px] font-medium hover:bg-rose-deep transition-colors"
+                >
+                  {hinweis.knopf}
+                </a>
+              )}
+            </aside>
+          )}
+
+          {/* Die Einladung in den Insider-Kanal. Sie steht hier, weil der
+              beste Moment für die Frage nach der Adresse der ist, in dem
+              jemand gerade einen ganzen Fachtext zu Ende gelesen hat. */}
+          <NurFuerNichtInsider>
+            <aside className="bg-ink text-cream rounded-[24px] p-7 sm:p-9 mt-6">
+              <div className="text-[11px] tracking-[0.16em] uppercase text-pfirsich font-semibold mb-3">
+                Kostenlos
+              </div>
+              <h2 className="font-serif text-[22px] sm:text-[26px] leading-snug mb-3">
+                Diese Themen auch ins Postfach?
+              </h2>
+              <p className="text-[15px] text-cream/75 max-w-lg mb-7">
+                {insider.abschnitt.einleitung}
+              </p>
+              <InsiderFormular
+                quelle={`blog-${slug}`}
+                variante="dunkel"
+                knopfText={insider.abschnitt.button}
+              />
+              <p className="text-[13px] text-cream/60 mt-5 max-w-md">
+                {insider.abschnitt.kleingedrucktes}
+              </p>
+            </aside>
+          </NurFuerNichtInsider>
         </div>
 
-        <h1 className="font-serif font-normal text-[30px] sm:text-[42px] leading-[1.14] tracking-tight mb-5">
-          {beitrag.titel}
-        </h1>
-
-        {beitrag.beschreibung && (
-          <p className="text-[18px] text-ink-soft leading-relaxed mb-10">
-            {beitrag.beschreibung}
-          </p>
-        )}
-
-        {beitrag.bild && (
-          <figure className="mb-10">
-            <Image
-              src={beitrag.bild}
-              alt={beitrag.bildText || beitrag.titel}
-              width={1600}
-              height={1200}
-              sizes="(max-width: 768px) 100vw, 672px"
-              className="w-full h-auto rounded-[18px] border border-line"
-            />
-            {beitrag.bildText && (
-              <figcaption className="text-[13.5px] text-ink-soft mt-3">
-                {beitrag.bildText}
-              </figcaption>
-            )}
-          </figure>
-        )}
-
-        <div className="border-b border-line mb-10" />
-
-        {/* Der Text aus der Markdown-Datei. Styling: .beitrag-prose in globals.css */}
-        <div
-          className="beitrag-prose"
-          dangerouslySetInnerHTML={{ __html: beitrag.html }}
-        />
-
-        {beitrag.aktualisiert && (
-          <p className="text-[13px] text-ink-soft mt-10">
-            Zuletzt überarbeitet am {datumDeutsch(beitrag.aktualisiert)}.
-          </p>
-        )}
-
-        {/* Der Angebotshinweis steht nur, wenn in der Beitragsdatei einer
-            eingetragen ist. Passt keins, bleibt es leer. */}
-        {hinweis && (
-          <aside className="bg-cream-deep rounded-[24px] p-7 sm:p-9 mt-14">
-            <div className="text-[11px] tracking-[0.16em] uppercase text-rose-deep font-semibold mb-3">
-              {hinweis.augenbraue}
-            </div>
-            <h2 className="font-serif text-[22px] sm:text-[26px] leading-snug mb-3">
-              {hinweis.name}
-            </h2>
-            <p className="text-[15px] text-ink-soft leading-relaxed max-w-lg mb-6">
-              {hinweis.text}
-            </p>
-            {hinweis.url.startsWith("/") ? (
-              <Link
-                href={hinweis.url}
-                className="inline-block bg-ink text-cream px-7 py-3.5 rounded-full text-[15px] font-medium hover:bg-rose-deep transition-colors"
-              >
-                {hinweis.knopf}
-              </Link>
-            ) : (
-              <a
-                href={hinweis.url}
-                target="_blank"
-                rel="noopener"
-                className="inline-block bg-ink text-cream px-7 py-3.5 rounded-full text-[15px] font-medium hover:bg-rose-deep transition-colors"
-              >
-                {hinweis.knopf}
-              </a>
-            )}
-          </aside>
-        )}
-
-        {/* Die Einladung in den Insider-Kanal. Sie steht hier, weil der beste
-            Moment für die Frage nach der Adresse der ist, in dem jemand
-            gerade einen ganzen Fachtext zu Ende gelesen hat. */}
-        <NurFuerNichtInsider>
-          <aside className="bg-ink text-cream rounded-[24px] p-7 sm:p-9 mt-10">
-            <div className="text-[11px] tracking-[0.16em] uppercase text-pfirsich font-semibold mb-3">
-              Kostenlos
-            </div>
-            <h2 className="font-serif text-[22px] sm:text-[26px] leading-snug mb-3">
-              Diese Themen auch ins Postfach?
-            </h2>
-            <p className="text-[15px] text-cream/75 max-w-lg mb-7">
-              {insider.abschnitt.einleitung}
-            </p>
-            <InsiderFormular
-              quelle={`blog-${slug}`}
-              variante="dunkel"
-              knopfText={insider.abschnitt.button}
-            />
-            <p className="text-[13px] text-cream/60 mt-5 max-w-md">
-              {insider.abschnitt.kleingedrucktes}
-            </p>
-          </aside>
-        </NurFuerNichtInsider>
-
         {/* Weiterlesen. Ohne diesen Block liest jede, die über Google kommt,
-            genau einen Text und ist wieder weg. */}
+            genau einen Text und ist wieder weg. Bewusst breiter als der
+            Fließtext: Hier endet der Beitrag und die Seite fängt wieder an. */}
         {weitere.length > 0 && (
-          <section className="mt-16 pt-10 border-t border-line">
-            <h2 className="text-[13px] tracking-[0.14em] uppercase text-rose-deep font-semibold mb-6">
+          <section className="max-w-4xl mx-auto mt-16 sm:mt-20">
+            <h2 className="text-[13px] tracking-[0.14em] uppercase text-rose-deep font-semibold mb-7 text-center">
               Weiterlesen
             </h2>
-            <ul className="divide-y divide-line border-t border-line">
-              {weitere.map((b) => (
-                <li key={b.slug}>
+            <div className="grid sm:grid-cols-3 gap-5">
+              {weitere.map((b) => {
+                const farbe = kategorieFarbe(b.kategorie);
+                return (
                   <Link
+                    key={b.slug}
                     href={`/blog/${b.slug}`}
-                    className="group block py-5 -mx-4 px-4 rounded-xl transition-colors hover:bg-white/60"
+                    className="group flex flex-col rounded-[20px] overflow-hidden bg-white border border-line transition-shadow hover:shadow-[0_18px_50px_-24px_rgba(59,42,40,0.35)]"
                   >
-                    <span className="block text-[11.5px] tracking-[0.1em] uppercase text-rose-deep font-semibold mb-1">
-                      {b.kategorie}
-                    </span>
-                    <span className="font-serif text-[19px] leading-snug group-hover:text-rose-deep transition-colors">
-                      {b.titel}
-                    </span>
+                    <div className={`h-1.5 ${farbe.strich}`} aria-hidden="true" />
+                    <div className="p-6 flex flex-col grow">
+                      <span className="block text-[11px] tracking-[0.1em] uppercase text-rose-deep font-semibold mb-2">
+                        {b.kategorie}
+                      </span>
+                      <span className="font-serif text-[19px] leading-snug group-hover:text-rose-deep transition-colors grow">
+                        {b.titel}
+                      </span>
+                      <span className="mt-4 text-[12.5px] text-ink-soft tabular-nums">
+                        {b.lesezeit} Min. Lesezeit
+                      </span>
+                    </div>
                   </Link>
-                </li>
-              ))}
-            </ul>
+                );
+              })}
+            </div>
           </section>
         )}
       </article>

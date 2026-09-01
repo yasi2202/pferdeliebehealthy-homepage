@@ -1,22 +1,39 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import { mineralKlarheit } from "@/lib/seite";
+import { digitalFinden } from "@/lib/digital";
+import { preisText } from "@/lib/shop";
 
 // ---------------------------------------------------------------------------
 // Die Seite zu Mineral-Klarheit.
 //
 // Sie ist zweierlei: das Angebot, auf das der Futter-Check hinausläuft, und
 // eine ganz normale Seite, die bei Google gefunden werden kann. Deshalb steht
-// sie auf deiner eigenen Adresse und nicht nur als Link zu alfima — gekauft
-// wird dann drüben bei alfima, aber gelesen und gefunden wird hier.
+// sie auf deiner eigenen Adresse und nicht nur als Link zu alfima.
+//
+// ▸ SEIT DEM 01.09.2026 WIRD AUCH HIER GEKAUFT. Vorher führten die Knöpfe
+//   direkt in den Kaufvorgang bei alfima. Jetzt gehen sie auf
+//   /kasse/mineral-klarheit, wo Preis, Rabattfeld und die Pflichthinweise
+//   stehen, und Stripe kommt erst danach.
+//
+// ▸ PREIS UND STREICHPREIS STEHEN IM KATALOG, in lib/digital.ts. Stünden sie
+//   zusätzlich hier, nennte diese Seite irgendwann einen anderen Betrag als
+//   die Kasse, und das fällt niemandem auf, bis sich jemand beschwert.
 //
 // Die Texte über den Kursinhalt stammen aus deiner eigenen Kursbeschreibung in
 // der Akademie, damit hier nichts versprochen wird, was der Kurs nicht hält.
 // ---------------------------------------------------------------------------
 
+// Preis und Streichpreis stehen im Katalog, nicht hier. So kann die
+// Verkaufsseite gar nicht erst einen anderen Betrag nennen als die Kasse.
+const produkt = digitalFinden("mineral-klarheit")!;
+
 const TITEL = "Mineral-Klarheit — verstehen, ob das Mineralfutter zu deinem Pferd passt";
+// Der Preis steht auch hier, weil Google ihn im Suchergebnis anzeigt. Er
+// wird aus dem Katalog gebaut, damit er nicht irgendwann veraltet dasteht.
 const BESCHREIBUNG =
-  "Der Kurs mit Rechner: Du liest eine Deklaration nicht mehr nur, du verstehst sie — und rechnest selbst durch, ob ein Mineralfutter zu deinem Pferd passt. 27 €, dauerhafter Zugang.";
+  "Der Kurs mit Rechner: Du liest eine Deklaration nicht mehr nur, du verstehst sie, und rechnest selbst durch, ob ein Mineralfutter zu deinem Pferd passt. " +
+  `Zurzeit ${(produkt.preis / 100).toFixed(0)} € statt ${(produkt.statt! / 100).toFixed(0)} €, dauerhafter Zugang.`;
 
 export const metadata: Metadata = {
   alternates: { canonical: "/mineral-klarheit" },
@@ -78,13 +95,22 @@ export default function MineralKlarheitSeite() {
             <div className="flex flex-wrap items-center gap-5">
               <a
                 href={mineralKlarheit.kauf}
-                target="_blank"
-                rel="noopener"
                 className="inline-block bg-rose text-ink px-8 py-4 rounded-full text-[15px] font-medium hover:bg-cream transition-colors"
               >
-                Für {mineralKlarheit.preis} freischalten
+                Für {preisText(produkt.preis)} freischalten
               </a>
+              {/* Der frühere Preis gehört neben den Knopf, nicht erst ganz
+                  unten auf der Seite. Wer oben abspringt, hat sonst nie
+                  erfahren, dass es gerade günstiger ist. */}
               <span className="text-[14px] text-cream/60">
+                {produkt.statt && produkt.statt > produkt.preis && (
+                  <>
+                    <span className="line-through">
+                      {preisText(produkt.statt)}
+                    </span>
+                    {" · "}
+                  </>
+                )}
                 Einmalig · dauerhafter Zugang
               </span>
             </div>
@@ -205,7 +231,7 @@ export default function MineralKlarheitSeite() {
         <div className="max-w-5xl mx-auto bg-rose-deep text-cream rounded-[24px] p-8 sm:p-12">
           <div className="max-w-xl">
             <h2 className="font-serif font-normal text-[26px] sm:text-[34px] leading-[1.15] tracking-tight mb-5">
-              {mineralKlarheit.preis} — einmalig.
+              {preisText(produkt.preis)} statt {preisText(produkt.statt!)}
             </h2>
             <p className="text-[16px] text-cream/85 leading-relaxed mb-8">
               Weniger als ein Eimer Mineralfutter, den du vielleicht gar nicht
@@ -214,15 +240,13 @@ export default function MineralKlarheitSeite() {
             </p>
             <a
               href={mineralKlarheit.kauf}
-              target="_blank"
-              rel="noopener"
               className="inline-block bg-cream text-ink px-8 py-4 rounded-full text-[15px] font-medium hover:bg-rose transition-colors"
             >
               Jetzt freischalten
             </a>
             <p className="text-[13px] text-cream/65 mt-4">
-              Der Kauf läuft über meine Kursplattform alfima. Dort bekommst du
-              direkt nach dem Kauf deinen Zugang.
+              Einmalig, kein Abo. Nach dem Kauf bekommst du deinen Zugang
+              direkt per Mail.
             </p>
           </div>
         </div>

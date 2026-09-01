@@ -53,11 +53,14 @@ export const mineralKlarheit = {
   /** Die Seite auf deiner eigenen Adresse. Hierhin fuehren alle Knoepfe. */
   seite: "/mineral-klarheit",
 
-  // ▸ HIER MUSST DU RAN, falls sich die Kursadresse bei alfima aendert:
-  //   Der Kauf laeuft weiter ueber alfima, nur gelesen wird auf der eigenen
-  //   Seite. Von Yasi bestaetigt am 26.08.2026 — sie fuehrt direkt in den
-  //   Kaufvorgang, nicht auf eine Zwischenseite.
-  kauf: "https://alfima.com/pferdeliebehealthy/mineralwissen-pro/purchase",
+  // ▸ SEIT DEM 01.09.2026 LAEUFT DER KAUF UEBER DIE EIGENE KASSE.
+  //   Vorher zeigte diese Adresse direkt in den Kaufvorgang bei alfima.
+  //   Jetzt fuehrt sie auf /kasse/mineral-klarheit, wo Preis, Rabattfeld und
+  //   die Pflichthinweise stehen. Stripe kommt erst danach.
+  kauf: "/kasse/mineral-klarheit",
 
-  preis: "27 €",
+  // ▸ DIE PREISE STEHEN NICHT MEHR HIER, sondern in lib/digital.ts beim
+  //   Produkt. Sonst haette man zwei Stellen, an denen ein Preis steht, und
+  //   irgendwann nennt die Verkaufsseite einen anderen Betrag als die Kasse.
+  //   Die Seite holt sich beides ueber digitalFinden("mineral-klarheit").
 };
