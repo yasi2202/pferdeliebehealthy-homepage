@@ -11,7 +11,19 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { pfad: "/", prioritaet: 1.0, takt: "weekly" },
     { pfad: "/ausbildung", prioritaet: 0.9, takt: "monthly" },
     { pfad: "/futter-check", prioritaet: 0.9, takt: "monthly" },
+    // ▸ DIE PRODUKTSEITEN.
+    //   Sie stehen hier von Hand und nicht aus digital.ts erzeugt: Nicht
+    //   jedes Produkt im Katalog hat eine eigene Seite, und die Ausbildung
+    //   soll erst ab dem Vertriebsbeginn bei Google auftauchen.
     { pfad: "/mineral-klarheit", prioritaet: 0.8, takt: "monthly" },
+    { pfad: "/ganzjahresfutterplan", prioritaet: 0.8, takt: "monthly" },
+    { pfad: "/pferdeliebe-365", prioritaet: 0.8, takt: "monthly" },
+    { pfad: "/ratiopro", prioritaet: 0.8, takt: "monthly" },
+    { pfad: "/symptom-navigator", prioritaet: 0.8, takt: "monthly" },
+    { pfad: "/basisfutterkurs", prioritaet: 0.7, takt: "monthly" },
+    { pfad: "/darmaufbau", prioritaet: 0.7, takt: "monthly" },
+    { pfad: "/magen-reset", prioritaet: 0.7, takt: "monthly" },
+    { pfad: "/salzratgeber", prioritaet: 0.7, takt: "monthly" },
     { pfad: "/equidesk", prioritaet: 0.8, takt: "monthly" },
     { pfad: "/blog", prioritaet: 0.9, takt: "weekly" },
     { pfad: "/insider", prioritaet: 0.8, takt: "weekly" },

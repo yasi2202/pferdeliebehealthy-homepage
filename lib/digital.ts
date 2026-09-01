@@ -718,6 +718,39 @@ export const funnel: Funnel[] = [
       "Beratungsverlauf landet.",
   },
   {
+    produkt: "basisfutterkurs",
+    upsell: "ratiopro",
+    upsellPreis: 4900,
+    upsellTitel: "Du weisst jetzt, worauf es ankommt. Willst du es ausrechnen?",
+    upsellGrund:
+      "Im Basisfutterkurs hast du gelernt, eine Deklaration zu lesen und " +
+      "Mineralien einzuordnen. RatioPro rechnet dir daraus die ganze Ration " +
+      "aus, mit den Daten deines Pferdes, und zeigt dir in Minuten, wo " +
+      "Lücken und Überschüsse sitzen.",
+    downsell: "salzratgeber",
+    downsellPreis: 599,
+    downsellTitel: "Dann zumindest das Thema, das in jeder Ration vorkommt.",
+    downsellGrund:
+      "Salz kommt im Kurs vor, aber nur kurz. Der Salzratgeber sagt dir, " +
+      "wie viel dein Pferd wirklich braucht und wie du die Elektrolyte " +
+      "selbst mischst, ohne Zucker und Aromen.",
+  },
+  {
+    produkt: "ausbildung",
+    upsell: "ratiopro",
+    upsellPreis: 4900,
+    upsellTitel: "Ein Werkzeug für die Praxis, von Anfang an.",
+    upsellGrund:
+      "Du wirst im Lauf der Ausbildung viele Rationen rechnen, für dein " +
+      "eigenes Pferd und später in der Abschlussarbeit. RatioPro nimmt dir " +
+      "die Rechenarbeit ab, damit du dich auf das Beurteilen konzentrieren " +
+      "kannst.",
+    // Kein Downsell: Wer sich gerade für zwölf Monate Ausbildung
+    // entschieden hat, dem ein Heft für 5,99 € hinterherzuwerfen wirkt
+    // kleinlich und passt nicht zum Anlass.
+    downsell: null,
+  },
+  {
     produkt: "pferdeliebe-365",
     upsell: "ratiopro",
     upsellPreis: 4900,
