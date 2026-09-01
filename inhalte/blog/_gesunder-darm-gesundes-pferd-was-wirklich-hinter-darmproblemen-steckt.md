@@ -98,8 +98,6 @@ Und zwar **ohne unnötige Zusätze oder „Wunderpülverchen“**, sondern mit
 Damit du dich nicht allein durch Fachtexte wühlen musst, sondern jeden Tag
 konkrete Impulse bekommst.
 
-Hier geht’s zur 3-Phasen-Darmsanierung
-
 ### Gesunder Darm braucht keinen Hokus-Pokus
 
 Was dein Pferd braucht, ist kein „Spezialfutter gegen Kotwasser“.

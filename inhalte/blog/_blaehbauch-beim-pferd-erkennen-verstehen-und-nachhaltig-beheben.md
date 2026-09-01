@@ -139,8 +139,6 @@ geeignet**, nicht nur für akute Fälle.
 Denn: Ein gesunder Darm ist die Basis für Leistungsfähigkeit, Wohlbefinden und
 ein starkes Immunsystem.
 
-Hier geht’s zu deinem 3-Phasen-Darmsanierungsplan
-
 ###
 
 Blähungen beim Pferd sind mehr als ein kosmetisches Problem. Sie sind oft ein
