@@ -51,11 +51,16 @@ export default function Impressum() {
         .
       </p>
 
-      <h2>Umsatzsteuer-ID</h2>
-      <p>
-        Umsatzsteuer-Identifikationsnummer gemäß § 27a Umsatzsteuergesetz: folgt
-        in Kürze.
-      </p>
+      {/* ▸ DIE UMSATZSTEUER-ID STEHT HIER BEWUSST NICHT MEHR.
+          Bis zum 01.09.2026 stand dort "folgt in Kürze", und zwar seit
+          Monaten. Anzugeben ist sie nur, wenn es sie gibt; eine Ankündigung
+          ist keine Angabe und weckt die Erwartung, es gäbe eine.
+
+          Wenn du eine beantragst -- kostenlos beim Bundeszentralamt für
+          Steuern -- kommt hier eine Überschrift "Umsatzsteuer-ID" mit der
+          Nummer hin. Nötig wird sie, sobald du Leistungen an Unternehmen im
+          EU-Ausland abrechnest oder am OSS-Verfahren teilnimmst. */}
+      <h2>Steuernummer</h2>
       <p>Steuernummer: 46138/44524</p>
 
       <h2>Angaben zur Berufshaftpflichtversicherung</h2>
