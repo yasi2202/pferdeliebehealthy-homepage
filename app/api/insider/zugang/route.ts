@@ -60,7 +60,7 @@ export async function POST(request: Request) {
         <p style="font-size:17px;">Hallo ${esc(anmeldung.vorname)},</p>
         <p style="font-size:16px;line-height:1.6;">
           hier ist dein Link. Ein Klick, und du bist auf diesem Gerät
-          angemeldet — ein Passwort brauchst du nicht.
+          angemeldet, ein Passwort brauchst du nicht.
         </p>
         ${knopf(link, "Anmelden und weiterlesen")}
         <p style="font-size:14px;line-height:1.6;color:#8a7070;">

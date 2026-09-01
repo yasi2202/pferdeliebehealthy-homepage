@@ -41,7 +41,7 @@ export const empfehlungen: Empfehlung[] = [
     code: "yasi05",
     url: "https://biohof-elmengrund.de/",
     warum:
-      "Bio-Grundfutter direkt vom Hof — Kräuterheu, Heulage und Cobs, wenn du schon bei der Basis der Ration auf Qualität achten willst.",
+      "Bio-Grundfutter direkt vom Hof. Kräuterheu, Heulage und Cobs, wenn du schon bei der Basis der Ration auf Qualität achten willst.",
     bezahlt: true,
   },
   {
@@ -66,7 +66,7 @@ export const empfehlungen: Empfehlung[] = [
     code: "Pferdeliebe",
     url: "https://www.hottemaxe.de/neu/",
     warum:
-      "Einzelkräuter und fertige Kräutermischungen für Pferde — praktisch, wenn du eine Mischung selbst zusammenstellen möchtest.",
+      "Einzelkräuter und fertige Kräutermischungen für Pferde, praktisch, wenn du eine Mischung selbst zusammenstellen möchtest.",
     bezahlt: true,
   },
   {
@@ -74,7 +74,7 @@ export const empfehlungen: Empfehlung[] = [
     code: "pferdeliebehealthy7",
     url: "https://natusat.de/",
     warum:
-      "Einzelstoffe wie Aminosäuren, Algen und Kräuter, dazu Mischungen für Bewegungsapparat und Stoffwechsel — gut, wenn du eine Ration gezielt ergänzen willst.",
+      "Einzelstoffe wie Aminosäuren, Algen und Kräuter, dazu Mischungen für Bewegungsapparat und Stoffwechsel, gut, wenn du eine Ration gezielt ergänzen willst.",
     bezahlt: true,
   },
   // Schreibweise ist korrekt so — kein Tippfehler, bitte nicht "korrigieren".
@@ -83,7 +83,7 @@ export const empfehlungen: Empfehlung[] = [
     code: "pferdeliebehealthy",
     url: "https://foten.net/shop/",
     warum:
-      "Spezialist für Omega-3, wahlweise aus Algen oder aus Fisch — der richtige Ort, wenn es dir gezielt um die Fettsäureversorgung geht.",
+      "Spezialist für Omega-3, wahlweise aus Algen oder aus Fisch, der richtige Ort, wenn es dir gezielt um die Fettsäureversorgung geht.",
     bezahlt: true,
   },
   {
@@ -99,7 +99,7 @@ export const empfehlungen: Empfehlung[] = [
     code: "pferdeliebehealthy",
     url: "https://naturanima.de/",
     warum:
-      "Kräutermischungen nach Themen sortiert — Bewegungsapparat, Stoffwechsel, Darm, Atemwege, Haut und Hufe —, wenn du nicht selbst mischen möchtest.",
+      "Kräutermischungen nach Themen sortiert, für Bewegungsapparat, Stoffwechsel, Darm, Atemwege, Haut und Hufe, wenn du nicht selbst mischen möchtest.",
     bezahlt: true,
   },
   {
@@ -107,7 +107,7 @@ export const empfehlungen: Empfehlung[] = [
     code: "D9A6A233",
     url: "https://baeralis.de/",
     warum:
-      "Pflege und Wundversorgung fürs Pferd, mit einer eigenen Ecke für schnelle Hilfe — praktisch für die Stallapotheke.",
+      "Pflege und Wundversorgung fürs Pferd, mit einer eigenen Ecke für schnelle Hilfe, praktisch für die Stallapotheke.",
     bezahlt: true,
   },
   {
@@ -116,11 +116,11 @@ export const empfehlungen: Empfehlung[] = [
     rabatt: "5 % Rabatt",
     url: "https://www.mycelium-vitalpilze.de/",
     warum:
-      "Vitalpilze als Kapseln und Pulver, mit eigenen Varianten für Pferd, Hund und Katze — Reishi, Cordyceps, Hericium und weitere.",
+      "Vitalpilze als Kapseln und Pulver, mit eigenen Varianten für Pferd, Hund und Katze. Reishi, Cordyceps, Hericium und weitere.",
     bezahlt: true,
   },
 ];
 
 /** Werbekennzeichnung. Steht oben auf der Seite, vor dem ersten Code. */
 export const werbehinweis =
-  "Für die Codes auf dieser Seite bekomme ich eine Provision, wenn du damit bestellst. Für dich wird es dadurch nicht teurer — im Gegenteil, mit dem Code zahlst du weniger. Empfehlen tue ich trotzdem nur, was ich selbst einsetze oder geprüft habe.";
+  "Für die Codes auf dieser Seite bekomme ich eine Provision, wenn du damit bestellst. Für dich wird es dadurch nicht teurer, im Gegenteil, mit dem Code zahlst du weniger. Empfehlen tue ich trotzdem nur, was ich selbst einsetze oder geprüft habe.";

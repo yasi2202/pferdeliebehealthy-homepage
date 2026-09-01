@@ -83,7 +83,7 @@ export default function InsiderSchranke() {
           <p className="text-[14px] text-cream/80 leading-relaxed max-w-md">
             Wenn diese Adresse bei mir eingetragen ist, liegt jetzt eine Mail
             mit deinem Anmeldelink in deinem Postfach. Ein Klick darauf, und du
-            bist wieder hier — angemeldet.
+            bist wieder hier, angemeldet.
           </p>
         ) : !zeigeAnmeldung ? (
           <button

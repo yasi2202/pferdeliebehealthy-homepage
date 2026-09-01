@@ -120,7 +120,7 @@ export default function Datenschutz() {
         Abs. 1 lit. a DSGVO, die Sie beim Absenden des Formulars erteilen.
         Zusätzlich speichern wir, an welcher Stelle unserer Website Sie sich
         eingetragen haben, sowie den Zeitpunkt Ihrer Anmeldung und Ihrer
-        Bestätigung — dies dient dem Nachweis der Einwilligung.
+        Bestätigung, dies dient dem Nachweis der Einwilligung.
       </p>
       <p>
         Nach der Anmeldung erhalten Sie eine E-Mail mit einem Bestätigungslink

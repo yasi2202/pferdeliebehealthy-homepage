@@ -28,7 +28,7 @@ import { preisText } from "@/lib/shop";
 // Verkaufsseite gar nicht erst einen anderen Betrag nennen als die Kasse.
 const produkt = digitalFinden("mineral-klarheit")!;
 
-const TITEL = "Mineral-Klarheit — verstehen, ob das Mineralfutter zu deinem Pferd passt";
+const TITEL = "Mineral-Klarheit: verstehen, ob das Mineralfutter zu deinem Pferd passt";
 // Der Preis steht auch hier, weil Google ihn im Suchergebnis anzeigt. Er
 // wird aus dem Katalog gebaut, damit er nicht irgendwann veraltet dasteht.
 const BESCHREIBUNG =
@@ -61,11 +61,29 @@ const inhalte = [
   },
   {
     titel: "Dein Mineralfutter selbst durchrechnen",
-    text: "Mit den echten Daten deines Pferdes statt mit der pauschalen Empfehlung von der Verpackung — für das, was du jetzt fütterst, und für jedes, das du in Betracht ziehst.",
+    text: "Mit den echten Daten deines Pferdes statt mit der pauschalen Empfehlung von der Verpackung, für das, was du jetzt fütterst, und für jedes, das du in Betracht ziehst.",
   },
   {
     titel: "Ein Werkzeug, das bleibt",
     text: "Beim nächsten Futterwechsel, beim nächsten Pferd, bei der nächsten gesundheitlichen Veränderung rechnest du einfach neu.",
+  },
+];
+
+const einblicke = [
+  {
+    datei: "rechner.webp",
+    alt: "Der Mineralfutter-Eignungscheck im Kurs: Eingabefelder für Name, Lebensphase, Gewicht und Nutzung des Pferds",
+    text: "Der Mineralfutter-Eignungscheck. Du legst für jedes Pferd ein Profil an, trägst Gewicht, Lebensphase und Arbeitslevel ein, wählst gesundheitliche Besonderheiten aus und kombinierst mehrere Futtermittel zu einer Ration. Das Ergebnis zeigt dir Lücken und Überschüsse, ohne dir ein Produkt zu empfehlen.",
+  },
+  {
+    datei: "naehrstoffe.webp",
+    alt: "Die Nährstoffübersicht im Kurs mit aufklappbaren Einträgen zu Calcium, Phosphor, Magnesium und Natrium",
+    text: "Jeder Nährstoff einzeln, zum Aufklappen. Mengenelemente, Spurenelemente und Vitamine, dazu ein Verständnischeck und ein Zuordnungsspiel.",
+  },
+  {
+    datei: "start.webp",
+    alt: "Die Startseite des Kurses mit Überschrift, Einleitung und einer Tonaufnahme zum Anhören",
+    text: "Zu vielen Abschnitten gibt es die Inhalte auch zum Anhören, wenn du lieber nebenher lernst.",
   },
 ];
 
@@ -84,7 +102,7 @@ export default function MineralKlarheitSeite() {
             </h1>
             <p className="text-[18px] sm:text-[19px] text-cream/90 leading-relaxed mb-4 max-w-xl">
               Der Kurs, nach dem du nie wieder raten musst, ob ein Mineralfutter
-              zu deinem Pferd passt. Du rechnest es selbst durch — mit den Daten
+              zu deinem Pferd passt. Du rechnest es selbst durch, mit den Daten
               deines Pferdes, nicht mit der Empfehlung von der Verpackung.
             </p>
             <p className="text-[16px] text-cream/70 leading-relaxed mb-8 max-w-xl">
@@ -143,7 +161,7 @@ export default function MineralKlarheitSeite() {
             <p>
               Auf jedem Eimer stehen Zahlen, und auf jedem steht eine
               Fütterungsempfehlung. Beides sagt dir nichts darüber, ob ausgerechnet
-              dein Pferd damit versorgt ist — ein 22-jähriger Wallach mit
+              dein Pferd damit versorgt ist, ein 22-jähriger Wallach mit
               Stoffwechselthema und ein 6-jähriges Sportpferd bekommen dieselbe
               Empfehlung von derselben Verpackung.
             </p>
@@ -155,7 +173,7 @@ export default function MineralKlarheitSeite() {
             </p>
             <p>
               Du kannst diese Frage an jemanden abgeben. Oder du lernst einmal,
-              sie selbst zu beantworten — und musst sie nie wieder abgeben.
+              sie selbst zu beantworten, und musst sie nie wieder abgeben.
             </p>
           </div>
         </div>
@@ -197,6 +215,51 @@ export default function MineralKlarheitSeite() {
         </div>
       </section>
 
+      {/* ----------------------------------------------------- Einblick */}
+      {/* Bildschirmfotos aus dem Kurs selbst. Sie beantworten die Frage, die
+          jede Beschreibung offen lässt: Wie sieht das eigentlich aus, was ich
+          da kaufe. Besonders der Rechner verkauft sich schlecht mit Worten
+          und gut mit einem Bild.
+
+          Die Bilder sind echte Aufnahmen aus dem Kurs, keine Montagen. Wenn
+          sich der Kurs ändert, müssen sie neu gemacht werden, sonst zeigen
+          sie etwas, das es nicht mehr gibt. */}
+      <section className="px-6 sm:px-8 pb-16 sm:pb-24">
+        <div className="max-w-5xl mx-auto">
+          <div className="max-w-2xl mb-10">
+            <span className="block text-[13px] tracking-[0.14em] uppercase text-rose-deep font-semibold mb-4">
+              Ein Blick hinein
+            </span>
+            <h2 className="font-serif font-normal text-[28px] sm:text-[38px] leading-[1.15] tracking-tight mb-5">
+              So sieht der Kurs von innen aus.
+            </h2>
+            <p className="text-[16.5px] text-ink-soft leading-relaxed">
+              Vierzehn Abschnitte, die du in beliebiger Reihenfolge angehen
+              kannst. Links siehst du immer, wo du stehst, und kannst jederzeit
+              direkt zum Werkzeug springen.
+            </p>
+          </div>
+
+          <div className="space-y-10">
+            {einblicke.map((e) => (
+              <figure key={e.datei}>
+                <Image
+                  src={`/images/mineral-klarheit/${e.datei}`}
+                  alt={e.alt}
+                  width={1100}
+                  height={820}
+                  sizes="(min-width: 1024px) 900px, 100vw"
+                  className="w-full h-auto rounded-[18px] border border-line"
+                />
+                <figcaption className="mt-3 text-[14.5px] text-ink-soft leading-relaxed max-w-2xl">
+                  {e.text}
+                </figcaption>
+              </figure>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* ------------------------------------------------------------ Für wen */}
       <section className="px-6 sm:px-8 pb-16 sm:pb-24">
         <div className="max-w-5xl mx-auto bg-cream-deep rounded-[24px] p-8 sm:p-12">
@@ -207,13 +270,13 @@ export default function MineralKlarheitSeite() {
             <div className="text-[16px] text-ink-soft leading-relaxed space-y-4">
               <p>
                 Für dich, wenn dein Futter-Check gezeigt hat, dass bei der
-                Mineralversorgung eine Lücke sitzt — egal ob du bisher gar kein
+                Mineralversorgung eine Lücke sitzt, egal ob du bisher gar kein
                 Mineralfutter fütterst oder eines, bei dem du nicht sicher bist.
               </p>
               <p>
                 Für dich, wenn du gern selbst verstehst, statt Empfehlungen zu
                 folgen. Der Kurs nimmt dir das Rechnen nicht ab, er bringt es dir
-                bei — das ist der Unterschied zu einer Beratung.
+                bei, das ist der Unterschied zu einer Beratung.
               </p>
               <p>
                 <strong className="text-ink">Nicht</strong> für dich, wenn du

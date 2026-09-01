@@ -1,9 +1,9 @@
 ---
-titel: "Jedes Frühjahr dieselbe Stelle – und warum ich nichts dagegen tue"
+titel: "Jedes Frühjahr dieselbe Stelle, und warum ich nichts dagegen tue"
 datum: 2026-08-26
 kategorie: "Aus meiner Praxis"
 angebot: "masterclass"
-beschreibung: "Ein Pferd scheuert sich seit Jahren jedes Frühjahr exakt dieselbe Stelle am Mähnenkamm kurz. Kein Ekzem, keine Schuppen, keine offene Stelle. Warum das kein Problem ist, das eine Lösung braucht — und was man stattdessen daran sehen kann."
+beschreibung: "Ein Pferd scheuert sich seit Jahren jedes Frühjahr exakt dieselbe Stelle am Mähnenkamm kurz. Kein Ekzem, keine Schuppen, keine offene Stelle. Warum das kein Problem ist, das eine Lösung braucht, und was man stattdessen daran sehen kann."
 bild: "/images/insider/maehnenkamm.jpg"
 bildText: "Die immer gleiche Stelle am Mähnenkamm, sauber abgegrenzt zur übrigen Mähne."
 ---
@@ -20,7 +20,7 @@ die gleiche Jahreszeit.
 Wenn etwas so verlässlich kommt und so sauber abgegrenzt ist, lohnt es sich,
 einmal zu fragen, was der Körper hier eigentlich tut, statt sofort zu
 überlegen, was man dagegen tun muss. Saisonal getaktet, exakt auf der
-Oberlinie, ohne Hautzeichen — das ist kein reines Hautproblem. Das ist ein
+Oberlinie, ohne Hautzeichen, das ist kein reines Hautproblem. Das ist ein
 Muster.
 
 ## Die körperliche Erklärung ist schnell erzählt
@@ -74,5 +74,5 @@ sind einfach die Art und Weise, wie der Körper sich selbst sortiert. Wer
 gelernt hat, das zu erkennen, spart sich eine Menge unnötiger Maßnahmen und
 sieht stattdessen, was der Körper ohnehin schon richtig macht.
 
-> Hinschauen, einordnen, stehen lassen — das ist manchmal die wichtigste Form
+> Hinschauen, einordnen, stehen lassen, das ist manchmal die wichtigste Form
 > von Begleitung.

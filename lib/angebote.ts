@@ -115,7 +115,7 @@ export const angebotsHinweise: Record<string, Angebotshinweis> = {
   mineral: {
     augenbraue: "Dazu passend",
     name: "Mineral-Klarheit",
-    text: "Der Kurs mit Rechner: Du liest eine Deklaration nicht mehr nur, du verstehst sie — und rechnest selbst durch, ob ein Mineralfutter zu deinem Pferd passt.",
+    text: "Der Kurs mit Rechner: Du liest eine Deklaration nicht mehr nur, du verstehst sie, und rechnest selbst durch, ob ein Mineralfutter zu deinem Pferd passt.",
     knopf: "Mineral-Klarheit ansehen",
     url: "/mineral-klarheit",
   },
@@ -129,7 +129,7 @@ export const angebotsHinweise: Record<string, Angebotshinweis> = {
   ratiopro: {
     augenbraue: "Dazu passend",
     name: "RatioPro",
-    text: "Die einfache Rationsberechnung für dein Pferd — damit du siehst, was tatsächlich im Trog landet und was fehlt.",
+    text: "Die einfache Rationsberechnung für dein Pferd, damit du siehst, was tatsächlich im Trog landet und was fehlt.",
     knopf: "RatioPro ansehen",
     url: "https://alfima.com/pferdeliebehealthy/ratiopro-die-einfache-rationsberechnung-fur-dein-pferd",
   },

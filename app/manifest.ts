@@ -16,7 +16,7 @@ import type { MetadataRoute } from "next";
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: "Pferdeliebehealthy — Ganzheitliche Pferdefütterung",
+    name: "Pferdeliebehealthy: Ganzheitliche Pferdefütterung",
     short_name: "Pferdeliebe",
     description:
       "Ernährungsberatung für Pferde von Yasemin Halac: kostenloser Futter-Check, Mineral-Klarheit und die Ausbildung Ganzheitliche Pferdefütterung.",

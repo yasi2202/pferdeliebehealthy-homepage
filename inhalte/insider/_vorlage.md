@@ -37,7 +37,7 @@ zu verraten.
 **`kategorie`** — wird auf der Übersicht zum Filterknopf. Schreib einfach hin,
 worum es geht; was in den Dateien steht, taucht als Knopf auf. Bisher
 verwendet: `Nährstoffe`, `Heu und Grundfutter`, `Körper verstehen`,
-`Aus meiner Praxis`. Nimm eine davon, wenn sie passt — sonst entsteht für
+`Aus meiner Praxis`. Nimm eine davon, wenn sie passt, sonst entsteht für
 jeden Beitrag eine eigene Kategorie, und dann filtert man nichts mehr.
 
 **`angebot`** — welches deiner Angebote unter dem Beitrag empfohlen wird.

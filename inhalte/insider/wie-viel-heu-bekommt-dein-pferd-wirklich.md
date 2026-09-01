@@ -3,7 +3,7 @@ titel: "Wie viel Heu bekommt dein Pferd wirklich?"
 datum: 2026-08-24
 kategorie: "Heu und Grundfutter"
 angebot: "ratiopro"
-beschreibung: "Fast alle unterschätzen ihre Heumenge — und zwar nicht um ein bisschen. Warum das die wichtigste Zahl in der Fütterung ist und wie du sie in fünf Minuten herausfindest."
+beschreibung: "Fast alle unterschätzen ihre Heumenge, und zwar nicht um ein bisschen. Warum das die wichtigste Zahl in der Fütterung ist und wie du sie in fünf Minuten herausfindest."
 ---
 
 Wenn ich Pferdebesitzerinnen frage, wie viel Heu ihr Pferd bekommt, höre ich
@@ -15,8 +15,8 @@ drei Kilo sein oder acht.
 
 ## Warum ausgerechnet diese Zahl
 
-Raufutter ist nicht ein Teil der Ration. Es ist die Ration. Alles andere —
-Mineralfutter, Zusätze, Kraftfutter — baut darauf auf.
+Raufutter ist nicht ein Teil der Ration. Es ist die Ration. Alles andere.
+Mineralfutter, Zusätze, Kraftfutter, baut darauf auf.
 
 Stimmt die Heumenge nicht, kannst du oben drauf packen, was du willst:
 
@@ -28,7 +28,7 @@ Stimmt die Heumenge nicht, kannst du oben drauf packen, was du willst:
 
 ## Der Richtwert
 
-Als Untergrenze gelten **1,5 Kilo Heu je 100 Kilo Körpergewicht** — pro Tag,
+Als Untergrenze gelten **1,5 Kilo Heu je 100 Kilo Körpergewicht**, pro Tag,
 trocken gewogen.
 
 Für ein 600-Kilo-Pferd sind das **9 Kilo**. Nicht 6, nicht 7. Neun.
@@ -43,7 +43,7 @@ sollen mehr bekommen.
    geht.
 3. Rechne zusammen, was an einem Tag zusammenkommt.
 
-Fünf Minuten am Tag, eine Woche lang. Danach weißt du es — und musst nie
+Fünf Minuten am Tag, eine Woche lang. Danach weißt du es, und musst nie
 wieder schätzen.
 
 > Die meisten, die das zum ersten Mal machen, sind ehrlich überrascht. Meist

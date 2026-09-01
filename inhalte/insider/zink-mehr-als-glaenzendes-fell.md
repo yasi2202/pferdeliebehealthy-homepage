@@ -1,5 +1,5 @@
 ---
-titel: "Zink – das unterschätzte Spurenelement, das über glänzendes Fell hinausgeht"
+titel: "Zink, das unterschätzte Spurenelement, das über glänzendes Fell hinausgeht"
 datum: 2026-08-26
 kategorie: "Nährstoffe"
 angebot: "mineral"

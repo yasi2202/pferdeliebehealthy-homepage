@@ -51,12 +51,12 @@ export default async function BestaetigtSeite({
               Bestätigt
             </span>
             <h1 className="font-serif font-normal text-[32px] sm:text-[46px] leading-[1.12] tracking-tight mb-5">
-              Danke, {ergebnis.anmeldung.vorname} — das war&rsquo;s schon.
+              Danke, {ergebnis.anmeldung.vorname}, das war&rsquo;s schon.
             </h1>
             <p className="text-[17px] text-ink-soft leading-relaxed">
               Dein Ergebnis liegt jetzt in deinem Postfach, zum Nachlesen, wann
               immer du willst. Falls es nicht auftaucht, schau kurz im
-              Spam-Ordner nach und verschieb die Mail in den Posteingang —
+              Spam-Ordner nach und verschieb die Mail in den Posteingang,
               sonst geht später vielleicht etwas unter.
             </p>
 
@@ -66,7 +66,7 @@ export default async function BestaetigtSeite({
               </h2>
               <p className="text-[15px] text-cream/75 mb-7">
                 Dein Ergebnis zeigt dir, wo die größte Lücke liegt. Bei den
-                meisten Pferden sitzt sie bei den Mineralstoffen — und genau da
+                meisten Pferden sitzt sie bei den Mineralstoffen, und genau da
                 setzt Mineral-Klarheit an.
               </p>
               <Link
@@ -87,7 +87,7 @@ export default async function BestaetigtSeite({
             </h1>
             <p className="text-[17px] text-ink-soft leading-relaxed mb-8">
               Das passiert, wenn die Adresse im Browser unterwegs abgeschnitten
-              wurde — manche Mail-Programme machen das. Am einfachsten ist es,
+              wurde, manche Mail-Programme machen das. Am einfachsten ist es,
               den Futter-Check noch einmal zu starten; deine Antworten sind in
               drei Minuten wieder eingetragen.
             </p>

@@ -39,7 +39,7 @@ export default async function InsiderWillkommenSeite({
           </h1>
           <p className="text-[17px] text-ink-soft leading-relaxed mb-8">
             Das passiert, wenn die Adresse im Browser unterwegs abgeschnitten
-            wurde — manche Mail-Programme machen das. Trag dich einfach noch
+            wurde, manche Mail-Programme machen das. Trag dich einfach noch
             einmal ein, dann kommt eine frische Mail.
           </p>
           <div className="flex flex-wrap gap-3">
@@ -75,7 +75,7 @@ export default async function InsiderWillkommenSeite({
         </h1>
         <p className="text-[17px] text-ink-soft leading-relaxed">
           Du bist bei den {insider.name} dabei und kannst ab jetzt alle Beiträge
-          lesen. Dieser Browser merkt sich das ein Jahr lang — du musst dich
+          lesen. Dieser Browser merkt sich das ein Jahr lang, du musst dich
           also nicht bei jedem Besuch neu anmelden.
         </p>
 
@@ -101,7 +101,7 @@ export default async function InsiderWillkommenSeite({
           </h2>
           <p className="text-[14px] text-ink-soft leading-relaxed">
             Öffne dort einfach irgendeine Mail von mir und klick auf einen Link
-            darin — dann bist du auch dort angemeldet. Ein Passwort brauchst du
+            darin, dann bist du auch dort angemeldet. Ein Passwort brauchst du
             nirgends.
           </p>
         </div>

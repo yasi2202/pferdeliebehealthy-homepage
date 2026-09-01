@@ -29,7 +29,7 @@ import {
 // ---------------------------------------------------------------------------
 
 const TITEL =
-  "Ausbildung Ganzheitliche Pferdefütterung — in 12 Monaten zur Ernährungsberaterin für Pferde";
+  "Ausbildung Ganzheitliche Pferdefütterung: in 12 Monaten zur Ernährungsberaterin für Pferde";
 const BESCHREIBUNG =
   "Acht Module, 104 Lektionen, 155 Zeitstunden über zwölf Monate. Mit individueller Abschlussprüfung statt Standardklausur, und der Rationsberechnung RatioPro und der Kundenverwaltung EquiDesk dauerhaft inklusive.";
 

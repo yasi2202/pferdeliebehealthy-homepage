@@ -121,7 +121,7 @@ export async function sendeBestaetigungsMail(
       <p style="font-size:17px;">Hallo ${esc(anmeldung.vorname)},</p>
       <p style="font-size:16px;line-height:1.6;">
         schön, dass du den Futter-Check gemacht hast. Damit ich dir dein
-        Ergebnis schicken darf, brauche ich einmal deine Bestätigung — ein
+        Ergebnis schicken darf, brauche ich einmal deine Bestätigung, ein
         Klick, mehr nicht:
       </p>
       ${knopf(link, "Ja, das bin ich")}

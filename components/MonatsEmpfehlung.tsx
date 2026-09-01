@@ -48,7 +48,7 @@ export default function MonatsEmpfehlung() {
         <div className="mt-6 max-w-sm">
           <div className="text-[12.5px] text-ink-soft mb-2">
             Mein Rabattcode bei {partner.partner}
-            {partner.rabatt ? ` — ${partner.rabatt}` : ""}
+            {partner.rabatt ? `, ${partner.rabatt}` : ""}
           </div>
           <RabattCode code={partner.code} />
           {partner.url && (

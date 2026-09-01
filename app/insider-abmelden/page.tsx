@@ -41,7 +41,7 @@ export default async function AbmeldenSeite({
             </h1>
             <p className="text-[17px] text-ink-soft leading-relaxed mb-8">
               Dann lösche ich deine Adresse und schreibe dir nicht mehr. Die
-              Beiträge kannst du danach auch nicht mehr lesen — die sind für
+              Beiträge kannst du danach auch nicht mehr lesen, die sind für
               Insider. Eintragen kannst du dich jederzeit wieder.
             </p>
 
@@ -57,7 +57,7 @@ export default async function AbmeldenSeite({
             </h1>
             <p className="text-[17px] text-ink-soft leading-relaxed mb-8">
               Entweder hast du dich schon abgemeldet, oder der Link wurde
-              unterwegs abgeschnitten — manche Mail-Programme machen das. In
+              unterwegs abgeschnitten, manche Mail-Programme machen das. In
               beiden Fällen musst du nichts weiter tun.
             </p>
             <Link

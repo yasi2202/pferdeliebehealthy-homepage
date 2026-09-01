@@ -91,7 +91,7 @@ export default async function VersandSeite() {
           <p className="text-[14.5px] text-ink-soft leading-relaxed">
             Jeder Beitrag lässt sich nur einmal verschicken. Willst du einen
             doch noch einmal senden, lösch die Zeile in der Supabase-Tabelle{" "}
-            <code className="text-[13.5px]">insider_versand</code> — danach
+            <code className="text-[13.5px]">insider_versand</code>, danach
             geht der Knopf wieder.
           </p>
         </div>
@@ -110,7 +110,7 @@ export default async function VersandSeite() {
             <p className="text-[14.5px] text-ink-soft leading-relaxed max-w-xl mb-5">
               Diese Leute haben sich damals bei alfima eingetragen, aber es ist
               kein Bestätigungsklick dokumentiert. Sie bekommen deshalb nichts
-              von dir — außer dieser einen Nachfrage. Wer darauf klickt, ist
+              von dir, außer dieser einen Nachfrage. Wer darauf klickt, ist
               danach normal dabei; wer nicht, hört nichts mehr.
             </p>
 
@@ -139,7 +139,7 @@ export default async function VersandSeite() {
             </h2>
             <p className="text-[14.5px] text-ink-soft leading-relaxed max-w-xl mb-5">
               Diese Leute haben bei dir gekauft, aber ihr Produkt gibt es in der
-              Akademie nicht — Fliegenspray, Fellwechsel, Arthrose und so weiter.
+              Akademie nicht: Fliegenspray, Fellwechsel, Arthrose und so weiter.
               Sie bekommen deshalb nichts von dir, außer dieser einen Einladung.
               Wer darauf klickt, ist danach normal dabei; wer nicht, hört nichts
               mehr.

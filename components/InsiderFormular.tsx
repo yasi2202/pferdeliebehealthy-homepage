@@ -106,7 +106,7 @@ export default function InsiderFormular({
         }`}
       >
         <p className={`text-[15px] font-semibold mb-2 ${dunkel ? "text-cream" : "text-ink"}`}>
-          Fast geschafft — schau in dein Postfach.
+          Fast geschafft, schau in dein Postfach.
         </p>
         <p className={`text-[14px] leading-relaxed ${leiseText}`}>
           Ich habe dir eine Mail geschickt, in der du mit einem Klick

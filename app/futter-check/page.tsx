@@ -59,7 +59,7 @@ const antworten = [
   },
   {
     titel: "Was der nächste sinnvolle Schritt wäre",
-    text: "Konkret und in der Reihenfolge, die bei dir Sinn ergibt — nicht die Produktliste, die gerade jeder empfiehlt.",
+    text: "Konkret und in der Reihenfolge, die bei dir Sinn ergibt, nicht die Produktliste, die gerade jeder empfiehlt.",
   },
 ];
 
@@ -78,7 +78,7 @@ export default function FutterCheckSeite() {
             </h1>
             <p className="text-[18px] sm:text-[19px] text-cream/90 leading-relaxed mb-4 max-w-xl">
               Fünf Fragen zu deinem Pferd, und danach weißt du, ob seine
-              Fütterung wirklich zu seiner Situation passt — oder ob du gerade
+              Fütterung wirklich zu seiner Situation passt, oder ob du gerade
               etwas fütterst, das an ihm vorbeigeht.
             </p>
             <p className="text-[16px] text-cream/75 leading-relaxed mb-8 max-w-xl">
@@ -155,7 +155,7 @@ export default function FutterCheckSeite() {
               </h2>
               <p className="text-[16px] text-ink-soft leading-relaxed">
                 Du brauchst nichts vorzubereiten, keine Heuanalyse, keine
-                Etiketten. Antworte so, wie es wirklich ist — nicht so, wie es
+                Etiketten. Antworte so, wie es wirklich ist, nicht so, wie es
                 sein sollte. Nur dann sagt dir das Ergebnis etwas.
               </p>
             </div>
@@ -183,8 +183,8 @@ export default function FutterCheckSeite() {
           <div className="text-[16.5px] text-ink-soft leading-relaxed space-y-4">
             <p>
               Für dich, wenn du das Gefühl hast, dass bei deinem Pferd etwas
-              nicht ganz rund läuft — Kotwasser, ein schleppender Fellwechsel,
-              wenig Energie — und du nicht sicher bist, ob es an der Fütterung
+              nicht ganz rund läuft. Kotwasser, ein schleppender Fellwechsel,
+              wenig Energie, und du bist nicht sicher, ob es an der Fütterung
               liegt.
             </p>
             <p>
@@ -195,7 +195,7 @@ export default function FutterCheckSeite() {
             <p>
               Und auch für dich, wenn gerade alles gut aussieht. Dann zeigt dir
               der Check, ob die Mineralversorgung wirklich zu Alter, Haltung und
-              Belastung deines Pferdes passt — oder ob sie eher pauschal gewählt
+              Belastung deines Pferdes passt, oder ob sie eher pauschal gewählt
               ist. Das ist der häufigste blinde Fleck, gerade bei Pferden, denen
               man nichts ansieht.
             </p>

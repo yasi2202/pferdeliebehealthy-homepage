@@ -6,7 +6,7 @@ export const metadata: Metadata = {
   alternates: { canonical: "/empfehlungen" },
   title: "Rabattcodes auf einen Blick | Pferdeliebehealthy",
   description:
-    "Alle Codes, mit denen du bei meinen Partnern sparst — Biohof Elmengrund, PerNaturam, Natusat, CDVet und weitere.",
+    "Alle Codes, mit denen du bei meinen Partnern sparst: Biohof Elmengrund, PerNaturam, Natusat, CDVet und weitere.",
 };
 
 export default function EmpfehlungenSeite() {
@@ -76,7 +76,7 @@ export default function EmpfehlungenSeite() {
         <p className="text-[13px] text-ink-soft mt-12 pt-8 border-t border-line max-w-2xl">
           Rabattcodes und Konditionen legen die Anbieter fest, nicht ich. Es kann
           also passieren, dass ein Code ausläuft. Wenn dir das auffällt, schreib
-          mir kurz — dann nehme ich ihn hier raus.
+          mir kurz, dann nehme ich ihn hier raus.
         </p>
       </div>
     </main>

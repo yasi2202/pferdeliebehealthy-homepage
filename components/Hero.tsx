@@ -34,7 +34,7 @@ export default function Hero() {
             {/* Anrede: spricht eine konkrete Person an, statt allgemein zu
                 behaupten. Danach erst das Versprechen. */}
             <p className="text-cream/75 text-[17px] sm:text-lg max-w-lg mb-5">
-              Zehn Ratschläge aus dem Stall, drei Zusatzfutter im Schrank — und
+              Zehn Ratschläge aus dem Stall, drei Zusatzfutter im Schrank, und
               du weißt immer noch nicht, ob es reicht?
             </p>
 

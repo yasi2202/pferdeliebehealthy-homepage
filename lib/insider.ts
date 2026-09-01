@@ -46,11 +46,11 @@ export const insider = {
       },
       {
         titel: "Laborwerte lesen lernen",
-        text: "Heuanalyse, Blutbild, Selenwert — Stück für Stück, in verständlicher Sprache.",
+        text: "Heuanalyse, Blutbild, Selenwert. Stück für Stück, in verständlicher Sprache.",
       },
     ],
-    button: "Insider werden — kostenlos",
+    button: "Insider werden, kostenlos",
     kleingedrucktes:
-      "Du bekommst eine Mail, in der du deine Adresse einmal bestätigst — erst danach schreibe ich dir. Abmeldung jederzeit mit einem Klick, deine Adresse gebe ich nicht weiter.",
+      "Du bekommst eine Mail, in der du deine Adresse einmal bestätigst, erst danach schreibe ich dir. Abmeldung jederzeit mit einem Klick, deine Adresse gebe ich nicht weiter.",
   },
 } as const;

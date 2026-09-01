@@ -351,7 +351,7 @@ export async function nachfrageVersenden(basisUrl: string): Promise<VersandErgeb
             nachzufragen statt einfach weiterzuschreiben.
           </p>
           <p style="font-size:16px;line-height:1.6;">
-            Wenn du weiter dabei sein möchtest, klick einmal hier — dann
+            Wenn du weiter dabei sein möchtest, klick einmal hier, dann
             bekommst du wie bisher regelmäßig ein Thema aus meiner Praxis, und
             alle Beiträge stehen dir offen.
           </p>
@@ -362,7 +362,7 @@ export async function nachfrageVersenden(basisUrl: string): Promise<VersandErgeb
           </p>
           <p style="font-size:15px;line-height:1.6;color:#8a7070;">
             Und wenn nicht: Dann musst du gar nichts tun. Ohne deinen Klick
-            hörst du nichts mehr von mir — das ist keine Abmeldung, die du
+            hörst du nichts mehr von mir, das ist keine Abmeldung, die du
             beantragen musst, sondern einfach das, was passiert.
           </p>
           <p style="font-size:16px;line-height:1.6;">Alles Gute für dich und dein Pferd,<br>Yasi</p>

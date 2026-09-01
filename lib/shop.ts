@@ -147,11 +147,11 @@ export const versandhinweis =
 /** Der Lieferzeittext, der im alten Shop bei beiden Futtermitteln als
  *  Produktangabe „Versand" hinterlegt ist. Wörtlich übernommen. */
 const LIEFERZEITEN_FUTTER =
-  "Lieferzeiten\n\nDie Standardlieferzeit beträgt nach Versand 3–7 Werktage. " +
+  "Lieferzeiten\n\nDie Standardlieferzeit beträgt nach Versand 3 bis 7 Werktage. " +
   "Je nach Versandtermin und Auslastung kann die Gesamtlieferzeit vom " +
   "Bestelldatum an bis zu 14 Tage betragen.\n\nBei Vorbestellungen beträgt " +
   "die reguläre Lieferzeit 6 Wochen. In Ausnahmefällen, etwa bei hoher " +
-  "Nachfrage oder Lieferengpässen, kann sich die Lieferzeit auf 10–12 Wochen " +
+  "Nachfrage oder Lieferengpässen, kann sich die Lieferzeit auf 10 bis 12 Wochen " +
   "verlängern. Wir informieren dich in diesem Fall rechtzeitig.\n\nBitte " +
   "beachte, dass an Sonn- und Feiertagen kein Versand erfolgt.";
 

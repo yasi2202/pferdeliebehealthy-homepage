@@ -134,7 +134,7 @@ export async function sendeInsiderWillkommen(
       <p style="font-size:17px;">${anrede(anmeldung.vorname)}</p>
       <p style="font-size:16px;line-height:1.6;">
         du bist dabei. Ab jetzt schreibe ich dir regelmäßig ein Thema aus
-        meiner Praxis — was in echten Rationen schiefgeht, wie man Zusatzfutter
+        meiner Praxis, was in echten Rationen schiefgeht, wie man Zusatzfutter
         ehrlich einordnet, und wie du Laborwerte selbst lesen lernst.
       </p>
       <p style="font-size:16px;line-height:1.6;">
@@ -142,7 +142,7 @@ export async function sendeInsiderWillkommen(
       </p>
       ${knopf(`${basisUrl}/insider`, "Zu den Beiträgen")}
       <p style="font-size:16px;line-height:1.6;">
-        Und falls du deinen Futter-Check noch nicht gemacht hast — der dauert
+        Und falls du deinen Futter-Check noch nicht gemacht hast, der dauert
         keine drei Minuten und sagt dir, wo dein Pferd gerade steht:
         <a href="${basisUrl}/futter-check" style="color:#B87878;">${basisUrl.replace(/^https?:\/\//, "")}/futter-check</a>
       </p>

@@ -44,7 +44,7 @@ export default function RabattCode({ code }: { code: string }) {
 
       {zustand === "fehler" && (
         <p className="text-[12px] text-ink-soft mt-2">
-          Kopieren hat nicht geklappt — markier den Code bitte von Hand.
+          Kopieren hat nicht geklappt, markier den Code bitte von Hand.
         </p>
       )}
     </>

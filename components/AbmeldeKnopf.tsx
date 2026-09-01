@@ -40,7 +40,7 @@ export default function AbmeldeKnopf({ token }: { token: string }) {
         <p className="text-[15px] font-semibold mb-2">Du bist abgemeldet.</p>
         <p className="text-[14.5px] text-ink-soft leading-relaxed">
           Deine Adresse ist gelöscht, du bekommst nichts mehr von mir. Falls du
-          es dir anders überlegst, trag dich einfach wieder ein — ich freue mich.
+          es dir anders überlegst, trag dich einfach wieder ein, ich freue mich.
         </p>
       </div>
     );

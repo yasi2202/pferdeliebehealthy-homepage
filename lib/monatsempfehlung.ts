@@ -29,7 +29,7 @@ export const monatsempfehlung = {
   text:
     "Der Übergang von der Weide zurück aufs Heu ist für den Verdauungstrakt eine " +
     "größere Umstellung, als er von außen aussieht. Die Amara Bitterkräuter " +
-    "unterstützen genau in dieser Phase — deshalb sind sie mein Tipp für diesen " +
+    "unterstützen genau in dieser Phase, deshalb sind sie mein Tipp für diesen " +
     "Monat.",
 
   /** Der Anschluss ans eigene Angebot. Schlüssel aus lib/angebote.ts. */
