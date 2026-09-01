@@ -102,6 +102,15 @@ export type DigitalProdukt = {
   erwarteterZugang: string;
   /** Der Verkaufstext der Seite. */
   beschreibung: DigitalBlock[];
+  /**
+   * Ein Bildschirmausschnitt des Werkzeugs, gezeigt auf den Angebotsseiten
+   * nach dem Kauf. Wer dort in zehn Sekunden entscheiden soll, kauft eher,
+   * wenn sie sieht, was sie bekommt, statt es nur zu lesen.
+   *
+   * Nur bei Werkzeugen sinnvoll. Ein Heft sieht auf einem Foto aus wie jedes
+   * andere Heft, da fehlt lieber ein Bild als ein nichtssagendes.
+   */
+  bild?: { datei: string; alt: string; breite: number; hoehe: number };
 };
 
 // ---------------------------------------------------------------------------
@@ -301,6 +310,12 @@ export const digitalprodukte: DigitalProdukt[] = [
         text: "Erkenne Symptome bei deinem Pferd und ordne sie richtig ein. Das Nachschlagewerk für den Alltag, mit klaren Hinweisen, wann du selbst handeln kannst und wann ein Tierarzt gebraucht wird.",
       },
     ],
+    bild: {
+      datei: "/images/symptom-navigator-ansicht.webp",
+      alt: "Der Symptom-Navigator mit elf Körperbereichen und 58 Symptomen",
+      breite: 1000,
+      hoehe: 379,
+    },
   },
   {
     slug: "ratiopro",
@@ -322,6 +337,12 @@ export const digitalprodukte: DigitalProdukt[] = [
         text: "Rationen berechnen, Nährstoffe ausgleichen und die Fütterung deines Pferdes optimieren. Der Rechner, der versteht, was dein Pferd wirklich braucht.",
       },
     ],
+    bild: {
+      datei: "/images/ratiopro-ansicht.webp",
+      alt: "Die Bedarfsberechnung in RatioPro mit Gewicht, Alter, Pferdetyp und Nutzung",
+      breite: 900,
+      hoehe: 972,
+    },
   },
   {
     slug: "ausbildung",
@@ -500,6 +521,12 @@ export const digitalprodukte: DigitalProdukt[] = [
         text: "Zum Vergleich: Praxissoftware für Tierheilpraxen beginnt bei 48 bis 62 € im Monat, und die Rationsberechnung fehlt dort überall.",
       },
     ],
+    bild: {
+      datei: "/images/equidesk-kundinnen.webp",
+      alt: "Die Kundinnenliste in EquiDesk mit Filtern nach Leistung",
+      breite: 1100,
+      hoehe: 608,
+    },
   },
 ];
 

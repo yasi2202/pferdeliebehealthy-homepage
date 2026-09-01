@@ -22,6 +22,7 @@
 // ---------------------------------------------------------------------------
 
 import { useRouter } from "next/navigation";
+import Image from "next/image";
 import { useState } from "react";
 import { preisText } from "@/lib/shop";
 import type { DigitalProdukt } from "@/lib/digital";
@@ -123,6 +124,20 @@ export default function UpsellAngebot({
       <p className="mb-6 text-[16.5px] leading-relaxed text-ink-soft">
         {grund}
       </p>
+
+      {/* Ein Blick auf das Werkzeug. Wer hier in zehn Sekunden entscheidet,
+          kauft eher, wenn sie sieht, was sie bekommt, statt es nur zu lesen.
+          Produkte ohne Bild lassen die Stelle einfach aus. */}
+      {produkt.bild && (
+        <Image
+          src={produkt.bild.datei}
+          alt={produkt.bild.alt}
+          width={produkt.bild.breite}
+          height={produkt.bild.hoehe}
+          sizes="(min-width: 640px) 560px, 100vw"
+          className="mb-6 h-auto w-full rounded-[14px] border border-line"
+        />
+      )}
 
       {/* Leistung und Preis unmittelbar über dem Knopf. Nicht verschieben. */}
       <div className="rounded-[14px] bg-cream-deep p-5">
