@@ -2,7 +2,19 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import type { BeitragKopf } from "@/lib/beitraege";
+// Absichtlich ein eigener, kleiner Typ statt `BeitragKopf`: Diese Liste
+// zeigt sowohl Insider-Beitraege als auch Blogbeitraege, und die beiden
+// kommen aus verschiedenen Ordnern. Verlangt wird hier nur, was die Liste
+// wirklich anzeigt.
+type Eintrag = {
+  slug: string;
+  titel: string;
+  datum: string;
+  beschreibung: string;
+  kategorie: string;
+  /** Nur bei Insider-Beitraegen gesetzt. Blogbeitraege stehen immer offen. */
+  frei?: boolean;
+};
 
 // Bewusst hier und nicht aus lib/beitraege.ts geholt: jene Datei liest den
 // Ordner mit den Beiträgen vom Server und darf deshalb nicht im Browser
@@ -25,7 +37,14 @@ function datumDeutsch(datum: string): string {
 // müsste und die irgendwann nicht mehr zu den Texten passt.
 // ---------------------------------------------------------------------------
 
-export default function BeitragsListe({ beitraege }: { beitraege: BeitragKopf[] }) {
+export default function BeitragsListe({
+  beitraege,
+  basis = "/insider",
+}: {
+  beitraege: Eintrag[];
+  /** Unter welcher Adresse die Beitraege liegen: "/insider" oder "/blog". */
+  basis?: string;
+}) {
   const [gewaehlt, setGewaehlt] = useState<string>("alle");
 
   const kategorien = Array.from(new Set(beitraege.map((b) => b.kategorie))).sort(
@@ -67,7 +86,7 @@ export default function BeitragsListe({ beitraege }: { beitraege: BeitragKopf[] 
         {sichtbar.map((b) => (
           <li key={b.slug}>
             <Link
-              href={`/insider/${b.slug}`}
+              href={`${basis}/${b.slug}`}
               className="group block py-7 transition-colors hover:bg-white/60 -mx-4 px-4 rounded-xl"
             >
               <div className="flex flex-wrap items-center gap-x-3 gap-y-1 mb-2">
@@ -93,9 +112,10 @@ export default function BeitragsListe({ beitraege }: { beitraege: BeitragKopf[] 
 
               {/* Sagt vor dem Klick, was danach kommt. Ohne diesen Hinweis
                   wirkt die Schranke wie eine Überraschung statt wie eine
-                  Bedingung. */}
+                  Bedingung. Und der Unterschied zwischen beiden Zeilen macht
+                  den Wert der Anmeldung sichtbar: Das Neue gibt es nur mit. */}
               <span className="inline-block text-[14px] font-medium text-rose-deep mt-3">
-                Für Insider lesen →
+                {b.frei === false ? "Für Insider lesen →" : "Lesen →"}
               </span>
             </Link>
           </li>

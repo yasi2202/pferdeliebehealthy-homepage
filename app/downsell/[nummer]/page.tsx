@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { redirect } from "next/navigation";
 import UpsellAngebot from "@/components/UpsellAngebot";
 import { digitalFinden, ersparnis, funnelZu } from "@/lib/digital";
-import { digitalLaden } from "@/lib/digital-server";
+import { digitalLaden, hatZugangSchon } from "@/lib/digital-server";
 
 // ---------------------------------------------------------------------------
 // Das zweite und letzte Angebot: Es erscheint nur, wenn das erste abgelehnt
@@ -55,6 +55,12 @@ export default async function DownsellSeite({
       : undefined;
 
   if (!anschluss || !produkt || anschluss.downsellPreis === undefined) {
+    redirect(`/danke/${nummer}?t=${t}`);
+  }
+
+  // Auch hier: Was sie schon hat, wird nicht angeboten. Danach kommt nichts
+  // mehr, also geht es direkt zur Dankeseite.
+  if (await hatZugangSchon(kauf.email, produkt.erwarteterZugang)) {
     redirect(`/danke/${nummer}?t=${t}`);
   }
 

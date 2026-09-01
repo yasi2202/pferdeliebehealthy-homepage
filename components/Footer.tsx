@@ -53,6 +53,11 @@ export default function Footer() {
               </li>
             )}
             <li>
+              <Link href="/blog" className="hover:text-ink">
+                Blog
+              </Link>
+            </li>
+            <li>
               <Link href="/empfehlungen" className="hover:text-ink">
                 Rabattcodes &amp; Empfehlungen
               </Link>

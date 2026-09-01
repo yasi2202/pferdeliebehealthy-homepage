@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { redirect } from "next/navigation";
 import UpsellAngebot from "@/components/UpsellAngebot";
 import { digitalFinden, ersparnis, funnelZu } from "@/lib/digital";
-import { digitalLaden } from "@/lib/digital-server";
+import { digitalLaden, hatZugangSchon } from "@/lib/digital-server";
 
 // ---------------------------------------------------------------------------
 // Das erste Angebot, direkt nach der Zahlung.
@@ -59,6 +59,16 @@ export default async function AngebotSeite({
   }
 
   const hatDownsell = Boolean(anschluss.downsell && anschluss.downsellPreis);
+
+  // ▸ HAT SIE DAS SCHON? Dann nicht anbieten.
+  //   Ohne diese Prüfung bekommt jemand, der den Kurs längst besitzt, ihn
+  //   erneut angeboten und zahlt womöglich ein zweites Mal. Geprüft wird
+  //   gegen die Akademie, dort stehen auch die alten Käufe über alfima.
+  if (await hatZugangSchon(kauf.email, produkt.erwarteterZugang)) {
+    redirect(
+      hatDownsell ? `/downsell/${nummer}?t=${t}` : `/danke/${nummer}?t=${t}`,
+    );
+  }
 
   return (
     <main className="px-6 py-14 sm:px-8 sm:py-20">

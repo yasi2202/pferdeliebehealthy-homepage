@@ -46,6 +46,12 @@ und `masterclass`. **Lass die Zeile leer, wenn keins wirklich passt.** Ein
 Verkaufskasten unter einem Fachtext, zu dem er nicht gehört, kostet mehr
 Vertrauen, als er Klicks bringt.
 
+**`oeffentlich`** — wann der Beitrag für alle sichtbar wird. Lass die Zeile
+einfach weg, dann öffnet er sich **sieben Tage** nach dem Datum von selbst:
+erst gehört er den Insidern, danach findet ihn Google. Mit `"ja"` steht er
+sofort offen, mit `"nie"` bleibt er dauerhaft den Insidern vorbehalten. Das
+`"nie"` ist für Texte gedacht, die wirklich nur für die Angemeldeten sind.
+
 **`bild`** und **`bildText`** — ein Foto oben im Beitrag. Leg die Datei unter
 `public/images/insider/` ab und schreib hier den Pfad hinein, zum Beispiel
 `/images/insider/maehnenkamm.jpg`. Der `bildText` steht als Zeile unter dem

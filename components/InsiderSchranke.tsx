@@ -66,8 +66,8 @@ export default function InsiderSchranke() {
         Dieser Beitrag ist für Insider
       </h2>
       <p className="text-[15px] text-cream/75 max-w-lg mb-7">
-        Der ganze Text steht dir offen, sobald du dabei bist. Das kostet nichts
-        — ich schicke dir dafür regelmäßig mein Wissen aus der Praxis ins
+        Der ganze Text steht dir offen, sobald du dabei bist. Das kostet
+        nichts. Ich schicke dir dafür regelmäßig mein Wissen aus der Praxis ins
         Postfach, und du kannst dich jederzeit wieder abmelden.
       </p>
 

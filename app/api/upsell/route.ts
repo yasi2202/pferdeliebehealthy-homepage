@@ -9,6 +9,7 @@ import {
   digitalNummer,
   digitalSpeichern,
   nachDerZahlung,
+  hatZugangSchon,
   upsellAbbuchen,
   zahlungsdatenHolen,
   zugriffToken,
@@ -113,6 +114,22 @@ export async function POST(request: Request) {
         { status: 200 },
       );
     }
+  }
+
+  // ▸ HAT SIE DAS SCHON? Dann nicht verkaufen.
+  //   Die Seiten prüfen das bereits und zeigen das Angebot gar nicht erst
+  //   an. Hier steht es trotzdem noch einmal, weil diese Adresse direkt
+  //   aufgerufen werden kann und eine Abbuchung auslöst. Eine Route, die
+  //   Geld bewegt, darf sich nicht darauf verlassen, dass die Seite davor
+  //   schon nachgesehen hat.
+  if (await hatZugangSchon(kauf.email, produkt.erwarteterZugang)) {
+    return Response.json(
+      {
+        ergebnis: "schon_gekauft",
+        hinweis: "Das hast du bereits, ich habe nichts abgebucht.",
+      },
+      { status: 200 },
+    );
   }
 
   if (!stripeEingerichtet()) {

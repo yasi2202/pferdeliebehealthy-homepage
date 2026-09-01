@@ -5,6 +5,8 @@ import { notFound } from "next/navigation";
 import { alleBeitraege, beitragLesen, datumDeutsch } from "@/lib/beitraege";
 import { url } from "@/lib/seo";
 import InsiderSchranke from "@/components/InsiderSchranke";
+import InsiderFormular from "@/components/InsiderFormular";
+import { insider } from "@/lib/insider";
 import { aktuellerInsider } from "@/lib/insider-zugang";
 import { angebotshinweisFinden } from "@/lib/angebote";
 
@@ -26,6 +28,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     title: `${beitrag.titel} | Pferdeliebe Insider`,
     description: beitrag.beschreibung,
     alternates: { canonical: adresse },
+    // Ein Beitrag, der noch hinter der Schranke steht, gehoert nicht in den
+    // Suchindex: Google saehe nur den Anriss und wuerde die Seite als duenn
+    // bewerten. Sobald die Frist um ist, faellt diese Sperre von selbst weg
+    // und der volle Text steht da.
+    robots: beitrag.frei ? undefined : { index: false, follow: true },
     openGraph: {
       type: "article",
       title: beitrag.titel,
@@ -75,9 +82,44 @@ export default async function BeitragSeite({ params }: Props) {
   const angemeldet = await aktuellerInsider();
   const hinweis = angebotshinweisFinden(beitrag.angebot);
 
+  // Drei Faelle, nicht zwei:
+  //   angemeldet          -> voller Text, persoenlicher Gruss am Ende
+  //   frei, nicht dabei   -> voller Text, darunter die Einladung
+  //   gesperrt            -> Anriss und Schranke, wie bisher
+  const vollerText = Boolean(angemeldet) || beitrag.frei;
+
   return (
     <main className="py-14 sm:py-20 px-6 sm:px-8">
       <article className="max-w-2xl mx-auto">
+        {/* Sagt Google in seiner eigenen Sprache, dass hier ein Fachbeitrag
+            steht, von wem er ist und wann er erschien. Das ist die
+            Voraussetzung dafuer, dass Datum und Autorin in den Suchtreffern
+            auftauchen. Nur bei freien Beitraegen: Bei einem gesperrten waere
+            es eine Behauptung ueber Text, den Google gar nicht sieht. */}
+        {beitrag.frei && (
+          <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{
+              __html: JSON.stringify({
+                "@context": "https://schema.org",
+                "@type": "Article",
+                headline: beitrag.titel,
+                description: beitrag.beschreibung,
+                inLanguage: "de-DE",
+                ...(beitrag.datum ? { datePublished: beitrag.datum } : {}),
+                author: {
+                  "@type": "Person",
+                  name: "Yasemin Halac",
+                  jobTitle: "Ernährungsberaterin für Pferde",
+                  url: url("/"),
+                },
+                publisher: { "@type": "Organization", name: "Pferdeliebehealthy" },
+                image: url(beitrag.bild || "/images/yasi-helena.jpg"),
+                mainEntityOfPage: url(`/insider/${slug}`),
+              }),
+            }}
+          />
+        )}
         <Link
           href="/insider"
           className="inline-block text-[14px] text-ink-soft hover:text-ink mb-9"
@@ -123,7 +165,7 @@ export default async function BeitragSeite({ params }: Props) {
 
         <div className="border-b border-line mb-10" />
 
-        {angemeldet ? (
+        {vollerText ? (
           <>
             {/* Der Text aus der Markdown-Datei. Styling: .beitrag-prose in globals.css */}
             <div
@@ -166,10 +208,38 @@ export default async function BeitragSeite({ params }: Props) {
               </aside>
             )}
 
-            <p className="text-[13.5px] text-ink-soft mt-14 pt-7 border-t border-line">
-              Du liest als Insider, {angemeldet.vorname}. Schön, dass du da
-              bist.
-            </p>
+            {angemeldet ? (
+              <p className="text-[13.5px] text-ink-soft mt-14 pt-7 border-t border-line">
+                Du liest als Insider, {angemeldet.vorname}. Schön, dass du da
+                bist.
+              </p>
+            ) : (
+              /* Der Beitrag ist frei geworden, sie ist also vermutlich über
+                 Google hier gelandet. Keine Schranke mehr, sondern eine
+                 Einladung: Wer den Text gerade zu Ende gelesen hat, ist der
+                 beste Zeitpunkt für die Frage nach der Adresse. */
+              <aside className="bg-ink text-cream rounded-[24px] p-7 sm:p-9 mt-14">
+                <div className="text-[11px] tracking-[0.16em] uppercase text-pfirsich font-semibold mb-3">
+                  Kostenlos
+                </div>
+                <h2 className="font-serif text-[22px] sm:text-[26px] leading-snug mb-3">
+                  Neue Beiträge zuerst lesen
+                </h2>
+                <p className="text-[15px] text-cream/75 max-w-lg mb-7">
+                  Diesen Beitrag habe ich frei gestellt. Alle anderen sind für
+                  Insider, und neue schreibe ich ihnen direkt ins Postfach.
+                  Kostet nichts.
+                </p>
+                <InsiderFormular
+                  quelle={`beitrag-${slug}`}
+                  variante="dunkel"
+                  knopfText={insider.abschnitt.button}
+                />
+                <p className="text-[13px] text-cream/60 mt-5 max-w-md">
+                  {insider.abschnitt.kleingedrucktes}
+                </p>
+              </aside>
+            )}
           </>
         ) : (
           <>

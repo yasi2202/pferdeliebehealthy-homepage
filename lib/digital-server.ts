@@ -261,6 +261,57 @@ export async function digitalAlsBezahltMarkieren(
 }
 
 // ---------------------------------------------------------------------------
+// Hat die Kundin das Angebot schon?
+// ---------------------------------------------------------------------------
+
+/** Sagt, ob zu dieser Adresse der Zugang bereits vergeben ist.
+ *
+ *  ▸ WOZU DAS DA IST
+ *    Ohne diese Prüfung bekommt jemand, der den Basisfutterkurs schon
+ *    besitzt, ihn nach dem nächsten Kauf noch einmal angeboten. Im besten
+ *    Fall ärgert das, im schlechteren zahlt sie ein zweites Mal für etwas,
+ *    das sie längst hat, und schreibt dir eine ungehaltene Mail.
+ *
+ *  ▸ WARUM ÜBER DIE AKADEMIE UND NICHT ÜBER DIE EIGENEN BESTELLUNGEN
+ *    In `kursteilnehmer` stehen ALLE Zugänge, auch die aus den Jahren über
+ *    alfima. Wer nur die eigenen Bestellungen durchsucht, sieht die alten
+ *    Käufe nicht und bietet treuen Kundinnen an, was sie schon lange haben.
+ *
+ *  ▸ Der Zugang kann an zwei Stellen stehen: in der Liste `zugaenge` oder,
+ *    bei alten Zeilen, im einzelnen Feld `bereich`. Der Kauf-Webhook der
+ *    Akademie behandelt beide Fälle genauso, deshalb hier auch.
+ *
+ *  ▸ Im Zweifel wird `false` zurückgegeben, also das Angebot gezeigt. Ein
+ *    Angebot zu viel ist ärgerlich, ein verschluckter Verkauf teurer. */
+export async function hatZugangSchon(
+  email: string,
+  zugang: string,
+): Promise<boolean> {
+  try {
+    const zeile = await ersteZeile<{
+      zugaenge: string[] | null;
+      bereich: string | null;
+    }>(
+      `kursteilnehmer?email=eq.${encodeURIComponent(email)}&select=zugaenge,bereich&limit=1`,
+    );
+
+    if (!zeile) return false;
+
+    const vorhanden =
+      zeile.zugaenge && zeile.zugaenge.length > 0
+        ? zeile.zugaenge
+        : zeile.bereich
+          ? [zeile.bereich]
+          : [];
+
+    return vorhanden.includes(zugang);
+  } catch (e) {
+    console.error("Zugang liess sich nicht prüfen:", e);
+    return false;
+  }
+}
+
+// ---------------------------------------------------------------------------
 // Rabattcodes
 //
 // ▸ WO GERECHNET WIRD, UND WARUM NUR HIER

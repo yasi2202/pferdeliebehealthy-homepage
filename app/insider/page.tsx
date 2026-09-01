@@ -72,7 +72,7 @@ export default async function InsiderSeite() {
               </h2>
               <p className="text-[15px] text-cream/75 max-w-lg mb-7">
                 Die Beiträge sind für Insider. Trag dich ein, dann kannst du
-                alle lesen — auch die älteren — und ich schreibe dir, sobald es
+                alle lesen, auch die älteren, und ich schreibe dir, sobald es
                 etwas Neues gibt. Kostet nichts.
               </p>
               <InsiderFormular

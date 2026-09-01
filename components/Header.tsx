@@ -18,6 +18,7 @@ const links = [
     ? { href: "/shop", label: "Shop", extern: false }
     : { href: "https://shop.pferdeliebehealthy.de/", label: "Shop", extern: true },
   { href: "/ausbildung", label: "Ausbildung", extern: false },
+  { href: "/blog", label: "Blog", extern: false },
   { href: "/insider", label: "Insider", extern: false },
   { href: "/#kontakt", label: "Kontakt", extern: false },
 ];
