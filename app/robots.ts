@@ -8,8 +8,10 @@ export default function robots(): MetadataRoute.Robots {
       {
         userAgent: "*",
         allow: "/",
-        // Die Vorschauseite gehoert nicht in den Suchindex.
-        disallow: ["/vorschau"],
+        // Die Vorschauseite gehoert nicht in den Suchindex, die Kasse und
+        // die Dankeseite ebenso wenig: Sie sind ohne Warenkorb leer und
+        // helfen niemandem, der ueber Google dort landet.
+        disallow: ["/vorschau", "/kasse", "/bestellung-danke"],
       },
     ],
     sitemap: `${seitenUrl}/sitemap.xml`,

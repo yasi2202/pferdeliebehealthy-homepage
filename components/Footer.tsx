@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { futterCheck, mineralKlarheit } from "@/lib/seite";
+import { shopSichtbar } from "@/lib/shop";
 
 export default function Footer() {
   return (
@@ -42,6 +43,15 @@ export default function Footer() {
                 Futterberatung 365
               </Link>
             </li>
+            {/* Der Shop erscheint hier erst, wenn er freigeschaltet ist.
+                Der Schalter sitzt in lib/shop.ts. */}
+            {shopSichtbar && (
+              <li>
+                <Link href="/shop" className="hover:text-ink">
+                  Shop
+                </Link>
+              </li>
+            )}
             <li>
               <Link href="/empfehlungen" className="hover:text-ink">
                 Rabattcodes &amp; Empfehlungen
@@ -121,6 +131,13 @@ export default function Footer() {
                 Widerrufsrecht
               </Link>
             </li>
+            {shopSichtbar && (
+              <li>
+                <Link href="/zahlung-und-versand" className="hover:text-ink">
+                  Zahlung &amp; Versand
+                </Link>
+              </li>
+            )}
           </ul>
         </div>
       </div>

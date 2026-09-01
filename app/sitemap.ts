@@ -1,5 +1,6 @@
 import type { MetadataRoute } from "next";
 import { alleBeitraege } from "@/lib/beitraege";
+import { produkte, shopSichtbar } from "@/lib/shop";
 import { url } from "@/lib/seo";
 
 // Die Seitenuebersicht fuer Suchmaschinen. Neue Insider-Beitraege landen
@@ -11,6 +12,15 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { pfad: "/futter-check", prioritaet: 0.9, takt: "monthly" },
     { pfad: "/mineral-klarheit", prioritaet: 0.8, takt: "monthly" },
     { pfad: "/insider", prioritaet: 0.8, takt: "weekly" },
+    // Der Shop steht erst in der Übersicht, wenn er freigeschaltet ist.
+    // Sonst schickt Google Leute auf eine Seite, die es im Menü nicht gibt.
+    // Der Schalter sitzt in lib/shop.ts.
+    ...(shopSichtbar
+      ? ([
+          { pfad: "/shop", prioritaet: 0.9, takt: "weekly" },
+          { pfad: "/zahlung-und-versand", prioritaet: 0.3, takt: "yearly" },
+        ] as const)
+      : []),
     { pfad: "/empfehlungen", prioritaet: 0.6, takt: "monthly" },
     { pfad: "/impressum", prioritaet: 0.2, takt: "yearly" },
     { pfad: "/datenschutz", prioritaet: 0.2, takt: "yearly" },
@@ -33,6 +43,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: s.takt,
       priority: s.prioritaet,
     })),
+    ...(shopSichtbar
+      ? produkte.map((p) => ({
+          url: url(`/shop/${p.slug}`),
+          changeFrequency: "monthly" as const,
+          priority: 0.8,
+        }))
+      : []),
     ...beitraege.map((b) => ({
       url: url(`/insider/${b.slug}`),
       ...(b.datum ? { lastModified: new Date(b.datum) } : {}),

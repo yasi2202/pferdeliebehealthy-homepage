@@ -8,6 +8,8 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import ScrollFade from "@/components/ScrollFade";
 import InsiderBar from "@/components/InsiderBar";
+import WarenkorbProvider from "@/components/WarenkorbProvider";
+import WarenkorbLade from "@/components/WarenkorbLade";
 
 // ---------------------------------------------------------------------------
 // Die Schriften werden beim Bauen heruntergeladen und von der eigenen Domain
@@ -163,9 +165,15 @@ export default function RootLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(strukturierteDaten) }}
         />
-        <Header />
-        {children}
-        <Footer />
+        {/* Der Warenkorb umschliesst alles, weil sowohl die Kopfzeile als
+            auch die Produktseiten und die Kasse ihn brauchen. Er lebt im
+            Browser der Besucherin und setzt kein Cookie. */}
+        <WarenkorbProvider>
+          <Header />
+          {children}
+          <Footer />
+          <WarenkorbLade />
+        </WarenkorbProvider>
         <ScrollFade />
         <InsiderBar />
         {/* Besucherzählung ohne Cookies: erkennt niemanden wieder, speichert

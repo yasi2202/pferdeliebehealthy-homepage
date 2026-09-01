@@ -1,0 +1,38 @@
+-- ---------------------------------------------------------------------------
+-- Den Rechnungsnummernzähler zurücksetzen.
+--
+-- ▸ WOFÜR DAS DA IST
+--   Jede Bestellung, die auf "bezahlt" springt, bekommt eine Rechnungsnummer.
+--   Das gilt auch für Testkäufe im Stripe-Testmodus, denn die Datenbank
+--   weiß nichts davon, dass kein echtes Geld geflossen ist. Nach dem Testen
+--   stünde die erste echte Rechnung deshalb nicht auf 2026-0001, sondern
+--   auf 2026-0003 oder was auch immer bis dahin verbraucht wurde.
+--
+-- ▸ WANN DU DAS AUSFÜHRST
+--   Genau einmal: nachdem alle Testkäufe erledigt sind und BEVOR die erste
+--   echte Kundin kauft. Also in dem Moment, in dem du in Vercel die
+--   Stripe-Testschlüssel gegen die echten tauschst.
+--
+-- ▸ DANACH NIE WIEDER
+--   Ist erst einmal eine echte Rechnung verschickt, darf der Zähler nicht
+--   mehr zurückgesetzt werden. Dann gäbe es zwei Rechnungen mit derselben
+--   Nummer, und das ist genau das, was § 14 UStG verbietet.
+--
+-- ▸ SO GEHT ES
+--   1. supabase.com, Projekt "pferdeliebehealthy-akademie", SQL Editor.
+--   2. ZUERST die Testbestellungen löschen (der Befehl steht unten,
+--      auskommentiert). Sie sind keine echten Geschäftsvorfälle, für sie
+--      gilt die zehnjährige Aufbewahrungspflicht also nicht.
+--   3. Dann den setval-Befehl ausführen.
+-- ---------------------------------------------------------------------------
+
+-- Schritt 1: Testbestellungen entfernen.
+-- Nimm das Minuszeichen vor der Zeile weg, wenn du sie ausführen willst,
+-- und PRÜF VORHER im Table Editor, dass dort wirklich nur Tests stehen.
+--
+-- delete from digitalbestellungen;
+
+-- Schritt 2: Der Zähler beginnt wieder bei eins.
+-- Das "false" am Ende heisst: Die 1 ist noch nicht verbraucht, die nächste
+-- Bestellung bekommt also 2026-0001 und nicht 2026-0002.
+select setval('rechnungsnummer_folge', 1, false);

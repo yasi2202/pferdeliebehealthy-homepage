@@ -5,14 +5,18 @@ import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 import { insider } from "@/lib/insider";
 import { futterCheck, mitgliederbereich } from "@/lib/seite";
+import WarenkorbKnopf from "@/components/WarenkorbKnopf";
+import { shopSichtbar } from "@/lib/shop";
 
 const links = [
   { href: "/#wege", label: "Angebote", extern: false },
-  {
-    href: "https://shop.pferdeliebehealthy.de/",
-    label: "Shop",
-    extern: true,
-  },
+  // Der eigene Shop steht erst dann hier, wenn er freigeschaltet ist.
+  // Solange nicht, zeigt der Menüpunkt weiter auf den alten Shop, damit
+  // Besucherinnen nicht ins Leere laufen. Der Schalter dafür sitzt in
+  // lib/shop.ts, dort steht auch die Begründung.
+  shopSichtbar
+    ? { href: "/shop", label: "Shop", extern: false }
+    : { href: "https://shop.pferdeliebehealthy.de/", label: "Shop", extern: true },
   { href: "/ausbildung", label: "Ausbildung", extern: false },
   { href: "/insider", label: "Insider", extern: false },
   { href: "/#kontakt", label: "Kontakt", extern: false },
@@ -188,6 +192,11 @@ export default function Header() {
           </div>
 
           <div className="flex shrink-0 items-center gap-2 sm:gap-3">
+            {/* Der Warenkorb steht vor dem Schloss und ist auch auf dem
+                Handy sichtbar -- er ist der Weg zum Kauf und darf nicht im
+                Klappmenue verschwinden. */}
+            <WarenkorbKnopf hell={transparent} />
+
             <a
               href={mitgliederbereich.url}
               target="_blank"
