@@ -6,7 +6,7 @@ kategorie: "Magen und Darm"
 angebot: "futter-check"
 bild: ""
 bildText: ""
-beschreibung: "Die Verdauung deines Pferdes beginnt nicht im Magen, sondern bei dir: in der Entscheidung, was, wie und wann du fütterst.Denn die Darmflora deines Pferdes …"
+beschreibung: "Die Verdauung deines Pferdes beginnt nicht im Magen, sondern bei dir: in der Entscheidung, was, wie und wann du fütterst."
 ---
 Die Verdauung deines Pferdes beginnt nicht im Magen, sondern bei dir: in der
 Entscheidung, **was, wie und wann du fütterst**.
@@ -98,8 +98,7 @@ Und zwar **ohne unnötige Zusätze oder „Wunderpülverchen“**, sondern mit
 Damit du dich nicht allein durch Fachtexte wühlen musst, sondern jeden Tag
 konkrete Impulse bekommst.
 
-[📘 👉 Hier geht’s zur
-3-Phasen-Darmsanierung](https://pferdeliebehealthy.thrivecart.com/darmsanierung-beim-pferd/)
+📘 👉 Hier geht’s zur 3-Phasen-Darmsanierung
 
 ### Gesunder Darm braucht keinen Hokus-Pokus
 
@@ -109,6 +108,3 @@ Futterqualität, Rationsgestaltung und ein stabiles System.
 
 **Willst du deinem Pferd von innen heraus helfen?**
 Dann starte heute, und begleite es Schritt für Schritt zurück in die Balance.
-
-<div data-elementor-type="footer" data-elementor-id="2590" class="elementor
-elementor-2590

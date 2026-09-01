@@ -87,6 +87,3 @@ was ein gutes Raufutterprodukt ausmacht.
 🌿 **Spare mit meinem Code:**
 👉 **YASI05**, und sichere dir einen exklusiven Rabatt auf deine Bestellung
 beim Biohof Elemengrund!
-
-<div data-elementor-type="footer" data-elementor-id="2590" class="elementor
-elementor-2590
