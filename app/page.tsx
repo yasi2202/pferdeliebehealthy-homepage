@@ -7,6 +7,7 @@ import PillarsSection from "@/components/PillarsSection";
 import AboutSection from "@/components/AboutSection";
 import TestimonialSection from "@/components/TestimonialSection";
 import InsiderSection from "@/components/InsiderSection";
+import BlogSection from "@/components/BlogSection";
 import NurFuerNichtInsider from "@/components/NurFuerNichtInsider";
 import CtaFinal from "@/components/CtaFinal";
 
@@ -21,6 +22,10 @@ export default function Home() {
       <PillarsSection />
       <AboutSection />
       <TestimonialSection />
+      {/* Der Blog steht vor der Insider-Einladung: erst zeigen, dass es etwas
+          zu lesen gibt, dann nach der Adresse fragen. Sind alle Beitraege
+          Entwuerfe, blendet sich der Abschnitt selbst aus. */}
+      <BlogSection />
       {/* Wer schon Insider ist, wird nicht noch einmal eingeladen. */}
       <NurFuerNichtInsider>
         <InsiderSection />

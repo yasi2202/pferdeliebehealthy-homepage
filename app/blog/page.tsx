@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import { alleBlogBeitraege } from "@/lib/blog";
+import { url } from "@/lib/seo";
 import { insider } from "@/lib/insider";
 import InsiderFormular from "@/components/InsiderFormular";
 import BlogListe from "@/components/BlogListe";
@@ -38,6 +39,52 @@ export default function BlogSeite() {
 
   return (
     <main>
+      {/* Die Uebersicht als eigenstaendiger Blog, an dem die einzelnen
+          Beitraege haengen (siehe isPartOf dort). Herausgeberin ist dieselbe,
+          die auch auf der Startseite ausgewiesen ist, verknuepft ueber ihre
+          Kennung aus app/layout.tsx. */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@graph": [
+              {
+                "@type": "Blog",
+                "@id": url("/blog#blog"),
+                name: "Pferdefütterung verstehen",
+                description:
+                  "Fachbeiträge zur Pferdefütterung von Ernährungsberaterin Yasemin Halac.",
+                url: url("/blog"),
+                inLanguage: "de-DE",
+                author: { "@id": url("/#yasemin") },
+                publisher: { "@id": url("/#unternehmen") },
+                isPartOf: { "@id": url("/#website") },
+                blogPost: beitraege.map((b) => ({
+                  "@type": "BlogPosting",
+                  headline: b.titel,
+                  description: b.beschreibung,
+                  url: url(`/blog/${b.slug}`),
+                  ...(b.datum ? { datePublished: b.datum } : {}),
+                })),
+              },
+              {
+                "@type": "BreadcrumbList",
+                itemListElement: [
+                  {
+                    "@type": "ListItem",
+                    position: 1,
+                    name: "Startseite",
+                    item: url("/"),
+                  },
+                  { "@type": "ListItem", position: 2, name: "Blog" },
+                ],
+              },
+            ],
+          }),
+        }}
+      />
+
       {/* Kopfbereich */}
       <section className="bg-rose-deep px-6 sm:px-8 py-14 sm:py-20">
         <div className="max-w-3xl mx-auto">

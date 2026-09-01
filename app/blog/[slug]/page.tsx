@@ -67,33 +67,61 @@ export default async function BlogBeitragSeite({ params }: Props) {
     <main>
       {/* Sagt Google in seiner eigenen Sprache, was hier steht, von wem es
           ist und wann es zuletzt geprüft wurde. Ohne diese Angaben taucht in
-          den Suchtreffern weder Datum noch Autorin auf. */}
+          den Suchtreffern weder Datum noch Autorin auf.
+
+          Autorin und Herausgeberin werden nicht neu beschrieben, sondern über
+          ihre Kennung aus app/layout.tsx verknüpft. Damit sieht Google einen
+          Beitrag von genau der Person, die auf der Startseite als
+          Ernährungsberaterin ausgewiesen ist, statt einer gleichnamigen
+          Unbekannten. Bei Gesundheitsthemen zählt genau das.
+
+          Der zweite Block ist der Weg von der Startseite hierher. Google zeigt
+          ihn im Suchtreffer anstelle der nackten Adresse. */}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
           __html: JSON.stringify({
             "@context": "https://schema.org",
-            "@type": "Article",
-            headline: beitrag.titel,
-            description: beitrag.beschreibung,
-            inLanguage: "de-DE",
-            ...(beitrag.datum ? { datePublished: beitrag.datum } : {}),
-            ...(beitrag.aktualisiert
-              ? { dateModified: beitrag.aktualisiert }
-              : {}),
-            author: {
-              "@type": "Person",
-              name: "Yasemin Halac",
-              jobTitle: "Ernährungsberaterin für Pferde",
-              url: url("/"),
-            },
-            publisher: {
-              "@type": "Organization",
-              name: "Pferdeliebehealthy",
-              url: url("/"),
-            },
-            image: url(bild),
-            mainEntityOfPage: url(`/blog/${slug}`),
+            "@graph": [
+              {
+                "@type": "Article",
+                headline: beitrag.titel,
+                description: beitrag.beschreibung,
+                inLanguage: "de-DE",
+                ...(beitrag.datum ? { datePublished: beitrag.datum } : {}),
+                ...(beitrag.aktualisiert
+                  ? { dateModified: beitrag.aktualisiert }
+                  : {}),
+                author: { "@id": url("/#yasemin") },
+                publisher: { "@id": url("/#unternehmen") },
+                isPartOf: { "@id": url("/blog#blog") },
+                articleSection: beitrag.kategorie,
+                image: url(bild),
+                mainEntityOfPage: url(`/blog/${slug}`),
+              },
+              {
+                "@type": "BreadcrumbList",
+                itemListElement: [
+                  {
+                    "@type": "ListItem",
+                    position: 1,
+                    name: "Startseite",
+                    item: url("/"),
+                  },
+                  {
+                    "@type": "ListItem",
+                    position: 2,
+                    name: "Blog",
+                    item: url("/blog"),
+                  },
+                  {
+                    "@type": "ListItem",
+                    position: 3,
+                    name: beitrag.titel,
+                  },
+                ],
+              },
+            ],
           }),
         }}
       />
