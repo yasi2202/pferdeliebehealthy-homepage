@@ -24,7 +24,20 @@ import { cookies } from "next/headers";
 //   ungültig.
 // ---------------------------------------------------------------------------
 
-const PASSWORT = process.env.ADMIN_PASSWORT || "";
+/**
+ * ▸ WARUM HIER `.trim()` STEHT, UND WARUM DAS WICHTIG IST
+ *   Am 01.09.2026 landete beim Eintragen in Vercel ein Zeilenumbruch am Ende
+ *   des Passworts. Man sieht ihn dort nicht, und eintippen kann man ihn erst
+ *   recht nicht: Die Anmeldung wies also jedes richtige Passwort ab, und der
+ *   Grund war unsichtbar. Beim Kopieren aus einer Textdatei oder aus einem
+ *   Chatfenster passiert genau das leicht.
+ *
+ *   Deshalb werden hier und bei der Eingabe die Leerzeichen und Umbrüche an
+ *   den Rändern entfernt. Der Verlust ist zu verschmerzen -- ein Passwort,
+ *   das sich nur durch ein Leerzeichen am Ende unterscheidet, will niemand --
+ *   und es erspart eine Fehlersuche, bei der man nichts sehen kann.
+ */
+const PASSWORT = (process.env.ADMIN_PASSWORT || "").trim();
 
 const KEKS = "pfh_admin";
 
@@ -78,7 +91,9 @@ function keksStimmt(keks: string): boolean {
 export function passwortStimmt(eingabe: string): boolean {
   if (!PASSWORT) return false;
 
-  const a = createHmac("sha256", PASSWORT).update(eingabe).digest();
+  // Auch hier trimmen: Wer das Passwort aus einem Passwortspeicher einfügt,
+  // hat oft ein Leerzeichen dabei. Siehe die Erklärung ganz oben.
+  const a = createHmac("sha256", PASSWORT).update(eingabe.trim()).digest();
   const b = createHmac("sha256", PASSWORT).update(PASSWORT).digest();
 
   return timingSafeEqual(a, b);
