@@ -54,6 +54,20 @@ const nextConfig: NextConfig = {
     return [
       ...alteBlogadressen,
       {
+        // Diese eine alte Adresse begann mit einem Pferde-Emoji. Der neue
+        // Dateiname darf das nicht enthalten, also faengt die Weiterleitung
+        // sie von Hand ab. Beide Schreibweisen, weil manche Browser das
+        // Zeichen kodiert schicken und manche nicht.
+        source: "/%F0%9F%90%B4-futterberatung-fuers-pferd-warum-einfach-fuettern-nicht-mehr-reicht",
+        destination: "/blog/futterberatung-fuers-pferd-warum-einfach-fuettern-nicht-mehr-reicht",
+        permanent: true,
+      },
+      {
+        source: "/🐴-futterberatung-fuers-pferd-warum-einfach-fuettern-nicht-mehr-reicht",
+        destination: "/blog/futterberatung-fuers-pferd-warum-einfach-fuettern-nicht-mehr-reicht",
+        permanent: true,
+      },
+      {
         source: "/danke-futter-check",
         destination: "/futter-check-start",
         permanent: false,

@@ -92,18 +92,17 @@ erhöht.
 ## Die bessere Alternative: Bedarfsgerechtes Eiweiß, aus gut verdaulichen
 Quellen
 
-## **Und welche Eiweißquellen sind wirklich pferdegerecht?**
-
+## Und welche Eiweißquellen sind wirklich pferdegerecht?
 Wenn du deinem Pferd **hochwertiges, natürliches Protein** zuführen möchtest,
 ohne die Risiken von Soja, dann setze **kurweise und gezielt** auf:
 
-- **Esparsette**
-- **Luzerne**
-- **Grünhafer**
+✔️ **Esparsette**
+✔️ **Luzerne**
+✔️ **Grünhafer**
 
 Diese bekommst du in **sehr guter Qualität beim Biohof Elmengrund**
 
-**Mit Rabattcode: yasi05**
+💚 **Mit Rabattcode: yasi05**
 
 Als Ergänzung sind auch:
 
@@ -122,13 +121,12 @@ Gerade bei sensiblen Pferden oder solchen mit Verdauungsproblemen,
 Stoffwechselstörungen oder im Wachstum sollte **dringend auf eine sojafreie
 Fütterung geachtet werden.**
 
-## **Wichtig: Immer mit Rationsberechnung arbeiten!**
-
+## Wichtig: Immer mit Rationsberechnung arbeiten!
 Eiweißüberschuss kann genauso schaden wie Mangel.
 Daher: **Passe die Eiweißzufuhr immer individuell an dein Pferd an.**
 
-**Dafür kannst du unser Rationsberechnungs-Tool nutzen:**
+➡️ **Dafür kannst du unser Rationsberechnungs-Tool nutzen:**
 
-**Jetzt RationPro starten**
+🔗 **Jetzt RationPro starten**
 
 Schnell, einfach & ohne komplizierte Tabellen, ideal für Pferdebesitzer.

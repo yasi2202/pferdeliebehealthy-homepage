@@ -2,7 +2,7 @@
 titel: "Mauke beim Pferd ist kein Hautproblem"
 datum: 2026-09-01
 aktualisiert:
-kategorie: "Haut und Fell"
+kategorie: "Haut, Fell und Hufe"
 angebot: "mineral"
 bild: ""
 bildText: ""
