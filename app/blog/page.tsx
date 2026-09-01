@@ -18,12 +18,20 @@ import NurFuerNichtInsider from "@/components/NurFuerNichtInsider";
 // gesehen hat, trotzdem dieselbe Seite wieder, wenn er später dorthin kommt.
 // ---------------------------------------------------------------------------
 
-export const metadata: Metadata = {
-  alternates: { canonical: "/blog" },
-  title: "Blog | Pferdefütterung verstehen",
-  description:
-    "Fachbeiträge zur Pferdefütterung: Kotwasser, Mauke, Fellwechsel, Magen und Darm, Mineralstoffe. Verständlich erklärt von Ernährungsberaterin Yasemin Halac.",
-};
+export function generateMetadata(): Metadata {
+  const leer = alleBlogBeitraege().length === 0;
+
+  return {
+    alternates: { canonical: "/blog" },
+    title: "Blog | Pferdefütterung verstehen",
+    description:
+      "Fachbeiträge zur Pferdefütterung: Kotwasser, Mauke, Fellwechsel, Magen und Darm, Mineralstoffe. Verständlich erklärt von Ernährungsberaterin Yasemin Halac.",
+    // Solange kein Beitrag steht, bleibt die Seite aus dem Suchindex. Eine
+    // leere Übersicht anzumelden schadet: Google merkt sich eine Seite ohne
+    // Inhalt und schaut so schnell nicht wieder vorbei.
+    ...(leer ? { robots: { index: false, follow: true } } : {}),
+  };
+}
 
 export default function BlogSeite() {
   const beitraege = alleBlogBeitraege();
