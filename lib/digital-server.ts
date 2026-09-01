@@ -36,7 +36,7 @@ import {
   type DigitalProdukt,
 } from "@/lib/digital";
 import { preisText } from "@/lib/shop";
-import { stripeAnfrage, stripeHolen } from "@/lib/shop-server";
+import { STRIPE_ZAHLARTEN, stripeAnfrage, stripeHolen } from "@/lib/shop-server";
 import {
   supabase,
   ersteZeile,
@@ -49,6 +49,7 @@ import {
 
 const AKADEMIE_WEBHOOK_URL = process.env.AKADEMIE_WEBHOOK_URL;
 const AKADEMIE_WEBHOOK_KEY = process.env.AKADEMIE_WEBHOOK_KEY || "";
+
 
 /**
  * Deine Angaben auf der Rechnung, aus dem Impressum übernommen.
@@ -448,6 +449,11 @@ export async function bezahlseiteDigitalAnlegen(opt: {
     locale: "de",
     customer_email: opt.email,
     client_reference_id: opt.nummer,
+    // Nur wenn eine eigene Konfiguration hinterlegt ist. Sonst gilt die von
+    // alfima, siehe die Erklärung bei STRIPE_ZAHLARTEN oben.
+    ...(STRIPE_ZAHLARTEN
+      ? { payment_method_configuration: STRIPE_ZAHLARTEN }
+      : {}),
     ...(opt.zahlungsartMerken
       ? {
           customer_creation: "always",

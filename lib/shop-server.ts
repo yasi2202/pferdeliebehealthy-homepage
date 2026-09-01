@@ -41,6 +41,33 @@ import {
 const STRIPE_SECRET_KEY = process.env.STRIPE_SECRET_KEY;
 const STRIPE_WEBHOOK_SECRET = process.env.STRIPE_WEBHOOK_SECRET;
 
+/**
+ * Welche Zahlarten an der Kasse erscheinen sollen.
+ *
+ * ▸ WOZU DAS DA IST, UND WARUM ES WICHTIG IST
+ *   Das Stripe-Konto ist über alfima verknüpft. Dadurch bestimmt alfima die
+ *   Standardkonfiguration der Zahlarten, und im Stripe-Dashboard steht
+ *   ausdrücklich: "alfima hat Sie nicht autorisiert, Zahlungsmethoden vom
+ *   Dashboard aus zu verwalten." Eine selbst angelegte Konfiguration wird
+ *   deshalb ignoriert, solange man sie nicht ausdrücklich verlangt. Am
+ *   01.09.2026 fehlte darum PayPal an der Kasse, obwohl es eingeschaltet war.
+ *
+ * ▸ SO STELLST DU ES EIN
+ *   In Stripe unter Einstellungen, Zahlungen, Zahlungsmethoden eine eigene
+ *   Konfiguration anlegen und dort die Zahlarten auswählen, die du willst.
+ *   Ihre Kennung beginnt mit `pmc_`. Diese Kennung als Variable
+ *       STRIPE_ZAHLARTEN
+ *   in den Vercel-Einstellungen eintragen.
+ *
+ * ▸ Ist die Variable leer, bleibt alles wie bisher: Dann gilt, was alfima
+ *   vorgibt. Das ist der sichere Rückfall, keine Kasse bleibt deshalb stehen.
+ *
+ * ▸ GILT FÜR BEIDE KASSEN, den Futtershop hier und die digitalen Produkte in
+ *   lib/digital-server.ts. Deshalb steht der Wert hier, wo auch der
+ *   Stripe-Schlüssel liegt, und nicht zweimal.
+ */
+export const STRIPE_ZAHLARTEN = process.env.STRIPE_ZAHLARTEN || "";
+
 /** Sagt, ob der Shop bezahlbereit ist. */
 export function stripeEingerichtet(): boolean {
   return Boolean(STRIPE_SECRET_KEY);
@@ -265,6 +292,11 @@ export async function bezahlseiteAnlegen(opt: {
     locale: "de",
     customer_email: opt.email,
     client_reference_id: opt.nummer,
+    // Nur wenn eine eigene Konfiguration hinterlegt ist. Sonst gilt die von
+    // alfima, siehe die Erklaerung bei STRIPE_ZAHLARTEN oben.
+    ...(STRIPE_ZAHLARTEN
+      ? { payment_method_configuration: STRIPE_ZAHLARTEN }
+      : {}),
     line_items: posten,
     metadata: { bestellnummer: opt.nummer },
     payment_intent_data: {
