@@ -3,9 +3,13 @@ import { digitalFinden, funnelZu } from "@/lib/digital";
 import { stripeEingerichtet } from "@/lib/shop-server";
 import {
   bezahlseiteDigitalAnlegen,
+  digitalAlsBezahltMarkieren,
   digitalErgaenzen,
   digitalNummer,
   digitalSpeichern,
+  nachDerZahlung,
+  rabattEinloesen,
+  rabattPruefen,
   zugriffToken,
 } from "@/lib/digital-server";
 
@@ -140,6 +144,38 @@ export async function POST(request: Request) {
     );
   }
 
+  // ▸ DER RABATT WIRD HIER NEU GERECHNET, nicht übernommen.
+  //   Der Browser schickt nur den eingetippten Code. Preis und Nachlass
+  //   kommen ausschliesslich aus lib/digital.ts und der Rabatttabelle. Wer
+  //   die Anfrage von Hand baut und sich einen Preis von einem Cent
+  //   hineinschreibt, erreicht damit nichts.
+  //
+  //   Ein Code, der zwischen dem Eintippen und dem Bestellen ungültig
+  //   geworden ist, führt hier zu einem Abbruch mit Begründung. Still den
+  //   vollen Preis abzubuchen wäre schlimmer: Die Kundin hat einen anderen
+  //   Betrag gesehen, als sie auf den Knopf gedrückt hat.
+  const codeEingabe = kuerzen(daten.rabattcode, 40);
+
+  let preis = produkt.preis;
+  let rabattCent = 0;
+  let rabattcode: string | null = null;
+
+  if (codeEingabe) {
+    const rabatt = await rabattPruefen({
+      code: codeEingabe,
+      slug: produkt.slug,
+      preis: produkt.preis,
+    });
+
+    if ("fehler" in rabatt) {
+      return Response.json({ fehler: rabatt.fehler }, { status: 400 });
+    }
+
+    preis = rabatt.endpreis;
+    rabattCent = rabatt.rabattCent;
+    rabattcode = rabatt.code;
+  }
+
   const nummer = digitalNummer();
   const token = zugriffToken();
   const jetzt = new Date().toISOString();
@@ -173,7 +209,9 @@ export async function POST(request: Request) {
         mwst: produkt.mwst,
       },
     ],
-    gesamt: produkt.preis,
+    gesamt: preis,
+    rabattcode,
+    rabatt_cent: rabattCent,
     widerruf_verzicht: true,
     widerruf_verzicht_am: jetzt,
     newsletter,
@@ -191,9 +229,33 @@ export async function POST(request: Request) {
     );
   }
 
+  if (rabattcode) {
+    await rabattEinloesen(rabattcode);
+  }
+
+  // ▸ DER SONDERFALL: Ein Code, der den Preis auf null senkt.
+  //   Stripe kann keine Zahlung über 0,00 € anlegen, die Bezahlseite würde
+  //   also mit einem Fehler antworten. Statt die Kundin davorlaufen zu
+  //   lassen, wird der Kauf hier sofort abgeschlossen und freigeschaltet.
+  //   Das ist der einzige Weg, auf dem eine Bestellung ohne Rückmeldung von
+  //   Stripe auf "bezahlt" springt -- und er ist sicher, weil kein Geld
+  //   fliessen muss und der Rabatt serverseitig geprüft wurde.
+  if (preis <= 0) {
+    const bezahlt = await digitalAlsBezahltMarkieren(nummer);
+
+    if (bezahlt) {
+      await nachDerZahlung(bezahlt);
+    }
+
+    return Response.json({ weiter: weiterNach, nummer, ohneZahlung: true });
+  }
+
   const bezahlseite = await bezahlseiteDigitalAnlegen({
     produkt,
-    preis: produkt.preis,
+    // `preis`, nicht `produkt.preis`: Hier steht der Betrag nach Abzug des
+    // Rabatts. Sonst würde Stripe den vollen Preis einziehen, obwohl in der
+    // Kasse der ermässigte stand.
+    preis,
     nummer,
     token,
     email,

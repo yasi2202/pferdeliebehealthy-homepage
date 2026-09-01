@@ -24,28 +24,42 @@
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { preisText } from "@/lib/shop";
-import type { DigitalProdukt, Funnel } from "@/lib/digital";
+import type { DigitalProdukt } from "@/lib/digital";
 
 export default function UpsellAngebot({
   nummer,
   token,
   produkt,
-  anschluss,
   ersparnis,
+  stufe = "upsell",
+  preis,
+  titel,
+  grund,
+  ablehnenZiel,
+  ablehnenText,
 }: {
   nummer: string;
   token: string;
   produkt: DigitalProdukt;
-  anschluss: Funnel;
   /** In Cent. Ist sie 0, wird kein Vergleichspreis gezeigt. Warum das so
    *  sorgfältig gehandhabt wird, steht bei `ersparnis()` in lib/digital.ts. */
   ersparnis: number;
+  /** Welche Stufe der Kette hier gezeigt wird. Der Server behandelt beide
+   *  gleich, nur Preis und Text unterscheiden sich. */
+  stufe?: "upsell" | "downsell";
+  preis: number;
+  titel: string;
+  grund: string;
+  /** Wohin es geht, wenn abgelehnt wird. Beim Upsell zum Downsell, falls es
+   *  einen gibt, sonst direkt zur Dankeseite. */
+  ablehnenZiel: string;
+  ablehnenText: string;
 }) {
   const router = useRouter();
   const [laeuft, setLaeuft] = useState(false);
   const [hinweis, setHinweis] = useState<string | null>(null);
 
-  const weiter = () => router.push(`/danke/${nummer}?t=${token}`);
+  const weiter = () => router.push(ablehnenZiel);
 
   const annehmen = async () => {
     if (laeuft) return;
@@ -57,7 +71,7 @@ export default function UpsellAngebot({
       const antwort = await fetch("/api/upsell", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ nummer, token }),
+        body: JSON.stringify({ nummer, token, stufe }),
       });
 
       const daten = await antwort.json();
@@ -91,11 +105,11 @@ export default function UpsellAngebot({
   return (
     <div className="rounded-[18px] border border-line bg-white p-6 sm:p-8">
       <h2 className="mb-4 font-serif text-[22px] leading-snug sm:text-[26px]">
-        {anschluss.upsellTitel}
+        {titel}
       </h2>
 
       <p className="mb-6 text-[16.5px] leading-relaxed text-ink-soft">
-        {anschluss.upsellGrund}
+        {grund}
       </p>
 
       {/* Leistung und Preis unmittelbar über dem Knopf. Nicht verschieben. */}
@@ -116,7 +130,7 @@ export default function UpsellAngebot({
               </span>
             )}
             <span className="font-serif text-[26px] tabular-nums">
-              {preisText(anschluss.upsellPreis)}
+              {preisText(preis)}
             </span>
           </span>
         </div>
@@ -152,7 +166,7 @@ export default function UpsellAngebot({
         disabled={laeuft}
         className="mt-3 w-full rounded-full px-6 py-3 text-[14.5px] text-ink-soft underline underline-offset-4 transition-colors hover:text-ink disabled:opacity-40"
       >
-        Nein danke, weiter zu meinem Zugang
+        {ablehnenText}
       </button>
     </div>
   );

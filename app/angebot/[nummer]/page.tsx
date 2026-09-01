@@ -5,21 +5,22 @@ import { digitalFinden, ersparnis, funnelZu } from "@/lib/digital";
 import { digitalLaden } from "@/lib/digital-server";
 
 // ---------------------------------------------------------------------------
-// Die Seite, auf der die Kundin direkt nach der Zahlung landet, wenn es zu
-// ihrem Kauf ein Angebot gibt.
+// Das erste Angebot, direkt nach der Zahlung.
 //
 // ▸ SIE BEWEIST NICHT, DASS BEZAHLT WURDE. Diese Adresse kann jede Person
 //   aufrufen. Deshalb gehört hierher nichts, was nur Käuferinnen sehen
 //   dürfen, und deshalb wird der Zugang auch nicht hier freigeschaltet,
 //   sondern in app/api/stripe-webhook. Was hier geprüft wird, ist nur, ob
-//   der Schlüssel aus der Adresszeile zur Bestellung passt. Ohne ihn gibt es
-//   kein Angebot zu sehen.
+//   der Schlüssel aus der Adresszeile zur Bestellung passt.
 //
 // ▸ WARUM DIE SEITE NICHT WARTET, BIS DIE ZAHLUNG BESTÄTIGT IST
 //   Die Kundin ist meist schneller hier als die Rückmeldung von Stripe. Sie
 //   vor einen Ladebalken zu setzen, wäre der sicherste Weg, das Angebot zu
 //   verlieren. Geprüft wird deshalb erst dann, wenn sie tatsächlich auf den
 //   Knopf drückt, und zwar in app/api/upsell.
+//
+// ▸ WER ABLEHNT, kommt auf /downsell/<nummer>, falls die Kette dort ein
+//   günstigeres Angebot vorsieht. Sonst direkt zur Dankeseite.
 // ---------------------------------------------------------------------------
 
 export const dynamic = "force-dynamic";
@@ -57,6 +58,8 @@ export default async function AngebotSeite({
     redirect(`/danke/${nummer}?t=${t}`);
   }
 
+  const hatDownsell = Boolean(anschluss.downsell && anschluss.downsellPreis);
+
   return (
     <main className="px-6 py-14 sm:px-8 sm:py-20">
       <div className="mx-auto max-w-2xl">
@@ -77,8 +80,22 @@ export default async function AngebotSeite({
           nummer={nummer}
           token={t}
           produkt={produkt}
-          anschluss={anschluss}
-          ersparnis={ersparnis(anschluss)}
+          preis={anschluss.upsellPreis}
+          titel={anschluss.upsellTitel}
+          grund={anschluss.upsellGrund}
+          ersparnis={ersparnis(anschluss, "upsell")}
+          stufe="upsell"
+          // Wer ablehnt, sieht das günstigere Angebot, sofern die Kette eines
+          // vorsieht. Der Text sagt schon hier, was kommt: Ein "Nein danke",
+          // hinter dem noch ein Angebot wartet, ärgert sonst.
+          ablehnenZiel={
+            hatDownsell ? `/downsell/${nummer}?t=${t}` : `/danke/${nummer}?t=${t}`
+          }
+          ablehnenText={
+            hatDownsell
+              ? "Nein danke, das brauche ich nicht"
+              : "Nein danke, weiter zu meinem Zugang"
+          }
         />
       </div>
     </main>

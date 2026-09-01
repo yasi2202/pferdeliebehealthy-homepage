@@ -72,10 +72,23 @@ export async function POST(request: Request) {
     return Response.json({ fehler: "Angebot nicht gefunden." }, { status: 404 });
   }
 
-  const anschluss = funnelZu(kauf.artikel[0]?.slug ?? "");
-  const produkt = anschluss?.upsell ? digitalFinden(anschluss.upsell) : undefined;
+  // Welche Stufe wird angenommen? Der Upsell direkt nach dem Kauf, oder der
+  // Downsell, der erscheint, wenn der Upsell abgelehnt wurde. Beide laufen
+  // durch dieselbe Route, weil sich davor und danach nichts unterscheidet.
+  const stufe: "upsell" | "downsell" =
+    daten.stufe === "downsell" ? "downsell" : "upsell";
 
-  if (!anschluss || !produkt) {
+  const anschluss = funnelZu(kauf.artikel[0]?.slug ?? "");
+
+  const angebotSlug =
+    stufe === "upsell" ? anschluss?.upsell : anschluss?.downsell;
+
+  const angebotPreis =
+    stufe === "upsell" ? anschluss?.upsellPreis : anschluss?.downsellPreis;
+
+  const produkt = angebotSlug ? digitalFinden(angebotSlug) : undefined;
+
+  if (!anschluss || !produkt || angebotPreis === undefined) {
     return Response.json(
       { fehler: "Zu diesem Kauf gibt es kein Angebot." },
       { status: 404 },
@@ -160,11 +173,11 @@ export async function POST(request: Request) {
       {
         slug: produkt.slug,
         name: produkt.name,
-        preis: anschluss.upsellPreis,
+        preis: angebotPreis,
         mwst: produkt.mwst,
       },
     ],
-    gesamt: anschluss.upsellPreis,
+    gesamt: angebotPreis,
     // Die Zustimmung zum sofortigen Zugang gilt auch hier: Sie steht auf der
     // Angebotsseite unmittelbar über dem Bestellknopf.
     widerruf_verzicht: true,
@@ -189,7 +202,7 @@ export async function POST(request: Request) {
     const abbuchung = await upsellAbbuchen({
       kunde,
       zahlungsart,
-      preis: anschluss.upsellPreis,
+      preis: angebotPreis,
       produkt,
       nummer: upsellNummer,
     });
@@ -212,7 +225,7 @@ export async function POST(request: Request) {
   // wie bei jedem anderen Kauf, und app/api/stripe-webhook schaltet frei.
   const bezahlseite = await bezahlseiteDigitalAnlegen({
     produkt,
-    preis: anschluss.upsellPreis,
+    preis: angebotPreis,
     nummer: upsellNummer,
     token: upsellToken,
     email: kauf.email,

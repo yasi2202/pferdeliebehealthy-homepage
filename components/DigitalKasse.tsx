@@ -65,6 +65,18 @@ export default function DigitalKasse({
   const [plz, setPlz] = useState("");
   const [ort, setOrt] = useState("");
   const [land, setLand] = useState("DE");
+
+  // Der Rabattcode. `rabatt` ist erst gesetzt, wenn der Server ihn bestätigt
+  // hat. Was hier steht, ist nur die Anzeige: Gerechnet wird noch einmal
+  // beim Bestellen, siehe app/api/digitalkasse/route.ts.
+  const [code, setCode] = useState("");
+  const [codeLaeuft, setCodeLaeuft] = useState(false);
+  const [codeFehler, setCodeFehler] = useState<string | null>(null);
+  const [rabatt, setRabatt] = useState<{
+    code: string;
+    rabattCent: number;
+    endpreis: number;
+  } | null>(null);
   const [einverstanden, setEinverstanden] = useState(false);
   const [sofort, setSofort] = useState(false);
   const [newsletter, setNewsletter] = useState(false);
@@ -80,6 +92,46 @@ export default function DigitalKasse({
     ort.trim().length >= 2 &&
     einverstanden &&
     sofort;
+
+  const zuZahlen = rabatt ? rabatt.endpreis : produkt.preis;
+
+  const codePruefen = async () => {
+    if (!code.trim() || codeLaeuft) return;
+
+    setCodeLaeuft(true);
+    setCodeFehler(null);
+
+    try {
+      const antwort = await fetch("/api/rabattcode", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ slug: produkt.slug, code }),
+      });
+
+      const daten = await antwort.json();
+
+      if (daten.gueltig) {
+        setRabatt({
+          code: daten.code,
+          rabattCent: daten.rabattCent,
+          endpreis: daten.endpreis,
+        });
+      } else {
+        setRabatt(null);
+        setCodeFehler(daten.fehler ?? "Dieser Code gilt nicht.");
+      }
+    } catch {
+      setCodeFehler("Der Code liess sich gerade nicht prüfen.");
+    }
+
+    setCodeLaeuft(false);
+  };
+
+  const codeEntfernen = () => {
+    setRabatt(null);
+    setCode("");
+    setCodeFehler(null);
+  };
 
   const kaufen = async () => {
     if (!vollstaendig || laeuft) return;
@@ -103,12 +155,19 @@ export default function DigitalKasse({
           einverstanden,
           widerrufVerzicht: sofort,
           newsletter,
+          rabattcode: rabatt ? rabatt.code : "",
         }),
       });
 
       const daten = await antwort.json();
 
-      if (!antwort.ok || !daten.url) {
+      // Zwei mögliche Wege zurück:
+      //   `url`    -> weiter zur Bezahlseite von Stripe, der Normalfall.
+      //   `weiter` -> ein Rabattcode hat den Preis auf null gesenkt, es gibt
+      //               nichts zu bezahlen, der Zugang ist schon freigeschaltet.
+      const ziel = daten.url ?? daten.weiter;
+
+      if (!antwort.ok || !ziel) {
         setFehler(
           daten.fehler ??
             "Da ist etwas schiefgegangen. Versuch es bitte noch einmal oder schreib mir an info@pferdeliebehealthy.de.",
@@ -117,7 +176,7 @@ export default function DigitalKasse({
         return;
       }
 
-      window.location.href = daten.url;
+      window.location.href = ziel;
     } catch {
       setFehler(
         "Die Verbindung hat nicht geklappt. Prüf bitte kurz dein Netz und versuch es noch einmal.",
@@ -135,8 +194,9 @@ export default function DigitalKasse({
         <h2 className="mb-2 font-serif text-[22px]">Deine Angaben</h2>
 
         <p className="mb-6 text-[14.5px] leading-relaxed text-ink-soft">
-          Es wird nichts verschickt, deinen Zugang bekommst du per Mail. Die
-          Anschrift brauche ich nur für deine Rechnung.
+          {produkt.art === "dienstleistung"
+            ? "Es wird nichts verschickt, wir schreiben uns per Mail. Die Anschrift brauche ich nur für deine Rechnung."
+            : "Es wird nichts verschickt, deinen Zugang bekommst du per Mail. Die Anschrift brauche ich nur für deine Rechnung."}
         </p>
 
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
@@ -277,15 +337,98 @@ export default function DigitalKasse({
             </p>
           </div>
 
-          <div className="mt-4 flex items-baseline justify-between">
+          {/* ------------------------------------------------- Rabattcode */}
+          {/* Steht über der Summe, damit der Endpreis darunter immer der
+              ist, der auch abgebucht wird. Der Gesamtpreis muss unmittelbar
+              über dem Bestellknopf stehen, siehe Kommentar oben. */}
+          <div className="mt-4">
+            {rabatt ? (
+              <div className="flex items-start justify-between gap-3 rounded-[12px] bg-cream-deep px-4 py-3">
+                <span className="text-[13.5px] leading-relaxed">
+                  Code <strong>{rabatt.code}</strong> ist eingelöst.
+                </span>
+                <button
+                  type="button"
+                  onClick={codeEntfernen}
+                  className="shrink-0 text-[13px] text-ink-soft underline underline-offset-2 transition-colors hover:text-ink"
+                >
+                  entfernen
+                </button>
+              </div>
+            ) : (
+              <>
+                <label className="mb-1.5 block text-[13.5px] text-ink-soft">
+                  Rabattcode (falls du einen hast)
+                </label>
+                <div className="flex gap-2">
+                  <input
+                    type="text"
+                    value={code}
+                    onChange={(e) => {
+                      setCode(e.target.value);
+                      setCodeFehler(null);
+                    }}
+                    onKeyDown={(e) => {
+                      // Enter darf hier nicht das Formular abschicken,
+                      // sondern prüft den Code. Sonst wäre der häufigste
+                      // Ablauf ein versehentlicher Kauf ohne Rabatt.
+                      if (e.key === "Enter") {
+                        e.preventDefault();
+                        codePruefen();
+                      }
+                    }}
+                    placeholder="z. B. FELLWECHSEL25"
+                    className={`${FELD} flex-grow`}
+                  />
+                  <button
+                    type="button"
+                    onClick={codePruefen}
+                    disabled={!code.trim() || codeLaeuft}
+                    className="shrink-0 rounded-[12px] border border-line px-4 text-[14px] transition-colors hover:border-rose-deep disabled:cursor-not-allowed disabled:opacity-40"
+                  >
+                    {codeLaeuft ? "…" : "Einlösen"}
+                  </button>
+                </div>
+                {codeFehler && (
+                  <p className="mt-2 text-[13px] leading-relaxed text-ink-soft">
+                    {codeFehler}
+                  </p>
+                )}
+              </>
+            )}
+          </div>
+
+          {/* ------------------------------------------------------ Summe */}
+          {rabatt && (
+            <div className="mt-4 space-y-1.5 border-t border-line pt-4 text-[14.5px]">
+              <div className="flex justify-between">
+                <span className="text-ink-soft">Preis</span>
+                <span className="tabular-nums">{preisText(produkt.preis)}</span>
+              </div>
+              <div className="flex justify-between">
+                <span className="text-ink-soft">Rabatt</span>
+                <span className="tabular-nums">
+                  &minus;{preisText(rabatt.rabattCent)}
+                </span>
+              </div>
+            </div>
+          )}
+
+          <div
+            className={`flex items-baseline justify-between ${
+              rabatt ? "mt-3" : "mt-4 border-t border-line pt-4"
+            }`}
+          >
             <span className="text-[16px] font-medium">Gesamt</span>
             <span className="font-serif text-[26px] tabular-nums">
-              {preisText(produkt.preis)}
+              {preisText(zuZahlen)}
             </span>
           </div>
 
           <p className="mt-1.5 text-[12.5px] text-ink-soft">
-            Einmalig, inklusive {produkt.mwst} % Mehrwertsteuer. Kein Abo.
+            {zuZahlen === 0
+              ? "Mit diesem Code ist nichts zu zahlen. Du bekommst deinen Zugang sofort."
+              : `Einmalig, inklusive ${produkt.mwst} % Mehrwertsteuer. Kein Abo.`}
           </p>
 
           {/* --------------------------------------------------- Häkchen 1 */}
@@ -331,8 +474,20 @@ export default function DigitalKasse({
           {/* --------------------------------------------------- Häkchen 2 */}
           {/* Der Wortlaut ist rechtlich vorgegeben und muss beide Teile
               enthalten: die Zustimmung zum sofortigen Beginn UND die
-              Kenntnis vom Erlöschen des Widerrufsrechts. Bitte nicht
-              umformulieren, auch nicht freundlicher. */}
+              Kenntnis von den Folgen. Bitte nicht umformulieren, auch nicht
+              freundlicher.
+
+              ▸ ZWEI FASSUNGEN, UND DER UNTERSCHIED IST WICHTIG:
+                Bei einem KURS erlischt das Widerrufsrecht, sobald die Kundin
+                den Zugang hat. Ein Satz, fertig.
+                Bei einer DIENSTLEISTUNG wie Pferdeliebe 365 erlischt es erst,
+                wenn die Leistung vollständig erbracht ist, also nach der
+                Akte und den vier Wochen Begleitung. Bis dahin kann die
+                Kundin widerrufen. Sie schuldet dann aber Wertersatz für das,
+                was bis dahin gemacht wurde -- und zwar nur, wenn sie genau
+                das hier vorher bestätigt hat. Ohne diesen Satz arbeitest du
+                bis zu vierzehn Werktage an einer Akte und bekommst bei einem
+                Widerruf nichts. */}
           <label className="mt-4 flex cursor-pointer gap-3 text-[13.5px] leading-relaxed text-ink-soft">
             <input
               type="checkbox"
@@ -344,9 +499,21 @@ export default function DigitalKasse({
               className="mt-0.5 h-4 w-4 shrink-0 accent-[color:var(--rose-deep)]"
             />
             <span>
-              Ich möchte den Zugang sofort, noch vor Ablauf der
-              Widerrufsfrist. Mir ist bekannt, dass mein Widerrufsrecht damit
-              erlischt, sobald ich den Zugang erhalten habe.
+              {produkt.art === "dienstleistung" ? (
+                <>
+                  Ich möchte, dass du mit der Leistung sofort beginnst, noch
+                  vor Ablauf der Widerrufsfrist. Mir ist bekannt, dass mein
+                  Widerrufsrecht erst mit der vollständigen Erbringung
+                  erlischt und ich bei einem Widerruf Wertersatz für das
+                  schulde, was bis dahin geleistet wurde.
+                </>
+              ) : (
+                <>
+                  Ich möchte den Zugang sofort, noch vor Ablauf der
+                  Widerrufsfrist. Mir ist bekannt, dass mein Widerrufsrecht
+                  damit erlischt, sobald ich den Zugang erhalten habe.
+                </>
+              )}
             </span>
           </label>
 

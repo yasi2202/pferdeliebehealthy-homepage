@@ -102,7 +102,12 @@ export type DigitalBestellung = {
    *  Vorher null. Siehe den Auslöser in datenbank/digitalbestellungen.sql. */
   rechnungsnummer?: string | null;
   artikel: DigitalArtikel[];
+  /** Was tatsächlich zu zahlen war, nach Abzug eines Rabatts. In Cent. */
   gesamt: number;
+  /** Der benutzte Rabattcode, oder null. Gehört auf die Rechnung, damit
+   *  nachvollziehbar bleibt, warum weniger gezahlt wurde als der Listenpreis. */
+  rabattcode?: string | null;
+  rabatt_cent?: number;
   /** Hat sie dem sofortigen Zugang zugestimmt und damit auf den Widerruf
    *  verzichtet? Ohne ein true hier gilt das Widerrufsrecht weiter. */
   widerruf_verzicht: boolean;
@@ -252,6 +257,145 @@ export async function digitalAlsBezahltMarkieren(
   const zeilen = await res.json();
 
   return Array.isArray(zeilen) && zeilen.length > 0 ? zeilen[0] : null;
+}
+
+// ---------------------------------------------------------------------------
+// Rabattcodes
+//
+// ▸ WO GERECHNET WIRD, UND WARUM NUR HIER
+//   Die Kasse zeigt den Rabatt an, aber sie bestimmt ihn nicht. Jede Prüfung
+//   und jede Rechnung passiert auf dem Server. Sonst könnte jemand die
+//   Anfrage von Hand bauen, sich hundert Prozent hineinschreiben und den
+//   Kurs geschenkt bekommen. Was der Browser schickt, ist nur der eingetippte
+//   Code.
+//
+// ▸ Angelegt werden Codes in Supabase, siehe datenbank/rabattcodes.sql.
+// ---------------------------------------------------------------------------
+
+export type Rabatt = {
+  /** So, wie er in der Datenbank steht. */
+  code: string;
+  /** Der Nachlass in Cent. */
+  rabattCent: number;
+  /** Was am Ende zu zahlen ist, in Cent. Nie unter null. */
+  endpreis: number;
+};
+
+type RabattZeile = {
+  id: string;
+  code: string;
+  prozent: number | null;
+  betrag_cent: number | null;
+  gueltig_bis: string | null;
+  max_einloesungen: number | null;
+  einloesungen: number;
+  nur_fuer: string[] | null;
+  aktiv: boolean;
+};
+
+/** Prüft einen eingetippten Code und rechnet den Preis aus.
+ *
+ *  Gibt bei jedem Fehlschlag einen Satz zurück, den die Kundin lesen kann.
+ *  Die Meldungen unterscheiden bewusst, warum es nicht klappt: "abgelaufen"
+ *  ist eine andere Auskunft als "kenne ich nicht", und wer einen gültigen
+ *  Code für das falsche Produkt hat, soll das erfahren, statt zu glauben,
+ *  er hätte sich vertippt. */
+export async function rabattPruefen(opt: {
+  code: string;
+  slug: string;
+  preis: number;
+}): Promise<Rabatt | { fehler: string }> {
+  const code = opt.code.trim().toUpperCase();
+
+  if (!code) {
+    return { fehler: "Bitte gib einen Code ein." };
+  }
+
+  let zeile: RabattZeile | null = null;
+
+  try {
+    // PostgREST kann nicht auf einen Ausdrucksindex filtern, deshalb wird
+    // ohne Rücksicht auf Groß- und Kleinschreibung verglichen (ilike). Der
+    // Code enthält keine Platzhalterzeichen, weil unten geprüft wird, dass
+    // er wirklich gleich ist.
+    zeile = await ersteZeile<RabattZeile>(
+      `rabattcodes?code=ilike.${encodeURIComponent(code)}&limit=1`,
+    );
+  } catch (e) {
+    console.error("Rabattcode liess sich nicht prüfen:", e);
+    return { fehler: "Der Code liess sich gerade nicht prüfen. Versuch es bitte noch einmal." };
+  }
+
+  if (!zeile || zeile.code.trim().toUpperCase() !== code) {
+    return { fehler: "Diesen Code kenne ich nicht. Prüf bitte die Schreibweise." };
+  }
+
+  if (!zeile.aktiv) {
+    return { fehler: "Dieser Code gilt nicht mehr." };
+  }
+
+  if (zeile.gueltig_bis && new Date(zeile.gueltig_bis) < new Date()) {
+    return { fehler: "Dieser Code ist abgelaufen." };
+  }
+
+  if (
+    zeile.max_einloesungen !== null &&
+    zeile.einloesungen >= zeile.max_einloesungen
+  ) {
+    return { fehler: "Dieser Code wurde bereits vollständig eingelöst." };
+  }
+
+  if (
+    zeile.nur_fuer &&
+    zeile.nur_fuer.length > 0 &&
+    !zeile.nur_fuer.includes(opt.slug)
+  ) {
+    return { fehler: "Dieser Code gilt für ein anderes Angebot." };
+  }
+
+  // Prozent gewinnt, wenn beides gesetzt ist. So steht es auch in der
+  // SQL-Datei, damit sich niemand wundert.
+  const roh =
+    zeile.prozent && zeile.prozent > 0
+      ? Math.round((opt.preis * zeile.prozent) / 100)
+      : (zeile.betrag_cent ?? 0);
+
+  // Ein Nachlass, der größer ist als der Preis, macht daraus keine
+  // Gutschrift. Er deckelt einfach bei null.
+  const rabattCent = Math.min(Math.max(roh, 0), opt.preis);
+
+  if (rabattCent <= 0) {
+    return { fehler: "Dieser Code bringt bei diesem Angebot keinen Nachlass." };
+  }
+
+  return { code: zeile.code, rabattCent, endpreis: opt.preis - rabattCent };
+}
+
+/** Zählt einen Code eine Einlösung hoch.
+ *
+ *  Wird erst gerufen, wenn die Bestellung wirklich angelegt ist. Wer die
+ *  Bezahlung abbricht, hat den Code damit zwar verbraucht -- das ist die
+ *  Schwäche dieser einfachen Lösung. Sie ist bewusst gewählt: Die
+ *  Alternative wäre, erst nach der Zahlung zu zählen, dann könnten bei einem
+ *  auf zehn Einlösungen begrenzten Code aber zwanzig Leute gleichzeitig
+ *  durchrutschen. Lieber einer zu wenig als zehn zu viel. */
+export async function rabattEinloesen(code: string): Promise<void> {
+  try {
+    const zeile = await ersteZeile<{ id: string; einloesungen: number }>(
+      `rabattcodes?code=ilike.${encodeURIComponent(code)}&limit=1`,
+    );
+
+    if (!zeile) return;
+
+    await supabase(`rabattcodes?id=eq.${zeile.id}`, {
+      method: "PATCH",
+      headers: { Prefer: "return=minimal" },
+      body: JSON.stringify({ einloesungen: zeile.einloesungen + 1 }),
+    });
+  } catch (e) {
+    // Kein Grund, einen bezahlten Kauf scheitern zu lassen.
+    console.error("Einlösung liess sich nicht zählen:", e);
+  }
 }
 
 // ---------------------------------------------------------------------------
@@ -611,6 +755,21 @@ function rechnungsblock(b: DigitalBestellung): string {
 
   <table style="width:100%;border-collapse:collapse;font-size:15px;margin:20px 0;">
     ${zeilen}
+    ${
+      // Der Rabatt muss als eigene Zeile stehen. Ohne sie stünde oben der
+      // Listenpreis und unten ein kleinerer Gesamtbetrag, und die Rechnung
+      // ginge nicht auf.
+      b.rabatt_cent && b.rabatt_cent > 0
+        ? `<tr>
+             <td style="padding:8px 0;color:#8a7070;">
+               Rabatt${b.rabattcode ? ` (${esc(b.rabattcode)})` : ""}
+             </td>
+             <td style="padding:8px 0;text-align:right;color:#8a7070;">
+               &minus;${preisText(b.rabatt_cent)}
+             </td>
+           </tr>`
+        : ""
+    }
     <tr>
       <td style="padding:12px 0 0;font-weight:bold;">Gesamt</td>
       <td style="padding:12px 0 0;text-align:right;font-weight:bold;">${preisText(b.gesamt)}</td>

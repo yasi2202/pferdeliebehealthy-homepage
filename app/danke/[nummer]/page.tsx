@@ -88,6 +88,55 @@ export default async function DankeSeite({
           </div>
         )}
 
+        {/* ------------------------------------------------- Insider-Kanal */}
+        {/* Steht nach jedem Kauf, so von Yasemin am 01.09.2026 gewünscht.
+            Der Text unterscheidet, ob die Kundin das Häkchen in der Kasse
+            gesetzt hat: Wer schon eingetragen ist, soll nicht aufgefordert
+            werden, sich noch einmal einzutragen. Das wirkt sonst, als hätte
+            der Kauf ihre Angabe nicht mitbekommen. */}
+        <div className="mb-10 rounded-[18px] bg-ink p-6 text-cream sm:p-8">
+          <span className="mb-3 block text-[13px] font-semibold uppercase tracking-[0.14em] text-rose">
+            Kostenlos dazu
+          </span>
+
+          <h2 className="mb-3 font-serif text-[22px] leading-snug sm:text-[26px]">
+            Der Pferdeliebe Insider
+          </h2>
+
+          {darfSehen && kauf?.newsletter ? (
+            <>
+              <p className="mb-6 text-[16px] leading-relaxed text-cream/80">
+                Du hast beim Kauf zugestimmt, meine Futter-Tipps zu bekommen.
+                Das heisst, du bist schon dabei, du musst nichts weiter tun.
+                Alle bisherigen Beiträge kannst du jederzeit nachlesen.
+              </p>
+
+              <Link
+                href="/insider"
+                className="inline-block rounded-full bg-rose px-7 py-3.5 text-[15px] font-medium text-ink transition-colors hover:bg-cream"
+              >
+                Beiträge lesen
+              </Link>
+            </>
+          ) : (
+            <>
+              <p className="mb-6 text-[16px] leading-relaxed text-cream/80">
+                Regelmässig Futterwissen ins Postfach, kostenlos und ohne
+                Verkaufsdruck. Was gerade saisonal wichtig ist, worauf du bei
+                Deklarationen achten solltest, und was ich selbst füttere.
+                Abmelden kannst du dich jederzeit mit einem Klick.
+              </p>
+
+              <Link
+                href="/insider"
+                className="inline-block rounded-full bg-rose px-7 py-3.5 text-[15px] font-medium text-ink transition-colors hover:bg-cream"
+              >
+                Insider werden
+              </Link>
+            </>
+          )}
+        </div>
+
         <div className="rounded-[16px] border border-line bg-cream-deep p-6">
           <h2 className="mb-3 font-serif text-[19px]">
             Es ist keine Mail angekommen?

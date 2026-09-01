@@ -53,9 +53,13 @@ export default async function DigitalKasseSeite({ params }: Eigenschaften) {
           Zur Kasse
         </h1>
 
+        {/* Bei einer Beratung wäre "Zugang direkt danach" falsch: Dort kommt
+            zuerst ein Fragebogen, und die Akte entsteht erst danach. Wer
+            etwas anderes erwartet, schreibt dir am nächsten Tag. */}
         <p className="mb-10 text-[16px] text-ink-soft">
-          Kurz deine Angaben für die Rechnung, dann geht es zur Bezahlung.
-          Deinen Zugang bekommst du direkt danach per Mail.
+          {produkt.art === "dienstleistung"
+            ? "Kurz deine Angaben für die Rechnung, dann geht es zur Bezahlung. Den Fragebogen schicke ich dir direkt danach per Mail."
+            : "Kurz deine Angaben für die Rechnung, dann geht es zur Bezahlung. Deinen Zugang bekommst du direkt danach per Mail."}
         </p>
 
         <DigitalKasse
