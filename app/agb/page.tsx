@@ -163,16 +163,25 @@ export default function Agb() {
       <h3>4. Streitbeilegung</h3>
       <p>Wir sind nicht verpflichtet, an Streitbeilegungsverfahren teilzunehmen.</p>
 
-      <h3>§ X Nutzung externer Plattformen</h3>
+      <h3>Nutzung externer Dienstleister</h3>
       <p>
-        Zur Abwicklung von Bestellungen und Bereitstellung digitaler
-        Inhalte nutzen wir externe Dienstleister, etwa Zahlungsanbieter und
-        Kursplattformen. Der Bestellprozess kann über externe Anbieter wie
-        ThriveCart erfolgen, die Bereitstellung digitaler Inhalte erfolgt
-        über eine externe Kursplattform. Im Rahmen der Vertragsabwicklung
-        werden personenbezogene Daten an diese Dienstleister weitergegeben,
-        soweit dies zur Vertragserfüllung erforderlich ist. Ergänzend gelten
-        die jeweiligen Datenschutzbestimmungen der eingesetzten Plattformen.
+        Die Zahlungsabwicklung erfolgt über Stripe, Anbieter ist die Stripe
+        Payments Europe, Limited, Dublin, Irland. Je nach gewählter Zahlungsart
+        werden dabei weitere Anbieter eingebunden, etwa PayPal oder Klarna.
+        Vertragspartner bleiben in jedem Fall wir; Stripe wickelt lediglich die
+        Zahlung ab.
+      </p>
+      <p>
+        Digitale Inhalte stellen wir über unsere Lernplattform, die
+        Pferdeliebehealthy Akademie, bereit. Nach dem Kauf erhalten Sie per
+        E-Mail einen persönlichen Zugang.
+      </p>
+      <p>
+        Im Rahmen der Vertragsabwicklung werden personenbezogene Daten an diese
+        Dienstleister weitergegeben, soweit dies zur Vertragserfüllung
+        erforderlich ist. Einzelheiten dazu, welche Daten das sind und auf
+        welcher Grundlage sie verarbeitet werden, finden Sie in unserer
+        Datenschutzerklärung.
       </p>
     </LegalLayout>
   );

@@ -184,36 +184,78 @@ export default function Datenschutz() {
         Abs. 1 lit. a DSGVO und kann jederzeit widerrufen werden.
       </p>
 
-      <h2>Zahlungsdienstleister</h2>
+      <h2>Hosting</h2>
       <p>
-        Je nach gewählter Zahlungsart können Daten an Zahlungsdienstleister
-        wie Amazon Payments, Klarna, Paymorrow, Commerzfinanz oder Ratepay
-        übermittelt werden. Diese Dienstleister führen im Rahmen der
-        Vertragsabwicklung teils eigene Bonitätsprüfungen unter Einbindung
-        von Auskunfteien wie SCHUFA, Bürgel, Creditreform oder Deltavista
-        durch, soweit die gewählte Zahlungsart dies erfordert. Die
-        Verarbeitung erfolgt auf Grundlage des Art. 6 Abs. 1 lit. a
-        beziehungsweise lit. b und lit. f DSGVO. Nähere Informationen zu den
-        jeweiligen Anbietern finden Sie in deren eigenen
-        Datenschutzerklärungen, unter anderem bei{" "}
+        Diese Website wird bei Vercel betrieben, Anbieter ist die Vercel Inc.,
+        340 S Lemon Ave #4133, Walnut, CA 91789, USA. Beim Aufruf der Seite
+        verarbeitet Vercel technisch notwendige Daten, insbesondere Ihre
+        IP-Adresse, den Zeitpunkt des Zugriffs, die aufgerufene Adresse sowie
+        Angaben zu Browser und Betriebssystem. Ohne diese Verarbeitung lässt
+        sich eine Website nicht ausliefern.
+      </p>
+      <p>
+        Rechtsgrundlage ist Art. 6 Abs. 1 lit. f DSGVO. Unser berechtigtes
+        Interesse liegt im sicheren und zuverlässigen Betrieb dieser Website.
+      </p>
+      <p>
+        Eine Übermittlung von Daten in die Vereinigten Staaten ist möglich. Die
+        Europäische Kommission hat dafür einen Angemessenheitsbeschluss gefasst
+        (EU-US Data Privacy Framework), Vercel ist unter diesem Rahmen
+        zertifiziert. Näheres finden Sie in der{" "}
         <a
-          href="https://pay.amazon.com/de/help/201212490"
+          href="https://vercel.com/legal/privacy-policy"
           target="_blank"
           rel="noopener"
         >
-          Amazon Payments
+          Datenschutzerklärung von Vercel
         </a>
-        ,{" "}
-        <a href="https://www.klarna.com/de/" target="_blank" rel="noopener">
-          Klarna
-        </a>{" "}
-        und{" "}
-        <a
-          href="https://www.ratepay.com/legal-payment-dataprivacy/"
-          target="_blank"
-          rel="noopener"
-        >
-          Ratepay
+        .
+      </p>
+
+      <h2>Zahlungsabwicklung über Stripe</h2>
+      <p>
+        Für die Abwicklung von Zahlungen setzen wir Stripe ein, Anbieter ist
+        die Stripe Payments Europe, Limited, 1 Grand Canal Street Lower, Grand
+        Canal Dock, Dublin, Irland.
+      </p>
+      <p>
+        Wenn Sie etwas bestellen, übermitteln wir an Stripe die für die
+        Zahlung erforderlichen Angaben: Ihren Namen, Ihre E-Mail-Adresse, Ihre
+        Rechnungsanschrift, den Rechnungsbetrag und die Bezeichnung der
+        bestellten Leistung. Ihre Zahlungsdaten selbst, also etwa Ihre
+        Kartennummer, geben Sie ausschließlich auf der Bezahlseite von Stripe
+        ein. Diese Daten erreichen uns nicht und werden von uns weder
+        gespeichert noch eingesehen.
+      </p>
+      <p>
+        Rechtsgrundlage ist Art. 6 Abs. 1 lit. b DSGVO, die Verarbeitung ist
+        zur Erfüllung des Vertrages mit Ihnen erforderlich.
+      </p>
+      <p>
+        Über Stripe können je nach Auswahl weitere Zahlungsarten angeboten
+        werden, etwa Kreditkarte, PayPal, Klarna oder Apple Pay. Wählen Sie
+        eine solche Zahlungsart, verarbeitet der jeweilige Anbieter Ihre Daten
+        eigenverantwortlich nach seinen eigenen Bestimmungen. Bei einer
+        Ratenzahlung über Klarna kann dabei auch eine Bonitätsprüfung
+        stattfinden; über die Einzelheiten informiert Sie Klarna vor Abschluss.
+      </p>
+      <p>
+        Wenn wir Ihnen nach einem Kauf ein Anschlussangebot machen, das Sie
+        mit einem Klick annehmen können, wird Ihre Zahlungsart bei Stripe für
+        diesen Zweck hinterlegt. Eine Abbuchung erfolgt ausschließlich, wenn
+        Sie das Angebot ausdrücklich annehmen.
+      </p>
+      <p>
+        Stripe gehört zur Stripe, Inc. mit Sitz in den Vereinigten Staaten,
+        eine Übermittlung von Daten dorthin ist möglich. Die Europäische
+        Kommission hat für die USA einen Angemessenheitsbeschluss gefasst
+        (EU-US Data Privacy Framework), Stripe ist unter diesem Rahmen
+        zertifiziert.
+      </p>
+      <p>
+        Näheres finden Sie in der{" "}
+        <a href="https://stripe.com/de/privacy" target="_blank" rel="noopener">
+          Datenschutzerklärung von Stripe
         </a>
         .
       </p>
