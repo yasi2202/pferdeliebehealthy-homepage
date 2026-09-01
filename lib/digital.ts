@@ -208,12 +208,12 @@ export const digitalprodukte: DigitalProdukt[] = [
     slug: "basisfutterkurs",
     name: "Basisfutterkurs",
     kurzname: "Basisfutterkurs",
-    // ▸ HIER FEHLT NOCH EIN REGULÄRER PREIS.
-    //   Der Kurs wurde bisher nie einzeln verkauft, 29 € ist der Preis im
-    //   Anschlussangebot zum Ganzjahresfutterplan. Solange hier derselbe
-    //   Betrag steht wie im Funnel, zeigt die Angebotsseite bewusst KEINEN
-    //   Vergleichspreis, siehe `ersparnis()` weiter unten.
-    preis: 2900,
+    // Regulärer Einzelpreis 39 €, von Yasemin am 01.09.2026 festgelegt.
+    // Im Anschlussangebot zum Ganzjahresfutterplan kostet er 29 €, die
+    // Angebotsseite zeigt dort also 10 € Ersparnis, siehe `ersparnis()`
+    // weiter unten. Damit der Vergleich zulässig bleibt, muss er hier auch
+    // wirklich einzeln für 39 € angeboten werden.
+    preis: 3900,
     mwst: 19,
     art: "kurs",
     kurz:
