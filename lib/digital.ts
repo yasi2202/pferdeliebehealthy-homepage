@@ -468,6 +468,7 @@ export const digitalprodukte: DigitalProdukt[] = [
           "Anamnesebogen zum Verschicken, deine Kundin füllt ihn am Handy aus",
           "Futterpläne mit Nährstoffrechnung nach GfE, dazu ein Blatt für die Stallwand",
           "Zehn fertige Textbausteine, mit einem Klick eingefügt",
+          "Ein Glossar mit den Fachbegriffen der Futterberatung, zum Nachschlagen und Weitergeben",
           "Wiedervorlage mit Erinnerung per E-Mail",
           "Rechnungen mit fortlaufender Nummer, Kleinunternehmerregelung und eigenem Logo",
           "Nachrichten und Fotos deiner Kundin direkt am Pferd, mit Antwort per Mail",
