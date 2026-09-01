@@ -1,4 +1,5 @@
 import type { NextConfig } from "next";
+import { alleBlogBeitraege } from "./lib/blog";
 
 const nextConfig: NextConfig = {
   // -------------------------------------------------------------------------
@@ -27,7 +28,31 @@ const nextConfig: NextConfig = {
   // gespeichert.
   // -------------------------------------------------------------------------
   async redirects() {
+    // -----------------------------------------------------------------------
+    // Die alten Blogadressen.
+    //
+    // Bis zum Umzug lagen die Beitraege direkt unter der Wurzel, also
+    // pferdeliebehealthy.de/heucobs-worauf-man-beim-kauf-achten-sollte. Google
+    // kennt sie bis heute unter diesen Adressen. Ohne Weiterleitung landet
+    // jede, die dort klickt, auf einer Fehlerseite, und die Jahre an
+    // Bekanntheit dieser Adressen sind verloren.
+    //
+    // Die Liste entsteht aus den Beitraegen selbst. Ein Beitrag, der noch
+    // Entwurf ist (Unterstrich im Dateinamen), bekommt keine Weiterleitung --
+    // sie zeigte sonst auf eine Seite, die es nicht gibt, und das waere
+    // schlimmer als die Fehlerseite von jetzt.
+    //
+    // permanent: true, weil die alten Adressen nie wiederkommen. Google
+    // uebertraegt damit die Bewertung der alten Adresse auf die neue.
+    // -----------------------------------------------------------------------
+    const alteBlogadressen = alleBlogBeitraege().map((b) => ({
+      source: `/${b.slug}`,
+      destination: `/blog/${b.slug}`,
+      permanent: true,
+    }));
+
     return [
+      ...alteBlogadressen,
       {
         source: "/danke-futter-check",
         destination: "/futter-check-start",

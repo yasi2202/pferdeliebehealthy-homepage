@@ -30,10 +30,20 @@ const FARBEN: Kartenfarbe[] = [
   { flaeche: "bg-ink-soft", schrift: "text-cream", strich: "bg-ink-soft" },
 ];
 
-export function kategorieFarbe(kategorie: string): Kartenfarbe {
-  // Quersumme der Buchstaben: dieselbe Kategorie ergibt immer dieselbe Farbe,
-  // auch nachdem neue Beitraege dazugekommen sind.
-  let summe = 0;
-  for (const zeichen of kategorie) summe += zeichen.charCodeAt(0);
-  return FARBEN[summe % FARBEN.length];
+/** Die Farbe einer Kategorie, bestimmt ueber ihre Stelle in der alphabetisch
+ *  sortierten Liste aller Kategorien.
+ *
+ *  Der erste Versuch war eine Quersumme des Namens. Das sah aus wie eine gute
+ *  Idee und ergab in der Praxis vier Karten in derselben Farbe: Bei aehnlich
+ *  langen deutschen Woertern liegen die Quersummen dicht beieinander. Ueber
+ *  die Position ist die Verteilung gleichmaessig, und benachbarte Kategorien
+ *  sind garantiert verschieden.
+ *
+ *  Wichtig: immer die vollstaendige Kategorienliste uebergeben, nicht nur die
+ *  der gerade angezeigten Beitraege. Sonst haette dieselbe Kategorie auf der
+ *  Startseite eine andere Farbe als im Blog. */
+export function kategorieFarbe(kategorie: string, alle: string[]): Kartenfarbe {
+  const sortiert = [...new Set(alle)].sort((a, b) => a.localeCompare(b, "de"));
+  const stelle = sortiert.indexOf(kategorie);
+  return FARBEN[(stelle < 0 ? 0 : stelle) % FARBEN.length];
 }

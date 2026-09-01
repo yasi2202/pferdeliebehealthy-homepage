@@ -79,11 +79,11 @@ im Futtertrog.
 ## Meine absolute Empfehlung
 
 Meine **absolute Empfehlung** sind die **Kräuter-Heucobs vom Biohof
-Elemengrund**.
+Elmengrund**.
 Sie sind **unschlagbar in ihrer Qualität**, überzeugen durch ihre **natürliche
 Kräutervielfalt** und einen **herausragend hohen Rohfasergehalt**, genau das,
 was ein gutes Raufutterprodukt ausmacht.
 
 🌿 **Spare mit meinem Code:**
 👉 **YASI05**, und sichere dir einen exklusiven Rabatt auf deine Bestellung
-beim Biohof Elemengrund!
+beim Biohof Elmengrund!

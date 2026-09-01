@@ -37,11 +37,14 @@ type Eintrag = {
 function Kopfbild({
   beitrag,
   hoehe,
+  kategorien,
 }: {
   beitrag: Eintrag;
   hoehe: string;
+  /** Alle Kategorien des Blogs, fuer die Farbverteilung. */
+  kategorien: string[];
 }) {
-  const farbe = kategorieFarbe(beitrag.kategorie);
+  const farbe = kategorieFarbe(beitrag.kategorie, kategorien);
 
   if (beitrag.bild) {
     return (
@@ -148,7 +151,11 @@ export default function BlogListe({ beitraege }: { beitraege: Eintrag[] }) {
           className="group block mb-6 rounded-[26px] overflow-hidden bg-white border border-line transition-shadow hover:shadow-[0_18px_50px_-24px_rgba(59,42,40,0.35)]"
         >
           <div className="grid sm:grid-cols-2">
-            <Kopfbild beitrag={aufmacher} hoehe="h-52 sm:h-full sm:min-h-[300px]" />
+            <Kopfbild
+              beitrag={aufmacher}
+              hoehe="h-52 sm:h-full sm:min-h-[300px]"
+              kategorien={kategorien}
+            />
             <div className="p-7 sm:p-9 flex flex-col justify-center">
               <span className="inline-block text-[11px] tracking-[0.16em] uppercase text-rose-deep font-semibold mb-3">
                 Neuester Beitrag
@@ -172,7 +179,7 @@ export default function BlogListe({ beitraege }: { beitraege: Eintrag[] }) {
             href={`/blog/${b.slug}`}
             className="group flex flex-col rounded-[24px] overflow-hidden bg-white border border-line transition-shadow hover:shadow-[0_18px_50px_-24px_rgba(59,42,40,0.35)]"
           >
-            <Kopfbild beitrag={b} hoehe="h-36" />
+            <Kopfbild beitrag={b} hoehe="h-36" kategorien={kategorien} />
             <div className="p-6 sm:p-7 flex flex-col grow">
               <Marken beitrag={b} />
               <h3 className="font-serif text-[21px] sm:text-[23px] leading-snug mt-3 mb-2.5 group-hover:text-rose-deep transition-colors">

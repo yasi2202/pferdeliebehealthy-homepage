@@ -19,8 +19,13 @@ import { kategorieFarbe } from "@/lib/blog-farben";
 // ---------------------------------------------------------------------------
 
 export default function BlogSection() {
-  const beitraege = alleBlogBeitraege().slice(0, 3);
+  const alle = alleBlogBeitraege();
+  const beitraege = alle.slice(0, 3);
   if (beitraege.length === 0) return null;
+
+  // Alle Kategorien, nicht nur die der drei gezeigten Beitraege: Sonst haette
+  // dieselbe Kategorie hier eine andere Farbe als im Blog.
+  const kategorien = alle.map((b) => b.kategorie);
 
   return (
     <section id="blog" className="py-20 sm:py-24 bg-cream-deep">
@@ -47,7 +52,7 @@ export default function BlogSection() {
 
         <div className="fade-in grid sm:grid-cols-3 gap-6">
           {beitraege.map((b) => {
-            const farbe = kategorieFarbe(b.kategorie);
+            const farbe = kategorieFarbe(b.kategorie, kategorien);
             return (
               <Link
                 key={b.slug}

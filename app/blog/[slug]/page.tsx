@@ -61,6 +61,8 @@ export default async function BlogBeitragSeite({ params }: Props) {
 
   const hinweis = angebotshinweisFinden(beitrag.angebot);
   const weitere = verwandteBeitraege(slug, beitrag.kategorie);
+  // Die vollstaendige Kategorienliste, damit die Farben ueberall dieselben sind.
+  const kategorien = alleBlogBeitraege().map((b) => b.kategorie);
   const bild = beitrag.bild || "/images/yasi-helena.jpg";
 
   return (
@@ -327,7 +329,7 @@ export default async function BlogBeitragSeite({ params }: Props) {
             </h2>
             <div className="grid sm:grid-cols-3 gap-5">
               {weitere.map((b) => {
-                const farbe = kategorieFarbe(b.kategorie);
+                const farbe = kategorieFarbe(b.kategorie, kategorien);
                 return (
                   <Link
                     key={b.slug}
