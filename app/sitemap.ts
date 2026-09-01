@@ -11,6 +11,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { pfad: "/ausbildung", prioritaet: 0.9, takt: "monthly" },
     { pfad: "/futter-check", prioritaet: 0.9, takt: "monthly" },
     { pfad: "/mineral-klarheit", prioritaet: 0.8, takt: "monthly" },
+    { pfad: "/equidesk", prioritaet: 0.8, takt: "monthly" },
     { pfad: "/insider", prioritaet: 0.8, takt: "weekly" },
     // Der Shop steht erst in der Übersicht, wenn er freigeschaltet ist.
     // Sonst schickt Google Leute auf eine Seite, die es im Menü nicht gibt.
