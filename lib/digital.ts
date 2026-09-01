@@ -158,7 +158,12 @@ export const digitalprodukte: DigitalProdukt[] = [
     slug: "mineral-klarheit",
     name: "Mineral-Klarheit",
     kurzname: "Mineral-Klarheit",
+    // 27 € statt regulär 49 €, von Yasemin am 01.09.2026 festgelegt.
+    // Der Streichpreis ist eine laufende Aktion auf den regulären Preis und
+    // damit zulässig. Endet die Aktion, gehört `statt` weg und `preis` auf
+    // 4900, nicht umgekehrt.
     preis: 2700,
+    statt: 4900,
     mwst: 19,
     art: "kurs",
     kurz: "Mineralfutter selbst durchrechnen statt raten.",
@@ -660,6 +665,30 @@ export const funnel: Funnel[] = [
     downsellGrund:
       "RatioPro rechnet. Mineral-Klarheit erklärt, warum eine Zahl auf der " +
       "Verpackung noch nichts über die Versorgung deines Pferdes sagt.",
+  },
+  {
+    // Wer EquiDesk kauft, ist Beraterin und keine Pferdebesitzerin. Deshalb
+    // stehen hier Werkzeuge fuer die tägliche Arbeit und keine Ratgeber.
+    produkt: "equidesk",
+    upsell: "ratiopro",
+    upsellPreis: 4900,
+    upsellTitel: "Der Plan ist gerechnet. Aber wo probierst du aus?",
+    upsellGrund:
+      "EquiDesk rechnet dir den Futterplan durch, den du schon zusammengestellt " +
+      "hast. Die Arbeit davor ist eine andere: zwei Mineralfutter vergleichen, " +
+      "sehen was passiert, wenn 200 g Cobs dazukommen, in 480 Futtermitteln " +
+      "nach einer Alternative suchen. Dafür ist RatioPro da. Beide greifen auf " +
+      "dieselbe Futtermitteldatenbank zu, du rechnest also nicht zweimal " +
+      "unterschiedlich.",
+    downsell: "symptom-navigator",
+    downsellPreis: 2900,
+    downsellTitel: "Dann vielleicht das, wenn eine Kundin anruft.",
+    downsellGrund:
+      "Eine Kundin schreibt dir von Kotwasser, schuppiger Haut oder einem " +
+      "Pferd, das plötzlich krüsch ist. Im Symptom-Navigator schlägst du das " +
+      "Zeichen nach und siehst, was dahinterstecken kann und was du zuerst " +
+      "fragen solltest. Das ist die Vorarbeit, die in EquiDesk dann als " +
+      "Beratungsverlauf landet.",
   },
   {
     produkt: "pferdeliebe-365",
