@@ -196,11 +196,11 @@ function stripeFelder(
   return paare;
 }
 
-/** Schickt etwas an Stripe.
+/** Schickt etwas an Stripe. Die nackte Fassung, ohne Rückfall.
  *
- *  Exportiert, weil lib/digital-server.ts dieselbe Verbindung braucht. Der
- *  Stripe-Schlüssel soll an genau einer Stelle stehen, nicht zweimal. */
-export async function stripeAnfrage(
+ *  Benutze von aussen `stripeAnfrage` weiter unten, die fängt den Sonderfall
+ *  mit der Zahlarten-Konfiguration ab. */
+async function stripeAnfrageRoh(
   pfad: string,
   daten: Record<string, unknown>,
 ): Promise<{ ok: true; antwort: Record<string, unknown> } | { ok: false; fehler: string }> {
@@ -225,6 +225,46 @@ export async function stripeAnfrage(
   }
 
   return { ok: true, antwort };
+}
+
+/** Schickt etwas an Stripe, mit einem Rückfall für die Zahlarten.
+ *
+ *  ▸ WARUM ES DIESEN RÜCKFALL GIBT
+ *    Zahlarten-Konfigurationen sind bei Stripe je Modus getrennt: Eine
+ *    Kennung aus dem Livemodus kennt der Testmodus nicht und umgekehrt.
+ *    Genau das ist am 01.09.2026 passiert. Die Kasse gab daraufhin
+ *    "Die Bezahlung liess sich nicht öffnen" zurück, und zwar für JEDEN
+ *    Kauf. Eine Einstellung, die eigentlich nur die Auswahl der Bezahlarten
+ *    verschönern soll, hatte damit den ganzen Verkauf angehalten.
+ *
+ *    Das darf nicht sein. Wird die Konfiguration abgelehnt, versucht es
+ *    diese Funktion deshalb sofort noch einmal ohne sie. Die Kundin merkt
+ *    nichts, sie sieht dann nur die Bezahlarten aus der Standardvorgabe.
+ *    Der Fehler landet im Vercel-Protokoll, damit du ihn findest.
+ *
+ *  Exportiert, weil lib/digital-server.ts dieselbe Verbindung braucht. Der
+ *  Stripe-Schlüssel soll an genau einer Stelle stehen, nicht zweimal. */
+export async function stripeAnfrage(
+  pfad: string,
+  daten: Record<string, unknown>,
+): Promise<{ ok: true; antwort: Record<string, unknown> } | { ok: false; fehler: string }> {
+  const ergebnis = await stripeAnfrageRoh(pfad, daten);
+
+  if (ergebnis.ok || !daten.payment_method_configuration) {
+    return ergebnis;
+  }
+
+  console.error(
+    `Die Zahlarten-Konfiguration ${String(daten.payment_method_configuration)} ` +
+      "hat Stripe abgelehnt. Prüf bitte, ob sie zum richtigen Modus gehört: " +
+      "Test und Live haben getrennte Konfigurationen. Der Kauf läuft " +
+      "einstweilen mit der Standardvorgabe weiter.",
+  );
+
+  const ohne = { ...daten };
+  delete ohne.payment_method_configuration;
+
+  return stripeAnfrageRoh(pfad, ohne);
 }
 
 /** Fragt etwas bei Stripe ab, ohne etwas zu ändern.
