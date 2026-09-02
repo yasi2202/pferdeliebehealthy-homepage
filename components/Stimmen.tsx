@@ -23,18 +23,6 @@ import { googleBewertung, stimmenZu } from "@/lib/stimmen";
 //   lib/stimmen.ts.
 // ---------------------------------------------------------------------------
 
-function Sterne() {
-  return (
-    <span className="flex gap-0.5 text-gold" aria-hidden="true">
-      {[0, 1, 2, 3, 4].map((i) => (
-        <svg key={i} width="17" height="17" viewBox="0 0 24 24" fill="currentColor">
-          <path d="M12 2.5l2.9 6.2 6.6.9-4.8 4.7 1.2 6.7L12 17.8 6.1 21l1.2-6.7L2.5 9.6l6.6-.9z" />
-        </svg>
-      ))}
-    </span>
-  );
-}
-
 export default function Stimmen({ slug }: { slug: string }) {
   const liste = stimmenZu(slug);
 
@@ -48,16 +36,28 @@ export default function Stimmen({ slug }: { slug: string }) {
           Was Kundinnen sagen
         </span>
 
-        {/* Die Note zuerst, als Zahl und in Sternen. */}
-        <div className="mb-8 flex flex-wrap items-center gap-x-4 gap-y-2 border-b border-line pb-6">
-          <Sterne />
-          <span className="font-serif text-[22px] tabular-nums">
-            {googleBewertung.note} von 5
-          </span>
-          <span className="text-[14.5px] text-ink-soft">
-            aus {googleBewertung.anzahl} Bewertungen bei Google
-          </span>
-        </div>
+        {/* ▸ HIER STAND KURZ „4,9 von 5 aus 20 Bewertungen bei Google",
+            darüber fünf Sterne. Beides ist am 02.09.2026 auf Yasemins Wunsch
+            raus: Zwanzig sieht nach wenig aus, obwohl die Note hervorragend
+            ist.
+
+            Weg ist die Zahl KOMPLETT und nicht nur die Anzahl. Mit einer
+            Durchschnittsnote zu werben und zu verschweigen, aus wie vielen
+            Bewertungen sie stammt, ist angreifbar: Zur Note gehört die
+            Bezugsgröße. Entweder beides oder keines.
+
+            Und die fünf Sterne sind mitgegangen, obwohl sie hübsch aussahen.
+            Fünf gefüllte Sterne über Kundenstimmen liest man als „fünf von
+            fünf". Das wäre eine Bestnote, die es nicht gibt: Die echte ist
+            4,9, und unter den zwanzig Bewertungen ist eine mit drei Sternen.
+            Ein Bild, das etwas behauptet, was der Text nicht sagt, ist
+            genauso irreführend wie der falsche Satz.
+
+            Was bleibt, sind die Zitate. Die sind echt, wörtlich und
+            unangreifbar, und sie wirken ohnehin stärker als jede Zahl.
+
+            ▸ WENN DIE BEWERTUNGEN MEHR WERDEN, kann die Zeile zurück, mit
+              Note UND Anzahl. Die Daten stehen weiter in lib/stimmen.ts. */}
 
         <div className="grid gap-5 sm:grid-cols-2">
           {liste.map((s) => (

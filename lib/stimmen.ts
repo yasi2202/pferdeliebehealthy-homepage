@@ -12,13 +12,13 @@
 //   Namen, hier bewusst nicht: Wer eine Bewertung schreibt, rechnet nicht
 //   damit, mit Nachnamen auf einer Verkaufsseite zu stehen.
 //
-// ▸ DIE GESAMTNOTE IST DAS STÄRKSTE ELEMENT. 4,9 von 5 bei 20 Bewertungen
-//   ist eine belegbare Zahl, deshalb steht sie über den Zitaten. Wichtig:
-//   Sie muss stimmen. Kommt bei Google eine Bewertung dazu, gehört sie hier
-//   nachgezogen, sonst wirbt die Seite mit einer Zahl, die es nicht gibt.
+// ▸ DIE GESAMTNOTE WIRD ZURZEIT NICHT ANGEZEIGT, und Sterne auch nicht.
+//   Beides stand kurz auf den Seiten und ist am 02.09.2026 wieder
+//   verschwunden, siehe components/Stimmen.tsx. Gezeigt werden nur die
+//   Zitate.
 //
-// ▸ EINZELNE STERNE STEHEN ABSICHTLICH NICHT DRAN. Die Gesamtnote trägt die
-//   Aussage, und so muss niemand Zahlen pflegen, die sich ändern können.
+// ▸ EINZELNE STERNE JE STIMME STEHEN AUCH NICHT DRAN. Sie müssten gepflegt
+//   werden und sagen weniger als der Satz, den die Kundin geschrieben hat.
 //
 // ▸ ES IST EINE AUSWAHL, KEINE VOLLSTÄNDIGE LISTE. Der Abschnitt sagt das
 //   auch und verweist aufs Google-Profil. Wer eine Auswahl zeigt und dabei
@@ -44,7 +44,15 @@ export type Stimme = {
   produkte?: string[];
 };
 
-/** Die Gesamtbewertung im Google-Unternehmensprofil, Stand 02.09.2026. */
+/**
+ * Die Gesamtbewertung im Google-Unternehmensprofil, Stand 02.09.2026.
+ *
+ * ▸ WIRD ZURZEIT NICHT ANGEZEIGT. Am 02.09.2026 auf Yasemins Wunsch aus dem
+ *   Stimmen-Abschnitt genommen: Zwanzig Bewertungen sehen nach wenig aus,
+ *   auch wenn die Note hervorragend ist. Die Werte bleiben hier stehen,
+ *   damit die Zeile zurückkann, sobald mehr Bewertungen da sind; dann bitte
+ *   beide Zahlen prüfen, bevor sie wieder auf elf Seiten stehen.
+ */
 export const googleBewertung = {
   note: "4,9",
   anzahl: 20,
