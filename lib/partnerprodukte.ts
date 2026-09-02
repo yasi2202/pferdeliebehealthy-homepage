@@ -38,11 +38,26 @@ export type Partnerprodukt = {
 
 export const partnerprodukte: Partnerprodukt[] = [
   {
+    // Oregano gibt es bei beiden Partnern, aber nicht als dasselbe Produkt:
+    // Der "Kretische Oregano" ist der von PerNaturam, Mo's Grun führt
+    // Pellets. Von Yasemin am 02.09.2026 richtiggestellt.
     schluessel: "mos-grun-oregano",
     partner: "Mo's Grun",
-    name: "Kretischer Oregano",
+    name: "Oregano-Pellets",
     url: "https://mos-grun.de/products/oregano",
-    kurz: "Sortenreine Pellets aus kretischem Oregano, ohne Zusätze.",
+    kurz: "Sortenreiner Oregano als Pellets, direkt vom Feld. Praktisch, weil Oregano pur oft nicht gern gefressen wird.",
+  },
+  {
+    schluessel: "pernaturam-kretischer-oregano",
+    partner: "PerNaturam",
+    name: "Kretischer Oregano",
+    kurz: "Kretischer Oregano, eines der Kräuter, die nur kurweise ins Futter gehören.",
+  },
+  {
+    schluessel: "hotte-maxe-oregano",
+    partner: "Hotte Maxe",
+    name: "Oregano als Kraut",
+    kurz: "Oregano in Krautform, wenn du selbst mischen möchtest.",
   },
   {
     schluessel: "mos-grun-melisse",
