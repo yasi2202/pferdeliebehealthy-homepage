@@ -897,6 +897,71 @@ export async function digitalBestaetigungSenden(
 }
 
 /**
+ * Die eigene Mail mit der Bitte um eine Bewertung, vier Wochen nach dem Kauf.
+ *
+ * ▸ WARUM VIER WOCHEN UND NICHT SOFORT
+ *   Direkt nach dem Kauf hat die Kundin noch nichts gelesen und kann nichts
+ *   beurteilen. Nach vier Wochen ist das Heft durch, der Kurs angefangen, das
+ *   Werkzeug benutzt. Wer bis dahin nichts gemacht hat, macht es auch nicht
+ *   mehr, und eine spätere Bitte wäre nur noch lästig.
+ *
+ * ▸ NUR MIT EINWILLIGUNG. Wie bei der Bitte in der Bestellbestätigung: Die
+ *   Frage nach der Zufriedenheit ist Werbung (BGH VI ZR 225/17). Diese Mail
+ *   ist noch eindeutiger Werbung als der Absatz in der Bestätigung, weil sie
+ *   allein deshalb verschickt wird. Ohne `newsletter` geht sie nicht raus.
+ *
+ * ▸ NICHT BEI DER BERATUNG. Bei Pferdeliebe 365 sind vier Wochen nach dem
+ *   Kauf womöglich mitten in der Arbeit: Erst kommt der Fragebogen, dann die
+ *   Akte, dann die Begleitung. Wann eine Beratung fertig ist, weiß nur
+ *   Yasemin, deshalb gibt es dafür den Knopf im Adminbereich.
+ */
+export async function bewertungsbitteSenden(
+  b: DigitalBestellung,
+): Promise<boolean> {
+  if (!bewertungslink) return false;
+
+  const was = b.artikel.map((a) => a.name).join(", ");
+
+  return sendeMail(
+    b.email,
+    "Wie läuft es bei euch?",
+    rahmen(`
+      <h1 style="font-size:24px;margin:0 0 16px;">Wie läuft es bei euch?</h1>
+
+      <p style="font-size:16px;line-height:1.6;">${anrede(b.vorname)}</p>
+
+      <p style="font-size:16px;line-height:1.6;">
+        vor vier Wochen hast du ${esc(was)} bei mir geholt. Ich hoffe, du
+        konntest etwas davon mitnehmen, und wenn ja, habe ich eine Bitte an
+        dich.
+      </p>
+
+      <p style="font-size:16px;line-height:1.6;">
+        Schreib ein paar Zeilen bei Google. Das dauert eine Minute und hilft
+        anderen Pferdemenschen bei der Entscheidung mehr als alles, was ich
+        selbst über meine Angebote schreiben kann.
+      </p>
+
+      ${knopf(bewertungslink, "Bewertung schreiben")}
+
+      <p style="font-size:16px;line-height:1.6;">
+        Schreib gern ehrlich, auch wenn etwas gefehlt hat oder anders war,
+        als du erwartet hast. Und wenn du eine Frage offen hast: Antworte
+        einfach auf diese Mail, dann klären wir das zuerst.
+      </p>
+
+      <p style="font-size:12px;line-height:1.6;color:#8a7070;">
+        Du bekommst diese Mail, weil du beim Kauf zugestimmt hast, Post von
+        mir zu bekommen. Wenn du das nicht mehr möchtest, antworte kurz,
+        dann trage ich dich aus.
+      </p>
+
+      <p style="font-size:16px;line-height:1.6;">Liebe Grüße<br>Yasemin</p>
+    `),
+  );
+}
+
+/**
  * Die Bitte um eine Google-Bewertung, unten in der Bestellbestätigung.
  *
  * ▸ SIE GEHT NICHT AN ALLE, UND DAS HAT EINEN GRUND.

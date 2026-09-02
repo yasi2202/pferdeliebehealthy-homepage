@@ -4,6 +4,7 @@ import AdminAnmeldung from "@/components/AdminAnmeldung";
 import { adminEingerichtet, istAngemeldet } from "@/lib/admin-zugang";
 import { auswerten } from "@/lib/auswertung";
 import { supabaseAlle } from "@/lib/versand";
+import BewertungKnopf from "@/components/BewertungKnopf";
 import { preisText } from "@/lib/shop";
 
 // ---------------------------------------------------------------------------
@@ -83,13 +84,16 @@ export default async function AuswertungSeite() {
     (await supabaseAlle<{
       nummer: string;
       rechnungsnummer: string | null;
+      /** Fuer den Knopf "Bewertung erbitten" in der Tabelle unten. */
+      newsletter: boolean;
+      bewertung_gebeten_am: string | null;
       bezahlt_am: string | null;
       angelegt_am: string;
       vorname: string;
       nachname: string;
       gesamt: number;
     }>(
-      "digitalbestellungen?status=eq.bezahlt&select=nummer,rechnungsnummer,bezahlt_am,angelegt_am,vorname,nachname,gesamt&order=bezahlt_am.desc&limit=50",
+      "digitalbestellungen?status=eq.bezahlt&select=nummer,rechnungsnummer,bezahlt_am,angelegt_am,vorname,nachname,gesamt,newsletter,bewertung_gebeten_am&order=bezahlt_am.desc&limit=50",
     )) ?? [];
 
   if (!a.gelesen) {
@@ -271,6 +275,7 @@ export default async function AuswertungSeite() {
                     <th className="pb-2 pr-5 font-normal">Datum</th>
                     <th className="pb-2 pr-5 font-normal">Kundin</th>
                     <th className="pb-2 pl-5 text-right font-normal">Betrag</th>
+                    <th className="pb-2 pl-5 text-right font-normal">Bewertung</th>
                     <th className="pb-2 pl-5 text-right font-normal"></th>
                   </tr>
                 </thead>
@@ -289,6 +294,27 @@ export default async function AuswertungSeite() {
                       <td className="py-2.5 pl-5 text-right tabular-nums whitespace-nowrap">
                         {preisText(r.gesamt)}
                       </td>
+                      {/* ▸ DER KNOPF STEHT NUR DA, WO ER ETWAS BEWIRKEN KANN.
+                          Ohne Newsletter-Zustimmung darf die Mail nicht raus,
+                          das ist Werbung ohne Einwilligung. Statt eines
+                          Knopfes, der immer dasselbe absagt, steht dort dann
+                          ein Strich. */}
+                      <td className="py-2.5 pl-5 text-right whitespace-nowrap">
+                        {r.newsletter ? (
+                          <BewertungKnopf
+                            nummer={r.nummer}
+                            schonGefragt={r.bewertung_gebeten_am}
+                          />
+                        ) : (
+                          <span
+                            className="text-[13px] text-ink-soft"
+                            title="Beim Kauf nicht zugestimmt, Post zu bekommen"
+                          >
+                            –
+                          </span>
+                        )}
+                      </td>
+
                       <td className="py-2.5 pl-5 text-right whitespace-nowrap">
                         <Link
                           href={`/admin/rechnung/${r.nummer}`}
