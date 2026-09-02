@@ -33,7 +33,17 @@ type Eintrag = {
   bildText: string;
 };
 
-/** Die Bildflaeche einer Karte: Foto, wenn eins da ist, sonst Farbe. */
+/** Der Kopf einer Karte: das Foto, wenn eins da ist, sonst ein schmaler
+ *  Farbstreifen.
+ *
+ *  Vorher stand hier eine große Farbfläche mit dem Kategorienamen darin, als
+ *  Ersatz für das fehlende Foto. Bei drei Beiträgen sah das noch nach Absicht
+ *  aus, bei einundzwanzig nach Flickenteppich: Die Seite lebt von Creme und
+ *  viel Weißraum, und dagegen stehen zwanzig dunkle Blöcke wie Fremdkörper.
+ *
+ *  Jetzt trägt die Karte ihre Farbe nur noch als Strich. Das ordnet
+ *  genauso ("die rosé Karten sind Magen und Darm"), ohne die Seite zu
+ *  überfahren. Kommt später ein Foto dazu, tritt der Strich zurück. */
 function Kopfbild({
   beitrag,
   hoehe,
@@ -60,28 +70,7 @@ function Kopfbild({
     );
   }
 
-  return (
-    <div
-      className={`relative ${hoehe} ${farbe.flaeche} ${farbe.schrift} overflow-hidden flex items-center justify-center`}
-      aria-hidden="true"
-    >
-      {/* Ein feines Punktraster nimmt der Flaeche das Leere, ohne dass eine
-          Zeichnung noetig waere. Die Farbe kommt aus der Schriftfarbe, das
-          Muster passt sich also jeder Kartenfarbe von selbst an. */}
-      <span
-        className="absolute inset-0 opacity-[0.18]"
-        style={{
-          backgroundImage: "radial-gradient(currentColor 1px, transparent 1px)",
-          backgroundSize: "13px 13px",
-        }}
-      />
-      {/* Der Kategoriename als Schmuck, nicht als Inhalt — deshalb ist die
-          ganze Flaeche für Vorlesegeräte unsichtbar. */}
-      <span className="relative font-serif italic text-[21px] sm:text-[24px] opacity-90 px-6 text-center leading-snug">
-        {beitrag.kategorie}
-      </span>
-    </div>
-  );
+  return <div className={`h-1.5 ${farbe.strich}`} aria-hidden="true" />;
 }
 
 function Marken({ beitrag }: { beitrag: Eintrag }) {
@@ -145,29 +134,31 @@ export default function BlogListe({ beitraege }: { beitraege: Eintrag[] }) {
         </div>
       )}
 
+      {/* Der neueste Beitrag über die volle Breite. Er hebt sich jetzt durch
+          Größe und Raum ab, nicht mehr durch eine Farbfläche: eine Spalte
+          statt zwei, größere Schrift, mehr Luft. Hat er ein Foto, steht es
+          darüber. */}
       {aufmacher && (
         <Link
           href={`/blog/${aufmacher.slug}`}
           className="group block mb-6 rounded-[26px] overflow-hidden bg-white border border-line transition-shadow hover:shadow-[0_18px_50px_-24px_rgba(59,42,40,0.35)]"
         >
-          <div className="grid sm:grid-cols-2">
-            <Kopfbild
-              beitrag={aufmacher}
-              hoehe="h-52 sm:h-full sm:min-h-[300px]"
-              kategorien={kategorien}
-            />
-            <div className="p-7 sm:p-9 flex flex-col justify-center">
-              <span className="inline-block text-[11px] tracking-[0.16em] uppercase text-rose-deep font-semibold mb-3">
-                Neuester Beitrag
-              </span>
-              <h3 className="font-serif text-[26px] sm:text-[31px] leading-[1.18] mb-3 group-hover:text-rose-deep transition-colors">
-                {aufmacher.titel}
-              </h3>
-              <p className="text-[15.5px] text-ink-soft leading-relaxed mb-5">
-                {aufmacher.beschreibung}
-              </p>
-              <Marken beitrag={aufmacher} />
-            </div>
+          <Kopfbild
+            beitrag={aufmacher}
+            hoehe="h-52 sm:h-64"
+            kategorien={kategorien}
+          />
+          <div className="p-8 sm:p-10">
+            <span className="inline-block text-[11px] tracking-[0.16em] uppercase text-rose-deep font-semibold mb-3">
+              Neuester Beitrag
+            </span>
+            <h3 className="font-serif text-[27px] sm:text-[33px] leading-[1.16] mb-4 max-w-2xl group-hover:text-rose-deep transition-colors">
+              {aufmacher.titel}
+            </h3>
+            <p className="text-[16px] text-ink-soft leading-relaxed mb-6 max-w-2xl">
+              {aufmacher.beschreibung}
+            </p>
+            <Marken beitrag={aufmacher} />
           </div>
         </Link>
       )}

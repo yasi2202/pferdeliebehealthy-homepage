@@ -23,11 +23,15 @@ export type Kartenfarbe = {
   strich: string;
 };
 
+// Vier warme Toene aus der Palette der Seite. Ink (fast schwarz) war einmal
+// dabei und ist wieder raus: Als schmaler Strich neben Rose wirkte er wie ein
+// Fehler, nicht wie eine Farbe. Gold ist hier unbedenklich, weil es nur als
+// Flaeche und nie als Schriftfarbe verwendet wird.
 const FARBEN: Kartenfarbe[] = [
   { flaeche: "bg-rose-deep", schrift: "text-cream", strich: "bg-rose-deep" },
-  { flaeche: "bg-ink", schrift: "text-cream", strich: "bg-ink" },
   { flaeche: "bg-rose", schrift: "text-ink", strich: "bg-rose" },
   { flaeche: "bg-ink-soft", schrift: "text-cream", strich: "bg-ink-soft" },
+  { flaeche: "bg-gold", schrift: "text-ink", strich: "bg-gold" },
 ];
 
 /** Die Farbe einer Kategorie, bestimmt ueber ihre Stelle in der alphabetisch
