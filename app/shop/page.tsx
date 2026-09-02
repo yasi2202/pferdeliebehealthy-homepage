@@ -199,6 +199,18 @@ const FOTO: Record<
     alt: "Pferd auf der Weide vor herbstlichem Laub",
     schnitt: "object-center",
   },
+  ausbildung: {
+    datei: "/images/kacheln/buecher.jpg",
+    alt: "Stapel Fachbücher zur Pferdefütterung, daneben ein Ordner und ein Notizbuch",
+    schnitt: "object-center",
+  },
+  // Bei der 1:1 Begleitung steht dein eigenes Foto, nicht weil kein anderes
+  // da wäre, sondern weil es echt ist. Genau darum geht es bei dem Angebot.
+  "pferdeliebe-365": {
+    datei: "/images/yasi-helena.jpg",
+    alt: "Yasemin mit ihrer Stute Helena",
+    schnitt: "object-[50%_72%]",
+  },
   darmaufbau: {
     datei: "/images/kacheln/heu-cobs.jpg",
     alt: "Heu und Grascobs auf einem Holztisch",
