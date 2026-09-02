@@ -137,6 +137,6 @@ passt es schlecht in das Verdauungssystem des Pferdes.
 Statt den Bedarf sinnvoll zu decken, wird das Gleichgewicht im Darm oft eher
 gestört.
 
-**[Wenn du mehr zum Thema erfahren willst und dein Pferd gezielt und sinnvoll
-mit [Aminosäuren](/blog/aminosaeuren-fuer-pferde-warum-sie-unverzichtbar-sind) versorgen möchtest, ist die Amino Formel genau das Richtige
-für dich.](https://www.pferdeliebehealthy.shop/p/0pdyzh)**
+**Wenn du mehr zum Thema erfahren willst und dein Pferd gezielt und sinnvoll
+mit [Aminosäuren](/blog/aminosaeuren-fuer-pferde-warum-sie-unverzichtbar-sind)
+versorgen möchtest, schau dort weiter.**

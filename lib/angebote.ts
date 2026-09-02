@@ -21,14 +21,10 @@ export type Angebot = {
 
 /** Weg 1 — für Leute mit eigenem Pferd. Reihenfolge = Einstieg zuerst. */
 export const fuerDeinPferd: Angebot[] = [
-  {
-    name: "Die Basis einer guten Versorgung",
-    untertitel: "Der Einstieg in eine durchdachte Fütterung",
-    // Bei alfima ein 0-€-Produkt. Auf der Seite steht "kostenlos" statt
-    // "0 €" — das liest sich wie ein Angebot und nicht wie ein Restposten.
-    preis: "kostenlos",
-    url: "https://alfima.com/pferdeliebehealthy/was-dein-mineralfutter-dir-nicht-sagt",
-  },
+  // ▸ HIER STAND "Die Basis einer guten Versorgung", ein kostenloses Heft bei
+  //   alfima. Am 02.09.2026 entfernt: Die Adresse antwortet mit 404, das
+  //   Produkt gibt es nicht mehr, und alfima wird nicht weiter genutzt.
+  //   Der kostenlose Einstieg ist jetzt der Futter-Check weiter unten.
   {
     name: "Mineral-Klarheit",
     untertitel: "Kurs mit Rechner, du rechnest selbst",
@@ -40,19 +36,17 @@ export const fuerDeinPferd: Angebot[] = [
   {
     name: "RatioPro",
     untertitel: "Die einfache Rationsberechnung für dein Pferd",
-    // Preis von der alfima-Seite abgelesen, 26.08.2026. Dort steht ein
-    // Streichpreis von 199 € daneben — hier bewusst nur der echte Preis,
-    // die Liste hat pro Zeile Platz fuer eine Zahl.
+    // Regulaer 99 €, zurzeit 69 €. Die Liste zeigt bewusst nur eine Zahl,
+    // pro Zeile ist nur fuer eine Platz.
     preis: "69 €",
-    url: "https://alfima.com/pferdeliebehealthy/ratiopro-die-einfache-rationsberechnung-fur-dein-pferd",
+    url: "/ratiopro",
   },
   {
     name: "Ganzjahresfutterplan",
     untertitel: "Natürlich durchs Jahr",
-    // Am 02.09.2026 auf 59 € angehoben, siehe lib/digital.ts. Der alte Preis
-    // von 29 € stammte von der alfima-Seite, wo 99 € durchgestrichen standen.
+    // Am 02.09.2026 von 29 auf 59 € angehoben, siehe lib/digital.ts.
     preis: "59 €",
-    url: "https://alfima.com/pferdeliebehealthy/ganzjahresfutterplan-fur-pferde-naturlich-durchs-jahr",
+    url: "/ganzjahresfutterplan",
   },
   {
     name: "Futterberatung 365",
@@ -132,14 +126,14 @@ export const angebotsHinweise: Record<string, Angebotshinweis> = {
     name: "RatioPro",
     text: "Die einfache Rationsberechnung für dein Pferd, damit du siehst, was tatsächlich im Trog landet und was fehlt.",
     knopf: "RatioPro ansehen",
-    url: "https://alfima.com/pferdeliebehealthy/ratiopro-die-einfache-rationsberechnung-fur-dein-pferd",
+    url: "/ratiopro",
   },
   ganzjahresfutterplan: {
     augenbraue: "Dazu passend",
     name: "Ganzjahresfutterplan",
     text: "Natürlich durchs Jahr: was dein Pferd wann braucht, saisonal gedacht statt das ganze Jahr über gleich.",
     knopf: "Ganzjahresfutterplan ansehen",
-    url: "https://alfima.com/pferdeliebehealthy/ganzjahresfutterplan-fur-pferde-naturlich-durchs-jahr",
+    url: "/ganzjahresfutterplan",
   },
   masterclass: {
     augenbraue: "Für angehende Beraterinnen",
