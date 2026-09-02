@@ -263,10 +263,19 @@ function DigitalKarte({ p }: { p: DigitalProdukt }) {
   const cover = { ...gruppenCover, foto };
 
   return (
-    <li>
+    // ▸ `min-w-0` AUF DEM RASTERFELD, sonst laeuft die ganze Kachel aus dem
+    //   Bildschirm. Rasterfelder haben wie Flex-Kinder `min-width: auto`: Die
+    //   Spalte wird nie schmaler als ihr breitester Inhalt, auch wenn das
+    //   Raster nur die halbe Bildschirmbreite hergibt. Auf dem Handy hat das
+    //   die rechte Spalte ueber den Rand geschoben, samt Bild und Preis.
+    //
+    //   Am 02.09.2026 zweimal angefasst: Erst nur der Namenskasten, das hat
+    //   den Text gerettet, aber nicht die Kachel. Erst mit dieser Zeile ist
+    //   der waagerechte Ueberlauf weg.
+    <li className="min-w-0">
       <Link
         href={`/${p.slug}`}
-        className="group flex h-full flex-col overflow-hidden rounded-[18px] border border-line bg-white transition-colors hover:border-rose-deep"
+        className="group flex h-full min-w-0 flex-col overflow-hidden rounded-[18px] border border-line bg-white transition-colors hover:border-rose-deep"
       >
         <div
           className={`relative aspect-square w-full overflow-hidden border-b border-line ${cover.grund}`}
