@@ -178,6 +178,11 @@ const FOTO: Record<
     alt: "Nahaufnahme der Nüstern eines Pferdes",
     schnitt: "object-center",
   },
+  ratiopro: {
+    datei: "/images/kacheln/messbecher.jpg",
+    alt: "Messbecher mit Pellets neben einer Küchenwaage",
+    schnitt: "object-center",
+  },
 };
 
 const ZEILE: Record<string, string> = {
