@@ -52,9 +52,15 @@ export default function Datenschutz() {
         .
       </p>
 
-      <h3>Initiativ-Kontaktaufnahme per E-Mail oder Kontaktformular</h3>
+      {/* ▸ „oder über das Kontaktformular" ist am 02.09.2026 entfallen: Ein
+          Kontaktformular gibt es auf dieser Website nicht. Es gibt nur die
+          Anmeldefelder für Insider-Kanal und Futter-Check, und die sind
+          weiter unten eigens beschrieben. Falls je eines dazukommt, gehört
+          der Halbsatz zurück -- und dann auch ein Satz dazu, welche Felder
+          es hat. */}
+      <h3>Kontaktaufnahme per E-Mail</h3>
       <p>
-        Wenn Sie per E-Mail oder über das Kontaktformular mit uns in
+        Wenn Sie per E-Mail mit uns in
         Geschäftskontakt treten, erheben wir Ihre personenbezogenen Daten
         wie Name, E-Mail-Adresse und Nachrichtentext nur in dem von Ihnen
         zur Verfügung gestellten Umfang. Dient die Kontaktaufnahme
@@ -90,11 +96,16 @@ export default function Datenschutz() {
         .
       </p>
 
-      <h3>Kundenkonto und Bestellungen</h3>
+      {/* ▸ DER SATZ ZUM KUNDENKONTO IST AM 02.09.2026 ENTFALLEN. Ein
+          Kundenkonto kann man auf dieser Website nicht anlegen: Gekauft wird
+          ohne Konto, und der Zugang zur Akademie kommt danach als Link per
+          Mail. Beschrieben ist dieser Zugang im Abschnitt „Mitgliederbereich
+          der Akademie" gleich darunter. Eine Erklärung, die Vorgänge
+          beschreibt, die es nicht gibt, macht die übrigen Angaben
+          unglaubwürdig. */}
+      <h3>Bestellungen</h3>
       <p>
-        Bei der Eröffnung eines Kundenkontos erheben wir Ihre Daten im dort
-        angegebenen Umfang auf Grundlage Ihrer Einwilligung gemäß Art. 6
-        Abs. 1 lit. a DSGVO. Sie können diese jederzeit widerrufen. Bei
+        Bei
         Bestellungen verarbeiten wir Ihre Daten, soweit dies zur Erfüllung
         und Abwicklung erforderlich ist, auf Grundlage des Art. 6 Abs. 1
         lit. b DSGVO. Eine Weitergabe erfolgt an Versandunternehmen,
@@ -190,6 +201,28 @@ export default function Datenschutz() {
         Einwilligung jederzeit über den Abmeldelink im Newsletter oder per
         Mitteilung an uns widerrufen; wir löschen Ihre Daten dann unverzüglich.
         Nicht bestätigte Anmeldungen löschen wir spätestens nach zwei Monaten.
+      </p>
+      {/* ▸ DIESER ABSATZ FEHLTE. Beschrieben war nur der Weg über das
+          Formular. Der zweite Weg, das Häkchen in der Kasse
+          (newsletterEintragen() in lib/digital-server.ts), stand nirgends --
+          dafür stand in der Widerrufsbelehrung, die Anmeldung erfolge „ohne
+          separate Einwilligung", was schlicht nicht stimmte. Der Absatz dort
+          ist entfernt, die Beschreibung steht jetzt hier, wo sie hingehört.
+
+          ▸ WARUM HIER KEINE BESTÄTIGUNGSMAIL KOMMT, ist im Code an der
+          Funktion selbst begründet: Die Adresse ist durch die Zahlung schon
+          bestätigt, das Häkchen ist nicht vorangekreuzt, Zeitpunkt und
+          Herkunft werden gespeichert. Wer das Häkchen je vorankreuzt, macht
+          diesen Absatz falsch. */}
+      <p>
+        In den Newsletter eintragen können Sie sich auch beim Kauf. In der
+        Kasse steht dafür ein eigenes Feld, das nicht vorausgewählt ist; nur
+        wenn Sie es selbst anhaken, nehmen wir Ihre Adresse auf. Auch das ist
+        eine Einwilligung nach Art. 6 Abs. 1 lit. a DSGVO. Eine
+        Bestätigungsmail senden wir in diesem Fall nicht, weil Ihre Adresse
+        durch die Zahlung bereits belegt ist; wir speichern stattdessen den
+        Zeitpunkt und das Produkt, bei dem Sie zugestimmt haben. Abmelden
+        können Sie sich jederzeit mit dem Link am Ende jeder Nachricht.
       </p>
       <h3>Futter-Check</h3>
       <p>
