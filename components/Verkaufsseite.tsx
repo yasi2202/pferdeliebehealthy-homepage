@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { preisText } from "@/lib/shop";
 import Stimmen from "@/components/Stimmen";
+import Kauffragen from "@/components/Kauffragen";
 import type { DigitalProdukt } from "@/lib/digital";
 import type { Verkaufstext } from "@/lib/verkaufstexte";
 
@@ -236,6 +237,12 @@ export default function Verkaufsseite({
           </div>
         </div>
       </section>
+
+      {/* ------------------------------------------------------ Kauffragen */}
+      {/* Zwischen „Fuer wen" und den Stimmen: Erst weiss die Leserin, ob sie
+          gemeint ist, dann raeumt dieser Abschnitt die letzten Bedenken weg,
+          dann kommen die Stimmen und der Knopf. */}
+      <Kauffragen produkt={produkt} />
 
       {/* --------------------------------------------------------- Stimmen */}
       {/* Kurz vor dem letzten Kaufknopf: Wer bis hier gelesen hat, waegt ab.
