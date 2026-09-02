@@ -103,6 +103,67 @@ export default function Datenschutz() {
         Angemessenheitsbeschluss der EU-Kommission.
       </p>
 
+      <h2>Mitgliederbereich der Akademie</h2>
+      <p>
+        Wer ein Produkt der Pferdeliebehealthy Akademie erworben hat, erhält
+        Zugang zu einem persönlichen Mitgliederbereich. Die Anmeldung erfolgt
+        ohne Passwort über einen persönlichen Zugangslink oder einen
+        Zahlencode, den wir Ihnen per E-Mail zusenden. Gespeichert werden dafür
+        Ihre E-Mail-Adresse, die für Sie freigeschalteten Produkte und der
+        Zeitpunkt Ihrer letzten Anmeldung.
+      </p>
+      <p>
+        Bei der Nutzung entstehen weitere Daten, die wir Ihrem Zugang zuordnen:
+        Ihr Lernfortschritt, von Ihnen angelegte Notizen, Markierungen und
+        Lesezeichen zu einzelnen Lektionen, Ihre Antworten auf Reflexionsfragen
+        sowie, falls Sie an einer Ausbildung teilnehmen, Prüfungsergebnisse und
+        die Angaben für Ihr Zertifikat. Nutzen Sie die enthaltenen Werkzeuge,
+        kommen die dort eingetragenen Angaben hinzu, insbesondere Angaben zu
+        Ihrem Pferd, zu Fütterung, Haltung und Gesundheit, Terminen und
+        Gewichtsverläufen sowie von Ihnen hochgeladene Unterlagen wie Blut- oder
+        Heuanalysen und Ihre Nachrichten an uns im Rahmen einer Futterberatung.
+      </p>
+      <p>
+        Rechtsgrundlage ist Art. 6 Abs. 1 lit. b DSGVO, die Verarbeitung ist zur
+        Erfüllung des mit Ihnen geschlossenen Vertrages erforderlich. Ohne diese
+        Angaben lassen sich die gekauften Leistungen nicht erbringen.
+      </p>
+      <p>
+        Gespeichert werden diese Daten bei Supabase Inc. in einem Rechenzentrum
+        in Irland, also innerhalb der Europäischen Union. Betrieben wird die
+        Anwendung bei Vercel Inc. mit Serverstandort Frankfurt am Main. Für
+        System- und Erinnerungsmails setzen wir Resend, Inc. ein. Mit allen drei
+        Anbietern bestehen Verträge zur Auftragsverarbeitung nach Art. 28 DSGVO.
+        Von Ihnen hochgeladene Dateien liegen in einem nicht öffentlichen
+        Speicher und sind nur über zeitlich befristete Adressen erreichbar.
+      </p>
+      <p>
+        Wir speichern diese Daten, solange Ihr Zugang besteht. Danach löschen
+        wir sie auf Ihren Wunsch, soweit keine gesetzliche Aufbewahrungspflicht
+        entgegensteht; Rechnungen müssen wir zehn Jahre aufbewahren.
+      </p>
+
+      <h2>Kundenverwaltung EquiDesk</h2>
+      <p>
+        EquiDesk ist eine Kundenverwaltung für Futterberaterinnen. Wer sie
+        erwirbt, verwaltet darin die Daten der eigenen Kundinnen und Kunden.
+      </p>
+      <p>
+        Für diese Daten ist allein die jeweilige Beraterin verantwortlich im
+        Sinne der DSGVO. Wir stellen ausschließlich die Technik bereit und
+        verarbeiten die Daten in ihrem Auftrag nach Art. 28 DSGVO. Wir nutzen
+        sie nicht für eigene Zwecke und insbesondere nicht für Werbung. Einen
+        Vertrag zur Auftragsverarbeitung stellen wir in der Anwendung bereit.
+      </p>
+      <p>
+        Sind Sie Kundin oder Kunde einer Beraterin, die EquiDesk einsetzt,
+        wenden Sie sich mit Fragen zu Ihren Daten sowie mit Auskunfts- und
+        Löschverlangen bitte an diese Beraterin. Wir dürfen darüber nicht selbst
+        entscheiden, sondern nur auf ihre Weisung tätig werden. Speicherort und
+        eingesetzte Dienstleister entsprechen den Angaben im vorstehenden
+        Abschnitt.
+      </p>
+
       <h2>Werbung</h2>
       <h3>Postalische Werbung</h3>
       <p>
