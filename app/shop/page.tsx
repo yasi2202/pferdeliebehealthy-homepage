@@ -178,6 +178,11 @@ const FOTO: Record<
     alt: "Pferd leckt an einem Salzleckstein an der Stallwand",
     schnitt: "object-center",
   },
+  "magen-reset": {
+    datei: "/images/kacheln/heunetz.jpg",
+    alt: "Pferd frisst Heu aus einem engmaschigen Heunetz",
+    schnitt: "object-center",
+  },
 };
 
 const ZEILE: Record<string, string> = {
