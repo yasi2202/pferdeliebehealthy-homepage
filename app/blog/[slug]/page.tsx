@@ -263,11 +263,11 @@ export default async function BlogBeitragSeite({ params }: Props) {
             <aside className="mt-12 pt-6 border-t border-line">
               <p className="text-[12.5px] text-ink-soft leading-relaxed max-w-xl">
                 <strong className="font-semibold text-ink">Werbung:</strong>{" "}
-                Dieser Beitrag enthält Rabattcodes von Partnern. Bestellst du
-                damit, bekomme ich eine Provision. Für dich wird es dadurch
-                nicht teurer, im Gegenteil, mit dem Code zahlst du weniger.
-                Empfehlen tue ich trotzdem nur, was ich selbst einsetze oder
-                geprüft habe.
+                Dieser Beitrag enthält Empfehlungen von Partnern, teils mit
+                Rabattcode. Bestellst du darüber, bekomme ich eine Provision.
+                Für dich wird es dadurch nicht teurer, und wo ein Code dabei
+                ist, zahlst du weniger. Empfehlen tue ich trotzdem nur, was
+                ich selbst einsetze oder geprüft habe.
               </p>
             </aside>
           )}
