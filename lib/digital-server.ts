@@ -43,9 +43,11 @@ import {
   sendeMail,
   esc,
   rahmen,
+  knopf,
   anrede,
   ANTWORT_AN,
 } from "@/lib/versand";
+import { bewertungslink } from "@/lib/seite";
 
 const AKADEMIE_WEBHOOK_URL = process.env.AKADEMIE_WEBHOOK_URL;
 const AKADEMIE_WEBHOOK_KEY = process.env.AKADEMIE_WEBHOOK_KEY || "";
@@ -887,9 +889,55 @@ export async function digitalBestaetigungSenden(
 
       ${verzicht}
 
+      ${bewertungsbitte(b)}
+
       <p style="font-size:16px;line-height:1.6;">Liebe Grüße<br>Yasemin</p>
     `),
   );
+}
+
+/**
+ * Die Bitte um eine Google-Bewertung, unten in der Bestellbestätigung.
+ *
+ * ▸ SIE GEHT NICHT AN ALLE, UND DAS HAT EINEN GRUND.
+ *   Der BGH hat 2018 entschieden (VI ZR 225/17), dass die Frage nach der
+ *   Zufriedenheit Werbung ist. Ohne Einwilligung darf sie nicht per Mail
+ *   raus, auch nicht angehängt an eine Bestellbestätigung, die sonst
+ *   erlaubt wäre. Genau daran ist der beklagte Händler damals gescheitert.
+ *
+ *   Deshalb steht sie nur in der Mail an Kundinnen, die beim Kauf dem
+ *   Newsletter zugestimmt haben. Die haben ausdrücklich eingewilligt, und
+ *   der Widerspruchshinweis steht trotzdem dabei, weil § 7 Abs. 3 UWG ihn
+ *   in jeder solchen Mail verlangt.
+ *
+ * ▸ OHNE LINK KEINE BITTE. Solange `bewertungslink` in lib/seite.ts leer
+ *   ist, kommt hier nichts. Kein halber Satz, kein toter Knopf.
+ *
+ * ▸ SIE FRAGT NACH EINER EHRLICHEN BEWERTUNG, nicht nach einer guten. Wer
+ *   um „fünf Sterne" bittet oder dafür etwas verspricht, kauft sich
+ *   Bewertungen, und das ist unlauter.
+ */
+function bewertungsbitte(b: DigitalBestellung): string {
+  if (!bewertungslink || !b.newsletter) return "";
+
+  return `
+    <div style="margin:28px 0 0;padding:18px 20px;background:#F9EDED;border-radius:12px;">
+      <p style="font-size:15px;line-height:1.6;margin:0 0 12px;">
+        Wenn dir gefällt, was du bekommen hast, freue ich mich sehr über ein
+        paar Zeilen bei Google. Das dauert eine Minute und hilft anderen
+        Pferdemenschen bei der Entscheidung mehr als jeder Text, den ich
+        selbst schreiben könnte.
+      </p>
+
+      ${knopf(bewertungslink, "Bewertung schreiben")}
+
+      <p style="font-size:12px;line-height:1.6;color:#8a7070;margin:12px 0 0;">
+        Schreib gern ehrlich, auch wenn etwas gefehlt hat. Wenn du solche
+        Hinweise nicht bekommen möchtest, antworte kurz auf diese Mail, dann
+        lasse ich sie weg.
+      </p>
+    </div>
+  `;
 }
 
 /** Die kurze Meldung an dich. */

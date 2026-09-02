@@ -15,6 +15,29 @@ export const mitgliederbereich = {
 };
 
 // ---------------------------------------------------------------------------
+// Die Bitte um eine Google-Bewertung.
+//
+// ▸ HIER DEN LINK EINTRAGEN, dann erscheint die Bitte. Solange er leer ist,
+//   passiert nichts, keine Mail und kein Hinweis in der Akademie.
+//
+//   Den Link findest du im Google-Unternehmensprofil unter „Rezensionen"
+//   → „Mehr Rezensionen erhalten". Er sieht aus wie
+//   https://g.page/r/…/review oder
+//   https://search.google.com/local/writereview?placeid=…
+//
+// ▸ WARUM DIE BITTE NUR AN MANCHE GEHT
+//   Der BGH hat 2018 entschieden (VI ZR 225/17), dass eine Frage nach der
+//   Zufriedenheit Werbung ist. Ohne Einwilligung darf sie nicht per Mail
+//   raus, auch nicht angehängt an eine Bestellbestätigung. Deshalb steht sie
+//   nur in der Mail an Kundinnen, die beim Kauf dem Newsletter zugestimmt
+//   haben, und auch dort mit dem Hinweis, dass man widersprechen kann.
+//
+//   Alle anderen sehen die Bitte nur dort, wo kein Werberecht gilt: in der
+//   Akademie, wenn sie ohnehin eingeloggt sind.
+// ---------------------------------------------------------------------------
+export const bewertungslink = "";
+
+// ---------------------------------------------------------------------------
 // Der Futter-Check.
 //
 // Seit 26.08.2026 laeuft er komplett auf der eigenen Seite, ohne alfima. Der
