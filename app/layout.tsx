@@ -72,12 +72,22 @@ export const metadata: Metadata = {
     title: TITEL,
     description: BESCHREIBUNG,
     url: "/",
+    // ▸ QUERFORMAT, NICHT HOCHFORMAT.
+    //   Bis zum 02.09.2026 stand hier yasi-helena.jpg, und das ist 1122 x
+    //   1402, also hochkant. Jede Vorschau, ob bei Google, WhatsApp oder
+    //   Facebook, rechnet mit 1200 x 630 und schneidet ein hochkantes Bild
+    //   oben und unten weg. Uebrig blieb ein Ausschnitt ohne Zusammenhang.
+    //
+    //   vorschau.jpg ist genau 1200 x 630 und traegt den Namen, die
+    //   Taetigkeit und den Ort. Gebaut aus demselben Foto, damit es zum Rest
+    //   passt. Die Quelldatei dazu liegt in
+    //   Dokumente\Google Unternehmensprofil.
     images: [
       {
-        url: "/images/yasi-helena.jpg",
-        width: 1122,
-        height: 1402,
-        alt: "Yasemin Halac mit ihrer Stute Helena",
+        url: "/images/vorschau.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Pferdeliebehealthy, Ernährungsberatung für Pferde aus dem Odenwald",
       },
     ],
   },
@@ -85,7 +95,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: TITEL,
     description: BESCHREIBUNG,
-    images: ["/images/yasi-helena.jpg"],
+    images: ["/images/vorschau.jpg"],
   },
   robots: {
     index: true,
