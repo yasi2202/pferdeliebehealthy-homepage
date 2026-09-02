@@ -127,6 +127,25 @@ Setz den Kasten dahin, wo er inhaltlich hingehört, also hinter den Absatz, der
 das Thema erklärt. Nicht ans Ende des Beitrags und nicht direkt hinter einen
 Hinweis auf den Tierarzt.
 
+## Ein eigenes Angebot empfehlen
+
+Genau wie beim Partner, nur mit deinen eigenen Sachen:
+
+    [[angebot:mineral]]
+
+Möglich sind `mineral`, `ratiopro`, `ganzjahresfutterplan`, `futter-check`
+und `masterclass`. Der Kasten sieht anders aus als der Partnerkasten, in Creme
+statt Weiß und ohne Werbehinweis: Dort fließt eine Provision, hier steht dein
+eigenes Angebot.
+
+Setz ihn an die Stelle, an der das Thema gerade aufkommt. „Rechne dein
+Mineralfutter durch" ist da hilfreich, wo gerade erklärt wird, warum das nötig
+ist, und drei Bildschirmseiten weiter unten nur noch Werbung.
+
+**Nicht dasselbe Angebot wie oben im Kopf der Datei nehmen.** Sonst steht es
+zweimal im selben Beitrag. Wenn im Text `mineral` steht, nimm oben etwas
+anderes, zum Beispiel den Futter-Check.
+
 ## Auf andere Beiträge verweisen
 
 Ein Link auf einen anderen Beitrag sieht so aus:

@@ -338,3 +338,55 @@ body {
 .beitrag-prose tbody td:first-child {
   font-weight: 500;
 }
+
+/* --- Eigenes Angebot im Blogbeitrag -------------------------------------
+   Entsteht aus [[angebot:mineral]] im Text. Er sieht bewusst anders aus als
+   der Partnerkasten: Dort fließt eine Provision, hier steht ein eigenes
+   Angebot. Deshalb Creme statt Weiß und kein Werbehinweis, sondern nur die
+   Augenbraue. */
+.beitrag-prose .angebotskasten {
+  background: var(--cream-deep);
+  border-radius: 18px;
+  padding: 24px 26px;
+  margin: 32px 0;
+}
+
+.beitrag-prose .angebotskasten-marke {
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: var(--rose-deep);
+  margin-bottom: 8px;
+}
+
+.beitrag-prose .angebotskasten-name {
+  font-family: var(--font-fraunces), Georgia, serif;
+  font-size: 22px;
+  line-height: 1.25;
+  margin-bottom: 8px;
+}
+
+.beitrag-prose .angebotskasten-text {
+  font-size: 15px;
+  color: var(--ink-soft);
+  line-height: 1.6;
+  margin-bottom: 16px;
+}
+
+.beitrag-prose .angebotskasten-knopf {
+  display: inline-block;
+  background: var(--ink);
+  color: var(--cream);
+  padding: 11px 22px;
+  border-radius: 999px;
+  font-size: 14.5px;
+  font-weight: 500;
+  text-decoration: none;
+  transition: background-color 0.2s ease;
+}
+
+.beitrag-prose .angebotskasten-knopf:hover {
+  background: var(--rose-deep);
+  color: var(--cream);
+}

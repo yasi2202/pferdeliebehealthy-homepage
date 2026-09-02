@@ -171,15 +171,19 @@ export default async function BlogBeitragSeite({ params }: Props) {
       <article className="px-6 sm:px-8 py-14 sm:py-16">
         <div className="max-w-2xl mx-auto">
           {beitrag.bild && (
-            <figure className="mb-12 -mt-24 sm:-mt-28">
+            /* Hoehe begrenzt statt Breite: Ein Hochformat wuerde sonst den
+               halben Bildschirm fuellen, bevor der erste Satz kommt. Der
+               Bildausschnitt wird oben gehalten, dort sitzt bei Nahaufnahmen
+               das Motiv. */
+            <figure className="mb-12 -mt-24 sm:-mt-28 max-w-md mx-auto">
               <Image
                 src={beitrag.bild}
                 alt={beitrag.bildText || beitrag.titel}
                 width={1600}
                 height={1200}
                 priority
-                sizes="(max-width: 768px) 100vw, 672px"
-                className="w-full h-auto rounded-[22px] shadow-[0_24px_60px_-30px_rgba(59,42,40,0.5)]"
+                sizes="(max-width: 768px) 100vw, 448px"
+                className="w-full max-h-[420px] object-cover object-top rounded-[22px] shadow-[0_24px_60px_-30px_rgba(59,42,40,0.5)]"
               />
               {beitrag.bildText && (
                 <figcaption className="text-[13.5px] text-ink-soft mt-3">

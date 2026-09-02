@@ -4,6 +4,7 @@ import matter from "gray-matter";
 import { marked } from "marked";
 import { empfehlungen, partnerFinden } from "./empfehlungen";
 import { produktFinden } from "./partnerprodukte";
+import { angebotshinweisFinden } from "./angebote";
 
 // ---------------------------------------------------------------------------
 // Der Blog: die oeffentliche Seite des Wissens.
@@ -175,9 +176,40 @@ function enthaeltWerbung(html: string): boolean {
  *    Links zu ranken, und das faellt auf die ganze Seite zurueck.
  */
 function partnerkaestenSetzen(html: string): string {
-  // Erst die Produktkaesten: Sie sind die genauere Empfehlung und sollen
-  // nicht versehentlich vom allgemeinen Partnerkasten verdeckt werden.
+  // Die eigenen Angebote. Marker: [[angebot:mineral]]
+  //
+  // Anders als der Kasten am Fuss des Beitrags, der aus der Kopfzeile kommt,
+  // steht dieser mitten im Text, an der Stelle, an der das Thema gerade
+  // aufkommt. "Rechne dein Mineralfutter durch" ist an genau der Stelle ein
+  // hilfreicher Hinweis, wo erklaert wird, warum das noetig ist, und drei
+  // Bildschirmseiten weiter unten nur noch Werbung.
+  //
+  // Der Kasten sieht bewusst anders aus als der Partnerkasten: Hier fliesst
+  // keine Provision, hier steht ein eigenes Angebot. Das darf man
+  // unterscheiden koennen.
   let text = html.replace(
+    /<p>\s*\[\[angebot:([a-z0-9-]+)\]\]\s*<\/p>/g,
+    (_treffer, schluessel: string) => {
+      const hinweis = angebotshinweisFinden(schluessel);
+      if (!hinweis) return "";
+
+      const extern = !hinweis.url.startsWith("/");
+      const ziel = extern
+        ? `href="${hinweis.url}" target="_blank" rel="noopener"`
+        : `href="${hinweis.url}"`;
+
+      return `<aside class="angebotskasten">
+  <p class="angebotskasten-marke">${hinweis.augenbraue}</p>
+  <p class="angebotskasten-name">${hinweis.name}</p>
+  <p class="angebotskasten-text">${hinweis.text}</p>
+  <a class="angebotskasten-knopf" ${ziel}>${hinweis.knopf}</a>
+</aside>`;
+    }
+  );
+
+  // Dann die Produktkaesten: Sie sind die genauere Empfehlung und sollen
+  // nicht versehentlich vom allgemeinen Partnerkasten verdeckt werden.
+  text = text.replace(
     /<p>\s*\[\[produkt:([a-z0-9-]+)\]\]\s*<\/p>/g,
     (_treffer, schluessel: string) => {
       const gefunden = produktFinden(schluessel);
