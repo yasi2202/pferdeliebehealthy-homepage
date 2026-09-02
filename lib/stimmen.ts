@@ -276,3 +276,20 @@ export function stimmenZu(slug: string, wieviele = 2): Stimme[] {
     .filter((s) => !s.produkte || s.produkte.includes(slug))
     .slice(0, wieviele);
 }
+
+/**
+ * Die Stimmen für die Startseite.
+ *
+ * ▸ HANDVERLESEN, NICHT DIE ERSTEN VIER.
+ *   Auf einer Produktseite zählt, dass die Stimme zum Produkt passt. Auf der
+ *   Startseite zählt die Mischung: ein Ergebnis, ein Vergleich, jemand aus
+ *   der Ausbildung, jemand über die Betreuung. Nähme man einfach die ersten
+ *   vier der Liste, stünden dort zweimal hintereinander Stimmen über den
+ *   Rationsrechner.
+ */
+export function stimmenStartseite(): Stimme[] {
+  const wunsch = ["Vivien", "Carolin", "Juliane", "Emmi"];
+  return wunsch
+    .map((n) => stimmen.find((s) => s.name === n))
+    .filter((s): s is Stimme => Boolean(s));
+}

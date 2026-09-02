@@ -95,10 +95,22 @@ export default function WegeSection() {
               })}
             </div>
 
+            {/* ▸ DER WEG IN DEN SHOP.
+                Die Liste oben zeigt fünf Angebote, im Shop stehen elf. Ohne
+                diesen Verweis endet die Startseite bei einer Auswahl, und
+                wer den Salzratgeber oder den Darmaufbau sucht, findet sie
+                gar nicht. */}
+            <Link
+              href="/shop"
+              className="mt-7 block text-center text-[14.5px] text-ink-soft underline decoration-rose-deep/40 underline-offset-4 hover:text-ink hover:decoration-rose-deep"
+            >
+              Alle Angebote im Shop ansehen
+            </Link>
+
             <Link
               href={futterCheck.fragebogen}
               prefetch={false}
-              className="mt-8 w-full text-center bg-rose-deep text-cream px-7 py-3.5 rounded-full text-[15px] font-medium hover:bg-ink transition-colors"
+              className="mt-5 w-full text-center bg-rose-deep text-cream px-7 py-3.5 rounded-full text-[15px] font-medium hover:bg-ink transition-colors"
             >
               Kostenlos starten: der Futter-Check
             </Link>

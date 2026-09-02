@@ -1,26 +1,24 @@
-// ---------------------------------------------------------------------------
-// Kundenstimmen.
-//
-// ▸ WEITERE STIMMEN HINZUFÜGEN: einfach einen Block in die Liste unten
-//   einfügen. Der Abschnitt passt sein Layout selbst an — eine Stimme steht
-//   breit, ab zwei nebeneinander.
-//
-//   { zitat: "…", name: "Vorname", rolle: "Teilnehmerin der Ausbildung" },
-//
-// ▸ Zitate immer wörtlich lassen. Wenn du kürzt, dann mit … und ohne den
-//   Sinn zu verändern.
-// ---------------------------------------------------------------------------
+import { stimmenStartseite } from "@/lib/stimmen";
 
-const stimmen = [
-  {
-    zitat:
-      "Ich habe meine Ausbildung bei euch gemacht und dabei unglaublich viel gelernt. So viel, dass ich mich mittlerweile sogar noch zur Aromatherapeutin bei euch ausbilden lasse.",
-    name: "Marion",
-    rolle: "Teilnehmerin der Ausbildung",
-  },
-];
+// ---------------------------------------------------------------------------
+// Kundenstimmen auf der Startseite.
+//
+// ▸ DIE STIMMEN STEHEN NICHT MEHR HIER, SONDERN IN lib/stimmen.ts.
+//   Bis zum 02.09.2026 stand hier eine einzige, fest eingetippt. Inzwischen
+//   gibt es dreizehn, und sie werden auch auf den Verkaufsseiten gebraucht.
+//   Zweimal dieselbe Liste zu pflegen geht immer schief: Eine wird aktuell
+//   gehalten, die andere vergisst man.
+//
+// ▸ WELCHE HIER STEHEN, entscheidet `stimmenStartseite()`. Handverlesen und
+//   gemischt: ein Ergebnis, ein Vergleich, jemand aus der Ausbildung, jemand
+//   über die Betreuung.
+//
+// ▸ NEUE STIMME? In lib/stimmen.ts eintragen, wörtlich und nur mit Vornamen,
+//   und erst nachdem die Kundin zugestimmt hat.
+// ---------------------------------------------------------------------------
 
 export default function TestimonialSection() {
+  const stimmen = stimmenStartseite();
   const einzeln = stimmen.length === 1;
 
   return (

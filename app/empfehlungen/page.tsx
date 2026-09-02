@@ -54,10 +54,26 @@ export default function EmpfehlungenSeite() {
                 )}
               </div>
 
-              {/* Ohne Code kein Codefeld. Nicht jeder Partner erlaubt, dass
-                  sein Rabattcode offen auf einer Seite steht; siehe den
-                  Hinweis bei PerNaturam in lib/empfehlungen.ts. */}
-              {e.code && <RabattCode code={e.code} />}
+              {/* ▸ OHNE CODE STEHT DA NICHT NICHTS, SONDERN DER WEG DAHIN.
+                  Nicht jeder Partner erlaubt, dass sein Rabattcode offen auf
+                  einer Seite steht, siehe den Hinweis bei PerNaturam in
+                  lib/empfehlungen.ts. Eine leere Stelle sähe aus wie ein
+                  Fehler; der Satz sagt, dass es den Code gibt und wie man ihn
+                  bekommt. */}
+              {e.code ? (
+                <RabattCode code={e.code} />
+              ) : (
+                <p className="mt-4 text-[14px] text-ink-soft">
+                  Den Rabattcode bekommst du auf Anfrage,{" "}
+                  <a
+                    href="/#kontakt"
+                    className="text-ink underline decoration-rose-deep/40 underline-offset-4 hover:decoration-rose-deep"
+                  >
+                    schreib mir kurz
+                  </a>
+                  .
+                </p>
+              )}
 
               {e.url && (
                 <a
