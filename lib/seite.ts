@@ -35,7 +35,9 @@ export const mitgliederbereich = {
 //   Alle anderen sehen die Bitte nur dort, wo kein Werberecht gilt: in der
 //   Akademie, wenn sie ohnehin eingeloggt sind.
 // ---------------------------------------------------------------------------
-export const bewertungslink = "";
+// Geprüft am 02.09.2026: leitet weiter auf search.google.com/local/writereview
+// mit der Kennung ChIJQSpXEKEbmEcRQnb6A-Wh9CE.
+export const bewertungslink = "https://g.page/r/CUJ2-gPlofQhEBM/review";
 
 // ---------------------------------------------------------------------------
 // Der Futter-Check.
