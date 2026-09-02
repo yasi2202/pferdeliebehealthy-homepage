@@ -183,6 +183,11 @@ const FOTO: Record<
     alt: "Messbecher mit Pellets neben einer Küchenwaage",
     schnitt: "object-center",
   },
+  "mineral-klarheit": {
+    datei: "/images/kacheln/mineralfutter.jpg",
+    alt: "Schale mit Mineralpulver neben einem Messbecher mit Pellets",
+    schnitt: "object-center",
+  },
   equidesk: {
     datei: "/images/kacheln/schreibtisch.jpg",
     alt: "Schreibtisch mit Laptop, Notizbuch und Kaffeetasse, daneben ein Halfter",
