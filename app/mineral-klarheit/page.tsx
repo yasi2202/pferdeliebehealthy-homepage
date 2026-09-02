@@ -3,6 +3,9 @@ import Image from "next/image";
 import { mineralKlarheit } from "@/lib/seite";
 import { digitalFinden } from "@/lib/digital";
 import { preisText } from "@/lib/shop";
+import Kauffragen from "@/components/Kauffragen";
+import Stimmen from "@/components/Stimmen";
+import WerDahinterSteht from "@/components/WerDahinterSteht";
 
 // ---------------------------------------------------------------------------
 // Die Seite zu Mineral-Klarheit.
@@ -288,6 +291,18 @@ export default function MineralKlarheitSeite() {
           </div>
         </div>
       </section>
+
+      {/* ▸ DIE DREI ABSCHNITTE, DIE ALLE VERKAUFSSEITEN TRAGEN.
+          Sie stecken in components/Verkaufsseite.tsx, und diese Seite hier
+          benutzt die Vorlage nicht -- deshalb stehen sie einzeln da. Wer an
+          einem davon etwas aendert, aendert es in der Komponente, nicht hier.
+
+          Reihenfolge mit Absicht: erst die Fragen wegraeumen, die vom Kauf
+          abhalten, dann sagen andere etwas ueber das Angebot, dann stellt
+          sich Yasemin vor, dann kommt der Knopf. */}
+      <Kauffragen produkt={produkt} />
+      <Stimmen slug="mineral-klarheit" />
+      <WerDahinterSteht />
 
       {/* --------------------------------------------------------- Abschluss */}
       <section className="px-6 sm:px-8 pb-20 sm:pb-28">

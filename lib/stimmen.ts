@@ -85,7 +85,16 @@ export const stimmen: Stimme[] = [
       "mit Herzblut machst ❤️",
     name: "Emmi",
     rolle: "über die Beratung",
-    produkte: ["darmaufbau", "pferdeliebe-365", "basisfutterkurs", "magen-reset"],
+    produkte: [
+      "darmaufbau",
+      "pferdeliebe-365",
+      "basisfutterkurs",
+      "magen-reset",
+      // Kotwasser ist genau eines der Zeichen, die man im Navigator
+      // nachschlägt. Die Stimme passt dort also inhaltlich, auch wenn sie
+      // nicht vom Werkzeug selbst spricht.
+      "symptom-navigator",
+    ],
   },
   {
     zitat:
@@ -114,8 +123,18 @@ export const stimmen: Stimme[] = [
       "hab viel von ihr und ihren Kursen gelernt und fühle mich auf jeden Fall " +
       "bestens betreut! 🫶🏻",
     name: "Anja",
-    rolle: "über die Kurse",
-    produkte: [...ALLE_KURSE, "pferdeliebe-365"],
+    rolle: "über die Betreuung",
+    // Sie spricht über Erreichbarkeit und Betreuung, nicht über ein
+    // bestimmtes Produkt. Deshalb steht sie auch bei den Werkzeugen: Wer
+    // 69 Euro für einen Rechner ausgibt, will wissen, ob jemand antwortet,
+    // wenn etwas klemmt.
+    produkte: [
+      ...ALLE_KURSE,
+      "pferdeliebe-365",
+      "symptom-navigator",
+      "ratiopro",
+      "equidesk",
+    ],
   },
   {
     zitat:
@@ -141,7 +160,9 @@ export const stimmen: Stimme[] = [
       "Aromatherapeutin bei euch ausbilden lasse.",
     name: "Marion",
     rolle: "Teilnehmerin der Ausbildung",
-    produkte: ["ausbildung"],
+    // Auch bei EquiDesk: Das ist das Werkzeug für Beraterinnen, und wer es
+    // kauft, hat meist genau diesen Weg vor sich.
+    produkte: ["ausbildung", "equidesk"],
   },
 ];
 

@@ -4,6 +4,9 @@ import Link from "next/link";
 import { digitalFinden } from "@/lib/digital";
 import { preisText } from "@/lib/shop";
 import EquiDeskFrist, { FRIST_TEXT } from "@/components/EquiDeskFrist";
+import Kauffragen from "@/components/Kauffragen";
+import Stimmen from "@/components/Stimmen";
+import WerDahinterSteht from "@/components/WerDahinterSteht";
 
 // ---------------------------------------------------------------------------
 // Die Verkaufsseite zu EquiDesk.
@@ -292,6 +295,18 @@ export default function EquiDeskSeite() {
           </p>
         </div>
       </section>
+
+      {/* ▸ DIE DREI ABSCHNITTE, DIE ALLE VERKAUFSSEITEN TRAGEN.
+          Sie stecken in components/Verkaufsseite.tsx, und diese Seite hier
+          benutzt die Vorlage nicht -- deshalb stehen sie einzeln da. Wer an
+          einem davon etwas aendert, aendert es in der Komponente, nicht hier.
+
+          Reihenfolge mit Absicht: erst die Fragen wegraeumen, die vom Kauf
+          abhalten, dann sagen andere etwas ueber das Angebot, dann stellt
+          sich Yasemin vor, dann kommt der Knopf. */}
+      <Kauffragen produkt={produkt} />
+      <Stimmen slug="equidesk" />
+      <WerDahinterSteht />
 
       {/* --------------------------------------------------------- Abschluss */}
       <section className="bg-ink px-6 py-16 text-cream sm:px-8 sm:py-24">
