@@ -71,6 +71,31 @@ Gurtlage) entstehen unnötige Risiken und Narben.
 Statt „schnell abbinden“ verfolgt man heute eine **individuelle, planvolle
 Therapie**:
 
+## Welche Verfahren es gibt
+
+Damit du weißt, worüber du mit deiner Tierärztin sprechen kannst. Was im
+Einzelfall passt, hängt von Art, Lage und Größe ab, und das entscheidet sie,
+nicht das Internet.
+
+| Verfahren | Wofür es meist eingesetzt wird |
+|---|---|
+| Chirurgische Entfernung | einzelne, gut abgrenzbare Sarkoide, oft mit Sicherheitsabstand |
+| Laser | ähnlich wie die Operation, mit weniger Blutung |
+| Kryotherapie, also Vereisung | kleine, oberflächliche Läsionen |
+| Örtliche Chemotherapie | Salben oder Injektionen mit Zellgiften, tierärztlich angewendet |
+| Immuntherapie | regt die körpereigene Abwehr gegen das Gewebe an |
+| Abwarten und beobachten | kleine, ruhige Sarkoide an unkritischer Stelle |
+
+Zwei Dinge, die immer wieder schiefgehen:
+
+**Halbe Sachen machen es schlimmer.** Ein Sarkoid, das gereizt, angeschnitten
+oder unvollständig entfernt wird, wächst häufig aggressiver nach als vorher.
+Das gilt auch für Hausmittel und scharfe Salben aus dem Internet.
+
+**Die Stelle entscheidet mit.** An Augenlid, Maulwinkel oder Gurtlage ist
+selbst ein kleines Sarkoid ein Problem, weil dort jede Behandlung und jede
+Narbe stört.
+
 ### Immunsystem & Stoffwechsel stärken
 
 Ein stabiler Stoffwechsel und eine gute Versorgung mit Mikronährstoffen bilden

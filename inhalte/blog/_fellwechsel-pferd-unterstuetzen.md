@@ -61,6 +61,31 @@ Kupfer. Es gibt Zinkpräparate, die dieses Verhältnis stark verschieben.
 Rechne also nicht nur, wie viel Zink dazukommt, sondern was dein Pferd am Ende
 insgesamt bekommt, aus [Mineralfutter](/blog/natuerliches-mineralfutter-fuer-pferde-sinnvoll-wirksam-und-selbst-gemischt) und Kur zusammen.
 
+## Der Jahresverlauf auf einen Blick
+
+| Zeit | Was im Pferd passiert | Was du tust |
+|---|---|---|
+| Ab Ende Juni | die Tage werden kürzer, der Hormonhaushalt stellt um | nichts Besonderes, aber die Grundversorgung sollte stehen |
+| September, Oktober | das Winterfell schiebt sich sichtbar durch | Eiweiß und Spurenelemente prüfen, Leber entlasten |
+| November, Dezember | Fell ist fertig, der Bedarf sinkt wieder | Ergänzungen zurückfahren |
+| Ab Ende Dezember | die Tage werden länger, die nächste Umstellung beginnt | nichts tun |
+| März bis Mai | Winterfell fällt aus, oft anstrengender als im Herbst | erneut Eiweiß und Spurenelemente, dazu viel putzen |
+
+Der Frühjahrswechsel wird meist unterschätzt. Er fällt in die Zeit, in der das
+Heu am längsten liegt und am wenigsten hergibt, und in der das Pferd zusätzlich
+mit dem Anweiden umgehen muss.
+
+## Wie viel Zink denn nun
+
+Der Bedarf eines 600-Kilo-Pferdes liegt bei grob 500 Milligramm am Tag, und
+gutes Heu liefert davon vielleicht die Hälfte. Im Fellwechsel steigt der
+Bedarf, wie stark, lässt sich nicht seriös beziffern.
+
+Deshalb ist die bessere Frage nicht "wie viel mehr", sondern "was kommt
+insgesamt an": Tagesdosis des Mineralfutters mal Zinkgehalt, plus was aus dem
+Heu kommt. Wie das geht, steht im Beitrag über [Mauke](/blog/mauke-beim-pferd), dort ist es
+durchgerechnet.
+
 ## Die drei Fragen, die ich stelle
 
 **Steht die Grundversorgung überhaupt?** Ein bedarfsgerechtes Mineralfutter,

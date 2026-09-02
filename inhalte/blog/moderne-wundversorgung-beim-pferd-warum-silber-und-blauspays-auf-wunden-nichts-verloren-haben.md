@@ -17,7 +17,7 @@ Wunden fehl am Platz**, und können die Heilung sogar verzögern.
 
 ## Zuerst: gehört diese Wunde überhaupt in deine Hand?
 
-Alles Weitere in diesem Beitrag gilt für kleine, oberflächliche Wunden. Ruf
+Alles Weitere hier gilt für kleine, oberflächliche Wunden. Ruf
 den Tierarzt, bevor du selbst anfängst, wenn eines davon zutrifft:
 
 - **Die Wunde klafft oder ist tiefer als die Haut.** Genäht werden kann in der

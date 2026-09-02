@@ -49,8 +49,9 @@ export const fuerDeinPferd: Angebot[] = [
   {
     name: "Ganzjahresfutterplan",
     untertitel: "Natürlich durchs Jahr",
-    // Preis von der alfima-Seite abgelesen, 26.08.2026. Streichpreis dort: 99 €.
-    preis: "29 €",
+    // Am 02.09.2026 auf 59 € angehoben, siehe lib/digital.ts. Der alte Preis
+    // von 29 € stammte von der alfima-Seite, wo 99 € durchgestrichen standen.
+    preis: "59 €",
     url: "https://alfima.com/pferdeliebehealthy/ganzjahresfutterplan-fur-pferde-naturlich-durchs-jahr",
   },
   {
@@ -148,6 +149,13 @@ export const angebotsHinweise: Record<string, Angebotshinweis> = {
     // Führt auf die eigene Seite statt direkt zu alfima: dort steht alles
     // erklärt, und der kostenlose Schnupperkurs steht dort ganz oben.
     url: "/ausbildung",
+  },
+  basisfutterkurs: {
+    augenbraue: "Dazu passend",
+    name: "Der Basisfutterkurs",
+    text: "Zwanzig Lektionen, Schritt für Schritt von gutem Raufutter über Eiweiß und Mineralstoffe bis zu den Kräutern. Für alle, die es einmal von Grund auf verstehen wollen.",
+    knopf: "Basisfutterkurs ansehen",
+    url: "/kasse/basisfutterkurs",
   },
   darmaufbau: {
     augenbraue: "Dazu passend",

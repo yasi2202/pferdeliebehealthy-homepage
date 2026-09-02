@@ -108,7 +108,17 @@ langfristig seine Gesundheit stärkt.
 
 **Du möchtest tiefer einsteigen?**
 
-Dann wirf unbedingt einen Blick in meinen Futterkurs für Pferdebesitzer– dort
-lernst du Schritt für Schritt, wie du weg vom Industriefutter und hin zu einer
-naturnahen, durchdachten Pferdefütterung findest. Praxisnah, fundiert und
-einfach erklärt, für alle, die mehr wollen als „Futter von der Stange“.
+## Womit du anfängst, wenn du es umstellen willst
+
+Nicht mit allem auf einmal. Die Reihenfolge, die sich bewährt hat:
+
+1. **Erst das Raufutter.** Menge wiegen, Fresspausen messen, Qualität prüfen.
+   Solange das nicht sitzt, bringt der Rest wenig.
+2. **Dann die Mineralversorgung**, weil dort die häufigsten Lücken sind.
+3. **Dann das Kraftfutter reduzieren**, langsam, über zwei bis vier Wochen.
+4. **Zuletzt die Kräuter**, gezielt und kurweise, nicht als Dauerbeigabe.
+
+Wer in umgekehrter Reihenfolge anfängt, also mit Kräutern und Zusätzen, ändert
+viel und merkt wenig.
+
+[[angebot:basisfutterkurs]]

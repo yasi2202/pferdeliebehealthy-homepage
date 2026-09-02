@@ -209,10 +209,19 @@ export const digitalprodukte: DigitalProdukt[] = [
   },
   {
     slug: "ganzjahresfutterplan",
+    // ▸ PREIS AM 02.09.2026 VON 29 AUF 59 EURO.
+    //   Grund war ein Marktvergleich: Sarah Ullrich nimmt fuer denselben
+    //   Zuschnitt (Jahresplan, Monatsmodule) 111 Euro, hier standen 29. Zwoelf
+    //   Monatsplaene plus fuenf Sonderhefte sind mehr als ein Viertel davon
+    //   wert.
+    //
+    //   KEIN Streichpreis dazu. Der niedrigste Preis der letzten dreissig Tage
+    //   waren die 29 Euro, ein durchgestrichenes „99" waere nach § 11 PAngV
+    //   unzulaessig, auch wenn auf alfima einmal 99 stand.
     gruppe: "kurs",
     name: "Ganzjahresfutterplan für Pferde, natürlich durchs Jahr",
     kurzname: "Ganzjahresfutterplan",
-    preis: 2900,
+    preis: 5900,
     mwst: 19,
     art: "kurs",
     kurz:
@@ -260,12 +269,20 @@ export const digitalprodukte: DigitalProdukt[] = [
     gruppe: "kurs",
     name: "Basisfutterkurs",
     kurzname: "Basisfutterkurs",
-    // Regulärer Einzelpreis 39 €, von Yasemin am 01.09.2026 festgelegt.
-    // Im Anschlussangebot zum Ganzjahresfutterplan kostet er 29 €, die
-    // Angebotsseite zeigt dort also 10 € Ersparnis, siehe `ersparnis()`
-    // weiter unten. Damit der Vergleich zulässig bleibt, muss er hier auch
-    // wirklich einzeln für 39 € angeboten werden.
-    preis: 3900,
+    // ▸ PREIS AM 02.09.2026 VON 39 AUF 69 EURO.
+    //   Zwanzig Lektionen standen fuer 39 Euro neben dem Darmaufbau, der 22
+    //   Euro fuer zwanzig PDF-Seiten kostet. Ein Kurs ist mehr wert als ein
+    //   Heft, und der naechste Wettbewerber nimmt 159,90 Euro fuer vier
+    //   Stunden Video.
+    //
+    //   Im Anschlussangebot zum Ganzjahresfutterplan kostet er 49 statt 29
+    //   Euro, die Angebotsseite zeigt dort also 20 Euro Ersparnis, siehe
+    //   `ersparnis()` weiter unten. Damit der Vergleich zulaessig bleibt, muss
+    //   er hier auch wirklich einzeln fuer 69 Euro angeboten werden.
+    //
+    //   KEIN Streichpreis: Der niedrigste Preis der letzten dreissig Tage
+    //   waren 39 Euro, ein hoeherer Vergleichspreis waere erfunden.
+    preis: 6900,
     mwst: 19,
     art: "kurs",
     kurz:
@@ -661,7 +678,8 @@ export const funnel: Funnel[] = [
       "Ration, nicht nur für das Mineralfutter, und zwar in Minuten statt " +
       "in einem Abend mit Taschenrechner.",
     downsell: "ganzjahresfutterplan",
-    downsellPreis: 1900,
+    // Mit dem Sprung des Einzelpreises auf 59 Euro mitgezogen.
+    downsellPreis: 3900,
     downsellTitel: "Dann lass dir wenigstens die Reihenfolge abnehmen.",
     downsellGrund:
       "Der Ganzjahresfutterplan sagt dir Monat für Monat, was jetzt dran " +
@@ -670,7 +688,10 @@ export const funnel: Funnel[] = [
   {
     produkt: "ganzjahresfutterplan",
     upsell: "basisfutterkurs",
-    upsellPreis: 2900,
+    // Mit dem Sprung des Einzelpreises auf 69 Euro mitgezogen. Bei 29 waere
+    // der Nachlass groesser als der halbe Preis, und dann glaubt niemand mehr
+    // an die 69.
+    upsellPreis: 4900,
     upsellTitel: "Möchtest du auch verstehen, warum die Pläne so aussehen?",
     upsellGrund:
       "Der Ganzjahresfutterplan sagt dir, was du wann fütterst. Der " +
@@ -720,7 +741,8 @@ export const funnel: Funnel[] = [
   {
     produkt: "ratiopro",
     upsell: "ganzjahresfutterplan",
-    upsellPreis: 1900,
+    // Mit dem Sprung des Einzelpreises auf 59 Euro mitgezogen.
+    upsellPreis: 3900,
     upsellTitel: "Der Rechner sagt was. Der Plan sagt wann.",
     upsellGrund:
       "RatioPro rechnet dir die Ration aus, die heute passt. Im Fellwechsel " +
