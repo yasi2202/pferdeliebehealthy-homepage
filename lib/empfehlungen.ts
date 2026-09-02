@@ -149,6 +149,20 @@ export const empfehlungen: Empfehlung[] = [
     bezahlt: true,
   },
   {
+    // Achtung: Der Shop führt neben dem, was hier steht, auch Mittel aus dem
+    // alternativmedizinischen Umfeld, unter anderem Chlordioxid, DMSO und
+    // Wasserstoffperoxid. Der Satz unten beschreibt deshalb nur die Gruppen,
+    // die zur Pferdefütterung gehören. Ob der Shop dauerhaft auf die
+    // Empfehlungsseite gehört, ist Yasemins Entscheidung, siehe Gespräch vom
+    // 02.09.2026.
+    partner: "Heilkraft",
+    code: "pferdeliebe",
+    url: "https://heilkraft.online/",
+    warum:
+      "Hanfprodukte, Mineralien wie Zeolith und Magnesium, dazu Pflanzenstoffe wie Artemisia und Vitalpilze. Ein Shop für Mensch und Tier mit breitem Sortiment.",
+    bezahlt: true,
+  },
+  {
     partner: "Wild Baboon",
     code: "AloeVera",
     url: "https://wildbaboon.de/",
