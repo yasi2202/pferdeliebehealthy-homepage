@@ -111,9 +111,20 @@ deinem Pferd ankommt
 
 Eine fundierte Futterberatung ist **kein Luxus**, sondern **eine Investition
 in die langfristige Gesundheit deines Pferdes**.
-Sie spart dir nicht nur Geld für unnötige Produkte, sie kann auch helfen,
-Krankheiten vorzubeugen, Leistungsfähigkeit zu steigern und die Lebensqualität
-zu verbessern.
+## Was du vorher zusammenträgst
 
-Dein Pferd hat nur einen Körper – **füttere ihn so, wie er es wirklich
-braucht**.
+Damit eine Beratung nicht bei Null anfängt, brauche ich drei Dinge. Du kannst
+sie in einer Woche sammeln:
+
+1. **Die Ration, gewogen.** Heu, Kraftfutter, Zusätze, alles mit Menge und
+   Uhrzeit. Eine digitale Hängewaage kostet gut zehn Euro.
+2. **Den Tagesablauf.** Wann steht Futter zur Verfügung, wie lang ist die
+   längste Fresspause, wie viel Bewegung, wie sieht die Herde aus.
+3. **Was dich stört.** Seit wann, wie oft, wobei besser, wobei schlechter.
+
+In vielen Fällen zeigt sich die halbe Antwort schon beim Aufschreiben.
+
+## Wo du anfangen kannst
+
+Wenn du erst einmal wissen willst, ob überhaupt etwas fehlt, fang mit dem
+Futter-Check an. Fünf Fragen, keine drei Minuten, kostenlos.

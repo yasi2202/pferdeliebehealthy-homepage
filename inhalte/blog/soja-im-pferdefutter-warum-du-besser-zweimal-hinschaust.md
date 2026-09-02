@@ -3,7 +3,7 @@ titel: "Soja im Pferdefutter: warum du besser zweimal hinschaust"
 datum: 2025-08-13
 aktualisiert:
 kategorie: "Kritische Futtermittel"
-angebot: "ratiopro"
+angebot: "futter-check"
 bild: ""
 bildText: ""
 beschreibung: "Soja, in der Humanernährung als „Pflanzenprotein“ gefeiert, taucht auch immer häufiger in Pferdefuttermitteln auf."
@@ -125,8 +125,10 @@ Fütterung geachtet werden.**
 Eiweißüberschuss kann genauso schaden wie Mangel.
 Daher: **Passe die Eiweißzufuhr immer individuell an dein Pferd an.**
 
-**Dafür kannst du unser Rationsberechnungs-Tool nutzen:**
+Wie viel Eiweiß dein Pferd tatsächlich braucht, hängt an Gewicht, Alter und
+Arbeit. Als grobe Hausnummer liegt der Bedarf eines 600-Kilo-Pferdes im
+Erhalt bei rund 540 Gramm verdaulichem Rohprotein am Tag, und gutes Heu deckt
+davon bereits einen großen Teil. Wer zusätzlich eiweißreich füttert, ohne zu
+rechnen, landet schnell im Überschuss, und der belastet Leber und Nieren.
 
-**Jetzt RationPro starten**
-
-Schnell, einfach & ohne komplizierte Tabellen, ideal für Pferdebesitzer.
+[[angebot:ratiopro]]

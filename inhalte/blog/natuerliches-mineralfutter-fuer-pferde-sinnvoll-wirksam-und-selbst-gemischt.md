@@ -3,7 +3,7 @@ titel: "Natürliches Mineralfutter für Pferde: sinnvoll, wirksam und selbst gem
 datum: 2026-01-31
 aktualisiert:
 kategorie: "Nährstoffe"
-angebot: "mineral"
+angebot: "ratiopro"
 bild: "/images/blog/futterproben.webp"
 bildText: "Vier Mischungen nebeneinander: Kräuter, Pellets, Leinsamen und Algen, wie sie in einer selbst gemischten Mineralversorgung zusammenkommen."
 beschreibung: "Warum Kräuter, Samen und Algen als Mineralquelle sinnvoll sind, worauf du bei fertigen Mischungen achten solltest und wie du selbst mischen kannst."

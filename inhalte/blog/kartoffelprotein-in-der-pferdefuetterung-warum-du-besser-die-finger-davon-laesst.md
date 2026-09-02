@@ -90,6 +90,28 @@ als:
 
 Viele Pferdehalter merken gar nicht, dass sie es füttern.
 
+## Woran du es auf dem Sack erkennst
+
+Das ist der schwierige Teil, denn "Kartoffelprotein" steht selten so da. Die
+Zusammensetzung eines Mischfutters wird in absteigender Menge aufgelistet, und
+darin taucht es unter verschiedenen Namen auf:
+
+- **Kartoffeleiweiß** oder **Kartoffelprotein**
+- **Kartoffelfaser**, **Kartoffelpülpe** oder **Kartoffeltrester** (das sind
+  andere Bestandteile derselben Verarbeitung, nicht dasselbe)
+- versteckt unter Sammelbegriffen wie **pflanzliche Eiweißerzeugnisse**
+
+Der letzte Punkt ist der ärgerliche: Ein Sammelbegriff muss nicht aufschlüsseln,
+was genau darin steckt. Wenn auf einem eiweißreichen Futter kein einzelnes
+Eiweißerzeugnis benannt ist, lohnt die Nachfrage beim Hersteller.
+
+**Zwei praktische Anhaltspunkte:**
+
+Steht das Eiweißerzeugnis weit vorn in der Liste, ist reichlich davon drin.
+Und ein auffällig hoher Rohproteingehalt bei niedrigem Preis kommt fast nie
+aus Luzerne oder Leinsamen, sondern aus einem Nebenprodukt der
+Lebensmittelindustrie.
+
 ## 5. Kein echter Mehrwert für die meisten Pferde
 
 Kartoffelprotein wird oft als „hochwertige Eiweißquelle“ beworben. In der Praxis

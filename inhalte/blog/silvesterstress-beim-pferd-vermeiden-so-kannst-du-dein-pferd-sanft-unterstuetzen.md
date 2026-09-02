@@ -58,6 +58,35 @@ Silvester.
 unterstütze den Darm z. B. mit Moor oder speziellen Kräutermischungen, um
 innere Ruhe zu fördern.
 
+## Wann du womit anfängst
+
+Das meiste wirkt nicht am selben Abend. Wer am 31. Dezember beginnt, kommt zu
+spät.
+
+| Wann | Was |
+|---|---|
+| 3 bis 4 Wochen vorher | Magnesium und beruhigende Kräuter einschleichen, langsam steigern |
+| 2 Wochen vorher | Haltung prüfen: Wo steht das Pferd, wer steht dabei, wo kann es sich verletzen |
+| 1 Woche vorher | Ablauf mit dem Stall abstimmen, wer ist wann da |
+| Am Tag selbst | Heu satt, Routine wie immer, Radio früh anstellen, nicht erst um 23 Uhr |
+| Nach Mitternacht | erst nachschauen, wenn es ruhig ist, nicht mitten hinein |
+
+## Sicherheit geht vor Beruhigung
+
+Ein Pferd in Panik verletzt sich am Zaun, am Tor oder an sich selbst. Deshalb
+vor allem anderen:
+
+- **Weidezaun prüfen**, besonders Ecken und Tore. Panik geht geradeaus.
+- **Alles wegräumen**, was im Weg steht: Schubkarren, Gerätschaften, offene
+  Türen.
+- **Nicht anbinden**, und nicht in engen Boxen einsperren, wenn das Pferd das
+  nicht gewohnt ist.
+- **Herde zusammenlassen.** Ein einzeln gestelltes Pferd hat mehr Angst, nicht
+  weniger.
+- **Bei Pferden, die schon einmal in Panik geraten sind**, sprich vorher mit
+  deinem Tierarzt. Eine geplante Sedierung ist besser als ein Notfall um
+  Mitternacht, und sie muss vorher besorgt werden.
+
 ## Ruhe über Vertrauen, der wichtigste Faktor
 
 Das beste Mittel gegen Stress bleibt immer **eine ruhige, souveräne
