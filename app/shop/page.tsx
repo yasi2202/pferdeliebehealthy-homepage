@@ -329,7 +329,7 @@ function DigitalKarte({ p }: { p: DigitalProdukt }) {
                 - Der Name steht in der Schrift der Überschriften, die kleine
                   Zeile darunter gesperrt in Versalien. Zusammen liest sich
                   das als Titel und Untertitel, nicht als Beschriftung. */}
-            <h3 className="relative w-full max-w-[88%] bg-ink/80 px-3 py-5 text-center text-cream shadow-lg backdrop-blur-[3px] sm:max-w-[78%] sm:px-5 sm:py-7">
+            <h3 className="relative w-full min-w-0 max-w-[88%] bg-ink/80 px-3 py-5 text-center text-cream shadow-lg backdrop-blur-[3px] sm:max-w-[78%] sm:px-5 sm:py-7">
               <span
                 className="pointer-events-none absolute inset-[5px] border border-cream/25 sm:inset-[7px]"
                 aria-hidden="true"
@@ -349,7 +349,14 @@ function DigitalKarte({ p }: { p: DigitalProdukt }) {
                   das Wort hart, aber es bricht.
 
                   ▸ NUR AM BILDSCHIRM PRUEFEN REICHT NICHT. Am Rechner ist die
-                    Kachel breit genug, dort faellt es nicht auf. */}
+                    Kachel breit genug, dort faellt es nicht auf.
+
+                  ▸ UND DAS ALLEIN REICHTE NICHT. Der Kasten steckt in einem
+                    Flex-Container, und Flex-Kinder haben `min-width: auto`:
+                    Sie schrumpfen nicht unter die Breite ihres laengsten
+                    Wortes, egal was `max-w` sagt. Erst `min-w-0` erlaubt das
+                    Schrumpfen, und erst dann greifen Trennung und Umbruch.
+                    Genau daran ist der erste Versuch gescheitert. */}
               <span className="relative block break-words hyphens-auto font-serif text-[14px] leading-tight sm:text-[19px] md:text-[21px]">
                 {p.kurzname}
               </span>
