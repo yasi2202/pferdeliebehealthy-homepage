@@ -93,6 +93,20 @@ export const metadata: Metadata = {
     googleBot: { index: true, follow: true, "max-image-preview": "large", "max-snippet": -1 },
   },
   category: "Pferdegesundheit",
+  // -------------------------------------------------------------------------
+  // Der Nachweis fuer die Google Search Console.
+  //
+  // Google prueft damit, dass die Seite wirklich Yasemin gehoert. Next.js
+  // macht daraus ein <meta name="google-site-verification"> im Kopf jeder
+  // Seite. Kein Geheimnis: Der Wert steht ohnehin oeffentlich im Quelltext.
+  //
+  // ▸ NICHT ENTFERNEN. Faellt die Zeile weg, verliert Google den Nachweis,
+  //   und der Zugang zur Search Console geht verloren. Angelegt am
+  //   02.09.2026 fuer die Adresse https://www.pferdeliebehealthy.de.
+  // -------------------------------------------------------------------------
+  verification: {
+    google: "2iG62PmBewzCcBQY3cZEolcGSvFobhPMavLmY1Uctlw",
+  },
 };
 
 // ---------------------------------------------------------------------------
