@@ -20,8 +20,8 @@ gesund, ausgewogen und leistungsfähig zu ernähren?
 
 **Ja, das ist es, und es ist sogar einfacher, als du denkst.**
 
-In diesem Beitrag erfährst du, wie du dein Pferd **natürlich, nährstoffreich
-und individuell angepasst** füttern kannst, ganz ohne Tütenfutter.
+In fünf Schritten von gutem Raufutter über Eiweiß und Mineralstoffe bis zu den
+Kräutern, ganz ohne Tütenfutter.
 
 Warum überhaupt weg vom Tütenfutter?
 
@@ -92,7 +92,7 @@ Lerne dein Pferd lesen:
 Und: **Weniger ist oft mehr.** Lieber gezielt unterstützen als mit
 Zusatzstoffen überladen.
 
-## Fazit: Natürlich füttern bedeutet Verantwortung, aber auch Vertrauen
+## Natürlich füttern heißt Verantwortung, und es heißt Vertrauen
 
 Der Umstieg auf eine **naturnahe Pferdefütterung** ist nicht nur gesünder, er
 **verbindet dich neu mit deinem Pferd**.

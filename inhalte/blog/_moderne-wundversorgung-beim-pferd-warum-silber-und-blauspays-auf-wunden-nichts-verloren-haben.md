@@ -37,8 +37,7 @@ Eine moderne Wundversorgung folgt drei einfachen Schritten:
 Mit einem **milden, pH-neutralen Wundreiniger** werden Schmutz, Keime und
 abgestorbenes Gewebe entfernt, ohne das gesunde Gewebe zu reizen.
 **Meine Empfehlung:** *Bäralis Hauttalent Nr. 1*
-Dieses Reinigungsmittel ist sanft, brennt nicht und schafft eine optimale
-Grundlage für die weitere Behandlung.
+Es brennt nicht und lässt die Wundfläche sauber zurück, ohne sie auszutrocknen.
 
 ### 2️⃣ Keimreduktion & Unterstützung der Heilung
 

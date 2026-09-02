@@ -77,8 +77,8 @@ Ein stabiler Stoffwechsel und eine gute Versorgung mit Mikronährstoffen bilden
 die Grundlage, damit der Körper selbst regulierend arbeiten kann.
 
 - **Mineralisierung sicherstellen:** Eine ausgewogene Mineralstoffversorgung
-ist entscheidend, damit Haut, Immunsystem und Zellstoffwechsel optimal
-funktionieren. Empfehlenswert sind hochwertige, natürliche [Mineralfutter](/blog/natuerliches-mineralfutter-fuer-pferde-sinnvoll-wirksam-und-selbst-gemischt), die
+ist die Grundlage, auf der Haut, Immunsystem und Zellstoffwechsel überhaupt
+arbeiten können. Empfehlenswert sind [Mineralfutter](/blog/natuerliches-mineralfutter-fuer-pferde-sinnvoll-wirksam-und-selbst-gemischt), die
 Zink, Kupfer, Mangan und Selen in bioverfügbarer Form enthalten.
 
 - **[Leber](/blog/fruehmarker-fuer-leberprobleme-beim-pferd-warnsignale-rechtzeitig-erkennen) und Darm entlasten:** Da der Organismus Stoffwechselrückstände über

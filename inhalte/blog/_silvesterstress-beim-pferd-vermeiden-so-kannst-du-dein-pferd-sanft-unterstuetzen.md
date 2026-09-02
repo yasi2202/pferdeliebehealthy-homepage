@@ -88,7 +88,7 @@ Kombiniert wird das Ganze mit Melisse.
 
 Zusätzlich setze ich auf **Passionsblume**, die sich wunderbar ergänzend
 eignet.
-Sehr gute, qualitativ hochwertige Kräuter findest du bei Hotte Maxe.
+Einzelkräuter zum Selbstmischen findest du bei Hotte Maxe.
 
 [[partner:hotte-maxe]]
 

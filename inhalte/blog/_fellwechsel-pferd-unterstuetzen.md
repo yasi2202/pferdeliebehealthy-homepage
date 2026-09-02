@@ -69,7 +69,7 @@ löchrigen Grundlage bringt wenig.
 
 **Reicht das Eiweiß?** Bei älteren Pferden, bei magerem Heu und bei Pferden,
 die viel arbeiten, ist die Eiweißversorgung öfter knapp, als man denkt.
-Luzerne oder ein hochwertiges Eiweißfutter kann hier mehr bewirken als jede
+Luzerne oder ein Eiweißfutter mit hohem Lysingehalt bringt hier mehr als jede
 Spurenelementkur.
 
 **Wie viel muss die Leber sonst noch leisten?** Wenn parallel Getreide,

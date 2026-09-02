@@ -95,8 +95,8 @@ Doch je früher du die Frühmarker kennst und erkennst, desto besser kannst du:
 - Folgeprobleme wie Hufrehe, EMS oder chronische Hautthemen vermeiden
 
 Die Leber ist ein stiller Arbeiter – **und sie sendet ihre Signale leise.**
-Achte auf dein Pferd, beobachte die kleinen Veränderungen und **vertraue
-deinem Gefühl**.
+Schau dir Fell, Augen, Kotkonsistenz und Fresslust über mehrere Wochen an,
+nicht an einem einzelnen Tag.
 Wenn du mehrere dieser Frühmarker bemerkst, lohnt es sich, **gezielt
 gegenzusteuern, z. B. über Leberkräuter, Futteranpassung oder Darmsanierung.**
 

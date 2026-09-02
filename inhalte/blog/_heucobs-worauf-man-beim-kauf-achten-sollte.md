@@ -25,13 +25,12 @@ Achte daher auf **zuckerarme Heucobs**, idealerweise **unter 10 % Zucker** und
 **melassefrei**. So vermeidest du unnötige Energiezufuhr und unterstützt
 gleichzeitig eine gesunde Verdauung.
 
-## Geeignete Faserlänge. Struktur ist das A und O
+## Geeignete Faserlänge, oder warum die Struktur entscheidet
 
 Nicht nur die Zusammensetzung, sondern auch die **Struktur** der Heucobs
-spielt eine große Rolle. Die Faserlänge sollte so gewählt sein, dass sie noch
-**Kautätigkeit und Speichelbildung** anregt, das ist wichtig für Magen und
-Darm.
-Optimal ist eine **sichtbare Faserstruktur** im Millimeterbereich, also nicht
+entscheidet mit. Die Faserlänge sollte so gewählt sein, dass sie noch
+**Kautätigkeit und Speichelbildung** anregt. Beides puffert die Magensäure ab.
+Gut ist eine **sichtbare Faserstruktur** im Millimeterbereich, also nicht
 zu fein vermahlen. So bleibt der „Raufuttercharakter“ erhalten, und das Pferd
 kann das Futter richtig verarbeiten.
 
@@ -55,7 +54,7 @@ Anteil, desto strukturreicher und magenfreundlicher ist das Futter.
 
 ## Kräutervielfalt, natürlicher Pluspunkt
 
-Besonders hochwertig sind Heucobs, die aus **artenreichen Wiesen** stammen.
+Am meisten bringen Heucobs aus **artenreichen Wiesen**.
 Eine breite Mischung aus **verschiedenen Gräsern und Kräutern** liefert nicht
 nur Nährstoffe, sondern auch natürliche Sekundärstoffe, die das Immunsystem
 und die Verdauung unterstützen können.
@@ -63,8 +62,8 @@ Achte auf Angaben wie „aus naturbelassenen Wiesen“ oder „mit Kräutervielf
 Solche Produkte sind in der Regel besser verträglich und fördern das
 allgemeine Wohlbefinden deines Pferdes.
 
-Heucobs sind eine tolle Möglichkeit, dein Pferd hochwertig mit Raufutter zu
-versorgen, vorausgesetzt, du achtest auf die richtigen Qualitätsmerkmale:
+Heucobs sind eine gute Möglichkeit, die Raufutterversorgung zu sichern, wenn
+diese Punkte stimmen:
 
 - Zuckerarm und melassefrei
 - Sichtbare Faserstruktur (nicht zu fein)

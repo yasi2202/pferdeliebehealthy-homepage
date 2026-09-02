@@ -90,7 +90,7 @@ sind individuell, und brauchen individuelle Lösungen.
 
 - Bei **Zuchtstuten, Fohlen oder Senioren** mit speziellen Bedürfnissen
 
-## Meine 4-Wochen-Futterberatung, dein Fahrplan zur optimalen Fütterung
+## Meine 4-Wochen-Futterberatung, dein Fahrplan zu einer Ration, die passt
 
 In meiner **4-Wochen-Futterberatung** bekommst du:
 
@@ -102,8 +102,8 @@ In meiner **4-Wochen-Futterberatung** bekommst du:
 
 - **Schritt-für-Schritt-Plan** zur Umstellung
 
-- 4 Wochen **begleitende Betreuung**, um sicherzugehen, dass dein Pferd
-optimal versorgt ist
+- 4 Wochen **begleitende Betreuung**, um zu sehen, ob die neue Ration bei
+deinem Pferd ankommt
 
 **Hier erfährst du mehr und buchst deine Beratung**
 

@@ -97,7 +97,7 @@ Je schneller behandelt wird, desto geringer das Risiko für Folgeschäden.
 
 - Entblähende Kräuter wie Fenchel, Kümmel oder Anis (bei leichten Blähungen)
 
-- Hochwertiges, strukturiertes Heu als Basisfutter
+- Heu mit sichtbarer Struktur, staubfrei und ohne muffigen Geruch, als Basis
 
 ### Langfristige Vorbeugung:
 

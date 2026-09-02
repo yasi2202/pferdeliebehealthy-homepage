@@ -77,7 +77,7 @@ Eine Ergänzung ist sinnvoll:
 
 ## Natürlich oder synthetisch?
 
-Es gibt hochwertige natürliche Eiweißquellen wie **Esparsette**,
+Es gibt natürliche Eiweißquellen wie **Esparsette**,
 **Leinsamen**, **Hanfsaaten** oder **Brennnesselsamen**, sie liefern ein gutes
 Aminosäurenprofil. In manchen Fällen (z. B. bei starkem Mangel oder
 Leistungspferden) kann auch eine gezielte Gabe von Lysin & Co. in reiner Form

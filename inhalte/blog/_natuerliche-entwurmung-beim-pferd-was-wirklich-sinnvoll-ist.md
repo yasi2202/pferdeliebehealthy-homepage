@@ -14,8 +14,7 @@ Seite die Versprechen aus Foren und sozialen Netzwerken, dass ein Löffel
 Schwarzkümmel und eine Handvoll Karotten jeden Wurm zuverlässig vertreiben.
 Beides greift zu kurz.
 
-Ich möchte dir in diesem Beitrag zeigen, was natürliche Entwurmung wirklich
-bedeutet, wo sie ihre Stärken hat und wo der Griff zur klassischen Wurmkur
+Hier steht, was natürliche Entwurmung wirklich bedeutet, wo sie ihre Stärken hat und wo der Griff zur klassischen Wurmkur
 weiterhin unverzichtbar bleibt.
 
 ## Warum die Routineentwurmung ausgedient hat

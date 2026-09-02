@@ -136,7 +136,7 @@ Je vielfältiger die Fütterung, desto stabiler sind:
 
 Samen liefern neben Energie auch Mineralstoffe und Spurenelemente:
 
-- **Hanfsamen**: Zink, Magnesium, hochwertige Fettsäuren
+- **Hanfsamen**: Zink, Magnesium, Omega-3-Fettsäuren
 
 - **Leinsamen**: Schleimstoffe, Darmgesundheit
 

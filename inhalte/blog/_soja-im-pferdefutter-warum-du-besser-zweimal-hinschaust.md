@@ -93,7 +93,7 @@ erhöht.
 Quellen
 
 ## Und welche Eiweißquellen sind wirklich pferdegerecht?
-Wenn du deinem Pferd **hochwertiges, natürliches Protein** zuführen möchtest,
+Wenn du deinem Pferd **Eiweiß mit gutem Aminosäureprofil** geben willst,
 ohne die Risiken von Soja, dann setze **kurweise und gezielt** auf:
 
 - **Esparsette**

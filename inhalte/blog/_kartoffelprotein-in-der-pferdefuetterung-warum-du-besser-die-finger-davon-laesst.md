@@ -92,7 +92,7 @@ Viele Pferdehalter merken gar nicht, dass sie es füttern.
 
 ## 5. Kein echter Mehrwert für die meisten Pferde
 
-Kartoffelprotein wird oft als hochwertige Eiweißquelle beworben. In der Praxis
+Kartoffelprotein wird oft als „hochwertige Eiweißquelle“ beworben. In der Praxis
 zeigt sich jedoch: Der Einsatz bringt häufig mehr Nachteile als Vorteile.
 
 Das Problem liegt nicht darin, dass Pferde grundsätzlich keinen Proteinbedarf

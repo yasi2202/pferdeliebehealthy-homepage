@@ -119,7 +119,7 @@ zur Ruhe kommt, lohnt der Blick auf diese fünf:
 | Omega-3-Fettsäuren | Teil der Zellmembran, dämpfen überschießende Entzündungsreaktionen |
 | Biotin | Horn und Oberhaut, wirkt langsam und nur über Monate |
 
-Was auf dieser Liste fehlt, ist Selen. Das ist Absicht. Selen ist wichtig,
+Was auf dieser Liste fehlt, ist Selen. Das ist Absicht. Selen braucht das Pferd,
 aber der Abstand zwischen zu wenig und zu viel ist klein, und beides schadet.
 Selen gehört nicht ins Blaue hinein gefüttert, sondern erst nach einer
 Blutuntersuchung, am besten aus Vollblut.

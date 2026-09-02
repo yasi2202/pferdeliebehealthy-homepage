@@ -58,7 +58,7 @@ Cortisol als natürlicher Gegenspieler von Zink wirkt. Auch über Schweiß oder
 Wunden geht Zink verloren. Bei tragenden und laktierenden Stuten ist besondere
 Vorsicht geboten, denn zu hohe Zinkgaben im letzten Trächtigkeitsdrittel im
 Verhältnis zu Mangan und Kupfer können dazu führen, dass Fohlen zu groß
-wachsen. Eine Überdosierung an sich ist bei hochwertigen Verbindungen aber
+wachsen. Eine Überdosierung an sich ist bei organisch gebundenen Verbindungen aber
 unproblematisch, eine kurmäßige, auch höher dosierte Zinkzufütterung über vier
 bis acht Wochen ist im Fellwechsel oder nach Operationen durchaus üblich.
 

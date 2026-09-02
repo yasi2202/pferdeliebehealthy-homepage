@@ -107,7 +107,7 @@ ganzheitlichen Konzepten gut wirkt.
 ## CBD und Magenprobleme beim Pferd
 Magenschleimhautentzündungen (Gastritis) und Magengeschwüre sind beim Pferd
 leider sehr häufig, vor allem bei Sportpferden, Pferden mit Stressbelastung
-oder suboptimalen Fütterungsintervallen.
+oder zu langen Fresspausen.
 
 **CBD kann hier auf mehreren Ebenen unterstützend wirken:**
 
@@ -163,7 +163,7 @@ laborgeprüft](https://swissfx.de/collections/swiss-fx-pets/products/cbd-ol-pfer
 
 Ich empfehle SWISS FX, weil:
 
-- es ein hochwertiges, **laborgeprüftes CBD-Öl speziell für Pferde** ist
+- es ein **laborgeprüftes CBD-Öl für Pferde** ist, mit ausgewiesenem Gehalt und Analysezertifikat
 
 - es **frei von THC**, Zusätzen oder Schadstoffen ist
 
