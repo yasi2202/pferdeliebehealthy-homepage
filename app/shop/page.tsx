@@ -81,90 +81,214 @@ function nochNicht(p: DigitalProdukt): Date | null {
   return new Date() < start ? start : null;
 }
 
+// ---------------------------------------------------------------------------
+// ▸ DIE KACHELN SIND COVER, KEINE BILDSCHIRMFOTOS.
+//
+//   Bis zum 01.09.2026 stand in jeder Kachel ein Ausschnitt aus dem Programm.
+//   Das sah nach Fehler aus: Ein Bildschirmfoto ist auf 380 Pixel Breite ein
+//   grauer Fleck mit unlesbarer Schrift, und drei Kacheln hatten überhaupt
+//   kein Bild, sondern ein Buchsymbol. Die Reihe wirkte zusammengewürfelt.
+//
+//   Der Blick zu Sarah Ullrich (pferdegesundhe.it, der größte Shop in dieser
+//   Nische) zeigt, wie es dort gelöst ist: KEIN einziges Bildschirmfoto in
+//   einer Kachel. Stattdessen trägt jedes Produkt ein Cover -- eine ruhige
+//   Fläche mit einem farbigen Kasten darauf, in dem der Produktname steht.
+//   Bei ihren zwölf Kräuterkram-Monaten ist es sogar zwölfmal derselbe
+//   Hintergrund; unterschieden wird allein über den Kasten. Dazu eine
+//   Rabattfahne, wo etwas reduziert ist.
+//
+//   Genau das steht hier, in deinen Farben: heller Grund je Gruppe, darauf
+//   immer derselbe dunkle Kasten. Man erkennt auf einen Blick, was zusammen-
+//   gehört, und liest den Namen auch auf dem Handy noch.
+//
+// ▸ WARUM DER GRUND NACH GRUPPE GEHT UND NICHT NACH PRODUKT
+//   Weil es zurzeit nur drei brauchbare Fotos gibt. Ein Foto pro Produkt wäre
+//   schöner, aber halb bebildert ist schlechter als gar nicht: Dann steht ein
+//   Foto neben einer Farbfläche, und das sieht aus wie eine vergessene Datei.
+//   Sobald Fotos da sind, kommt hier `foto` dazu -- eine Zeile pro Gruppe
+//   oder, wenn gewünscht, pro Produkt.
+//
+// ▸ DAS BILDSCHIRMFOTO IST NICHT WEG.
+//   Es steht weiter auf der Verkaufsseite, wo es groß genug ist, um etwas zu
+//   zeigen. Nur in der Übersicht hat es nichts verloren.
+// ---------------------------------------------------------------------------
+const COVER: Record<
+  DigitalProdukt["gruppe"],
+  {
+    grund: string;
+    zeile: string;
+    // `schnitt` sagt, welcher Teil des Fotos im Quadrat stehen bleibt. Das
+    // muss je Foto anders sein: Beim Mähnenkamm ist das Interessante unten
+    // links, bei dir und Helena sind es die Köpfe, also oben.
+    foto?: { datei: string; alt: string; schnitt: string };
+  }
+> = {
+  einstieg: { grund: "bg-cream-deep", zeile: "E-Book" },
+  kurs: {
+    grund: "bg-rose",
+    zeile: "Online-Kurs",
+    // Der Mähnenkamm ist das Bild, an dem in fast jedem Kurs etwas hängt:
+    // Fell, Stoffwechsel, Fütterung. Als Hintergrund ist er ruhig genug,
+    // dass der Kasten darauf noch liest.
+    foto: {
+      datei: "/images/kacheln/maehne.jpg",
+      alt: "Nahaufnahme von Mähne und Fell",
+      schnitt: "object-center",
+    },
+  },
+  werkzeug: { grund: "bg-gold", zeile: "Werkzeug" },
+  begleitung: {
+    grund: "bg-ink",
+    zeile: "Persönliche Begleitung",
+    // Die Begleitung ist das Einzige, wo ein Mensch im Spiel ist. Deshalb
+    // steht hier dein Foto und keine Farbfläche.
+    foto: {
+      datei: "/images/yasi-helena.jpg",
+      alt: "Yasemin mit ihrer Stute Helena",
+      schnitt: "object-[50%_72%]",
+    },
+  },
+};
+
+// ▸ WARUM DIE KLEINE ZEILE NICHT AUS `art` KOMMT.
+//   `art` in digital.ts ist eine RECHTLICHE Einordnung („kurs",
+//   „dienstleistung", „fernunterricht"). Sie entscheidet über Widerruf und
+//   Rechnung, nicht darüber, was jemand kauft: Der Salzratgeber steht dort
+//   als „kurs", ist aber ein Heft. Stünde „Online-Kurs" auf dem Cover, wäre
+//   das schlicht falsch.
+//
+//   Deshalb hier eine eigene Beschriftung je Angebot. Wo nichts steht, gilt
+//   die Zeile der Gruppe. Der Darmaufbau ist der Grund für diese Tabelle:
+//   Er liegt bei den Kursen, ist aber ein E-Book -- so steht es auch in
+//   seinem eigenen Kurztext.
+// ▸ EIN EIGENES FOTO FÜR EINZELNE ANGEBOTE.
+//   Was hier steht, sticht das Foto der Gruppe. So kann ein Bild nach dem
+//   anderen dazukommen, ohne dass vorher alle fertig sein müssen: Wo noch
+//   nichts steht, gilt weiter der Grund der Gruppe.
+//
+//   Die Bilder liegen zugeschnitten unter /images/kacheln/. Quadratisch und
+//   900 Pixel, mehr braucht eine Kachel nicht, und kleinere Dateien laden
+//   auf dem Handy schneller.
+const FOTO: Record<
+  string,
+  { datei: string; alt: string; schnitt: string }
+> = {
+  salzratgeber: {
+    datei: "/images/kacheln/salzleckstein.jpg",
+    alt: "Pferd leckt an einem Salzleckstein an der Stallwand",
+    schnitt: "object-center",
+  },
+};
+
+const ZEILE: Record<string, string> = {
+  salzratgeber: "E-Book",
+  "magen-reset": "E-Book",
+  darmaufbau: "E-Book",
+  "mineral-klarheit": "Online-Kurs",
+  ganzjahresfutterplan: "Online-Kurs",
+  basisfutterkurs: "Online-Kurs",
+  "symptom-navigator": "Nachschlagewerk",
+  ratiopro: "Rechner",
+  equidesk: "Software",
+  ausbildung: "Ausbildung",
+  "pferdeliebe-365": "1:1 Begleitung",
+};
+
 function DigitalKarte({ p }: { p: DigitalProdukt }) {
   const start = nochNicht(p);
-  const rabatt = p.statt && p.statt > p.preis;
+  const rabatt = Boolean(p.statt && p.statt > p.preis);
+  // Die Fahne zeigt gerundete Prozent. Unter fünf Prozent bleibt sie weg:
+  // „-3 %" wirkt kleinlich und lenkt vom Preis ab, der ohnehin darunter steht.
+  const prozent = rabatt ? Math.round((1 - p.preis / p.statt!) * 100) : 0;
+  const gruppenCover = COVER[p.gruppe];
+  const foto = FOTO[p.slug] ?? gruppenCover.foto;
+  const cover = { ...gruppenCover, foto };
 
   return (
     <li>
       <Link
         href={`/${p.slug}`}
-        className="flex h-full flex-col overflow-hidden rounded-[18px] border border-line bg-white transition-colors hover:border-rose-deep"
+        className="group flex h-full flex-col overflow-hidden rounded-[18px] border border-line bg-white transition-colors hover:border-rose-deep"
       >
-        {/* ▸ DAS BILD, WO ES EINES GIBT.
-            Bei den Werkzeugen und Kursen ist es eine echte Aufnahme aus dem
-            Produkt. Die drei E-Books haben keine: Ein PDF sieht auf einem
-            Bild aus wie jedes andere PDF, da fehlt lieber eines als ein
-            nichtssagendes. Die Kachel bleibt dann einfach ohne, das sieht
-            neben den anderen ruhig aus und nicht kaputt.
+        <div
+          className={`relative aspect-square w-full overflow-hidden border-b border-line ${cover.grund}`}
+        >
+          {cover.foto && (
+            <>
+              {/* Das Foto ist Hintergrund, kein Inhalt: Der Name daneben sagt
+                  schon alles, deshalb bleibt `alt` leer. Sonst liest ein
+                  Screenreader die Kachel doppelt vor. */}
+              <Image
+                src={cover.foto.datei}
+                alt=""
+                fill
+                sizes="(min-width: 1024px) 380px, (min-width: 768px) 50vw, 100vw"
+                className={`object-cover ${cover.foto.schnitt}`}
+              />
 
-            Der Ausschnitt zeigt den oberen Rand des Bildes (object-top).
-            Mittig beschnitten wären bei einem Bildschirmfoto Kopfzeile und
-            Überschrift weg, also genau das, woran man das Produkt erkennt. */}
-        <div className="relative aspect-[16/9] w-full overflow-hidden border-b border-line bg-cream-deep">
-          {p.bild ? (
-            <Image
-              src={p.bild.datei}
-              alt={p.bild.alt}
-              fill
-              sizes="(min-width: 1024px) 380px, (min-width: 768px) 50vw, 100vw"
-              className="object-cover object-top"
-            />
-          ) : (
-            /* ▸ WAS HIER STEHT, WENN ES KEIN BILD GIBT
-               Die E-Books haben keine Programmansicht, und eine Seite aus
-               einem PDF sieht aus wie jedes andere PDF. Statt einer Lücke
-               steht hier ein Buchsymbol auf ruhiger Fläche. Es behauptet
-               kein Produktbild, sagt aber ehrlich, um welche Art Angebot es
-               sich handelt, und hält die Reihen gleich hoch -- sonst stünde
-               eine hohe Kachel neben einer flachen, und das sieht nach
-               Fehler aus.
-
-               Der Produktname steht bewusst NICHT hier: Er steht schon
-               direkt darunter, und zweimal dasselbe wirkt wie ein Versehen. */
-            <span className="flex h-full items-center justify-center text-rose-deep/40">
-              <svg
-                width="52"
-                height="52"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="1.4"
-                strokeLinecap="round"
-                strokeLinejoin="round"
+              {/* Ohne Abdunklung säuft der Kasten im Foto ab. */}
+              <span
+                className="absolute inset-0 bg-ink/40"
                 aria-hidden="true"
-              >
-                <path d="M4 4.5A1.5 1.5 0 0 1 5.5 3H19v16H5.5A1.5 1.5 0 0 0 4 20.5Z" />
-                <path d="M4 20.5A1.5 1.5 0 0 1 5.5 19H19v2.5H5.5A1.5 1.5 0 0 1 4 20.5Z" />
-                <path d="M8.5 7.5h6M8.5 11h6" />
-              </svg>
+              />
+            </>
+          )}
+
+          {rabatt && prozent >= 5 && (
+            <span className="absolute left-0 top-5 z-10 bg-rose-deep px-3 py-1 text-[12px] font-semibold tabular-nums tracking-wide text-white">
+              -{prozent} %
             </span>
           )}
+
+          {/* ▸ DER NAME STEHT NUR HIER, NICHT NOCH EINMAL DARUNTER.
+              Sonst stünde er zweimal untereinander. Es ist trotzdem die
+              Überschrift der Kachel, deshalb ist es ein h3 -- die Gliederung
+              der Seite bleibt damit richtig. */}
+          {/* Bei einer Farbfläche steht der Kasten mittig, das ist die ruhige
+              Anordnung. Auf einem Foto rutscht er nach unten -- sonst läge er
+              genau auf dem Gesicht, und bei „Persönliche Begleitung" ist das
+              Gesicht der Grund, warum das Foto überhaupt dort steht. */}
+          <div
+            className={`absolute inset-0 flex justify-center p-3 sm:p-6 ${
+              cover.foto ? "items-end" : "items-center"
+            }`}
+          >
+            <h3 className="w-full max-w-[88%] bg-ink px-2 py-4 text-center text-cream shadow-sm sm:max-w-[80%] sm:px-4 sm:py-6">
+              <span className="block font-serif text-[14px] leading-tight sm:text-[19px] md:text-[20px]">
+                {p.kurzname}
+              </span>
+
+              <span
+                className="mx-auto mt-2 block h-px w-6 bg-cream/40 sm:mt-3 sm:w-8"
+                aria-hidden="true"
+              />
+
+              <span className="mt-2 block text-[8.5px] font-semibold uppercase tracking-[0.14em] text-cream/70 sm:mt-3 sm:text-[10.5px] sm:tracking-[0.16em]">
+                {ZEILE[p.slug] ?? cover.zeile}
+              </span>
+            </h3>
+          </div>
         </div>
 
-        <div className="flex flex-grow flex-col p-7">
-          <h3 className="mb-2 font-serif text-[21px] leading-snug">
-            {p.kurzname}
-          </h3>
-
-          <p className="mb-5 flex-grow text-[14.5px] leading-relaxed text-ink-soft">
+        <div className="flex flex-grow flex-col p-4 sm:p-7">
+          <p className="mb-4 flex-grow text-[13px] leading-relaxed text-ink-soft sm:mb-5 sm:text-[14.5px]">
             {p.kurz}
           </p>
 
           <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
             {rabatt && (
-              <span className="text-[14px] text-ink-soft line-through tabular-nums">
+              <span className="text-[12.5px] text-ink-soft line-through tabular-nums sm:text-[14px]">
                 {preisText(p.statt!)}
               </span>
             )}
-            <span className="font-serif text-[22px] tabular-nums">
+            <span className="font-serif text-[18px] tabular-nums sm:text-[22px]">
               {preisText(p.preis)}
             </span>
 
-          {/* Ein Angebot, das noch nicht buchbar ist, gehört trotzdem in die
-              Übersicht: Es baut Vorfreude auf. Verschwiegen werden darf der
-              Starttermin aber nicht, sonst klickt jemand und stößt an der
-              Kasse auf eine Absage. */}
+            {/* Ein Angebot, das noch nicht buchbar ist, gehört trotzdem in die
+                Übersicht: Es baut Vorfreude auf. Verschwiegen werden darf der
+                Starttermin aber nicht, sonst klickt jemand und stößt an der
+                Kasse auf eine Absage. */}
             {start && (
               <span className="text-[13.5px] text-rose-deep">
                 ab {start.toLocaleDateString("de-DE")}
@@ -219,7 +343,12 @@ export default function ShopSeite() {
                 </p>
               </div>
 
-              <ul className="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3">
+              {/* Auf dem Handy stehen ZWEI Kacheln nebeneinander, nicht eine.
+                  Eine einzelne quadratische Kachel füllt sonst den halben
+                  Bildschirm, und man scrollt an drei Angeboten vorbei, bevor
+                  das vierte kommt. Zwei nebeneinander ist auch das, was jeder
+                  Shop macht -- man sieht sofort, dass es eine Auswahl ist. */}
+              <ul className="grid grid-cols-2 gap-3 sm:gap-5 md:grid-cols-2 lg:grid-cols-3">
                 {dieser.map((p) => (
                   <DigitalKarte key={p.slug} p={p} />
                 ))}
@@ -250,7 +379,7 @@ export default function ShopSeite() {
                     {k.name}
                   </h2>
 
-                  <ul className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
+                  <ul className="grid grid-cols-2 gap-3 sm:gap-5 sm:grid-cols-2 lg:grid-cols-3">
                     {dieser.map((p) => (
                       <ProduktKarte key={p.slug} produkt={p} />
                     ))}
