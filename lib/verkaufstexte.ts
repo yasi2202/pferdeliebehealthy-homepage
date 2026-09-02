@@ -379,7 +379,7 @@ export const verkaufstexte: Record<string, Verkaufstext> = {
       "RatioPro: Rationen für dein Pferd berechnen und Nährstoffe ausgleichen",
     einleitung: [
       "Rationen berechnen, Nährstoffe ausgleichen und die Fütterung deines Pferdes optimieren.",
-      "Der Rechner, der versteht, was dein Pferd wirklich braucht. Unbegrenzt viele Berechnungen, dauerhafter Zugang.",
+      "Der Rechner, der versteht, was dein Pferd wirklich braucht: 484 Futtermittel in der Datenbank, unbegrenzt viele Berechnungen, dauerhafter Zugang.",
     ],
 
     problemAugenbraue: "Warum das nötig ist",

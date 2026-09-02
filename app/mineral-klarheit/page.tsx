@@ -108,6 +108,17 @@ export default function MineralKlarheitSeite() {
               zu deinem Pferd passt. Du rechnest es selbst durch, mit den Daten
               deines Pferdes, nicht mit der Empfehlung von der Verpackung.
             </p>
+            {/* ▸ DER UMFANG GEHOERT IN DEN KOPF.
+                Wer 27 Euro fuer einen Kurs ausgibt, will vorher wissen, wie
+                gross er ist. Die Zahlen sind am 02.09.2026 in der
+                Kursdatei nachgezaehlt (inhalte/lektionen/mineral-klarheit.html):
+                neunzehn Abschnitte in drei Teilen. Wenn der Kurs waechst,
+                gehoert die Zahl hier nachgezogen. */}
+            <p className="text-[18px] sm:text-[19px] text-cream/90 leading-relaxed mb-4 max-w-xl">
+              Neunzehn Abschnitte in drei Teilen: jeder Nährstoff einzeln,
+              Etikett und Zusatzstoffe, der Eignungscheck, dazu der Rechner und
+              ein Glossar zum Nachschlagen.
+            </p>
             <p className="text-[16px] text-cream/70 leading-relaxed mb-8 max-w-xl">
               In deinem eigenen Tempo, mit dauerhaftem Zugang. Du kannst
               jederzeit zurückblättern, wenn sich bei deinem Pferd etwas ändert.
