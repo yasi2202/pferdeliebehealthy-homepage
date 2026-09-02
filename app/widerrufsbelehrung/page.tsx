@@ -77,30 +77,46 @@ export default function Widerruf() {
           genommen hat, dass sein Widerrufsrecht mit Beginn der Ausführung
           erlischt
         </li>
+        {/* ▸ „BEGONNEN" WAR FALSCH UND STAND IM WIDERSPRUCH ZU DEN AGB.
+            Bei einer Dienstleistung erlischt das Widerrufsrecht erst mit der
+            VOLLSTÄNDIGEN Erbringung (§ 356 Abs. 4 BGB), und nur wenn die
+            Kundin vorher beides bestätigt hat: sofortiger Beginn und Kenntnis
+            der Folge. Genau so fragt es die Kasse in DigitalKasse.tsx ab,
+            und genau so steht es in § 6 der AGB. Nur hier stand es anders. */}
         <li>
-          bei Beratungsleistungen wie Futterberatungen, sofern bereits
-          Unterlagen heruntergeladen oder die Leistung begonnen wurde
+          bei Beratungsleistungen wie Futterberatungen, sobald die Leistung
+          vollständig erbracht ist und Sie beim Kauf ausdrücklich zugestimmt
+          haben, dass wir vor Ablauf der Widerrufsfrist mit der Ausführung
+          beginnen, und dabei zur Kenntnis genommen haben, dass Sie Ihr
+          Widerrufsrecht mit der vollständigen Erfüllung verlieren
         </li>
+        {/* ▸ OFFENER PUNKT FÜR DEN HÄNDLERBUND, absichtlich nicht selbst
+            geändert: Ergänzungsfutter im 1,5-kg-Eimer ist kaum „schnell
+            verderblich" im Sinne des § 312g Abs. 2 Nr. 2 BGB. Tragfähig wäre
+            eher Nr. 3 (versiegelte Ware, deren Siegel entfernt wurde) -- aber
+            nur, wenn die Eimer tatsächlich versiegelt ausgeliefert werden.
+            Das weiss nur Yasemin, deshalb bleibt der Satz vorerst stehen. */}
         <li>
           bei verderblichen Waren oder solchen, deren Verfallsdatum schnell
           überschritten würde, etwa bestimmtes Futtermittel
         </li>
       </ul>
 
-      <h3>Hinweis zur E-Mail-Kommunikation und zum Newsletter</h3>
-      <p>
-        Im Rahmen der Vertragsabwicklung behalten wir uns vor, Ihnen per
-        E-Mail produktbezogene Informationen, begleitende Inhalte wie
-        Downloads oder Kurshinweise sowie weiterführende Tipps zu
-        übermitteln, soweit dies zur Vertragserfüllung erforderlich ist.
-        Darüber hinaus können wir Ihnen im Anschluss an den Kauf unseren
-        thematisch passenden Newsletter zusenden, mit Informationen zu neuen
-        Produkten, Kursen, Angeboten und relevanten Inhalten. Die Anmeldung
-        erfolgt im Rahmen des Kaufs ohne separate Einwilligung, Sie können
-        jederzeit über den Abmeldelink oder eine formlose Nachricht
-        widersprechen. Weitere Informationen finden Sie in unserer
-        Datenschutzerklärung.
-      </p>
+      {/* ▸ HIER STAND EIN ABSATZ „Hinweis zur E-Mail-Kommunikation und zum
+          Newsletter", entfernt am 02.09.2026. Zwei Gründe:
+
+          1. Er war sachlich falsch. Dort stand, die Newsletter-Anmeldung
+             erfolge „im Rahmen des Kaufs ohne separate Einwilligung". Die
+             Kasse hat aber ein eigenes, NICHT vorangekreuztes Häkchen, und
+             Zeitpunkt und Herkunft der Einwilligung werden gespeichert. Der
+             Text machte die Umsetzung schlechter, als sie ist, und behauptete
+             ausgerechnet das, was nach § 7 Abs. 3 UWG angreifbar wäre.
+          2. Ein Newsletter-Hinweis gehört nicht in eine Widerrufsbelehrung.
+             Je näher sie an der amtlichen Musterbelehrung bleibt, desto
+             sicherer greift deren Schutzwirkung.
+
+          Beschrieben wird der Weg über das Kassenhäkchen jetzt in der
+          Datenschutzerklärung, Abschnitt „Newsletter Pferdeliebe Insider". */}
 
       <hr />
 
@@ -120,9 +136,16 @@ export default function Widerruf() {
         <br />
         Deutschland
         <br />
+        {/* ▸ HIER STAND BIS ZUM 02.09.2026 pferdeliebehealthy@hotmail.com.
+            Das ist eines der beiden Postfächer, die Yasemin nicht liest --
+            ein Widerruf wäre dort liegen geblieben, und die Frist läuft für
+            sie trotzdem. Überall sonst auf der Seite steht die Arbeitsadresse.
+            Wenn sich die Adresse je ändert, muss sie hier mitgeändert
+            werden: Diese Anschrift ist die, an die ein Widerruf rechtlich
+            wirksam gerichtet wird. */}
         E-Mail:{" "}
-        <a href="mailto:pferdeliebehealthy@hotmail.com">
-          pferdeliebehealthy@hotmail.com
+        <a href="mailto:info@pferdeliebehealthy.de">
+          info@pferdeliebehealthy.de
         </a>
       </p>
       <p>
