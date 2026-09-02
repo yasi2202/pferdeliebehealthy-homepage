@@ -150,5 +150,4 @@ Mineralisierung deines Pferdes ineinandergreifen, schau dir gerne meinen
 Basisfutterkurs an. Dort gehe ich Schritt für Schritt mit dir durch alles, was
 dein Pferd wirklich braucht, um stabil und gesund zu bleiben.
 
-Basisfutterkurs:
-[https://www.pferdeliebehealthy.shop/p/7Q9bTJ](https://www.pferdeliebehealthy.shop/p/7Q9bTJ)
+[Zum Basisfutterkurs](/basisfutterkurs)
