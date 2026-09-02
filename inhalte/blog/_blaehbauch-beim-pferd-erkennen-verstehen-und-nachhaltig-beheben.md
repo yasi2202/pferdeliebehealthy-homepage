@@ -69,7 +69,7 @@ Szenario für Magenschleimhautreizungen und Darmungleichgewichte.
 ### 4. **Gesundheitliche Probleme**
 
 Koliken, Darmentzündungen oder Parasitenbefall können das Gleichgewicht der
-Darmflora stören und Gasbildung fördern.
+[Darmflora](/blog/gesunder-darm-gesundes-pferd-was-wirklich-hinter-darmproblemen-steckt) stören und Gasbildung fördern.
 
 ## Wann wird es gefährlich?. Gaskolik erkennen
 
@@ -84,7 +84,7 @@ sind:
 
 - Veränderte Darmgeräusche oder völlige Stille im Bauchbereich
 
-⚠️ **Bei Verdacht auf Gaskolik sofort einen Tierarzt rufen!**
+**Bei Verdacht auf Gaskolik sofort einen Tierarzt rufen!**
 Je schneller behandelt wird, desto geringer das Risiko für Folgeschäden.
 
 ## Soforthilfe und Vorbeugung
@@ -120,6 +120,8 @@ Sind „gute“ Mikroorganismen geschwächt, setzen sich Gär- und Fäulnisbakte
 schneller durch. Das führt nicht nur zu Gasbildung, sondern schwächt den
 gesamten Organismus, von der Nährstoffaufnahme bis zum Immunsystem.
 
+[[partner:pernaturam]]
+
 Genau hier setzt eine **gezielte Darmsanierung** an:
 Nicht Symptome überdecken, sondern das Gleichgewicht wiederherstellen.
 
@@ -139,7 +141,7 @@ geeignet**, nicht nur für akute Fälle.
 Denn: Ein gesunder Darm ist die Basis für Leistungsfähigkeit, Wohlbefinden und
 ein starkes Immunsystem.
 
-➡️ Hier geht’s zu deinem 3-Phasen-Darmsanierungsplan
+Hier geht’s zu deinem 3-Phasen-Darmsanierungsplan
 
 ###
 

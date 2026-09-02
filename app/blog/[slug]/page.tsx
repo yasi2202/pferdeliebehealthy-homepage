@@ -165,6 +165,21 @@ export default async function BlogBeitragSeite({ params }: Props) {
               {beitrag.beschreibung}
             </p>
           )}
+
+          {/* Werbekennzeichnung, wenn im Beitrag ein Rabattcode oder ein
+              Partnerlink steht. Sie gehoert hierher und nicht ans Ende: Sie
+              muss zu sehen sein, bevor die erste Empfehlung kommt. Ob sie
+              noetig ist, prueft lib/blog.ts selbst, damit sie niemand
+              vergessen kann. */}
+          {beitrag.werbung && (
+            <p className="text-[13.5px] text-cream/90 leading-relaxed max-w-xl mt-6 pt-5 border-t border-cream/25">
+              <strong className="font-semibold text-cream/90">Werbung:</strong>{" "}
+              Dieser Beitrag enthält Rabattcodes von Partnern. Bestellst du
+              damit, bekomme ich eine Provision. Für dich wird es dadurch nicht
+              teurer, im Gegenteil. Empfehlen tue ich trotzdem nur, was ich
+              selbst einsetze oder geprüft habe.
+            </p>
+          )}
         </div>
       </section>
 

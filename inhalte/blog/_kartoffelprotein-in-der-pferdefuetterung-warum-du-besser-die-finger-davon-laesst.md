@@ -48,7 +48,7 @@ Das kann den empfindlichen Stoffwechsel des Pferdes schnell überfordern.
 ### 2. Belastung von Leber und Nieren
 
 Ein Zuviel an Protein muss im Körper abgebaut werden. Dabei entstehen
-Stoffwechselprodukte wie Ammoniak, die über Leber und Nieren verarbeitet
+Stoffwechselprodukte wie Ammoniak, die über [Leber](/blog/fruehmarker-fuer-leberprobleme-beim-pferd-warnsignale-rechtzeitig-erkennen) und Nieren verarbeitet
 werden müssen.
 
 Folgen können sein:
@@ -100,11 +100,11 @@ hätten, sondern in der Form, in der dieses Protein geliefert wird.
 
 Kartoffelprotein kann:
 
-- die empfindliche Darmflora stören
+- die empfindliche [Darmflora](/blog/gesunder-darm-gesundes-pferd-was-wirklich-hinter-darmproblemen-steckt) stören
 
 - Verdauungsprobleme begünstigen
 
-- zu Kotwasser oder Blähungen führen
+- zu [Kotwasser](/blog/kotwasser-beim-pferd) oder Blähungen führen
 
 - den Verdauungstrakt unnötig belasten
 
@@ -116,5 +116,5 @@ Statt den Bedarf sinnvoll zu decken, wird das Gleichgewicht im Darm oft eher
 gestört.
 
 **[Wenn du mehr zum Thema erfahren willst und dein Pferd gezielt und sinnvoll
-mit Aminosäuren versorgen möchtest, ist die Amino Formel genau das Richtige
+mit [Aminosäuren](/blog/aminosaeuren-fuer-pferde-warum-sie-unverzichtbar-sind) versorgen möchtest, ist die Amino Formel genau das Richtige
 für dich.](https://www.pferdeliebehealthy.shop/p/0pdyzh)**

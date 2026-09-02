@@ -83,7 +83,9 @@ Aminosäurenprofil. In manchen Fällen (z. B. bei starkem Mangel oder
 Leistungspferden) kann auch eine gezielte Gabe von Lysin & Co. in reiner Form
 sinnvoll sein – **aber bitte immer bedarfsorientiert!**
 
-💡 **Du möchtest mehr über die Versorgung mit Mineralstoffen, Spurenelementen
+[[partner:natusat]]
+
+**Du möchtest mehr über die Versorgung mit Mineralstoffen, Spurenelementen
 und Aminosäuren erfahren?**
 Dann schau unbedingt in meinen **Mineralien-Minikurs**, dort lernst du, wie du
 die Versorgung deines Pferdes ganzheitlich und sinnvoll aufbaust.

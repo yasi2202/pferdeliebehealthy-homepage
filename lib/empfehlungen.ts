@@ -124,3 +124,21 @@ export const empfehlungen: Empfehlung[] = [
 /** Werbekennzeichnung. Steht oben auf der Seite, vor dem ersten Code. */
 export const werbehinweis =
   "Für die Codes auf dieser Seite bekomme ich eine Provision, wenn du damit bestellst. Für dich wird es dadurch nicht teurer, im Gegenteil, mit dem Code zahlst du weniger. Empfehlen tue ich trotzdem nur, was ich selbst einsetze oder geprüft habe.";
+
+/** Kurzname eines Partners, wie er im Blog als Marker verwendet wird:
+ *  aus "Biohof Elmengrund" wird "biohof-elmengrund". */
+export function partnerSchluessel(name: string): string {
+  return name
+    .toLowerCase()
+    .replace(/ä/g, "ae")
+    .replace(/ö/g, "oe")
+    .replace(/ü/g, "ue")
+    .replace(/ß/g, "ss")
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-+|-+$/g, "");
+}
+
+/** Sucht einen Partner über seinen Kurznamen. */
+export function partnerFinden(schluessel: string): Empfehlung | undefined {
+  return empfehlungen.find((e) => partnerSchluessel(e.partner) === schluessel);
+}

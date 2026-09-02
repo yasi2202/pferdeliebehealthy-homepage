@@ -67,8 +67,9 @@ seit Jahren unberührt daliegt, und unter dem Beitrag steht dann ein Hinweis
 darauf.
 
 **`kategorie`** — wird auf der Übersicht zum Filterknopf. Bisher verwendet:
-`Magen und Darm`, `Haut und Fell`, `Durchs Jahr`. Nimm eine davon, wenn sie
-passt. Sonst entsteht für jeden Beitrag eine eigene Kategorie, und dann
+`Magen und Darm`, `Haut, Fell und Hufe`, `Nährstoffe`, `Kritische
+Futtermittel`, `Grundlagen`, `Durchs Jahr`, `Heu und Grundfutter`,
+`Stoffwechsel` und `Kräuter und Öle`. Nimm eine davon, wenn sie passt. Sonst entsteht für jeden Beitrag eine eigene Kategorie, und dann
 filtert man nichts mehr. Die Kategorie steuert außerdem, welche Beiträge unter
 dem Text als „Weiterlesen" vorgeschlagen werden.
 
@@ -97,6 +98,45 @@ Ein Link sieht so aus: [zum Futter-Check](/futter-check-start).
 
 > So sieht ein hervorgehobenes Zitat aus. Gut für den einen Satz, den die
 > Leserin mitnehmen soll.
+
+## Einen Partner empfehlen
+
+Schreib an die Stelle im Text, an die die Empfehlung gehört, eine Zeile für
+sich:
+
+    [[partner:pernaturam]]
+
+Daraus wird ein Kasten mit Name, Beschreibung, deinem Rabattcode und einem
+Knopf zum Shop. Die Angaben kommen aus deiner Empfehlungsseite, stehen also
+nur an einer Stelle: Änderst du dort einen Code, ändert er sich in allen
+Beiträgen mit.
+
+Diese Kurznamen gibt es:
+
+- `biohof-elmengrund`, `pernaturam`, `mo-s-grun`, `hotte-maxe`, `natusat`
+- `foten`, `cdvet`, `naturanima`, `baeralis`, `mycelium-vitalpilze`
+
+**Um die Werbekennzeichnung musst du dich nicht kümmern.** Die Seite schaut
+selbst nach, ob im Beitrag ein Rabattcode, ein Partnerlink oder ein
+Partnerkasten steht, und setzt den Hinweis dann von allein oben unter die
+Einleitung. Das ist Absicht: Eine vergessene Kennzeichnung ist abmahnbar, und
+etwas, das man vergessen kann, sollte nicht davon abhängen, dass man daran
+denkt.
+
+Setz den Kasten dahin, wo er inhaltlich hingehört, also hinter den Absatz, der
+das Thema erklärt. Nicht ans Ende des Beitrags und nicht direkt hinter einen
+Hinweis auf den Tierarzt.
+
+## Auf andere Beiträge verweisen
+
+Ein Link auf einen anderen Beitrag sieht so aus:
+
+    [Darmflora](/blog/gesunder-darm-gesundes-pferd-was-wirklich-hinter-darmproblemen-steckt)
+
+Das ist mehr als Bequemlichkeit für die Leserin. Suchmaschinen folgen Links:
+Ein Beitrag, auf den nur die Übersicht zeigt, gilt als Randnotiz, einer, auf
+den fünf andere verweisen, als Kernthema der Seite. Drei bis vier Verweise je
+Beitrag sind genug, mehr liest sich wie eine Linksammlung.
 
 ## Was einen guten Blogbeitrag ausmacht
 

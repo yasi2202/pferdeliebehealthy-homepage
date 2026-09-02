@@ -27,7 +27,7 @@ zeigen heute teilweise nur noch eingeschränkte Wirkung. Das ist kein
 Marketingargument von Naturheilkundlern, sondern wissenschaftlich gut belegt
 und auch in der modernen Pferdemedizin längst angekommen.
 
-Dazu kommt: Eine chemische Wurmkur ist kein harmloses Bonbon. Die Leber und
+Dazu kommt: Eine chemische Wurmkur ist kein harmloses Bonbon. Die [Leber](/blog/fruehmarker-fuer-leberprobleme-beim-pferd-warnsignale-rechtzeitig-erkennen) und
 der Darm werden durch jeden Einsatz belastet. Bei einem ohnehin sensiblen
 Pferd, vielleicht mit Magen oder Darmproblemen, kann das schnell zu einer
 Belastung werden, die der Körper nicht mehr gut kompensiert.
@@ -97,7 +97,7 @@ aber kein Ersatz für eine gezielte Wurmkur, wenn diese tatsächlich nötig ist.
 ## Das Fundament ist ein gesunder Darm
 
 Der wichtigste Hebel in der natürlichen Entwurmung liegt nicht im
-Kräuterregal, sondern im Futtertrog. Ein Pferd mit stabiler Darmflora,
+Kräuterregal, sondern im Futtertrog. Ein Pferd mit stabiler [Darmflora](/blog/gesunder-darm-gesundes-pferd-was-wirklich-hinter-darmproblemen-steckt),
 ausreichender Mineralstoffversorgung und einer artgerechten
 Raufutterversorgung ist deutlich weniger anfällig für hohe Wurmlasten.
 

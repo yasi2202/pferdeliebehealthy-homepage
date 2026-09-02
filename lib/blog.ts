@@ -2,6 +2,7 @@ import fs from "node:fs";
 import path from "node:path";
 import matter from "gray-matter";
 import { marked } from "marked";
+import { empfehlungen, partnerFinden } from "./empfehlungen";
 
 // ---------------------------------------------------------------------------
 // Der Blog: die oeffentliche Seite des Wissens.
@@ -63,9 +64,12 @@ export type BlogBeitrag = {
   html: string;
   /** Die `##`-Ueberschriften des Beitrags, fuer das Inhaltsverzeichnis. */
   kapitel: Kapitel[];
+  /** Steht in diesem Beitrag ein Rabattcode, ein Partnerlink oder ein
+   *  Partnerkasten? Dann zeigt die Seite die Werbekennzeichnung. */
+  werbung: boolean;
 };
 
-export type BlogKopf = Omit<BlogBeitrag, "html" | "kapitel">;
+export type BlogKopf = Omit<BlogBeitrag, "html" | "kapitel" | "werbung">;
 
 function datumLesbar(wert: unknown): string {
   if (!wert) return "";
@@ -101,6 +105,80 @@ function ankerName(text: string): string {
 function lesezeitSchaetzen(text: string): number {
   const woerter = text.trim().split(/\s+/).filter(Boolean).length;
   return Math.max(1, Math.round(woerter / 200));
+}
+
+/** Steckt in diesem Beitrag Werbung?
+ *
+ *  Gemeint ist alles, wofuer eine Provision fliesst: ein Rabattcode eines
+ *  Partners, ein Link in dessen Shop oder ein Partnerkasten.
+ *
+ *  Warum das automatisch geprueft wird und nicht von Hand im Kopf der Datei
+ *  eingetragen: Die Kennzeichnung ist Pflicht, und eine vergessene ist
+ *  abmahnfaehig. Etwas, das man vergessen kann, gehoert nicht in die Hand
+ *  des Schreibenden, wenn die Seite es selbst sehen kann. Aus den alten
+ *  WordPress-Beitraegen sind reihenweise Codes mitgekommen, unter denen
+ *  nichts von Werbung stand.
+ *
+ *  Lieber einmal zu viel gekennzeichnet als einmal zu wenig: Ein Hinweis, wo
+ *  gar keine Provision fliesst, kostet nichts. */
+function enthaeltWerbung(html: string): boolean {
+  if (html.includes("partnerkasten")) return true;
+
+  const text = html.toLowerCase();
+  return empfehlungen.some((e) => {
+    if (!e.bezahlt) return false;
+    if (text.includes(e.code.toLowerCase())) return true;
+    // Der Shop-Link, ohne Protokoll und ohne www, damit auch die
+    // Partnerlinks aus den alten Beitraegen erkannt werden.
+    if (e.url) {
+      const host = e.url.replace(/^https?:\/\//, "").replace(/^www\./, "").split("/")[0];
+      if (host && text.includes(host)) return true;
+    }
+    return false;
+  });
+}
+
+/** Setzt die Partnerkaesten ein.
+ *
+ *  Im Text steht nur ein Marker, zum Beispiel:
+ *
+ *      [[partner:biohof-elmengrund]]
+ *
+ *  Daraus wird ein Kasten mit Name, Rabattcode und Link. Die Angaben kommen
+ *  aus lib/empfehlungen.ts, stehen also nur an einer Stelle: Aendert sich ein
+ *  Code, aendert er sich in allen Beitraegen mit.
+ *
+ *  Zwei Sachen sind dabei Pflicht und keine Geschmacksfrage:
+ *
+ *  - Die Kennzeichnung als Werbung. Fuer die Codes fliesst eine Provision,
+ *    und ein nicht gekennzeichneter bezahlter Hinweis ist abmahnfaehig.
+ *  - `rel="sponsored"` am Link. Damit sagt die Seite Google, dass hinter dem
+ *    Link Geld steht. Fehlt es, wertet Google das als Versuch, mit gekauften
+ *    Links zu ranken, und das faellt auf die ganze Seite zurueck.
+ */
+function partnerkaestenSetzen(html: string): string {
+  return html.replace(
+    /<p>\s*\[\[partner:([a-z0-9-]+)\]\]\s*<\/p>/g,
+    (_treffer, schluessel: string) => {
+      const partner = partnerFinden(schluessel);
+      // Unbekannter Schluessel: Der Marker verschwindet, statt als roher Text
+      // im Beitrag zu stehen. Ein Tippfehler soll die Seite nicht entstellen.
+      if (!partner) return "";
+
+      const knopf = partner.url
+        ? `<a class="partnerkasten-knopf" href="${partner.url}" target="_blank" rel="sponsored noopener">Zum Shop von ${partner.partner}</a>`
+        : "";
+
+      return `<aside class="partnerkasten">
+  <p class="partnerkasten-marke">${partner.bezahlt ? "Werbung · " : ""}Mein Tipp dazu</p>
+  <p class="partnerkasten-name">${partner.partner}</p>
+  ${partner.warum ? `<p class="partnerkasten-warum">${partner.warum}</p>` : ""}
+  <p class="partnerkasten-code">Mein Rabattcode: <strong>${partner.code}</strong>${partner.rabatt ? `, ${partner.rabatt}` : ""}</p>
+  ${knopf}
+  ${partner.bezahlt ? `<p class="partnerkasten-hinweis">Für den Code bekomme ich eine Provision, für dich wird es dadurch nicht teurer.</p>` : ""}
+</aside>`;
+    }
+  );
 }
 
 /** Haengt an jede `<h2>` eine Sprungmarke und sammelt sie ein.
@@ -168,9 +246,14 @@ export function blogBeitragLesen(slug: string): BlogBeitrag | null {
 
   const { data, content } = matter(fs.readFileSync(pfad, "utf8"));
   const roh = marked.parse(content, { async: false }) as string;
-  const { html, kapitel } = ankerSetzen(roh);
+  const { html, kapitel } = ankerSetzen(partnerkaestenSetzen(roh));
 
-  return { ...kopfBauen(slug, data, content), html, kapitel };
+  return {
+    ...kopfBauen(slug, data, content),
+    html,
+    kapitel,
+    werbung: enthaeltWerbung(html),
+  };
 }
 
 /** Andere Beitraege derselben Kategorie, hoechstens drei.

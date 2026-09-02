@@ -42,7 +42,7 @@ Nährstoffe)
 
 - **Chronische Stoffwechselprobleme** (z. B. EMS, Cushing)
 
-- **Überlastete Entgiftungsorgane** (Leber, Niere, Darm)
+- **Überlastete Entgiftungsorgane** ([Leber](/blog/fruehmarker-fuer-leberprobleme-beim-pferd-warnsignale-rechtzeitig-erkennen), Niere, Darm)
 
 All diese Faktoren können dazu führen, dass der Körper nicht optimal entgiften
 kann, und die Hufe den Preis dafür zahlen.
@@ -64,6 +64,8 @@ Einladung, den Blick auf die Gesamtgesundheit zu richten.
 ## So stärkst du die Hufe deines Pferdes nachhaltig
 - **Fütterung prüfen** Hochwertiges, sauberes Raufutter als Basis
 
+[[partner:naturanima]]
+
 - Mineralstoffversorgung auf den Bedarf abstimmen (kein „Blindfüttern“)
 
 - Futterumstellungen langsam durchführen
@@ -83,7 +85,7 @@ Durchblutung, auch in den Hufen
 
 ## Warum der Darm der Schlüssel zu gesunden Hufen ist
 Ein gesunder Darm filtert Nährstoffe optimal, hält Schadstoffe in Schach und
-unterstützt so indirekt die Hufqualität. Gerät die Darmflora jedoch aus dem
+unterstützt so indirekt die Hufqualität. Gerät die [Darmflora](/blog/gesunder-darm-gesundes-pferd-was-wirklich-hinter-darmproblemen-steckt) jedoch aus dem
 Gleichgewicht, steigt die Belastung für Leber und Niere, und die Hufe werden
 oft als „Notlager“ für Abfallstoffe genutzt.
 

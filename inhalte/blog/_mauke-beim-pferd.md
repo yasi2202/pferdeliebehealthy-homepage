@@ -19,7 +19,7 @@ Ausgabefenster.
 ## Warum die Haut zeigt, was woanders passiert
 
 Die Haut ist das größte Ausscheidungsorgan des Pferdes und gleichzeitig das,
-was am ehesten aufgibt, wenn die anderen überlastet sind. Leber und Nieren
+was am ehesten aufgibt, wenn die anderen überlastet sind. [Leber](/blog/fruehmarker-fuer-leberprobleme-beim-pferd-warnsignale-rechtzeitig-erkennen) und Nieren
 arbeiten daran, Stoffwechselprodukte loszuwerden. Kommen sie nicht hinterher,
 weicht der Körper aus, und zwar über Haut und Fell.
 
@@ -31,7 +31,7 @@ genau dort setzen sich Bakterien und Milben fest, die auf gesunder Haut nichts
 ausrichten könnten.
 
 Und der dritte Strang ist der Darm. Ein Mikrobiom aus dem Gleichgewicht zeigt
-sich nicht nur unten am Kot, sondern eben auch oben an der Haut. Kotwasser und
+sich nicht nur unten am Kot, sondern eben auch oben an der Haut. [Kotwasser](/blog/kotwasser-beim-pferd) und
 Mauke beim selben Pferd sind kein Zufall, sondern zweimal dasselbe Problem an
 zwei verschiedenen Enden.
 
@@ -53,7 +53,7 @@ Zinkmenge drin.
 **Zweitens das Verhältnis zu Kupfer.** Zink und Kupfer nutzen im Darm
 dieselben Aufnahmewege und behindern sich gegenseitig. Als Richtwert gilt ein
 Verhältnis von etwa vier bis fünf Teilen Zink auf einen Teil Kupfer. Es gibt
-Mineralfutter am Markt, die deutlich darüber liegen, teils bei neun zu eins.
+[Mineralfutter](/blog/natuerliches-mineralfutter-fuer-pferde-sinnvoll-wirksam-und-selbst-gemischt) am Markt, die deutlich darüber liegen, teils bei neun zu eins.
 Wer so etwas über Monate füttert, kann rechnerisch genug Zink geben und dem
 Pferd trotzdem einen Kupfermangel machen. Und Kupfer braucht die Haut auch,
 unter anderem für die Pigmentbildung und für stabiles Bindegewebe.
@@ -89,6 +89,8 @@ Krusten an der Nase auftreten, gehört die Leber angeschaut.
    oben beschrieben.
 4. **Zeit einplanen.** Haut erneuert sich langsam. Vor vier bis sechs Wochen
    siehst du keine ehrliche Veränderung, und das ist normal.
+
+[[partner:naturanima]]
 
 ## Wann der Tierarzt drangehört
 

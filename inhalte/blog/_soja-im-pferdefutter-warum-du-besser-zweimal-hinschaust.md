@@ -45,7 +45,7 @@ Keime sich ausbreiten können.
 
 Die Folgen reichen von:
 
-- **Blähbauch & Kotwasser**
+- **Blähbauch & [Kotwasser](/blog/kotwasser-beim-pferd)**
 
 - über **Kolikneigung**,
 
@@ -96,13 +96,13 @@ Quellen
 Wenn du deinem Pferd **hochwertiges, natürliches Protein** zuführen möchtest,
 ohne die Risiken von Soja, dann setze **kurweise und gezielt** auf:
 
-✔️ **Esparsette**
-✔️ **Luzerne**
-✔️ **Grünhafer**
+- **Esparsette**
+- **Luzerne**
+- **Grünhafer**
 
 Diese bekommst du in **sehr guter Qualität beim Biohof Elmengrund**
 
-💚 **Mit Rabattcode: yasi05**
+**Mit Rabattcode: yasi05**
 
 Als Ergänzung sind auch:
 
@@ -125,8 +125,8 @@ Fütterung geachtet werden.**
 Eiweißüberschuss kann genauso schaden wie Mangel.
 Daher: **Passe die Eiweißzufuhr immer individuell an dein Pferd an.**
 
-➡️ **Dafür kannst du unser Rationsberechnungs-Tool nutzen:**
+**Dafür kannst du unser Rationsberechnungs-Tool nutzen:**
 
-🔗 **Jetzt RationPro starten**
+**Jetzt RationPro starten**
 
 Schnell, einfach & ohne komplizierte Tabellen, ideal für Pferdebesitzer.

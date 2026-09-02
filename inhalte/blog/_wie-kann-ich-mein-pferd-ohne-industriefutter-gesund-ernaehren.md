@@ -32,7 +32,7 @@ Viele konventionelle Futtermittel enthalten:
 Und: oft **keine Transparenz** über Herkunft & Qualität
 
 Das Ergebnis?
-Futterunverträglichkeiten, Kotwasser, Hufprobleme, Hautreizungen, und ein
+Futterunverträglichkeiten, [Kotwasser](/blog/kotwasser-beim-pferd), Hufprobleme, Hautreizungen, und ein
 unausgeglichener Stoffwechsel.
 
 ## Schritt 1: Zurück zur Basis, gutes Raufutter
@@ -40,7 +40,9 @@ unausgeglichener Stoffwechsel.
 Die **Grundlage jeder natürlichen Fütterung** ist und bleibt:
 **Heu, und zwar in guter Qualität und passender Menge.**
 
-💡 Faustregel: **mind. 1,5 kg Heu pro 100 kg Körpergewicht** → bei 600 kg also
+[[partner:biohof-elmengrund]]
+
+Faustregel: **mind. 1,5 kg Heu pro 100 kg Körpergewicht** bei 600 kg also
 ca. 9 bis 12 kg pro Tag
 
 ## Schritt 2: Energie & Eiweiß natürlich ergänzen
@@ -52,13 +54,13 @@ z. B. durch:
 
 - **Cobs:** Esparsette, Luzerne (bei Bedarf), Grünhafer
 
-- **Proteine/ Aminosäuren** für Muskulatur & Substanz
+- **Proteine/ [Aminosäuren](/blog/aminosaeuren-fuer-pferde-warum-sie-unverzichtbar-sind)** für Muskulatur & Substanz
 
 Keine Stärke- oder Zuckerbomben, sondern **nährstoffreiche Kraftquellen**.
 
 ## Schritt 3: Mineralstoffe natürlich denken
 
-Statt einem künstlich vollgestopften Mineralfutter kannst du:
+Statt einem künstlich vollgestopften [Mineralfutter](/blog/natuerliches-mineralfutter-fuer-pferde-sinnvoll-wirksam-und-selbst-gemischt) kannst du:
 
 - auf **natürliche Quellen** setzen (z. B. Seealgenmehl, Hagebutten,
 Brennnessel, Bockshornkleesamen)

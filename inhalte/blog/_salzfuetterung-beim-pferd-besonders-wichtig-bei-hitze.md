@@ -62,9 +62,9 @@ teurer.
 An heißen Tagen oder bei starkem Schwitzen (Training, Turnier, Transport)
 reicht es völlig aus, **Salz und Magnesium** gezielt zu ergänzen:
 
-- **Steinsalz oder Meersalz** (ohne Zusätze) → für Natrium und Chlorid
+- **Steinsalz oder Meersalz** (ohne Zusätze): für Natrium und Chlorid
 
-- **Magnesiumcitrat oder –**fumatrat→ um den Magnesiumverlust auszugleichen
+- **Magnesiumcitrat oder –**fumatrat: um den Magnesiumverlust auszugleichen
 
 Beides kann individuell dosiert und dem Futter beigemischt werden, ohne
 unnötige Zusatzstoffe.
@@ -83,10 +83,10 @@ werden
 
 ## Warum das so viel besser ist
 
-✅ **Du weißt genau, was drin ist**, keine versteckten Zusatzstoffe
-✅ **Bedarfsgerechte Dosierung** statt pauschaler Mischungen
-✅ **Kostengünstig**, ein Bruchteil des Preises von Fertigmischungen
-✅ **Natürlich & pferdegerecht**
+- **Du weißt genau, was drin ist**, keine versteckten Zusatzstoffe
+- **Bedarfsgerechte Dosierung** statt pauschaler Mischungen
+- **Kostengünstig**, ein Bruchteil des Preises von Fertigmischungen
+- **Natürlich & pferdegerecht**
 
 Pferde brauchen bei Hitze vor allem eines: **ausreichend Salz und etwas
 Magnesium**, nicht teure Elektrolytmischungen mit Zucker und Aromen. Einfach,

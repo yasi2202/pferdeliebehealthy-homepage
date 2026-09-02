@@ -63,7 +63,7 @@ wird reguliert, Gewebeheilung kann unterstützt werden.
 - **Hufrehe:** Entzündungsprozesse in der Huflederhaut können gelindert
 werden, Schmerzen werden gleichzeitig reduziert.
 
-- **Hautentzündungen:** Sommerekzem, Mauke, Pilzinfektionen.
+- **Hautentzündungen:** Sommerekzem, [Mauke](/blog/mauke-beim-pferd), Pilzinfektionen.
 
 - Interessant ist, dass CBD **oxidativen Stress** reduziert, das ist ein
 Schlüsselfaktor bei vielen chronischen Entzündungen.
@@ -99,7 +99,7 @@ Wundheilung
 - **Beispiele:** Sommerekzem, Mauke, allergische Hautreaktionen,
 Insektenstiche
 
-💡 **Wichtig zu wissen:**
+**Wichtig zu wissen:**
 CBD ist kein Ersatz für eine gute Basisversorgung (Fütterung, Haltung,
 Training), sondern **eine wertvolle Ergänzung**, die vor allem in
 ganzheitlichen Konzepten gut wirkt.
@@ -158,7 +158,7 @@ Wenn du deinem Pferd auf natürliche Weise mehr **Ruhe, Regeneration und
 Wohlbefinden** schenken möchtest, findest du hier meine persönliche
 Empfehlung:
 
-👉 **[SWISS FX CBD-Öl für Pferde – 100 % natürlich &
+**[SWISS FX CBD-Öl für Pferde – 100 % natürlich &
 laborgeprüft](https://swissfx.de/collections/swiss-fx-pets/products/cbd-ol-pferde#a_aid=YasiCBD&a_bid=ac4cf055)**
 
 Ich empfehle SWISS FX, weil:
@@ -169,6 +169,6 @@ Ich empfehle SWISS FX, weil:
 
 - und aus **zertifiziertem EU-Nutzhanf** gewonnen wird
 
-🔎 Wichtig: CBD ersetzt keine tierärztliche Diagnose, kann aber **begleitend
+Wichtig: CBD ersetzt keine tierärztliche Diagnose, kann aber **begleitend
 zur Darmsanierung, Stressregulation oder Schmerztherapie** eine echte
 Unterstützung sein.

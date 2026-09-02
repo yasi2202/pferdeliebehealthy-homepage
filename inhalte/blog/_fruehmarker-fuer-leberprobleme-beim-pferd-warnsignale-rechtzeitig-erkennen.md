@@ -90,9 +90,9 @@ Viele Pferde leben **monatelang oder sogar jahrelang mit einer überforderten
 Leber**, ohne dass es auffällt.
 Doch je früher du die Frühmarker kennst und erkennst, desto besser kannst du:
 
-✔️ die Ursachen beheben
-✔️ die Leber entlasten und regenerieren
-✔️ Folgeprobleme wie Hufrehe, EMS oder chronische Hautthemen vermeiden
+- die Ursachen beheben
+- die Leber entlasten und regenerieren
+- Folgeprobleme wie Hufrehe, EMS oder chronische Hautthemen vermeiden
 
 Die Leber ist ein stiller Arbeiter – **und sie sendet ihre Signale leise.**
 Achte auf dein Pferd, beobachte die kleinen Veränderungen und **vertraue
@@ -107,10 +107,10 @@ Du möchtest wissen, **wie du die Leber deines Pferdes gezielt unterstützen
 kannst**, ganz ohne Chemie, mit natürlichen Mitteln und klarer Anleitung?
 
 Dann ist unser bewährter **Entgiftungs-Minikurs** genau das Richtige für dich:
-✔️ Kompakt.
-✔️ Verständlich.
-✔️ Direkt umsetzbar.
+- Kompakt.
+- Verständlich.
+- Direkt umsetzbar.
 
-➡️ **Hier geht’s zum Entgiftungs-Minikurs**
+**Hier geht’s zum Entgiftungs-Minikurs**
 
 **Weil gezielte Unterstützung besser ist als Abwarten.**

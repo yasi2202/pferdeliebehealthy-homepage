@@ -32,12 +32,12 @@ Milieu im Darm, und die Wasserbindung funktioniert nicht mehr.
 
 Was das Gleichgewicht kippt, ist meistens eine dieser vier Sachen:
 
-- **Zu wenig oder zu schlechtes Raufutter.** Die Darmflora lebt von der
+- **Zu wenig oder zu schlechtes Raufutter.** Die [Darmflora](/blog/gesunder-darm-gesundes-pferd-was-wirklich-hinter-darmproblemen-steckt) lebt von der
   Rohfaser. Fehlt sie, fehlt ihr die Grundlage.
 - **Zu viel Zucker und Stärke.** Getreide, Müslis und junges Gras liefern
   Energie, die im Dünndarm nicht vollständig verdaut wird. Was im Dickdarm
   ankommt, füttert dort die falschen Bakterien.
-- **Ein Eingriff von außen.** Antibiotika, Wurmkuren, eine Narkose. Danach
+- **Ein Eingriff von außen.** Antibiotika, [Wurmkuren](/blog/natuerliche-entwurmung-beim-pferd-was-wirklich-sinnvoll-ist), eine Narkose. Danach
   braucht das Mikrobiom Wochen, um sich zu ordnen.
 - **Ein abrupter Wechsel.** Neues Heu, Anweiden, ein Stallwechsel. Nicht die
   Umstellung an sich ist das Problem, sondern ihr Tempo.
@@ -75,6 +75,8 @@ Zahnkontrolle steht ohnehin einmal im Jahr an.
 Kräuter können viel, aber sie können nicht die Grundlage ersetzen. Bitterstoffe
 regen die Verdauungssäfte an, Oregano wirkt regulierend auf das Darmmilieu,
 und beides ist sinnvoll, wenn der Rest stimmt.
+
+[[partner:pernaturam]]
 
 Zwei Dinge sind mir dabei wichtig:
 

@@ -36,7 +36,7 @@ Eine moderne Wundversorgung folgt drei einfachen Schritten:
 
 Mit einem **milden, pH-neutralen Wundreiniger** werden Schmutz, Keime und
 abgestorbenes Gewebe entfernt, ohne das gesunde Gewebe zu reizen.
-👉 **Meine Empfehlung:** *Bäralis Hauttalent Nr. 1*
+**Meine Empfehlung:** *Bäralis Hauttalent Nr. 1*
 Dieses Reinigungsmittel ist sanft, brennt nicht und schafft eine optimale
 Grundlage für die weitere Behandlung.
 
@@ -45,7 +45,7 @@ Grundlage für die weitere Behandlung.
 Nach der Reinigung wird die Wunde mit einem **antimikrobiellen Wundgel oder
 einer Lösung** behandelt, die das Keimwachstum hemmt und die Heilung
 unterstützt.
-👉 **Meine Empfehlung:** *Bäralis Hydrogel Nr. 2*
+**Meine Empfehlung:** *Bäralis Hydrogel Nr. 2*
 Es hält die Wunde feucht, ein wichtiger Faktor für eine schnelle,
 komplikationsfreie Heilung.
 
@@ -54,7 +54,7 @@ komplikationsfreie Heilung.
 Gerade im Sommer sind offene Wunden ein Magnet für Fliegen. Statt Farbspray
 eignet sich ein **Fliegenschutz-Pflaster**, das die Wunde sauber hält,
 Insekten fernhält und trotzdem Luft durchlässt.
-👉 **Mein Tipp:** Das **Bäralis Fliegenpflaster**, praktisch, durchsichtig und
+**Mein Tipp:** Das **Bäralis Fliegenpflaster**, praktisch, durchsichtig und
 einfach anzubringen.
 
 ##

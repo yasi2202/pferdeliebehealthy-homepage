@@ -78,10 +78,10 @@ die Grundlage, damit der Körper selbst regulierend arbeiten kann.
 
 - **Mineralisierung sicherstellen:** Eine ausgewogene Mineralstoffversorgung
 ist entscheidend, damit Haut, Immunsystem und Zellstoffwechsel optimal
-funktionieren. Empfehlenswert sind hochwertige, natürliche Mineralfutter, die
+funktionieren. Empfehlenswert sind hochwertige, natürliche [Mineralfutter](/blog/natuerliches-mineralfutter-fuer-pferde-sinnvoll-wirksam-und-selbst-gemischt), die
 Zink, Kupfer, Mangan und Selen in bioverfügbarer Form enthalten.
 
-- **Leber und Darm entlasten:** Da der Organismus Stoffwechselrückstände über
+- **[Leber](/blog/fruehmarker-fuer-leberprobleme-beim-pferd-warnsignale-rechtzeitig-erkennen) und Darm entlasten:** Da der Organismus Stoffwechselrückstände über
 Leber, Nieren und Darm ausscheidet, ist deren Unterstützung sinnvoll, z. B.
 durch Moor, Bitterkräuter oder milde Entgiftungskuren (nach Rücksprache).
 
@@ -99,7 +99,7 @@ der Firma Hottemaxe mit dem Rabattcode Pferdeliebe kann man zusätzlich sparen.
 abwehrunterstützend. Oregano wird oft nicht so gerne gefressen, deshalb nutze
 ich gerne die Pellets der Firma Mo´s Grun Rabattcode: Pferdeliebe
 
-👉 Diese Kräuter können **für etwa 8 Wochen** in die Fütterung integriert
+Diese Kräuter können **für etwa 8 Wochen** in die Fütterung integriert
 werden, anschließend sollte eine **Pause von 2 bis 4 Wochen** eingelegt
 werden.
 

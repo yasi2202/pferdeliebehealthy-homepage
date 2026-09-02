@@ -66,11 +66,11 @@ allgemeine Wohlbefinden deines Pferdes.
 Heucobs sind eine tolle Möglichkeit, dein Pferd hochwertig mit Raufutter zu
 versorgen, vorausgesetzt, du achtest auf die richtigen Qualitätsmerkmale:
 
-✅ Zuckerarm und melassefrei
-✅ Sichtbare Faserstruktur (nicht zu fein)
-✅ Staubarm oder staubfrei
-✅ Hoher Rohfasergehalt
-✅ Kräuter- und Gräservielfalt
+- Zuckerarm und melassefrei
+- Sichtbare Faserstruktur (nicht zu fein)
+- Staubarm oder staubfrei
+- Hoher Rohfasergehalt
+- Kräuter- und Gräservielfalt
 
 Wenn du auf diese Punkte achtest, findest du leicht ein Produkt, das zu deinem
 Pferd passt, egal ob als Ergänzung, als Heuersatz oder einfach zur Abwechslung
@@ -84,6 +84,6 @@ Sie sind **unschlagbar in ihrer Qualität**, überzeugen durch ihre **natürlich
 Kräutervielfalt** und einen **herausragend hohen Rohfasergehalt**, genau das,
 was ein gutes Raufutterprodukt ausmacht.
 
-🌿 **Spare mit meinem Code:**
-👉 **YASI05**, und sichere dir einen exklusiven Rabatt auf deine Bestellung
+- **Spare mit meinem Code:**
+- **YASI05**, und sichere dir einen exklusiven Rabatt auf deine Bestellung
 beim Biohof Elemengrund!

@@ -83,13 +83,13 @@ dein Pferd in vielerlei Hinsicht unterstützen.
 
 Sekundäre Pflanzenstoffe können:
 
-- die Darmflora stabilisieren
+- die [Darmflora](/blog/gesunder-darm-gesundes-pferd-was-wirklich-hinter-darmproblemen-steckt) stabilisieren
 
 - Schleimhäute schützen
 
 - die Mineralstoffaufnahme verbessern
 
-- Leber und Stoffwechsel entlasten
+- [Leber](/blog/fruehmarker-fuer-leberprobleme-beim-pferd-warnsignale-rechtzeitig-erkennen) und Stoffwechsel entlasten
 
 - das Immunsystem regulieren
 
@@ -131,6 +131,8 @@ Je vielfältiger die Fütterung, desto stabiler sind:
 ## Natürliche Mineralstoffe, was wirklich sinnvoll ist
 
 ### Samen & Saaten als natürliche Mineralträger
+
+[[partner:natusat]]
 
 Samen liefern neben Energie auch Mineralstoffe und Spurenelemente:
 

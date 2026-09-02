@@ -8,13 +8,13 @@ bild: ""
 bildText: ""
 beschreibung: "Blähbauch. Kotwasser. Schlechte Futterverwertung. Hautprobleme. Immer wieder Husten."
 ---
-**Blähbauch. Kotwasser. Schlechte Futterverwertung. Hautprobleme. Immer wieder
+**Blähbauch. [Kotwasser](/blog/kotwasser-beim-pferd). Schlechte Futterverwertung. Hautprobleme. Immer wieder
 Husten.**
 Was wäre, wenn all das **nicht viele kleine Probleme sind**, sondern **ein
 einziges zentrales Thema?**
 Ein Thema, das still leidet, kaum beachtet wird, und doch alles beeinflusst:
 
-👉 **Den Darm deines Pferdes.**
+**Den Darm deines Pferdes.**
 
 **Die unterschätzte Wahrheit: Ein gesunder Darm ist nicht „nice to have“, er
 ist das Fundament.**
@@ -33,10 +33,10 @@ Er ist:
 
 - mitverantwortlich für **Haut, Fell, Hufe & Verhalten**
 
-Wenn dein Pferd mit **Kotwasser**, **Blähbauch**, **Müdigkeit**,
+Wenn dein Pferd mit **Kotwasser**, **[Blähbauch](/blog/blaehbauch-beim-pferd-erkennen-verstehen-und-nachhaltig-beheben)**, **Müdigkeit**,
 **Allergien**, **Husten** oder **Hufproblemen** kämpft, dann lautet die
 entscheidende Frage:
-📌 *Wie geht es dem Darm?*
+*Wie geht es dem Darm?*
 
 ## Die meisten Darmsanierungen scheitern. Warum?
 
@@ -54,7 +54,7 @@ Weil sie:
 
 Die Folge?
 
-👉 Symptome bleiben. Pferdehalter sind frustriert. Der Darm leidet weiter.
+Symptome bleiben. Pferdehalter sind frustriert. Der Darm leidet weiter.
 
 ## Deshalb habe ich ein neues Konzept entwickelt:
 
@@ -66,15 +66,15 @@ Sondern ein **durchdachter, verständlicher & natürlicher Fahrplan**, den du
 
 **Was das E-Book besonders macht:**
 
-### 🔸 1. Klare Struktur: 3 Phasen statt Chaos
+### 1. Klare Struktur: 3 Phasen statt Chaos
 
 - **Phase 1:** Entlasten & vorbereiten
 
-- **Phase 2:** Darmflora gezielt aufbauen
+- **Phase 2:** [Darmflora](/blog/gesunder-darm-gesundes-pferd-was-wirklich-hinter-darmproblemen-steckt) gezielt aufbauen
 
 - **Phase 3:** Langfristig stabilisieren & Alltag sichern
 
-### 🔸 2. Praxis statt Theorie
+### 2. Praxis statt Theorie
 
 - Entwickelt aus **hunderten Fällen**
 
@@ -82,7 +82,7 @@ Sondern ein **durchdachter, verständlicher & natürlicher Fahrplan**, den du
 
 - Verständlich erklärt – **ohne Vorwissen umsetzbar**
 
-### 🔸 3. Natürlich & individuell
+### 3. Natürlich & individuell
 
 - Kein Zucker, keine Zusatzstoffe, keine Überladung
 

@@ -1,5 +1,5 @@
 ---
-titel: "🐴 Futterberatung fürs Pferd: warum „einfach füttern“ nicht mehr reicht"
+titel: " Futterberatung fürs Pferd: warum „einfach füttern“ nicht mehr reicht"
 datum: 2025-08-13
 aktualisiert:
 kategorie: "Grundlagen"
@@ -18,7 +18,7 @@ Gesundheit und sogar die Jahreszeit haben Einfluss darauf, welche Nährstoffe
 in welcher Menge gebraucht werden. Gleichzeitig ist das Futterangebot heute so
 groß wie nie, und oft auch so verwirrend wie nie.
 
-### 🔍 Warum pauschale Futterpläne oft scheitern
+### Warum pauschale Futterpläne oft scheitern
 
 Das Problem vieler Standardempfehlungen:
 Sie orientieren sich selten an den individuellen Gegebenheiten deines Pferdes.
@@ -42,7 +42,7 @@ Magengeschwüre).
 Kurz gesagt: **Was für das eine Pferd ideal ist, kann beim anderen Probleme
 auslösen.**
 
-### 📊 Was eine fundierte Futterberatung leistet
+### Was eine fundierte Futterberatung leistet
 
 Eine gute Futterberatung ist **mehr als eine Einkaufsliste**.
 
@@ -63,22 +63,22 @@ Stoffwechselstabilisierung.
 Das Ergebnis: Ein **maßgeschneiderter Futterplan**, der gezielt den Bedarf
 deckt, ohne Überflüssiges, ohne unnötige Kosten, ohne versteckte Risiken.
 
-### ⚠️ Häufige Irrtümer in der Pferdefütterung
+### Häufige Irrtümer in der Pferdefütterung
 
-- „Ein bisschen mehr schadet nicht.“ → Doch, kann es. Überschüsse belasten
+- „Ein bisschen mehr schadet nicht.“: Doch, kann es. Überschüsse belasten
 Organe und Stoffwechsel.
 
-- „Alle Mineralfutter sind gleich.“ → Nein, Zusammensetzung und
+- „Alle [Mineralfutter](/blog/natuerliches-mineralfutter-fuer-pferde-sinnvoll-wirksam-und-selbst-gemischt) sind gleich.“: Nein, Zusammensetzung und
 Bioverfügbarkeit unterscheiden sich deutlich.
 
-- „Das Futter vom Stallkollegen funktioniert sicher auch bei meinem.“ → Pferde
+- „Das Futter vom Stallkollegen funktioniert sicher auch bei meinem.“: Pferde
 sind individuell, und brauchen individuelle Lösungen.
 
-- „Kräuter sind immer gesund.“ → Falsch eingesetzt können sie sogar schaden.
+- „Kräuter sind immer gesund.“: Falsch eingesetzt können sie sogar schaden.
 
-### 💡 Wann eine Futterberatung besonders sinnvoll ist
+### Wann eine Futterberatung besonders sinnvoll ist
 
-- Bei **anhaltenden Verdauungsproblemen** (Kotwasser, Blähbauch, Kolikneigung)
+- Bei **anhaltenden Verdauungsproblemen** ([Kotwasser](/blog/kotwasser-beim-pferd), Blähbauch, Kolikneigung)
 
 - Bei **unerklärlichem Gewichtsverlust oder Übergewicht**
 
@@ -90,7 +90,7 @@ sind individuell, und brauchen individuelle Lösungen.
 
 - Bei **Zuchtstuten, Fohlen oder Senioren** mit speziellen Bedürfnissen
 
-## 🚀 Meine 4-Wochen-Futterberatung, dein Fahrplan zur optimalen Fütterung
+## Meine 4-Wochen-Futterberatung, dein Fahrplan zur optimalen Fütterung
 
 In meiner **4-Wochen-Futterberatung** bekommst du:
 
@@ -105,9 +105,9 @@ In meiner **4-Wochen-Futterberatung** bekommst du:
 - 4 Wochen **begleitende Betreuung**, um sicherzugehen, dass dein Pferd
 optimal versorgt ist
 
-➡️ **Hier erfährst du mehr und buchst deine Beratung**
+**Hier erfährst du mehr und buchst deine Beratung**
 
-### 📝
+###
 
 Eine fundierte Futterberatung ist **kein Luxus**, sondern **eine Investition
 in die langfristige Gesundheit deines Pferdes**.

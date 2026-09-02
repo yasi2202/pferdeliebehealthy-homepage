@@ -33,7 +33,7 @@ Fell besteht zum größten Teil aus Keratin, einem Eiweiß. Damit der Körper es
 bilden kann, braucht er drei Dinge:
 
 **Eiweißbausteine, vor allem schwefelhaltige.** Methionin und Cystein sind die
-Aminosäuren, aus denen die stabilen Verbindungen im Haar entstehen. Fehlen
+[Aminosäuren](/blog/aminosaeuren-fuer-pferde-warum-sie-unverzichtbar-sind), aus denen die stabilen Verbindungen im Haar entstehen. Fehlen
 sie, wird das Fell stumpf und wächst langsam nach, ganz gleich wie viele
 Mineralien du dazugibst.
 
@@ -41,7 +41,7 @@ Mineralien du dazugibst.
 anderem für die Pigmentbildung. Deshalb bleicht das Fell bei Kupfermangel
 aus, ein Rappe wird rostig, ein Brauner fahl.
 
-**Eine funktionierende Leber.** Der Umbau produziert Stoffwechselprodukte, die
+**Eine funktionierende [Leber](/blog/fruehmarker-fuer-leberprobleme-beim-pferd-warnsignale-rechtzeitig-erkennen).** Der Umbau produziert Stoffwechselprodukte, die
 weg müssen. Ist die Leber ohnehin ausgelastet, zeigt sich das zuerst an Haut
 und Fell.
 
@@ -59,7 +59,7 @@ Kupfer. Es gibt Zinkpräparate, die dieses Verhältnis stark verschieben.
 > Zink bekommen hat und trotzdem ein stumpfes, ausgeblichenes Fell trägt.
 
 Rechne also nicht nur, wie viel Zink dazukommt, sondern was dein Pferd am Ende
-insgesamt bekommt, aus Mineralfutter und Kur zusammen.
+insgesamt bekommt, aus [Mineralfutter](/blog/natuerliches-mineralfutter-fuer-pferde-sinnvoll-wirksam-und-selbst-gemischt) und Kur zusammen.
 
 ## Die drei Fragen, die ich stelle
 
@@ -81,12 +81,14 @@ weg, die er gerade woanders braucht.
 - **Ab September auf die Grundversorgung schauen**, nicht auf Sonderfutter.
 - **Zucker und Stärke reduzieren**, damit die Leber Luft hat.
 - **Genug trinken lassen.** Bei kaltem Wetter trinken viele Pferde deutlich
-  weniger. Angewärmtes Wasser oder eingeweichte Heucobs helfen mehr, als man
+  weniger. Angewärmtes Wasser oder eingeweichte [Heucobs](/blog/heucobs-worauf-man-beim-kauf-achten-sollte) helfen mehr, als man
   vermutet.
 - **Täglich putzen.** Das ist kein Schönheitsprogramm, sondern regt die
   Durchblutung an und hilft beim Loswerden der alten Haare.
 - **Und Zeit lassen.** Ein Fellwechsel dauert Wochen. Was du im September
   fütterst, siehst du im November.
+
+[[partner:natusat]]
 
 ## Wann es kein normaler Fellwechsel mehr ist
 
