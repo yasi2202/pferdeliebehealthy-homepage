@@ -119,6 +119,43 @@ export const empfehlungen: Empfehlung[] = [
       "Vitalpilze als Kapseln und Pulver, mit eigenen Varianten für Pferd, Hund und Katze. Reishi, Cordyceps, Hericium und weitere.",
     bezahlt: true,
   },
+
+  // --- Aus der Codeliste in RatioPro übernommen, 02.09.2026 ---------------
+  // Diese vier standen dort schon, auf der Website fehlten sie. Die Sätze bei
+  // `warum` beschreiben, was der jeweilige Shop führt. Sie stehen unter
+  // Yasemins Namen und gehören von ihr gegengelesen.
+  {
+    partner: "Laurel Nature",
+    code: "Pferdeliebe",
+    url: "https://laurelnature.com/",
+    warum:
+      "Mineralfutter und Ergänzungen ohne Getreide, Melasse und synthetische Zusätze, aufgebaut als Baukasten aus Grundversorgung und gezielten Ergänzungen.",
+    bezahlt: true,
+  },
+  {
+    partner: "Natural Equibalance",
+    code: "PFERDELIEBEHEALTHY",
+    url: "https://www.natural-equibalance.com/",
+    warum:
+      "Getreidefreie Ergänzungsfutter mit Blick auf das Mikrobiom, ohne Aromen, Bindemittel und Konservierungsstoffe. Schwerpunkt Magen und Darm.",
+    bezahlt: true,
+  },
+  {
+    partner: "Seewinkler Hanferei",
+    code: "pferdeliebehealthy10",
+    url: "https://seewinkler-naturprodukte.com/",
+    warum:
+      "Hanfprodukte und Vitalpilze aus dem Burgenland, in Bio-Qualität und ohne Zusätze, für Pferd und Hund.",
+    bezahlt: true,
+  },
+  {
+    partner: "Wild Baboon",
+    code: "AloeVera",
+    url: "https://wildbaboon.de/",
+    warum:
+      "Bio-Aloe-Vera als Direktsaft und als Gel, ohne Verdünnung und ohne Zusätze, wenn du gezielt mit Aloe arbeiten möchtest.",
+    bezahlt: true,
+  },
 ];
 
 /** Werbekennzeichnung. Steht oben auf der Seite, vor dem ersten Code. */

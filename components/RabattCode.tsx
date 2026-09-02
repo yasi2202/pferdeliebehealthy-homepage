@@ -29,7 +29,17 @@ export default function RabattCode({ code }: { code: string }) {
         aria-label={`Rabattcode ${code} kopieren`}
         className="group w-full flex items-center justify-between gap-3 border border-dashed border-rose-deep/60 bg-cream rounded-xl px-4 py-3 transition-colors hover:bg-cream-deep hover:border-rose-deep"
       >
-        <span className="font-medium tracking-[0.06em] text-[15px] text-left break-all">
+        {/* Lange Codes bekommen eine Stufe kleinere Schrift und weniger
+            Sperrung. "PFERDELIEBEHEALTHY" brach sonst mitten im Wort um, und
+            ein Rabattcode, der über zwei Zeilen läuft, sieht aus wie zwei
+            Codes. */}
+        <span
+          className={`font-medium text-left break-all ${
+            code.length > 16
+              ? "text-[13px] tracking-normal"
+              : "text-[15px] tracking-[0.06em]"
+          }`}
+        >
           {code}
         </span>
         <span className="text-[12.5px] font-medium text-rose-deep shrink-0">
