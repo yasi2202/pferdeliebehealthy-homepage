@@ -43,6 +43,29 @@ Gleichgewicht, entstehen übermäßig viele Gase.
 - Ist der Durchgang zwischen Dünndarm und Grimmdarm verengt (z. B. durch
 Aufblähung), stauen sich Gase zusätzlich.
 
+## Dicker Bauch oder aufgegast? So unterscheidest du es
+
+Das ist die Frage, um die es am Anfang meistens geht, und sie lässt sich mit
+ein paar Handgriffen beantworten.
+
+| | Einfach ein voller Bauch | Aufgasung |
+|---|---|---|
+| Form | gleichmäßig rund, beide Seiten ähnlich | oft einseitig, meist rechts, prall |
+| Beim Beklopfen | dumpfer Ton | trommelartiger, heller Ton |
+| Darmgeräusche | normal, gluckernd | sehr laut, plätschernd oder auffällig still |
+| Verhalten | frisst, döst, ist unauffällig | unruhig, scharrt, schaut zum Bauch, will sich wälzen |
+| Verlauf | wird über Stunden weniger | bleibt oder nimmt zu |
+
+Zum Beklopfen legst du eine Hand flach an die Flanke und klopfst mit der
+anderen dagegen. Ein Bauch voller Gas klingt wie eine Trommel, ein Bauch
+voller Futter klingt dumpf. Vergleich immer beide Seiten, der Unterschied
+sagt mehr als der Klang allein.
+
+**Ein Wert, den jede kennen sollte:** Die Herzfrequenz in Ruhe liegt beim
+erwachsenen Pferd bei etwa 28 bis 40 Schlägen in der Minute. Steigt sie über
+50, während der Bauch prall ist, gehört der Tierarzt gerufen, unabhängig
+davon, wie ruhig das Pferd sonst wirkt.
+
 ## Häufige Ursachen für Aufgasungen
 
 ### 1. **Fütterungsfehler**
@@ -84,8 +107,20 @@ sind:
 
 - Veränderte Darmgeräusche oder völlige Stille im Bauchbereich
 
-**Bei Verdacht auf Gaskolik sofort einen Tierarzt rufen!**
-Je schneller behandelt wird, desto geringer das Risiko für Folgeschäden.
+**Bei Verdacht auf Gaskolik sofort einen Tierarzt rufen.** Je schneller
+behandelt wird, desto geringer das Risiko für Folgeschäden.
+
+Bis er da ist:
+
+- **Futter weg**, auch Heu. Der Darm braucht jetzt nichts, was noch dazukommt.
+- **Wasser stehen lassen**, das darf bleiben.
+- **Führen im Schritt**, wenn das Pferd es zulässt. Das bringt den Darm in
+  Bewegung. Kein Longieren, kein Traben.
+- **Wälzen zulassen**, wenn es sich nicht abbringen lässt. Die alte Regel,
+  Pferde am Wälzen zu hindern, ist überholt; wichtiger ist, dass es sich dabei
+  nicht verletzt.
+- **Puls und Darmgeräusche notieren**, mit Uhrzeit. Der Tierarzt fragt danach,
+  und im Nachhinein erinnert sich niemand richtig.
 
 ## Soforthilfe und Vorbeugung
 
@@ -125,28 +160,18 @@ gesamten Organismus, von der Nährstoffaufnahme bis zum Immunsystem.
 Genau hier setzt eine **gezielte Darmsanierung** an:
 Nicht Symptome überdecken, sondern das Gleichgewicht wiederherstellen.
 
-## Mein 3-Phasen-Darmsanierungsplan für Pferde
+## Wenn du es der Reihe nach angehen willst
 
-Mit meinem **3-Phasen-Darmsanierungsplan** erhältst du eine klare, umsetzbare
-Anleitung:
+Mein 3-Phasen-Plan geht in dieser Reihenfolge vor: erst den Darm entlasten und
+die Reizfaktoren wegnehmen, dann die nützlichen Bakterien gezielt aufbauen,
+dann stabil halten. Der Aufbau vor der Entlastung ist der häufigste Fehler,
+und er kostet Wochen.
 
-- **Vorbereitung**. Darm entlasten und Reizfaktoren entfernen
+[[angebot:darmaufbau]]
 
-- **Aufbau**, gezielte Unterstützung der nützlichen Darmbakterien
+## Zum Schluss
 
-- **Stabilisierung**, langfristig gesundes Darmmilieu sichern
-
-Das Konzept basiert auf jahrelanger Praxiserfahrung und ist **für jedes Pferd
-geeignet**, nicht nur für akute Fälle.
-Denn: Ein gesunder Darm ist die Basis für Leistungsfähigkeit, Wohlbefinden und
-ein starkes Immunsystem.
-
-Hier geht’s zu deinem 3-Phasen-Darmsanierungsplan
-
-###
-
-Blähungen beim Pferd sind mehr als ein kosmetisches Problem. Sie sind oft ein
-Zeichen dafür, dass im Verdauungssystem etwas aus dem Gleichgewicht geraten
-ist. Mit der richtigen Kombination aus Fütterung, Bewegung, Stressmanagement
-und gezielter Darmpflege lassen sich nicht nur akute Beschwerden lindern,
-sondern auch langfristig vorbeugen.
+Blähungen sind mehr als ein kosmetisches Problem. Sie sind ein Zeichen dafür,
+dass im Verdauungssystem etwas aus dem Gleichgewicht geraten ist. Fütterung,
+Bewegung und Ruhe wirken dabei zusammen, und keines der drei ersetzt die
+anderen beiden.
