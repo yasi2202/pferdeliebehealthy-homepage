@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
+import Stimmen from "@/components/Stimmen";
 import {
   ausbildung,
   module,
@@ -361,6 +362,12 @@ export default function AusbildungSeite() {
           </div>
         </div>
       </section>
+
+      {/* --------------------------------------------------------- Stimmen */}
+      {/* Vor dem Ueber-mich-Block: erst sagen andere etwas ueber die
+          Ausbildung, dann stellt sich Yasemin selbst vor. Andersherum
+          klaenge es, als muesste sie sich rechtfertigen. */}
+      <Stimmen slug="ausbildung" />
 
       {/* ------------------------------------------------------ Über mich */}
       <section className="px-6 sm:px-8 pb-16 sm:pb-24">

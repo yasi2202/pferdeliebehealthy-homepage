@@ -3,6 +3,7 @@ import Link from "next/link";
 import { preisText } from "@/lib/shop";
 import Stimmen from "@/components/Stimmen";
 import Kauffragen from "@/components/Kauffragen";
+import WerDahinterSteht from "@/components/WerDahinterSteht";
 import type { DigitalProdukt } from "@/lib/digital";
 import type { Verkaufstext } from "@/lib/verkaufstexte";
 
@@ -249,6 +250,11 @@ export default function Verkaufsseite({
           Zeigt sich nur, wenn es zu diesem Produkt eine passende Stimme gibt,
           siehe lib/stimmen.ts. */}
       <Stimmen slug={produkt.slug} />
+
+      {/* ------------------------------------------------ Wer dahintersteht */}
+      {/* Nach den Stimmen: erst sagen andere etwas, dann stellt sie sich
+          selbst vor, dann kommt der Knopf. */}
+      <WerDahinterSteht />
 
       {/* --------------------------------------------------------- Abschluss */}
       <section className="px-6 pb-20 sm:px-8 sm:pb-28">
