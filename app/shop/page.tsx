@@ -191,9 +191,14 @@ const FOTO: Record<
   //   Fuetterungsberatung darf so ein Pferd nicht stehen: Die Leute, die das
   //   sehen, kennen Pferde.
   //
-  //   Der Ausschnitt nimmt deshalb nur Kopf, Hals und Widerrist. Dort ist die
-  //   Anatomie in Ordnung, und das Herbstlaub im Hintergrund bleibt, worum es
-  //   beim Ganzjahresplan geht.
+  //   Der Ausschnitt nimmt deshalb nur den Kopf. Die erste Fassung hatte noch
+  //   Hals und Widerrist dabei, und darin zog sich das Pferd sichtbar in die
+  //   Laenge -- derselbe Fehler, nur weiter weg. Jetzt ist es ein Portraet,
+  //   und das Herbstlaub im Hintergrund bleibt, worum es beim Ganzjahresplan
+  //   geht.
+  //
+  //   Die Datei ist deshalb 760 statt 900 Pixel: Der Kopf misst im Original
+  //   nur 400 Pixel, alles darueber waere hochgerechnet und wuerde weich.
   ganzjahresfutterplan: {
     datei: "/images/kacheln/weide.jpg",
     alt: "Pferd auf der Weide vor herbstlichem Laub",
