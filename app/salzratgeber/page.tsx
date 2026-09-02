@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Verkaufsseite from "@/components/Verkaufsseite";
 import { digitalFinden } from "@/lib/digital";
+// preisText steht in shop.ts, seit es den Warenshop gibt.
+import { preisText } from "@/lib/shop";
 import { verkaufstextZu } from "@/lib/verkaufstexte";
 
 // ---------------------------------------------------------------------------
@@ -20,8 +22,8 @@ const text = verkaufstextZu(SLUG)!;
 
 const BESCHREIBUNG =
   text.einleitung[0] +
-  ` Zurzeit ${(produkt.preis / 100).toFixed(0)} €` +
-  (produkt.statt ? ` statt ${(produkt.statt / 100).toFixed(0)} €` : "") +
+  ` Zurzeit ${preisText(produkt.preis)}` +
+  (produkt.statt ? ` statt ${preisText(produkt.statt)}` : "") +
   ", dauerhafter Zugang.";
 
 export const metadata: Metadata = {

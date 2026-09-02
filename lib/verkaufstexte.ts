@@ -68,8 +68,10 @@ export type Verkaufstext = {
 
 export const verkaufstexte: Record<string, Verkaufstext> = {
   // -------------------------------------------------------------------------
-  // Salzratgeber, 7,99 €
-  // Text von der alfima-Seite, wörtlich übernommen.
+  // Salzratgeber, seit 02.09.2026 12,99 € (vorher 7,99 €)
+  // Text von der alfima-Seite, wörtlich übernommen. Er sprach von Anfang an
+  // von zwei Heften. Ausgeliefert wurde bis zum 02.09.2026 nur das erste,
+  // seitdem stimmt der Text: das Rezeptheft liegt in der Akademie.
   // -------------------------------------------------------------------------
   salzratgeber: {
     augenbraue: "Der kleine Anfang",
@@ -93,12 +95,12 @@ export const verkaufstexte: Record<string, Verkaufstext> = {
     inhaltTitel: "Zwei Hefte, direkt umsetzbar.",
     inhalte: [
       {
-        titel: "Salz in der Pferdefütterung, 13 Seiten",
-        text: "Mengen, Salzarten im Vergleich, Risikopferde, Bezugsquellen. Mit klickbarem Inhaltsverzeichnis.",
+        titel: "Salz in der Pferdefütterung, 14 Seiten",
+        text: "Mengen, Salzarten im Vergleich, Risikopferde, Sommer und Winter, Bezugsquellen. Mit klickbarem Inhaltsverzeichnis.",
       },
       {
-        titel: "Natürliche Elektrolytmischung, 6 Seiten",
-        text: "Das Rezept zum Selbermischen mit Grammangaben. Ohne Aromen, ohne Zucker.",
+        titel: "Natürliche Elektrolytmischung, 7 Seiten",
+        text: "Das Rezept zum Selbermischen mit Grammangaben, dazu die Dosierung nach Schweißverlust. Ohne Aromen, ohne Zucker.",
       },
     ],
 
@@ -172,7 +174,7 @@ export const verkaufstexte: Record<string, Verkaufstext> = {
   },
 
   // -------------------------------------------------------------------------
-  // Basisfutterkurs, 29 €
+  // Basisfutterkurs, 69 €
   // Aus der Kursbeschreibung und dem Kursinhalt gebaut, es gab keine
   // alfima-Seite: Der Kurs wurde bisher nie einzeln verkauft.
   // -------------------------------------------------------------------------

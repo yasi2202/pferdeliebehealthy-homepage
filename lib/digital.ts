@@ -132,12 +132,16 @@ export const digitalprodukte: DigitalProdukt[] = [
     gruppe: "einstieg",
     name: "Natürliche Salzversorgung für dein Pferd",
     kurzname: "Salzratgeber",
-    preis: 799,
+    // Preis am 02.09.2026 von 7,99 auf 12,99 angehoben. Grund: Das zweite
+    // Heft, die Elektrolytmischung, ist seitdem tatsächlich dabei. Der
+    // Verkaufstext hatte es vorher schon versprochen.
+    preis: 1299,
     mwst: 19,
     art: "kurs",
-    kurz: "Wissen, Praxis und Rezept in einem.",
+    kurz: "Zwei Hefte: das Wissen und das Rezept zum Selbermischen.",
     leistung:
-      "Digitaler Zugang zum Salzratgeber in der Pferdeliebehealthy Akademie, " +
+      "Digitaler Zugang zum Salzratgeber und zum Rezeptheft " +
+      "„Natürliche Elektrolytmischung“ in der Pferdeliebehealthy Akademie, " +
       "dauerhaft abrufbar.",
     // Trifft die Regel /nat[üu]rliche salzversorgung/i.
     // Geprüft: keine der NIEMALS-Regeln greift, insbesondere nicht
@@ -147,7 +151,14 @@ export const digitalprodukte: DigitalProdukt[] = [
     beschreibung: [
       {
         art: "absatz",
-        text: "Natürliche Salzversorgung für dein Pferd: Wissen, Praxis und Rezept in einem.",
+        text:
+          "Natürliche Salzversorgung für dein Pferd: zwei Hefte, einmal das " +
+          "Wissen und einmal das Rezept. Der Ratgeber auf 14 Seiten sagt dir, " +
+          "wie viel Salz dein Pferd braucht, welches Salz dafür taugt und " +
+          "woran du Mangel und Überschuss erkennst. Das Rezeptheft auf 7 " +
+          "Seiten enthält die Elektrolytmischung zum Selbermischen, mit " +
+          "Grammangaben, Dosierung nach Schweißverlust und Einkaufsliste. " +
+          "Ohne Traubenzucker, ohne Aromen, ohne Füllstoffe.",
       },
     ],
   },

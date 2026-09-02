@@ -33,7 +33,7 @@ const TITEL = "Mineral-Klarheit: verstehen, ob das Mineralfutter zu deinem Pferd
 // wird aus dem Katalog gebaut, damit er nicht irgendwann veraltet dasteht.
 const BESCHREIBUNG =
   "Der Kurs mit Rechner: Du liest eine Deklaration nicht mehr nur, du verstehst sie, und rechnest selbst durch, ob ein Mineralfutter zu deinem Pferd passt. " +
-  `Zurzeit ${(produkt.preis / 100).toFixed(0)} € statt ${(produkt.statt! / 100).toFixed(0)} €, dauerhafter Zugang.`;
+  `Zurzeit ${preisText(produkt.preis)} statt ${preisText(produkt.statt!)}, dauerhafter Zugang.`;
 
 export const metadata: Metadata = {
   alternates: { canonical: "/mineral-klarheit" },
