@@ -199,6 +199,11 @@ const FOTO: Record<
     alt: "Pferd auf der Weide vor herbstlichem Laub",
     schnitt: "object-center",
   },
+  darmaufbau: {
+    datei: "/images/kacheln/heu-cobs.jpg",
+    alt: "Heu und Grascobs auf einem Holztisch",
+    schnitt: "object-center",
+  },
   basisfutterkurs: {
     datei: "/images/kacheln/futtereimer.jpg",
     alt: "Futtereimer mit Müsli aus Pellets, Flocken und Getreide",
@@ -294,17 +299,35 @@ function DigitalKarte({ p }: { p: DigitalProdukt }) {
               cover.foto ? "items-end" : "items-center"
             }`}
           >
-            <h3 className="w-full max-w-[88%] bg-ink px-2 py-4 text-center text-cream shadow-sm sm:max-w-[80%] sm:px-4 sm:py-6">
-              <span className="block font-serif text-[14px] leading-tight sm:text-[19px] md:text-[20px]">
+            {/* ▸ DER KASTEN IST EIN ETIKETT, KEIN AUFGEKLEBTER BLOCK.
+                Erste Fassung war eine volle dunkle Fläche. Die saß auf dem
+                Foto wie ein Pflaster. Drei Kleinigkeiten machen daraus ein
+                Cover:
+
+                - Er ist leicht durchscheinend und weichgezeichnet, das Motiv
+                  darunter bleibt zu ahnen, statt abgedeckt zu sein.
+                - Eine feine Linie läuft innen umlaufend mit. Das ist der
+                  Griff, mit dem Buchumschläge seit jeher arbeiten, und er
+                  kostet nichts an Lesbarkeit.
+                - Der Name steht in der Schrift der Überschriften, die kleine
+                  Zeile darunter gesperrt in Versalien. Zusammen liest sich
+                  das als Titel und Untertitel, nicht als Beschriftung. */}
+            <h3 className="relative w-full max-w-[88%] bg-ink/80 px-3 py-5 text-center text-cream shadow-lg backdrop-blur-[3px] sm:max-w-[78%] sm:px-5 sm:py-7">
+              <span
+                className="pointer-events-none absolute inset-[5px] border border-cream/25 sm:inset-[7px]"
+                aria-hidden="true"
+              />
+
+              <span className="relative block font-serif text-[14px] leading-tight sm:text-[19px] md:text-[21px]">
                 {p.kurzname}
               </span>
 
               <span
-                className="mx-auto mt-2 block h-px w-6 bg-cream/40 sm:mt-3 sm:w-8"
+                className="relative mx-auto mt-2 block h-px w-6 bg-cream/45 sm:mt-3 sm:w-9"
                 aria-hidden="true"
               />
 
-              <span className="mt-2 block text-[8.5px] font-semibold uppercase tracking-[0.14em] text-cream/70 sm:mt-3 sm:text-[10.5px] sm:tracking-[0.16em]">
+              <span className="relative mt-2 block text-[8.5px] font-semibold uppercase tracking-[0.16em] text-cream/75 sm:mt-3 sm:text-[10.5px] sm:tracking-[0.18em]">
                 {ZEILE[p.slug] ?? cover.zeile}
               </span>
             </h3>
