@@ -173,6 +173,11 @@ const FOTO: Record<
     alt: "Pferd frisst Heu aus einem engmaschigen Heunetz",
     schnitt: "object-center",
   },
+  "symptom-navigator": {
+    datei: "/images/kacheln/nuestern.jpg",
+    alt: "Nahaufnahme der Nüstern eines Pferdes",
+    schnitt: "object-center",
+  },
 };
 
 const ZEILE: Record<string, string> = {
