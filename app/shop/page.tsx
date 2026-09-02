@@ -183,6 +183,11 @@ const FOTO: Record<
     alt: "Messbecher mit Pellets neben einer Küchenwaage",
     schnitt: "object-center",
   },
+  equidesk: {
+    datei: "/images/kacheln/schreibtisch.jpg",
+    alt: "Schreibtisch mit Laptop, Notizbuch und Kaffeetasse, daneben ein Halfter",
+    schnitt: "object-center",
+  },
 };
 
 const ZEILE: Record<string, string> = {
