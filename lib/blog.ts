@@ -78,11 +78,28 @@ function datumLesbar(wert: unknown): string {
   return d.toISOString().slice(0, 10);
 }
 
+/** Sollen auch die Entwürfe angezeigt werden?
+ *
+ *  Nur örtlich, zum Durchsehen vor der Freigabe:
+ *
+ *      BLOG_ENTWUERFE=1 npm.cmd run build
+ *      BLOG_ENTWUERFE=1 npm.cmd start
+ *
+ *  Auf dem Server ist die Variable nicht gesetzt, dort bleiben Entwürfe also
+ *  unsichtbar, egal was hier steht. Die zweite Bedingung ist ein Netz für den
+ *  Fall, dass sie doch einmal in die Vercel-Einstellungen gerät.
+ *
+ *  Die Vorlage bleibt auch beim Durchsehen außen vor, sie ist kein Beitrag. */
+const ENTWUERFE_ZEIGEN =
+  process.env.BLOG_ENTWUERFE === "1" && process.env.VERCEL !== "1";
+
 function dateienLesen(): string[] {
   if (!fs.existsSync(ORDNER)) return [];
-  return fs
-    .readdirSync(ORDNER)
-    .filter((f) => f.endsWith(".md") && !f.startsWith("_"));
+  return fs.readdirSync(ORDNER).filter((f) => {
+    if (!f.endsWith(".md")) return false;
+    if (f === "_vorlage.md") return false;
+    return ENTWUERFE_ZEIGEN || !f.startsWith("_");
+  });
 }
 
 /** Aus einer Ueberschrift eine Sprungmarke machen: "Die vier Dinge" wird zu
@@ -230,7 +247,13 @@ export function alleBlogBeitraege(): BlogKopf[] {
     .map((datei) => {
       const roh = fs.readFileSync(path.join(ORDNER, datei), "utf8");
       const { data, content } = matter(roh);
-      return kopfBauen(datei.replace(/\.md$/, ""), data, content);
+      // Der Unterstrich fällt weg: Beim Durchsehen soll ein Entwurf schon
+      // unter der Adresse liegen, unter der er später steht.
+      return kopfBauen(
+        datei.replace(/^_/, "").replace(/\.md$/, ""),
+        data,
+        content
+      );
     })
     .sort((a, b) => b.datum.localeCompare(a.datum));
 }
@@ -241,7 +264,11 @@ export function blogBeitragLesen(slug: string): BlogBeitrag | null {
   // keine anderen Dateien vom Server gelesen werden koennen.
   if (!/^[a-z0-9-]+$/.test(slug)) return null;
 
-  const pfad = path.join(ORDNER, `${slug}.md`);
+  let pfad = path.join(ORDNER, `${slug}.md`);
+  // Beim Durchsehen liegt der Beitrag noch mit Unterstrich im Ordner.
+  if (!fs.existsSync(pfad) && ENTWUERFE_ZEIGEN) {
+    pfad = path.join(ORDNER, `_${slug}.md`);
+  }
   if (!fs.existsSync(pfad)) return null;
 
   const { data, content } = matter(fs.readFileSync(pfad, "utf8"));
