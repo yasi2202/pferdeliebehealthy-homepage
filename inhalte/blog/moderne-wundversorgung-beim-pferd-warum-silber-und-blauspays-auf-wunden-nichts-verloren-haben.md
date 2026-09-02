@@ -15,6 +15,25 @@ Doch während die Erstversorgung früher oft aus einem Griff zum **Silberspray
 oder Blauspray** bestand, weiß man heute: **Diese Mittel sind auf frischen
 Wunden fehl am Platz**, und können die Heilung sogar verzögern.
 
+## Zuerst: gehört diese Wunde überhaupt in deine Hand?
+
+Alles Weitere in diesem Beitrag gilt für kleine, oberflächliche Wunden. Ruf
+den Tierarzt, bevor du selbst anfängst, wenn eines davon zutrifft:
+
+- **Die Wunde klafft oder ist tiefer als die Haut.** Genäht werden kann in der
+  Regel nur in den ersten Stunden, danach heilt sie offen und mit Narbe.
+- **Sie liegt über einem Gelenk, einer Sehnenscheide oder am Huf.** Eine
+  Gelenkbeteiligung ist ein Notfall, auch wenn die Wunde winzig aussieht.
+- **Nageltritt oder ein anderer Stich in die Sohle.** Nagel möglichst stecken
+  lassen oder Lage genau markieren, das ist für die Beurteilung wichtig.
+- **Die Blutung hört nach zehn Minuten Druck nicht auf**, oder das Blut ist
+  hellrot und spritzt.
+- **Das Pferd lahmt**, die Stelle schwillt stark an oder wird heiß.
+- **Der Tetanusschutz ist unklar oder älter als zwei Jahre.** Tetanus verläuft
+  beim Pferd fast immer tödlich, die Impfung ist der einzige Schutz.
+
+Bleibt es bei der Schramme auf der Koppel, geht es so weiter.
+
 ## Warum Silber- und Blauspays problematisch sind
 
 - **Silbersprays** legen sich wie eine starre Schicht über die Wunde, das

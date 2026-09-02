@@ -17,6 +17,12 @@ Beides greift zu kurz.
 Hier steht, was natürliche Entwurmung wirklich bedeutet, wo sie ihre Stärken hat und wo der Griff zur klassischen Wurmkur
 weiterhin unverzichtbar bleibt.
 
+Eines vorweg, damit es nicht untergeht: Kotproben und Wurmkuren laufen über
+deinen Tierarzt. Wurmmittel sind verschreibungspflichtig, und welche Probe
+wann sinnvoll ist, hängt von Alter, Haltung und Weidemanagement ab. Kräuter
+ersetzen weder die Untersuchung noch die Behandlung eines nachgewiesenen
+Befalls.
+
 ## Warum die Routineentwurmung ausgedient hat
 
 Über Jahrzehnte galt die feste Wurmkur alle drei Monate als Goldstandard.

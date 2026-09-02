@@ -143,6 +143,17 @@ function lesezeitSchaetzen(text: string): number {
 function enthaeltWerbung(html: string): boolean {
   if (html.includes("partnerkasten")) return true;
 
+  // Empfehlungslinks erkennt man an ihrer Kennung, auch wenn der Shop gar
+  // nicht in lib/empfehlungen.ts steht. Genau so ein Fall ist im CBD-Beitrag
+  // aufgefallen: ein Affiliate-Link auf einen Shop, den die Partnerliste
+  // nicht kennt, und damit ein bezahlter Hinweis ohne Kennzeichnung.
+  //
+  // Die Muster decken die gaengigen Partnerprogramme ab. Lieber einmal zu
+  // viel gekennzeichnet als einmal zu wenig.
+  if (/[?&](a_aid|a_bid|spartner|ref|refid|partner|aff|affiliate|tag)=/i.test(html)) {
+    return true;
+  }
+
   const text = html.toLowerCase();
   return empfehlungen.some((e) => {
     if (!e.bezahlt) return false;

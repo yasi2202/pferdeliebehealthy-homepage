@@ -169,6 +169,18 @@ Ich empfehle SWISS FX, weil:
 
 - und aus **zertifiziertem EU-Nutzhanf** gewonnen wird
 
-Wichtig: CBD ersetzt keine tierärztliche Diagnose, kann aber **begleitend
-zur Darmsanierung, Stressregulation oder Schmerztherapie** eine echte
-Unterstützung sein.
+## Zwei Dinge, die du vorher wissen musst
+
+**Im Turniersport ist CBD nicht erlaubt.** Es steht auf den Dopinglisten der
+Verbände, und eine Karenzzeit ist nicht verlässlich anzugeben, weil die
+Produkte unterschiedlich zusammengesetzt sind. Wer auf Turniere geht, lässt
+die Finger davon oder klärt es vorher mit dem Verband ab. Die Sperre trifft
+die Reiterin, nicht den Hersteller.
+
+**Und der rechtliche Rahmen ist eng.** CBD-Öl ist für Pferde weder als
+Arzneimittel zugelassen noch als Futtermittelzusatzstoff. Was du hier liest,
+sind Beobachtungen aus der Praxis und keine Heilversprechen.
+
+Wichtig also: CBD ersetzt keine tierärztliche Diagnose. Bei Schmerzen,
+anhaltender Unruhe oder Magenproblemen gehört das Pferd untersucht, bevor
+irgendetwas ins Futter kommt.
