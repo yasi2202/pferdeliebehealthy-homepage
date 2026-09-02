@@ -66,6 +66,14 @@ export type Verkaufstext = {
   abschlussText: string;
 };
 
+// ▸ MENGENANGABEN GEHÖREN IN DIE EINLEITUNG, und zwar geprüfte.
+//   „Elf Seiten", „zwanzig Seiten", „58 Zeichen aus elf Körperbereichen":
+//   Wer 22 Euro für ein PDF ausgibt, will vorher wissen, ob es zehn Seiten
+//   sind oder hundert. Fehlt die Angabe, denkt man sich das Schlechtere.
+//
+//   Die Zahlen sind am 02.09.2026 an den Dateien selbst nachgezählt worden,
+//   nicht geschätzt. Wenn ein Heft neu gebaut wird, gehört die Zahl hier
+//   nachgezogen; eine falsche Angabe ist schlimmer als keine.
 export const verkaufstexte: Record<string, Verkaufstext> = {
   // -------------------------------------------------------------------------
   // Salzratgeber, seit 02.09.2026 12,99 € (vorher 7,99 €)
@@ -126,7 +134,7 @@ export const verkaufstexte: Record<string, Verkaufstext> = {
     seitentitel:
       "Magen Reset für Pferde: Praxiswissen, Rezept und schnelle Hilfe",
     einleitung: [
-      "Dieser Mini-Guide zeigt dir, wie du den Magen deines Pferdes gezielt unterstützen kannst.",
+      "Dieser Mini-Guide zeigt dir auf elf Seiten, wie du den Magen deines Pferdes gezielt unterstützen kannst.",
       "Du bekommst leicht umsetzbares Wissen, klare Fütterungsempfehlungen und ein bewährtes Magenrezept, das die Schleimhäute schützt und beruhigt.",
     ],
 
@@ -249,7 +257,7 @@ export const verkaufstexte: Record<string, Verkaufstext> = {
     seitentitel:
       "Darmaufbau beim Pferd: das E-Book für eine gesunde Verdauung",
     einleitung: [
-      "Wie ein widerstandsfähiger Darm aufgebaut wird und welche Bausteine dein Pferd dafür wirklich braucht.",
+      "Auf zwanzig Seiten: wie ein widerstandsfähiger Darm aufgebaut wird und welche Bausteine dein Pferd dafür wirklich braucht.",
       "Kein Kurprogramm von der Stange, sondern das Verständnis dahinter, damit du selbst entscheiden kannst, was dein Pferd braucht.",
     ],
 
@@ -303,7 +311,7 @@ export const verkaufstexte: Record<string, Verkaufstext> = {
     seitentitel:
       "Symptom-Navigator für Pferde: Beobachtungen richtig einordnen",
     einleitung: [
-      "Erkenne Symptome bei deinem Pferd und ordne sie richtig ein.",
+      "Erkenne Symptome bei deinem Pferd und ordne sie richtig ein: 58 Zeichen aus elf Körperbereichen, nachschlagbar wie in einem Register.",
       "Das Nachschlagewerk für den Alltag, mit klaren Hinweisen, wann du selbst handeln kannst und wann ein Tierarzt gebraucht wird.",
     ],
 
