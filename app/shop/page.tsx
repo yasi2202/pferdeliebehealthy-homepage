@@ -204,12 +204,14 @@ const FOTO: Record<
     alt: "Stapel Fachbücher zur Pferdefütterung, daneben ein Ordner und ein Notizbuch",
     schnitt: "object-center",
   },
-  // Bei der 1:1 Begleitung steht dein eigenes Foto, nicht weil kein anderes
-  // da wäre, sondern weil es echt ist. Genau darum geht es bei dem Angebot.
+  // Vier Schalen fuer vier Jahreszeiten: Heu, Pellets, Kraeuter, Mineral.
+  // Das Foto von Yasemin und Helena stand hier kurz, steht aber weiter auf
+  // der Verkaufsseite; in der Kachel passt das Jahresmotiv besser zum
+  // Angebot.
   "pferdeliebe-365": {
-    datei: "/images/yasi-helena.jpg",
-    alt: "Yasemin mit ihrer Stute Helena",
-    schnitt: "object-[50%_72%]",
+    datei: "/images/kacheln/vier-schalen.jpg",
+    alt: "Vier Schalen mit Heu, Pellets, Kräutern und Mineralpulver",
+    schnitt: "object-center",
   },
   darmaufbau: {
     datei: "/images/kacheln/heu-cobs.jpg",
