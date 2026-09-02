@@ -28,7 +28,15 @@
 
 export type Empfehlung = {
   partner: string;
-  code: string;
+  /**
+   * Der Rabattcode. **Darf fehlen.**
+   *
+   * ▸ NICHT JEDER PARTNERCODE DARF ÖFFENTLICH STEHEN. PerNaturam vergibt
+   *   einen persönlichen Kundencode, der nicht auf eine offene Seite gehört.
+   *   Fehlt `code`, zeigt die Empfehlungsseite den Partner ohne Codefeld,
+   *   und der Link bleibt.
+   */
+  code?: string;
   rabatt?: string;
   url?: string;
   warum?: string;
@@ -46,7 +54,11 @@ export const empfehlungen: Empfehlung[] = [
   },
   {
     partner: "PerNaturam",
-    code: "1677E54156",
+    // ▸ HIER STEHT ABSICHTLICH KEIN CODE.
+    //   Der Code von PerNaturam ist ein persönlicher Kundencode und darf
+    //   nicht öffentlich stehen (Yasemin, 02.09.2026). Er ist am selben Tag
+    //   von dieser Seite entfernt worden. Wer ihn braucht, bekommt ihn von
+    //   Yasemin direkt. Bitte nicht wieder eintragen.
     url: "https://www.pernaturam.de/",
     warum:
       "Breites Sortiment an Kräutern, Mineralstoffen und Ergänzungsfutter auf naturheilkundlicher Basis, für Pferde ebenso wie für Hund und Katze.",

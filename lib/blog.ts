@@ -157,7 +157,7 @@ function enthaeltWerbung(html: string): boolean {
   const text = html.toLowerCase();
   return empfehlungen.some((e) => {
     if (!e.bezahlt) return false;
-    if (text.includes(e.code.toLowerCase())) return true;
+    if (e.code && text.includes(e.code.toLowerCase())) return true;
     // Der Shop-Link, ohne Protokoll und ohne www, damit auch die
     // Partnerlinks aus den alten Beitraegen erkannt werden.
     if (e.url) {

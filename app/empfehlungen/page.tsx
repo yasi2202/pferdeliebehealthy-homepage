@@ -54,7 +54,10 @@ export default function EmpfehlungenSeite() {
                 )}
               </div>
 
-              <RabattCode code={e.code} />
+              {/* Ohne Code kein Codefeld. Nicht jeder Partner erlaubt, dass
+                  sein Rabattcode offen auf einer Seite steht; siehe den
+                  Hinweis bei PerNaturam in lib/empfehlungen.ts. */}
+              {e.code && <RabattCode code={e.code} />}
 
               {e.url && (
                 <a
