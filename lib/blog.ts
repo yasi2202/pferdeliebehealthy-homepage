@@ -228,6 +228,19 @@ function partnerkaestenSetzen(html: string): string {
   );
 }
 
+/** Legt um jede Tabelle einen Rahmen, der bei Bedarf seitlich scrollt.
+ *
+ *  Eine Tabelle mit vier Spalten passt auf keinem Handy in die Breite. Ohne
+ *  diesen Rahmen schiebt sie die ganze Seite auseinander, und dann laesst sich
+ *  auch der Fliesstext nur noch seitlich verschoben lesen. Mit ihm bleibt das
+ *  Scrollen auf die Tabelle beschraenkt. */
+function tabellenEinfassen(html: string): string {
+  return html.replace(
+    /<table>([\s\S]*?)<\/table>/g,
+    (treffer) => `<div class="tabelle-rahmen">${treffer}</div>`
+  );
+}
+
 /** Haengt an jede `<h2>` eine Sprungmarke und sammelt sie ein.
  *
  *  marked vergibt selbst keine Kennungen mehr, ohne sie kann das
@@ -303,7 +316,7 @@ export function blogBeitragLesen(slug: string): BlogBeitrag | null {
 
   const { data, content } = matter(fs.readFileSync(pfad, "utf8"));
   const roh = marked.parse(content, { async: false }) as string;
-  const { html, kapitel } = ankerSetzen(partnerkaestenSetzen(roh));
+  const { html, kapitel } = ankerSetzen(tabellenEinfassen(partnerkaestenSetzen(roh)));
 
   return {
     ...kopfBauen(slug, data, content),

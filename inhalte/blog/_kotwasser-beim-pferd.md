@@ -6,7 +6,7 @@ kategorie: "Magen und Darm"
 angebot: "futter-check"
 bild: ""
 bildText: ""
-beschreibung: "Kotwasser ist keine Krankheit, sondern ein Hinweis. Was im Darm dahintersteckt, warum Kräuter allein selten reichen und welche vier Dinge du zuerst prüfen solltest."
+beschreibung: "Kotwasser ist keine Krankheit, sondern ein Hinweis. Was im Darm dahintersteckt, welche Zahlen du kennen musst und wann Laborwerte wirklich etwas bringen."
 ---
 
 Kotwasser ist keine eigene Krankheit. Es ist ein Zeichen dafür, dass im
@@ -42,14 +42,53 @@ Was das Gleichgewicht kippt, ist meistens eine dieser vier Sachen:
 - **Ein abrupter Wechsel.** Neues Heu, Anweiden, ein Stallwechsel. Nicht die
   Umstellung an sich ist das Problem, sondern ihr Tempo.
 
+## Die vier Zahlen, um die es geht
+
+Bevor du irgendetwas fütterst, brauchst du vier Zahlen. Sie kosten nichts
+außer einer Woche Aufmerksamkeit, und in den meisten Fällen, die bei mir
+landen, steckt in einer davon schon die halbe Antwort.
+
+| Was | Richtwert | Für ein 600-Kilo-Pferd |
+|---|---|---|
+| Heu am Tag | mindestens 1,5 kg je 100 kg Körpergewicht, besser 1,8 bis 2 kg | 9 kg als Untergrenze, 11 bis 12 kg als Ziel |
+| Längste Fresspause | höchstens 4 Stunden | auch nachts, nicht nur tagsüber |
+| Wasser am Tag | rund 5 Liter je 100 kg Körpergewicht in Ruhe | etwa 30 Liter, bei Hitze und Arbeit deutlich mehr |
+| Stärke je Mahlzeit | höchstens 1 g je kg Körpergewicht, bei empfindlichen Pferden 0,5 g | 600 g, empfindlich 300 g |
+
+Die letzte Zeile ist die, die am meisten überrascht, deshalb einmal
+durchgerechnet.
+
+### Ein Rechenbeispiel, das viele erschreckt
+
+Ein handelsübliches Müsli hat oft um die 30 Prozent Stärke. Ein Kilo davon
+sind also rund 300 Gramm Stärke.
+
+Für ein 600-Kilo-Pferd mit empfindlicher Verdauung ist das genau die
+Obergrenze für **eine** Mahlzeit. Wer morgens und abends je ein Kilo füttert,
+liegt bei 600 Gramm am Tag. Kommen Leckerlis, Mash und ein Zusatzfutter mit
+Melasse als Träger dazu, sind es schnell 800 Gramm.
+
+Was der Dünndarm nicht schafft, wandert weiter in den Dickdarm. Dort wird
+Stärke von Bakterien vergoren, die eigentlich in der Minderheit sein sollten.
+Sie vermehren sich, das Milieu wird saurer, und die Bakterien, die aus
+Rohfaser Energie gewinnen, verlieren ihren Lebensraum. Genau an dieser Stelle
+entsteht der Kreislauf, aus dem Kotwasser kommt.
+
+Deshalb ist die Frage nie „welches Mittel hilft gegen Kotwasser", sondern
+immer zuerst: Wie viel Stärke kommt bei euch am Tag zusammen, und in wie
+vielen Mahlzeiten?
+
 ## Die vier Dinge, die ich zuerst prüfe
 
 ### 1. Die Heumenge, gewogen
 
-Nicht geschätzt, gewogen. Als Untergrenze gelten anderthalb Kilo Heu je
-hundert Kilo Körpergewicht, trocken gewogen. Für ein 600-Kilo-Pferd sind das
-neun Kilo am Tag. Sehr viele Pferde mit Kotwasser bekommen weniger, ohne dass
-es jemand ahnt, weil niemand je eine Waage drangehalten hat.
+Nicht geschätzt, gewogen. Eine Heuscheibe wiegt zwischen anderthalb und über
+vier Kilo, je nach Ballen, Pressung und Feuchtigkeit. „Zwei Scheiben" können
+also drei Kilo sein oder acht.
+
+Kauf dir eine digitale Hängewaage, die gibt es für gut zehn Euro, und wieg
+eine Woche lang jede Portion, bevor sie ins Netz oder auf den Boden geht.
+Danach weißt du es, und musst nie wieder schätzen.
 
 ### 2. Die Fresspausen
 
@@ -58,17 +97,52 @@ steht. Über vier Stunden wird es kritisch. Bei sechs Stunden und mehr steht
 ein leerer Verdauungstrakt einer weiterlaufenden Säureproduktion gegenüber,
 und das wirkt bis in den Dickdarm hinein.
 
+Wenn die Menge stimmt, die Pausen aber zu lang sind, ist ein engmaschiges Netz
+oft die einfachere Lösung als mehr Heu.
+
 ### 3. Was außer Heu noch im Trog landet
 
-Rechne einmal zusammen, wie viel Zucker und Stärke am Tag zusammenkommen.
-Müsli, Mash, Leckerlis, das Zusatzfutter mit Melasse als Träger. Einzeln sieht
-das alles harmlos aus. In Summe ist es oft der Grund.
+Rechne einmal zusammen, wie viel Zucker und Stärke am Tag zusammenkommen,
+nach der Tabelle oben. Müsli, Mash, Leckerlis, das Zusatzfutter mit Melasse
+als Träger. Einzeln sieht das alles harmlos aus. In Summe ist es oft der
+Grund.
 
-### 4. Die Zähne und der Wurmstatus
+### 4. Zähne, Wurmstatus und Sand
 
-Zwei Sachen, die man nicht schmecken und nicht sehen kann, die aber beide
+Drei Sachen, die man nicht schmecken und nicht sehen kann, die aber alle
 direkt auf die Verdauung schlagen. Eine Kotprobe kostet wenig, eine
 Zahnkontrolle steht ohnehin einmal im Jahr an.
+
+Sand kannst du selbst prüfen: Nimm fünf bis sechs frische Äpfel, löse sie in
+einem durchsichtigen Gefäß mit reichlich Wasser auf und lass das Ganze
+zwanzig Minuten stehen. Sand ist schwerer als alles andere und setzt sich
+unten als körnige Schicht ab. Ein paar Körnchen sind normal, ein Esslöffel
+voll ist es nicht.
+
+Wichtig dabei: Ein negativer Test schließt Sand nicht sicher aus, weil Sand
+schubweise ausgeschieden wird. Bei Verdacht ist eine Ultraschall- oder
+Röntgenuntersuchung beim Tierarzt der verlässliche Weg.
+
+## Wann Laborwerte wirklich etwas bringen
+
+Blutbilder werden bei Kotwasser oft zu früh gemacht und dann falsch gelesen.
+Ein unauffälliges Blutbild heißt nicht, dass alles in Ordnung ist, es heißt
+nur, dass es dort nichts zu sehen gibt. Sinnvoll wird das Labor, wenn die
+Fütterung steht und sich trotzdem nichts bewegt, oder wenn zusätzlich etwas
+anderes nicht stimmt.
+
+| Untersuchung | Wonach geschaut wird | Wann sie sich lohnt |
+|---|---|---|
+| Kotprobe auf Wurmeier | Strongyliden, Bandwurm, Spulwurm | vor jeder Wurmkur, und bei Kotwasser ohnehin |
+| Kotprobe auf Sand | körniger Bodensatz | Sandboden, abgefressene Weide, Heu vom Boden |
+| Blutbild und Eiweiß | Entzündungszeichen, Gesamteiweiß, Albumin | wenn das Pferd abnimmt oder matt wirkt |
+| Leberwerte | GGT, GLDH, AST | bei stumpfem Fell, Leistungsabfall, Hautproblemen |
+| Kotwasser im Sommer und Winter gleich? | zeitlicher Verlauf | wenn es saisonal auftritt, ist meist das Futter der Grund |
+
+Die Referenzbereiche stehen auf dem Laborbogen und unterscheiden sich je nach
+Labor. Wichtiger als der einzelne Wert ist ohnehin die Richtung: Ein Wert am
+oberen Rand, der vor einem halben Jahr in der Mitte lag, sagt mehr als ein
+einzelner Ausreißer.
 
 ## Was ich von Kräutern halte
 
@@ -76,7 +150,7 @@ Kräuter können viel, aber sie können nicht die Grundlage ersetzen. Bitterstof
 regen die Verdauungssäfte an, Oregano wirkt regulierend auf das Darmmilieu,
 und beides ist sinnvoll, wenn der Rest stimmt.
 
-[[partner:pernaturam]]
+[[produkt:pernaturam-amara]]
 
 Zwei Dinge sind mir dabei wichtig:
 
@@ -84,17 +158,39 @@ Zwei Dinge sind mir dabei wichtig:
 drei bis vier Wochen ins Futter, nicht dauerhaft. Was das Darmmilieu
 regulieren kann, kann es bei Dauergabe auch aus dem Gleichgewicht bringen.
 
+[[produkt:mos-grun-oregano]]
+
 **Und Geduld gehört dazu.** Ein Mikrobiom ordnet sich nicht in einer Woche. Es
 braucht Wochen bis Monate. Wer alle zehn Tage das Mittel wechselt, weil noch
 nichts passiert ist, verhindert genau das, was er erreichen will.
+
+## Wie lange es dauert
+
+Damit du weißt, wann du dir Sorgen machen solltest und wann nicht:
+
+- **Woche 1 bis 2:** Du wiegst, notierst und stellst um. Am Kotwasser ändert
+  sich noch nichts. Das ist normal und kein Zeichen dafür, dass es nicht
+  funktioniert.
+- **Woche 3 bis 6:** Die ersten Veränderungen. Meist wird es nicht schlagartig
+  besser, sondern seltener und weniger.
+- **Woche 8 bis 12:** Jetzt lässt sich beurteilen, ob die Richtung stimmt. Ist
+  bis hierhin gar nichts passiert, obwohl Heumenge, Pausen und Stärke sitzen,
+  gehört mehr dazu als Fütterung.
+
+Führ in dieser Zeit ein kurzes Protokoll, drei Zeilen am Tag reichen: Menge,
+längste Pause, wie stark das Kotwasser war. Ohne Aufschrieb verlässt du dich
+nach acht Wochen auf dein Gefühl, und das Gefühl täuscht in beide Richtungen.
 
 ## Wann der Tierarzt drangehört
 
 Kotwasser allein ist unangenehm, aber kein Notfall. Anders sieht es aus, wenn
 dazu Fieber kommt, dein Pferd abnimmt, im Allgemeinzustand nachlässt, weniger
 frisst oder Kolikanzeichen zeigt. Dann gehört das abgeklärt, und zwar zügig.
+
 Auch wenn das Kotwasser über Monate bleibt, obwohl Fütterung und Haltung
-stimmen, lohnt sich ein Blutbild und eine Kotuntersuchung.
+stimmen, lohnt sich die Abklärung. Dahinter können eine chronische
+Darmentzündung, ein Sandbefund oder eine Zahnerkrankung stecken, und keines
+davon lässt sich mit Kräutern lösen.
 
 ## Wo ich anfangen würde
 
