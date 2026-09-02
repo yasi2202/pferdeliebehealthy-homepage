@@ -72,7 +72,84 @@ const ALLE_KURSE = [
   "basisfutterkurs",
 ];
 
+// ▸ DIE REIHENFOLGE ENTSCHEIDET, WAS ZU SEHEN IST.
+//   `stimmenZu` nimmt die ersten beiden, die zum Produkt passen. Deshalb
+//   stehen die Stimmen mit einem konkreten Ergebnis oben und die allgemeinen
+//   darunter: „meine Stute war das erste Mal seit Jahren trocken" trägt
+//   weiter als „tolle Kurse".
+//
+// ▸ DIE ERSTEN SECHS STAMMEN AUS MAILS, NICHT AUS GOOGLE.
+//   Sie haben Yasemin privat geschrieben. Alle sechs wurden am 02.09.2026
+//   gefragt und haben zugestimmt, dass ihr Satz mit Vornamen auf der Seite
+//   stehen darf. Ohne diese Zusage darf hier nichts hinein: Lob aus einer
+//   privaten Mail ist keine Veröffentlichung.
 export const stimmen: Stimme[] = [
+  {
+    // Die stärkste Stimme überhaupt: ein Ergebnis, das man nachfühlen kann.
+    // Wer Kotwasser kennt, weiß, was „konstant trocken" heißt.
+    zitat:
+      "Letztes Jahr gab es einen großen Darmaufbau von Dir. Damit war meine " +
+      "Stute das erste Mal seit Jahren konstant trocken ❤️ Generell fressen " +
+      "sie langsamer, äppeln weniger und verwerten besser.",
+    name: "Vivien",
+    rolle: "über den Darmaufbau",
+    produkte: ["darmaufbau", "basisfutterkurs", "pferdeliebe-365"],
+  },
+  {
+    // Der Vergleich mit einem Mitbewerber. So etwas kann man selbst nicht
+    // schreiben, und es beantwortet die Frage „warum bei ihr und nicht
+    // woanders" besser als jeder eigene Satz.
+    zitat:
+      "Ich liebe des Ganzjahresfutterplaner und auch die anderen Ratgeber, " +
+      "die ich bisher bei dir gekauft habe sehr. Sie bieten sowohl " +
+      "Hintergrundwissen wie auch konkrete Anleitung, was mir sehr gut " +
+      "gefällt. Ich habe auch einen Ganzjahresplaner einer anderen Dame " +
+      "gekauft und muss sagen, dass er nicht mal im Ansatz an deinen " +
+      "herankommt.",
+    name: "Carolin",
+    rolle: "über den Ganzjahresfutterplan",
+    produkte: ["ganzjahresfutterplan", "salzratgeber", "magen-reset"],
+  },
+  {
+    // Für RatioPro gab es vorher keine einzige Stimme.
+    zitat:
+      "Deine Tools entwickeln sich richtig super. Es macht richtig Spaß " +
+      "damit zu arbeiten. Für meine vier Seniorenponys ein wirklich schönes " +
+      "Helferlein!",
+    name: "Stefanie",
+    rolle: "über den Rationsrechner",
+    produkte: ["ratiopro", "symptom-navigator", "equidesk"],
+  },
+  {
+    // ▸ DIESE STIMME IST MIT ABSICHT NICHT GLATT.
+    //   „Man muss sich Zeit nehmen und selber denken" klingt erst wie ein
+    //   Einwand, ist aber der Grund, warum man ihr glaubt. Und es stimmt:
+    //   Ein Rechner, der einem das Denken abnimmt, wäre gelogen.
+    zitat:
+      "Man muss sich schon viel Zeit nehmen und selber denken, trotzdem bin " +
+      "ich echt begeistert 😃",
+    name: "Anna",
+    rolle: "über den Rationsrechner",
+    produkte: ["ratiopro"],
+  },
+  {
+    zitat:
+      "Ich freue mich richtig, wenn ich an dem Kurs arbeiten kann. Das ist " +
+      "so viel Wissen, verständlich zusammengefasst. Ich bin total begeistert " +
+      "und würde den Kurs uneingeschränkt weiterempfehlen. Richtig top!",
+    name: "Juliane",
+    rolle: "Teilnehmerin der Ausbildung",
+    produkte: ["ausbildung"],
+  },
+  {
+    zitat:
+      "Ich bin super begeistert von dem ganzen Layout. Der Inhalt war davor " +
+      "ja schon mega, aber so sieht alles super hochwertig und toll aus. Auch " +
+      "die ganzen Reflexionsfragen sind richtig gut.",
+    name: "Hanna",
+    rolle: "über die Akademie",
+    produkte: ["ausbildung", "basisfutterkurs", "mineral-klarheit"],
+  },
   {
     // Die stärkste Stimme im Bestand: nennt ein konkretes Ergebnis, und
     // Kotwasser ist genau das Thema vom Darmaufbau.
