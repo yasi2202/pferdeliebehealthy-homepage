@@ -27,7 +27,7 @@ const produkt = digitalFinden("ganzjahresfutterplan")!;
 
 const TITEL = "Ganzjahresfutterplan für Pferde, natürlich durchs Jahr";
 const BESCHREIBUNG =
-  "Zwölf Monatspläne mit Futterplan, Mineralien und Kräutern, abgestimmt auf Fellwechsel, Weidezeit und Witterung. 29 €, dauerhafter Zugang.";
+  "Zwölf Monatspläne mit Futterplan, Mineralien und Kräutern, abgestimmt auf Fellwechsel, Weidezeit und Witterung. 59 €, dauerhafter Zugang.";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/ganzjahresfutterplan" },
