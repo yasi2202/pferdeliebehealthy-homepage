@@ -83,7 +83,7 @@ export default function Datenschutz() {
         Wirtschaftsraums. Wir erheben dabei Ihre bei WhatsApp hinterlegte
         Mobilfunknummer sowie gegebenenfalls Ihren Namen. Ihre Daten werden
         an Server der Meta Platforms Inc. in den USA übermittelt, für die
-        das Trans-Atlantic Data Privacy Framework als
+        das EU-US Data Privacy Framework als
         Angemessenheitsbeschluss der EU-Kommission gilt. Nähere
         Informationen finden Sie unter{" "}
         <a
