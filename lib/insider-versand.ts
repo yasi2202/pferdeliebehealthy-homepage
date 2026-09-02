@@ -12,6 +12,7 @@ import {
 import { insider } from "@/lib/insider";
 import type { InsiderAnmeldung } from "@/lib/insider-server";
 import type { Beitrag } from "@/lib/beitraege";
+import { bewertungslink } from "@/lib/seite";
 
 // ---------------------------------------------------------------------------
 // Der Rundversand: einen Beitrag an alle bestätigten Insider schicken.
@@ -494,6 +495,149 @@ export async function einladungVersenden(basisUrl: string): Promise<VersandErgeb
   await supabase("insider_versand", {
     method: "POST",
     body: JSON.stringify({ slug: EINLADUNG, empfaenger: verschickt }),
+  });
+
+  return { ok: true, empfaenger: verschickt, uebersprungen: geholt.aussortiert.length };
+}
+
+// ---------------------------------------------------------------------------
+// Die einmalige Bitte um eine Google-Bewertung an den ganzen Verteiler.
+//
+// ▸ WARUM ES DIESE MAIL GIBT
+//   Zwanzig Bewertungen bei über 500 Einzelberatungen und über 1.000
+//   Kursteilnehmenden. Da fehlt nicht die Zufriedenheit, da fehlt das Fragen.
+//   Der tägliche Lauf unter /api/bewertungsbitte fragt nur Leute, die über
+//   die eigene Kasse gekauft haben, und die gibt es erst seit dem 01.09.2026.
+//   Alle Kundinnen davor erreicht nur diese eine Mail.
+//
+// ▸ NUR AN BESTÄTIGTE ADRESSEN.
+//   Die Frage nach der Zufriedenheit ist Werbung (BGH VI ZR 225/17). Ohne
+//   Einwilligung darf sie nicht raus. `bestaetigt = true` heißt: Die Person
+//   hat auf einen Bestätigungslink geklickt, das ist dokumentiert. Wer nur
+//   übernommen wurde und nie geklickt hat, bekommt sie nicht.
+//
+// ▸ SIE GEHT NUR EINMAL RAUS, dafür sorgt der Vermerk in insider_versand.
+//   Eine zweite Bitte wäre keine Bitte mehr.
+//
+// ▸ SIE FRAGT NACH EINER EHRLICHEN BEWERTUNG, nicht nach einer guten, und
+//   bietet ausdrücklich an, sich stattdessen zu melden, wenn etwas nicht
+//   gepasst hat. Wer um fünf Sterne bittet, kauft sich Bewertungen.
+// ---------------------------------------------------------------------------
+
+/** Unter diesem Namen wird die Bitte vermerkt, damit sie nicht zweimal
+ *  rausgeht. Der Unterstrich zeigt, dass es kein Beitrag ist. */
+const BEWERTUNGSBITTE = "_bewertungsbitte";
+
+/** Ob die Bitte schon einmal raus ist. Für die Anzeige im Adminbereich. */
+export async function bewertungsbitteSchonRaus(): Promise<Versandvermerk | null> {
+  return vermerkFinden(BEWERTUNGSBITTE);
+}
+
+/** Wie viele Adressen die Bitte bekommen würden. */
+export async function bewertungsbitteEmpfaenger(): Promise<number> {
+  const res = await supabase(
+    `${TABELLE}?bestaetigt=is.true&select=email`,
+    { headers: { Prefer: "count=exact", Range: "0-0" } },
+  );
+  const bereich = res.headers.get("content-range");
+  const gesamt = bereich?.split("/")[1];
+  return gesamt && gesamt !== "*" ? Number(gesamt) : 0;
+}
+
+export async function bewertungsbitteRundmail(
+  basisUrl: string,
+): Promise<VersandErgebnis> {
+  if (!bewertungslink) {
+    return {
+      ok: false,
+      grund: "fehler",
+      text: "Es ist kein Bewertungslink hinterlegt, siehe lib/seite.ts.",
+    };
+  }
+
+  if (await vermerkFinden(BEWERTUNGSBITTE)) {
+    return {
+      ok: false,
+      grund: "schon-versendet",
+      text: "Die Bitte um eine Bewertung ist schon einmal rausgegangen.",
+    };
+  }
+
+  const geholt = await empfaengerHolen(
+    `${TABELLE}?bestaetigt=is.true&select=vorname,email,token`,
+  );
+
+  if (!geholt) {
+    return { ok: false, grund: "fehler", text: "Die Adressliste war nicht erreichbar." };
+  }
+
+  if (geholt.liste.length === 0) {
+    return { ok: false, grund: "keine-empfaenger", text: "Es gibt keine bestätigten Adressen." };
+  }
+
+  const { verschickt, fehler } = await inBuendelnVerschicken(
+    geholt.liste,
+    (e) => {
+      const abmeldeLink = `${basisUrl}/insider-abmelden?token=${encodeURIComponent(e.token)}`;
+
+      return {
+        from: VON,
+        to: [e.email],
+        reply_to: ANTWORT_AN,
+        subject: "Darf ich dich um eine Minute bitten?",
+        html: rahmen(`
+          <p style="font-size:17px;">${anrede(e.vorname)}</p>
+
+          <p style="font-size:16px;line-height:1.6;">
+            ich habe eine Bitte, und sie kostet dich ungefähr eine Minute.
+          </p>
+
+          <p style="font-size:16px;line-height:1.6;">
+            Wenn dir etwas von mir geholfen hat, ein Kurs, ein Heft oder eine
+            Beratung, dann schreib ein paar Zeilen bei Google. Für jemanden,
+            der zum ersten Mal auf meine Seite kommt und nicht weiß, ob das
+            hier etwas taugt, ist dein Satz mehr wert als alles, was ich
+            selbst über meine Angebote schreiben kann.
+          </p>
+
+          <p style="margin:28px 0;">
+            <a href="${bewertungslink}" style="background:#B87878;color:#fff;padding:14px 28px;border-radius:999px;text-decoration:none;font-size:16px;display:inline-block;">
+              Bewertung schreiben
+            </a>
+          </p>
+
+          <p style="font-size:16px;line-height:1.6;">
+            Schreib bitte ehrlich. Wenn etwas gefehlt hat oder anders war, als
+            du erwartet hast, gehört das genauso hinein. Und wenn du lieber
+            erst mit mir sprechen möchtest: Antworte einfach auf diese Mail,
+            dann klären wir das zuerst.
+          </p>
+
+          <p style="font-size:16px;line-height:1.6;">
+            Danke, dass du da bist.<br>Yasi
+          </p>
+
+          <p style="font-size:13px;line-height:1.6;color:#8a7070;margin-top:28px;">
+            Du bekommst diese Mail, weil du bei den ${esc(insider.name)}
+            angemeldet bist. <a href="${abmeldeLink}" style="color:#8a7070;">Hier abmelden</a>
+          </p>
+        `),
+      };
+    },
+    "Bewertungsbitte",
+  );
+
+  if (verschickt === 0) {
+    return {
+      ok: false,
+      grund: "fehler",
+      text: `Es ist keine Mail rausgegangen. ${fehler ?? ""}`.trim(),
+    };
+  }
+
+  await supabase("insider_versand", {
+    method: "POST",
+    body: JSON.stringify({ slug: BEWERTUNGSBITTE, empfaenger: verschickt }),
   });
 
   return { ok: true, empfaenger: verschickt, uebersprungen: geholt.aussortiert.length };

@@ -7,6 +7,8 @@ import {
   alleVersandvermerke,
   offeneUebernahmen,
   nachfrageSchonRaus,
+  bewertungsbitteSchonRaus,
+  bewertungsbitteEmpfaenger,
   offeneEinladungen,
   einladungSchonRaus,
 } from "@/lib/insider-versand";
@@ -14,6 +16,7 @@ import { supabaseZaehlen } from "@/lib/versand";
 import VersandKnopf from "@/components/VersandKnopf";
 import NachfrageKnopf from "@/components/NachfrageKnopf";
 import EinladungKnopf from "@/components/EinladungKnopf";
+import BewertungsbitteKnopf from "@/components/BewertungsbitteKnopf";
 
 // ---------------------------------------------------------------------------
 // Yasis Versandseite: alle Beiträge, daneben ein Knopf "An alle Insider
@@ -70,6 +73,8 @@ export default async function VersandSeite() {
   const nachfrage = await nachfrageSchonRaus();
   const eingeladen = await offeneEinladungen();
   const einladung = await einladungSchonRaus();
+  const bewertung = await bewertungsbitteSchonRaus();
+  const bewertungEmpfaenger = bewertung ? 0 : await bewertungsbitteEmpfaenger();
 
   return (
     <main className="py-14 sm:py-20 px-6 sm:px-8">
@@ -125,6 +130,42 @@ export default async function VersandSeite() {
             )}
           </div>
         )}
+
+        {/* ▸ DIE EINMALIGE BITTE UM EINE GOOGLE-BEWERTUNG.
+            Zwanzig Bewertungen bei ueber 500 Einzelberatungen: Da fehlt nicht
+            die Zufriedenheit, da fehlt das Fragen. Der taegliche Lauf unter
+            /api/bewertungsbitte erreicht nur Leute, die ueber die eigene
+            Kasse gekauft haben, und die gibt es erst seit dem 01.09.2026.
+            Alle Kundinnen davor erreicht nur diese eine Mail.
+
+            Sie geht ausschliesslich an bestaetigte Adressen: Die Frage nach
+            der Zufriedenheit ist Werbung (BGH VI ZR 225/17) und braucht eine
+            Einwilligung. */}
+        <div className="bg-cream-deep rounded-[18px] p-6 sm:p-7 mt-6">
+          <div className="text-[11px] tracking-[0.16em] uppercase text-rose-deep font-semibold mb-3">
+            Google-Bewertungen
+          </div>
+          <h2 className="font-serif text-[20px] sm:text-[23px] leading-snug mb-3">
+            Einmal den ganzen Verteiler um eine Bewertung bitten
+          </h2>
+          <p className="text-[14.5px] text-ink-soft leading-relaxed max-w-xl mb-5">
+            Zwanzig Bewertungen bei über 500 Einzelberatungen: Da fehlt nicht
+            die Zufriedenheit, da fehlt das Fragen. Die Mail bittet um eine
+            ehrliche Bewertung, ausdrücklich auch wenn etwas gefehlt hat, und
+            bietet an, sich stattdessen bei dir zu melden. Sie geht nur an
+            bestätigte Adressen und nur ein einziges Mal.
+          </p>
+
+          {bewertung ? (
+            <p className="text-[14px] text-ink-soft">
+              ✓ Verschickt am{" "}
+              {datumDeutsch(bewertung.versendet_am.slice(0, 10))} an{" "}
+              {bewertung.empfaenger} Adressen
+            </p>
+          ) : (
+            <BewertungsbitteKnopf anzahl={bewertungEmpfaenger} />
+          )}
+        </div>
 
         {/* Die einmalige Einladung an die Bestandskundinnen aus Tentary.
             Verschwindet, sobald niemand mehr darauf wartet. */}
