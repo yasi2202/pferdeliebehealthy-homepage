@@ -295,10 +295,16 @@ export const digitalprodukte: DigitalProdukt[] = [
   },
   {
     slug: "darmaufbau",
-    gruppe: "kurs",
+    // ▸ STAND 02.09.2026 BEI DEN E-BOOKS, NICHT MEHR BEI DEN KURSEN.
+    //   Es ist eines, sagt sein eigener Kurztext, und in der Kursreihe stand
+    //   es als viertes allein in einer neuen Zeile.
+    gruppe: "einstieg",
     name: "Darmaufbau beim Pferd",
     kurzname: "Darmaufbau",
-    preis: 3900,
+    // Von 39 auf 22 Euro heruntergesetzt am 02.09.2026. Der Streichpreis ist
+    // echt: 39 Euro war bis dahin der verlangte Preis.
+    preis: 2200,
+    statt: 3900,
     mwst: 19,
     art: "kurs",
     kurz: "Das E-Book für eine gesunde Verdauung.",
@@ -350,7 +356,9 @@ export const digitalprodukte: DigitalProdukt[] = [
     gruppe: "werkzeug",
     name: "RatioPro",
     kurzname: "RatioPro",
+    // Aktionspreis seit dem 02.09.2026, regulaer 99 Euro.
     preis: 6900,
+    statt: 9900,
     mwst: 19,
     art: "kurs",
     kurz: "Der Rechner, der versteht, was dein Pferd wirklich braucht.",
