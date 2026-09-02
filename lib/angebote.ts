@@ -149,6 +149,15 @@ export const angebotsHinweise: Record<string, Angebotshinweis> = {
     // erklärt, und der kostenlose Schnupperkurs steht dort ganz oben.
     url: "/ausbildung",
   },
+  darmaufbau: {
+    augenbraue: "Dazu passend",
+    name: "Darmaufbau beim Pferd",
+    text: "Der 3-Phasen-Plan als E-Book: den Darm vorbereiten, aufbauen und stabil halten, der Reihe nach statt nach Gefühl.",
+    knopf: "Darmaufbau ansehen",
+    // Die eigene Kasse, nicht mehr ThriveCart. In den alten Blogbeiträgen
+    // hieß der Kurs "3-Phasen-Darmsanierung", das Produkt ist dasselbe.
+    url: "/kasse/darmaufbau",
+  },
 };
 
 /** Findet den Angebotshinweis zu einem Schlüssel. Null, wenn keiner passt.
