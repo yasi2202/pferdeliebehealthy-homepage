@@ -444,14 +444,15 @@ verkaufstexte["pferdeliebe-365"] = {
     "Pferdeliebe 365: deine 1:1 Futterberatung als Gesundheitsakte",
   einleitung: [
     "Du möchtest die Fütterung deines Pferdes nicht nur einmal überprüfen lassen, sondern dein Pferd übers ganze Jahr begleiten und gesund durch jede Jahreszeit bringen?",
-    "Anders als bei einer klassischen Einmalberatung, die nach dem ersten Plan endet, bekommst du hier eine echte Gesundheitsakte für dein Pferd. Auf rund 18 Seiten entsteht ein vollständiges Bild deines Pferdes, das mit euch mitwächst.",
+    "Anders als bei einer klassischen Einmalberatung, die nach dem ersten Plan endet, bekommst du hier eine echte Gesundheitsakte für dein Pferd. Auf rund 18 Seiten entsteht ein vollständiges Bild deines Pferdes, mit einem Saisonplan, der dich durch alle zwölf Monate führt, und Vorlagen, in denen du selbst weiterschreibst.",
+    "Persönlich begleite ich dich in den vier Wochen nach der Erstellung, in denen der Plan bei euch ankommt und angepasst wird. Danach arbeitest du mit der Akte weiter, und wenn du wieder Unterstützung brauchst, etwa weil neue Blutwerte vorliegen, kannst du eine Nachberatung dazubuchen.",
   ],
 
   problemAugenbraue: "Warum eine Akte",
   problemTitel: "Ein Futterplan ist eine Momentaufnahme.",
   problem: [
     "Eine klassische Beratung endet mit einem Plan. Der passt genau so lange, wie sich nichts ändert. Dann kommt der Fellwechsel, ein neues Heu, eine Verletzung, und du stehst wieder da, wo du vorher warst.",
-    "Deshalb entsteht hier keine einmalige Empfehlung, sondern eine Akte, in der du fortlaufend weiterschreibst: deine Beobachtungen, Fotos, Laborwerte. Du siehst schwarz auf weiß, wie sich dein Pferd Monat für Monat entwickelt.",
+    "Deshalb entsteht hier keine einmalige Empfehlung, sondern eine Akte, in der du fortlaufend weiterschreibst: deine Beobachtungen, Fotos, Laborwerte. Du siehst schwarz auf weiß, wie sich dein Pferd Monat für Monat entwickelt. Die Akte gehört dir und läuft nicht ab.",
     "Damit jede Akte die Aufmerksamkeit bekommt, die sie verdient, nehme ich bewusst nur wenige Pferde gleichzeitig an.",
   ],
 
@@ -468,22 +469,33 @@ verkaufstexte["pferdeliebe-365"] = {
     },
     {
       titel: "Umsetzungsplan, 30-Tage-Check und Saisonplan",
-      text: "Schritt für Schritt, mit einem Check zum Nachhalten der ersten Wochen und einem Plan, der dich durch das ganze Jahr führt.",
+      text: "Schritt für Schritt, mit einem Check zum Nachhalten der ersten Wochen und einem Saisonplan, der dich durch alle zwölf Monate führt. Den Saisonplan arbeitest du selbst ab, er ist Teil der Akte.",
     },
     {
       titel: "Notfallplan, Symptomverlauf, Maßnahmenplan",
       text: "Für die Momente, in denen es schnell gehen muss, und um Veränderungen über die Zeit festzuhalten.",
     },
   ],
+  // ▸ HIER STEHT SEIT DEM 02.09.2026 AUSDRÜCKLICH, WAS 365 BEDEUTET.
+  //   Der Name und die Werbetexte lasen sich vorher wie ein Jahr persönliche
+  //   Betreuung. Persönlich sind es vier Wochen; durchs Jahr führen die Akte
+  //   und der Saisonplan. Beides steht jetzt nebeneinander, damit niemand
+  //   etwas anderes erwartet, als er bekommt.
+  //
+  //   ▸ WENN SICH DER UMFANG ÄNDERT, ÄNDERT SICH AUCH DIESER TEXT. Sollte
+  //     Yasemin später feste Termine übers Jahr zusagen (Heuanalyse,
+  //     Blutbild, Jahresbilanz), gehört das hier hinein -- und dann darf auch
+  //     der Preis steigen. Am 02.09.2026 hat sie sich ausdrücklich dagegen
+  //     entschieden.
   inhaltSchluss:
-    "Nach deiner Buchung erhältst du einen ausführlichen Fragebogen zu Haltung, aktueller Fütterung und Gesundheitszustand deines Pferdes, dazu bitte ich dich um ein paar Fotos. Sobald alle Unterlagen vollständig bei mir eingegangen sind, erstelle ich eure Gesundheitsakte. Danach begleite ich dich 4 Wochen persönlich bei der Umsetzung und passe den Plan an, wenn es nötig wird.",
+    "Nach deiner Buchung erhältst du einen ausführlichen Fragebogen zu Haltung, aktueller Fütterung und Gesundheitszustand deines Pferdes, dazu bitte ich dich um ein paar Fotos. Sobald alle Unterlagen vollständig bei mir eingegangen sind, erstelle ich eure Gesundheitsakte. Danach begleite ich dich vier Wochen persönlich bei der Umsetzung und passe den Plan an, wenn es nötig wird. Was 365 bedeutet: Die Akte und der Saisonplan sind auf zwölf Monate angelegt, du arbeitest damit das ganze Jahr weiter. Meine persönliche Begleitung sind die vier Wochen; danach kannst du jederzeit eine Nachberatung dazubuchen.",
 
   fuerWenTitel: "Für wen Pferdeliebe 365 geeignet ist",
   fuerWen: [
     "Für dich, wenn du dein Pferd naturnah und bedarfsgerecht versorgen und dabei langfristig begleitet werden möchtest.",
     "Für dich, wenn bereits gesundheitliche Themen bestehen oder sich erste Auffälligkeiten zeigen, oder wenn du dir Struktur, Klarheit und Sicherheit in der Fütterung über das ganze Jahr wünschst.",
     "Für dich, wenn du bestehende Empfehlungen, etwa aus Labor, Tierarztbefund oder Bioresonanz, fachlich einordnen und sinnvoll umsetzen möchtest.",
-    "Nicht für dich, wenn du nur schnell eine Antwort auf eine einzelne Frage brauchst. Dafür ist der Aufwand auf beiden Seiten zu groß.",
+    "Nicht für dich, wenn du das ganze Jahr über durchgehend Rückfragen stellen möchtest. Meine persönliche Begleitung sind die vier Wochen nach der Erstellung, danach führen dich die Unterlagen. Und nicht für dich, wenn du nur schnell eine Antwort auf eine einzelne Frage brauchst, dafür ist der Aufwand auf beiden Seiten zu groß.",
   ],
 
   abschlussTitel: "Eine Akte, die mitwächst.",
