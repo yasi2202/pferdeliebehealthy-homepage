@@ -55,7 +55,9 @@ const gruppen = [
   {
     schluessel: "einstieg" as const,
     titel: "Zum Einstieg",
-    text: "Kurze Hefte zu einer einzelnen Frage. Schnell gelesen, sofort umsetzbar.",
+    // Ohne Beisatz, so gewuenscht am 02.09.2026. Ein leerer Text laesst die
+    // Zeile ganz weg, statt einen leeren Absatz zu setzen.
+    text: "",
   },
   {
     schluessel: "kurs" as const,
@@ -231,9 +233,14 @@ function DigitalKarte({ p }: { p: DigitalProdukt }) {
                 className={`object-cover ${cover.foto.schnitt}`}
               />
 
-              {/* Ohne Abdunklung säuft der Kasten im Foto ab. */}
+              {/* ▸ NUR UNTEN ABDUNKELN, NICHT ÜBERALL.
+                  Vorher lag eine gleichmäßige Schicht über dem ganzen Bild.
+                  Der Kasten hob sich davon zwar ab, aber die Fotos wirkten
+                  düster, gerade das Heunetz im Gegenlicht. Jetzt läuft die
+                  Abdunklung von oben nach unten: Das Motiv bleibt hell, und
+                  dort, wo der Kasten sitzt, ist der Grund ruhig genug. */}
               <span
-                className="absolute inset-0 bg-ink/40"
+                className="absolute inset-0 bg-gradient-to-b from-transparent via-ink/5 to-ink/45"
                 aria-hidden="true"
               />
             </>
@@ -343,9 +350,11 @@ export default function ShopSeite() {
                 <h2 className="mb-3 font-serif text-[26px] font-normal leading-[1.15] tracking-tight sm:text-[32px]">
                   {g.titel}
                 </h2>
-                <p className="text-[16px] leading-relaxed text-ink-soft">
-                  {g.text}
-                </p>
+                {g.text && (
+                  <p className="text-[16px] leading-relaxed text-ink-soft">
+                    {g.text}
+                  </p>
+                )}
               </div>
 
               {/* Auf dem Handy stehen ZWEI Kacheln nebeneinander, nicht eine.
