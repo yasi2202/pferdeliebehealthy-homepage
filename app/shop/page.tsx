@@ -335,7 +335,22 @@ function DigitalKarte({ p }: { p: DigitalProdukt }) {
                 aria-hidden="true"
               />
 
-              <span className="relative block font-serif text-[14px] leading-tight sm:text-[19px] md:text-[21px]">
+              {/* ▸ HIER MUSS GETRENNT WERDEN, SONST LAEUFT DER NAME UEBER.
+                  "Ganzjahresfutterplan" ist ein Wort und bricht von allein
+                  nirgends um. Auf dem Handy ist eine Kachel keine 180 Pixel
+                  breit, der Name sprengte den Kasten und ragte ueber den
+                  Bildrand hinaus -- gemeldet am 02.09.2026 mit einem Foto vom
+                  iPhone.
+
+                  `hyphens-auto` trennt nach den Regeln der Seitensprache, und
+                  die steht in app/layout.tsx auf "de". Daraus wird
+                  "Ganzjahres-futterplan". `break-words` ist der Notnagel fuer
+                  den Fall, dass ein Browser keine Trennmuster hat: Dann bricht
+                  das Wort hart, aber es bricht.
+
+                  ▸ NUR AM BILDSCHIRM PRUEFEN REICHT NICHT. Am Rechner ist die
+                    Kachel breit genug, dort faellt es nicht auf. */}
+              <span className="relative block break-words hyphens-auto font-serif text-[14px] leading-tight sm:text-[19px] md:text-[21px]">
                 {p.kurzname}
               </span>
 
@@ -344,7 +359,9 @@ function DigitalKarte({ p }: { p: DigitalProdukt }) {
                 aria-hidden="true"
               />
 
-              <span className="relative mt-2 block text-[8.5px] font-semibold uppercase tracking-[0.16em] text-cream/75 sm:mt-3 sm:text-[10.5px] sm:tracking-[0.18em]">
+              {/* „NACHSCHLAGEWERK" ist gesperrt fast so breit wie die Kachel.
+                  Deshalb auf dem Handy weniger Sperrung und Umbruch erlaubt. */}
+              <span className="relative mt-2 block break-words text-[8.5px] font-semibold uppercase tracking-[0.1em] text-cream/75 sm:mt-3 sm:text-[10.5px] sm:tracking-[0.18em]">
                 {ZEILE[p.slug] ?? cover.zeile}
               </span>
             </h3>
