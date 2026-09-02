@@ -51,29 +51,17 @@ export const metadata: Metadata = {
   },
 };
 
+// ▸ NUR TITEL, KEIN BEISATZ.
+//   Bis zum 02.09.2026 stand unter jeder Gruppenüberschrift noch ein Satz
+//   („Kurze Hefte zu einer einzelnen Frage" und so weiter). Der ist raus:
+//   Auf einer Übersicht will man die Ware sehen, nicht lesen, wie sie
+//   gemeint ist. Erklärt wird auf der Produktseite, dort ist Platz dafür.
+//   Auch die Konkurrenz führt ihre Kategorien ohne Beisatz.
 const gruppen = [
-  {
-    schluessel: "einstieg" as const,
-    titel: "Zum Einstieg",
-    // Ohne Beisatz, so gewuenscht am 02.09.2026. Ein leerer Text laesst die
-    // Zeile ganz weg, statt einen leeren Absatz zu setzen.
-    text: "",
-  },
-  {
-    schluessel: "kurs" as const,
-    titel: "Kurse",
-    text: "Wenn du ein Thema wirklich verstehen willst, statt einer Empfehlung zu folgen.",
-  },
-  {
-    schluessel: "werkzeug" as const,
-    titel: "Werkzeuge",
-    text: "Anwendungen, die du immer wieder benutzt. Einmal zahlen, dauerhaft nutzen.",
-  },
-  {
-    schluessel: "begleitung" as const,
-    titel: "Persönliche Begleitung",
-    text: "Wenn du nicht allein arbeiten, sondern begleitet werden möchtest.",
-  },
+  { schluessel: "einstieg" as const, titel: "Zum Einstieg" },
+  { schluessel: "kurs" as const, titel: "Kurse" },
+  { schluessel: "werkzeug" as const, titel: "Werkzeuge" },
+  { schluessel: "begleitung" as const, titel: "Persönliche Begleitung" },
 ];
 
 /** Ob ein Angebot noch nicht buchbar ist. Siehe `verkaufAb` in digital.ts. */
@@ -316,26 +304,27 @@ function DigitalKarte({ p }: { p: DigitalProdukt }) {
 export default function ShopSeite() {
   return (
     <main>
-      {/* ------------------------------------------------------------- Kopf */}
-      <section className="bg-ink px-6 py-16 text-cream sm:px-8 sm:py-20">
-        <div className="mx-auto max-w-6xl">
-          <span className="mb-4 block text-[13px] font-semibold uppercase tracking-[0.14em] text-rose">
-            Shop
-          </span>
+      {/* ----------------------------------------------------------- Kopf */}
+      {/* ▸ EIN SCHMALER FARBBALKEN MIT EINEM WORT, MEHR NICHT.
+          Vorher stand hier ein dunkler Block mit Überschrift und einem
+          Absatz Fließtext. Zwei Dinge stimmten daran nicht: Das Dunkel war
+          zu schwer für eine Seite, auf der es ums Aussuchen geht, und der
+          Text erklärte etwas, das niemand liest, der gerade stöbern will.
 
-          <h1 className="mb-6 max-w-3xl font-serif text-[34px] font-normal leading-[1.1] tracking-tight sm:text-[46px]">
-            Such dir aus, wo du anfangen willst.
-          </h1>
+          Der Blick zur Konkurrenz (pferdegesundhe.it) zeigt dieselbe Lösung
+          wie in jedem gewachsenen Shop: ein flacher Balken in der
+          Markenfarbe, darin zentriert der Name der Kategorie in Versalien.
+          Kein Satz, keine Einleitung. Wer hier ankommt, will die Ware sehen,
+          und die beginnt eine Bildschirmhöhe früher als vorher.
 
-          <p className="max-w-2xl text-[17px] leading-relaxed text-cream/80 sm:text-[18px]">
-            Du musst nicht mit dem Größten beginnen. Die meisten fangen mit
-            einem Heft für acht Euro an und merken dabei, welche Frage sie
-            eigentlich beschäftigt.
-          </p>
-        </div>
+          Der Titel und die Beschreibung für Google stehen weiter oben in
+          `metadata`, dort gehen sie durch diese Kürzung nicht verloren. */}
+      <section className="bg-rose-deep px-6 py-10 text-center sm:px-8 sm:py-12">
+        <h1 className="font-serif text-[26px] font-normal uppercase tracking-[0.18em] text-white sm:text-[32px]">
+          Shop
+        </h1>
       </section>
 
-      {/* ------------------------------------------------ Digitale Angebote */}
       {gruppen.map((g) => {
         const dieser = digitalprodukte
           .filter((p) => p.gruppe === g.schluessel)
@@ -346,16 +335,9 @@ export default function ShopSeite() {
         return (
           <section key={g.schluessel} className="px-6 py-14 sm:px-8 sm:py-16">
             <div className="mx-auto max-w-6xl">
-              <div className="mb-8 max-w-2xl">
-                <h2 className="mb-3 font-serif text-[26px] font-normal leading-[1.15] tracking-tight sm:text-[32px]">
-                  {g.titel}
-                </h2>
-                {g.text && (
-                  <p className="text-[16px] leading-relaxed text-ink-soft">
-                    {g.text}
-                  </p>
-                )}
-              </div>
+              <h2 className="mb-8 font-serif text-[26px] font-normal leading-[1.15] tracking-tight sm:text-[32px]">
+                {g.titel}
+              </h2>
 
               {/* Auf dem Handy stehen ZWEI Kacheln nebeneinander, nicht eine.
                   Eine einzelne quadratische Kachel füllt sonst den halben
