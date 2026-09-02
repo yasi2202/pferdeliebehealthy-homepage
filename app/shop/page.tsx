@@ -183,6 +183,22 @@ const FOTO: Record<
     alt: "Messbecher mit Pellets neben einer Küchenwaage",
     schnitt: "object-center",
   },
+  // ▸ WARUM HIER NUR DER KOPF STEHT UND NICHT DAS GANZE PFERD.
+  //   Die Vorlage zeigt ein Pferd in voller Groesse auf der Herbstweide, und
+  //   daran stimmt einiges nicht: Die Vorderbeine setzen mitten am Bauch an
+  //   statt an der Schulter, die Brust fehlt, von den Hinterbeinen ist nur
+  //   eines zu sehen, und Hufe hat es keine. In einer Kachel fuer eine
+  //   Fuetterungsberatung darf so ein Pferd nicht stehen: Die Leute, die das
+  //   sehen, kennen Pferde.
+  //
+  //   Der Ausschnitt nimmt deshalb nur Kopf, Hals und Widerrist. Dort ist die
+  //   Anatomie in Ordnung, und das Herbstlaub im Hintergrund bleibt, worum es
+  //   beim Ganzjahresplan geht.
+  ganzjahresfutterplan: {
+    datei: "/images/kacheln/weide.jpg",
+    alt: "Pferd auf der Weide vor herbstlichem Laub",
+    schnitt: "object-center",
+  },
   "mineral-klarheit": {
     datei: "/images/kacheln/mineralfutter.jpg",
     alt: "Schale mit Mineralpulver neben einem Messbecher mit Pellets",
