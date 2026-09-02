@@ -238,6 +238,24 @@ const FOTO: Record<
   },
 };
 
+// ▸ WO EIN LANGER NAME GETRENNT WERDEN DARF.
+//   Auf dem Handy ist eine Kachel keine 130 Pixel breit, „Ganzjahresfutter-
+//   plan" passt dort in keine Zeile. `hyphens-auto` trennt zwar nach den
+//   Regeln der Seitensprache, aber nur, wenn der Browser deutsche
+//   Trennmuster geladen hat. Chrome tut das nicht immer, und dann bricht
+//   `break-words` hart mitten im Wort: „Ganzjahresfutt / erplan".
+//
+//   Das Zeichen unten (­) ist ein weiches Trennzeichen. Es ist
+//   unsichtbar, solange das Wort in eine Zeile passt, und wird zum
+//   Bindestrich, sobald umgebrochen werden muss. Damit sieht die Trennung in
+//   jedem Browser gleich aus.
+//
+//   Nur Namen eintragen, bei denen es wirklich klemmt. Wer hier alles
+//   einträgt, pflegt eine Liste, die niemand braucht.
+const TRENNUNG: Record<string, string> = {
+  ganzjahresfutterplan: "Ganzjahres­futterplan",
+};
+
 const ZEILE: Record<string, string> = {
   salzratgeber: "E-Book",
   "magen-reset": "E-Book",
@@ -367,7 +385,7 @@ function DigitalKarte({ p }: { p: DigitalProdukt }) {
                     Schrumpfen, und erst dann greifen Trennung und Umbruch.
                     Genau daran ist der erste Versuch gescheitert. */}
               <span className="relative block break-words hyphens-auto font-serif text-[14px] leading-tight sm:text-[19px] md:text-[21px]">
-                {p.kurzname}
+                {TRENNUNG[p.slug] ?? p.kurzname}
               </span>
 
               <span
