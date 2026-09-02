@@ -273,6 +273,44 @@ export default function Datenschutz() {
         .
       </p>
 
+      <h2>Besucherzählung und Messung der Ladezeiten</h2>
+      <p>
+        Um zu erfahren, wie oft unsere Seiten aufgerufen werden und wie schnell
+        sie bei Ihnen laden, setzen wir Vercel Web Analytics und Vercel Speed
+        Insights ein. Anbieter ist die Vercel Inc., 340 S Lemon Ave #4133,
+        Walnut, CA 91789, USA.
+      </p>
+      <p>
+        Beide Dienste arbeiten ohne Cookies. Auf Ihrem Endgerät wird nichts
+        gespeichert und nichts ausgelesen, es wird keine dauerhafte Kennung
+        vergeben, und es findet keine Wiedererkennung über mehrere Websites
+        hinweg statt. Aus diesem Grund ist keine Einwilligung nach § 25 Abs. 1
+        TDDDG erforderlich.
+      </p>
+      <p>
+        Bei der Besucherzählung werden je Seitenaufruf gespeichert: Zeitpunkt,
+        aufgerufene Adresse, die Seite, von der Sie gekommen sind, bestimmte
+        Parameter in der Adresse, eine ungefähre Ortsangabe aus der IP-Adresse
+        (Land, Region, Ort), Gerätetyp, Betriebssystem und Browser. Bei der
+        Ladezeitmessung kommen die gemessenen Ladewerte und die Netzgeschwindigkeit
+        hinzu, hier wird nur das Land erfasst.
+      </p>
+      <p>
+        Ihre IP-Adresse wird dabei nicht gespeichert. Damit ein wiederkehrender
+        Aufruf innerhalb eines Tages nicht doppelt gezählt wird, bildet Vercel
+        aus der Anfrage einen Kennwert, der nach vierundzwanzig Stunden verfällt.
+        Ein Personenbezug wird nicht hergestellt, ein Nutzungsprofil entsteht
+        nicht.
+      </p>
+      <p>
+        Rechtsgrundlage ist Art. 6 Abs. 1 lit. f DSGVO. Unser berechtigtes
+        Interesse liegt darin, unser Angebot bedarfsgerecht zu gestalten und
+        technische Probleme zu erkennen. Sie können dieser Verarbeitung nach
+        Art. 21 Abs. 1 DSGVO jederzeit widersprechen, die Kontaktdaten finden
+        Sie im Impressum. Es gelten dieselben Angaben zur Übermittlung in die
+        Vereinigten Staaten wie im vorstehenden Abschnitt zum Hosting.
+      </p>
+
       <h2>Zahlungsabwicklung über Stripe</h2>
       <p>
         Für die Abwicklung von Zahlungen setzen wir Stripe ein, Anbieter ist
@@ -321,17 +359,51 @@ export default function Datenschutz() {
         .
       </p>
 
-      <h2>Cookies</h2>
+      <h2>Cookies und Speicherung in Ihrem Browser</h2>
       <p>
-        Unsere Website verwendet Cookies, kleine Textdateien, die im Browser
-        gespeichert werden und eine Wiedererkennung ermöglichen. Sie haben
-        über Ihre Browsereinstellungen volle Kontrolle über die Verwendung
-        von Cookies und können diese jederzeit löschen oder deren
-        Speicherung verhindern. Soweit nicht anders angegeben, setzen wir
-        nur technisch notwendige Cookies ein, um unser Angebot
-        nutzerfreundlicher, effektiver und sicherer zu machen. Die Nutzung
-        erfolgt auf Grundlage des § 25 Abs. 2 TDDDG in Verbindung mit Art. 6
-        Abs. 1 lit. f DSGVO.
+        Cookies sind kleine Textdateien, die eine Website in Ihrem Browser
+        ablegt. Wir setzen ausschließlich solche ein, die für den Betrieb der
+        Seite und für die von Ihnen aufgerufenen Funktionen notwendig sind.
+        Cookies zu Werbezwecken, zur Reichweitenmessung oder von
+        Drittanbietern setzen wir nicht ein. Deshalb erscheint auf unserer
+        Website auch kein Einwilligungsbanner.
+      </p>
+      <p>Im Einzelnen sind das zwei Cookies:</p>
+      <ul>
+        <li>
+          <strong>pfh_insider_zugang</strong>, Laufzeit ein Jahr. Er öffnet
+          den Insider-Bereich, nachdem Sie sich über den Bestätigungslink in
+          unserer E-Mail angemeldet haben.
+        </li>
+        <li>
+          <strong>pfh_admin</strong>, Laufzeit eine Woche. Er hält die
+          Anmeldung am Verwaltungsbereich. Diesen Cookie erhält nur die
+          Betreiberin der Website, nicht Besucherinnen und Besucher.
+        </li>
+      </ul>
+      <p>
+        Daneben legt Ihr Browser zwei Angaben in seinem eigenen Speicher ab,
+        die unseren Server nie erreichen: den Inhalt Ihres Warenkorbs, damit
+        er beim Wechsel zwischen den Seiten erhalten bleibt, und den Vermerk,
+        dass Sie den Hinweis auf unseren Insider-Kanal weggeklickt haben.
+        Beide enthalten keine Kennung, mit der sich jemand wiedererkennen
+        ließe.
+      </p>
+      <p>
+        Rechtsgrundlage für die Speicherung und das Auslesen ist § 25 Abs. 2
+        Nr. 2 TDDDG, da beides unbedingt erforderlich ist, um Ihnen die von
+        Ihnen ausdrücklich gewünschte Funktion bereitzustellen. Die damit
+        verbundene Verarbeitung Ihrer Daten stützen wir auf Art. 6 Abs. 1
+        lit. b DSGVO, soweit sie der Anbahnung oder Erfüllung eines Vertrages
+        dient, im Übrigen auf Art. 6 Abs. 1 lit. f DSGVO. Über die
+        Einstellungen Ihres Browsers können Sie Cookies und den Browserspeicher
+        jederzeit löschen oder deren Ablage von vornherein verhindern.
+      </p>
+      <p>
+        Wenn Sie eine Bestellung bezahlen, wechseln Sie auf die Bezahlseite von
+        Stripe. Dort setzt Stripe eigene Cookies, unter anderem zur
+        Betrugsvorbeugung. Darauf haben wir keinen Einfluss, es gelten die
+        Bestimmungen von Stripe.
       </p>
 
       <h2>Betroffenenrechte und Speicherdauer</h2>
@@ -356,14 +428,14 @@ export default function Datenschutz() {
         Aufsichtsbehörde zu beschweren. Zuständig ist:
       </p>
       <p>
-        Landesbeauftragte für den Datenschutz und die Informationsfreiheit
+        Der Landesbeauftragte für den Datenschutz und die Informationsfreiheit
         Baden-Württemberg
         <br />
-        Königstrasse 10a
+        Lautenschlagerstraße 20
         <br />
         70173 Stuttgart
         <br />
-        Telefon: +49 711 6155410
+        Telefon: +49 711 615541-0
         <br />
         E-Mail: poststelle@lfdi.bwl.de
       </p>
