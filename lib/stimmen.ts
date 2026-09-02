@@ -72,6 +72,16 @@ const ALLE_KURSE = [
   "basisfutterkurs",
 ];
 
+// ▸ WER EIN PRODUKT BEIM NAMEN NENNT, GEHÖRT NUR AUF DESSEN SEITE.
+//   Am 02.09.2026 stand Carolins Satz über den Ganzjahresfutterplan auch
+//   beim Salzratgeber und beim Magen Reset, und Viviens Satz über den
+//   Darmaufbau beim Basisfutterkurs. Das fällt sofort auf und macht aus
+//   einer echten Stimme eine, die hingebogen wirkt.
+//
+//   Also: Nennt eine Stimme ein Produkt, steht sie nur dort. Nur Stimmen,
+//   die von Yasemin allgemein sprechen (Erreichbarkeit, Wissen, „ihre
+//   Kurse"), dürfen bei mehreren stehen.
+//
 // ▸ DIE REIHENFOLGE ENTSCHEIDET, WAS ZU SEHEN IST.
 //   `stimmenZu` nimmt die ersten beiden, die zum Produkt passen. Deshalb
 //   stehen die Stimmen mit einem konkreten Ergebnis oben und die allgemeinen
@@ -93,7 +103,7 @@ export const stimmen: Stimme[] = [
       "sie langsamer, äppeln weniger und verwerten besser.",
     name: "Vivien",
     rolle: "über den Darmaufbau",
-    produkte: ["darmaufbau", "basisfutterkurs", "pferdeliebe-365"],
+    produkte: ["darmaufbau"],
   },
   {
     // Der Vergleich mit einem Mitbewerber. So etwas kann man selbst nicht
@@ -119,7 +129,7 @@ export const stimmen: Stimme[] = [
       "herankommt.",
     name: "Carolin",
     rolle: "über den Ganzjahresfutterplan",
-    produkte: ["ganzjahresfutterplan", "salzratgeber", "magen-reset"],
+    produkte: ["ganzjahresfutterplan"],
   },
   {
     // Für RatioPro gab es vorher keine einzige Stimme.
@@ -129,7 +139,7 @@ export const stimmen: Stimme[] = [
       "Helferlein!",
     name: "Stefanie",
     rolle: "über den Rationsrechner",
-    produkte: ["ratiopro", "symptom-navigator", "equidesk"],
+    produkte: ["ratiopro"],
   },
   {
     // ▸ DIESE STIMME IST MIT ABSICHT NICHT GLATT.
