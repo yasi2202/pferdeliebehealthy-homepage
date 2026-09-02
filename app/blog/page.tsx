@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import { alleBlogBeitraege } from "@/lib/blog";
+import Link from "next/link";
+import { alleBlogBeitraege, alleKategorien } from "@/lib/blog";
 import { url } from "@/lib/seo";
 import { insider } from "@/lib/insider";
 import InsiderFormular from "@/components/InsiderFormular";
@@ -36,6 +37,7 @@ export function generateMetadata(): Metadata {
 
 export default function BlogSeite() {
   const beitraege = alleBlogBeitraege();
+  const kategorien = alleKategorien();
 
   return (
     <main>
@@ -88,6 +90,14 @@ export default function BlogSeite() {
       {/* Kopfbereich */}
       <section className="bg-rose-deep px-6 sm:px-8 py-14 sm:py-20">
         <div className="max-w-3xl mx-auto">
+          <nav aria-label="Sie sind hier" className="text-[13.5px] mb-6">
+            <Link href="/" className="text-cream/70 hover:text-cream transition-colors">
+              Startseite
+            </Link>
+            <span className="text-cream/40 mx-2">›</span>
+            <span className="text-cream">Blog</span>
+          </nav>
+
           <div className="flex items-start gap-5 sm:gap-7">
             <div className="min-w-0">
               <span className="block text-[13px] tracking-[0.14em] uppercase text-cream/85 font-semibold mb-4">
@@ -130,7 +140,11 @@ export default function BlogSeite() {
               </p>
             </div>
           ) : (
-            <BlogListe beitraege={beitraege} />
+            <BlogListe
+              beitraege={beitraege}
+              kategorien={kategorien}
+              alleKategorien={beitraege.map((b) => b.kategorie)}
+            />
           )}
 
           {/* Der Anmeldekasten steht unter den Beiträgen, nicht darüber. Wer

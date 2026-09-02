@@ -7,6 +7,7 @@ import {
   blogBeitragLesen,
   verwandteBeitraege,
   datumDeutsch,
+  kategorieSlug,
 } from "@/lib/blog";
 import { kategorieFarbe } from "@/lib/blog-farben";
 import { url } from "@/lib/seo";
@@ -119,6 +120,12 @@ export default async function BlogBeitragSeite({ params }: Props) {
                   {
                     "@type": "ListItem",
                     position: 3,
+                    name: beitrag.kategorie,
+                    item: url(`/blog/thema/${kategorieSlug(beitrag.kategorie)}`),
+                  },
+                  {
+                    "@type": "ListItem",
+                    position: 4,
                     name: beitrag.titel,
                   },
                 ],
@@ -133,12 +140,22 @@ export default async function BlogBeitragSeite({ params }: Props) {
           ersten Moment sehen, dass er richtig ist. */}
       <section className="bg-rose-deep px-6 sm:px-8 py-12 sm:py-16">
         <div className="max-w-2xl mx-auto">
-          <Link
-            href="/blog"
-            className="inline-block text-[14px] text-cream/70 hover:text-cream transition-colors mb-8"
-          >
-            ← Alle Beiträge
-          </Link>
+          <nav aria-label="Sie sind hier" className="text-[13.5px] mb-8">
+            <Link href="/" className="text-cream/70 hover:text-cream transition-colors">
+              Startseite
+            </Link>
+            <span className="text-cream/40 mx-2">›</span>
+            <Link href="/blog" className="text-cream/70 hover:text-cream transition-colors">
+              Blog
+            </Link>
+            <span className="text-cream/40 mx-2">›</span>
+            <Link
+              href={`/blog/thema/${kategorieSlug(beitrag.kategorie)}`}
+              className="text-cream/70 hover:text-cream transition-colors"
+            >
+              {beitrag.kategorie}
+            </Link>
+          </nav>
 
           <div className="flex flex-wrap items-center gap-x-2.5 gap-y-1 text-[11.5px] tracking-[0.1em] uppercase font-semibold mb-4">
             <span className="text-cream">{beitrag.kategorie}</span>

@@ -380,3 +380,40 @@ export function datumDeutsch(datum: string): string {
   const [j, m, t] = datum.split("-");
   return `${t}.${m}.${j}`;
 }
+
+/** Aus einer Kategorie eine Adresse machen: "Magen und Darm" wird zu
+ *  "magen-und-darm". Dieselbe Regel wie bei den Sprungmarken. */
+export function kategorieSlug(kategorie: string): string {
+  return ankerName(kategorie);
+}
+
+/** Alle Kategorien, alphabetisch, mit Anzahl der Beitraege.
+ *
+ *  Wird fuer die Themenseiten gebraucht und fuer die Knoepfe darueber. */
+export function alleKategorien(): Array<{
+  name: string;
+  slug: string;
+  anzahl: number;
+}> {
+  const zaehler = new Map<string, number>();
+  for (const b of alleBlogBeitraege()) {
+    zaehler.set(b.kategorie, (zaehler.get(b.kategorie) ?? 0) + 1);
+  }
+  return [...zaehler.entries()]
+    .map(([name, anzahl]) => ({ name, slug: kategorieSlug(name), anzahl }))
+    .sort((a, b) => a.name.localeCompare(b.name, "de"));
+}
+
+/** Die Beitraege einer Kategorie, ueber ihre Adresse gefunden. */
+export function beitraegeNachKategorie(slug: string): {
+  name: string;
+  beitraege: BlogKopf[];
+} | null {
+  const kategorie = alleKategorien().find((k) => k.slug === slug);
+  if (!kategorie) return null;
+
+  return {
+    name: kategorie.name,
+    beitraege: alleBlogBeitraege().filter((b) => b.kategorie === kategorie.name),
+  };
+}

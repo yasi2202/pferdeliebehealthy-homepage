@@ -1,6 +1,6 @@
 import type { MetadataRoute } from "next";
 import { alleBeitraege } from "@/lib/beitraege";
-import { alleBlogBeitraege } from "@/lib/blog";
+import { alleBlogBeitraege, alleKategorien } from "@/lib/blog";
 import { produkte, shopSichtbar } from "@/lib/shop";
 import { url } from "@/lib/seo";
 
@@ -48,6 +48,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
   // Google zu einer Seite und verbietet ihm dort das Lesen.
   const beitraege = alleBeitraege().filter((b) => b.frei);
   const blog = alleBlogBeitraege();
+  // Die Themenseiten. Sie sind fuer Suchmaschinen so wichtig wie die
+  // Beitraege selbst: Sie sammeln alles zu einem Thema an einer Adresse.
+  const themen = alleKategorien();
 
   // Aeltester gemeinsamer Nenner fuer "zuletzt geaendert": das Datum des
   // neuesten Beitrags, sonst nichts. Ein erfundenes Datum waere schlechter
@@ -71,6 +74,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
       : []),
     // Der Blog steht vor den Insider-Beitraegen: Er ist der Teil, der
     // gefunden werden soll.
+    ...themen.map((k) => ({
+      url: url(`/blog/thema/${k.slug}`),
+      changeFrequency: "monthly" as const,
+      priority: 0.7,
+    })),
     ...blog.map((b) => ({
       url: url(`/blog/${b.slug}`),
       ...(b.aktualisiert || b.datum
