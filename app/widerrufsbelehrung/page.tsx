@@ -90,15 +90,27 @@ export default function Widerruf() {
           beginnen, und dabei zur Kenntnis genommen haben, dass Sie Ihr
           Widerrufsrecht mit der vollständigen Erfüllung verlieren
         </li>
-        {/* ▸ OFFENER PUNKT FÜR DEN HÄNDLERBUND, absichtlich nicht selbst
-            geändert: Ergänzungsfutter im 1,5-kg-Eimer ist kaum „schnell
-            verderblich" im Sinne des § 312g Abs. 2 Nr. 2 BGB. Tragfähig wäre
-            eher Nr. 3 (versiegelte Ware, deren Siegel entfernt wurde) -- aber
-            nur, wenn die Eimer tatsächlich versiegelt ausgeliefert werden.
-            Das weiss nur Yasemin, deshalb bleibt der Satz vorerst stehen. */}
+        {/* ▸ VORHER STAND HIER „verderbliche Waren ... etwa bestimmtes
+            Futtermittel" (§ 312g Abs. 2 Nr. 2 BGB). Das trug nicht:
+            Ergänzungsfutter im 1,5-kg-Eimer ist nicht schnell verderblich,
+            und ein Ausschluss, der im Streit fällt, ist schlechter als
+            keiner -- er hält die Kundin nur davon ab, ihr Recht auszuüben.
+
+            ▸ Yasemin hat am 02.09.2026 bestätigt, dass die Eimer einen
+            Originalitätsverschluss haben („so ein Klick-Dings"), der beim
+            ersten Öffnen bricht. Damit greift Nr. 3: versiegelte Ware, die
+            aus Gründen des Gesundheitsschutzes oder der Hygiene nach dem
+            Öffnen nicht mehr zurückgenommen werden kann. Das ist bei
+            Futter- und Lebensmitteln der übliche und tragfähige Weg.
+
+            ▸ ABHÄNGIGKEIT: Fällt der Verschluss je weg oder kommt ein
+            Produkt ohne ihn dazu, verliert dieser Satz seine Grundlage.
+            Dann muss geöffnete Ware zurückgenommen werden. */}
         <li>
-          bei verderblichen Waren oder solchen, deren Verfallsdatum schnell
-          überschritten würde, etwa bestimmtes Futtermittel
+          bei Futtermitteln, deren Behälter bei der Lieferung mit einem
+          Originalitätsverschluss versehen ist, sobald Sie diesen entfernt
+          haben; geöffnetes Futter ist aus Gründen des Gesundheitsschutzes und
+          der Hygiene nicht zur Rückgabe geeignet
         </li>
       </ul>
 
