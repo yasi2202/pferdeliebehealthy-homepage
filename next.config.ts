@@ -1,5 +1,7 @@
 import type { NextConfig } from "next";
 import { alleBlogBeitraege } from "./lib/blog";
+import { alteAdressen } from "./lib/alte-adressen";
+import { mitgliederbereich } from "./lib/seite";
 
 const nextConfig: NextConfig = {
   // -------------------------------------------------------------------------
@@ -53,6 +55,15 @@ const nextConfig: NextConfig = {
 
     return [
       ...alteBlogadressen,
+      // -----------------------------------------------------------------------
+      // Die uebrigen Adressen der alten WordPress-Seite: Ausbildung, Shop,
+      // Rechtstexte, Mein Konto. Sie stehen in lib/alte-adressen.ts, damit
+      // diese Datei lesbar bleibt.
+      //
+      // Sie kommen NACH den Blogadressen, weil die einzelnen Beitraege die
+      // genaueren Adressen haben.
+      // -----------------------------------------------------------------------
+      ...alteAdressen(mitgliederbereich.url),
       {
         // Diese eine alte Adresse begann mit einem Pferde-Emoji. Der neue
         // Dateiname darf das nicht enthalten, also faengt die Weiterleitung
