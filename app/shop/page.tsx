@@ -199,6 +199,11 @@ const FOTO: Record<
     alt: "Pferd auf der Weide vor herbstlichem Laub",
     schnitt: "object-center",
   },
+  basisfutterkurs: {
+    datei: "/images/kacheln/futtereimer.jpg",
+    alt: "Futtereimer mit Müsli aus Pellets, Flocken und Getreide",
+    schnitt: "object-center",
+  },
   "mineral-klarheit": {
     datei: "/images/kacheln/mineralfutter.jpg",
     alt: "Schale mit Mineralpulver neben einem Messbecher mit Pellets",
