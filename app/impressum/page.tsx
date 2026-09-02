@@ -19,7 +19,14 @@ export default function Impressum() {
         <br />
         Deutschland
       </p>
+      {/* ▸ DIE TELEFONNUMMER FEHLTE HIER als einziger der vier Rechtstexte.
+          In den AGB, in der Widerrufsbelehrung und in der
+          Datenschutzerklärung stand sie längst. In der Widerrufsbelehrung ist
+          sie ohnehin Pflicht, also gab es nichts zu schützen, nur eine
+          Lücke. */}
       <p>
+        Telefon: <a href="tel:+4915164655430">+49 151 64655430</a>
+        <br />
         E-Mail: <a href="mailto:info@pferdeliebehealthy.de">info@pferdeliebehealthy.de</a>
       </p>
 
@@ -60,6 +67,13 @@ export default function Impressum() {
           Steuern -- kommt hier eine Überschrift "Umsatzsteuer-ID" mit der
           Nummer hin. Nötig wird sie, sobald du Leistungen an Unternehmen im
           EU-Ausland abrechnest oder am OSS-Verfahren teilnimmst. */}
+      {/* ▸ OFFENE FRAGE AN DICH, absichtlich nicht selbst entschieden:
+          Die Steuernummer muss hier nicht stehen. § 5 DDG verlangt nur die
+          Umsatzsteuer-Identifikationsnummer, und die hast du nicht. Viele
+          raten davon ab, die Steuernummer freiwillig zu veröffentlichen,
+          weil sie zusammen mit Name und Anschrift ein Stück Angriffsfläche
+          ist. Ein Nachteil beim Weglassen entsteht nicht.
+          Sag Bescheid, wenn die beiden Zeilen verschwinden sollen. */}
       <h2>Steuernummer</h2>
       <p>Steuernummer: 46138/44524</p>
 
