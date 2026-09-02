@@ -97,7 +97,7 @@ der Firma Hottemaxe mit dem Rabattcode Pferdeliebe kann man zusätzlich sparen.
 
 - **Oregano**, wirkt durch seine ätherischen Öle stoffwechsel- und
 abwehrunterstützend. Oregano wird oft nicht so gerne gefressen, deshalb nutze
-ich gerne die Pellets der Firma Mo´s Grun Rabattcode: Pferdeliebe
+ich gerne die Pellets der Firma Mo's Grun Rabattcode: Pferdeliebe
 
 Diese Kräuter können **für etwa 8 Wochen** in die Fütterung integriert
 werden, anschließend sollte eine **Pause von 2 bis 4 Wochen** eingelegt

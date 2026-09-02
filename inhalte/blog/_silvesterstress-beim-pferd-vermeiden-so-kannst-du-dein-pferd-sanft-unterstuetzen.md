@@ -82,7 +82,7 @@ stressige Zeit vorzubereiten.
 Dafür füttere ich gerne **Magnesiumfumarat oder Magnesiumcitrat**, das
 unterstützt die Nervenfunktion und hilft, innere Ruhe zu fördern.
 
-Kombiniert wird das Ganze mit den **Melissenpellets von Mo’s Grün**
+Kombiniert wird das Ganze mit den **Melissenpellets von Mo's Grun**
 Mit dem Rabattcode **pferdeliebe** bekommst du dort sogar einen kleinen
 Preisnachlass.
 
