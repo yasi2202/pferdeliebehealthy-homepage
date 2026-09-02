@@ -102,7 +102,7 @@ ohne die Risiken von Soja, dann setze **kurweise und gezielt** auf:
 
 Diese bekommst du in **sehr guter Qualität beim Biohof Elmengrund**
 
-**Mit Rabattcode: yasi05**
+[[partner:biohof-elmengrund]]
 
 Als Ergänzung sind auch:
 

@@ -82,14 +82,15 @@ stressige Zeit vorzubereiten.
 Dafür füttere ich gerne **Magnesiumfumarat oder Magnesiumcitrat**, das
 unterstützt die Nervenfunktion und hilft, innere Ruhe zu fördern.
 
-Kombiniert wird das Ganze mit den **Melissenpellets von Mo's Grun**
-Mit dem Rabattcode **pferdeliebe** bekommst du dort sogar einen kleinen
-Preisnachlass.
+Kombiniert wird das Ganze mit Melisse.
+
+[[produkt:mos-grun-melisse]]
 
 Zusätzlich setze ich auf **Passionsblume**, die sich wunderbar ergänzend
 eignet.
-Sehr gute, qualitativ hochwertige Kräuter findest du bei der Firma
-**Hottemaxe**, auch hier kannst du mit dem Code **pferdeliebe** sparen.
+Sehr gute, qualitativ hochwertige Kräuter findest du bei Hotte Maxe.
+
+[[partner:hotte-maxe]]
 
 Diese Kombination hilft, das Pferd **frühzeitig zu stabilisieren**, bevor die
 eigentliche Stressphase beginnt, sanft, natürlich und ohne Überforderung des

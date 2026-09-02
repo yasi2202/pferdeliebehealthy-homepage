@@ -86,8 +86,9 @@ besten bei Hotte Maxe. Mit dem Code Pferdeliebe bekommst du dort einen Rabatt
 auf deine Bestellung. Wer es lieber unkompliziert mag, ist mit der PerNaturam
 Mischung Bittermut WurmKräuter gut beraten. Das ist eine bewährte Kombination
 aus bitteren und wurmaktiven Kräutern, die sich besonders gut als saisonale
-Begleitung im Frühjahr und Herbst macht. Bei PerNaturam bekommst du mit dem
-Code 1677E54156 ebenfalls einen Rabatt.
+Begleitung im Frühjahr und Herbst macht.
+
+[[partner:pernaturam]]
 
 Was Kräuter nicht können, ist einen bestehenden, klinisch relevanten
 Wurmbefall zuverlässig auflösen. Wer einen deutlich positiven Kotbefund hat,

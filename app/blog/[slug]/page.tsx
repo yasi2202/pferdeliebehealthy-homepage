@@ -165,21 +165,6 @@ export default async function BlogBeitragSeite({ params }: Props) {
               {beitrag.beschreibung}
             </p>
           )}
-
-          {/* Werbekennzeichnung, wenn im Beitrag ein Rabattcode oder ein
-              Partnerlink steht. Sie gehoert hierher und nicht ans Ende: Sie
-              muss zu sehen sein, bevor die erste Empfehlung kommt. Ob sie
-              noetig ist, prueft lib/blog.ts selbst, damit sie niemand
-              vergessen kann. */}
-          {beitrag.werbung && (
-            <p className="text-[13.5px] text-cream/90 leading-relaxed max-w-xl mt-6 pt-5 border-t border-cream/25">
-              <strong className="font-semibold text-cream/90">Werbung:</strong>{" "}
-              Dieser Beitrag enthält Rabattcodes von Partnern. Bestellst du
-              damit, bekomme ich eine Provision. Für dich wird es dadurch nicht
-              teurer, im Gegenteil. Empfehlen tue ich trotzdem nur, was ich
-              selbst einsetze oder geprüft habe.
-            </p>
-          )}
         </div>
       </section>
 
@@ -245,6 +230,25 @@ export default async function BlogBeitragSeite({ params }: Props) {
               Zuletzt fachlich überarbeitet am{" "}
               {datumDeutsch(beitrag.aktualisiert)}.
             </p>
+          )}
+
+          {/* Die ausführliche Werbekennzeichnung steht am Fuß des Beitrags.
+              Der Hinweis, der rechtlich zählt, steht dagegen direkt an jeder
+              Empfehlung: Jeder Partnerkasten trägt "Werbung" in seiner
+              obersten Zeile. So ist die Kennzeichnung dort, wo die Werbung
+              ist, und der Beitrag beginnt trotzdem mit dem Fachtext statt mit
+              einem Kasten Kleingedrucktem. */}
+          {beitrag.werbung && (
+            <aside className="mt-12 pt-6 border-t border-line">
+              <p className="text-[12.5px] text-ink-soft leading-relaxed max-w-xl">
+                <strong className="font-semibold text-ink">Werbung:</strong>{" "}
+                Dieser Beitrag enthält Rabattcodes von Partnern. Bestellst du
+                damit, bekomme ich eine Provision. Für dich wird es dadurch
+                nicht teurer, im Gegenteil, mit dem Code zahlst du weniger.
+                Empfehlen tue ich trotzdem nur, was ich selbst einsetze oder
+                geprüft habe.
+              </p>
+            </aside>
           )}
 
           {/* Wer das hier geschrieben hat. Das ist keine Höflichkeit: Bei

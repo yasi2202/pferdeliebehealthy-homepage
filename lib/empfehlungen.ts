@@ -105,7 +105,11 @@ export const empfehlungen: Empfehlung[] = [
   {
     partner: "Bäralis",
     code: "D9A6A233",
-    url: "https://baeralis.de/",
+    // Mit Partnerkennung. Sie stand bisher nur im alten Blogbeitrag zur
+    // Wundversorgung, hier stand die nackte Shopadresse. Ohne die Kennung
+    // im Link wird eine Bestellung Yasemin nicht zugerechnet, der Rabattcode
+    // allein reicht bei diesem Shop nicht.
+    url: "https://baeralis.de/account/pferdeliebe?sPartner=d1c04513",
     warum:
       "Pflege und Wundversorgung fürs Pferd, mit einer eigenen Ecke für schnelle Hilfe, praktisch für die Stallapotheke.",
     bezahlt: true,

@@ -3,6 +3,7 @@ import path from "node:path";
 import matter from "gray-matter";
 import { marked } from "marked";
 import { empfehlungen, partnerFinden } from "./empfehlungen";
+import { produktFinden } from "./partnerprodukte";
 
 // ---------------------------------------------------------------------------
 // Der Blog: die oeffentliche Seite des Wissens.
@@ -174,7 +175,36 @@ function enthaeltWerbung(html: string): boolean {
  *    Links zu ranken, und das faellt auf die ganze Seite zurueck.
  */
 function partnerkaestenSetzen(html: string): string {
-  return html.replace(
+  // Erst die Produktkaesten: Sie sind die genauere Empfehlung und sollen
+  // nicht versehentlich vom allgemeinen Partnerkasten verdeckt werden.
+  let text = html.replace(
+    /<p>\s*\[\[produkt:([a-z0-9-]+)\]\]\s*<\/p>/g,
+    (_treffer, schluessel: string) => {
+      const gefunden = produktFinden(schluessel);
+      if (!gefunden) return "";
+      const { produkt, partner } = gefunden;
+
+      const ziel = produkt.url ?? partner.url;
+      const knopfText = produkt.url
+        ? `${produkt.name} ansehen`
+        : `Zum Shop von ${partner.partner}`;
+      const knopf = ziel
+        ? `<a class="partnerkasten-knopf" href="${ziel}" target="_blank" rel="sponsored noopener">${knopfText}</a>`
+        : "";
+
+      return `<aside class="partnerkasten partnerkasten-produkt">
+  <p class="partnerkasten-marke">${partner.bezahlt ? "Werbung · " : ""}Produkt dazu</p>
+  <p class="partnerkasten-name">${produkt.name}</p>
+  <p class="partnerkasten-partner">von ${partner.partner}</p>
+  <p class="partnerkasten-warum">${produkt.kurz}</p>
+  <p class="partnerkasten-code">Mein Rabattcode: <strong>${partner.code}</strong>${partner.rabatt ? `, ${partner.rabatt}` : ""}</p>
+  ${knopf}
+  ${partner.bezahlt ? `<p class="partnerkasten-hinweis">Für den Code bekomme ich eine Provision, für dich wird es dadurch nicht teurer.</p>` : ""}
+</aside>`;
+    }
+  );
+
+  return text.replace(
     /<p>\s*\[\[partner:([a-z0-9-]+)\]\]\s*<\/p>/g,
     (_treffer, schluessel: string) => {
       const partner = partnerFinden(schluessel);

@@ -65,7 +65,7 @@ genau hier an: Sie **ergänzen gezielt**, statt pauschal alles zu ersetzen.
 
 Besonders sinnvoll sind sie, wenn du:
 
-individuelle Mischungen bevorzugst****
+individuelle Mischungen bevorzugst.
 
 möglichst **getreidefrei** fütterst
 

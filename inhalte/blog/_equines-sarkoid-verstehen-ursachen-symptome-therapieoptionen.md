@@ -33,7 +33,7 @@ und Umweltfaktoren.
 
 ## Wo treten sie auf, und wie sehen sie aus?
 
-Typische Stellen sind **Kopf (Augenlider, Maul, Ohren),**Brustbereich,
+Typische Stellen sind **Kopf** (Augenlider, Maul, Ohren), **Brustbereich**,
 Innenschenkel, Unterbauch, Schlauch/Euter sowie **alte Narben** oder Wunden
 (wo sie leicht mit „überschießendem Granulationsgewebe“ verwechselt werden).
 
@@ -92,12 +92,15 @@ Immunsystem modulieren und den Stoffwechsel anregen können.
 Hier haben sich in der Praxis vor allem bewährt:
 
 - **Moringa**, liefert zahlreiche Vitamine, Spurenelemente und Antioxidantien,
-unterstützt Haut und Zellstoffwechsel. Gutes Moringa als Kraut bekommt man bei
-der Firma Hottemaxe mit dem Rabattcode Pferdeliebe kann man zusätzlich sparen.
+unterstützt Haut und Zellstoffwechsel.
+
+[[produkt:hotte-maxe-moringa]]
 
 - **Oregano**, wirkt durch seine ätherischen Öle stoffwechsel- und
 abwehrunterstützend. Oregano wird oft nicht so gerne gefressen, deshalb nutze
-ich gerne die Pellets der Firma Mo's Grun Rabattcode: Pferdeliebe
+ich gerne die Pellets.
+
+[[produkt:mos-grun-oregano]]
 
 Diese Kräuter können **für etwa 8 Wochen** in die Fütterung integriert
 werden, anschließend sollte eine **Pause von 2 bis 4 Wochen** eingelegt

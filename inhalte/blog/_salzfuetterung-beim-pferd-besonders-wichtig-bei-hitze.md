@@ -64,7 +64,7 @@ reicht es völlig aus, **Salz und Magnesium** gezielt zu ergänzen:
 
 - **Steinsalz oder Meersalz** (ohne Zusätze): für Natrium und Chlorid
 
-- **Magnesiumcitrat oder –**fumatrat: um den Magnesiumverlust auszugleichen
+- **Magnesiumcitrat oder Magnesiumfumarat**: um den Magnesiumverlust auszugleichen
 
 Beides kann individuell dosiert und dem Futter beigemischt werden, ohne
 unnötige Zusatzstoffe.

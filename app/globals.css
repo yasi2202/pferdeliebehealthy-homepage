@@ -272,3 +272,16 @@ body {
   color: var(--ink-soft);
   margin: 14px 0 0;
 }
+
+/* Der Produktkasten ist ein Partnerkasten, der ein bestimmtes Produkt nennt
+   statt nur den Shop. Er bekommt deshalb einen Akzent an der Seite: Wer den
+   Beitrag überfliegt, soll die konkrete Empfehlung finden, ohne zu lesen. */
+.beitrag-prose .partnerkasten-produkt {
+  border-left: 3px solid var(--rose);
+}
+
+.beitrag-prose .partnerkasten-partner {
+  font-size: 13.5px;
+  color: var(--ink-soft);
+  margin: -4px 0 10px;
+}

@@ -70,8 +70,5 @@ Moderne Wundversorgung beim Pferd bedeutet:
 So heilen Wunden schneller, sauberer und mit weniger Komplikationen, ganz ohne
 Farbspray und unnötige Chemie auf frischem Gewebe.
 
-**Rabattcode:** Mit dem Rabattcode: **D9A6A233**bekommst du Rabatt auf deine
-Bäralis-Bestellung.
+[[partner:baeralis]]
 
-[Hier kommst du direkt zum
-Shop](https://baeralis.de/account/pferdeliebe?sPartner=d1c04513)
