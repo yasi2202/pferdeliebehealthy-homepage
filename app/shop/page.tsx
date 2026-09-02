@@ -183,22 +183,20 @@ const FOTO: Record<
     alt: "Messbecher mit Pellets neben einer Küchenwaage",
     schnitt: "object-center",
   },
-  // ▸ WARUM HIER NUR DER KOPF STEHT UND NICHT DAS GANZE PFERD.
-  //   Die Vorlage zeigt ein Pferd in voller Groesse auf der Herbstweide, und
-  //   daran stimmt einiges nicht: Die Vorderbeine setzen mitten am Bauch an
-  //   statt an der Schulter, die Brust fehlt, von den Hinterbeinen ist nur
-  //   eines zu sehen, und Hufe hat es keine. In einer Kachel fuer eine
-  //   Fuetterungsberatung darf so ein Pferd nicht stehen: Die Leute, die das
-  //   sehen, kennen Pferde.
+  // ▸ DAS DRITTE BILD AN DIESER STELLE, UND DAS ERSTE BRAUCHBARE.
+  //   Die erste Vorlage zeigte ein ganzes Pferd auf der Herbstweide, und
+  //   daran stimmte einiges nicht: Die Vorderbeine setzten mitten am Bauch an
+  //   statt an der Schulter, die Brust fehlte, von den Hinterbeinen war nur
+  //   eines zu sehen, Hufe hatte es keine. Der Ausschnitt auf Kopf und Hals
+  //   rettete das nur halb, dort zog sich das Pferd sichtbar in die Laenge.
+  //   Enger ging nicht, der Kopf mass im Original nur 400 Pixel.
   //
-  //   Der Ausschnitt nimmt deshalb nur den Kopf. Die erste Fassung hatte noch
-  //   Hals und Widerrist dabei, und darin zog sich das Pferd sichtbar in die
-  //   Laenge -- derselbe Fehler, nur weiter weg. Jetzt ist es ein Portraet,
-  //   und das Herbstlaub im Hintergrund bleibt, worum es beim Ganzjahresplan
-  //   geht.
+  //   Jetzt ist es ein eigens erzeugtes Portraet: scharf, richtig gebaut, und
+  //   das Herbstlaub bleibt, worum es beim Ganzjahresplan geht.
   //
-  //   Die Datei ist deshalb 760 statt 900 Pixel: Der Kopf misst im Original
-  //   nur 400 Pixel, alles darueber waere hochgerechnet und wuerde weich.
+  //   Merke fuer das naechste Mal: Ganzkoerperpferde aus einem Bildgenerator
+  //   sind fast immer falsch gebaut, und wegschneiden hilft nur begrenzt.
+  //   Gleich ein Portraet erzeugen lassen.
   ganzjahresfutterplan: {
     datei: "/images/kacheln/weide.jpg",
     alt: "Pferd auf der Weide vor herbstlichem Laub",
