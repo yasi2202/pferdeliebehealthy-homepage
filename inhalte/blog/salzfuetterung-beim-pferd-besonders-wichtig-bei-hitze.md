@@ -69,17 +69,44 @@ reicht es völlig aus, **Salz und Magnesium** gezielt zu ergänzen:
 Beides kann individuell dosiert und dem Futter beigemischt werden, ohne
 unnötige Zusatzstoffe.
 
-## Dosierungsempfehlung im Sommer
+## Wie viel Salz dein Pferd tatsächlich braucht
 
-- Beginne mit ca. **1 Esslöffel Salz pro Tag** für ein Großpferd
+Ein Esslöffel fasst etwa 20 Gramm Salz. Das ist ein brauchbarer Anfang, deckt
+aber nur den Ruhebedarf. Sobald dein Pferd schwitzt, verschiebt sich alles.
 
-- Bei starkem Schwitzen kann die Menge auf **bis zu 2 Esslöffel** erhöht
-werden
+| Situation | Salz am Tag | Woran du dich orientierst |
+|---|---|---|
+| Ruhe, kein Schwitzen | 20 bis 25 g, also gut ein Esslöffel | Grundbedarf eines 600-Kilo-Pferdes |
+| Leichte Arbeit, warmer Tag | 30 bis 50 g | sichtbar feuchter Hals |
+| Starkes Schwitzen, Sommerhitze | 60 bis 100 g | durchnässtes Fell, Schweiß tropft |
+| Mehrere heiße Tage hintereinander | oberes Ende, verteilt auf zwei Gaben | der Verlust summiert sich |
 
-- **Magnesium** je nach Bedarf und Trainingsintensität ergänzen (z. B. 5 bis
-10 g Magnesiumcitrat)
+Dahinter steht eine einfache Rechnung: Pferdeschweiß enthält rund 3,5 Gramm
+Salz je Liter. Ein Pferd, das an einem heißen Tag zehn Liter schwitzt,
+verliert also etwa 35 Gramm Salz, zusätzlich zum Ruhebedarf.
 
-- Wichtig: Immer frisches Wasser anbieten
+**Magnesium** ergänzt du nach Bedarf und Trainingszustand, etwa 5 bis 10 Gramm
+Magnesiumcitrat, aber es ist nicht der Engpass. Der Engpass ist das Salz.
+
+### Der Leckstein reicht meistens nicht
+
+Das ist der Punkt, an dem die meisten Rationen scheitern. Ein Pferd nimmt am
+Leckstein oft nur einen Bruchteil dessen auf, was es braucht, besonders wenn
+der Stein hart, glatt oder ungünstig aufgehängt ist. Manche Pferde lecken viel
+zu wenig, andere aus Langeweile zu viel.
+
+Verlass dich deshalb nicht auf den Stein, sondern gib die Menge ins Futter.
+Der Stein darf trotzdem hängen bleiben, als Angebot, nicht als Versorgung.
+
+### Zwei Regeln, ohne die Salz schadet
+
+**Immer Wasser dazu, rund um die Uhr.** Salz ohne freien Zugang zu Wasser ist
+gefährlich, nicht hilfreich. Prüf im Winter zusätzlich, ob die Tränke wirklich
+läuft, viele Pferde trinken bei kaltem Wasser deutlich weniger.
+
+**Langsam einschleichen.** Wer von null auf 60 Gramm geht, erlebt oft, dass
+das Pferd das Futter stehen lässt. Über eine Woche steigern, dann frisst es
+mit.
 
 ## Warum das so viel besser ist
 

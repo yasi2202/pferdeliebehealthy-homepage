@@ -57,6 +57,35 @@ richtigen **Aminosäuren-Zusammensetzung**. Vor allem Lysin ist in vielen
 Futterrationen zu knapp, besonders bei Heu aus spätem Schnitt oder bei
 Getreide-lastiger Fütterung.
 
+## Lysin, die Zahl, an der alles hängt
+
+Lysin ist die erstlimitierende Aminosäure: Fehlt sie, kann der Körper die
+anderen nicht verbauen, so viel Rohprotein die Ration auch enthält. Das ist
+der Grund, warum ein Pferd mit reichlich Eiweiß trotzdem Muskeln abbauen
+kann.
+
+Als Richtwert für ein 600-Kilo-Pferd im Erhaltungsbedarf gelten rund
+25 Gramm Lysin am Tag. Bei Aufbautraining, im Wachstum und bei tragenden oder
+säugenden Stuten liegt der Bedarf deutlich darüber.
+
+| Quelle | Lysin je 100 g | Wofür sie sich eignet |
+|---|---|---|
+| Heu, später Schnitt | rund 0,2 bis 0,3 g | Grundlage, deckt den Bedarf allein selten |
+| Luzerne | rund 0,7 bis 0,9 g | die verlässlichste Ergänzung aus dem Grundfutter |
+| Leinsamen | rund 0,9 g | dazu Omega-3, gut für Haut und Fell |
+| Hanfsaat | rund 1,0 g | breites Aminosäureprofil |
+| Bierhefe | rund 3 g | kleine Mengen, wirkt schnell |
+| Reines Lysin | 100 g | nur bei nachgewiesenem Mangel und gezielt dosiert |
+
+Die Werte schwanken je nach Charge, Boden und Schnittzeitpunkt. Sie zeigen
+aber die Größenordnung: Mit einem Kilo Luzerne deckst du einen erheblichen
+Teil, mit einem Esslöffel Pulver eher wenig.
+
+**Und die Kehrseite:** Mehr Eiweiß ist nicht besser. Was das Pferd nicht
+verbaut, muss über Leber und Nieren abgebaut werden. Bei Pferden mit
+Leberbelastung oder wenig Arbeit ist ein Eiweißüberschuss ein echtes Problem,
+kein neutraler Zustand.
+
 ## Wann macht eine gezielte Aminosäuren-Ergänzung Sinn?
 
 Eine Ergänzung ist sinnvoll:
@@ -85,7 +114,11 @@ sinnvoll sein – **aber bitte immer bedarfsorientiert!**
 
 [[partner:natusat]]
 
-**Du möchtest mehr über die Versorgung mit Mineralstoffen, Spurenelementen
-und Aminosäuren erfahren?**
-Dann schau unbedingt in meinen **Mineralien-Minikurs**, dort lernst du, wie du
-die Versorgung deines Pferdes ganzheitlich und sinnvoll aufbaust.
+## Wie du es für dein Pferd durchrechnest
+
+Ob bei euch überhaupt etwas fehlt, zeigt erst die Rechnung: Ration
+aufschreiben, Mengen wiegen, Gehalte zusammenzählen. Genau das lernst du in
+Mineral-Klarheit, dort für Mineralstoffe und Spurenelemente, mit demselben
+Vorgehen wie hier beim Lysin.
+
+[[angebot:mineral]]
