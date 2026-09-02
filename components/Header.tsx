@@ -22,6 +22,9 @@ const links = [
   { href: "/ausbildung", label: "Ausbildung", extern: false },
   { href: "/blog", label: "Blog", extern: false },
   { href: "/insider", label: "Insider", extern: false },
+  // ▸ SEIT DEM 02.09.2026 IM MENUE. Die Rabattcodes standen nur im
+  //   Fussbereich, und selbst Yasemin hat sie nicht mehr gefunden.
+  { href: "/empfehlungen", label: "Empfehlungen", extern: false },
   { href: "/#kontakt", label: "Kontakt", extern: false },
 ];
 
