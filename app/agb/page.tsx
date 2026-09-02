@@ -105,11 +105,24 @@ export default function Agb() {
         ursprünglich genutzten Zahlungsweg.
       </p>
 
+      {/* ▸ HIER STANDEN BIS ZUM 02.09.2026 PayPal, Klarna, Ratepay und
+          Überweisung. Ratepay und Überweisung gab es nie, die Kreditkarte
+          fehlte. Bezahlt wird ausschliesslich über Stripe, und welche Wege
+          dort erscheinen, steuert die Zahlarten-Konfiguration im
+          Stripe-Konto (STRIPE_ZAHLARTEN, siehe lib/shop-server.ts).
+
+          ▸ WER DORT EINE ZAHLART EIN- ODER AUSSCHALTET, muss diesen Absatz
+          und die Seite /zahlung-und-versand mitändern. Deshalb steht die
+          Aufzählung hier bewusst mit „in der Regel": Was Stripe anzeigt,
+          hängt auch vom Gerät und vom Land der Kundin ab. */}
       <h3>§ 7 Zahlungsbedingungen</h3>
       <p>
-        Alle Preise sind Endpreise inklusive gesetzlicher Steuern. Als
-        Zahlungsarten stehen PayPal, Klarna, Ratepay und Überweisung zur
-        Verfügung. Die Zahlung ist sofort fällig, sofern nichts anderes
+        Alle Preise sind Endpreise inklusive gesetzlicher Steuern. Die Zahlung
+        wird über den Zahlungsdienstleister Stripe abgewickelt. Zur Verfügung
+        stehen dort in der Regel Kreditkarte, PayPal, Klarna, Apple Pay und
+        Google Pay; welche Wege im Einzelfall angeboten werden, hängt von Ihrem
+        Gerät und Ihrem Land ab. Zusätzliche Gebühren fallen für keine der
+        Zahlungsarten an. Die Zahlung ist sofort fällig, sofern nichts anderes
         vereinbart wurde.
       </p>
 
@@ -127,12 +140,40 @@ export default function Agb() {
         individuell abhängig sind.
       </p>
 
+      {/* ▸ DIE ALTE FASSUNG WAR UNWIRKSAM und lautete: „Haftung besteht nur
+          bei Vorsatz und grober Fahrlässigkeit." So pauschal geht das
+          gegenüber Verbraucherinnen nicht (§ 309 Nr. 7 BGB): Die Haftung für
+          Leben, Körper und Gesundheit und die für wesentliche
+          Vertragspflichten lässt sich in AGB nicht ausschliessen. Eine
+          unwirksame Klausel nützt nichts, sie schadet -- es haftet dann die
+          gesetzliche Regelung in voller Härte, und abmahnfähig ist sie
+          obendrein.
+
+          ▸ Der zweite Absatz ist der, auf den es fachlich ankommt, und er
+          bleibt wirksam: Er schliesst nicht die Haftung aus, sondern
+          beschreibt, wofür es von vornherein keine Ursächlichkeit gibt.
+
+          ▸ Diese Fassung ist ein Vorschlag. Der Händlerbund setzt hier im
+          Zweifel seinen eigenen Wortlaut ein, das ist in Ordnung -- Hauptsache,
+          der alte Satz steht nicht mehr live. */}
       <h3>§ 10 Haftung</h3>
       <p>
-        Keine Haftung besteht für falsche Kundenangaben, individuelle
-        Reaktionen des Pferdes sowie eine unsachgemäße Umsetzung der
-        Empfehlungen. Haftung besteht nur bei Vorsatz und grober
-        Fahrlässigkeit.
+        Für Schäden aus der Verletzung des Lebens, des Körpers oder der
+        Gesundheit haften wir unbeschränkt, ebenso bei Vorsatz und grober
+        Fahrlässigkeit sowie nach dem Produkthaftungsgesetz. Bei einer leicht
+        fahrlässigen Verletzung wesentlicher Vertragspflichten, also solcher
+        Pflichten, deren Erfüllung die ordnungsgemäße Durchführung des
+        Vertrages überhaupt erst möglich macht und auf deren Einhaltung Sie
+        regelmäßig vertrauen dürfen, ist unsere Haftung auf den
+        vertragstypischen, vorhersehbaren Schaden begrenzt. Im Übrigen ist die
+        Haftung ausgeschlossen.
+      </p>
+      <p>
+        Unsere Beratungen, Kurse und Inhalte ersetzen keine tierärztliche
+        Untersuchung, Diagnose oder Behandlung. Für Schäden, die auf
+        unrichtigen oder unvollständigen Angaben des Kunden, auf individuellen
+        Reaktionen des Pferdes oder auf einer von unseren Empfehlungen
+        abweichenden Umsetzung beruhen, haften wir nicht.
       </p>
 
       <h3>§ 11 Rechtswahl</h3>
@@ -154,14 +195,30 @@ export default function Agb() {
       <h3>2. Vertragssprache</h3>
       <p>Deutsch</p>
 
+      {/* ▸ VORHER: „Der Vertrag wird nicht dauerhaft gespeichert." Das passte
+          nicht zur Datenschutzerklärung, nach der Bestellungen in der
+          Datenbank liegen und Rechnungen zehn Jahre aufbewahrt werden.
+          Vertragstext und Bestelldaten sind zwar zweierlei, für eine Kundin
+          lasen sich die beiden Sätze aber wie ein Widerspruch. */}
       <h3>3. Vertragsspeicherung</h3>
       <p>
-        Der Vertrag wird nicht dauerhaft gespeichert, Bestelldaten werden
-        per E-Mail versendet.
+        Den Vertragstext, also diese AGB, machen wir Ihnen nicht gesondert
+        zugänglich; Sie können ihn jederzeit auf dieser Seite aufrufen,
+        ausdrucken und speichern. Ihre Bestelldaten senden wir Ihnen nach dem
+        Kauf per E-Mail zu und speichern sie zur Abwicklung sowie zur
+        Erfüllung unserer steuerlichen Aufbewahrungspflichten. Einzelheiten
+        dazu finden Sie in unserer Datenschutzerklärung.
       </p>
 
+      {/* ▸ „nicht bereit" gehört dazu und stand nur im Impressum. Nach § 36
+          VSBG kommt es gerade auf die Erklärung der Bereitschaft an, nicht
+          auf die Verpflichtung. Jetzt steht an beiden Stellen dasselbe. */}
       <h3>4. Streitbeilegung</h3>
-      <p>Wir sind nicht verpflichtet, an Streitbeilegungsverfahren teilzunehmen.</p>
+      <p>
+        Wir sind nicht bereit und nicht verpflichtet, an
+        Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle
+        teilzunehmen.
+      </p>
 
       <h3>Nutzung externer Dienstleister</h3>
       <p>
