@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { preisText } from "@/lib/shop";
+import Stimmen from "@/components/Stimmen";
 import type { DigitalProdukt } from "@/lib/digital";
 import type { Verkaufstext } from "@/lib/verkaufstexte";
 
@@ -235,6 +236,12 @@ export default function Verkaufsseite({
           </div>
         </div>
       </section>
+
+      {/* --------------------------------------------------------- Stimmen */}
+      {/* Kurz vor dem letzten Kaufknopf: Wer bis hier gelesen hat, waegt ab.
+          Zeigt sich nur, wenn es zu diesem Produkt eine passende Stimme gibt,
+          siehe lib/stimmen.ts. */}
+      <Stimmen slug={produkt.slug} />
 
       {/* --------------------------------------------------------- Abschluss */}
       <section className="px-6 pb-20 sm:px-8 sm:pb-28">
