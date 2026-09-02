@@ -102,7 +102,42 @@ gegenzusteuern, z. B. über Leberkräuter, Futteranpassung oder Darmsanierung.
 
 Denn: **Früherkennung ist die beste Gesundheitsvorsorge.**
 
-## Tipp: Hol dir unseren Entgiftungs-Minikurs
+## Die Blutwerte, an denen man es sieht
+
+Äußere Zeichen sind Hinweise, keine Diagnose. Sicherheit gibt nur das Blut,
+und dort lohnt es sich zu wissen, welcher Wert was bedeutet. Die
+Referenzbereiche stehen auf dem Laborbogen und unterscheiden sich je nach
+Labor, deshalb hier nur, worauf jeder Wert zeigt.
+
+| Wert | Worauf er hinweist | Was du dazu wissen solltest |
+|---|---|---|
+| GGT | Gallengangsystem | steigt langsam, bleibt lange erhöht, guter Verlaufswert |
+| GLDH | Schaden an Leberzellen selbst | sehr aussagekräftig, steigt bei akutem Geschehen schnell |
+| AST | Leber und Muskulatur | allein nicht deutbar, immer zusammen mit CK betrachten |
+| Bilirubin | Abbauprodukt, Galle | steigt auch, wenn ein Pferd einfach nicht frisst |
+| Gallensäuren | Leistungsfähigkeit der Leber | zeigt Funktion, nicht nur Schaden |
+| Gesamteiweiß, Albumin | Syntheseleistung | fällt erst spät, dann aber ernst zu nehmen |
+
+**Ein einzelner erhöhter Wert ist noch kein Leberproblem.** AST steigt nach
+jeder Muskelarbeit, Bilirubin nach einem Tag ohne Fressen. Aussagekräftig wird
+es, wenn mehrere Werte zusammenpassen oder wenn derselbe Wert über Monate
+steigt. Deshalb lohnt eine Kontrolle nach sechs bis acht Wochen mehr als eine
+einzelne Messung.
+
+## Wann der Tierarzt drangehört
+
+Bei Gelbfärbung der Schleimhäute, Appetitlosigkeit über mehr als einen Tag,
+Benommenheit, auffälliger Trinkmenge oder plötzlichem Leistungsabfall gehört
+das Pferd untersucht, und zwar zügig. Auch Photosensibilität, also
+Hautprobleme ausschließlich an unpigmentierten Stellen, ist ein deutlicher
+Hinweis auf die Leber.
+
+Was du dagegen nicht tun solltest: auf Verdacht entgiften. Kräuterkuren für
+die Leber gehören erst dazu, wenn klar ist, woran man ist. Bei einer
+tatsächlichen Erkrankung entscheidet die Ursache über die Fütterung, und die
+kann auch heißen, dass Eiweiß reduziert werden muss.
+
+## Was du selbst tun kannst
 Du möchtest wissen, **wie du die Leber deines Pferdes gezielt unterstützen
 kannst**, ganz ohne Chemie, mit natürlichen Mitteln und klarer Anleitung?
 

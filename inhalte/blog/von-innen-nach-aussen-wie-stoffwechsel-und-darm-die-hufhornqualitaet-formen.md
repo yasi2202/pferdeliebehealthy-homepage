@@ -83,6 +83,40 @@ Durchblutung, auch in den Hufen
 
 - Kontrolle auf Veränderungen im Hornbild
 
+## Wie lange es dauert, bis man etwas sieht
+
+Das ist die Zahl, die alles andere einordnet: **Hufhorn wächst etwa 8 bis 10
+Millimeter im Monat.** Bis eine Hufkapsel einmal vollständig ersetzt ist,
+vergehen neun bis zwölf Monate, an den Hinterhufen eher weniger, an großen
+Vorderhufen eher mehr.
+
+Was folgt daraus?
+
+- Eine Änderung in der Fütterung zeigt sich **frühestens nach drei bis vier
+  Monaten** am neu gewachsenen Horn oben am Kronrand.
+- Was heute unten am Tragrand bröckelt, ist vor einem halben Jahr entstanden.
+  Du beurteilst also immer die Vergangenheit.
+- **Biotin** wird meist mit 15 bis 20 Milligramm am Tag für ein Großpferd
+  gefüttert, und es braucht drei bis sechs Monate, bis überhaupt etwas
+  sichtbar wird. Wer nach vier Wochen abbricht, hat Geld ausgegeben und nichts
+  erfahren.
+
+Mach am Anfang ein Foto von jedem Huf, seitlich und von vorn, und wiederhole
+das monatlich. Am Kronrand siehst du dann den Unterschied zwischen altem und
+neuem Horn, lange bevor du ihn im Alltag bemerkst.
+
+## Wann der Hufbearbeiter oder der Tierarzt drangehört
+
+Bei Lahmheit, warmen Hufen mit deutlichem Pulsieren, Rillen quer über die
+Hufwand oder wiederkehrenden Hufabszessen ist es keine Fütterungsfrage mehr.
+Quer verlaufende Rillen sind Belastungslinien, sie zeigen, dass der Stoffwechsel
+zu einem bestimmten Zeitpunkt aus dem Takt war, und sie können ein Hinweis auf
+eine zurückliegende Rehe sein.
+
+Der Abstand zur Hufbearbeitung liegt üblicherweise bei sechs bis acht Wochen.
+Wird er deutlich überzogen, hilft auch die beste Fütterung nichts: Zu lange
+Hebel brechen jedes Horn.
+
 ## Warum der Darm der Schlüssel zu gesunden Hufen ist
 Ein gesunder Darm nimmt Nährstoffe zuverlässig auf, hält Schadstoffe in Schach und
 unterstützt so indirekt die Hufqualität. Gerät die [Darmflora](/blog/gesunder-darm-gesundes-pferd-was-wirklich-hinter-darmproblemen-steckt) jedoch aus dem

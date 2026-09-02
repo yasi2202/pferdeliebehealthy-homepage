@@ -75,6 +75,40 @@ Wenn du auf diese Punkte achtest, findest du leicht ein Produkt, das zu deinem
 Pferd passt, egal ob als Ergänzung, als Heuersatz oder einfach zur Abwechslung
 im Futtertrog.
 
+## Einweichen: die Stelle, an der es gefährlich wird
+
+Heucobs sind gepresst und trocken. Kommen sie so ins Maul, quellen sie mit dem
+Speichel auf, und wenn ein Pferd schlingt oder schlechte Zähne hat, quellen
+sie im Schlund. Eine Schlundverstopfung ist die häufigste Komplikation bei
+Cobs, und sie ist ein Fall für den Tierarzt.
+
+Deshalb gilt ohne Ausnahme: **Heucobs werden eingeweicht.**
+
+| Frage | Richtwert |
+|---|---|
+| Wie viel Wasser | 3 bis 5 Liter je Kilo Trockenmasse, lieber zu viel als zu wenig |
+| Wie lange | je nach Presslinggröße 15 bis 30 Minuten, bei großen Cobs bis zu einer Stunde |
+| Wie warm | lauwarmes Wasser geht schneller, kaltes tut es auch |
+| Im Sommer | nicht stehen lassen, in der Wärme gärt der Brei innerhalb weniger Stunden |
+| Fertig, wenn | kein harter Kern mehr in der Mitte ist, zerdrück eine Handvoll zur Probe |
+
+Die Angabe des Herstellers steht auf dem Sack und gilt. Manche Cobs sind für
+kurzes Einweichen gemacht, andere brauchen deutlich länger.
+
+**Rechne mit der Trockenmasse, nicht mit dem Eimer.** Ein Kilo Cobs wird
+eingeweicht zu vier bis fünf Kilo Brei. Wer den Eimer abmisst, füttert einen
+Bruchteil dessen, was er glaubt.
+
+## Wie viel Heu ersetzt du damit?
+
+Als Faustzahl gilt: Ein Kilo Heucobs ersetzt etwa ein Kilo Heu. Ein
+600-Kilo-Pferd braucht also, wenn es gar kein Heu mehr fressen kann, rund neun
+bis elf Kilo Cobs am Tag, verteilt auf mindestens vier bis fünf Mahlzeiten.
+
+Das ist der Punkt, an dem viele Rationen für Zahnpatienten scheitern: Zwei
+Eimer am Tag sehen nach viel aus, sind aber vielleicht zwei Kilo. Der Rest
+fehlt, und das Pferd nimmt ab, obwohl es doch angeblich genug bekommt.
+
 ## Meine absolute Empfehlung
 
 Meine **absolute Empfehlung** sind die **Kräuter-Heucobs vom Biohof
