@@ -60,11 +60,23 @@ export const ausbildung = {
   plattform: "akademieapp.vercel.app",
 
   // ▸ HIER MUSST DU RAN, sobald `verkaufOffen` auf `true` geht:
-  //   die Adresse des alfima-Produkts eintragen.
+  //   die eigene Kasse eintragen, /kasse/ausbildung.
   kauf: "",
 
   /** Der kostenlose Einstieg. Läuft schon und darf beworben werden, weil er
-   *  keine Lernerfolgskontrolle und keine Betreuung enthält. */
+   *  keine Lernerfolgskontrolle und keine Betreuung enthält.
+   *
+   *  ▸ DIE LETZTE ADRESSE, DIE NOCH BEI ALFIMA LIEGT.
+   *    Am 02.09.2026 sind alle anderen Verweise auf alfima und Tentary aus
+   *    beiden Projekten entfernt worden, beide Plattformen werden nicht mehr
+   *    genutzt. Diese eine steht noch, weil sie funktioniert und weil es auf
+   *    der eigenen Seite bisher keinen Ersatz gibt.
+   *
+   *    Das ist kein Dauerzustand: Wird alfima abgeschaltet, laufen die beiden
+   *    Knöpfe „Kostenlos reinschnuppern" auf /ausbildung ins Leere, und das
+   *    ausgerechnet auf der Seite, die das teuerste Angebot verkauft.
+   *    Yasemin baut den Schnupperkurs in den nächsten Tagen selbst nach
+   *    (Gespräch vom 02.09.2026); danach gehört hier ein eigener Pfad hin. */
   schnupperkurs:
     "https://alfima.com/pferdeliebehealthy/kostenloser-einblick-in-die-ausbildung-zur-ganzheitlichen-pferdefutterung",
 
