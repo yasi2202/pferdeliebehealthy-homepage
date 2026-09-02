@@ -67,16 +67,11 @@ export default function Impressum() {
           Steuern -- kommt hier eine Überschrift "Umsatzsteuer-ID" mit der
           Nummer hin. Nötig wird sie, sobald du Leistungen an Unternehmen im
           EU-Ausland abrechnest oder am OSS-Verfahren teilnimmst. */}
-      {/* ▸ OFFENE FRAGE AN DICH, absichtlich nicht selbst entschieden:
-          Die Steuernummer muss hier nicht stehen. § 5 DDG verlangt nur die
-          Umsatzsteuer-Identifikationsnummer, und die hast du nicht. Viele
-          raten davon ab, die Steuernummer freiwillig zu veröffentlichen,
-          weil sie zusammen mit Name und Anschrift ein Stück Angriffsfläche
-          ist. Ein Nachteil beim Weglassen entsteht nicht.
-          Sag Bescheid, wenn die beiden Zeilen verschwinden sollen. */}
-      <h2>Steuernummer</h2>
-      <p>Steuernummer: 46138/44524</p>
-
+      {/* ▸ DIE STEUERNUMMER IST AM 02.09.2026 ENTFALLEN, so von Yasemin
+          entschieden. Sie stand hier freiwillig: § 5 DDG verlangt nur die
+          Umsatzsteuer-Identifikationsnummer, und die gibt es nicht. Eine
+          Steuernummer zusammen mit Name und Anschrift ist ein Stück
+          Angriffsfläche ohne Gegenwert. Nicht wieder eintragen. */}
       <h2>Angaben zur Berufshaftpflichtversicherung</h2>
       <p>
         <strong>Name und Sitz des Versicherers:</strong>
