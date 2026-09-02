@@ -99,9 +99,20 @@ export const stimmen: Stimme[] = [
     // Der Vergleich mit einem Mitbewerber. So etwas kann man selbst nicht
     // schreiben, und es beantwortet die Frage „warum bei ihr und nicht
     // woanders" besser als jeder eigene Satz.
+    // ▸ ZWEI KORREKTUREN AM WORTLAUT, und nur diese zwei:
+    //   Im Original steht „Ich liebe des Ganzjahresfutterplaner … gekauft
+    //   habe sehr". Das ist ein Vertipper und ein nachgestelltes „sehr" aus
+    //   einer schnell geschriebenen Mail. Auf einer Verkaufsseite liest sich
+    //   das nicht wie ein Zitat, sondern wie ein Fehler auf der Seite selbst,
+    //   und es lenkt vom Inhalt ab.
+    //
+    //   Geändert sind deshalb „des" zu „den" und das hängende „sehr" ist
+    //   weg. Kein Wort dazu, keine Aussage gedreht. Alles andere steht
+    //   wörtlich so da, wie Carolin es geschrieben hat, auch
+    //   „Ganzjahresfutterplaner" mit -er am Ende.
     zitat:
-      "Ich liebe des Ganzjahresfutterplaner und auch die anderen Ratgeber, " +
-      "die ich bisher bei dir gekauft habe sehr. Sie bieten sowohl " +
+      "Ich liebe den Ganzjahresfutterplaner und auch die anderen Ratgeber, " +
+      "die ich bisher bei dir gekauft habe. Sie bieten sowohl " +
       "Hintergrundwissen wie auch konkrete Anleitung, was mir sehr gut " +
       "gefällt. Ich habe auch einen Ganzjahresplaner einer anderen Dame " +
       "gekauft und muss sagen, dass er nicht mal im Ansatz an deinen " +
