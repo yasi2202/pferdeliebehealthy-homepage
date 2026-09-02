@@ -4,8 +4,8 @@ datum: 2026-09-01
 aktualisiert:
 kategorie: "Haut, Fell und Hufe"
 angebot: "mineral"
-bild: ""
-bildText: ""
+bild: "/images/blog/mauke-fessel.webp"
+bildText: "Gerötete, entzündete Haut in der Fesselbeuge, das typische Bild einer beginnenden Mauke."
 beschreibung: "Salben helfen bei Mauke oft nur kurz, weil die Ursache nicht in der Fessel sitzt. Was Darm, Leber und die Spurenelemente damit zu tun haben und woran du erkennst, wo es bei euch klemmt."
 ---
 
