@@ -101,6 +101,25 @@ export type DigitalProdukt = {
    *   aber wer ein Nachschlagewerk sucht, sucht nicht in den Kursen.
    */
   gruppe: "einstieg" | "kurs" | "werkzeug" | "begleitung";
+  /**
+   * Ein Angebot, das es gibt, aber das nirgends aufgelistet wird.
+   *
+   * ▸ WAS "VERSTECKT" HEISST UND WAS NICHT
+   *   Verkauft wird ganz normal über /kasse/<slug>, mit Rechnung,
+   *   Widerrufsbelehrung und Freischaltung wie bei jedem anderen Angebot.
+   *   Es fehlt nur in der Übersicht unter /shop, in der Auszeichnung für
+   *   Google und in der Sitemap. Es ist damit nicht geheim: Wer die Adresse
+   *   kennt oder weitergibt, kann kaufen. Das ist so gewollt.
+   *
+   * ▸ WOFÜR ES GEDACHT IST
+   *   Zusatzmodule, die ohne das Hauptprodukt keinen Sinn ergeben. Das
+   *   Pro-Modul "Metabolisches Gewicht" ist ein Teil von RatioPro; wer
+   *   RatioPro nicht hat, kann damit nichts anfangen. Auf der Übersicht
+   *   stünde es zwischen zwei vollständigen Angeboten und würde nur
+   *   verwirren. Verlinkt wird es an genau einer Stelle: in RatioPro selbst,
+   *   in der noch gesperrten Karte.
+   */
+  versteckt?: boolean;
   /** Die Zeile unter dem Namen, kurz. */
   kurz: string;
   /** Was in der Kasse als Leistungsbeschreibung über dem Knopf steht. */
@@ -378,6 +397,56 @@ export const digitalprodukte: DigitalProdukt[] = [
       breite: 1000,
       hoehe: 379,
     },
+  },
+  {
+    // ▸ DAS EINZIGE VERSTECKTE ANGEBOT, STAND 03.09.2026.
+    //   Es steht hier direkt vor RatioPro und nicht nach dem Preis
+    //   einsortiert, weil die beiden zusammengehören: Das Modul ist ein Teil
+    //   des Rechners und wird auch nur dort verlinkt.
+    slug: "metabolisches-gewicht",
+    gruppe: "werkzeug",
+    versteckt: true,
+    name: "Metabolisches Gewicht, das Pro-Modul in RatioPro",
+    kurzname: "Pro-Modul Metabolisches Gewicht",
+    preis: 2900,
+    mwst: 19,
+    art: "kurs",
+    kurz: "Der Rechenweg hinter den Bedarfswerten.",
+    leistung:
+      "Freischaltung des Pro-Moduls „Metabolisches Gewicht“ in RatioPro: " +
+      "Vergleich der metabolischen mit der linearen Skalierung über 14 " +
+      "Nährstoffe, Anleitung zum Nachrechnen von Hand und die ausführliche " +
+      "Erklärung als PDF. Dauerhaft abrufbar, RatioPro-Zugang vorausgesetzt.",
+    // ▸ DER NAME IST MIT ABSICHT OHNE "RatioPro" GEBAUT.
+    //   In der Akademie entscheidet lib/produkt-zugang.ts über den
+    //   Produktnamen, und dort gibt es die Regel /ratio\s?pro/ für den
+    //   vollen Rechner (69 €). Stünde "RatioPro" hier im Namen, hinge alles
+    //   daran, dass die Regel für das Modul weiter oben steht. Sie steht
+    //   dort auch, aber zwei Sicherungen sind besser als eine: Wer diesen
+    //   Namen ändert, darf das Wort RatioPro nicht hineinnehmen.
+    //   Trifft /metabolisches gewicht/i.
+    akademieName: "Metabolisches Gewicht (Pro-Modul)",
+    erwarteterZugang: "ratiopro-metabolisch",
+    beschreibung: [
+      {
+        art: "absatz",
+        text: "RatioPro rechnet den Bedarf metabolisch, also über kg hoch 0,75 und nicht einfach über das Körpergewicht. Das Pro-Modul legt beide Rechenwege nebeneinander und zeigt dir, wo sie auseinanderlaufen. In der Beratung ist das der Unterschied zwischen einer Zahl, die du nennst, und einer Zahl, die du erklären kannst.",
+      },
+      {
+        art: "liste",
+        punkte: [
+          "Metabolisches Gewicht und Skalierungs-Faktor für das Pferd, das gerade im Rechner steht",
+          "Vergleichstabelle über 14 Nährstoffe: linear, metabolisch, Abweichung in Prozent",
+          "Anleitung in sechs Schritten, mit der du jeden Bedarfswert von Hand nachrechnest",
+          "Die ausführliche Erklärung als PDF, mit Beispielen und einem Beratungs-Skript für deine Kundinnen",
+        ],
+      },
+      {
+        art: "absatz",
+        text: "Du brauchst dafür einen RatioPro-Zugang, das Modul sitzt im Rechner. Nach dem Kauf ist es beim nächsten Öffnen da, ohne Code und ohne zweite Anmeldung.",
+        betont: true,
+      },
+    ],
   },
   {
     slug: "ratiopro",
