@@ -104,7 +104,6 @@ async function gesperrteAdressen(): Promise<Set<string> | null> {
 
 type Kursteilnehmerin = {
   email: string;
-  vorname: string | null;
   aktiv: boolean | null;
   bereich: string | null;
   zugaenge: string[] | null;
@@ -134,29 +133,80 @@ function bekommtPost(k: Kursteilnehmerin): boolean {
   return true;
 }
 
-async function eingetragene(): Promise<Empfaenger[]> {
+// ▸ JEDE DIESER DREI GIBT `null` ZURÜCK, WENN DIE ABFRAGE SCHEITERT, und
+//   nicht etwa eine leere Liste. Der Unterschied hat am 03.09.2026 fast
+//   einen halben Verteiler gekostet: In der Abfrage stand `vorname`, eine
+//   Spalte, die es in `kursteilnehmer` gar nicht gibt. Supabase antwortete
+//   mit 400, die Liste war leer, und die Oberfläche zeigte seelenruhig
+//   „0 Empfänger". Bei der Gruppe „alle zusammen" wäre das nicht einmal
+//   aufgefallen: Der Newsletter wäre an die Übrigen rausgegangen, hätte
+//   1320 Menschen ausgelassen und stünde danach als versendet da.
+//
+//   Ein Fehler muss deshalb bis nach oben durchschlagen und den Versand
+//   anhalten. Eine leere Liste ist eine Aussage, ein Fehler ist keine.
+
+async function eingetragene(): Promise<Empfaenger[] | null> {
   const zeilen = await supabaseAlle<{ email: string; vorname: string | null }>(
     "alle_anmeldungen?bestaetigt=is.true&select=email,vorname"
   );
-  return (zeilen ?? []).map((z) => ({ email: z.email, vorname: z.vorname }));
+  if (!zeilen) return null;
+  return zeilen.map((z) => ({ email: z.email, vorname: z.vorname }));
 }
 
-async function kundinnen(): Promise<Empfaenger[]> {
+/** ▸ `kursteilnehmer` HAT KEINE SPALTE `vorname`. Dort steht nur die
+ *  Adresse. Den Namen holt `namenNachschlagen()` weiter unten aus den
+ *  anderen Tabellen, soweit die Person dort auch steht. */
+async function kundinnen(): Promise<Empfaenger[] | null> {
   const zeilen = await supabaseAlle<Kursteilnehmerin>(
-    "kursteilnehmer?select=email,vorname,aktiv,bereich,zugaenge,notiz,mails_abgemeldet"
+    "kursteilnehmer?select=email,aktiv,bereich,zugaenge,notiz,mails_abgemeldet"
   );
-  return (zeilen ?? [])
-    .filter(bekommtPost)
-    .map((k) => ({ email: k.email, vorname: k.vorname }));
+  if (!zeilen) return null;
+  return zeilen.filter(bekommtPost).map((k) => ({ email: k.email, vorname: null }));
 }
 
-async function beratungskundinnen(): Promise<Empfaenger[]> {
+async function beratungskundinnen(): Promise<Empfaenger[] | null> {
   const zeilen = await supabaseAlle<{ email: string | null; vorname: string | null }>(
     "ed_kunden?select=email,vorname"
   );
-  return (zeilen ?? [])
+  if (!zeilen) return null;
+  return zeilen
     .filter((z) => z.email)
     .map((z) => ({ email: z.email as string, vorname: z.vorname }));
+}
+
+/** Sucht zu Adressen ohne Namen einen Vornamen in den anderen Tabellen.
+ *
+ *  ▸ WOZU: Die grösste Gruppe sind die Kursteilnehmerinnen, und dort steht
+ *    kein Name. Ohne diesen Umweg begänne jede Mail an über tausend
+ *    Menschen mit „Hallo," statt mit ihrem Namen. Viele von ihnen stehen
+ *    aber in EquiDesk oder in den Anmeldungen, und dort steht er.
+ *
+ *  Scheitert eine der beiden Abfragen, ist das kein Grund abzubrechen: Dann
+ *  fehlt eben der Name, und die Anrede lautet „Hallo,". Das ist ein
+ *  Schönheitsfehler, kein Schaden. */
+async function namenNachschlagen(): Promise<Map<string, string>> {
+  const namen = new Map<string, string>();
+
+  const [ed, anmeldungen] = await Promise.all([
+    supabaseAlle<{ email: string | null; vorname: string | null }>(
+      "ed_kunden?select=email,vorname"
+    ),
+    supabaseAlle<{ email: string; vorname: string | null }>(
+      "alle_anmeldungen?select=email,vorname"
+    ),
+  ]);
+
+  // Die Anmeldungen zuletzt, damit sie gewinnen: Dort hat die Person ihren
+  // Vornamen selbst eingetippt.
+  for (const quelle of [ed, anmeldungen]) {
+    for (const z of quelle ?? []) {
+      const e = (z.email ?? "").trim().toLowerCase();
+      const v = (z.vorname ?? "").trim();
+      if (e && v && v.toLowerCase() !== "du") namen.set(e, v);
+    }
+  }
+
+  return namen;
 }
 
 // ---------------------------------------------------------------------------
@@ -191,15 +241,27 @@ export async function empfaengerDerGruppe(
   let roh: Empfaenger[];
 
   try {
-    if (gruppe === "eingetragen") roh = await eingetragene();
-    else if (gruppe === "kundinnen") roh = await kundinnen();
-    else if (gruppe === "beratung") roh = await beratungskundinnen();
-    else {
+    if (gruppe === "eingetragen") {
+      const a = await eingetragene();
+      if (!a) return null;
+      roh = a;
+    } else if (gruppe === "kundinnen") {
+      const a = await kundinnen();
+      if (!a) return null;
+      roh = a;
+    } else if (gruppe === "beratung") {
+      const a = await beratungskundinnen();
+      if (!a) return null;
+      roh = a;
+    } else {
       const [a, b, c] = await Promise.all([
         eingetragene(),
         kundinnen(),
         beratungskundinnen(),
       ]);
+      // Alle drei müssen geklappt haben. Fehlt eine, wäre der Versand
+      // unvollständig, ohne dass es jemand merkt.
+      if (!a || !b || !c) return null;
       roh = [...a, ...b, ...c];
     }
   } catch (fehler) {
@@ -213,6 +275,8 @@ export async function empfaengerDerGruppe(
     console.error("Newsletter: Sperrliste nicht ladbar, Versand abgebrochen.");
     return null;
   }
+
+  const namen = await namenNachschlagen();
 
   const liste: Empfaenger[] = [];
   const aussortiert: string[] = [];
@@ -235,10 +299,9 @@ export async function empfaengerDerGruppe(
 
     gesehen.add(klein);
     // Der erste Fund gewinnt. Die Reihenfolge oben ist deshalb kein Zufall:
-    // Bei den Eingetragenen hat die Person ihren Vornamen selbst getippt,
-    // in den Kundentabellen steht er so, wie ihn ein Kaufsystem geliefert
-    // hat, manchmal in Grossbuchstaben oder als „du".
-    liste.push({ email: adresse, vorname: e.vorname });
+    // Bei den Eingetragenen hat die Person ihren Vornamen selbst getippt.
+    // Fehlt er, wird er in den anderen Tabellen nachgeschlagen.
+    liste.push({ email: adresse, vorname: e.vorname ?? namen.get(klein) ?? null });
   }
 
   if (aussortiert.length > 0) {
