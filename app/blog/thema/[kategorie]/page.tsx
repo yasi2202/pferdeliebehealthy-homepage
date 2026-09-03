@@ -31,7 +31,7 @@ export function generateStaticParams() {
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { kategorie } = await params;
   const treffer = beitraegeNachKategorie(kategorie);
-  if (!treffer) return { title: "Thema nicht gefunden | Pferdeliebehealthy" };
+  if (!treffer) return { title: "Thema nicht gefunden" };
 
   return {
     title: `${treffer.name}: Beiträge zur Pferdefütterung`,

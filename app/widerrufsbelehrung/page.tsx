@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/widerrufsbelehrung" },
-  title: "Widerrufsbelehrung | Pferdeliebehealthy",
+  title: "Widerrufsbelehrung",
 };
 
 export default function Widerruf() {

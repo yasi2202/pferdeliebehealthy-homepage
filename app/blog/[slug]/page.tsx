@@ -28,13 +28,16 @@ export function generateStaticParams() {
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
   const beitrag = blogBeitragLesen(slug);
-  if (!beitrag) return { title: "Nicht gefunden | Pferdeliebehealthy" };
+  if (!beitrag) return { title: "Nicht gefunden" };
 
   const adresse = `/blog/${slug}`;
   const bild = beitrag.bild || "/images/yasi-helena.jpg";
 
   return {
-    title: `${beitrag.titel} | Pferdeliebehealthy`,
+    // Ohne „| Pferdeliebehealthy": Das haengt app/layout.tsx über
+    // `title.template` von selbst an. Stand es hier auch, hiess die Seite
+    // bei Google „... | Pferdeliebehealthy | Pferdeliebehealthy".
+    title: beitrag.titel,
     description: beitrag.beschreibung,
     alternates: { canonical: adresse },
     openGraph: {

@@ -3,7 +3,8 @@ import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/datenschutz" },
-  title: "Datenschutzerklärung | Pferdeliebehealthy",
+  // Ohne „| Pferdeliebehealthy": Das haengt app/layout.tsx von selbst an.
+  title: "Datenschutzerklärung",
 };
 
 export default function Datenschutz() {

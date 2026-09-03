@@ -4,7 +4,8 @@ import { empfehlungen, werbehinweis } from "@/lib/empfehlungen";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/empfehlungen" },
-  title: "Rabattcodes auf einen Blick | Pferdeliebehealthy",
+  // Ohne „| Pferdeliebehealthy": Das haengt app/layout.tsx von selbst an.
+  title: "Rabattcodes auf einen Blick",
   description:
     "Alle Codes, mit denen du bei meinen Partnern sparst: Biohof Elmengrund, PerNaturam, Natusat, CDVet und weitere.",
 };

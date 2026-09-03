@@ -5,7 +5,7 @@ import { laender, preisText } from "@/lib/shop";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/zahlung-und-versand" },
-  title: "Zahlung und Versand | Pferdeliebehealthy",
+  title: "Zahlung und Versand",
   description:
     "Wie du im Shop bezahlst, was der Versand kostet, wie lange die Lieferung dauert und wie eine Rücksendung läuft.",
 };
