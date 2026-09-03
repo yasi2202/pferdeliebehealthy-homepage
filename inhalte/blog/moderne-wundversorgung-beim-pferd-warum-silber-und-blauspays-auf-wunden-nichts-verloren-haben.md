@@ -1,5 +1,5 @@
 ---
-titel: "Moderne Wundversorgung beim Pferd: warum Silber- und Blauspays auf Wunden nichts verloren haben"
+titel: "Moderne Wundversorgung beim Pferd: warum Silber- und Blausprays auf Wunden nichts verloren haben"
 datum: 2025-08-13
 aktualisiert:
 kategorie: "Haut, Fell und Hufe"
@@ -34,14 +34,14 @@ den Tierarzt, bevor du selbst anfängst, wenn eines davon zutrifft:
 
 Bleibt es bei der Schramme auf der Koppel, geht es so weiter.
 
-## Warum Silber- und Blauspays problematisch sind
+## Warum Silber- und Blausprays problematisch sind
 
 - **Silbersprays** legen sich wie eine starre Schicht über die Wunde, das
 sieht sauber und geschützt aus, verhindert aber oft den notwendigen
 Luftaustausch. Außerdem kann Silber die körpereigenen Reparaturprozesse
 hemmen, wenn es direkt ins frische Gewebe gelangt.
 
-- **Blauspays** enthalten oft Farbstoffe und Desinfektionsmittel, die reizend
+- **Blausprays** enthalten oft Farbstoffe und Desinfektionsmittel, die reizend
 wirken. Das Einfärben erschwert zudem die Beurteilung der Wunde und ihrer
 Heilung.
 
