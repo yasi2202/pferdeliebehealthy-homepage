@@ -43,28 +43,35 @@ export const partnerprodukte: Partnerprodukt[] = [
   //   Weg mit Partnerkennung, und er trägt die Werbekennzeichnung, die ein
   //   Satz im Fließtext nicht hat.
   //
-  //   Ohne eigene `url`: Der Kasten führt dann auf den Partnershop mit
-  //   Yasemins Kennung (siehe lib/empfehlungen.ts). Direkte Produktadressen
-  //   können hier eingetragen werden, sobald sie feststehen; wichtig ist
-  //   dann, ?sPartner=d1c04513 mitzunehmen, sonst wird eine Bestellung nicht
-  //   zugerechnet.
+  //   ▸ DIE KENNUNG ?sPartner=d1c04513 MUSS AN JEDER ADRESSE DRANBLEIBEN.
+  //     Ohne sie wird eine Bestellung Yasemin nicht zugerechnet. Beim
+  //     Austauschen einer Adresse also immer prüfen, ob sie noch dranhängt.
+  //
+  //   ▸ DIE NAMEN SIND DIE AUS DEM SHOP, nicht die aus dem Blogtext.
+  //     Im Beitrag stand „Hauttalent Nr. 1", „Hydrogel Nr. 2" und
+  //     „Fliegenpflaster". Im Shop heißen sie „Haut-Talent", „Hydro-Gel" und
+  //     „Pferde-Pflaster". Wer im Kasten einen anderen Namen liest als auf
+  //     der Seite, an der er landet, wird unsicher.
   {
     schluessel: "baeralis-hauttalent",
     partner: "Bäralis",
-    name: "Hauttalent Nr. 1",
-    kurz: "Milder Wundreiniger, pH-neutral. Brennt nicht und trocknet die Wundfläche nicht aus.",
+    name: "Haut-Talent Nr. 1",
+    url: "https://baeralis.de/nr-1-haut-talent-fuer-pferde?sPartner=d1c04513",
+    kurz: "Der Wundreiniger der Reihe. Brennt nicht, ist alkoholfrei und muss nicht abgespült werden.",
   },
   {
     schluessel: "baeralis-hydrogel",
     partner: "Bäralis",
-    name: "Hydrogel Nr. 2",
-    kurz: "Wundgel, das die Wunde feucht hält. Feuchte Wundheilung ist der Grund, warum moderne Versorgung ohne Sprays auskommt.",
+    name: "Hydro-Gel Nr. 2",
+    url: "https://baeralis.de/baeralis-hydro-gel-pferd-desinfektion?sPartner=d1c04513",
+    kurz: "Das Gel für den zweiten Schritt. Es bleibt auf der Wunde und hält sie feucht, und feucht heilt besser als trocken.",
   },
   {
     schluessel: "baeralis-fliegenpflaster",
     partner: "Bäralis",
-    name: "Fliegenpflaster",
-    kurz: "Durchsichtiges Pflaster, das Insekten fernhält und trotzdem Luft durchlässt. Die Alternative zum Farbspray im Sommer.",
+    name: "Pferde-Pflaster",
+    url: "https://baeralis.de/pferdepflaster-wundschutz-fliegenschutz?sPartner=d1c04513",
+    kurz: "Luftdurchlässiger Wundschutz, der Fliegen fernhält. Die Alternative zum Farbspray im Sommer.",
   },
   {
     // Oregano gibt es bei beiden Partnern, aber nicht als dasselbe Produkt:

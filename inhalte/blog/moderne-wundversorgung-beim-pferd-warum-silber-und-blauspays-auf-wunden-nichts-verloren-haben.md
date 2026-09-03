@@ -55,7 +55,7 @@ Eine moderne Wundversorgung folgt drei einfachen Schritten:
 
 Mit einem **milden, pH-neutralen Wundreiniger** werden Schmutz, Keime und
 abgestorbenes Gewebe entfernt, ohne das gesunde Gewebe zu reizen.
-Ich arbeite selbst mit dem *Hauttalent Nr. 1*: Es brennt nicht und lässt die
+Ich arbeite selbst mit dem *Haut-Talent Nr. 1* von Bäralis: Es brennt nicht und lässt die
 Wundfläche sauber zurück, ohne sie auszutrocknen.
 
 [[produkt:baeralis-hauttalent]]
@@ -65,7 +65,7 @@ Wundfläche sauber zurück, ohne sie auszutrocknen.
 Nach der Reinigung wird die Wunde mit einem **antimikrobiellen Wundgel oder
 einer Lösung** behandelt, die das Keimwachstum hemmt und die Heilung
 unterstützt.
-Ich nehme dafür das *Hydrogel Nr. 2*. Es hält die Wunde feucht, und genau
+Ich nehme dafür das *Hydro-Gel Nr. 2* aus derselben Reihe. Es hält die Wunde feucht, und genau
 das ist der Punkt: Eine Wunde, die feucht gehalten wird, heilt schneller und
 mit weniger Narbe als eine, die man austrocknen lässt.
 
@@ -76,7 +76,7 @@ mit weniger Narbe als eine, die man austrocknen lässt.
 Gerade im Sommer sind offene Wunden ein Magnet für Fliegen. Statt Farbspray
 eignet sich ein **Fliegenschutz-Pflaster**, das die Wunde sauber hält,
 Insekten fernhält und trotzdem Luft durchlässt.
-Ich nehme das *Fliegenpflaster*: durchsichtig, luftdurchlässig und einfach
+Ich nehme das *Pferde-Pflaster* von Bäralis: durchsichtig, luftdurchlässig und einfach
 anzubringen.
 
 [[produkt:baeralis-fliegenpflaster]]
