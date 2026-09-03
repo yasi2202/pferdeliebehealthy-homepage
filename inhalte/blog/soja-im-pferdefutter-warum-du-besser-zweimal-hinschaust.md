@@ -46,9 +46,8 @@ Doch für den **Verdauungstrakt des Pferdes ist das Gegenteil der Fall**:
 
 Was dabei entstehen kann: **Gas, Blähungen und Gärprozesse**. Wie stark, hängt
 an der Menge und am Pferd. Kleine Mengen stecken die meisten problemlos weg,
-und ein einzelner Schluck Sojaöl ist ohnehin etwas anderes als 500 Gramm
-Schrot am Tag. Wo es kippt, ist individuell, und genau das ist der Punkt:
-Man merkt es erst, wenn es schon kippt.
+bei 500 Gramm am Tag sieht es anders aus. Wo es kippt, ist individuell, und
+genau das ist der Punkt: Man merkt es erst, wenn es schon kippt.
 
 ## Soja stört die Darmflora, langfristig
 
@@ -230,11 +229,6 @@ Studien, und bei üblichen Mengen sind keine hormonellen Effekte dokumentiert.
 Wer also liest, Soja mache Stuten unfruchtbar, liest mehr, als die Datenlage
 hergibt. Vorsicht bei Zuchtstuten mit Problemen halte ich trotzdem für
 vernünftig, denn Alternativen gibt es genug.
-
-**Was ist mit Sojaöl?**
-Sojaöl ist etwas anderes als Sojaschrot. Es enthält kein Protein und keine
-Mehrfachzucker, dafür sehr viel Omega-6. Für die Fettsäurebilanz sind
-Leinöl oder Hanföl die bessere Wahl.
 
 **Und wenn mein Pferd wirklich Eiweiß braucht?**
 Dann gezielt und kurweise: Esparsette, Luzerne oder Grünhafer. Vorher aber
