@@ -591,16 +591,224 @@ export const digitalprodukte: DigitalProdukt[] = [
       },
     ],
   },
+  // -------------------------------------------------------------------------
+  // DIE BERATUNGSTREPPE, angelegt am 03.09.2026 auf Wunsch von Yasemin.
+  //
+  //    69 EUR  Nachberatung          (fuer Kundinnen, deren Plan aelter ist)
+  //    79 EUR  Befund-Einschaetzung  (Heuanalyse, Blutbild, Kotbefund)
+  //   149 EUR  Futterplan            (einmalig, mit vier Wochen Begleitung)
+  //   249 EUR  Begleitung 3 Monate
+  //   399 EUR  Pferdeliebe 365       (die Akte fuers ganze Jahr)
+  //
+  // Zum Vergleich am Markt, Stand 03.09.2026: Schuder nimmt 150 EUR fuer eine
+  // Erstberatung und 80 EUR fuer die Nachkontrolle, Futterberatung mit Herz
+  // 120 EUR fuer den Rationscheck, 160 EUR bei Erkrankung und 70 EUR fuer die
+  // Nachkontrolle, Pferdewaage Nord 179 EUR online. Wer dort einmal beraten
+  // wird und einmal nachkontrollieren laesst, zahlt rund 230 EUR fuer zwei
+  // Momentaufnahmen.
+  //
+  // ACHTUNG: DIE BESCHREIBUNGSTEXTE UNTEN SIND EIN ENTWURF VON CLAUDE, NICHT
+  // VON YASEMIN. Sie sind an ihren vorhandenen Texten ausgerichtet, aber sie
+  // gehoeren gegengelesen und duerfen frei ueberschrieben werden. Beim
+  // Jahresplan darunter stammt der Text woertlich von ihr, der bleibt.
+  // -------------------------------------------------------------------------
+  {
+    slug: "nachberatung",
+    gruppe: "begleitung",
+    name: "Nachberatung mit Anpassplan",
+    kurzname: "Nachberatung",
+    // 69 EUR ist kein neuer Preis: Genau so viel hat die Nachberatung zuletzt
+    // bei alfima gekostet (Stand Juli 2026), davor 49 EUR bei Tentary.
+    preis: 6900,
+    mwst: 19,
+    art: "dienstleistung",
+    kurz: "Wenn sich etwas geändert hat und der Plan mitwachsen soll.",
+    leistung:
+      "Überprüfung deiner aktuellen Fütterung und ein angepasster Futterplan, " +
+      "dazu vier Wochen persönliche Begleitung. Für Pferde, die ich schon " +
+      "einmal beraten habe. Gilt pro Pferd.",
+    akademieName: "Nachberatung mit Anpassplan",
+    erwarteterZugang: "futterberatung",
+    beschreibung: [
+      {
+        art: "absatz",
+        text: "Nach jeder Beratung stehe ich dir vier Wochen lang für Rückfragen zur Verfügung. Diese Zeit reicht, damit der Plan bei euch ankommt. Sie reicht nicht für das, was danach kommt: neue Blutwerte, ein anderes Heu, der Fellwechsel, eine Diagnose vom Tierarzt.",
+      },
+      {
+        art: "absatz",
+        text: "Dafür ist die Nachberatung da. Du schickst mir, was sich geändert hat, ich sehe mir die Ration daraufhin noch einmal an und passe den Plan an. Danach begleite ich dich wieder vier Wochen bei der Umsetzung.",
+      },
+      { art: "ueberschrift", text: "Wann sich eine Nachberatung lohnt" },
+      {
+        art: "liste",
+        punkte: [
+          "Es liegen neue Blutwerte, ein Kotbefund oder eine Heuanalyse vor",
+          "Das Heu hat gewechselt und die Ration passt nicht mehr",
+          "Dein Pferd hat eine neue Diagnose bekommen",
+          "Die Jahreszeit hat gewechselt und die Weide kommt dazu oder fällt weg",
+          "Du hast Produkte getauscht und willst wissen, ob es noch aufgeht",
+        ],
+      },
+      { art: "ueberschrift", text: "Wichtige Hinweise" },
+      {
+        art: "absatz",
+        text: "Die Nachberatung setzt voraus, dass ich dein Pferd schon einmal beraten habe. Wenn wir noch nie zusammengearbeitet haben, ist der Futterplan der richtige Einstieg, denn dort entsteht die Grundlage erst. Die Auswertung dauert in der Regel bis zu 14 Werktage nach vollständigem Eingang aller Unterlagen. Die Nachberatung gilt pro Pferd.",
+      },
+    ],
+  },
+  {
+    slug: "befund-einschaetzung",
+    gruppe: "begleitung",
+    name: "Einschätzung deiner Befunde: Heuanalyse, Blutbild und Kotbefund",
+    kurzname: "Befund-Einschätzung",
+    preis: 7900,
+    mwst: 19,
+    art: "dienstleistung",
+    kurz: "Du hast Werte auf dem Tisch, aber niemand erklärt dir, was sie bedeuten.",
+    leistung:
+      "Schriftliche fachliche Einordnung von Heuanalyse, Blutbild und " +
+      "Kotbefund, einzeln oder zusammen, mit dem, was daraus für die " +
+      "Fütterung folgt. Ohne Futterplan und ohne Rationsberechnung. " +
+      "Gilt pro Pferd.",
+    akademieName: "Einschätzung deiner Befunde: Heuanalyse, Blutbild und Kotbefund",
+    erwarteterZugang: "futterberatung",
+    beschreibung: [
+      {
+        art: "absatz",
+        text: "Eine Heuanalyse kommt mit zwanzig Zahlen zurück. Ein Blutbild mit noch mehr, und die Spalte daneben sagt nur, ob ein Wert innerhalb der Referenz liegt. Was das für die Fütterung deines Pferdes bedeutet, steht auf keinem dieser Blätter.",
+      },
+      {
+        art: "absatz",
+        text: "Hier bekommst du genau das: eine schriftliche Einordnung deiner Befunde. Was steht da, was fällt auf, was davon ist für die Ration wichtig und was nicht, und woran solltest du als Nächstes denken.",
+      },
+      { art: "ueberschrift", text: "Was du einschicken kannst" },
+      {
+        art: "liste",
+        punkte: [
+          "Heuanalyse, auch mehrere Schnitte oder mehrere Jahre",
+          "Blutbild, gern auch mit Vorbefunden zum Vergleich",
+          "Kotbefund und Untersuchungen zur Darmflora",
+          "Alles zusammen, wenn du das Gesamtbild willst",
+        ],
+      },
+      { art: "ueberschrift", text: "Was hier nicht enthalten ist" },
+      {
+        art: "absatz",
+        text: "Das ist bewusst keine Futterberatung. Du bekommst die Einordnung deiner Werte, aber keinen Futterplan und keine vollständige Rationsberechnung. Wenn du beides willst, ist der Futterplan der richtige Weg, dort sehe ich mir die Befunde ohnehin mit an. Wenn ich dein Pferd schon einmal beraten habe und nur die neuen Werte einzuordnen sind, ist die Nachberatung der günstigere Weg.",
+      },
+      { art: "ueberschrift", text: "Wichtige Hinweise" },
+      {
+        art: "absatz",
+        text: "Ich stelle keine Diagnosen und ersetze keinen Tierarzt. Ich ordne Werte fachlich ein und sage dir, was daraus für die Fütterung folgt. Die Auswertung dauert in der Regel bis zu 14 Werktage nach vollständigem Eingang aller Unterlagen. Die Einschätzung gilt pro Pferd.",
+      },
+    ],
+  },
+  {
+    slug: "futterplan",
+    gruppe: "begleitung",
+    name: "Dein individueller Futterplan",
+    kurzname: "Futterplan",
+    preis: 14900,
+    mwst: 19,
+    art: "dienstleistung",
+    kurz: "Eine vollständige Rationsberechnung und ein Plan, der zu deinem Pferd passt.",
+    leistung:
+      "Analyse deiner aktuellen Fütterung, vollständige Rationsberechnung " +
+      "und dein individueller Futterplan, dazu vier Wochen persönliche " +
+      "Begleitung bei der Umsetzung. Gilt pro Pferd.",
+    akademieName: "Dein individueller Futterplan",
+    erwarteterZugang: "futterberatung",
+    beschreibung: [
+      {
+        art: "absatz",
+        text: "Zehn Ratschläge aus dem Stall, drei Zusatzfutter im Schrank, und du weißt immer noch nicht, ob es reicht. Der Futterplan ist der Weg da heraus: eine vollständige Berechnung dessen, was dein Pferd tatsächlich bekommt, und ein Plan, der zu ihm passt.",
+      },
+      {
+        art: "absatz",
+        text: "Ich rechne deine Ration durch, sehe mir an, wo sie zu viel und wo sie zu wenig liefert, und stelle sie neu zusammen. Was du schon im Schrank stehen hast, bleibt drin, wenn es passt. Was nicht passt, fliegt raus, und ich sage dir auch, warum.",
+      },
+      { art: "ueberschrift", text: "Das bekommst du" },
+      {
+        art: "liste",
+        punkte: [
+          "Eine Analyse deiner aktuellen Fütterung, mit Zahlen statt Bauchgefühl",
+          "Die vollständige Rationsberechnung für dein Pferd",
+          "Deinen individuellen Futterplan mit Mengen und Zeiten",
+          "Eine Einordnung deiner Befunde, wenn du welche hast",
+          "Vier Wochen persönliche Begleitung bei der Umsetzung",
+        ],
+      },
+      { art: "ueberschrift", text: "Für wen der Futterplan gedacht ist" },
+      {
+        art: "absatz",
+        text: "Für dich, wenn du einmal Klarheit willst, ob die Fütterung deines Pferdes aufgeht, und danach selbst weiterarbeiten möchtest. Wenn du dir schon jetzt sicher bist, dass du länger begleitet werden willst, sieh dir die drei Monate oder Pferdeliebe 365 an, dort ist der Plan enthalten und die Begleitung geht weiter.",
+      },
+      { art: "ueberschrift", text: "Wichtige Hinweise" },
+      {
+        art: "absatz",
+        text: "Nach deiner Buchung bekommst du einen ausführlichen Fragebogen zu Haltung, Fütterung und Gesundheitszustand, dazu bitte ich dich um ein paar Fotos. Die Auswertung dauert in der Regel bis zu 14 Werktage nach vollständigem Eingang aller Unterlagen. Danach begleite ich dich vier Wochen bei der Umsetzung. Der Futterplan gilt pro Pferd.",
+      },
+    ],
+  },
+  {
+    slug: "begleitung-3-monate",
+    gruppe: "begleitung",
+    name: "Drei Monate Begleitung",
+    kurzname: "Begleitung 3 Monate",
+    preis: 24900,
+    mwst: 19,
+    art: "dienstleistung",
+    kurz: "Ein Plan, und drei Monate lang jemand, der mit draufschaut.",
+    leistung:
+      "Dein individueller Futterplan mit vollständiger Rationsberechnung " +
+      "und drei Monate persönliche Begleitung mit Anpassungen, wenn sich " +
+      "etwas ändert. Gilt pro Pferd.",
+    akademieName: "Drei Monate Begleitung",
+    erwarteterZugang: "futterberatung",
+    beschreibung: [
+      {
+        art: "absatz",
+        text: "Ein Futterplan ist der Anfang, nicht das Ende. Die Fragen kommen erst, wenn er im Stall ankommt: Frisst er das überhaupt? Wie schleiche ich das alte Futter aus? Der Kot ist anders, ist das normal? Und nach vier Wochen sieht man noch längst nicht alles.",
+      },
+      {
+        art: "absatz",
+        text: "Deshalb gibt es diesen Weg: Du bekommst denselben Futterplan wie bei der Einmalberatung, und danach bleibe ich drei Monate an eurer Seite. Wenn sich etwas ändert, ändern wir den Plan mit, ohne dass du etwas nachbuchen musst.",
+      },
+      { art: "ueberschrift", text: "Das bekommst du" },
+      {
+        art: "liste",
+        punkte: [
+          "Analyse der aktuellen Fütterung und vollständige Rationsberechnung",
+          "Deinen individuellen Futterplan",
+          "Drei Monate persönliche Begleitung statt vier Wochen",
+          "Anpassungen des Plans, wenn sich etwas ändert, ohne Aufpreis",
+          "Einordnung neuer Befunde, die in diesen drei Monaten dazukommen",
+        ],
+      },
+      { art: "ueberschrift", text: "Für wen die drei Monate gedacht sind" },
+      {
+        art: "absatz",
+        text: "Für dich, wenn eine Umstellung ansteht und du sie nicht allein durchziehen willst. Für Pferde, bei denen gerade etwas im Gange ist, ein Darmthema, ein Fellwechsel, eine Rekonvaleszenz, und bei denen sich in den ersten Wochen noch einiges bewegt. Wenn du übers ganze Jahr begleitet werden möchtest und eine Akte willst, die mitwächst, ist Pferdeliebe 365 der richtige Weg.",
+      },
+      { art: "ueberschrift", text: "Wichtige Hinweise" },
+      {
+        art: "absatz",
+        text: "Die drei Monate laufen ab dem Tag, an dem dein Futterplan fertig ist, nicht ab dem Kauf. Die Auswertung dauert in der Regel bis zu 14 Werktage nach vollständigem Eingang aller Unterlagen. Damit jede Begleitung die Aufmerksamkeit bekommt, die sie braucht, nehme ich bewusst nur wenige Pferde gleichzeitig an. Die Begleitung gilt pro Pferd.",
+      },
+    ],
+  },
   {
     slug: "pferdeliebe-365",
     gruppe: "begleitung",
     name: "Pferdeliebe 365 – deine 1:1 Futterberatung als Gesundheitsakte",
     kurzname: "Pferdeliebe 365",
-    // 249 € statt 399 €, von Yasemin am 01.09.2026 so festgelegt. Der
-    // Streichpreis ist hier zulässig, weil es eine echte Aktion auf den
-    // regulären Preis ist.
-    preis: 24900,
-    statt: 39900,
+    // 399 €. Die Aktion mit 249 € ist am 03.09.2026 beendet worden, weil die
+    // Beratung jetzt eine Treppe hat: 149 € einmalig, 249 € für drei Monate,
+    // 399 € fürs Jahr. Mit dem Aktionspreis hätte das Jahr dasselbe gekostet
+    // wie drei Monate. Deshalb steht hier auch kein `statt` mehr: Ein
+    // Streichpreis gegen den eigenen früheren Aktionspreis wäre eine
+    // Ersparnis, die es nicht gibt.
+    preis: 39900,
     mwst: 19,
     // ▸ ACHTUNG, DAS EINZIGE PRODUKT MIT art: "dienstleistung".
     //   Was das für den Widerruf bedeutet, steht oben beim Typ. Kurz: Das
@@ -799,7 +1007,13 @@ export const funnel: Funnel[] = [
   {
     produkt: "magen-reset",
     upsell: "darmaufbau",
-    upsellPreis: 2700,
+    // ▸ AM 03.09.2026 VON 2700 AUF 1500 KORRIGIERT.
+    //   Der Darmaufbau kostet regulaer 22 €. Das "Angebot" lag mit 27 € also
+    //   FUENF EURO UEBER dem Preis, den dieselbe Kundin auf der Produktseite
+    //   gesehen haette. Vermutlich ist irgendwann der Einzelpreis gesenkt und
+    //   die Kette nicht mitgezogen worden. Wer ein Angebot zeigt, das teurer
+    //   ist als der normale Preis, verkauft nichts und verliert Vertrauen.
+    upsellPreis: 1500,
     upsellTitel: "Der Magen ist der Anfang. Der Darm entscheidet.",
     upsellGrund:
       "Ein Magenproblem kommt selten allein. Was im Magen anfängt, setzt " +
@@ -871,7 +1085,13 @@ export const funnel: Funnel[] = [
   {
     produkt: "symptom-navigator",
     upsell: "darmaufbau",
-    upsellPreis: 2700,
+    // ▸ AM 03.09.2026 VON 2700 AUF 1500 KORRIGIERT.
+    //   Der Darmaufbau kostet regulaer 22 €. Das "Angebot" lag mit 27 € also
+    //   FUENF EURO UEBER dem Preis, den dieselbe Kundin auf der Produktseite
+    //   gesehen haette. Vermutlich ist irgendwann der Einzelpreis gesenkt und
+    //   die Kette nicht mitgezogen worden. Wer ein Angebot zeigt, das teurer
+    //   ist als der normale Preis, verkauft nichts und verliert Vertrauen.
+    upsellPreis: 1500,
     upsellTitel: "Die meisten Wege im Navigator enden im Darm.",
     upsellGrund:
       "Wenn du im Symptom-Navigator nachschlägst, landest du erstaunlich " +
@@ -884,10 +1104,37 @@ export const funnel: Funnel[] = [
       "Magenprobleme stehen im Navigator ganz oben. Der Magen Reset gibt " +
       "dir dafür die Checkliste und ein Rezept an die Hand.",
   },
+  // -------------------------------------------------------------------------
+  // Die Ketten der beiden versteckten Angebote, angelegt am 03.09.2026.
+  //
+  // ▸ DAS BÜNDEL TAUCHT IN KEINER KETTE ALS ZIEL AUF, und das ist Absicht:
+  //   Es ist befristet. Ein Angebot, das nach dem Stichtag noch erscheint,
+  //   führt die Kundin auf einen Knopf, den die Kasse abweist. Es hat
+  //   deshalb eine eigene Kette, ist aber nirgends Upsell oder Downsell.
+  // -------------------------------------------------------------------------
   {
-    produkt: "ratiopro",
+    produkt: "metabolisches-gewicht",
+    upsell: "symptom-navigator",
+    upsellPreis: 2700,
+    upsellTitel: "Du kannst jetzt rechnen. Und wenn etwas auffällt?",
+    upsellGrund:
+      "Im Pro-Modul hast du gesehen, wie ein Bedarf zustande kommt. Die " +
+      "andere Hälfte der Beratung fängt an, wenn eine Kundin dir von " +
+      "Kotwasser, schuppiger Haut oder einem plötzlich krüschen Pferd " +
+      "erzählt. Im Symptom-Navigator schlägst du das Zeichen nach und siehst, " +
+      "was dahinterstecken kann und was du zuerst fragen solltest.",
+    downsell: "mineral-klarheit",
+    downsellPreis: 1900,
+    downsellTitel: "Dann das, was direkt an den Zahlen hängt.",
+    downsellGrund:
+      "Der Bedarf steht jetzt. Die nächste Frage ist, ob das Mineralfutter " +
+      "im Eimer ihn überhaupt deckt. Mineral-Klarheit zeigt dir, wie du eine " +
+      "Deklaration liest und auf dein Pferd umrechnest, statt der Empfehlung " +
+      "auf der Verpackung zu glauben.",
+  },
+  {
+    produkt: "ratiopro-buendel",
     upsell: "ganzjahresfutterplan",
-    // Mit dem Sprung des Einzelpreises auf 59 Euro mitgezogen.
     upsellPreis: 3900,
     upsellTitel: "Der Rechner sagt was. Der Plan sagt wann.",
     upsellGrund:
@@ -900,6 +1147,35 @@ export const funnel: Funnel[] = [
     downsellGrund:
       "RatioPro rechnet. Mineral-Klarheit erklärt, warum eine Zahl auf der " +
       "Verpackung noch nichts über die Versorgung deines Pferdes sagt.",
+  },
+  {
+    produkt: "ratiopro",
+    upsell: "ganzjahresfutterplan",
+    // Mit dem Sprung des Einzelpreises auf 59 Euro mitgezogen.
+    upsellPreis: 3900,
+    upsellTitel: "Der Rechner sagt was. Der Plan sagt wann.",
+    upsellGrund:
+      "RatioPro rechnet dir die Ration aus, die heute passt. Im Fellwechsel " +
+      "sieht sie anders aus als auf der Sommerweide. Der Ganzjahresfutterplan " +
+      "nimmt dir ab, jeden Monat neu zu überlegen, was sich saisonal ändert.",
+    // ▸ SEIT DEM 03.09.2026 STEHT HIER DAS PRO-MODUL statt Mineral-Klarheit.
+    //   Ein Zusatz zu dem, was die Kundin gerade gekauft hat, ist der
+    //   naheliegendste zweite Kauf, den es gibt: Sie hat den Rechner offen
+    //   und versteht sofort, wovon die Rede ist.
+    //
+    //   Wenn du lieber umgekehrt willst, also das Modul als Upsell und den
+    //   Ganzjahresfutterplan als Downsell: Das geht nicht ohne Weiteres, ein
+    //   Downsell muss günstiger sein als der Upsell. Dann müsste der Plan
+    //   ganz aus dieser Kette heraus.
+    downsell: "metabolisches-gewicht",
+    downsellPreis: 1900,
+    downsellTitel: "Dann nimm zumindest den Rechenweg mit.",
+    downsellGrund:
+      "Du hast jetzt den Rechner. Das Pro-Modul zeigt dir, wie er auf seine " +
+      "Zahlen kommt: metabolisch gerechnet gegen linear, der " +
+      "Erhaltungsbedarf nach Pferdetyp und eine Anleitung, mit der du jeden " +
+      "Wert von Hand nachrechnest. Es sitzt direkt im Rechner, du musst " +
+      "nichts zusätzlich öffnen.",
   },
   {
     // Wer EquiDesk kauft, ist Beraterin und keine Pferdebesitzerin. Deshalb

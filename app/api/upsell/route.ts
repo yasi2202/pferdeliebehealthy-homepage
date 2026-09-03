@@ -96,6 +96,29 @@ export async function POST(request: Request) {
     );
   }
 
+  // ▸ EIN ANGEBOT DARF NICHT AUSSERHALB SEINER VERKAUFSZEIT LAUFEN.
+  //   Die normale Kasse prueft `verkaufAb` und `verkaufBis`, dieser Weg hier
+  //   ging bisher daran vorbei: Der Ein-Klick-Kauf bucht direkt ab, ohne noch
+  //   einmal durch /api/digitalkasse zu gehen. Seit es ein befristetes
+  //   Angebot gibt, waere das eine Luecke, durch die nach dem Stichtag noch
+  //   Geld eingezogen wuerde. Und ein zulassungspflichtiger Lehrgang darf vor
+  //   seinem Vertriebsbeginn auch hier nicht verkauft werden.
+  const heute = new Date();
+
+  if (produkt.verkaufAb && heute < new Date(`${produkt.verkaufAb}T00:00:00+02:00`)) {
+    return Response.json(
+      { fehler: "Dieses Angebot ist noch nicht buchbar." },
+      { status: 403 },
+    );
+  }
+
+  if (produkt.verkaufBis && heute > new Date(`${produkt.verkaufBis}T23:59:59+02:00`)) {
+    return Response.json(
+      { fehler: "Dieses Angebot ist ausgelaufen." },
+      { status: 410 },
+    );
+  }
+
   // Wurde das Angebot schon einmal angenommen? Dann hier auf keinen Fall
   // erneut abbuchen.
   const res = await supabase(
