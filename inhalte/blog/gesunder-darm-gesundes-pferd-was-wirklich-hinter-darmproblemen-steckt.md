@@ -1,7 +1,7 @@
 ---
 titel: "Gesunder Darm, gesundes Pferd: was wirklich hinter Darmproblemen steckt"
 datum: 2025-08-13
-aktualisiert: 2026-09-02
+aktualisiert: 2026-09-03
 kategorie: "Magen und Darm"
 angebot: "futter-check"
 bild: ""
@@ -125,6 +125,76 @@ Pferd dabei erhebliche Mengen Flüssigkeit und Elektrolyte verliert.
 
 Chronische Darmentzündungen, Sandansammlungen und Zahnerkrankungen lassen sich
 mit Fütterung nicht lösen, sondern nur erkennen und dann behandeln.
+
+## Was der Kot dir verrät
+
+Der Kothaufen ist das einzige tägliche Fenster in den Darm, das du ohne Labor
+hast. Es lohnt sich, einmal bewusst hinzuschauen, statt nur abzumisten.
+
+| Was du siehst | Was es bedeuten kann |
+|---|---|
+| Feste, geformte Äpfel, die beim Aufprall leicht zerfallen | so soll es sein |
+| Äpfel, die sofort zerfallen, dazu freies Wasser | Hinweis auf [Kotwasser](/blog/kotwasser-beim-pferd), der Dickdarm bindet Wasser nicht |
+| Sehr feste, kleine, dunkle Äpfel | zu wenig Wasseraufnahme oder zu wenig Raufutter |
+| Lange, unverdaute Halme | Kauproblem, oder das Futter passiert zu schnell |
+| Ganze Getreidekörner | der Dünndarm kommt mit der Stärkemenge nicht mit |
+| Sehr saurer, stechender Geruch | Fehlgärung, meist durch Zucker und Stärke |
+| Schleimauflagerungen | gereizte Darmschleimhaut, gehört beobachtet |
+| Blut, schwarzer Teerkot | sofort zum Tierarzt |
+
+Ein einzelner auffälliger Haufen sagt wenig. Was zählt, ist die Veränderung
+über Tage und Wochen.
+
+**Ein Wort zu Sand:** In sandigen Ausläufen und auf abgefressenen Weiden nimmt
+ein Pferd mit dem Futter Sand auf, der sich im Dickdarm sammelt. Er macht
+Kotwasser und im schlimmsten Fall eine Kolik. Den einfachen Test kennen viele:
+ein paar Äpfel in einen durchsichtigen Handschuh mit Wasser, aufhängen,
+absetzen lassen. Findet sich unten deutlich Sand, ist das ein Grund, das
+Management zu ändern und mit dem Tierarzt zu sprechen. Ein Sandproblem löst
+kein Kräuterpulver.
+
+## Häufige Fragen
+
+### Wie lange dauert es, bis sich die Darmflora erholt?
+
+Rechne mit sechs bis zwölf Wochen, bis sich eine veränderte Ration sichtbar
+auswirkt. In den ersten beiden Wochen passiert oft gar nichts, und genau dann
+steigen die meisten aus und wechseln das Mittel.
+
+### Brauche ich Probiotika für den Darmaufbau?
+
+Sie können unterstützen, aber sie ersetzen die Ursachenarbeit nicht. Solange
+zu wenig Raufutter im Trog liegt, die Fresspausen zu lang sind oder zu viel
+Stärke gefüttert wird, arbeitet jedes Produkt gegen den Strom. Erst das
+Management, dann die Ergänzung.
+
+### Ist Kotwasser immer ein Darmproblem?
+
+Nein. Kotwasser ist ein Zeichen, keine Diagnose. Es kann von einer
+verschobenen Darmflora kommen, aber auch von Sand, von Stress in der
+Rangordnung, von Zahnproblemen oder von einer Erkrankung, die tierärztlich
+abgeklärt gehört.
+
+### Wie viel Heu braucht mein Pferd wirklich?
+
+Als Untergrenze gelten anderthalb Kilo je hundert Kilo Körpergewicht, also
+rund neun Kilo für ein 600-Kilo-Pferd. Das ist ein Minimum, kein Zielwert.
+Genauso wichtig ist die Verteilung: Fresspausen über vier Stunden bedeuten
+Magensäure ohne Gegenwehr.
+
+### Kann ich eine Dysbiose beim Tierarzt testen lassen?
+
+Es gibt Kotuntersuchungen, die die Zusammensetzung der Darmflora abbilden,
+und sie können ein Puzzleteil sein. Einen einzelnen Wert, der eine Dysbiose
+beweist, gibt es aber nicht. Aussagekräftiger ist meistens die Kombination
+aus Vorgeschichte, Ration, Kotbild und dem Ausschluss anderer Ursachen.
+
+### Mein Pferd hat nach der Wurmkur Durchfall. Ist das normal?
+
+Eine vorübergehende Veränderung des Kots kommt vor, weil eine Wurmkur nicht
+nur die Parasiten trifft. Hält der Durchfall länger als zwei bis drei Tage an
+oder kommt Fieber dazu, gehört das zum Tierarzt. Mehr dazu im Beitrag über
+[natürliche Entwurmung](/blog/natuerliche-entwurmung-beim-pferd-was-wirklich-sinnvoll-ist).
 
 ## Der Fahrplan, wenn du es strukturiert angehen willst
 
