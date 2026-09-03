@@ -45,7 +45,7 @@ export const metadata: Metadata = {
     title: `${TITEL} | Pferdeliebehealthy`,
     description: BESCHREIBUNG,
     url: "/ausbildung",
-    images: [{ url: "/images/yasi-portrait.jpg", width: 1200, height: 1600 }],
+    images: [{ url: "/images/vorschau.jpg", width: 1200, height: 630 }],
   },
 };
 

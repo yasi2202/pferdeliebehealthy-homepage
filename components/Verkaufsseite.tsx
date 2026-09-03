@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { preisText } from "@/lib/shop";
+import { url } from "@/lib/seo";
 import Stimmen from "@/components/Stimmen";
 import Kauffragen from "@/components/Kauffragen";
 import WerDahinterSteht from "@/components/WerDahinterSteht";
@@ -38,8 +39,53 @@ export default function Verkaufsseite({
   const kasse = `/kasse/${produkt.slug}`;
   const rabatt = produkt.statt && produkt.statt > produkt.preis;
 
+  // -------------------------------------------------------------------------
+  // Was Google ueber dieses Angebot wissen soll.
+  //
+  // Bisher stand auf den Produktseiten nur Fliesstext. Google konnte daraus
+  // nicht ablesen, dass hier etwas zu einem bestimmten Preis verkauft wird --
+  // und zeigte deshalb auch nie einen Preis im Suchergebnis an. Mit dieser
+  // Auszeichnung kann es das.
+  //
+  // ▸ DER PREIS KOMMT AUS lib/digital.ts, wie ueberall sonst auch. Ein hier
+  //   eingetragener Betrag, der von der Kasse abweicht, waere irrefuehrende
+  //   Werbung. Deshalb wird gerechnet, nicht getippt.
+  //
+  // ▸ KEINE STERNE UND KEINE BEWERTUNGSZAHL. Sie waeren die auffaelligste
+  //   Anzeige, aber Google verlangt dafuer Bewertungen, die sich auf GENAU
+  //   dieses Produkt beziehen und auf der Seite sichtbar sind. Die
+  //   Kundenstimmen stammen aus dem Unternehmensprofil und gelten der
+  //   Beratung insgesamt. Sie hier als Produktbewertung auszugeben, waere
+  //   erfunden -- und Google straft genau das ab.
+  //
+  // ▸ MINERAL-KLARHEIT BEKOMMT DAS NICHT, weil die Seite diese Komponente
+  //   nicht benutzt (siehe oben). Dort muesste es von Hand nachgetragen
+  //   werden.
+  // -------------------------------------------------------------------------
+  const produktDaten = {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    name: produkt.name,
+    description: produkt.kurz,
+    ...(produkt.bild ? { image: url(produkt.bild.datei) } : {}),
+    brand: { "@type": "Brand", name: "Pferdeliebehealthy" },
+    offers: {
+      "@type": "Offer",
+      url: url(`/${produkt.slug}`),
+      priceCurrency: "EUR",
+      // In digital.ts stehen Cent, schema.org will Euro.
+      price: (produkt.preis / 100).toFixed(2),
+      availability: "https://schema.org/InStock",
+      seller: { "@id": url("/#unternehmen") },
+    },
+  };
+
   return (
     <main>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(produktDaten) }}
+      />
       {/* ------------------------------------------------------------- Kopf */}
       <section className="bg-ink px-6 py-16 text-cream sm:px-8 sm:py-24">
         <div className="mx-auto grid max-w-5xl items-center gap-10 lg:grid-cols-[1.15fr_1fr] lg:gap-14">

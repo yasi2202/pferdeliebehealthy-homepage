@@ -47,7 +47,7 @@ export const metadata: Metadata = {
     title: `${TITEL} | Pferdeliebehealthy`,
     description: BESCHREIBUNG,
     url: "/shop",
-    images: [{ url: "/images/yasi-helena.jpg", width: 1122, height: 1402 }],
+    images: [{ url: "/images/vorschau.jpg", width: 1200, height: 630 }],
   },
 };
 
@@ -458,8 +458,12 @@ export default function ShopSeite() {
       </section>
 
       {gruppen.map((g) => {
+        // `versteckt` fliegt hier raus: Zusatzmodule, die ohne ihr
+        // Hauptprodukt keinen Sinn ergeben, gehoeren nicht in die Uebersicht.
+        // Kaufen kann man sie trotzdem, ueber /kasse/<slug>. Warum das so
+        // ist, steht bei `versteckt` in lib/digital.ts.
         const dieser = digitalprodukte
-          .filter((p) => p.gruppe === g.schluessel)
+          .filter((p) => p.gruppe === g.schluessel && !p.versteckt)
           .sort((a, b) => a.preis - b.preis);
 
         if (dieser.length === 0) return null;
@@ -594,16 +598,25 @@ export default function ShopSeite() {
             "@type": "ItemList",
             name: "Shop von Pferdeliebehealthy",
             itemListElement: [
-              ...digitalprodukte.map((p, i) => ({
-                "@type": "ListItem",
-                position: i + 1,
-                url: url(`/${p.slug}`),
-                name: p.name,
-              })),
+              // Auch hier ohne die versteckten: Google eine Adresse zu
+              // melden, die auf keiner Seite verlinkt ist und zu der es
+              // keine Verkaufsseite gibt, brächte nur eine Fehlerseite in
+              // den Index.
+              ...digitalprodukte
+                .filter((p) => !p.versteckt)
+                .map((p, i) => ({
+                  "@type": "ListItem",
+                  position: i + 1,
+                  url: url(`/${p.slug}`),
+                  name: p.name,
+                })),
               ...(shopSichtbar
                 ? produkte.map((p, i) => ({
                     "@type": "ListItem",
-                    position: digitalprodukte.length + i + 1,
+                    position:
+                      digitalprodukte.filter((d) => !d.versteckt).length +
+                      i +
+                      1,
                     url: url(`/shop/${p.slug}`),
                     name: p.name,
                   }))

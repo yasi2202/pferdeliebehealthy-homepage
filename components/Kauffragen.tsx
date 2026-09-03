@@ -99,8 +99,34 @@ function fragenZu(produkt: DigitalProdukt): Frage[] {
 export default function Kauffragen({ produkt }: { produkt: DigitalProdukt }) {
   const fragen = fragenZu(produkt);
 
+  // -------------------------------------------------------------------------
+  // Dieselben Fragen noch einmal, aber fuer Google.
+  //
+  // Ein FAQPage-Eintrag erlaubt es Google, die Fragen direkt unter dem
+  // Suchergebnis aufzuklappen. Das Ergebnis wird dadurch hoeher und faellt
+  // mehr auf, ohne dass die Seite selbst anders aussieht.
+  //
+  // ▸ DIE ANTWORTEN WERDEN NICHT ZWEIMAL GETIPPT. Sie kommen aus derselben
+  //   Liste wie der sichtbare Abschnitt. Das ist auch Vorschrift: Google
+  //   verlangt, dass ausgezeichnete Fragen wortgleich auf der Seite stehen.
+  //   Wer hier eigene Texte einsetzt, riskiert eine Abstrafung.
+  // -------------------------------------------------------------------------
+  const fragenDaten = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: fragen.map((f) => ({
+      "@type": "Question",
+      name: f.frage,
+      acceptedAnswer: { "@type": "Answer", text: f.antwort },
+    })),
+  };
+
   return (
     <section className="px-6 pb-16 sm:px-8 sm:pb-24">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(fragenDaten) }}
+      />
       <div className="mx-auto max-w-3xl">
         <span className="mb-4 block text-[13px] font-semibold uppercase tracking-[0.14em] text-rose-deep">
           Bevor du kaufst

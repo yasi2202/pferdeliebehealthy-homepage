@@ -43,7 +43,7 @@ export const metadata: Metadata = {
     title: `${TITEL} | Pferdeliebehealthy`,
     description: BESCHREIBUNG,
     url: "/ganzjahresfutterplan",
-    images: [{ url: "/images/yasi-helena.jpg", width: 1122, height: 1402 }],
+    images: [{ url: "/images/vorschau.jpg", width: 1200, height: 630 }],
   },
 };
 
