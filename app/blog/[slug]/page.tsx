@@ -105,6 +105,22 @@ export default async function BlogBeitragSeite({ params }: Props) {
                 image: url(bild),
                 mainEntityOfPage: url(`/blog/${slug}`),
               },
+              // Hat der Beitrag einen Abschnitt „Haeufige Fragen", wird er
+              // hier ausgezeichnet. Google darf die Fragen dann direkt im
+              // Suchergebnis aufklappen. Die Texte stammen woertlich aus dem
+              // Beitrag, siehe `fragenSammeln()` in lib/blog.ts.
+              ...(beitrag.fragen.length > 0
+                ? [
+                    {
+                      "@type": "FAQPage",
+                      mainEntity: beitrag.fragen.map((f) => ({
+                        "@type": "Question",
+                        name: f.frage,
+                        acceptedAnswer: { "@type": "Answer", text: f.antwort },
+                      })),
+                    },
+                  ]
+                : []),
               {
                 "@type": "BreadcrumbList",
                 itemListElement: [

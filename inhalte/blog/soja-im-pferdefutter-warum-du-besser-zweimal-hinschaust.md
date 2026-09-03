@@ -199,7 +199,7 @@ rechnen, landet schnell im Überschuss, und der belastet Leber und Nieren.
 
 ## Häufige Fragen zu Soja beim Pferd
 
-**Ist Sojaschrot schädlich für Pferde?**
+### Ist Sojaschrot schädlich für Pferde?
 Giftig ist es nicht, und es gibt keine Studie, die Soja beim Pferd
 grundsätzlich verurteilt. Die Kritik zielt auf die Menge, die Dauer und die
 Verarbeitung: viel Eiweiß, das kaum ein Pferd braucht, Mehrfachzucker, die
@@ -208,13 +208,13 @@ mehrere Verarbeitungsschritte hinter sich hat. Wer es einzeln betrachtet,
 findet für jeden Punkt ein Gegenargument. Wer die Summe betrachtet, kommt zu
 dem Schluss, dass es bessere Wege gibt.
 
-**Woran erkenne ich Soja im Futter?**
+### Woran erkenne ich Soja im Futter?
 Auf der Deklaration steht es selten als „Soja". Üblich sind Sojaextraktionsschrot,
 Sojaschrot, Sojaöl, Sojaprotein oder Sojabohnenschalen. Bei zusammengesetzten
 Futtermitteln lohnt der Blick auf die Reihenfolge: Was weit vorne steht, ist
 mengenmäßig auch weit vorne.
 
-**Mein Pferd frisst seit Jahren Soja und hat nichts. Muss ich umstellen?**
+### Mein Pferd frisst seit Jahren Soja und hat nichts. Muss ich umstellen?
 Nein, jedenfalls nicht sofort und nicht aus Angst. Ein robuster Darm steckt
 einiges weg, und wenn es bei euch läuft, ist der Umstieg kein Notfall.
 Genauer hinsehen würde ich, wenn Blähbauch, Kotwasser oder wiederkehrende
@@ -222,7 +222,7 @@ Verdauungsprobleme dazukommen, im Wachstum, und bei Zuchtstuten. Und ich
 würde bei der nächsten Futterumstellung ohnehin fragen, ob es Soja sein
 muss.
 
-**Stimmt es, dass Soja Hormone durcheinanderbringt?**
+### Stimmt es, dass Soja Hormone durcheinanderbringt?
 Beim Wiederkäuer ist das belegt, dort beeinträchtigt Rotklee mit hohem
 Isoflavongehalt nachweislich die Fruchtbarkeit. Beim Pferd fehlen solche
 Studien, und bei üblichen Mengen sind keine hormonellen Effekte dokumentiert.
@@ -230,7 +230,7 @@ Wer also liest, Soja mache Stuten unfruchtbar, liest mehr, als die Datenlage
 hergibt. Vorsicht bei Zuchtstuten mit Problemen halte ich trotzdem für
 vernünftig, denn Alternativen gibt es genug.
 
-**Und wenn mein Pferd wirklich Eiweiß braucht?**
+### Und wenn mein Pferd wirklich Eiweiß braucht?
 Dann gezielt und kurweise: Esparsette, Luzerne oder Grünhafer. Vorher aber
 rechnen, wie viel wirklich fehlt. Ein Eiweißüberschuss belastet Leber und
 Nieren genauso, wie ein Mangel Muskeln und Hufhorn kostet.

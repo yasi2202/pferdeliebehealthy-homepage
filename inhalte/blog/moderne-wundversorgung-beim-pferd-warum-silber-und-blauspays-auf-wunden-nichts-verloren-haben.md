@@ -127,36 +127,36 @@ nicht so entwickelt wie erwartet, gehört sie in tierärztliche Hand.
 
 ## Häufige Fragen zu Blauspray und Silberspray
 
-**Darf man Silberspray auf offene Wunden sprühen?**
+### Darf man Silberspray auf offene Wunden sprühen?
 Auf eine frische, offene Wunde gehört es nicht. Der Film, den es bildet,
 verschließt die Wunde nach außen, und Silber belastet auch die Zellen, die
 sie schließen sollen. Für trockene, bereits verschlossene Stellen ist es
 weniger kritisch, nur braucht es dort meist auch nichts mehr.
 
-**Brennt Silberspray auf der Wunde?**
+### Brennt Silberspray auf der Wunde?
 Meist ist es weniger das Silber als das Treibmittel und der Alkohol im
 Spray, die brennen. Dass ein Pferd bei jeder Behandlung zurückweicht, ist
 kein Randproblem: Beim nächsten Mal lässt es sich schlechter anfassen, und
 das macht die Versorgung schwieriger als die Wunde selbst.
 
-**Was ist der Unterschied zwischen Blauspray und Silberspray?**
+### Was ist der Unterschied zwischen Blauspray und Silberspray?
 Blauspray färbt und desinfiziert, meist mit Farbstoff und Alkohol.
 Silberspray legt einen silbrigen Film über die Wunde. Beide haben dasselbe
 Grundproblem: Sie verschließen und verfärben, und danach kann niemand mehr
 beurteilen, wie die Wunde tatsächlich aussieht. Ob sich unter dem Blau eine
 Entzündung entwickelt, sieht man erst, wenn das Pferd lahmt.
 
-**Blauspray oder Silberspray, was ist besser?**
+### Blauspray oder Silberspray, was ist besser?
 Keins von beidem, jedenfalls nicht auf einer frischen Wunde. Die Frage ist
 so ähnlich wie die, ob man mit Öl oder mit Butter einen Brand löscht. Was
 hilft, ist reinigen, feucht halten und vor Fliegen schützen.
 
-**Warum benutzen so viele Ställe die Sprays trotzdem?**
+### Warum benutzen so viele Ställe die Sprays trotzdem?
 Weil sie billig sind, ewig halten und die Wunde sofort versorgt aussehen
 lassen. Das ist eine ehrliche Antwort: Sie geben ein gutes Gefühl. Nur nützt
 das dem Gewebe darunter nichts.
 
-**Was gehört in eine Stallapotheke, wenn nicht Farbspray?**
+### Was gehört in eine Stallapotheke, wenn nicht Farbspray?
 Ein mildes Mittel zum Reinigen, ein Gel oder eine Lösung für die
 Keimreduktion, luftdurchlässige Pflaster, eine sterile Kompresse, eine
 elastische Binde und eine Rolle Klebeband. Dazu die Telefonnummer deiner

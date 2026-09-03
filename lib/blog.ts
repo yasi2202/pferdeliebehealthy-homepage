@@ -69,9 +69,16 @@ export type BlogBeitrag = {
   /** Steht in diesem Beitrag ein Rabattcode, ein Partnerlink oder ein
    *  Partnerkasten? Dann zeigt die Seite die Werbekennzeichnung. */
   werbung: boolean;
+  /** Die Frage-Antwort-Paare aus dem Abschnitt „Haeufige Fragen", falls es
+   *  einen gibt. Sie werden nicht noch einmal angezeigt, sondern nur fuer
+   *  Google ausgezeichnet. Siehe `fragenSammeln()`. */
+  fragen: Array<{ frage: string; antwort: string }>;
 };
 
-export type BlogKopf = Omit<BlogBeitrag, "html" | "kapitel" | "werbung">;
+export type BlogKopf = Omit<
+  BlogBeitrag,
+  "html" | "kapitel" | "werbung" | "fragen"
+>;
 
 function datumLesbar(wert: unknown): string {
   if (!wert) return "";
@@ -297,7 +304,17 @@ function ankerSetzen(html: string): { html: string; kapitel: Kapitel[] } {
   const neu = html.replace(
     /<h2>([\s\S]*?)<\/h2>/g,
     (_treffer, inhalt: string) => {
-      const titel = inhalt.replace(/<[^>]+>/g, "").trim();
+      // Tags raus, und danach die HTML-Ersatzschreibweisen zurueckuebersetzen.
+      // Ohne den zweiten Schritt stand im Inhaltsverzeichnis woertlich
+      // "&quot;", sobald in einer Ueberschrift ein Anfuehrungszeichen vorkam.
+      const titel = inhalt
+        .replace(/<[^>]+>/g, "")
+        .replace(/&quot;/g, '"')
+        .replace(/&#39;/g, "'")
+        .replace(/&lt;/g, "<")
+        .replace(/&gt;/g, ">")
+        .replace(/&amp;/g, "&")
+        .trim();
       let anker = ankerName(titel) || `abschnitt-${kapitel.length + 1}`;
       while (vergeben.has(anker)) anker = `${anker}-2`;
       vergeben.add(anker);
@@ -307,6 +324,57 @@ function ankerSetzen(html: string): { html: string; kapitel: Kapitel[] } {
   );
 
   return { html: neu, kapitel };
+}
+
+// ---------------------------------------------------------------------------
+// Die Fragen am Ende eines Beitrags einsammeln.
+//
+// ▸ WOFUER
+//   Hat ein Beitrag einen Abschnitt „Haeufige Fragen", darf Google die
+//   Fragen direkt unter dem Suchergebnis aufklappen. Das Ergebnis wird
+//   dadurch hoeher und faellt mehr auf, ohne dass die Seite anders aussieht.
+//
+// ▸ DIE ANTWORTEN WERDEN NICHT GETIPPT, SIE WERDEN GELESEN.
+//   Sie stammen woertlich aus dem Beitrag. Das ist auch Vorschrift: Google
+//   verlangt, dass ausgezeichnete Fragen genauso auf der Seite stehen. Wer
+//   hier eigene Texte einsetzt, riskiert eine Abstrafung.
+//
+// ▸ WIE EIN BEITRAG MITMACHT
+//   Eine `##`-Ueberschrift, in der das Wort „Fragen" vorkommt, und darunter
+//   je Frage eine `###`-Ueberschrift. Mehr ist nicht noetig. Wer keinen
+//   solchen Abschnitt hat, bekommt eine leere Liste und damit keine
+//   Auszeichnung.
+// ---------------------------------------------------------------------------
+function fragenSammeln(html: string): Array<{ frage: string; antwort: string }> {
+  // Den Abschnitt finden: von der Fragen-Ueberschrift bis zur naechsten `h2`.
+  const start = html.match(/<h2[^>]*>(?:(?!<\/h2>).)*Fragen(?:(?!<\/h2>).)*<\/h2>/);
+  if (!start || start.index === undefined) return [];
+
+  const ab = html.slice(start.index + start[0].length);
+  const bis = ab.search(/<h2[\s>]/);
+  const abschnitt = bis === -1 ? ab : ab.slice(0, bis);
+
+  const nurText = (roh: string) =>
+    roh
+      .replace(/<[^>]+>/g, " ")
+      .replace(/&amp;/g, "&")
+      .replace(/&quot;/g, '"')
+      .replace(/&#39;/g, "'")
+      .replace(/&lt;/g, "<")
+      .replace(/&gt;/g, ">")
+      .replace(/\s+/g, " ")
+      .trim();
+
+  const fragen: Array<{ frage: string; antwort: string }> = [];
+  const muster = /<h3[^>]*>([\s\S]*?)<\/h3>([\s\S]*?)(?=<h3[\s>]|$)/g;
+  let treffer: RegExpExecArray | null;
+  while ((treffer = muster.exec(abschnitt)) !== null) {
+    const frage = nurText(treffer[1]);
+    const antwort = nurText(treffer[2]);
+    // Eine Frage ohne Antwort waere fuer Google ein Fehler, keine Zierde.
+    if (frage && antwort) fragen.push({ frage, antwort });
+  }
+  return fragen;
 }
 
 function kopfBauen(
@@ -367,6 +435,7 @@ export function blogBeitragLesen(slug: string): BlogBeitrag | null {
     html,
     kapitel,
     werbung: enthaeltWerbung(html),
+    fragen: fragenSammeln(html),
   };
 }
 

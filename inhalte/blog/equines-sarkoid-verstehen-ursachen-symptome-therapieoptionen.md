@@ -166,32 +166,32 @@ Behandlung des Sarkoids selbst gehört in tierärztliche Hand.
 
 ## Häufige Fragen zum Sarkoid beim Pferd
 
-**Kann man ein Sarkoid mit Fütterung wegbekommen?**
+### Kann man ein Sarkoid mit Fütterung wegbekommen?
 Nein. Es gibt kein Futtermittel und kein Kraut, das ein Sarkoid entfernt, und
 niemand sollte etwas anderes behaupten. Behandelt wird tierärztlich. Die
 Fütterung sorgt dafür, dass der Organismus dabei gut versorgt ist, mehr
 nicht, und weniger auch nicht.
 
-**Ist ein Sarkoid ansteckend?**
+### Ist ein Sarkoid ansteckend?
 Nicht im Sinne einer Herdenerkrankung. Beteiligt sind bovine Papillomaviren,
 die vermutlich über kleine Hautverletzungen eindringen, Fliegen können sie
 mechanisch übertragen. Ob ein Pferd eines entwickelt, hängt aber stark an
 seiner individuellen Empfänglichkeit. In derselben Herde stehen oft
 jahrelang betroffene und unbetroffene Pferde nebeneinander.
 
-**Mein Tierarzt sagt abwarten. Ist das richtig?**
+### Mein Tierarzt sagt abwarten. Ist das richtig?
 Bei einem kleinen, ruhigen Sarkoid an unkritischer Stelle kann das genau
 richtig sein. Wichtig ist, dass „abwarten" heißt: regelmäßig anschauen und
 fotografieren, mit Maßstab daneben. Sarkoide verschwinden selten von allein,
 und je kleiner sie bei Behandlungsbeginn sind, desto besser sind die
 Aussichten.
 
-**Warum soll ich nicht abbinden oder vereisen lassen?**
+### Warum soll ich nicht abbinden oder vereisen lassen?
 Weil das grobe Trauma am Tumor häufig genau das auslöst, was man verhindern
 will: schnelleres Wachstum und Wiederkehr. Die Basis bleibt unvollständig
 zurück. Dasselbe gilt für scharfe Salben aus dem Internet.
 
-**Welche Rolle spielen Spurenelemente?**
+### Welche Rolle spielen Spurenelemente?
 Zink, Kupfer, Mangan und Selen sind an Hautbildung und Immunfunktion
 beteiligt. Eine Unterversorgung sieht man Pferden oft am Fell an, bevor
 irgendetwas anderes auffällt. Ob dein Pferd versorgt ist, sagt dir keine
