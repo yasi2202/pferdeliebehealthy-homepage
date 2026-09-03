@@ -13,7 +13,7 @@ speichert Nährstoffe, reguliert den Stoffwechsel und ist an der Verdauung
 beteiligt.
 Doch obwohl sie so zentral ist, bleiben **Leberprobleme beim Pferd oft lange
 unentdeckt**. Warum?
-Weil die Leber eine enorme Regenerationsfähigkeit besitzt – **Symptome treten
+Weil die Leber eine enorme Regenerationsfähigkeit besitzt. **Symptome treten
 meist erst auf, wenn der Schaden bereits fortgeschritten ist.**
 
 Umso wichtiger ist es, auf sogenannte **Frühmarker** zu achten, subtile, aber
@@ -94,7 +94,7 @@ Doch je früher du die Frühmarker kennst und erkennst, desto besser kannst du:
 - die Leber entlasten und regenerieren
 - Folgeprobleme wie Hufrehe, EMS oder chronische Hautthemen vermeiden
 
-Die Leber ist ein stiller Arbeiter – **und sie sendet ihre Signale leise.**
+Die Leber ist ein stiller Arbeiter, **und sie sendet ihre Signale leise.**
 Schau dir Fell, Augen, Kotkonsistenz und Fresslust über mehrere Wochen an,
 nicht an einem einzelnen Tag.
 Wenn du mehrere dieser Frühmarker bemerkst, lohnt es sich, **gezielt

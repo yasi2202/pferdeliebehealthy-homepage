@@ -158,7 +158,7 @@ Wenn du deinem Pferd auf natürliche Weise mehr **Ruhe, Regeneration und
 Wohlbefinden** schenken möchtest, findest du hier meine persönliche
 Empfehlung:
 
-**[SWISS FX CBD-Öl für Pferde – 100 % natürlich &
+**[SWISS FX CBD-Öl für Pferde, 100 % natürlich &
 laborgeprüft](https://swissfx.de/collections/swiss-fx-pets/products/cbd-ol-pferde#a_aid=YasiCBD&a_bid=ac4cf055)**
 
 Ich empfehle SWISS FX, weil:

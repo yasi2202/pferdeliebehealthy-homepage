@@ -67,7 +67,7 @@ Brennnessel, Bockshornkleesamen)
 
 - gezielt **organisch gebundenes Zink & Kupfer** geben, wenn nötig
 
-- den Bedarf individuell decken – **nicht pauschal alles reinkippen**
+- den Bedarf individuell decken, **nicht pauschal alles reinkippen**
 
 Ein gutes Mineralfutter ist **klar deklariert, nicht überdosiert und sinnvoll
 zusammengesetzt.**

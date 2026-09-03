@@ -110,7 +110,7 @@ Es gibt natürliche Eiweißquellen wie **Esparsette**,
 **Leinsamen**, **Hanfsaaten** oder **Brennnesselsamen**, sie liefern ein gutes
 Aminosäurenprofil. In manchen Fällen (z. B. bei starkem Mangel oder
 Leistungspferden) kann auch eine gezielte Gabe von Lysin & Co. in reiner Form
-sinnvoll sein – **aber bitte immer bedarfsorientiert!**
+sinnvoll sein, **aber bitte immer bedarfsorientiert!**
 
 [[partner:natusat]]
 
