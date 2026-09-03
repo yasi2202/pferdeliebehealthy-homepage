@@ -8,11 +8,15 @@ bild: ""
 bildText: ""
 beschreibung: "Soja, in der Humanernährung als „Pflanzenprotein“ gefeiert, taucht auch immer häufiger in Pferdefuttermitteln auf."
 ---
-**Kurz gesagt:** Soja ist für Pferde kein geeignetes Eiweißfutter. Es bringt
-Mehrfachzucker mit, die im Dickdarm vergären, es stört auf Dauer die
-Darmflora, und es enthält hormonähnliche Pflanzenstoffe. Gefüttert wird es
-trotzdem, weil es billig ist und viel Rohprotein liefert. Wer Eiweiß
-ergänzen möchte, fährt mit Esparsette, Luzerne oder Grünhafer besser.
+**Kurz gesagt:** Sojaextraktionsschrot ist auf dem Papier eine sehr gute
+Eiweißquelle, es hat von allen pflanzlichen Futtermitteln eines der besten
+Aminosäureprofile. Trotzdem würde ich es nicht füttern. Der Grund liegt
+nicht in einer einzelnen Gefahr, sondern in der Summe: Es bringt
+Mehrfachzucker mit, die der Pferdedarm nicht selbst aufschließt, es kommt
+fast immer aus Übersee und ist stark verarbeitet, und es wird meist in
+Mengen eingesetzt, die kein Pferd braucht. Wer Eiweiß gezielt ergänzen
+möchte, kommt mit Esparsette, Luzerne oder Grünhafer zum selben Ziel, näher
+am natürlichen Futter.
 
 Soja, in der Humanernährung als „Pflanzenprotein“ gefeiert, taucht auch immer
 häufiger in Pferdefuttermitteln auf.
@@ -40,8 +44,11 @@ Doch für den **Verdauungstrakt des Pferdes ist das Gegenteil der Fall**:
 
 - sondern von Bakterien im Dickdarm unter Fehlgärung **zersetzt werden**.
 
-Was dabei entsteht: **Gas, Blähungen, Gärprozesse und im schlimmsten Fall
-Koliken**
+Was dabei entstehen kann: **Gas, Blähungen und Gärprozesse**. Wie stark, hängt
+an der Menge und am Pferd. Kleine Mengen stecken die meisten problemlos weg,
+und ein einzelner Schluck Sojaöl ist ohnehin etwas anderes als 500 Gramm
+Schrot am Tag. Wo es kippt, ist individuell, und genau das ist der Punkt:
+Man merkt es erst, wenn es schon kippt.
 
 ## Soja stört die Darmflora, langfristig
 
@@ -70,14 +77,16 @@ Ein oft übersehener Punkt: **Sojabohnen enthalten sogenannte Phytoöstrogene**,
 also Pflanzenstoffe, die im Körper eine ähnliche Wirkung wie Östrogene
 entfalten können.
 
-Diese hormonähnlichen Substanzen können unter anderem:
+Was das beim Pferd bedeutet, ist **nicht abschließend geklärt**, und das
+gehört zur Wahrheit dazu. Belastbare Studien gibt es vor allem beim
+Wiederkäuer, wo Rotklee mit hohem Isoflavongehalt nachweislich die
+Fruchtbarkeit beeinträchtigt. Beim Pferd sind bei üblichen Fütterungsmengen
+**keine hormonellen Effekte dokumentiert**.
 
-- den natürlichen **Hormonhaushalt beeinflussen**,
-
-- sich **negativ auf Fruchtbarkeit** und Rosseverhalten auswirken,
-
-- und besonders bei **stoffwechselsensiblen Pferden (z. B. Cushing, EMS,
-PSSM)** langfristig **Störungen fördern.**
+Trotzdem verzichten viele bei Zuchtstuten mit Fruchtbarkeitsproblemen
+vorsorglich auf Soja, und ich halte das für vernünftig: Wo eine Wirkung
+plausibel, aber unerforscht ist, und es gute Alternativen gibt, muss man das
+Risiko nicht eingehen.
 
 ## Warum Soja trotzdem oft gefüttert wird
 
@@ -101,16 +110,42 @@ schnellem Muskelwachstum führen**, während Sehnen, Knochen und Knorpel **nicht
 hinterherkommen**, was das Risiko für **Gelenkchips und Fehlstellungen**
 erhöht.
 
+## Was Soja auf dem Papier kann
+
+Fairerweise gehört das dazu, sonst wirkt die Kritik wohlfeil.
+
+Sojaextraktionsschrot hat mit 44 bis 48 Prozent Rohprotein und einem
+**Lysingehalt, den kaum eine andere Pflanze erreicht**, ein Aminosäureprofil,
+das dem Bedarf des Pferdes ungewöhnlich nahe kommt. Lysin ist die erste
+limitierende Aminosäure: Fehlt sie, nützt alles andere Eiweiß wenig. Genau
+deshalb steht Soja in so vielen Kraftfuttern.
+
+Auch das Argument der Trypsininhibitoren, also der Stoffe, die die
+Eiweißverdauung hemmen, greift bei üblicher Ware nicht mehr: Sie werden beim
+Toasten weitgehend unschädlich gemacht.
+
+Die Frage ist also nicht, ob Soja Eiweiß liefert. Die Frage ist, ob der Weg
+dorthin für ein Pferd der richtige ist, und ob es diese Menge Eiweiß
+überhaupt braucht.
+
 ## Welche Eiweißquellen sind wirklich pferdegerecht?
 
 Wenn du deinem Pferd **Eiweiß mit gutem Aminosäureprofil** geben willst,
 ohne die Risiken von Soja, dann setze **kurweise und gezielt** auf:
 
-- **Esparsette**
-- **Luzerne**
-- **Grünhafer**
+**Esparsette** liefert rund 15 bis 18 Prozent Rohprotein, dazu Tannine, die
+im Ruf stehen, das Eiweiß langsamer verfügbar zu machen. Sie ist die Wahl,
+wenn der Darm ohnehin empfindlich ist.
 
-Diese bekommst du in **sehr guter Qualität beim Biohof Elmengrund**
+**Luzerne** kommt auf 15 bis 20 Prozent Rohprotein und hat ein gutes
+Aminosäureprofil, dazu viel Calcium. Wegen des Calciums gehört sie in die
+Rationsberechnung und nicht in den Trog nach Gefühl: Sie verschiebt das
+Verhältnis von Calcium zu Phosphor deutlich.
+
+**Grünhafer** liegt niedriger im Eiweiß, bringt dafür Struktur mit und wird
+auch von mäkeligen Pferden meist gut angenommen.
+
+Alle drei bekommst du in **sehr guter Qualität beim Biohof Elmengrund**
 
 [[partner:biohof-elmengrund]]
 
@@ -121,15 +156,37 @@ Als Ergänzung sind auch:
 - **Chiaprotein** möglich, besonders bei Aufbauphasen oder bei proteinarmen
 Grundrationen.
 
-All diese Optionen sind deutlich besser verträglich, **unterstützen die
-Verdauung**, und bringen **keine hormonellen Nebenwirkungen** mit sich.
+Diese Futtermittel sind für den Pferdedarm die naheliegendere Wahl: Sie
+bringen keine Mehrfachzucker in nennenswerter Menge mit, sie sind strukturiert
+statt fein vermahlen, und sie wachsen in Europa.
 
-Soja mag ein kostengünstiger Eiweißlieferant sein – **aber pferdegerecht ist
-es nicht.**
+Soja ist ein günstiger Eiweißlieferant mit einem sehr guten Aminosäureprofil.
+Wer ausschließlich auf die Nährwerttabelle schaut, kommt damit ans Ziel. Wer
+zusätzlich fragt, was der Dickdarm damit anfängt, wo es herkommt und wie es
+verarbeitet wurde, kommt zu einer anderen Antwort. Ich gehöre zur zweiten
+Sorte.
 
-Gerade bei sensiblen Pferden oder solchen mit Verdauungsproblemen,
-Stoffwechselstörungen oder im Wachstum sollte **dringend auf eine sojafreie
-Fütterung geachtet werden.**
+Besonders genau hinschauen würde ich bei **Fohlen und Jungpferden**, bei
+Pferden mit **wiederkehrenden Verdauungsproblemen** und bei **Zuchtstuten**.
+
+## Die wichtigste Frage kommt vor der Futterwahl
+
+Bevor du überlegst, **womit** du Eiweiß ergänzt, lohnt die Frage, **ob** du
+es überhaupt musst.
+
+Gutes Heu bringt je nach Schnitt und Bestand 8 bis 12 Prozent Rohprotein mit.
+Bei zehn Kilo Heu am Tag sind das grob 800 bis 1.200 Gramm Rohprotein, und
+davon kommt ein Teil auch an. Ein Pferd im Erhalt ist damit meist versorgt.
+
+Eiweiß fehlt typischerweise dort, wo das Grundfutter schlecht ist, wo viel
+gearbeitet wird, bei alten Pferden mit nachlassender Verdauung, im Wachstum
+und in der Laktation. In allen anderen Fällen ist die ehrliche Antwort oft:
+Es fehlt gar nichts, es fehlt nur der Überblick.
+
+Wie du den bekommst, steht im Basisfutterkurs: Deklarationen lesen,
+Mengen einordnen, erkennen, was im Trog wirklich passiert.
+
+[[angebot:basisfutterkurs]]
 
 ## Wichtig: Immer mit Rationsberechnung arbeiten!
 Eiweißüberschuss kann genauso schaden wie Mangel.
@@ -144,11 +201,13 @@ rechnen, landet schnell im Überschuss, und der belastet Leber und Nieren.
 ## Häufige Fragen zu Soja beim Pferd
 
 **Ist Sojaschrot schädlich für Pferde?**
-Schädlich im Sinne von giftig ist es nicht. Problematisch ist die Menge, in
-der es üblicherweise gefüttert wird, und die Dauer. Sojaschrot bringt bis zu
-44 Prozent Rohprotein mit, dazu Mehrfachzucker, die der Pferdedarm nicht
-selbst aufschließt. Was daraus wird, entscheidet sich im Dickdarm, und dort
-entsteht bei regelmäßiger Gabe Gärung statt Verdauung.
+Giftig ist es nicht, und es gibt keine Studie, die Soja beim Pferd
+grundsätzlich verurteilt. Die Kritik zielt auf die Menge, die Dauer und die
+Verarbeitung: viel Eiweiß, das kaum ein Pferd braucht, Mehrfachzucker, die
+der Dünndarm nicht aufschließt, und ein Produkt, das aus Übersee kommt und
+mehrere Verarbeitungsschritte hinter sich hat. Wer es einzeln betrachtet,
+findet für jeden Punkt ein Gegenargument. Wer die Summe betrachtet, kommt zu
+dem Schluss, dass es bessere Wege gibt.
 
 **Woran erkenne ich Soja im Futter?**
 Auf der Deklaration steht es selten als „Soja". Üblich sind Sojaextraktionsschrot,
@@ -157,11 +216,20 @@ Futtermitteln lohnt der Blick auf die Reihenfolge: Was weit vorne steht, ist
 mengenmäßig auch weit vorne.
 
 **Mein Pferd frisst seit Jahren Soja und hat nichts. Muss ich umstellen?**
-Nicht jedes Pferd zeigt Beschwerden, und ein robuster Darm steckt einiges
-weg. Auffällig wird es meist bei den Empfindlichen, bei Fohlen und
-Jungpferden, und bei Pferden mit Cushing, EMS oder PSSM. Wenn es bei euch
-läuft, ist der Umstieg kein Notfall. Wenn Blähbauch, Kotwasser oder
-wiederkehrende Verdauungsprobleme dazukommen, ist Soja einen Blick wert.
+Nein, jedenfalls nicht sofort und nicht aus Angst. Ein robuster Darm steckt
+einiges weg, und wenn es bei euch läuft, ist der Umstieg kein Notfall.
+Genauer hinsehen würde ich, wenn Blähbauch, Kotwasser oder wiederkehrende
+Verdauungsprobleme dazukommen, im Wachstum, und bei Zuchtstuten. Und ich
+würde bei der nächsten Futterumstellung ohnehin fragen, ob es Soja sein
+muss.
+
+**Stimmt es, dass Soja Hormone durcheinanderbringt?**
+Beim Wiederkäuer ist das belegt, dort beeinträchtigt Rotklee mit hohem
+Isoflavongehalt nachweislich die Fruchtbarkeit. Beim Pferd fehlen solche
+Studien, und bei üblichen Mengen sind keine hormonellen Effekte dokumentiert.
+Wer also liest, Soja mache Stuten unfruchtbar, liest mehr, als die Datenlage
+hergibt. Vorsicht bei Zuchtstuten mit Problemen halte ich trotzdem für
+vernünftig, denn Alternativen gibt es genug.
 
 **Was ist mit Sojaöl?**
 Sojaöl ist etwas anderes als Sojaschrot. Es enthält kein Protein und keine
