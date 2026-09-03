@@ -156,6 +156,31 @@ export default async function VersandSeite() {
             bestätigte Adressen und nur ein einziges Mal.
           </p>
 
+          {/* ▸ ERST ANSEHEN, DANN VERSCHICKEN.
+              Ein Rundversand laesst sich nicht zurueckholen. Wer nicht sehen
+              kann, was rausgeht, drueckt entweder nie auf den Knopf oder
+              einmal zu schnell. Die Vorschau zeigt die echte Mail, aus
+              derselben Funktion, die auch verschickt. */}
+          <p className="mb-5 text-[14px]">
+            <a
+              href="/api/insider/bewertung/vorschau"
+              target="_blank"
+              rel="noopener"
+              className="text-rose-deep underline underline-offset-4"
+            >
+              Die Mail ansehen, bevor sie rausgeht
+            </a>
+            <span className="text-ink-soft">
+              {" "}· Empfänger stehen unter{" "}
+            </span>
+            <a
+              href="/admin/adressen"
+              className="text-rose-deep underline underline-offset-4"
+            >
+              Adressen
+            </a>
+          </p>
+
           {bewertung ? (
             <p className="text-[14px] text-ink-soft">
               ✓ Verschickt am{" "}

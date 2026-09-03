@@ -544,6 +544,59 @@ export async function bewertungsbitteEmpfaenger(): Promise<number> {
   return gesamt && gesamt !== "*" ? Number(gesamt) : 0;
 }
 
+/**
+ * Der Text der Bewertungsbitte, an einer einzigen Stelle.
+ *
+ * ▸ WARUM ALS EIGENE FUNKTION
+ *   Versand und Vorschau müssen denselben Text zeigen. Stünde er zweimal da,
+ *   wäre die Vorschau irgendwann eine Lüge: Man ändert die eine Stelle und
+ *   vergisst die andere. So kann das nicht passieren.
+ */
+function bewertungsbitteText(vorname: string | null, abmeldeLink: string): string {
+  return rahmen(`
+          <p style="font-size:17px;">${anrede(vorname)}</p>
+
+          <p style="font-size:16px;line-height:1.6;">
+            ich habe eine Bitte, und sie kostet dich ungefähr eine Minute.
+          </p>
+
+          <p style="font-size:16px;line-height:1.6;">
+            Wenn dir etwas von mir geholfen hat, ein Kurs, ein Heft oder eine
+            Beratung, dann schreib ein paar Zeilen bei Google. Für jemanden,
+            der zum ersten Mal auf meine Seite kommt und nicht weiß, ob das
+            hier etwas taugt, ist dein Satz mehr wert als alles, was ich
+            selbst über meine Angebote schreiben kann.
+          </p>
+
+          <p style="margin:28px 0;">
+            <a href="${bewertungslink}" style="background:#B87878;color:#fff;padding:14px 28px;border-radius:999px;text-decoration:none;font-size:16px;display:inline-block;">
+              Bewertung schreiben
+            </a>
+          </p>
+
+          <p style="font-size:16px;line-height:1.6;">
+            Schreib bitte ehrlich. Wenn etwas gefehlt hat oder anders war, als
+            du erwartet hast, gehört das genauso hinein. Und wenn du lieber
+            erst mit mir sprechen möchtest: Antworte einfach auf diese Mail,
+            dann klären wir das zuerst.
+          </p>
+
+          <p style="font-size:16px;line-height:1.6;">
+            Danke, dass du da bist.<br>Yasi
+          </p>
+
+          <p style="font-size:13px;line-height:1.6;color:#8a7070;margin-top:28px;">
+            Du bekommst diese Mail, weil du bei den ${esc(insider.name)}
+            angemeldet bist. <a href="${abmeldeLink}" style="color:#8a7070;">Hier abmelden</a>
+          </p>
+        `);
+}
+
+/** Die Bitte so, wie sie ankommt, mit Beispielnamen. Für die Vorschau. */
+export function bewertungsbitteVorschau(basisUrl: string): string {
+  return bewertungsbitteText("Marie", `${basisUrl}/insider-abmelden?token=beispiel`);
+}
+
 export async function bewertungsbitteRundmail(
   basisUrl: string,
 ): Promise<VersandErgebnis> {
@@ -585,43 +638,7 @@ export async function bewertungsbitteRundmail(
         to: [e.email],
         reply_to: ANTWORT_AN,
         subject: "Darf ich dich um eine Minute bitten?",
-        html: rahmen(`
-          <p style="font-size:17px;">${anrede(e.vorname)}</p>
-
-          <p style="font-size:16px;line-height:1.6;">
-            ich habe eine Bitte, und sie kostet dich ungefähr eine Minute.
-          </p>
-
-          <p style="font-size:16px;line-height:1.6;">
-            Wenn dir etwas von mir geholfen hat, ein Kurs, ein Heft oder eine
-            Beratung, dann schreib ein paar Zeilen bei Google. Für jemanden,
-            der zum ersten Mal auf meine Seite kommt und nicht weiß, ob das
-            hier etwas taugt, ist dein Satz mehr wert als alles, was ich
-            selbst über meine Angebote schreiben kann.
-          </p>
-
-          <p style="margin:28px 0;">
-            <a href="${bewertungslink}" style="background:#B87878;color:#fff;padding:14px 28px;border-radius:999px;text-decoration:none;font-size:16px;display:inline-block;">
-              Bewertung schreiben
-            </a>
-          </p>
-
-          <p style="font-size:16px;line-height:1.6;">
-            Schreib bitte ehrlich. Wenn etwas gefehlt hat oder anders war, als
-            du erwartet hast, gehört das genauso hinein. Und wenn du lieber
-            erst mit mir sprechen möchtest: Antworte einfach auf diese Mail,
-            dann klären wir das zuerst.
-          </p>
-
-          <p style="font-size:16px;line-height:1.6;">
-            Danke, dass du da bist.<br>Yasi
-          </p>
-
-          <p style="font-size:13px;line-height:1.6;color:#8a7070;margin-top:28px;">
-            Du bekommst diese Mail, weil du bei den ${esc(insider.name)}
-            angemeldet bist. <a href="${abmeldeLink}" style="color:#8a7070;">Hier abmelden</a>
-          </p>
-        `),
+        html: bewertungsbitteText(e.vorname, abmeldeLink),
       };
     },
     "Bewertungsbitte",
