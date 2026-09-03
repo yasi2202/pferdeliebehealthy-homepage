@@ -124,6 +124,12 @@ export default async function AuswertungSeite() {
 
           <nav className="flex flex-wrap gap-5 text-[14.5px]">
             <Link
+              href="/admin/newsletter"
+              className="text-rose-deep underline underline-offset-2"
+            >
+              Newsletter
+            </Link>
+            <Link
               href="/admin/rabattcodes"
               className="text-rose-deep underline underline-offset-2"
             >

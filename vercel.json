@@ -6,6 +6,10 @@
     {
       "path": "/api/bewertungsbitte",
       "schedule": "0 7 * * *"
+    },
+    {
+      "path": "/api/newsletter-strecken",
+      "schedule": "0 8 * * *"
     }
   ]
 }
