@@ -18,10 +18,18 @@ Ausgabefenster.
 
 ## Warum die Haut zeigt, was woanders passiert
 
-Die Haut ist das größte Ausscheidungsorgan des Pferdes und gleichzeitig das,
-was am ehesten aufgibt, wenn die anderen überlastet sind. [Leber](/blog/fruehmarker-fuer-leberprobleme-beim-pferd-warnsignale-rechtzeitig-erkennen) und Nieren
-arbeiten daran, Stoffwechselprodukte loszuwerden. Kommen sie nicht hinterher,
-weicht der Körper aus, und zwar über Haut und Fell.
+Die Haut ist das größte Organ des Pferdes und zugleich eines der teuersten im
+Unterhalt. Sie erneuert sich fortlaufend, und dieser hohe Zellumsatz kostet
+ununterbrochen Bausteine. Wird ein Nährstoff knapp, versorgt der Körper zuerst
+das, was lebenswichtig ist: Herz, Leber, Muskulatur. Haut, Fell und Horn kommen
+zuletzt. Deshalb zeigt sich eine Lücke in der Ration dort früh und deutlich,
+oft lange bevor ein Blutbild etwas hergibt.
+
+Und es gibt einen zweiten, gut belegten Weg von innen nach außen: Arbeitet die
+[Leber](/blog/fruehmarker-fuer-leberprobleme-beim-pferd-warnsignale-rechtzeitig-erkennen) nicht richtig, reichern sich Abbauprodukte des Blattgrüns im Körper
+an, die unter Sonnenlicht in der Haut reagieren. Betroffen sind dann genau die
+Stellen ohne Pigment, also weiße Beine und Nüstern. Darauf komme ich weiter
+unten zurück, denn dieses Muster wird am häufigsten verkannt.
 
 Dazu kommt die Barriere selbst. Damit die Haut in der Fessel dicht bleibt,
 braucht sie Bausteine, allen voran Zink. Zink steckt in über dreihundert
@@ -161,6 +169,10 @@ gehört abgeklärt, bevor man weiter cremt.
 - Dicke, luftdichte Salbenschichten auf nässenden Stellen. Darunter wird es
   warm und feucht.
 
+Kräuter und Pflegemittel stehen bei alldem am Ende der Reihe, nicht am Anfang.
+Sie sind Ergänzung der Ration und der Pflege, keine Behandlung. Was die Haut
+tatsächlich als Baustein braucht, steht in der Tabelle weiter oben.
+
 [[partner:naturanima]]
 
 ## Was ich zuerst ändern würde
@@ -196,6 +208,18 @@ eine bakterielle Infektion oder ein Milbenbefall dahinter, und beides braucht
 eine gezielte Behandlung. Die Fütterung ist die Grundlage, aber sie ersetzt
 keine Diagnose.
 
-Bei Kötenbehang lohnt sich der Milbenverdacht früher, als man denkt. Räudemilben
-sitzen tief in der Behaarung, sind von außen nicht zu sehen, und ohne
-Behandlung kommt keine Fütterung dagegen an.
+Bei Kötenbehang lohnt sich der Milbenverdacht früher, als man denkt. Gemeint
+sind Chorioptesmilben, die sogenannte Fußräude. Sie sitzen tief in der
+Behaarung, sind von außen nicht zu sehen, und der Nachweis gelingt nur über
+ein Hautgeschabsel beim Tierarzt. Solange sie unbehandelt bleiben, kommt keine
+Fütterung dagegen an.
+
+---
+
+**Woher die Zahlen kommen:** Der Zink- und Kupferbedarf und das empfohlene
+Verhältnis folgen den Empfehlungen der Gesellschaft für Ernährungsphysiologie
+(GfE), *Empfehlungen zur Energie- und Nährstoffversorgung von Pferden*, Ausgabe
+2014. Die 25 Milligramm Zink je Kilo Heu sind ein Durchschnittswert aus
+Futtermittelanalysen. Deutsches Heu liegt je nach Boden und Schnitt zwischen
+etwa 15 und 35 Milligramm, sicher weißt du es erst mit einer eigenen
+Heuanalyse.

@@ -18,9 +18,9 @@ Und er beginnt früher, als die meisten denken.
 ## Er startet im Juni, nicht im Oktober
 
 Ausgelöst wird der Fellwechsel nicht von der Temperatur, sondern vom Licht.
-Kurz nach der Sommersonnenwende, wenn die Tage wieder kürzer werden,
-registriert das Pferd über die Zirbeldrüse die Veränderung und stellt den
-Hormonhaushalt um.
+Kurz nach der Sommersonnenwende, wenn die Tage wieder kürzer werden, nimmt das
+Auge die längere Dunkelphase wahr. Die Zirbeldrüse schüttet daraufhin länger
+Melatonin aus, und dieses Signal stellt den Hormonhaushalt um.
 
 Sichtbar wird das erst im September und Oktober. Wer dann anfängt zu füttern,
 kommt also nicht zu spät, aber auch nicht besonders früh. Wer sein Pferd
@@ -86,6 +86,45 @@ insgesamt an": Tagesdosis des Mineralfutters mal Zinkgehalt, plus was aus dem
 Heu kommt. Wie das geht, steht im Beitrag über [Mauke](/blog/mauke-beim-pferd), dort ist es
 durchgerechnet.
 
+## Und wie viel Eiweiß
+
+Beim Eiweiß wird es interessanter als beim Zink, weil hier fast alle nur auf
+die eine Zahl auf der Heuanalyse schauen und dabei den entscheidenden Punkt
+übersehen.
+
+Der Punkt ist: **Nicht alles Eiweiß aus dem Heu kann das Pferd für den Aufbau
+von Haar verwenden.** Ein großer Teil davon wird erst im Dickdarm von Bakterien
+zerlegt, und was dort ankommt, dient der Energiegewinnung, nicht dem Aufbau
+von Keratin. Zählen tut nur der Anteil, der schon im Dünndarm verdaut und als
+Aminosäure aufgenommen wird.
+
+| Woher | Rechnung | Ergebnis |
+|---|---|---|
+| Bedarf zur Erhaltung | 600-Kilo-Pferd | rund 250 g dünndarmverdauliches Rohprotein am Tag |
+| Spät geschnittenes Heu | 9 kg Trockensubstanz mit 8 Prozent Rohprotein | 720 g Rohprotein gesamt |
+| davon nutzbar | grob ein Drittel wird im Dünndarm verdaut | rund 240 g, also gerade eben die Erhaltung |
+| Blattreiches, früh geschnittenes Heu | 9 kg mit 11 bis 12 Prozent | 990 bis 1.080 g, deutlich mehr Spielraum |
+
+Ein Pferd an spätem, stängeligem Heu liegt also im Sommer schon am unteren
+Rand. Im Fellwechsel kommt der Zusatzbedarf für das neue Haarkleid obendrauf,
+und genau dort entsteht die Lücke, die viele für einen Spurenelementmangel
+halten.
+
+Dazu kommt die Frage, welche Bausteine drin sind. Lysin ist beim Pferd der
+erste begrenzende Baustein: Fehlt es, kann der Körper das übrige Eiweiß nicht
+verwerten, egal wie viel ankommt. Für das Haar selbst zählt dann vor allem
+Methionin, weil daraus die schwefelhaltigen Verbindungen entstehen, die dem
+Haar seine Stabilität geben. Beides ist in Gräsern knapp und in Luzerne
+reichlich vorhanden.
+
+Praktisch heißt das: 500 Gramm Luzernehäcksel bringen etwa 75 bis 90 Gramm
+Rohprotein dazu, und davon ist ein deutlich größerer Anteil im Dünndarm
+nutzbar als beim Heu. Das ist im Fellwechsel oft der wirksamere Schritt als
+die dritte Zinkkur.
+
+Für Pferde mit Nierenproblemen gilt das nicht, dort gehört die Eiweißmenge in
+tierärztliche Hand.
+
 ## Die drei Fragen, die ich stelle
 
 **Steht die Grundversorgung überhaupt?** Ein bedarfsgerechtes Mineralfutter,
@@ -122,3 +161,11 @@ lange Haare an Beinen und Unterbauch behält oder auffällig spät wechselt,
 sollte auf ECS untersucht werden, das früher Cushing hieß. Das ist keine
 Fütterungsfrage, sondern eine Diagnose, und je früher sie gestellt wird, desto
 besser lässt sich damit umgehen.
+
+---
+
+**Woher die Zahlen kommen:** Die Bedarfswerte in diesem Beitrag folgen den
+Empfehlungen der Gesellschaft für Ernährungsphysiologie (GfE), *Empfehlungen
+zur Energie- und Nährstoffversorgung von Pferden*, Ausgabe 2014, sowie
+Meyer und Coenen, *Pferdefütterung*. Die Angaben zum Heu sind Durchschnittswerte aus Futtermittelanalysen. Dein Heu kann deutlich darüber oder darunter
+liegen, sicher weißt du es erst mit einer eigenen Heuanalyse.

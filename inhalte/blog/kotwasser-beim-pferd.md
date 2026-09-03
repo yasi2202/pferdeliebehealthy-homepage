@@ -146,17 +146,25 @@ einzelner Ausreißer.
 
 ## Was ich von Kräutern halte
 
-Kräuter können viel, aber sie können nicht die Grundlage ersetzen. Bitterstoffe
-regen die Verdauungssäfte an, Oregano wirkt regulierend auf das Darmmilieu,
-und beides ist sinnvoll, wenn der Rest stimmt.
+Vorweg, damit es keine Missverständnisse gibt: Kräuter sind Futtermittel und
+keine Arzneimittel. Sie behandeln kein Kotwasser, und so setze ich sie auch
+nicht ein. Sie sind ein Bestandteil der Ration, nicht mehr, und sie kommen bei
+mir immer erst dann, wenn Heumenge, Fresspausen und Stärke sitzen. Wer die
+Reihenfolge umdreht, gibt viel Geld für Tüten aus und ändert nichts.
+
+Bitterkräuter wie Wermut, Löwenzahnwurzel und Beifuß gehören zu den ältesten
+Futterkräutern überhaupt und sind in der Pferdefütterung seit Generationen
+gebräuchlich. Oregano zählt zu den Kräutern mit hohem Anteil ätherischer Öle
+und wird traditionell kurweise gefüttert, nicht dauerhaft.
 
 [[produkt:pernaturam-amara]]
 
 Zwei Dinge sind mir dabei wichtig:
 
-**Kurweise heißt kurweise.** Stark wirksame Kräuter wie Oregano gehören für
-drei bis vier Wochen ins Futter, nicht dauerhaft. Was das Darmmilieu
-regulieren kann, kann es bei Dauergabe auch aus dem Gleichgewicht bringen.
+**Kurweise heißt kurweise.** Kräuter mit hohem Gehalt an ätherischen Ölen wie
+Oregano gehören für drei bis vier Wochen ins Futter, nicht dauerhaft. Was in
+kleiner Menge und über einen begrenzten Zeitraum ein sinnvoller Bestandteil
+der Ration ist, ist es in Dauergabe nicht mehr.
 
 [[produkt:mos-grun-oregano]]
 
@@ -197,3 +205,13 @@ davon lässt sich mit Kräutern lösen.
 Wieg eine Woche lang dein Heu und notier die längste Fresspause. Diese zwei
 Zahlen sind die Grundlage für alles Weitere. In den allermeisten Fällen, die
 bei mir landen, liegt dort schon der halbe Grund.
+
+---
+
+**Woher die Zahlen kommen:** Heumenge, Wasserbedarf und die Obergrenze für
+Stärke je Mahlzeit folgen den Empfehlungen der Gesellschaft für
+Ernährungsphysiologie (GfE), *Empfehlungen zur Energie- und
+Nährstoffversorgung von Pferden*, Ausgabe 2014, sowie Meyer und Coenen,
+*Pferdefütterung*. Die vier Stunden als längste Fresspause sind ein in der
+Fütterungspraxis eingeführter Richtwert, keine feste Grenze. Alle Werte
+beziehen sich auf ein erwachsenes Pferd ohne Vorerkrankungen.

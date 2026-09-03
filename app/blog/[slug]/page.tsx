@@ -256,6 +256,34 @@ export default async function BlogBeitragSeite({ params }: Props) {
             </p>
           )}
 
+          {/* Der fachliche Hinweis steht unter JEDEM Beitrag, ohne Schalter
+              in der Beitragsdatei. Grund: Diese Seite schreibt durchgehend
+              über Gesundheitsthemen und nennt dabei Futtermittel. Artikel 13
+              der Verordnung (EG) Nr. 767/2009 verbietet bei Futtermitteln
+              Angaben zur Vorbeugung, Behandlung oder Heilung von Krankheiten,
+              und durchgesetzt wird das über § 3a UWG, also per Abmahnung.
+              Ein Hinweis, der einmal an einer Stelle steht und für alle
+              Beiträge gilt, kann nicht vergessen werden. Ein Hinweis, den man
+              je Beitrag von Hand setzen muss, wird irgendwann vergessen.
+
+              Er ersetzt nicht den Abschnitt "Wann der Tierarzt drangehört" im
+              Text selbst: Der steht im Fließtext, wo er gelesen wird, und
+              gehört fachlich dorthin. Dieser hier ist die rechtliche
+              Einordnung des ganzen Beitrags. */}
+          <aside className="mt-12 pt-6 border-t border-line">
+            <p className="text-[12.5px] text-ink-soft leading-relaxed max-w-xl">
+              <strong className="font-semibold text-ink">
+                Zur Einordnung:
+              </strong>{" "}
+              Dieser Beitrag beschreibt Fütterung und Haltung. Er trifft keine
+              Heilaussage, und genannte Futtermittel und Kräuter sind
+              Futtermittel, keine Arzneimittel. Nichts davon ersetzt die
+              Untersuchung und die Diagnose durch deine Tierärztin oder deinen
+              Tierarzt. Bei akuten Beschwerden gehört dein Pferd dorthin und
+              nicht an eine Futterumstellung.
+            </p>
+          </aside>
+
           {/* Die ausführliche Werbekennzeichnung steht am Fuß des Beitrags.
               Der Hinweis, der rechtlich zählt, steht dagegen direkt an jeder
               Empfehlung: Jeder Partnerkasten trägt "Werbung" in seiner
