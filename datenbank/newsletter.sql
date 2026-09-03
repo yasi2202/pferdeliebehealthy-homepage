@@ -87,6 +87,44 @@ create table if not exists newsletter_abmeldungen (
 
 
 -- ---------------------------------------------------------------------------
+-- 2b. Die Adressen, die von Anfang an gesperrt sein müssen
+--
+-- ▸ BITTE NICHT WEGLASSEN. Das sind die Kundinnen aus der Widerrufsgruppe
+--   von 2025, bei denen es zum Rechtsstreit kam. Sie behalten ihre gekauften
+--   Produkte, bekommen aber keine Post mehr, so am 27.08. und 03.09.2026
+--   entschieden.
+--
+--   In der Akademie steht dieselbe Liste noch einmal im Code
+--   (akademieapp/lib/mail-sperre.ts). Die Website kennt diese Datei nicht,
+--   deshalb muss die Sperre hier in der Datenbank stehen. Ohne diese Zeilen
+--   bekäme genau diese Gruppe den ersten Newsletter.
+--
+--   Mehrere von ihnen haben zwei Adressen, beide stehen hier. Eine Sperre,
+--   die nur die halbe Person trifft, ist keine.
+--
+-- ▸ EINE NEUE ADRESSE SPERREN: hier eintragen UND in der Akademie in
+--   lib/mail-sperre.ts. Beide Stellen, immer.
+-- ---------------------------------------------------------------------------
+
+insert into newsletter_abmeldungen (email, quelle) values
+  ('schillingalina@web.de',       'sperre'),
+  ('alinaschilling2@web.de',      'sperre'),
+  ('linda.zimmermann1@gmx.de',    'sperre'),
+  ('verena.vitek@t-online.de',    'sperre'),
+  ('tinawegerhoff9@gmail.com',    'sperre'),
+  ('melanie.wendland@gmx.net',    'sperre'),
+  ('kristin.rieger@outlook.de',   'sperre'),
+  ('krissi-r98@web.de',           'sperre'),
+  ('unitedpgc@gmx.de',            'sperre'),
+  ('janina-funk@gmx.de',          'sperre'),
+  ('ninahafner@gmx.de',           'sperre'),
+  ('caly20032002@aol.com',        'sperre'),
+  ('patricia.kunz98@gmail.com',   'sperre'),
+  ('bernhard.lechenbauer@gmx.at', 'sperre')
+on conflict (email) do nothing;
+
+
+-- ---------------------------------------------------------------------------
 -- 3. Öffnungen und Klicks
 --
 -- ▸ Gespeichert wird die Adresse, weil du sonst nicht sehen könntest, wer

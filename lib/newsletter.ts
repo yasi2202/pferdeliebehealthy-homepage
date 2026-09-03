@@ -408,3 +408,50 @@ export function lesezeit(text: string): number {
   const woerter = text.trim().split(/\s+/).filter(Boolean).length;
   return Math.max(1, Math.round(woerter / 200));
 }
+
+// ---------------------------------------------------------------------------
+// Die Empfaengergruppen
+//
+// Nur die Beschreibung, ohne Datenbank: Diese Datei darf im Browser laufen,
+// damit der Editor die Auswahl anzeigen kann. Das Holen der Adressen steht
+// in lib/newsletter-gruppen.ts und bleibt auf dem Server.
+// ---------------------------------------------------------------------------
+
+export type GruppenSchluessel = "eingetragen" | "kundinnen" | "beratung" | "alle";
+
+export const GRUPPEN: {
+  schluessel: GruppenSchluessel;
+  name: string;
+  grundlage: string;
+  woher: string;
+}[] = [
+  {
+    schluessel: "eingetragen",
+    name: "Eingetragene",
+    grundlage: "Einwilligung",
+    woher:
+      "Wer sich selbst für den Insider-Kanal oder den Futter-Check eingetragen und bestätigt hat. Diesen Menschen darfst du alles schicken.",
+  },
+  {
+    schluessel: "kundinnen",
+    name: "Kundinnen der Akademie",
+    grundlage: "Bestandskundinnen",
+    woher:
+      "Wer einen Kurs oder ein E-Book gekauft hat. Ohne Einwilligung, aber als Bestandskundin: Es muss um deine eigenen, ähnlichen Angebote gehen, also um Fütterung und Pferdegesundheit.",
+  },
+  {
+    schluessel: "beratung",
+    name: "Beratungskundinnen",
+    grundlage: "Bestandskundinnen",
+    woher:
+      "Deine Kundinnen aus EquiDesk, Futterberatung und Ausbildung. Gleiche Regel wie oben.",
+  },
+  {
+    schluessel: "alle",
+    name: "Alle zusammen",
+    grundlage: "gemischt",
+    woher:
+      "Die drei Gruppen von oben, ohne Doppelte. Nimm sie für fachliche Rundbriefe, nicht für reine Werbung.",
+  },
+];
+

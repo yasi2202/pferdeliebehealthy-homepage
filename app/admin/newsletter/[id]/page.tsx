@@ -4,10 +4,10 @@ import { notFound } from "next/navigation";
 import { adminEingerichtet, istAngemeldet } from "@/lib/admin-zugang";
 import {
   briefHolen,
-  empfaengerZaehlen,
   auswertungHolen,
   messungAn,
 } from "@/lib/newsletter-server";
+import { gruppenZaehlen } from "@/lib/newsletter-gruppen";
 import Editor from "./Editor";
 import Auswertung from "./Auswertung";
 
@@ -54,14 +54,15 @@ export default async function NewsletterSeite({
   const brief = await briefHolen(id);
   if (!brief) notFound();
 
-  // Die Zahl steht im Sendeknopf: „an 1023 Adressen". Wer beim Drücken
-  // sieht, wie viele Menschen das sind, drückt aufmerksamer.
-  const erreichbar = await empfaengerZaehlen();
-
   if (brief.status === "versendet") {
     const zahlen = await auswertungHolen(brief.id);
     return <Auswertung brief={brief} zahlen={zahlen} misst={messungAn()} />;
   }
 
-  return <Editor brief={brief} erreichbar={erreichbar} />;
+  // Die Zahl jeder Gruppe steht schon beim Schreiben da, nicht erst im
+  // Sendeknopf. Wer sieht, dass hinter einer Auswahl 1300 Menschen stehen
+  // und hinter der anderen 43, schreibt anders.
+  const gruppenZahlen = await gruppenZaehlen();
+
+  return <Editor brief={brief} gruppenZahlen={gruppenZahlen} />;
 }

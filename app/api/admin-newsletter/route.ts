@@ -10,6 +10,7 @@ import {
   testmailSenden,
   newsletterAbmelden,
 } from "@/lib/newsletter-server";
+import { GRUPPEN, type GruppenSchluessel } from "@/lib/newsletter-gruppen";
 
 // ---------------------------------------------------------------------------
 // Die Steuerung des Newsletter-Programms: anlegen, speichern, Testmail,
@@ -65,7 +66,16 @@ export async function POST(request: Request) {
 
     // -----------------------------------------------------------------
     case "speichern": {
+      // Nur bekannte Gruppen. Käme hier ein erfundener Wert durch, stünde
+      // er am Brief, und der Versand fiele auf „alle" zurück — also auf
+      // mehr Menschen, als gemeint waren.
+      const gewaehlt = kuerzen(daten.gruppe, 30) as GruppenSchluessel;
+      const gruppe = GRUPPEN.some((g) => g.schluessel === gewaehlt)
+        ? gewaehlt
+        : undefined;
+
       const gespeichert = await briefSpeichern(id, {
+        gruppe,
         betreff: kuerzen(daten.betreff, 200),
         vorschautext: kuerzen(daten.vorschautext, 200),
         // Grosszügig bemessen: Ein langer Newsletter hat leicht 8.000

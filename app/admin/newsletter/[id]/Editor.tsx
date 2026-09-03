@@ -12,6 +12,7 @@ import {
   lesezeit,
   type Brief,
 } from "@/lib/newsletter";
+import { GRUPPEN, type GruppenSchluessel } from "@/lib/newsletter-gruppen";
 
 // ---------------------------------------------------------------------------
 // Der Editor: links schreiben, rechts sehen, wie es ankommt.
@@ -105,16 +106,21 @@ const BAUSTEINE: {
 
 export default function Editor({
   brief,
-  erreichbar,
+  gruppenZahlen,
 }: {
   brief: Brief;
-  erreichbar: number;
+  gruppenZahlen: Record<GruppenSchluessel, number>;
 }) {
   const router = useRouter();
 
   const [betreff, setBetreff] = useState(brief.betreff);
   const [vorschautext, setVorschautext] = useState(brief.vorschautext);
   const [inhalt, setInhalt] = useState(brief.inhalt);
+  const [gruppe, setGruppe] = useState<GruppenSchluessel>(
+    (brief.gruppe as GruppenSchluessel) || "eingetragen"
+  );
+
+  const erreichbar = gruppenZahlen[gruppe] ?? -1;
 
   const [stand, setStand] = useState<Stand>("ruhe");
   const [testAdresse, setTestAdresse] = useState("");
@@ -140,13 +146,14 @@ export default function Editor({
           betreff,
           vorschautext,
           inhalt,
+          gruppe,
         }),
       });
       setStand(res.ok ? "gespeichert" : "fehler");
     } catch {
       setStand("fehler");
     }
-  }, [brief.id, betreff, vorschautext, inhalt]);
+  }, [brief.id, betreff, vorschautext, inhalt, gruppe]);
 
   useEffect(() => {
     // Beim ersten Aufbau der Seite ist nichts geändert — ohne diese Sperre
@@ -159,7 +166,7 @@ export default function Editor({
     setStand("tippt");
     const uhr = setTimeout(speichern, 1500);
     return () => clearTimeout(uhr);
-  }, [betreff, vorschautext, inhalt, speichern]);
+  }, [betreff, vorschautext, inhalt, gruppe, speichern]);
 
   // Der letzte Schutz: Wer das Fenster schliesst, während noch nicht
   // gespeichert ist, wird gefragt.
@@ -456,6 +463,55 @@ export default function Editor({
                 Sieh sie dir am Handy an, nicht nur am Rechner. Dort liest sie
                 die Mehrheit.
               </p>
+            </div>
+
+            {/* ------------------------------------------ An wen */}
+            <div className="mt-4 rounded-[16px] border border-line bg-white p-5">
+              <p className="mb-1 text-[13px] uppercase tracking-[0.14em] text-ink-soft">
+                An wen geht sie
+              </p>
+              <p className="mb-4 text-[13.5px] leading-relaxed text-ink-soft">
+                Von wem du eine Adresse hast, entscheidet darüber, was du ihr
+                schicken darfst. Deshalb steht die Auswahl hier und nicht
+                irgendwo in den Einstellungen.
+              </p>
+
+              <div className="space-y-2">
+                {GRUPPEN.map((g) => {
+                  const anzahl = gruppenZahlen[g.schluessel] ?? -1;
+                  const gewaehlt = gruppe === g.schluessel;
+
+                  return (
+                    <label
+                      key={g.schluessel}
+                      className={`block cursor-pointer rounded-[12px] border p-3.5 transition-colors ${
+                        gewaehlt ? "border-rose-deep bg-cream" : "border-line"
+                      }`}
+                    >
+                      <div className="flex items-baseline gap-2.5">
+                        <input
+                          type="radio"
+                          name="gruppe"
+                          checked={gewaehlt}
+                          onChange={() => setGruppe(g.schluessel)}
+                          className="accent-rose-deep"
+                        />
+                        <span className="flex-1 text-[15px] text-ink">
+                          {g.name}
+                        </span>
+                        <span className="font-serif text-[17px] text-ink">
+                          {anzahl < 0 ? "—" : anzahl}
+                        </span>
+                      </div>
+                      {gewaehlt && (
+                        <p className="mt-2 pl-6 text-[13.5px] leading-relaxed text-ink-soft">
+                          {g.woher}
+                        </p>
+                      )}
+                    </label>
+                  );
+                })}
+              </div>
             </div>
 
             {/* ------------------------------------------ Senden */}

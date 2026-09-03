@@ -16,6 +16,10 @@ import {
   type Empfaenger,
 } from "@/lib/newsletter";
 import { vorlageFinden } from "@/lib/newsletter-vorlagen";
+import {
+  empfaengerDerGruppe,
+  type GruppenSchluessel,
+} from "@/lib/newsletter-gruppen";
 
 // ---------------------------------------------------------------------------
 // Das Newsletter-Programm, Serverseite: Entwürfe, Empfänger, Versand,
@@ -73,11 +77,12 @@ export function messungAn(): boolean {
 // Der Abmeldelink
 //
 // ▸ WARUM KEIN GESPEICHERTER SCHLÜSSEL WIE BEIM INSIDER-KANAL:
-//   Der Newsletter geht an die Ansicht `alle_anmeldungen`, und die führt
-//   Insider und Futter-Check zusammen. Eine Adresse kann dort aus zwei
-//   Tabellen mit zwei verschiedenen Schlüsseln stammen. Deshalb wird der
-//   Abmeldelink hier gerechnet statt nachgeschlagen: Adresse plus eine
+//   Der Newsletter zieht seine Adressen aus vier Tabellen. Nur zwei davon
+//   haben überhaupt einen Schlüssel, und dieselbe Person steht oft in
+//   mehreren, mit verschiedenen Schlüsseln oder gar keinem. Deshalb wird
+//   der Abmeldelink hier gerechnet statt nachgeschlagen: Adresse plus eine
 //   Unterschrift darüber, gebildet mit dem geheimen Datenbankschlüssel.
+//   Damit hat jede Adresse einen Abmeldelink, egal woher sie kommt.
 //
 //   Wer den Link hat, kann genau diese eine Adresse abmelden, sonst nichts.
 //   Erraten lässt er sich nicht.
@@ -163,7 +168,12 @@ export async function briefAnlegen(vorlageSchluessel = "leer"): Promise<Brief | 
  *  hätten etwas anderes gelesen. */
 export async function briefSpeichern(
   id: string,
-  felder: { betreff?: string; vorschautext?: string; inhalt?: string }
+  felder: {
+    betreff?: string;
+    vorschautext?: string;
+    inhalt?: string;
+    gruppe?: GruppenSchluessel;
+  }
 ): Promise<boolean> {
   const brief = await briefHolen(id);
   if (!brief || brief.status === "versendet") return false;
@@ -189,91 +199,27 @@ export async function briefLoeschen(id: string): Promise<boolean> {
 // Die Empfänger
 // ---------------------------------------------------------------------------
 
-type Anmeldung = { email: string; vorname: string | null };
-
-/** Holt alle Adressen der Sperrliste, klein geschrieben. */
-async function gesperrte(): Promise<Set<string>> {
-  const zeilen = await supabaseAlle<{ email: string }>(
-    "newsletter_abmeldungen?select=email"
-  );
-  return new Set((zeilen ?? []).map((z) => z.email.toLowerCase()));
+/** Die Empfänger einer Gruppe. Die Filter und die Begründung, warum es
+ *  überhaupt mehrere Gruppen gibt, stehen in lib/newsletter-gruppen.ts. */
+export async function empfaengerHolen(
+  gruppe: GruppenSchluessel = "eingetragen"
+) {
+  return empfaengerDerGruppe(gruppe);
 }
 
-/** Die Empfängerliste: bestätigt, brauchbare Adresse, nicht abgemeldet.
+/** Wie viele Menschen diese Gruppe erreicht.
  *
- *  ▸ DREI FALLEN STECKEN HIER DRIN, alle schon einmal aufgetreten:
- *
- *    1. Supabase liefert höchstens tausend Zeilen pro Anfrage, ohne
- *       Fehlermeldung. Deshalb `supabaseAlle`, nicht `supabase`.
- *    2. Eine einzige kaputte Adresse lässt Resend das ganze Bündel von
- *       hundert Mails zurückweisen. Am 27.08.2026 stand in den
- *       übernommenen Adressen „belinda. knott@web.de" mit einem
- *       Leerzeichen — es ging keine einzige Mail raus. Deshalb wird hier
- *       aussortiert statt mitgeschickt.
- *    3. Wer sich abgemeldet hat, muss draussen bleiben, auch wenn seine
- *       Adresse durch einen späteren Import wieder in der Tabelle steht.
- *
- *  Zurück kommt `null`, wenn die Datenbank nicht erreichbar war. Das ist
- *  etwas anderes als eine leere Liste und muss anders gemeldet werden. */
-export async function empfaengerHolen(): Promise<{
-  liste: Empfaenger[];
-  aussortiert: string[];
-  abgemeldet: number;
-} | null> {
-  const zeilen = await supabaseAlle<Anmeldung>(
-    "alle_anmeldungen?bestaetigt=is.true&select=email,vorname"
-  );
-  if (!zeilen) return null;
-
-  const sperre = await gesperrte();
-
-  const liste: Empfaenger[] = [];
-  const aussortiert: string[] = [];
-  const gesehen = new Set<string>();
-  let abgemeldet = 0;
-
-  for (const z of zeilen) {
-    const adresse = (z.email ?? "").trim();
-    const klein = adresse.toLowerCase();
-
-    if (!EMAIL_MUSTER.test(adresse)) {
-      aussortiert.push(z.email);
-      continue;
-    }
-    if (sperre.has(klein)) {
-      abgemeldet++;
-      continue;
-    }
-    // Die Ansicht entdoppelt schon, aber ein zweiter Riegel kostet nichts
-    // und verhindert die peinlichste aller Pannen: dieselbe Mail zweimal.
-    if (gesehen.has(klein)) continue;
-
-    gesehen.add(klein);
-    liste.push({ email: adresse, vorname: z.vorname });
-  }
-
-  if (aussortiert.length > 0) {
-    console.warn(
-      `Newsletter: ${aussortiert.length} unbrauchbare Adressen uebersprungen:`,
-      aussortiert.join(", ")
-    );
-  }
-
-  return { liste, aussortiert, abgemeldet };
+ *  Gezählt wird über die fertige Liste, nicht über die Tabellenzeilen: Nur
+ *  so stimmt die Zahl im Sendeknopf mit dem überein, was der Versand
+ *  wirklich tut. Bei einem Fehler kommt -1, damit sich das von „wirklich
+ *  keine" unterscheiden lässt. */
+export async function empfaengerZaehlen(
+  gruppe: GruppenSchluessel = "eingetragen"
+): Promise<number> {
+  const geholt = await empfaengerDerGruppe(gruppe);
+  return geholt ? geholt.liste.length : -1;
 }
 
-/** Wie viele Adressen der Newsletter erreichen würde.
- *
- *  Gezählt wird über den Kopf der Antwort, nicht über die Länge einer
- *  geholten Liste — die wäre bei über tausend Zeilen still auf 1000
- *  gedeckelt. Die Abgemeldeten werden abgezogen. */
-export async function empfaengerZaehlen(): Promise<number> {
-  const bestaetigt = await supabaseZaehlen("alle_anmeldungen?bestaetigt=is.true");
-  if (bestaetigt < 0) return -1;
-
-  const abgemeldet = await supabaseZaehlen("newsletter_abmeldungen?email=not.is.null");
-  return Math.max(0, bestaetigt - Math.max(0, abgemeldet));
-}
 
 // ---------------------------------------------------------------------------
 // Messen: Zählpixel und Klicks
@@ -527,7 +473,9 @@ export async function briefVersenden(
     return { ok: false, grund: "fehler", text: "Es ist kein Resend-Schlüssel hinterlegt." };
   }
 
-  const geholt = await empfaengerHolen();
+  // Die Gruppe steht am Brief. Sie wurde beim Schreiben gewählt und darf
+  // hier nicht neu geraten werden.
+  const geholt = await empfaengerHolen(brief.gruppe as GruppenSchluessel);
   if (!geholt) {
     return { ok: false, grund: "fehler", text: "Die Adressliste war nicht erreichbar." };
   }
@@ -620,16 +568,36 @@ export async function briefVersenden(
 // Abmelden
 // ---------------------------------------------------------------------------
 
-/** Meldet eine Adresse ab.
+/** Meldet eine Adresse ab, und zwar überall.
  *
- *  Drei Schritte, alle nötig:
+ *  ▸ DAS IST DER WICHTIGSTE TEIL DES GANZEN PROGRAMMS. Eine Abmeldung, die
+ *    nur eine von vier Tabellen trifft, ist keine Abmeldung — die Person
+ *    bekäme beim nächsten Rundbrief wieder Post, hätte zu Recht den
+ *    Eindruck, ignoriert worden zu sein, und drückt beim zweiten Mal auf
+ *    „Spam". Das schadet dann allen anderen Empfängerinnen gleich mit.
+ *
+ *  Vier Schritte, alle nötig:
+ *
  *    1. Die Adresse kommt auf die Sperrliste. Sie ist der Nachweis, dass du
  *       den Widerspruch beachtest, und sie hält die Adresse auch dann
- *       draussen, wenn ein späterer Import sie wieder einspielt.
- *    2. Die Zeilen in beiden Anmeldetabellen werden gelöscht. So steht es
- *       in der Datenschutzerklärung, und eine Liste, die abgemeldete
- *       Adressen weiterführt, will niemand haben.
- *    3. Ihre Öffnungen und Klicks verschwinden mit. Wer weg ist, ist weg. */
+ *       draussen, wenn ein späterer Import sie wieder einspielt. Weil jede
+ *       Empfängerliste gegen diese Liste gefiltert wird, wirkt sie in allen
+ *       Quellen auf einmal, auch in `ed_kunden`.
+ *
+ *    2. In `kursteilnehmer` wird `mails_abgemeldet = true` gesetzt. Damit
+ *       greift der Widerspruch auch für die Rundmails der **Akademie**, die
+ *       ein ganz eigenes Programm sind. Ohne diesen Schritt hätte sich die
+ *       Person nur vom halben Haus abgemeldet.
+ *
+ *       ▸ Die Zeile wird NICHT gelöscht. Daran hängt ihr Kurszugang, und
+ *         den hat sie bezahlt. Sie will keine Werbung mehr, nicht ihre
+ *         gekauften Produkte verlieren.
+ *
+ *    3. Die Zeilen in den beiden Anmeldetabellen werden gelöscht. So steht
+ *       es in der Datenschutzerklärung, und dort hängt nichts Bezahltes
+ *       dran.
+ *
+ *    4. Ihre Öffnungen und Klicks verschwinden mit. Wer weg ist, ist weg. */
 export async function newsletterAbmelden(
   email: string,
   quelle: "link" | "hand" = "link"
@@ -648,6 +616,16 @@ export async function newsletterAbmelden(
   });
 
   const filter = `email=ilike.${encodeURIComponent(klein)}`;
+
+  // Die Akademie mit abmelden. Nur das Häkchen, die Zeile bleibt stehen.
+  await supabase(`kursteilnehmer?${filter}`, {
+    method: "PATCH",
+    body: JSON.stringify({
+      mails_abgemeldet: true,
+      abgemeldet_am: new Date().toISOString(),
+    }),
+  });
+
   await supabase(`insider_anmeldungen?${filter}`, { method: "DELETE" });
   await supabase(`futter_check_anmeldungen?${filter}`, { method: "DELETE" });
   await supabase(`newsletter_ereignisse?${filter}`, { method: "DELETE" });

@@ -3,11 +3,11 @@ import Link from "next/link";
 import { adminEingerichtet, istAngemeldet } from "@/lib/admin-zugang";
 import {
   briefeHolen,
-  empfaengerZaehlen,
   kurzauswertung,
   abmeldungenHolen,
   messungAn,
 } from "@/lib/newsletter-server";
+import { GRUPPEN, gruppenZaehlen } from "@/lib/newsletter-gruppen";
 import NeuerNewsletter from "./NeuerNewsletter";
 import VonHandAbmelden from "./VonHandAbmelden";
 
@@ -69,7 +69,7 @@ export default async function NewsletterUebersicht() {
   }
 
   const briefe = await briefeHolen();
-  const erreichbar = await empfaengerZaehlen();
+  const gruppenZahlen = await gruppenZaehlen();
   const abmeldungen = await abmeldungenHolen();
 
   if (!briefe) {
@@ -145,18 +145,38 @@ export default async function NewsletterUebersicht() {
           </nav>
         </div>
 
-        {/* ------------------------------------------------ Die eine Zahl */}
+        {/* ------------------------------------------------ Die Gruppen */}
         <div className="mb-8 rounded-[18px] border border-line bg-white p-6 sm:p-7">
           <p className="text-[14px] uppercase tracking-[0.14em] text-ink-soft">
             Dein Verteiler
           </p>
-          <p className="mt-2 font-serif text-[40px] leading-none text-ink">
-            {erreichbar < 0 ? "—" : erreichbar}
-          </p>
-          <p className="mt-3 text-[15px] leading-relaxed text-ink-soft">
-            {erreichbar < 0
-              ? "Die Zahl liess sich gerade nicht laden. Das liegt an der Datenbank, nicht an deinem Verteiler."
-              : "Menschen, die bestätigt haben und sich nicht abgemeldet haben. Nur an diese darfst du schreiben, und nur diese bekommen deinen nächsten Newsletter."}
+
+          <div className="mt-4 grid gap-x-8 gap-y-4 sm:grid-cols-2">
+            {GRUPPEN.map((g) => (
+              <div key={g.schluessel}>
+                <p className="font-serif text-[30px] leading-none text-ink">
+                  {gruppenZahlen[g.schluessel] < 0
+                    ? "—"
+                    : gruppenZahlen[g.schluessel]}
+                </p>
+                <p className="mt-1.5 text-[14.5px] text-ink">{g.name}</p>
+                <p className="mt-0.5 text-[13px] text-ink-soft">
+                  {g.grundlage === "Einwilligung"
+                    ? "hat ausdrücklich zugestimmt"
+                    : g.grundlage === "gemischt"
+                      ? "die drei zusammen, ohne Doppelte"
+                      : "Kundinnen, kein ausdrückliches Ja"}
+                </p>
+              </div>
+            ))}
+          </div>
+
+          <p className="mt-6 border-t border-line pt-5 text-[14.5px] leading-relaxed text-ink-soft">
+            Beim Schreiben wählst du, an welche Gruppe der Newsletter geht.
+            Wer nur Kundin ist und sich nie eingetragen hat, darf Post
+            bekommen, solange es um deine eigenen, ähnlichen Angebote geht,
+            also um Fütterung und Pferdegesundheit. Für ein Gewinnspiel oder
+            fremde Werbung reicht das nicht.
             {abmeldungen.length > 0 && (
               <>
                 {" "}
@@ -164,7 +184,7 @@ export default async function NewsletterUebersicht() {
                 {abmeldungen.length === 1
                   ? "Adresse steht"
                   : "Adressen stehen"}{" "}
-                auf der Sperrliste und sind hier schon abgezogen.
+                auf der Sperrliste und sind überall abgezogen.
               </>
             )}
           </p>
