@@ -39,8 +39,11 @@ export default function Footer() {
               </Link>
             </li>
             <li>
-              <Link href="/#kontakt" className="hover:text-ink">
-                Futterberatung 365
+              {/* Bis 03.09.2026 führte dieser Punkt auf /#kontakt, also ans
+                  Kontaktformular. Seit die Beratung einen festen Preis und
+                  eine Verkaufsseite hat, zeigt er dorthin. */}
+              <Link href="/pferdeliebe-365" className="hover:text-ink">
+                Pferdeliebe 365
               </Link>
             </li>
             {/* Der Shop erscheint hier erst, wenn er freigeschaltet ist.

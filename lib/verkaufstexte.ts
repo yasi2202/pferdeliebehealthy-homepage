@@ -647,6 +647,246 @@ verkaufstexte["pferdeliebe-365"] = {
     "Die Auswertungsdauer beträgt in der Regel bis zu 14 Werktage nach vollständigem Eingang aller Unterlagen. Die Beratung gilt pro Pferd. Nach der Buchung bekommst du zuerst den Fragebogen, nicht sofort einen Zugang.",
 };
 
+// ---------------------------------------------------------------------------
+// DIE BERATUNGSTREPPE, angelegt am 03.09.2026.
+//
+// ACHTUNG: DIESE VIER TEXTE SIND EIN ENTWURF VON CLAUDE, NICHT VON YASEMIN.
+// Sie sind an ihren vorhandenen Texten ausgerichtet, aber sie gehoeren
+// gegengelesen. Der Text zu Pferdeliebe 365 weiter oben stammt woertlich von
+// ihr und ist unangetastet.
+//
+// Die Treppe: 69 Nachberatung, 79 Befund-Einschaetzung, 149 Futterplan,
+// 249 drei Monate, 399 Pferdeliebe 365. Jeder Text verweist bewusst auf die
+// Nachbarstufen, damit eine Besucherin die richtige findet und nicht die
+// teuerste kauft, die sie gar nicht braucht.
+// ---------------------------------------------------------------------------
+
+verkaufstexte["nachberatung"] = {
+  augenbraue: "Für Pferde, die ich kenne",
+  ueberschrift: "Nachberatung",
+  seitentitel:
+    "Nachberatung für deinen Futterplan: Anpassung, wenn sich etwas ändert",
+  einleitung: [
+    "Dein Futterplan liegt eine Weile zurück, und inzwischen hat sich etwas geändert? Dann passen wir ihn gemeinsam an.",
+    "Du schickst mir, was neu ist, ich sehe mir die Ration daraufhin noch einmal an und du bekommst einen angepassten Plan. Danach begleite ich dich wieder vier Wochen bei der Umsetzung.",
+  ],
+
+  problemAugenbraue: "Warum ein Plan nicht ewig hält",
+  problemTitel: "Vier Wochen reichen für den Anfang, nicht für das Jahr.",
+  problem: [
+    "Nach jeder Beratung stehe ich dir vier Wochen lang für Rückfragen zur Verfügung. Diese Zeit reicht, damit der Plan bei euch ankommt und die ersten Fragen geklärt sind.",
+    "Sie reicht nicht für das, was danach kommt. Neue Blutwerte. Ein anderes Heu. Der Fellwechsel. Eine Diagnose vom Tierarzt. Jedes davon verändert die Rechnung, und ein Plan, der auf alte Zahlen gebaut ist, wird dann still falsch.",
+    "Genau dafür ist die Nachberatung da. Sie ist kein neuer Anfang, sondern eine Fortschreibung dessen, was wir schon zusammen erarbeitet haben.",
+  ],
+
+  inhaltAugenbraue: "Wann sie sich lohnt",
+  inhaltTitel: "Fünf Gründe, den Plan noch einmal anzusehen.",
+  inhalte: [
+    {
+      titel: "Neue Werte liegen vor",
+      text: "Blutbild, Kotbefund oder Heuanalyse. Wir sehen uns an, was sich daraus für die Ration ändert.",
+    },
+    {
+      titel: "Das Heu hat gewechselt",
+      text: "Anderes Heu heißt andere Grundlage. Der Rest der Ration muss darauf antworten.",
+    },
+    {
+      titel: "Eine neue Diagnose",
+      text: "Wenn der Tierarzt etwas festgestellt hat, gehört die Fütterung darauf abgestimmt.",
+    },
+    {
+      titel: "Die Jahreszeit hat gedreht",
+      text: "Die Weide kommt dazu oder fällt weg, und der Fellwechsel steht an.",
+    },
+    {
+      titel: "Du hast Produkte getauscht",
+      text: "Etwas gibt es nicht mehr, oder du hast umgestellt. Wir prüfen, ob es noch aufgeht.",
+    },
+  ],
+  inhaltSchluss:
+    "Die Auswertung dauert in der Regel bis zu 14 Werktage nach vollständigem Eingang aller Unterlagen. Danach hast du wieder vier Wochen persönliche Begleitung.",
+
+  fuerWenTitel: "Für wen die Nachberatung gedacht ist",
+  fuerWen: [
+    "Für dich, wenn ich dein Pferd schon einmal beraten habe und sich seither etwas geändert hat.",
+    "Für dich, wenn neue Laborwerte vorliegen und du wissen willst, was daraus für die Fütterung folgt.",
+    "Nicht für dich, wenn wir noch nie zusammengearbeitet haben. Dann fehlt die Grundlage, auf der eine Anpassung aufsetzt, und der Futterplan ist der richtige Einstieg.",
+    "Nicht für dich, wenn du nur Befunde eingeordnet haben möchtest, ohne dass der Plan angefasst wird. Dafür gibt es die Befund-Einschätzung.",
+  ],
+
+  abschlussTitel: "Der Plan wächst mit.",
+  abschlussText:
+    "Die Nachberatung gilt pro Pferd. Nach der Buchung bekommst du von mir eine kurze Nachricht, was ich brauche, meist sind das die neuen Befunde und ein Zwischenstand, wie es eurem Pferd geht.",
+};
+
+verkaufstexte["befund-einschaetzung"] = {
+  augenbraue: "Wenn Zahlen auf dem Tisch liegen",
+  ueberschrift: "Befund-Einschätzung",
+  seitentitel:
+    "Heuanalyse, Blutbild und Kotbefund verstehen: fachliche Einschätzung für dein Pferd",
+  einleitung: [
+    "Du hast Werte, aber niemand erklärt dir, was sie für die Fütterung deines Pferdes bedeuten.",
+    "Hier bekommst du eine schriftliche Einordnung deiner Befunde: was da steht, was auffällt, was davon für die Ration wichtig ist und woran du als Nächstes denken solltest.",
+  ],
+
+  problemAugenbraue: "Das Problem mit den Referenzwerten",
+  problemTitel: "Innerhalb der Referenz heißt nicht bedarfsgerecht.",
+  problem: [
+    "Eine Heuanalyse kommt mit zwanzig Zahlen zurück. Ein Blutbild mit noch mehr, und die Spalte daneben sagt nur, ob ein Wert innerhalb der Referenz liegt.",
+    "Was das für die Fütterung deines Pferdes heißt, steht auf keinem dieser Blätter. Ein Zinkwert sagt für sich genommen wenig, solange niemand das Verhältnis zum Kupfer daneben ansieht. Eine Heuanalyse mit gutem Energiegehalt kann trotzdem eine Ration tragen, die vorne und hinten nicht aufgeht.",
+    "Genau diese Übersetzung fehlt den meisten Pferdebesitzerinnen, und genau die bekommst du hier.",
+  ],
+
+  inhaltAugenbraue: "Was du einschicken kannst",
+  inhaltTitel: "Einzeln oder zusammen, du entscheidest.",
+  inhalte: [
+    {
+      titel: "Heuanalyse",
+      text: "Auch mehrere Schnitte oder mehrere Jahre. Gerade der Vergleich zeigt, woran es liegt.",
+    },
+    {
+      titel: "Blutbild",
+      text: "Gern mit Vorbefunden. Ein Verlauf sagt mehr als eine einzelne Momentaufnahme.",
+    },
+    {
+      titel: "Kotbefund und Darmflora",
+      text: "Was dort steht, wirkt sich unmittelbar darauf aus, was die Ration leisten muss.",
+    },
+    {
+      titel: "Alles zusammen",
+      text: "Wenn du das Gesamtbild willst und die Befunde zueinander in Beziehung setzen möchtest.",
+    },
+  ],
+  inhaltSchluss:
+    "Das ist bewusst keine Futterberatung: Du bekommst die Einordnung deiner Werte, aber keinen Futterplan und keine vollständige Rationsberechnung.",
+
+  fuerWenTitel: "Für wen die Einschätzung gedacht ist",
+  fuerWen: [
+    "Für dich, wenn du Befunde in der Hand hältst und wissen willst, was sie bedeuten, bevor du etwas änderst.",
+    "Für dich, wenn du deine Fütterung im Griff hast und nur diese eine Einordnung brauchst.",
+    "Nicht für dich, wenn du am Ende einen Futterplan willst. Dann nimm gleich den Futterplan, dort sehe ich mir die Befunde ohnehin mit an und du zahlst nicht zweimal.",
+    "Nicht für dich, wenn ich dein Pferd schon einmal beraten habe. Dann ist die Nachberatung der günstigere Weg, denn dort ist die Einordnung enthalten.",
+  ],
+
+  abschlussTitel: "Zahlen, die endlich etwas sagen.",
+  abschlussText:
+    "Ich stelle keine Diagnosen und ersetze keinen Tierarzt. Ich ordne Werte fachlich ein und sage dir, was daraus für die Fütterung folgt. Die Auswertung dauert in der Regel bis zu 14 Werktage nach vollständigem Eingang aller Unterlagen. Die Einschätzung gilt pro Pferd.",
+};
+
+verkaufstexte["futterplan"] = {
+  augenbraue: "Der klassische Weg",
+  ueberschrift: "Dein Futterplan",
+  seitentitel:
+    "Individueller Futterplan für dein Pferd, mit vollständiger Rationsberechnung",
+  einleitung: [
+    "Zehn Ratschläge aus dem Stall, drei Zusatzfutter im Schrank, und du weißt immer noch nicht, ob es reicht.",
+    "Der Futterplan ist der Weg da heraus: eine vollständige Berechnung dessen, was dein Pferd tatsächlich bekommt, und ein Plan, der zu ihm passt. Dazu vier Wochen persönliche Begleitung, damit er auch im Stall ankommt.",
+  ],
+
+  problemAugenbraue: "Warum gut gemeint nicht reicht",
+  problemTitel: "Die meisten Rationen sind nicht falsch, sie sind ungeprüft.",
+  problem: [
+    "Kaum eine Pferdebesitzerin füttert absichtlich schlecht. Das Problem ist ein anderes: Es rechnet niemand nach. Drei Produkte, die einzeln sinnvoll aussehen, können sich gegenseitig blockieren, und zwei davon liefern dasselbe doppelt.",
+    "Dazu kommt, dass fast jede Empfehlung am Markt von jemandem stammt, der etwas verkaufen möchte. Ich verkaufe kein Futter. Was ich dir empfehle, empfehle ich, weil es rechnerisch passt, und was du schon dastehen hast, bleibt drin, wenn es gut ist.",
+    "Am Ende steht kein Einkaufszettel, sondern eine Ration, die aufgeht, und die Begründung dazu.",
+  ],
+
+  inhaltAugenbraue: "Das bekommst du",
+  inhaltTitel: "Von der Bestandsaufnahme bis in den Futtereimer.",
+  inhalte: [
+    {
+      titel: "Analyse deiner aktuellen Fütterung",
+      text: "Was dein Pferd heute bekommt, mit Zahlen statt Bauchgefühl. Inklusive dem, was du schon im Schrank stehen hast.",
+    },
+    {
+      titel: "Vollständige Rationsberechnung",
+      text: "Energie, Eiweiss, Mengen- und Spurenelemente. Was fehlt, was zu viel ist, und wo sich Dinge gegenseitig behindern.",
+    },
+    {
+      titel: "Dein individueller Futterplan",
+      text: "Mit Mengen und Zeiten, aufgeschrieben so, dass auch jemand anders im Stall danach füttern kann.",
+    },
+    {
+      titel: "Einordnung deiner Befunde",
+      text: "Heuanalyse, Blutbild oder Kotbefund, wenn du welche hast. Sie fließen in die Berechnung ein.",
+    },
+    {
+      titel: "Vier Wochen Begleitung",
+      text: "Damit du beim Umstellen nicht allein dastehst. Rückfragen sind in diesen vier Wochen enthalten.",
+    },
+  ],
+
+  fuerWenTitel: "Für wen der Futterplan gedacht ist",
+  fuerWen: [
+    "Für dich, wenn du einmal Klarheit willst, ob die Fütterung deines Pferdes aufgeht, und danach selbst weiterarbeiten möchtest.",
+    "Für dich, wenn dein Pferd gesund ist und du es gesund halten willst, ohne blind Zusatzfutter zu kaufen.",
+    "Nicht für dich, wenn gerade eine grössere Umstellung ansteht oder ein gesundheitliches Thema im Gange ist. Dann sind vier Wochen zu kurz, und die drei Monate sind der bessere Weg.",
+    "Nicht für dich, wenn du eine Akte willst, die über das ganze Jahr mitwächst. Das ist Pferdeliebe 365.",
+  ],
+
+  abschlussTitel: "Einmal richtig gerechnet.",
+  abschlussText:
+    "Nach deiner Buchung bekommst du einen ausführlichen Fragebogen zu Haltung, Fütterung und Gesundheitszustand, dazu bitte ich dich um ein paar Fotos. Die Auswertung dauert in der Regel bis zu 14 Werktage nach vollständigem Eingang aller Unterlagen. Der Futterplan gilt pro Pferd.",
+};
+
+verkaufstexte["begleitung-3-monate"] = {
+  augenbraue: "Wenn eine Umstellung ansteht",
+  ueberschrift: "Drei Monate Begleitung",
+  seitentitel:
+    "Drei Monate Futterberatung: Plan und Begleitung durch die Umstellung",
+  einleitung: [
+    "Ein Plan, und drei Monate lang jemand, der mit draufschaut.",
+    "Du bekommst denselben Futterplan wie bei der Einmalberatung, und danach bleibe ich drei Monate an eurer Seite. Ändert sich etwas, ändern wir den Plan mit, ohne dass du etwas nachbuchen musst.",
+  ],
+
+  problemAugenbraue: "Warum vier Wochen manchmal zu kurz sind",
+  problemTitel: "Ein Futterplan ist der Anfang, nicht das Ende.",
+  problem: [
+    "Die Fragen kommen erst, wenn der Plan im Stall ankommt. Frisst er das überhaupt? Wie schleiche ich das alte Futter aus? Der Kot ist anders, ist das normal? Und wie geht das, wenn die Stallbetreiberin morgens füttert?",
+    "Bei einem gesunden Pferd sind diese Fragen nach vier Wochen beantwortet. Wenn gerade etwas im Gange ist, ein Darmthema, ein Fellwechsel, eine Rekonvaleszenz, dann fängt es nach vier Wochen erst an, interessant zu werden.",
+    "Deshalb gibt es diesen mittleren Weg: lang genug, um eine Umstellung wirklich zu Ende zu bringen, und ohne die Verpflichtung eines ganzen Jahres.",
+  ],
+
+  inhaltAugenbraue: "Das bekommst du",
+  inhaltTitel: "Alles aus dem Futterplan, und dann noch zwei Monate mehr.",
+  inhalte: [
+    {
+      titel: "Analyse und Rationsberechnung",
+      text: "Vollständig, wie beim Futterplan: Energie, Eiweiss, Mengen- und Spurenelemente.",
+    },
+    {
+      titel: "Dein individueller Futterplan",
+      text: "Mit Mengen und Zeiten, abgestimmt auf Haltung, Heu und Gesundheitszustand.",
+    },
+    {
+      titel: "Drei Monate Begleitung",
+      text: "Statt vier Wochen. Genug Zeit, um eine Umstellung wirklich durchzuziehen.",
+    },
+    {
+      titel: "Anpassungen ohne Aufpreis",
+      text: "Ändert sich in diesen drei Monaten etwas, ändern wir den Plan mit. Du musst nichts nachbuchen.",
+    },
+    {
+      titel: "Neue Befunde inklusive",
+      text: "Was in diesen drei Monaten an Laborwerten dazukommt, ordne ich mit ein.",
+    },
+  ],
+  inhaltSchluss:
+    "Die drei Monate laufen ab dem Tag, an dem dein Futterplan fertig ist, nicht ab dem Kauf.",
+
+  fuerWenTitel: "Für wen die drei Monate gedacht sind",
+  fuerWen: [
+    "Für dich, wenn eine grössere Umstellung ansteht und du sie nicht allein durchziehen willst.",
+    "Für Pferde, bei denen gerade etwas im Gange ist und sich in den ersten Wochen noch einiges bewegt.",
+    "Nicht für dich, wenn du nur einmal wissen willst, ob deine Ration aufgeht. Dafür reicht der Futterplan.",
+    "Nicht für dich, wenn du eine Akte willst, die über alle vier Jahreszeiten mitläuft und dir bleibt. Das ist Pferdeliebe 365.",
+  ],
+
+  abschlussTitel: "Begleitet durch die Umstellung.",
+  abschlussText:
+    "Damit jede Begleitung die Aufmerksamkeit bekommt, die sie braucht, nehme ich bewusst nur wenige Pferde gleichzeitig an. Die Auswertung dauert in der Regel bis zu 14 Werktage nach vollständigem Eingang aller Unterlagen. Die Begleitung gilt pro Pferd.",
+};
+
 /** Den Verkaufstext zu einem Produkt holen, oder undefined. */
 export function verkaufstextZu(slug: string): Verkaufstext | undefined {
   return verkaufstexte[slug];

@@ -48,10 +48,27 @@ export const fuerDeinPferd: Angebot[] = [
     preis: "59 €",
     url: "/ganzjahresfutterplan",
   },
+  // Die Beratung hat seit dem 03.09.2026 eine Treppe. Hier stehen bewusst nur
+  // zwei Stufen: der Einstieg und das große Angebot. Nachberatung (69 €),
+  // Befund-Einschätzung (79 €) und die drei Monate (249 €) findet man über
+  // /shop und über die Verweise auf den Verkaufsseiten. Eine Liste mit fünf
+  // Beratungszeilen würde die beiden Wege auf der Startseite erschlagen.
   {
-    name: "Futterberatung 365",
+    name: "Futterplan",
+    untertitel: "Einmal durchgerechnet, mit vier Wochen Begleitung",
+    // Maßgeblich ist immer lib/digital.ts, hier steht nur die Anzeige.
+    preis: "149 €",
+    url: "/futterplan",
+  },
+  {
+    name: "Pferdeliebe 365",
     untertitel: "Deine Gesundheitsakte, 1:1 mit mir erarbeitet",
-    preis: "auf Anfrage",
+    // Am 03.09.2026 auf den regulären Preis gestellt: Die Aktion mit 249 €
+    // ist beendet, weil die drei Monate genau so viel kosten.
+    preis: "399 €",
+    // Die Verkaufsseite gab es schon lange, die Angebotsliste verlinkte sie
+    // aber nicht, deshalb sah niemand den Preis.
+    url: "/pferdeliebe-365",
   },
 ];
 

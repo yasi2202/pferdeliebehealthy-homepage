@@ -47,8 +47,11 @@ export default function Gesundheitsakte() {
 
         <p className="text-[13px] text-ink-soft mt-8 pt-6 border-t border-line">
           Beispielwerte zur Veranschaulichung. Genau diese Zeilen bekommst du bei{" "}
-          <Link href="#wege" className="text-ink font-medium hover:text-rose-deep">
-            Futterberatung 365
+          {/* Zeigte bis 03.09.2026 auf den Angebotsblock. Seit die Beratung
+              eine eigene Seite mit Preis hat, fuehrt der Verweis direkt
+              dorthin. */}
+          <Link href="/pferdeliebe-365" className="text-ink font-medium hover:text-rose-deep">
+            Pferdeliebe 365
           </Link>{" "}
           für dein eigenes Pferd, und lernst sie in der{" "}
           <Link href="/ausbildung" className="text-ink font-medium hover:text-rose-deep">

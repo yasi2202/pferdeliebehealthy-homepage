@@ -18,6 +18,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { pfad: "/mineral-klarheit", prioritaet: 0.8, takt: "monthly" },
     { pfad: "/ganzjahresfutterplan", prioritaet: 0.8, takt: "monthly" },
     { pfad: "/pferdeliebe-365", prioritaet: 0.8, takt: "monthly" },
+    // Die uebrigen Stufen der Beratungstreppe (03.09.2026). Sie stehen wie
+    // alle Produktseiten von Hand hier und nicht aus digital.ts erzeugt.
+    { pfad: "/futterplan", prioritaet: 0.8, takt: "monthly" },
+    { pfad: "/begleitung-3-monate", prioritaet: 0.8, takt: "monthly" },
+    { pfad: "/befund-einschaetzung", prioritaet: 0.7, takt: "monthly" },
+    { pfad: "/nachberatung", prioritaet: 0.6, takt: "monthly" },
     { pfad: "/ratiopro", prioritaet: 0.8, takt: "monthly" },
     { pfad: "/symptom-navigator", prioritaet: 0.8, takt: "monthly" },
     { pfad: "/basisfutterkurs", prioritaet: 0.7, takt: "monthly" },
