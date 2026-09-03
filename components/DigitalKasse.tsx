@@ -448,6 +448,23 @@ export default function DigitalKasse({
               : `Einmalig, inklusive ${produkt.mwst} % Mehrwertsteuer. Kein Abo.`}
           </p>
 
+          {/* Die Frist steht dort, wo der Preis steht, und nicht irgendwo
+              weiter oben: Sie gehört zum Preis, nicht zum Produkt. Gezeigt
+              wird sie nur, solange sie läuft. Durchgesetzt wird sie in
+              app/api/digitalkasse, hier steht nur, was ohnehin gilt. */}
+          {produkt.verkaufBis && (
+            <p className="mt-2 rounded-lg bg-cream-deep px-3 py-2 text-[12.5px] leading-relaxed text-ink">
+              Dieser Preis gilt noch bis zum{" "}
+              <strong>
+                {new Date(`${produkt.verkaufBis}T23:59:59+02:00`).toLocaleDateString(
+                  "de-DE",
+                  { day: "numeric", month: "long", year: "numeric" },
+                )}
+              </strong>
+              . Danach nimmt die Kasse ihn nicht mehr an.
+            </p>
+          )}
+
           {/* --------------------------------------------------- Häkchen 1 */}
           <label className="mt-6 flex cursor-pointer gap-3 text-[13.5px] leading-relaxed text-ink-soft">
             <input

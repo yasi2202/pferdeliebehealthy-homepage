@@ -93,6 +93,22 @@ export type DigitalProdukt = {
    */
   verkaufAb?: string;
   /**
+   * Bis wann verkauft werden darf, als "2026-09-05". Der Tag zaehlt noch mit,
+   * Schluss ist um 23:59 Uhr. Fehlt der Wert, laeuft das Angebot weiter.
+   *
+   * ▸ WARUM DAS NICHT NUR KOSMETIK IST
+   *   Wer in einer Mail schreibt "der Preis gilt nur zwei Tage" und danach
+   *   weiter zu diesem Preis verkauft, wirbt mit einer Verknappung, die es
+   *   nicht gibt. Das ist irrefuehrend im Sinne des UWG, und abgesehen davon
+   *   glaubt die naechste Frist dann niemand mehr. Deshalb weist die Kasse
+   *   den Kauf nach diesem Datum tatsaechlich ab, genau wie vor `verkaufAb`.
+   *
+   *   Soll das Angebot bleiben, wird der Preis regulaer und dieses Datum
+   *   verschwindet. Soll es weg, kommt `versteckt` dazu oder das Produkt
+   *   fliegt raus.
+   */
+  verkaufBis?: string;
+  /**
    * Wohin das Angebot auf der Uebersichtsseite gehoert.
    *
    * ▸ Das ist eine THEMATISCHE Einordnung, nicht dieselbe wie `art`. `art`
@@ -399,7 +415,57 @@ export const digitalprodukte: DigitalProdukt[] = [
     },
   },
   {
-    // ▸ DAS EINZIGE VERSTECKTE ANGEBOT, STAND 03.09.2026.
+    // ▸ DAS BUENDEL FUER DIE AUSBILDUNGSTEILNEHMERINNEN OHNE RATIOPRO.
+    //   56 von ihnen haben den Rechner nicht, fuer die waere das Modul allein
+    //   wertlos. Deshalb beide zusammen, und zwar befristet: Der Preis gilt
+    //   bis zum in `verkaufBis` genannten Tag, danach weist die Kasse den Kauf
+    //   ab. Wenn du die Mail spaeter verschickst, MUSS dieses Datum mit.
+    slug: "ratiopro-buendel",
+    gruppe: "werkzeug",
+    versteckt: true,
+    verkaufBis: "2026-09-05",
+    name: "RatioPro und das Pro-Modul Metabolisches Gewicht",
+    kurzname: "RatioPro plus Pro-Modul",
+    // 69 + 29 = 98 Euro einzeln. Beide werden tatsaechlich zu diesen Preisen
+    // verkauft, der Streichpreis ist also belegt und keine erfundene
+    // Ersparnis.
+    preis: 7900,
+    statt: 9800,
+    mwst: 19,
+    art: "kurs",
+    kurz: "Der Rechner und das Pro-Modul zusammen.",
+    leistung:
+      "Digitaler Zugang zu RatioPro in der Pferdeliebehealthy Akademie, " +
+      "unbegrenzte Berechnungen, dauerhaft abrufbar, zusammen mit dem " +
+      "Pro-Modul „Metabolisches Gewicht“ im Rechner.",
+    // Trifft die Buendelregel in lib/produkt-zugang.ts der Akademie, die als
+    // einzige ZWEI Zugaenge vergibt: 'ratiopro' und 'ratiopro-metabolisch'.
+    // Der Name darf deshalb nicht geaendert werden, ohne dort nachzusehen.
+    akademieName: "RatioPro und Pro-Modul Metabolisches Gewicht",
+    erwarteterZugang: "ratiopro + ratiopro-metabolisch",
+    beschreibung: [
+      {
+        art: "absatz",
+        text: "RatioPro rechnet dir die ganze Ration deines Pferdes durch: Bedarf, Versorgung, Lücken und Überschüsse, aus einer Futtermitteldatenbank mit über 470 Einträgen. Das Pro-Modul legt zusätzlich offen, wie der Bedarf überhaupt zustande kommt, und rechnet den metabolischen und den linearen Weg nebeneinander.",
+      },
+      {
+        art: "liste",
+        punkte: [
+          "RatioPro mit unbegrenzten Berechnungen, dauerhaft abrufbar",
+          "Das Pro-Modul „Metabolisches Gewicht“ direkt im Rechner",
+          "Erhaltungsbedarf nach GfE 2014, getrennt nach Pony, Warmblut und Vollblut",
+          "Anleitung in sechs Schritten zum Nachrechnen von Hand, dazu die Erklärung als PDF",
+        ],
+      },
+      {
+        art: "absatz",
+        text: "Einzeln kosten die beiden zusammen 98 €. Dieser Preis gilt nur bis zum 5. September 2026, danach nimmt die Kasse ihn nicht mehr an.",
+        betont: true,
+      },
+    ],
+  },
+  {
+    // ▸ DAS ANGEBOT FUER DIE, DIE RATIOPRO SCHON HABEN, STAND 03.09.2026.
     //   Es steht hier direkt vor RatioPro und nicht nach dem Preis
     //   einsortiert, weil die beiden zusammengehören: Das Modul ist ein Teil
     //   des Rechners und wird auch nur dort verlinkt.

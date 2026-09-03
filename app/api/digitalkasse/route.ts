@@ -99,6 +99,27 @@ export async function POST(request: Request) {
     }
   }
 
+  // ▸ DAS ENDE EINER BEFRISTETEN AKTION, UND WARUM ES HIER STEHT
+  //   Wenn in einer Mail steht "der Preis gilt nur zwei Tage", muss die Kasse
+  //   danach auch wirklich ablehnen. Sonst ist die Frist eine Behauptung, mit
+  //   der geworben wurde, ohne dass es sie gibt. Der genannte Tag zaehlt noch
+  //   voll mit, Schluss ist um Mitternacht danach.
+  if (produkt.verkaufBis) {
+    const ende = new Date(`${produkt.verkaufBis}T23:59:59+02:00`);
+
+    if (new Date() > ende) {
+      return Response.json(
+        {
+          fehler:
+            `Dieses Angebot ist am ${ende.toLocaleDateString("de-DE")} ` +
+            `ausgelaufen. Schreib mir gern an info@pferdeliebehealthy.de, ` +
+            `dann sage ich dir, was jetzt möglich ist.`,
+        },
+        { status: 410 },
+      );
+    }
+  }
+
   const vorname = kuerzen(daten.vorname, 60);
   const nachname = kuerzen(daten.nachname, 60);
   const email = kuerzen(daten.email, 200).toLowerCase();
