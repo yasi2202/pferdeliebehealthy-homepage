@@ -107,6 +107,15 @@ export type Angebotshinweis = {
 };
 
 export const angebotsHinweise: Record<string, Angebotshinweis> = {
+  // Die 1:1-Beratung. Sie hiess in aelteren Blogtexten noch
+  // "4-Wochen-Futterberatung", das ist heute Pferdeliebe 365.
+  "pferdeliebe-365": {
+    augenbraue: "Wenn du es abgeben willst",
+    name: "Pferdeliebe 365",
+    text: "Die 1:1 Futterberatung als Gesundheitsakte: Ich rechne die Ration deines Pferdes durch, baue den Plan auf und begleite dich vier Wochen lang bei der Umstellung.",
+    knopf: "Pferdeliebe 365 ansehen",
+    url: "/pferdeliebe-365",
+  },
   mineral: {
     augenbraue: "Dazu passend",
     name: "Mineral-Klarheit",
