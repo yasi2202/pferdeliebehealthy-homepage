@@ -121,7 +121,12 @@ export const empfehlungen: Empfehlung[] = [
     // Wundversorgung, hier stand die nackte Shopadresse. Ohne die Kennung
     // im Link wird eine Bestellung Yasemin nicht zugerechnet, der Rabattcode
     // allein reicht bei diesem Shop nicht.
-    url: "https://baeralis.de/account/pferdeliebe?sPartner=d1c04513",
+    // Am 03.09.2026 korrigiert: Die alte Adresse (/account/pferdeliebe) landete
+    // auf der Registrierungsseite des Shops, dort sah man kein einziges Produkt
+    // und sollte erst ein Konto anlegen. Jetzt zeigt der Link auf die
+    // Pferdeabteilung. Die Kennung sPartner muss dranbleiben, ohne sie wird
+    // eine Bestellung Yasemin nicht zugerechnet.
+    url: "https://baeralis.de/pferde/?sPartner=d1c04513",
     warum:
       "Pflege und Wundversorgung fürs Pferd, mit einer eigenen Ecke für schnelle Hilfe, praktisch für die Stallapotheke.",
     bezahlt: true,
