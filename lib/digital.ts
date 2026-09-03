@@ -1238,17 +1238,119 @@ export const funnel: Funnel[] = [
     // kleinlich und passt nicht zum Anlass.
     downsell: null,
   },
+  // -------------------------------------------------------------------------
+  // KETTEN FUER DIE BERATUNGSTREPPE, angelegt am 03.09.2026.
+  //
+  // Bis dahin endete jede der vier neuen Beratungen im Nichts: gekauft, Danke,
+  // fertig. Nur Pferdeliebe 365 hatte eine Kette.
+  //
+  // Zwei Regeln liegen dem zugrunde:
+  //
+  //  1. ALS UPSELL NIE EINE ZWEITE BERATUNG. Wer gerade einen Futterplan
+  //     gekauft hat, kauft nicht Minuten spaeter noch eine Begleitung fuer
+  //     denselben Vorgang; das wirkt, als haette man ihr eben etwas
+  //     Unvollstaendiges verkauft. Angeboten werden deshalb Werkzeuge und
+  //     Hefte, mit denen sie zwischen den Beratungen selbst weiterarbeitet.
+  //     Einzige Ausnahme ist die Befund-Einschaetzung, siehe dort.
+  //
+  //  2. KEINE NEUEN PREISE ERFINDEN. Die Angebotspreise (RatioPro 49,
+  //     Ganzjahresfutterplan 39, Symptom-Navigator 27) stehen genau so schon
+  //     in den bestehenden Ketten. Damit sieht niemand denselben Artikel in
+  //     zwei Angeboten zu zwei Preisen.
+  // -------------------------------------------------------------------------
+  {
+    produkt: "befund-einschaetzung",
+    // Die einzige Kette, deren Upsell eine Beratung ist, und das mit Absicht:
+    // Wer nur eine Einordnung gekauft hat, hat bewusst KEINEN Plan bestellt.
+    // Der Futterplan ist hier also nicht die Wiederholung des Gekauften,
+    // sondern der Schritt, den sie sich noch offengelassen hat.
+    upsell: "futterplan",
+    // 129 statt 149: Die Befunde liegen mir dann schon vor und sind gelesen,
+    // die Arbeit am Plan ist entsprechend kuerzer. Der Nachlass hat also
+    // einen Grund und ist keine Lockrabattmarke.
+    upsellPreis: 12900,
+    upsellTitel: "Soll ich daraus gleich einen Futterplan machen?",
+    upsellGrund:
+      "Du bekommst von mir, was deine Werte bedeuten. Was daraus im " +
+      "Futtereimer wird, steht dann noch nicht darin. Wenn ich deine Befunde " +
+      "ohnehin vor mir habe, rechne ich dir die ganze Ration durch und du " +
+      "bekommst den fertigen Plan dazu, mit vier Wochen Begleitung.",
+    downsell: "symptom-navigator",
+    downsellPreis: 2700,
+    downsellTitel: "Oder erst einmal selbst nachschlagen?",
+    downsellGrund:
+      "Der Symptom-Navigator ordnet Beobachtungen am Pferd den moeglichen " +
+      "Ursachen zu und nennt dazu passende Produkte. Gut, wenn du zwischen " +
+      "zwei Befunden selbst weiterkommen willst.",
+  },
+  {
+    produkt: "futterplan",
+    upsell: "ratiopro",
+    upsellPreis: 4900,
+    upsellTitel: "Moechtest du zwischendurch selbst nachrechnen koennen?",
+    upsellGrund:
+      "Dein Plan gilt fuer die Ration, die wir jetzt zusammenstellen. Wenn " +
+      "sich das Heu aendert oder ein Produkt ausgeht, rechnest du mit " +
+      "RatioPro selbst nach, statt zu schaetzen oder gleich eine " +
+      "Nachberatung zu buchen.",
+    downsell: "ganzjahresfutterplan",
+    downsellPreis: 3900,
+    downsellTitel: "Oder lieber der Plan durchs Jahr?",
+    downsellGrund:
+      "Dein Futterplan beschreibt den Ist-Zustand. Der Ganzjahresfutterplan " +
+      "sagt dir, was sich Monat fuer Monat aendert, von der Weide im Fruehjahr " +
+      "bis zum Fellwechsel im Herbst.",
+  },
+  {
+    produkt: "begleitung-3-monate",
+    upsell: "ratiopro",
+    upsellPreis: 4900,
+    upsellTitel: "Moechtest du zwischendurch selbst nachrechnen koennen?",
+    upsellGrund:
+      "In drei Monaten aendert sich einiges, und nicht jede Aenderung ist " +
+      "eine Frage an mich. Mit RatioPro rechnest du kleine Umstellungen " +
+      "selbst durch und wir sprechen ueber die groesseren.",
+    downsell: "ganzjahresfutterplan",
+    downsellPreis: 3900,
+    downsellTitel: "Oder lieber der Plan durchs Jahr?",
+    downsellGrund:
+      "Unsere drei Monate decken eine Jahreszeit ab. Der " +
+      "Ganzjahresfutterplan zeigt dir, was in den anderen neun auf euch " +
+      "zukommt.",
+  },
+  {
+    produkt: "nachberatung",
+    // Bewusst KEIN Upsell auf Pferdeliebe 365: Wer eine Nachberatung fuer
+    // 69 Euro bucht, hat sich gerade fuer die kleine Loesung entschieden.
+    // Ihr direkt danach ein Angebot fuer 599 Euro vorzulegen, liest sich wie
+    // eine Ruege fuer die eigene Entscheidung.
+    upsell: "ratiopro",
+    upsellPreis: 4900,
+    upsellTitel: "Damit die naechste Aenderung keine Nachberatung braucht",
+    upsellGrund:
+      "Du hast eben nachbuchen muessen, weil sich etwas geaendert hat. Mit " +
+      "RatioPro rechnest du solche Aenderungen selbst durch, das Heu, ein " +
+      "neues Zusatzfutter, eine andere Menge, und brauchst mich erst wieder, " +
+      "wenn es wirklich um etwas geht.",
+    downsell: "ganzjahresfutterplan",
+    downsellPreis: 3900,
+    downsellTitel: "Oder der Plan durchs Jahr?",
+    downsellGrund:
+      "Die meisten Nachberatungen haengen an der Jahreszeit: Weidebeginn, " +
+      "Fellwechsel, Winterheu. Der Ganzjahresfutterplan nimmt genau diese " +
+      "Punkte vorweg.",
+  },
   {
     produkt: "pferdeliebe-365",
     upsell: "ratiopro",
     upsellPreis: 4900,
     upsellTitel: "Möchtest du zwischendurch selbst nachrechnen können?",
     upsellGrund:
-      "Deine Akte enthält eine fertige Rationsberechnung. Nach den vier " +
-      "Wochen Begleitung ändert sich aber immer wieder etwas: anderes Heu, " +
-      "ein neues Zusatzfutter, ein anderer Bedarf. Mit RatioPro rechnest du " +
-      "das selbst nach, statt zu schätzen oder zu warten.",
-    // Kein Downsell: Wer gerade 249 € ausgegeben hat, dem noch ein Heft für
+      "Deine Akte enthält eine fertige Rationsberechnung. Zwischen unseren " +
+      "vier Terminen ändert sich aber immer wieder etwas: anderes Heu, ein " +
+      "neues Zusatzfutter, ein anderer Bedarf. Mit RatioPro rechnest du das " +
+      "selbst nach, statt zu schätzen oder bis zum nächsten Termin zu warten.",
+    // Kein Downsell: Wer gerade 599 € ausgegeben hat, dem noch ein Heft für
     // 5,99 € hinterherzuwerfen wirkt kleinlich und passt nicht zum Anlass.
     downsell: null,
   },
