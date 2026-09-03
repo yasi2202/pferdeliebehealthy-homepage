@@ -34,6 +34,27 @@ export type Partnerprodukt = {
   url?: string;
   /** Ein Satz: was es ist, nicht was es kann. */
   kurz: string;
+  /**
+   * Ist das ein **Biozidprodukt**, also ein Desinfektionsmittel?
+   *
+   * ▸ DANN IST EIN WARNHINWEIS PFLICHT, und zwar in jeder Werbung, nicht nur
+   *   auf dem Etikett. Art. 72 der Biozid-Verordnung (EU) 528/2012 verlangt
+   *   wörtlich: „Biozidprodukte vorsichtig verwenden. Vor Gebrauch stets
+   *   Etikett und Produktinformation lesen." Er muss sich deutlich vom Rest
+   *   der Werbung abheben und gut lesbar sein.
+   *
+   *   Ein Partnerkasten IST Werbung. Deshalb setzt der Kasten den Hinweis
+   *   selbst, sobald hier `true` steht: So kann er beim nächsten Produkt
+   *   nicht vergessen werden.
+   *
+   * ▸ AUSSERDEM VERBOTEN sind bei solchen Produkten die Wörter „ungiftig",
+   *   „unschädlich", „natürlich", „umweltfreundlich", „tierfreundlich" und
+   *   alles, was das Risiko kleinredet. Beim Schreiben von `kurz` daran
+   *   denken.
+   *
+   *   Verbandmaterial und Pflaster sind KEINE Biozidprodukte.
+   */
+  biozid?: boolean;
 };
 
 export const partnerprodukte: Partnerprodukt[] = [
@@ -58,13 +79,15 @@ export const partnerprodukte: Partnerprodukt[] = [
     name: "Haut-Talent Nr. 1",
     url: "https://baeralis.de/nr-1-haut-talent-fuer-pferde?sPartner=d1c04513",
     kurz: "Der Wundreiniger der Reihe. Brennt nicht, ist alkoholfrei und muss nicht abgespült werden.",
+    biozid: true,
   },
   {
     schluessel: "baeralis-hydrogel",
     partner: "Bäralis",
     name: "Hydro-Gel Nr. 2",
     url: "https://baeralis.de/baeralis-hydro-gel-pferd-desinfektion?sPartner=d1c04513",
-    kurz: "Das Gel für den zweiten Schritt. Es bleibt auf der Wunde und hält sie feucht, und feucht heilt besser als trocken.",
+    kurz: "Das Gel für den zweiten Schritt. Es bleibt auf der Wunde und hält sie feucht.",
+    biozid: true,
   },
   {
     schluessel: "baeralis-fliegenpflaster",

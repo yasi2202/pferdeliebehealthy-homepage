@@ -243,6 +243,7 @@ function partnerkaestenSetzen(html: string): string {
   <p class="partnerkasten-code">Mein Rabattcode: <strong>${partner.code}</strong>${partner.rabatt ? `, ${partner.rabatt}` : ""}</p>
   ${knopf}
   ${partner.bezahlt ? `<p class="partnerkasten-hinweis">Für den Code bekomme ich eine Provision, für dich wird es dadurch nicht teurer.</p>` : ""}
+  ${produkt.biozid ? `<p class="partnerkasten-biozid">Biozidprodukte vorsichtig verwenden. Vor Gebrauch stets Etikett und Produktinformation lesen.</p>` : ""}
 </aside>`;
     }
   );

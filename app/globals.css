@@ -273,6 +273,21 @@ body {
   margin: 14px 0 0;
 }
 
+/* ▸ DER PFLICHTHINWEIS FÜR DESINFEKTIONSMITTEL.
+   Art. 72 der Biozid-Verordnung (EU) 528/2012 verlangt, dass er sich
+   „deutlich vom Rest der Werbung abhebt und gut lesbar ist". Deshalb steht
+   er nicht als weiteres Kleingedrucktes da, sondern abgesetzt, mit eigener
+   Linie darüber und in dunklerer Schrift als der Provisionshinweis.
+   Kleiner machen als hier gilt nicht. */
+.beitrag-prose .partnerkasten-biozid {
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--ink);
+  margin: 14px 0 0;
+  padding-top: 12px;
+  border-top: 1px solid var(--line);
+}
+
 /* Der Produktkasten ist ein Partnerkasten, der ein bestimmtes Produkt nennt
    statt nur den Shop. Er bekommt deshalb einen Akzent an der Seite: Wer den
    Beitrag überfliegt, soll die konkrete Empfehlung finden, ohne zu lesen. */

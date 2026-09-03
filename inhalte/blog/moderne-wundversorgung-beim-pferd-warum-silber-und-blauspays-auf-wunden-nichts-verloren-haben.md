@@ -87,11 +87,11 @@ Wundfläche sauber zurück, ohne sie auszutrocknen.
 
 [[produkt:baeralis-hauttalent]]
 
-### 2️⃣ Keimreduktion & Unterstützung der Heilung
+### 2️⃣ Keimreduktion
 
-Nach der Reinigung wird die Wunde mit einem **antimikrobiellen Wundgel oder
-einer Lösung** behandelt, die das Keimwachstum hemmt und die Heilung
-unterstützt.
+Nach der Reinigung kommt ein **Gel oder eine Lösung zur Keimreduktion** auf
+die Wunde. Weniger Keime heißt weniger Entzündung, und eine Wunde ohne
+Entzündung kann sich um das Schließen kümmern statt um die Abwehr.
 Ich nehme dafür das *Hydro-Gel Nr. 2* aus derselben Reihe. Es hält die Wunde feucht, und genau
 das ist der Punkt: Eine Wunde, die feucht gehalten wird, heilt schneller und
 mit weniger Narbe als eine, die man austrocknen lässt.
@@ -118,8 +118,10 @@ Moderne Wundversorgung beim Pferd bedeutet:
 
 - **atmungsaktiver Schutz**
 
-So heilen Wunden schneller, sauberer und mit weniger Komplikationen, ganz ohne
-Farbspray und unnötige Chemie auf frischem Gewebe.
+Damit gibst du der Wunde die Bedingungen, unter denen der Körper am besten
+arbeiten kann, und du kannst jederzeit sehen, wie es darunter aussieht. Was
+die Wunde daraus macht, entscheidet immer noch sie selbst, und wenn sie sich
+nicht so entwickelt wie erwartet, gehört sie in tierärztliche Hand.
 
 [[partner:baeralis]]
 
