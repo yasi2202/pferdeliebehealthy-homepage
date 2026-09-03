@@ -75,10 +75,21 @@ export async function supabaseAlle<T>(pfad: string): Promise<T[] | null> {
  *  Wichtig aus demselben Grund wie oben: Wer die Liste holt und `.length`
  *  nimmt, bekommt bei mehr als tausend Zeilen immer 1000 heraus. Supabase
  *  nennt die echte Zahl im Kopf `Content-Range`. Bei einem Fehler kommt -1
- *  zurueck, damit sich das von "wirklich keine" unterscheiden laesst. */
+ *  zurueck, damit sich das von "wirklich keine" unterscheiden laesst.
+ *
+ *  ▸ HIER STAND FRUEHER `select=id`, UND DAS WAR EIN FEHLER.
+ *    Die Ansicht `alle_anmeldungen` hat gar keine Spalte `id` -- sie fasst
+ *    Futter-Check und Insider ueber die Adresse zusammen. Supabase
+ *    antwortete deshalb mit 400 „column alle_anmeldungen.id does not
+ *    exist", und die Adressenseite zeigte statt der Zahl eine -1.
+ *    Aufgefallen am 03.09.2026 beim Bau des Newsletter-Programms.
+ *
+ *    `select=*` gilt fuer jede Tabelle und jede Ansicht. Teurer wird es
+ *    nicht: Bei einem HEAD-Aufruf kommt ohnehin kein Inhalt zurueck, nur
+ *    der Kopf mit der Zahl. */
 export async function supabaseZaehlen(pfad: string): Promise<number> {
   const trenner = pfad.includes("?") ? "&" : "?";
-  const res = await supabase(`${pfad}${trenner}select=id`, {
+  const res = await supabase(`${pfad}${trenner}select=*`, {
     method: "HEAD",
     headers: { Prefer: "count=exact", Range: "0-0" },
   });
