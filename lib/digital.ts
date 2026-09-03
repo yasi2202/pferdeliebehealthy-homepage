@@ -598,7 +598,7 @@ export const digitalprodukte: DigitalProdukt[] = [
   //    79 EUR  Befund-Einschaetzung  (Heuanalyse, Blutbild, Kotbefund)
   //   149 EUR  Futterplan            (einmalig, mit vier Wochen Begleitung)
   //   249 EUR  Begleitung 3 Monate
-  //   399 EUR  Pferdeliebe 365       (die Akte fuers ganze Jahr)
+  //   599 EUR  Pferdeliebe 365       (Akte plus vier Termine uebers Jahr)
   //
   // Zum Vergleich am Markt, Stand 03.09.2026: Schuder nimmt 150 EUR fuer eine
   // Erstberatung und 80 EUR fuer die Nachkontrolle, Futterberatung mit Herz
@@ -802,18 +802,22 @@ export const digitalprodukte: DigitalProdukt[] = [
     gruppe: "begleitung",
     name: "Pferdeliebe 365 – deine 1:1 Futterberatung als Gesundheitsakte",
     kurzname: "Pferdeliebe 365",
-    // 399 €. Die Aktion mit 249 € ist am 03.09.2026 beendet worden, weil die
-    // Beratung jetzt eine Treppe hat: 149 € einmalig, 249 € für drei Monate,
-    // 399 € fürs Jahr. Mit dem Aktionspreis hätte das Jahr dasselbe gekostet
-    // wie drei Monate. Deshalb steht hier auch kein `statt` mehr: Ein
-    // Streichpreis gegen den eigenen früheren Aktionspreis wäre eine
-    // Ersparnis, die es nicht gibt.
-    preis: 39900,
+    // 599 € seit dem 03.09.2026, und der Preis hängt unmittelbar am Umfang:
+    // Bis dahin waren es 399 € fuer die Akte plus vier Wochen Begleitung. Damit
+    // bot das teuerste Angebot der Treppe die *kürzeste* Betreuung, die drei
+    // Monate für 249 € hatten mehr. Diesen Widerspruch hat Yasemin aufgelöst,
+    // indem der Jahresplan jetzt vier feste Termine über zwölf Monate
+    // enthält. Kein `statt`: Ein Streichpreis gegen den eigenen früheren,
+    // schwächeren Umfang wäre eine Ersparnis, die es nie gab.
+    preis: 59900,
     mwst: 19,
     // ▸ ACHTUNG, DAS EINZIGE PRODUKT MIT art: "dienstleistung".
     //   Was das für den Widerruf bedeutet, steht oben beim Typ. Kurz: Das
     //   Widerrufsrecht erlischt erst, wenn die Leistung VOLLSTÄNDIG erbracht
-    //   ist, also wenn Akte und die vier Wochen Begleitung durch sind. Bis
+    //   ist. Seit dem 03.09.2026 heißt das: nach dem letzten der vier Termine,
+    //   also frühestens nach zwölf Monaten. Das ist keine Kleinigkeit, denn
+    //   die Kundin kann bis dahin widerrufen und bekommt anteilig Geld
+    //   zurück. Bis
     //   dahin kann die Kundin widerrufen. Sie muss dann aber Wertersatz für
     //   das leisten, was bis dahin gemacht wurde -- und zwar NUR, wenn sie
     //   beim Kauf ausdrücklich zugestimmt hat, dass vor Ablauf der Frist
@@ -826,8 +830,8 @@ export const digitalprodukte: DigitalProdukt[] = [
     leistung:
       "Persönliche 1:1 Futterberatung als Gesundheitsakte auf rund 18 " +
       "Seiten, mit Gesundheitsindex, individuellem Futterplan, " +
-      "Rationsberechnung, Umsetzungs-, Saison- und Notfallplan, dazu vier " +
-      "Wochen persönliche Begleitung bei der Umsetzung. Gilt pro Pferd.",
+      "Rationsberechnung, Umsetzungs-, Saison- und Notfallplan, dazu vier feste Termine im Jahr: bei der Erstellung, nach vier Wochen zur ersten Kontrolle, zum Weidebeginn und zum Fellwechsel. " +
+      "Gilt pro Pferd.",
     // ▸ FÜR DIESEN NAMEN GAB ES IN DER AKADEMIE NOCH KEINE REGEL.
     //   Sie ist am 01.09.2026 in lib/produkt-zugang.ts ergänzt worden.
     //   Ohne sie würde nichts freigeschaltet.
@@ -861,7 +865,7 @@ export const digitalprodukte: DigitalProdukt[] = [
       { art: "ueberschrift", text: "So läuft es ab" },
       {
         art: "absatz",
-        text: "Nach deiner Buchung erhältst du einen ausführlichen Fragebogen zu Haltung, aktueller Fütterung und Gesundheitszustand deines Pferdes, dazu bitte ich dich um ein paar Fotos. Sobald alle Unterlagen vollständig bei mir eingegangen sind, erstelle ich eure Gesundheitsakte. Danach begleite ich dich 4 Wochen persönlich bei der Umsetzung und passe den Plan an, wenn es nötig wird.",
+        text: "Nach deiner Buchung erhältst du einen ausführlichen Fragebogen zu Haltung, aktueller Fütterung und Gesundheitszustand deines Pferdes, dazu bitte ich dich um ein paar Fotos. Sobald alle Unterlagen vollständig bei mir eingegangen sind, erstelle ich eure Gesundheitsakte. Danach begleite ich dich über zwölf Monate an vier festen Terminen: bei der Erstellung, nach vier Wochen zur ersten Kontrolle, zum Weidebeginn und zum Fellwechsel. An jedem dieser Termine sehen wir uns an, wie es eurem Pferd geht, und passen den Plan an.",
       },
       { art: "ueberschrift", text: "Wichtige Hinweise" },
       {

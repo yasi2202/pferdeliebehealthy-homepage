@@ -63,9 +63,9 @@ export const fuerDeinPferd: Angebot[] = [
   {
     name: "Pferdeliebe 365",
     untertitel: "Deine Gesundheitsakte, 1:1 mit mir erarbeitet",
-    // Am 03.09.2026 auf den regulären Preis gestellt: Die Aktion mit 249 €
-    // ist beendet, weil die drei Monate genau so viel kosten.
-    preis: "399 €",
+    // 599 € seit dem 03.09.2026. Der Jahresplan enthält seither vier feste
+    // Termine über zwölf Monate statt nur vier Wochen Begleitung.
+    preis: "599 €",
     // Die Verkaufsseite gab es schon lange, die Angebotsliste verlinkte sie
     // aber nicht, deshalb sah niemand den Preis.
     url: "/pferdeliebe-365",

@@ -572,7 +572,7 @@ export const verkaufstexte: Record<string, Verkaufstext> = {
 };
 
 // -------------------------------------------------------------------------
-// Pferdeliebe 365, 249 € statt 399 €
+// Pferdeliebe 365, 599 € (bis 03.09.2026: 399 €, davor eine Aktion mit 249 €)
 // Der Text stammt wörtlich von Yasemin, 01.09.2026. Nur die Gliederung ist
 // an die Vorlage angepasst, kein Satz umformuliert.
 //
@@ -589,7 +589,7 @@ verkaufstexte["pferdeliebe-365"] = {
   einleitung: [
     "Du möchtest die Fütterung deines Pferdes nicht nur einmal überprüfen lassen, sondern dein Pferd übers ganze Jahr begleiten und gesund durch jede Jahreszeit bringen?",
     "Anders als bei einer klassischen Einmalberatung, die nach dem ersten Plan endet, bekommst du hier eine echte Gesundheitsakte für dein Pferd. Auf rund 18 Seiten entsteht ein vollständiges Bild deines Pferdes, mit einem Saisonplan, der dich durch alle zwölf Monate führt, und Vorlagen, in denen du selbst weiterschreibst.",
-    "Persönlich begleite ich dich in den vier Wochen nach der Erstellung, in denen der Plan bei euch ankommt und angepasst wird. Danach arbeitest du mit der Akte weiter, und wenn du wieder Unterstützung brauchst, etwa weil neue Blutwerte vorliegen, kannst du eine Nachberatung dazubuchen.",
+    "Persönlich begleite ich dich über zwölf Monate an vier festen Terminen: bei der Erstellung, nach vier Wochen zur ersten Kontrolle, zum Weidebeginn und zum Fellwechsel. Dazwischen führen dich die Akte und der Saisonplan.",
   ],
 
   problemAugenbraue: "Warum eine Akte",
@@ -621,25 +621,32 @@ verkaufstexte["pferdeliebe-365"] = {
     },
   ],
   // ▸ HIER STEHT SEIT DEM 02.09.2026 AUSDRÜCKLICH, WAS 365 BEDEUTET.
-  //   Der Name und die Werbetexte lasen sich vorher wie ein Jahr persönliche
-  //   Betreuung. Persönlich sind es vier Wochen; durchs Jahr führen die Akte
-  //   und der Saisonplan. Beides steht jetzt nebeneinander, damit niemand
-  //   etwas anderes erwartet, als er bekommt.
+  //   Der Name und die Werbetexte lasen sich lange wie ein Jahr persönliche
+  //   Betreuung, ohne dass eine dahinterstand. Seit dem 03.09.2026 stimmt
+  //   beides überein: Es sind vier feste Termine über zwölf Monate, und
+  //   dazwischen führen die Akte und der Saisonplan. Was drinsteckt und was
+  //   nicht, steht nebeneinander, damit niemand etwas anderes erwartet, als
+  //   er bekommt.
   //
-  //   ▸ WENN SICH DER UMFANG ÄNDERT, ÄNDERT SICH AUCH DIESER TEXT. Sollte
-  //     Yasemin später feste Termine übers Jahr zusagen (Heuanalyse,
-  //     Blutbild, Jahresbilanz), gehört das hier hinein -- und dann darf auch
-  //     der Preis steigen. Am 02.09.2026 hat sie sich ausdrücklich dagegen
-  //     entschieden.
+  //   ▸ GENAU DAS IST AM 03.09.2026 EINGETRETEN. Yasemin hat die Entscheidung
+  //     vom Vortag umgedreht: Der Jahresplan enthält jetzt vier feste Termine
+  //     über zwölf Monate, und der Preis ist von 399 auf 599 € gestiegen.
+  //     Auslöser war ein Widerspruch in der neuen Beratungstreppe: Mit nur
+  //     vier Wochen Begleitung bot das teuerste Angebot die kürzeste
+  //     Betreuung, die drei Monate für 249 € hatten mehr.
+  //
+  //     ▸ DIE VIER TERMINE SIND EINE ZUSAGE, KEINE ABSICHTSERKLÄRUNG. Wer zu
+  //       diesen Bedingungen kauft, hat Anspruch darauf. Eine spätere
+  //       Kürzung wirkt nur für neue Buchungen.
   inhaltSchluss:
-    "Nach deiner Buchung erhältst du einen ausführlichen Fragebogen zu Haltung, aktueller Fütterung und Gesundheitszustand deines Pferdes, dazu bitte ich dich um ein paar Fotos. Sobald alle Unterlagen vollständig bei mir eingegangen sind, erstelle ich eure Gesundheitsakte. Danach begleite ich dich vier Wochen persönlich bei der Umsetzung und passe den Plan an, wenn es nötig wird. Was 365 bedeutet: Die Akte und der Saisonplan sind auf zwölf Monate angelegt, du arbeitest damit das ganze Jahr weiter. Meine persönliche Begleitung sind die vier Wochen; danach kannst du jederzeit eine Nachberatung dazubuchen.",
+    "Nach deiner Buchung erhältst du einen ausführlichen Fragebogen zu Haltung, aktueller Fütterung und Gesundheitszustand deines Pferdes, dazu bitte ich dich um ein paar Fotos. Sobald alle Unterlagen vollständig bei mir eingegangen sind, erstelle ich eure Gesundheitsakte. Was 365 bedeutet: Ich begleite dich über zwölf Monate an vier festen Terminen. Der erste ist die Erstellung selbst, der zweite folgt nach vier Wochen, wenn der Plan im Stall angekommen ist. Der dritte liegt beim Weidebeginn, der vierte beim Fellwechsel, also genau an den beiden Punkten, an denen sich eine Ration am meisten ändert. An jedem Termin sehen wir uns an, wie es eurem Pferd geht, ordnen neue Befunde ein und passen den Plan an. Dazwischen führen dich die Akte und der Saisonplan.",
 
   fuerWenTitel: "Für wen Pferdeliebe 365 geeignet ist",
   fuerWen: [
     "Für dich, wenn du dein Pferd naturnah und bedarfsgerecht versorgen und dabei langfristig begleitet werden möchtest.",
     "Für dich, wenn bereits gesundheitliche Themen bestehen oder sich erste Auffälligkeiten zeigen, oder wenn du dir Struktur, Klarheit und Sicherheit in der Fütterung über das ganze Jahr wünschst.",
     "Für dich, wenn du bestehende Empfehlungen, etwa aus Labor, Tierarztbefund oder Bioresonanz, fachlich einordnen und sinnvoll umsetzen möchtest.",
-    "Nicht für dich, wenn du das ganze Jahr über durchgehend Rückfragen stellen möchtest. Meine persönliche Begleitung sind die vier Wochen nach der Erstellung, danach führen dich die Unterlagen. Und nicht für dich, wenn du nur schnell eine Antwort auf eine einzelne Frage brauchst, dafür ist der Aufwand auf beiden Seiten zu groß.",
+    "Nicht für dich, wenn du das ganze Jahr über durchgehend Rückfragen stellen möchtest. Wir haben vier feste Termine, keinen Dauersupport, und dazwischen führen dich die Unterlagen. Und nicht für dich, wenn du nur schnell eine Antwort auf eine einzelne Frage brauchst, dafür ist der Aufwand auf beiden Seiten zu groß.",
   ],
 
   abschlussTitel: "Eine Akte, die mitwächst.",
@@ -656,7 +663,7 @@ verkaufstexte["pferdeliebe-365"] = {
 // ihr und ist unangetastet.
 //
 // Die Treppe: 69 Nachberatung, 79 Befund-Einschaetzung, 149 Futterplan,
-// 249 drei Monate, 399 Pferdeliebe 365. Jeder Text verweist bewusst auf die
+// 249 drei Monate, 599 Pferdeliebe 365. Jeder Text verweist bewusst auf die
 // Nachbarstufen, damit eine Besucherin die richtige findet und nicht die
 // teuerste kauft, die sie gar nicht braucht.
 // ---------------------------------------------------------------------------
