@@ -55,27 +55,33 @@ Eine moderne Wundversorgung folgt drei einfachen Schritten:
 
 Mit einem **milden, pH-neutralen Wundreiniger** werden Schmutz, Keime und
 abgestorbenes Gewebe entfernt, ohne das gesunde Gewebe zu reizen.
-**Meine Empfehlung:** *Bäralis Hauttalent Nr. 1*
-Es brennt nicht und lässt die Wundfläche sauber zurück, ohne sie auszutrocknen.
+Ich arbeite selbst mit dem *Hauttalent Nr. 1*: Es brennt nicht und lässt die
+Wundfläche sauber zurück, ohne sie auszutrocknen.
+
+[[produkt:baeralis-hauttalent]]
 
 ### 2️⃣ Keimreduktion & Unterstützung der Heilung
 
 Nach der Reinigung wird die Wunde mit einem **antimikrobiellen Wundgel oder
 einer Lösung** behandelt, die das Keimwachstum hemmt und die Heilung
 unterstützt.
-**Meine Empfehlung:** *Bäralis Hydrogel Nr. 2*
-Es hält die Wunde feucht, ein wichtiger Faktor für eine schnelle,
-komplikationsfreie Heilung.
+Ich nehme dafür das *Hydrogel Nr. 2*. Es hält die Wunde feucht, und genau
+das ist der Punkt: Eine Wunde, die feucht gehalten wird, heilt schneller und
+mit weniger Narbe als eine, die man austrocknen lässt.
+
+[[produkt:baeralis-hydrogel]]
 
 ### 3️⃣ Schutz vor Fliegen & Schmutz
 
 Gerade im Sommer sind offene Wunden ein Magnet für Fliegen. Statt Farbspray
 eignet sich ein **Fliegenschutz-Pflaster**, das die Wunde sauber hält,
 Insekten fernhält und trotzdem Luft durchlässt.
-**Mein Tipp:** Das **Bäralis Fliegenpflaster**, praktisch, durchsichtig und
-einfach anzubringen.
+Ich nehme das *Fliegenpflaster*: durchsichtig, luftdurchlässig und einfach
+anzubringen.
 
-##
+[[produkt:baeralis-fliegenpflaster]]
+
+## Worauf es am Ende ankommt
 
 Moderne Wundversorgung beim Pferd bedeutet:
 

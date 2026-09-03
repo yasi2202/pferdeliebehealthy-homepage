@@ -37,6 +37,35 @@ export type Partnerprodukt = {
 };
 
 export const partnerprodukte: Partnerprodukt[] = [
+  // ▸ BÄRALIS: die drei Produkte aus dem Wundversorgungs-Beitrag.
+  //   Sie standen dort seit jeher als Fließtext ohne Link, obwohl Bäralis
+  //   ein bezahlter Partner ist. Ein Kasten macht daraus einen klickbaren
+  //   Weg mit Partnerkennung, und er trägt die Werbekennzeichnung, die ein
+  //   Satz im Fließtext nicht hat.
+  //
+  //   Ohne eigene `url`: Der Kasten führt dann auf den Partnershop mit
+  //   Yasemins Kennung (siehe lib/empfehlungen.ts). Direkte Produktadressen
+  //   können hier eingetragen werden, sobald sie feststehen; wichtig ist
+  //   dann, ?sPartner=d1c04513 mitzunehmen, sonst wird eine Bestellung nicht
+  //   zugerechnet.
+  {
+    schluessel: "baeralis-hauttalent",
+    partner: "Bäralis",
+    name: "Hauttalent Nr. 1",
+    kurz: "Milder Wundreiniger, pH-neutral. Brennt nicht und trocknet die Wundfläche nicht aus.",
+  },
+  {
+    schluessel: "baeralis-hydrogel",
+    partner: "Bäralis",
+    name: "Hydrogel Nr. 2",
+    kurz: "Wundgel, das die Wunde feucht hält. Feuchte Wundheilung ist der Grund, warum moderne Versorgung ohne Sprays auskommt.",
+  },
+  {
+    schluessel: "baeralis-fliegenpflaster",
+    partner: "Bäralis",
+    name: "Fliegenpflaster",
+    kurz: "Durchsichtiges Pflaster, das Insekten fernhält und trotzdem Luft durchlässt. Die Alternative zum Farbspray im Sommer.",
+  },
   {
     // Oregano gibt es bei beiden Partnern, aber nicht als dasselbe Produkt:
     // Der "Kretische Oregano" ist der von PerNaturam, Mo's Grun führt
