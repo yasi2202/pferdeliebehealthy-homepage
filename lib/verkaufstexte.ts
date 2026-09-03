@@ -372,6 +372,142 @@ export const verkaufstexte: Record<string, Verkaufstext> = {
   // -------------------------------------------------------------------------
   // RatioPro, 69 €
   // -------------------------------------------------------------------------
+  // -------------------------------------------------------------------------
+  // Die zwei versteckten Angebote, angelegt am 03.09.2026.
+  //
+  // Sie haben eine eigene Seite, obwohl sie in keiner Liste stehen: Ein Link
+  // aus einer Mail direkt in die Kasse verkauft nichts, weil dort nur Preis
+  // und ein Satz Leistungsbeschreibung stehen. Wer 29 oder 79 Euro ausgibt,
+  // will vorher sehen, was drin ist. Gefunden werden die Seiten nur über den
+  // Link; sie stehen auf noindex und in keiner Sitemap.
+  // -------------------------------------------------------------------------
+  "metabolisches-gewicht": {
+    augenbraue: "Das Pro-Modul in RatioPro",
+    ueberschrift: "Metabolisches Gewicht",
+    seitentitel:
+      "Metabolisches Gewicht: das Pro-Modul in RatioPro zum Nachrechnen des Bedarfs",
+    einleitung: [
+      "Der Rechenweg hinter den Bedarfswerten, offengelegt.",
+      "RatioPro rechnet den Bedarf deines Pferdes metabolisch, also über kg hoch 0,75 und nicht einfach über das Körpergewicht. Das Pro-Modul zeigt dir beide Wege nebeneinander und macht sichtbar, was der Rechner sonst nur als Ergebnis ausgibt.",
+    ],
+
+    problemAugenbraue: "Warum das nötig ist",
+    problemTitel: "Der Stoffwechsel wächst nicht so schnell wie das Gewicht.",
+    problem: [
+      "Die naheliegende Annahme lautet: Ein 700 kg schweres Pferd braucht 1,4-mal so viel wie ein 500 kg schweres. Sie ist falsch, und je weiter ein Pferd vom Durchschnitt entfernt liegt, desto falscher wird sie.",
+      "Der tatsächliche Faktor liegt bei 1,29, nicht bei 1,40. Beim Pony wirkt es in die andere Richtung, und dort kommt der Rassefaktor noch obendrauf: Zwischen Pony und Vollblut liegen bei gleichem Gewicht 60 Prozent Unterschied im Erhaltungsbedarf.",
+      "Wer das nicht weiß, füttert am Bedarf vorbei und kann in der Beratung nicht erklären, warum die Empfehlung auf der Verpackung für dieses Pferd nicht gilt.",
+    ],
+
+    inhaltAugenbraue: "Was drin ist",
+    inhaltTitel: "Vier Dinge, die im Rechner sonst nicht sichtbar sind.",
+    inhalte: [
+      {
+        titel: "Metabolisches Gewicht und Skalierungs-Faktor",
+        text: "Laufend mitgerechnet für das Gewicht, das du oben eingetragen hast. Mit der Formel daneben, damit du sie nachvollziehen kannst.",
+      },
+      {
+        titel: "Erhaltungsbedarf nach GfE 2014",
+        text: "Getrennt nach Pony, Warmblut und Vollblut, dazu der Proteinbedarf und die Faustzahl für das Verhältnis von Eiweiß zu Energie.",
+      },
+      {
+        titel: "Vergleichstabelle über 14 Nährstoffe",
+        text: "Linear gerechnet, metabolisch gerechnet, und die Abweichung in Prozent. Damit siehst du, wo die beiden Wege auseinanderlaufen.",
+      },
+      {
+        titel: "Anleitung in sechs Schritten",
+        text: "So rechnest du jeden Bedarfswert von Hand nach, samt Zielgewicht bei Übergewicht. Dazu die ausführliche Erklärung als PDF mit einem Beratungs-Skript.",
+      },
+    ],
+    inhaltSchluss:
+      "Das Modul sitzt direkt im Rechner, unter der Bedarfsdeckung. Du brauchst nichts zu installieren und nichts zu merken: Nach dem Kauf ist es beim nächsten Öffnen einfach da.",
+
+    einblickTitel: "So sieht es im Rechner aus.",
+    einblickText:
+      "Die Karte erscheint unter der Bedarfsdeckung und rechnet mit, sobald du das Gewicht änderst.",
+    einblicke: [
+      {
+        datei: "modul.webp",
+        alt: "Das Pro-Modul in RatioPro mit metabolischem Gewicht, Skalierungs-Faktor und dem Erhaltungsbedarf nach GfE",
+        text: "Oben die drei Kennzahlen, darunter der Erhaltungsbedarf nach Pferdetyp, dann die Vergleichstabelle.",
+      },
+    ],
+
+    fuerWenTitel: "Für wen das gemacht ist",
+    fuerWen: [
+      "Für dich, wenn du RatioPro benutzt und verstehen willst, wie die Zahlen zustande kommen, statt sie nur abzulesen.",
+      "Für dich, wenn du berätst und einer Kundin erklären musst, warum ihr Pferd weniger braucht, als sie denkt.",
+      "Nicht für dich, wenn dir das Ergebnis reicht. Der Rechner arbeitet ohne dieses Modul genauso richtig, es zeigt nur den Weg dorthin.",
+    ],
+
+    abschlussTitel: "Einmalig freischalten, dauerhaft behalten.",
+    abschlussText:
+      "Du brauchst dafür einen RatioPro-Zugang, denn das Modul sitzt im Rechner. Kein Abo, keine Verlängerung.",
+  },
+
+  "ratiopro-buendel": {
+    augenbraue: "Der Rechner und das Pro-Modul",
+    ueberschrift: "RatioPro plus Pro-Modul",
+    seitentitel: "RatioPro und das Pro-Modul Metabolisches Gewicht im Bündel",
+    einleitung: [
+      "Beides zusammen: der Rationsrechner und der Rechenweg dahinter.",
+      "RatioPro rechnet dir die ganze Ration deines Pferdes durch, aus einer Datenbank mit über 470 Futtermitteln. Das Pro-Modul legt zusätzlich offen, wie der Bedarf überhaupt zustande kommt.",
+    ],
+
+    problemAugenbraue: "Warum das nötig ist",
+    problemTitel: "Rechnen kann man das. Nur macht es niemand.",
+    problem: [
+      "Eine Ration von Hand durchzurechnen ist ein Abend mit Taschenrechner, Herstellertabellen und der Frage, welche Bedarfswerte denn nun gelten.",
+      "Deshalb bleibt es bei den meisten beim Gefühl und bei der Empfehlung auf der Verpackung. Und deshalb fällt niemandem auf, wenn ein Nährstoff seit Monaten fehlt oder deutlich zu hoch liegt.",
+      "In der Ausbildung lernst du, worauf es ankommt. RatioPro nimmt dir danach das Rechnen ab, und das Pro-Modul sorgt dafür, dass du das Ergebnis auch erklären kannst.",
+    ],
+
+    inhaltAugenbraue: "Was drin ist",
+    inhaltTitel: "Zwei Dinge, die zusammengehören.",
+    inhalte: [
+      {
+        titel: "RatioPro, der Rationsrechner",
+        text: "Mit den Daten deines Pferdes, mehreren Futtermitteln gleichzeitig, Lücken und Überschüssen auf einen Blick. Unbegrenzt viele Berechnungen, dauerhafter Zugang.",
+      },
+      {
+        titel: "Über 470 Futtermittel",
+        text: "Heu, Kraftfutter, Mineralfutter und Zusätze. Was fehlt, trägst du selbst ein, und das Etikett kannst du dafür abfotografieren.",
+      },
+      {
+        titel: "Das Pro-Modul Metabolisches Gewicht",
+        text: "Der metabolische und der lineare Rechenweg nebeneinander, der Erhaltungsbedarf nach GfE 2014 nach Pferdetyp und eine Anleitung zum Nachrechnen von Hand.",
+      },
+      {
+        titel: "Die Erklärung als PDF",
+        text: "Mit Beispielen, Vergleichen und einem Beratungs-Skript für das Gespräch mit deinen Kundinnen.",
+      },
+    ],
+    inhaltSchluss:
+      "Einzeln kosten die beiden zusammen 98 €. Beide Zugänge werden nach dem Kauf automatisch freigeschaltet, den Link bekommst du per Mail.",
+
+    einblickTitel: "Das Pro-Modul im Rechner.",
+    einblickText:
+      "Es erscheint unter der Bedarfsdeckung und rechnet mit, sobald du das Gewicht änderst.",
+    einblicke: [
+      {
+        datei: "modul.webp",
+        alt: "Das Pro-Modul in RatioPro mit metabolischem Gewicht, Skalierungs-Faktor und dem Erhaltungsbedarf nach GfE",
+        text: "Oben die drei Kennzahlen, darunter der Erhaltungsbedarf nach Pferdetyp, dann die Vergleichstabelle über 14 Nährstoffe.",
+      },
+    ],
+
+    fuerWenTitel: "Für wen das gemacht ist",
+    fuerWen: [
+      "Für dich, wenn du die Ausbildung machst und das Gelernte an echten Rationen anwenden willst.",
+      "Für dich, wenn du für andere berätst und regelmäßig rechnen musst, für verschiedene Pferde und verschiedene Fragen.",
+      "Nicht für dich, wenn du gar nicht rechnen, sondern ein fertiges Ergebnis willst. Dann ist Pferdeliebe 365 der bessere Weg.",
+    ],
+
+    abschlussTitel: "Der Preis gilt bis zum 5. September.",
+    abschlussText:
+      "Danach nimmt die Kasse ihn nicht mehr an. Kein Abo, keine Begrenzung der Berechnungen, beide Zugänge bleiben dauerhaft.",
+  },
+
   ratiopro: {
     augenbraue: "Das Werkzeug",
     ueberschrift: "RatioPro",
