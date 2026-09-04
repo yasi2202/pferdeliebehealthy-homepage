@@ -186,13 +186,24 @@ async function kundinnen(): Promise<Empfaenger[] | null> {
  *  ▸ DIE EINE AUSNAHME: Zu `sugarskull@outolook.com` gibt es keinen
  *    Kaufbeleg. Die Domain ist ein Tippfehler („outolook"), die Adresse ist
  *    also ohnehin unzustellbar und läuft ins Leere. */
-const UEBERNAHME_QUELLE = "bestandskunden-2026-08";
+/** Die beiden Übernahmen, aus denen diese Gruppe besteht.
+ *
+ *  `bestandskunden-2026-08` sind die 995 aus der Tentary-Kundenliste,
+ *  eingespielt am 27.08.2026.
+ *
+ *  `altkunden-2026-09` sind 991 weitere, eingespielt am 04.09.2026. Sie
+ *  lagen bis dahin ausschliesslich in alten Ausfuhrdateien und waren dem
+ *  System völlig unbekannt: WooCommerce-Bestellungen aus dem alten
+ *  WordPress-Shop, ThriveCart-Kurskäufe und alfima-Käufe. Für jede einzelne
+ *  liegt ein Kaufbeleg vor, geprüft über Bestellnummer, Betrag oder
+ *  Produktliste. Die Widerrufsgruppe und alle Adressen auf eigenen Domains
+ *  wurden vorher aussortiert. */
+const UEBERNAHME_QUELLEN = ["bestandskunden-2026-08", "altkunden-2026-09"];
 
 async function fruehereKaeuferinnen(): Promise<Empfaenger[] | null> {
+  const liste = UEBERNAHME_QUELLEN.map((q) => `"${q}"`).join(",");
   const zeilen = await supabaseAlle<{ email: string; vorname: string | null }>(
-    `insider_anmeldungen?quelle=eq.${encodeURIComponent(
-      UEBERNAHME_QUELLE
-    )}&select=email,vorname`
+    `insider_anmeldungen?quelle=in.(${encodeURIComponent(liste)})&select=email,vorname`
   );
   if (!zeilen) return null;
   return zeilen.map((z) => ({ email: z.email, vorname: z.vorname }));
