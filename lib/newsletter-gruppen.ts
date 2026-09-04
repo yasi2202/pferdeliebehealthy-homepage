@@ -165,6 +165,39 @@ async function kundinnen(): Promise<Empfaenger[] | null> {
   return zeilen.filter(bekommtPost).map((k) => ({ email: k.email, vorname: null }));
 }
 
+/** Die früheren Käuferinnen aus der Tentary-Zeit.
+ *
+ *  ▸ WARUM SIE TROTZ `bestaetigt = false` POST BEKOMMEN DÜRFEN:
+ *    Sie stehen in `insider_anmeldungen` mit `bestaetigt = false`, weil sie
+ *    nie auf einen Bestätigungslink geklickt haben. Der fehlende Klick heisst
+ *    aber nur, dass keine Einwilligung vorliegt — nicht, dass keine Beziehung
+ *    besteht. Alle 995 stammen aus der Kundenausfuhr von Tentary, und für
+ *    856 von ihnen ist dort mindestens eine Bestellung verzeichnet
+ *    (`08 Kundendaten und Exporte/tentary-adressen-27-08-2026.csv`, Spalte
+ *    `anzahl_bestellungen`, geprüft am 04.09.2026). Sie sind also
+ *    Bestandskundinnen, und dafür gibt es § 7 Abs. 3 UWG.
+ *
+ *    Erkennbar sind sie an der Quelle `bestandskunden-2026-08`. **Genau
+ *    diese Quelle und keine andere**: Die drei übrigen unbestätigten
+ *    Anmeldungen sind Menschen, die ein Formular ausgefüllt und den Klick
+ *    dann nicht gemacht haben. Bei denen liegt weder Einwilligung noch Kauf
+ *    vor, und die dürfen nicht angeschrieben werden.
+ *
+ *  ▸ DIE EINE AUSNAHME: Zu `sugarskull@outolook.com` gibt es keinen
+ *    Kaufbeleg. Die Domain ist ein Tippfehler („outolook"), die Adresse ist
+ *    also ohnehin unzustellbar und läuft ins Leere. */
+const UEBERNAHME_QUELLE = "bestandskunden-2026-08";
+
+async function fruehereKaeuferinnen(): Promise<Empfaenger[] | null> {
+  const zeilen = await supabaseAlle<{ email: string; vorname: string | null }>(
+    `insider_anmeldungen?quelle=eq.${encodeURIComponent(
+      UEBERNAHME_QUELLE
+    )}&select=email,vorname`
+  );
+  if (!zeilen) return null;
+  return zeilen.map((z) => ({ email: z.email, vorname: z.vorname }));
+}
+
 async function beratungskundinnen(): Promise<Empfaenger[] | null> {
   const zeilen = await supabaseAlle<{ email: string | null; vorname: string | null }>(
     "ed_kunden?select=email,vorname"
@@ -254,16 +287,21 @@ export async function empfaengerDerGruppe(
       const a = await beratungskundinnen();
       if (!a) return null;
       roh = a;
+    } else if (gruppe === "fruehere") {
+      const a = await fruehereKaeuferinnen();
+      if (!a) return null;
+      roh = a;
     } else {
-      const [a, b, c] = await Promise.all([
+      const [a, b, c, d] = await Promise.all([
         eingetragene(),
         kundinnen(),
         beratungskundinnen(),
+        fruehereKaeuferinnen(),
       ]);
-      // Alle drei müssen geklappt haben. Fehlt eine, wäre der Versand
+      // Alle vier müssen geklappt haben. Fehlt eine, wäre der Versand
       // unvollständig, ohne dass es jemand merkt.
-      if (!a || !b || !c) return null;
-      roh = [...a, ...b, ...c];
+      if (!a || !b || !c || !d) return null;
+      roh = [...a, ...b, ...c, ...d];
     }
   } catch (fehler) {
     console.error("Empfängerliste nicht ladbar:", fehler);

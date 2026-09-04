@@ -417,7 +417,12 @@ export function lesezeit(text: string): number {
 // in lib/newsletter-gruppen.ts und bleibt auf dem Server.
 // ---------------------------------------------------------------------------
 
-export type GruppenSchluessel = "eingetragen" | "kundinnen" | "beratung" | "alle";
+export type GruppenSchluessel =
+  | "eingetragen"
+  | "kundinnen"
+  | "beratung"
+  | "fruehere"
+  | "alle";
 
 export const GRUPPEN: {
   schluessel: GruppenSchluessel;
@@ -447,11 +452,18 @@ export const GRUPPEN: {
       "Deine Kundinnen aus EquiDesk, Futterberatung und Ausbildung. Gleiche Regel wie oben.",
   },
   {
+    schluessel: "fruehere",
+    name: "Frühere Käuferinnen",
+    grundlage: "Bestandskundinnen",
+    woher:
+      "Wer früher über Tentary bei dir gekauft hat, E-Books, Ratgeber, Fütterungskalender. Sie haben nie auf einen Bestätigungslink geklickt, aber sie haben bezahlt: In der Kundenliste vom 27.08.2026 steht zu 856 von ihnen mindestens eine Bestellung. Gleiche Regel wie oben, eigene ähnliche Angebote.",
+  },
+  {
     schluessel: "alle",
     name: "Alle zusammen",
     grundlage: "gemischt",
     woher:
-      "Die drei Gruppen von oben, ohne Doppelte. Nimm sie für fachliche Rundbriefe, nicht für reine Werbung.",
+      "Die vier Gruppen von oben, ohne Doppelte. Nimm sie für fachliche Rundbriefe, nicht für reine Werbung.",
   },
 ];
 
