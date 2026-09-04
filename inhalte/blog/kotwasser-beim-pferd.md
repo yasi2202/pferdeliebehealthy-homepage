@@ -98,7 +98,11 @@ ein leerer Verdauungstrakt einer weiterlaufenden Säureproduktion gegenüber,
 und das wirkt bis in den Dickdarm hinein.
 
 Wenn die Menge stimmt, die Pausen aber zu lang sind, ist ein engmaschiges Netz
-oft die einfachere Lösung als mehr Heu.
+oft die einfachere Lösung als mehr Heu. Bei einem Pferd, das ohnehin zu viel
+auf den Rippen hat, ist
+[Haferstroh](/blog/gruenhaferstroh-und-haferstroh-fuer-pferde) der zweite
+Weg: Es füllt das Netz und verlängert die Fresszeit, ohne die Kalorien
+mitzubringen, die mehr Heu bedeuten würde.
 
 ### 3. Was außer Heu noch im Trog landet
 

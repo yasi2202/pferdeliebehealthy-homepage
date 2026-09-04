@@ -160,6 +160,12 @@ Der Pferdemagen produziert durchgehend Säure, auch wenn nichts drin ist.
 Lange Pausen sind bei einem Cob-Pferd dasselbe Problem wie bei einem
 Heu-Pferd, nur schwerer zu sehen.
 
+Umgekehrt gilt: Solange das Gebiss noch mitmacht, ist
+[Haferstroh](/blog/gruenhaferstroh-und-haferstroh-fuer-pferde) der günstigere
+Weg, die Fresszeit zu verlängern, ohne mehr Kalorien in die Ration zu holen.
+Cobs sind die Antwort für Pferde, die harte Faser nicht mehr zerkleinern
+können, Stroh die Antwort für die anderen.
+
 ## Umstellen, aber langsam
 
 Ein Wechsel auf Heucobs ist eine Futterumstellung, und die Darmflora braucht

@@ -129,7 +129,10 @@ Bis er da ist:
 
 ### Langfristige Vorbeugung:
 
-- **Futterumstellungen langsam** über 2 bis 4 Wochen
+- **Futterumstellungen langsam** über 2 bis 4 Wochen. Das gilt besonders für
+  faserreiches Futter: Wie eine Umstellung auf
+  [Stroh](/blog/gruenhaferstroh-und-haferstroh-fuer-pferde) Woche für Woche
+  abläuft, steht in einem eigenen Beitrag
 - Zucker- und stärkearme Fütterung, wenn nötig
 - Regelmäßige Bewegung, angepasst an Kondition und Alter
 - Stressreduktion im Alltag

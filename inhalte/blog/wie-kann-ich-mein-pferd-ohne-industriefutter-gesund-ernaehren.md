@@ -72,6 +72,12 @@ Wenn dein Pferd kein Heu mehr fressen kann, etwa wegen der Zähne, sind
 [Heucobs](/blog/heucobs-worauf-man-beim-kauf-achten-sollte) der Weg. Sie sind
 kein Kraftfutter, sondern Heu in anderer Form.
 
+Und wenn dein Pferd zu viel auf den Rippen hat, aber trotzdem lange
+Fresszeiten braucht, gehört
+[Haferstroh oder Grünhaferstroh](/blog/gruenhaferstroh-und-haferstroh-fuer-pferde)
+in die Basis. Damit streckst du die Raufutterration, ohne die Menge im Netz
+zu kürzen.
+
 ## Schritt 2: Energie und Eiweiß natürlich ergänzen
 
 Erst wenn das Raufutter steht, stellt sich die Frage, ob überhaupt etwas fehlt.

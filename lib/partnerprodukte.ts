@@ -167,6 +167,24 @@ export const partnerprodukte: Partnerprodukt[] = [
     name: "Kräuter-Heucobs",
     kurz: "Heucobs aus Kräuterheu vom eigenen Hof, in Bio-Qualität.",
   },
+  // Die beiden Strohsorten sind am 04.09.2026 im Shop geprüft worden:
+  // einzelner Probeballen von rund 11 kg, Kleinballen nur als Palette mit
+  // zwölf Stück. Beide Kästen verlinken deshalb auf den Probeballen, das ist
+  // die Menge zum Ausprobieren und für die erste Umstellungswoche.
+  {
+    schluessel: "elmengrund-haferstroh",
+    partner: "Biohof Elmengrund",
+    name: "BIO Hafer-Stroh, Probeballen",
+    url: "https://biohof-elmengrund.de/products/bio-hafer-stroh-futterprobe-ca-11-kg",
+    kurz: "Ausgedroschenes Haferstroh in Bioland-Qualität, warmluftgetrocknet. Einzelner Ballen von rund 11 Kilo zum Ausprobieren.",
+  },
+  {
+    schluessel: "elmengrund-gruenhaferstroh",
+    partner: "Biohof Elmengrund",
+    name: "BIO Grünhafer-Stroh, Probeballen",
+    url: "https://biohof-elmengrund.de/products/bio-grunhafer-stroh-futterprobe-ca-11-kg",
+    kurz: "Die ganze Haferpflanze, kurz nach der Blüte geerntet, mit Blattanteil. Einzelner Ballen von rund 11 Kilo zum Ausprobieren.",
+  },
 ];
 
 /** Ein Produkt samt dem Partner, zu dem es gehört. `null`, wenn eines von
