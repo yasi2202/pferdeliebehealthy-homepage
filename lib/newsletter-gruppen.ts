@@ -77,8 +77,9 @@ const FESTE_SPERRE = new Set([
   "janina-funk@gmx.de", // Janina Funk
   "ninahafner@gmx.de", // Nina Hafner
   "caly20032002@aol.com", // Melse
-  "patricia.kunz98@gmail.com", // Patricia Kunz
-  "bernhard.lechenbauer@gmx.at", // Bernhard Lechenbauer
+  // Patricia Kunz und Bernhard Lechenbauer standen hier bis zum 04.09.2026.
+  // Yasemin hat sie von der Mailsperre genommen: Sie bekommen wieder Post,
+  // behalten aber keinen Produktzugang.
 ]);
 
 /** Die Sperrliste aus der Datenbank, ergänzt um die feste Liste von oben.

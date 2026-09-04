@@ -340,7 +340,7 @@ export default function Editor({
             </p>
 
             <label className="mb-2 block text-[13px] uppercase tracking-[0.14em] text-ink-soft">
-              Vorschautext
+              Vorschautext · Preheader
             </label>
             <input
               type="text"
@@ -350,8 +350,16 @@ export default function Editor({
               className="mb-1.5 w-full rounded-[14px] border border-line bg-white px-5 py-3 text-[15.5px] outline-none focus:border-rose-deep"
             />
             <p className="mb-6 text-[13px] leading-relaxed text-ink-soft">
-              Der graue Text hinter dem Betreff im Postfach. Bleibt er leer,
-              steht dort der Anfang deines Textes, also meist die Anrede.
+              Der graue Text hinter dem Betreff im Postfach, in der Vorschau
+              rechts oben zu sehen. Bleibt er leer, steht dort der Anfang
+              deines Textes, also meist die Anrede. Er ist der zweite Satz,
+              den jemand von dir liest, noch bevor die Mail offen ist.{" "}
+              {vorschautext.length > 0 && (
+                <>
+                  Zurzeit {vorschautext.length} Zeichen, sichtbar sind je nach
+                  Postfach etwa 90.
+                </>
+              )}
             </p>
 
             {/* ------------------------------------------ Werkzeugleiste */}
