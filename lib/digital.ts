@@ -21,7 +21,7 @@
 //   Produkt. Niemals ändern, ohne dort nachzusehen.
 //
 // ▸ WAS ABSICHTLICH FEHLT
-//   - Aroma Horse (397 €): anderes Publikum, gehört nicht in die Ketten.
+//   - Aroma Horse (899 €): anderes Publikum, gehört nicht in die Ketten.
 //     Von Yasemin am 01.09.2026 so entschieden.
 //   - Die Masterclass (899 €): 899 € kauft niemand nebenbei nach einem
 //     29-Euro-Kauf. Die gehört an das Ende einer Mailstrecke.
@@ -588,6 +588,79 @@ export const digitalprodukte: DigitalProdukt[] = [
       {
         art: "absatz",
         text: "Am Ende steht eine Abschlussprüfung aus Fallbeispielen, einem Fragekatalog aus drei Modulen, einem Futterplan und einer Anamnese-Aufgabe. Zehn Tage Bearbeitungszeit, zu Hause, Rückfragen ausdrücklich erwünscht.",
+      },
+    ],
+  },
+  // -------------------------------------------------------------------------
+  // AROMA HORSE, DIE TESTRUNDE. Angelegt am 04.09.2026 auf Wunsch von Yasemin.
+  //
+  // ▸ WARUM DAS HIER STEHT, OBWOHL IM KOPF DER DATEI "Aroma Horse fehlt
+  //   absichtlich" steht. Dort geht es um die FUNNEL-KETTEN: Aroma Horse
+  //   gehört nicht als Upsell hinter einen Fütterungskauf, anderes Publikum,
+  //   das hat Yasemin am 01.09.2026 entschieden und das bleibt so. Dieses
+  //   Angebot ist etwas anderes: ein eingeladener Einzelverkauf mit eigener
+  //   Landingpage auf der aromahorseoil-Seite (/testkunde). Es steht in KEINER
+  //   Kette, weder als Upsell noch als Downsell, und es ist `versteckt`,
+  //   erscheint also weder unter /shop noch in der Sitemap.
+  //
+  // ▸ WARUM 199 STATT 899
+  //   Der Kurs ist fertig, aber noch nie von außen durchgearbeitet worden.
+  //   Von 54 Lektionen ist genau eine abgehakt, es gibt keine einzige
+  //   Teilnehmerinnen-Stimme für die Verkaufsseite. Die Testrunde kauft beides:
+  //   die Rückmeldung, wo der Kurs hakt, und die Erlaubnis, später zitiert zu
+  //   werden. Der Streichpreis ist belegt, zu 899 EUR steht der Kurs öffentlich
+  //   auf aromahorseoil unter /aroma-horse-kurs, und die Aktion ist echt befristet.
+  //
+  // ▸ DAS DATUM IST KEINE DEKO. Ab dem 01.10.2026 weist die Kasse den Kauf ab.
+  //   Verschiebt sich die Einladungsmail, MUSS dieses Datum mitwandern, und
+  //   zwar auch in lib/inhalte.ts der aromahorseoil-Seite, dort steht es im Text.
+  // -------------------------------------------------------------------------
+  {
+    slug: "aroma-horse-testkunde",
+    gruppe: "kurs",
+    versteckt: true,
+    verkaufBis: "2026-09-30",
+    name: "Aroma Horse Kurs, die Testrunde",
+    kurzname: "Aroma Horse Kurs (Testrunde)",
+    preis: 19900,
+    statt: 89900,
+    mwst: 19,
+    art: "kurs",
+    kurz: "Der ganze Kurs für 199 statt 899 €, gegen deine ehrliche Rückmeldung.",
+    leistung:
+      "Digitaler Zugang zum Aroma Horse Kurs in der Pferdeliebehealthy " +
+      "Akademie: zehn Phasen, 54 Lektionen, dauerhaft abrufbar. " +
+      "Selbstlernmaterial mit Teilnahmebescheinigung, ohne Prüfung, " +
+      "ohne Korrektur und ohne persönliche Begleitung.",
+    // ▸ DER NAME IST GEGEN lib/produkt-zugang.ts DER AKADEMIE GEPRÜFT.
+    //   Er trifft die Regel /aroma\s?horse (club|kurs)/i, die ganz oben steht,
+    //   und vergibt 'aroma-horse-club'. Auf keinem NIEMALS-Muster steht er.
+    //   Das Wort "Ausbildung" darf hier NIEMALS hinein: Es würde weiter unten
+    //   die Fütterungs-Masterclass für 899 EUR treffen. Aus dem gleichen
+    //   Grund heißt der Kurs auch nach außen überall "Kurs" und nirgends
+    //   "Ausbildung", denn daran hängt, dass er ohne ZFU-Zulassung verkauft
+    //   werden darf.
+    akademieName: "Aroma Horse Club (Testrunde)",
+    erwarteterZugang: "aroma-horse-club",
+    beschreibung: [
+      {
+        art: "absatz",
+        text: "Zehn Phasen zur Aromatherapie beim Pferd: von der Frage, was bei einer Destillation eigentlich passiert, über die Stoffklassen und die Aufnahmewege bis zum Riechtest am eigenen Pferd. Kein Öllexikon zum Auswendiglernen, sondern der Weg dahin, dass du eigene Entscheidungen fachlich begründen kannst.",
+      },
+      {
+        art: "liste",
+        punkte: [
+          "Alle 54 Lektionen in der Akademie, sofort nach dem Kauf freigeschaltet",
+          "Lesen am Rechner wie am Handy im Stall, Notizen und Textmarker bleiben dir",
+          "Zeitlich unbegrenzter Zugang, auch zu späteren Ergänzungen",
+          "Teilnahmebescheinigung nach allen 54 Lektionen, ohne Prüfung",
+          "Als Testkundin: ein direkter Draht zu mir für alles, was dir auffällt",
+        ],
+      },
+      {
+        art: "absatz",
+        text: "Das ist Lernmaterial, kein geprüfter Lehrgang. Am Ende steht eine Teilnahmebescheinigung, aber keine Prüfung, keine Korrektur und keine Beratung zu deinem Pferd. Das steht hier so deutlich, weil es ehrlicher ist als ein Sternchen im Kleingedruckten.",
+        betont: true,
       },
     ],
   },
