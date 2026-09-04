@@ -39,7 +39,7 @@ export default function AboutSection() {
             ihre Beschwerden schulmedizinisch als austherapiert galten, wollte
             ich das einfach nicht akzeptieren. Also fing ich an zu
             recherchieren, zu hinterfragen, auszuprobieren. Studien,
-            Fachliteratur, natürliche Fütterung, Pflanzenheilkunde. Ich wollte
+            Fachliteratur, ganzheitliche Fütterung, Pflanzenheilkunde. Ich wollte
             verstehen, wie der Pferdekörper wirklich funktioniert.
           </p>
           <p className="text-ink-soft text-base mb-4.5">

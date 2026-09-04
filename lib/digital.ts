@@ -265,7 +265,7 @@ export const digitalprodukte: DigitalProdukt[] = [
     //   waren die 29 Euro, ein durchgestrichenes „99" waere nach § 11 PAngV
     //   unzulaessig, auch wenn auf alfima einmal 99 stand.
     gruppe: "kurs",
-    name: "Ganzjahresfutterplan für Pferde, natürlich durchs Jahr",
+    name: "Ganzjahresfutterplan für Pferde, ganzheitlich durchs Jahr",
     kurzname: "Ganzjahresfutterplan",
     preis: 5900,
     mwst: 19,
@@ -277,19 +277,19 @@ export const digitalprodukte: DigitalProdukt[] = [
       "Digitaler Zugang zum Ganzjahresfutterplan in der Pferdeliebehealthy " +
       "Akademie, zwölf Monatspläne, dauerhaft abrufbar.",
     // Trifft /ganzjahresfutterplan/i.
-    akademieName: "Ganzjahresfutterplan für Pferde, natürlich durchs Jahr",
+    akademieName: "Ganzjahresfutterplan für Pferde, ganzheitlich durchs Jahr",
     erwarteterZugang: "ganzjahresfutterplan",
     beschreibung: [
       {
         art: "absatz",
-        text: "Der digitale Ganzjahres-Futterplan begleitet dich Monat für Monat durch das Pferdejahr, mit natürlichen Futterempfehlungen, abgestimmt auf Fellwechsel, Weidezeit, Witterung und die jeweilige Jahreszeit.",
+        text: "Der digitale Ganzjahres-Futterplan begleitet dich Monat für Monat durch das Pferdejahr, mit passenden Futterempfehlungen, abgestimmt auf Fellwechsel, Weidezeit, Witterung und die jeweilige Jahreszeit.",
       },
       { art: "ueberschrift", text: "Was du bekommst:" },
       {
         art: "liste",
         punkte: [
           "12 Monatspläne mit Futterplan, Mineralien, Kräutern und saisonalen Schwerpunkten",
-          "Onboarding-Bereich mit den wichtigsten Grundlagen zur natürlichen Pferdefütterung",
+          "Onboarding-Bereich mit den wichtigsten Grundlagen zur ganzheitlichen Pferdefütterung",
           "Schritt-für-Schritt-Anleitung zur Erstellung deines eigenen Futterplans",
           "Spezielle Themen wie Impfung, Wurmkur, Wetterwechsel und Senior Pferd",
           "Rabattcodes bei über 13 ausgewählten Partnern",
@@ -306,7 +306,7 @@ export const digitalprodukte: DigitalProdukt[] = [
       {
         art: "absatz",
         betont: true,
-        text: "Natürlich füttern. Gesund begleiten.",
+        text: "Ganzheitlich füttern. Gesund begleiten.",
       },
     ],
   },

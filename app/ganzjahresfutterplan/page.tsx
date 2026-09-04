@@ -28,7 +28,7 @@ import WerDahinterSteht from "@/components/WerDahinterSteht";
 
 const produkt = digitalFinden("ganzjahresfutterplan")!;
 
-const TITEL = "Ganzjahresfutterplan für Pferde, natürlich durchs Jahr";
+const TITEL = "Ganzjahresfutterplan für Pferde, ganzheitlich durchs Jahr";
 const BESCHREIBUNG =
   "Zwölf Monatspläne mit Futterplan, Mineralien und Kräutern, abgestimmt auf Fellwechsel, Weidezeit und Witterung. 59 €, dauerhafter Zugang.";
 
@@ -281,7 +281,7 @@ export default function GanzjahresfutterplanSeite() {
       <section className="bg-ink px-6 py-16 text-cream sm:px-8 sm:py-24">
         <div className="mx-auto max-w-2xl">
           <h2 className="mb-6 font-serif text-[28px] font-normal leading-[1.15] tracking-tight sm:text-[38px]">
-            Natürlich füttern. Gesund begleiten.
+            Ganzheitlich füttern. Gesund begleiten.
           </h2>
 
           <p className="mb-8 text-[17px] leading-relaxed text-cream/80">

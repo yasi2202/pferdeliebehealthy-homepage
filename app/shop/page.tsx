@@ -34,7 +34,7 @@ import { url } from "@/lib/seo";
 
 const TITEL = "Shop: Kurse, Werkzeuge und Futtermittel für dein Pferd";
 const BESCHREIBUNG =
-  "Vom kleinen Ratgeber bis zur Ausbildung: Kurse, Werkzeuge und persönliche Begleitung rund um die natürliche Fütterung deines Pferdes.";
+  "Vom kleinen Ratgeber bis zur Ausbildung: Kurse, Werkzeuge und persönliche Begleitung rund um die ganzheitliche Fütterung deines Pferdes.";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/shop" },

@@ -5,7 +5,7 @@ const pillars = [
   },
   {
     title: "Substanz statt Trend",
-    text: "Whole-Blood-Selen statt Serum, natürliches Vitamin E, keine Lebendhefen. Ich richte mich nach dem, was tatsächlich wirkt, nicht nach dem, was sich gut verkauft.",
+    text: "Whole-Blood-Selen statt Serum, Vitamin E in pflanzlicher Form, keine Lebendhefen. Ich richte mich nach dem, was tatsächlich wirkt, nicht nach dem, was sich gut verkauft.",
   },
   {
     title: "Wissen, das bleibt",

@@ -193,7 +193,7 @@ export const produkte: Produkt[] = [
     beschreibung: [
       {
         art: "absatz",
-        text: "Pferdeliebe Pure ergänzt die tägliche Ration auf natürliche Weise. Die Mischung aus Hagebuttenschalen, Hanfsamen, Moringa, Seealgenmehl, Brennnesselsamen, Bockshornkleesamen und Grasgrünmehl liefert natürliche Nährstoffe und sekundäre Pflanzenstoffe, ganz ohne künstliche Zusatzstoffe oder synthetische Mineralstoffkomponenten.",
+        text: "Pferdeliebe Pure ergänzt die tägliche Ration über pflanzliche Rohstoffe. Die Mischung aus Hagebuttenschalen, Hanfsamen, Moringa, Seealgenmehl, Brennnesselsamen, Bockshornkleesamen und Grasgrünmehl liefert natürliche Nährstoffe und sekundäre Pflanzenstoffe, ganz ohne künstliche Zusatzstoffe oder synthetische Mineralstoffkomponenten.",
       },
       {
         art: "absatz",

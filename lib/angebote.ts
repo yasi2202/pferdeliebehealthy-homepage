@@ -43,7 +43,7 @@ export const fuerDeinPferd: Angebot[] = [
   },
   {
     name: "Ganzjahresfutterplan",
-    untertitel: "Natürlich durchs Jahr",
+    untertitel: "Ganzheitlich durchs Jahr",
     // Am 02.09.2026 von 29 auf 59 € angehoben, siehe lib/digital.ts.
     preis: "59 €",
     url: "/ganzjahresfutterplan",
@@ -157,7 +157,7 @@ export const angebotsHinweise: Record<string, Angebotshinweis> = {
   ganzjahresfutterplan: {
     augenbraue: "Dazu passend",
     name: "Ganzjahresfutterplan",
-    text: "Natürlich durchs Jahr: was dein Pferd wann braucht, saisonal gedacht statt das ganze Jahr über gleich.",
+    text: "Ganzheitlich durchs Jahr: was dein Pferd wann braucht, saisonal gedacht statt das ganze Jahr über gleich.",
     knopf: "Ganzjahresfutterplan ansehen",
     url: "/ganzjahresfutterplan",
   },
