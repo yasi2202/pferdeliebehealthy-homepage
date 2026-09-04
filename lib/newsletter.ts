@@ -14,7 +14,25 @@
 //   der Mail das einzig Verlässliche.
 // ---------------------------------------------------------------------------
 
-export type BriefStatus = "entwurf" | "versendet";
+// ---------------------------------------------------------------------------
+// Die vier Zustände eines Briefes
+//
+//   entwurf    Du schreibst noch. Nichts passiert von selbst.
+//   geplant    Ein Zeitpunkt steht fest. Der Vercel-Cron schickt ihn dann.
+//   laeuft     Der Versand ist gerade in Arbeit. Dieser Zustand hält nur
+//              wenige Sekunden und verhindert, dass zwei Cron-Aufrufe
+//              denselben Brief gleichzeitig verschicken.
+//   versendet  Raus. Nicht mehr änderbar, nicht mehr löschbar.
+//
+// ▸ WO DER GEPLANTE ZEITPUNKT STEHT: in `versendet_am`, so wie später der
+//   echte Versandzeitpunkt. Das ist Absicht und keine Sparsamkeit — die
+//   Spalte beantwortet immer dieselbe Frage („wann geht dieser Brief raus"),
+//   nur einmal in der Zukunft und einmal in der Vergangenheit. Beim Versand
+//   wird sie auf den tatsächlichen Zeitpunkt gesetzt. Ob der Wert Plan oder
+//   Tatsache ist, sagt der Status.
+// ---------------------------------------------------------------------------
+
+export type BriefStatus = "entwurf" | "geplant" | "laeuft" | "versendet";
 
 export type Brief = {
   id: string;
@@ -309,6 +327,19 @@ function kopf(): string {
     </td></tr></table>`;
 }
 
+/** Der Satz in der Fusszeile, der sagt, woher du die Adresse hast.
+ *
+ *  Für die Eingetragenen ist es die Einwilligung, für alle anderen der Kauf.
+ *  Bei „alle" gilt beides nebeneinander, deshalb nennt der Satz dort beide
+ *  Wege — er muss für jede einzelne Empfängerin zutreffen, und ohne eine
+ *  Spalte „woher kam diese Adresse" ist das die einzige ehrliche Fassung. */
+export function herkunftFuerGruppe(gruppe?: string): string {
+  if (!gruppe || gruppe === "eingetragen")
+    return "Du bekommst diese Mail, weil du dich auf pferdeliebehealthy.de eingetragen hast.";
+
+  return "Du bekommst diese Mail, weil du dich auf pferdeliebehealthy.de eingetragen oder bei mir gekauft hast.";
+}
+
 /** Der Rahmen um jede Newsletter-Mail.
  *
  *  Eigener Rahmen statt dem aus lib/versand.ts, weil hier drei Dinge
@@ -319,8 +350,19 @@ export function newsletterRahmen(
   inhaltHtml: string,
   vorschautext: string,
   abmeldeLink: string,
-  imBrowserAnsehen?: string
+  imBrowserAnsehen?: string,
+  herkunft?: string
 ): string {
+  // ▸ WARUM DIESER SATZ NICHT FESTSTEHT: Er muss stimmen. Bei den
+  //   Eingetragenen stimmt „du hast dich eingetragen"; bei den
+  //   Bestandskundinnen stimmt er nicht, die haben gekauft und nie ein
+  //   Häkchen gesetzt. Eine falsche Herkunftsangabe in einer Werbemail ist
+  //   genau das, was eine Abmahnung teuer macht. Den Satz setzt deshalb
+  //   `mailBauen` anhand der Gruppe, an die der Brief geht.
+  const herkunftSatz =
+    herkunft ??
+    "Du bekommst diese Mail, weil du dich auf pferdeliebehealthy.de eingetragen hast.";
+
   const browserZeile = imBrowserAnsehen
     ? `<a href="${imBrowserAnsehen}" style="color:${LEISE};">Im Browser ansehen</a> · `
     : "";
@@ -340,8 +382,7 @@ export function newsletterRahmen(
           <a href="mailto:info@pferdeliebehealthy.de" style="color:${ROSE_TIEF};">info@pferdeliebehealthy.de</a>
         </p>
         <p style="margin:0;">
-          ${browserZeile}Du bekommst diese Mail, weil du dich auf pferdeliebehealthy.de
-          eingetragen hast.<br><a href="${abmeldeLink}" style="color:${LEISE};">Hier abmelden</a>
+          ${browserZeile}${herkunftSatz}<br><a href="${abmeldeLink}" style="color:${LEISE};">Hier abmelden</a>
         </p>
       </td></tr>
     </table>

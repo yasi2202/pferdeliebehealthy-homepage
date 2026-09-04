@@ -12,6 +12,7 @@ import {
   namenEinsetzen,
   newsletterRahmen,
   briefPruefen,
+  herkunftFuerGruppe,
   type Brief,
   type Empfaenger,
 } from "@/lib/newsletter";
@@ -176,7 +177,7 @@ export async function briefSpeichern(
   }
 ): Promise<boolean> {
   const brief = await briefHolen(id);
-  if (!brief || brief.status === "versendet") return false;
+  if (!brief || brief.status === "versendet" || brief.status === "laeuft") return false;
 
   const res = await supabase(`newsletter_briefe?id=eq.${encodeURIComponent(id)}`, {
     method: "PATCH",
@@ -185,9 +186,180 @@ export async function briefSpeichern(
   return res.ok;
 }
 
+// ---------------------------------------------------------------------------
+// Der Terminversand
+//
+// ▸ WOZU ER DA IST: Eine Mail um 8 Uhr morgens wird gelesen, eine um 23 Uhr
+//   nicht. Ohne Termin müsste Yasemin selbst am Rechner sitzen und drücken.
+//
+// ▸ WIE ER LÄUFT: `terminSetzen` legt Zeitpunkt und Status fest,
+//   /api/newsletter-termin ruft alle fünf Minuten `terminLauf` auf, und der
+//   verschickt, was fällig ist. Fällt ein Lauf aus, wird beim nächsten
+//   nachgeholt — ein geplanter Brief bleibt fällig, bis er raus ist.
+//
+// ▸ DIE FÜNF MINUTEN sind die Genauigkeit. „18 Uhr" heisst also irgendwann
+//   zwischen 18:00 und 18:05. Genauer geht es mit einem Cron nicht, und für
+//   einen Newsletter ist es genau genug.
+// ---------------------------------------------------------------------------
+
+/** Setzt einen Versandtermin, oder nimmt ihn zurück (`null`).
+ *
+ *  Gibt es einen Termin, steht er in `versendet_am` und der Status ist
+ *  `geplant`. Ohne Termin ist der Brief wieder ein ganz normaler Entwurf. */
+export async function terminSetzen(
+  id: string,
+  zeitpunkt: string | null
+): Promise<{ ok: boolean; text: string }> {
+  const brief = await briefHolen(id);
+  if (!brief) return { ok: false, text: "Entwurf nicht gefunden." };
+
+  if (brief.status === "versendet")
+    return { ok: false, text: "Dieser Newsletter ist schon raus." };
+
+  if (brief.status === "laeuft")
+    return {
+      ok: false,
+      text: "Der Versand läuft gerade. Warte einen Augenblick und lade die Seite neu.",
+    };
+
+  if (zeitpunkt === null) {
+    const res = await supabase(`newsletter_briefe?id=eq.${encodeURIComponent(id)}`, {
+      method: "PATCH",
+      body: JSON.stringify({
+        status: "entwurf",
+        versendet_am: null,
+        geaendert_am: new Date().toISOString(),
+      }),
+    });
+    return res.ok
+      ? { ok: true, text: "Der Zeitplan ist aufgehoben. Es geht nichts von selbst raus." }
+      : { ok: false, text: "Der Zeitplan liess sich nicht aufheben." };
+  }
+
+  const wann = new Date(zeitpunkt);
+  if (Number.isNaN(wann.getTime()))
+    return { ok: false, text: "Dieser Zeitpunkt ist keiner." };
+
+  // Ein Termin in der Vergangenheit ginge beim nächsten Lauf sofort raus.
+  // Das ist fast nie gemeint und wäre der teuerste aller Vertipper.
+  if (wann.getTime() < Date.now() - 60_000)
+    return {
+      ok: false,
+      text: "Dieser Zeitpunkt liegt in der Vergangenheit. Der Newsletter würde sofort rausgehen.",
+    };
+
+  const fehlt = briefPruefen(brief);
+  if (fehlt.length > 0) return { ok: false, text: fehlt.join(" ") };
+
+  const res = await supabase(`newsletter_briefe?id=eq.${encodeURIComponent(id)}`, {
+    method: "PATCH",
+    body: JSON.stringify({
+      status: "geplant",
+      versendet_am: wann.toISOString(),
+      geaendert_am: new Date().toISOString(),
+    }),
+  });
+
+  return res.ok
+    ? { ok: true, text: "Der Termin steht." }
+    : { ok: false, text: "Der Termin liess sich nicht speichern." };
+}
+
+/** Alle Briefe, deren Termin erreicht ist. */
+async function faelligeBriefe(): Promise<Brief[] | null> {
+  const jetzt = encodeURIComponent(new Date().toISOString());
+  return supabaseAlle<Brief>(
+    `newsletter_briefe?status=eq.geplant&versendet_am=lte.${jetzt}&select=*&order=versendet_am.asc`
+  );
+}
+
+/** Nimmt einen fälligen Brief in Arbeit — aber nur, wenn ihn nicht schon ein
+ *  anderer Lauf genommen hat.
+ *
+ *  ▸ WARUM DAS SEIN MUSS: Der Cron läuft alle fünf Minuten, ein Versand an
+ *    2.300 Adressen dauert eine gute halbe Minute. Hakt Resend, überholen
+ *    sich zwei Läufe — und der ganze Verteiler bekäme dieselbe Mail zweimal.
+ *    Die Bedingung `status=eq.geplant` steht deshalb in der Änderung selbst:
+ *    Die Datenbank entscheidet, wer ihn bekommt, nicht der schnellere Server.
+ *    Wer nichts zurückbekommt, war der Zweite und lässt die Finger davon. */
+async function briefBeanspruchen(id: string): Promise<boolean> {
+  const res = await supabase(
+    `newsletter_briefe?id=eq.${encodeURIComponent(id)}&status=eq.geplant`,
+    {
+      method: "PATCH",
+      headers: { Prefer: "return=representation" },
+      body: JSON.stringify({ status: "laeuft" }),
+    }
+  );
+  if (!res.ok) return false;
+
+  const zeilen = await res.json().catch(() => null);
+  return Array.isArray(zeilen) && zeilen.length === 1;
+}
+
+/** Gibt einen Brief wieder frei, wenn der Versand nicht geklappt hat.
+ *
+ *  Der Termin bleibt stehen, er ist ja weiterhin fällig — beim nächsten Lauf
+ *  wird es noch einmal versucht. Bliebe der Brief auf `laeuft` stehen, ginge
+ *  er nie wieder raus und niemand wüsste warum. */
+async function briefFreigeben(brief: Brief): Promise<void> {
+  await supabase(`newsletter_briefe?id=eq.${encodeURIComponent(brief.id)}`, {
+    method: "PATCH",
+    body: JSON.stringify({ status: "geplant", versendet_am: brief.versendet_am }),
+  });
+}
+
+export type TerminErgebnis = {
+  id: string;
+  betreff: string;
+  ok: boolean;
+  text: string;
+};
+
+/** Der Lauf, den der Cron aufruft: verschickt alles, was fällig ist. */
+export async function terminLauf(basisUrl: string): Promise<TerminErgebnis[]> {
+  const faellig = await faelligeBriefe();
+
+  // Keine leere Liste bei einem Fehler: Ein nicht erreichbares Supabase sieht
+  // sonst aus wie „heute steht nichts an", und der Brief ginge stillschweigend
+  // nie raus. Siehe dieselbe Regel bei den Empfängern.
+  if (faellig === null) {
+    console.error("Terminlauf: Die Briefe waren nicht erreichbar.");
+    return [];
+  }
+
+  const ergebnisse: TerminErgebnis[] = [];
+
+  for (const brief of faellig) {
+    if (!(await briefBeanspruchen(brief.id))) continue;
+
+    const ergebnis = await briefVersenden({ ...brief, status: "laeuft" }, basisUrl, true);
+
+    if (ergebnis.ok) {
+      ergebnisse.push({
+        id: brief.id,
+        betreff: brief.betreff,
+        ok: true,
+        text: `an ${ergebnis.empfaenger} Adressen`,
+      });
+    } else {
+      await briefFreigeben(brief);
+      console.error(`Terminlauf: "${brief.betreff}" ging nicht raus. ${ergebnis.text}`);
+      ergebnisse.push({
+        id: brief.id,
+        betreff: brief.betreff,
+        ok: false,
+        text: ergebnis.text,
+      });
+    }
+  }
+
+  return ergebnisse;
+}
+
 export async function briefLoeschen(id: string): Promise<boolean> {
   const brief = await briefHolen(id);
-  if (!brief || brief.status === "versendet") return false;
+  if (!brief || brief.status === "versendet" || brief.status === "laeuft") return false;
 
   const res = await supabase(`newsletter_briefe?id=eq.${encodeURIComponent(id)}`, {
     method: "DELETE",
@@ -358,7 +530,9 @@ export async function auswertungHolen(briefId: string): Promise<Auswertung> {
 
 /** Baut die Mail für eine einzelne Empfängerin. */
 export function mailBauen(
-  brief: Pick<Brief, "id" | "betreff" | "vorschautext" | "inhalt">,
+  brief: Pick<Brief, "id" | "betreff" | "vorschautext" | "inhalt"> & {
+    gruppe?: string;
+  },
   empfaenger: Empfaenger,
   basisUrl: string,
   optionen: { messen?: boolean } = {}
@@ -372,7 +546,9 @@ export function mailBauen(
   let html = newsletterRahmen(
     inhalt,
     namenEinsetzen(brief.vorschautext, empfaenger.vorname),
-    abmelden
+    abmelden,
+    undefined,
+    herkunftFuerGruppe(brief.gruppe)
   );
 
   if (optionen.messen !== false) {
@@ -454,13 +630,26 @@ export async function testmailSenden(
  *  durchgeht, ist offenbar etwas Grundsätzliches kaputt. */
 export async function briefVersenden(
   brief: Brief,
-  basisUrl: string
+  basisUrl: string,
+  erlaubeLaufenden = false
 ): Promise<VersandErgebnis> {
   if (brief.status === "versendet") {
     return {
       ok: false,
       grund: "schon-versendet",
       text: "Dieser Newsletter ist schon raus. Er lässt sich kein zweites Mal verschicken.",
+    };
+  }
+
+  // Der Terminversand hat ihn gerade in Arbeit. Ein Klick auf „jetzt
+  // schicken" würde denselben Brief ein zweites Mal in den Verteiler geben.
+  // Der Lauf selbst kommt hier mit `laeuft` an und übergeht die Sperre, weil
+  // er den Brief davor beansprucht hat — das ist der Unterschied.
+  if (brief.status === "laeuft" && !erlaubeLaufenden) {
+    return {
+      ok: false,
+      grund: "schon-versendet",
+      text: "Dieser Newsletter geht gerade raus. Lade die Seite in einer Minute neu.",
     };
   }
 

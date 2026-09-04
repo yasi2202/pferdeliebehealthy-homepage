@@ -7,6 +7,7 @@ import {
   briefSpeichern,
   briefLoeschen,
   briefVersenden,
+  terminSetzen,
   testmailSenden,
   newsletterAbmelden,
 } from "@/lib/newsletter-server";
@@ -125,6 +126,18 @@ export async function POST(request: Request) {
         ok: true,
         text: `Der Newsletter ist an ${ergebnis.empfaenger} Adressen rausgegangen.${nachsatz}`,
       });
+    }
+
+    // -----------------------------------------------------------------
+    // Der Termin. Ein leerer Zeitpunkt hebt ihn wieder auf.
+    case "termin": {
+      const zeitpunkt = kuerzen(daten.zeitpunkt, 40);
+      const ergebnis = await terminSetzen(id, zeitpunkt || null);
+
+      if (!ergebnis.ok) {
+        return Response.json({ fehler: ergebnis.text }, { status: 400 });
+      }
+      return Response.json({ ok: true, text: ergebnis.text });
     }
 
     // -----------------------------------------------------------------

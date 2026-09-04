@@ -9,6 +9,7 @@ import {
   newsletterRahmen,
   briefPruefen,
   briefRatschlaege,
+  herkunftFuerGruppe,
   lesezeit,
   type Brief,
 } from "@/lib/newsletter";
@@ -32,6 +33,36 @@ import { GRUPPEN, type GruppenSchluessel } from "@/lib/newsletter-gruppen";
 // ---------------------------------------------------------------------------
 
 type Stand = "ruhe" | "tippt" | "speichert" | "gespeichert" | "fehler";
+
+/** Ein Zeitstempel aus der Datenbank in die Schreibweise, die das Feld
+ *  `datetime-local` versteht — und zwar in der Zeit dieses Rechners, also
+ *  deutscher Zeit. `toISOString()` wäre hier falsch: Es rechnet auf UTC um,
+ *  und aus 18 Uhr würden im Feld 16 Uhr. */
+function fuerFeld(iso: string | null): string {
+  if (!iso) return "";
+  const d = new Date(iso);
+  if (Number.isNaN(d.getTime())) return "";
+
+  const zwei = (n: number) => String(n).padStart(2, "0");
+  return `${d.getFullYear()}-${zwei(d.getMonth() + 1)}-${zwei(d.getDate())}T${zwei(
+    d.getHours()
+  )}:${zwei(d.getMinutes())}`;
+}
+
+/** Wie der Termin dasteht: „Donnerstag, 4. September um 18:00 Uhr". */
+function terminText(iso: string | null): string {
+  if (!iso) return "";
+  const d = new Date(iso);
+  if (Number.isNaN(d.getTime())) return "";
+
+  return d.toLocaleString("de-DE", {
+    weekday: "long",
+    day: "numeric",
+    month: "long",
+    hour: "2-digit",
+    minute: "2-digit",
+  });
+}
 
 /** Die Bausteine der Werkzeugleiste. `einfuegen` ist, was in den Text
  *  geschrieben wird; `auswahl` sagt, welcher Teil davon danach markiert ist,
@@ -130,6 +161,10 @@ export default function Editor({
   const [sicher, setSicher] = useState(false);
   const [testLaeuft, setTestLaeuft] = useState(false);
 
+  const geplant = brief.status === "geplant";
+  const [termin, setTermin] = useState(fuerFeld(brief.versendet_am));
+  const [terminLaeuft, setTerminLaeuft] = useState(false);
+
   const feld = useRef<HTMLTextAreaElement>(null);
   const ersterLauf = useRef(true);
 
@@ -184,9 +219,11 @@ export default function Editor({
     return newsletterRahmen(
       textZuHtml(text),
       namenEinsetzen(vorschautext, "Anna"),
-      "#"
+      "#",
+      undefined,
+      herkunftFuerGruppe(gruppe)
     );
-  }, [inhalt, vorschautext]);
+  }, [inhalt, vorschautext, gruppe]);
 
   const fehltNoch = briefPruefen({ betreff, inhalt });
   const ratschlaege = briefRatschlaege({ betreff, vorschautext, inhalt });
@@ -269,6 +306,43 @@ export default function Editor({
     }
 
     setSendenLaeuft(false);
+  }
+
+  // -------------------------------------------------------------- Termin
+  async function terminAendern(zeitpunkt: string | null) {
+    setTerminLaeuft(true);
+    setMeldung(null);
+    setFehler(null);
+
+    // Erst der Text, dann der Termin: Sonst stünde in der Mail, die um 18 Uhr
+    // rausgeht, der Stand von vor anderthalb Sekunden.
+    await speichern();
+
+    try {
+      const res = await fetch("/api/admin-newsletter", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          was: "termin",
+          id: brief.id,
+          // Das Feld liefert die Zeit dieses Rechners. `new Date` versteht
+          // sie so und rechnet sie in einen eindeutigen Zeitpunkt um.
+          zeitpunkt: zeitpunkt ? new Date(zeitpunkt).toISOString() : "",
+        }),
+      });
+      const antwort = await res.json().catch(() => ({}));
+
+      if (antwort.ok) {
+        router.refresh();
+        setMeldung(antwort.text);
+      } else {
+        setFehler(antwort.fehler ?? "Der Termin liess sich nicht setzen.");
+      }
+    } catch {
+      setFehler("Keine Verbindung. Versuch es bitte noch einmal.");
+    }
+
+    setTerminLaeuft(false);
   }
 
   // -------------------------------------------------------------- Löschen
@@ -519,6 +593,64 @@ export default function Editor({
                     </label>
                   );
                 })}
+              </div>
+            </div>
+
+            {/* ------------------------------------------ Zeitpunkt */}
+            <div
+              className={`mt-4 rounded-[16px] border bg-white p-5 ${
+                geplant ? "border-rose-deep" : "border-line"
+              }`}
+            >
+              <p className="mb-1 text-[13px] uppercase tracking-[0.14em] text-ink-soft">
+                Wann geht sie raus
+              </p>
+
+              {geplant ? (
+                <>
+                  <p className="mb-4 text-[15px] leading-relaxed text-ink">
+                    Diese Mail geht von selbst raus:{" "}
+                    <strong>{terminText(brief.versendet_am)} Uhr</strong>. Bis
+                    dahin kannst du am Text weiterschreiben, es geht der Stand
+                    von diesem Zeitpunkt raus.
+                  </p>
+                  <p className="mb-4 text-[13.5px] leading-relaxed text-ink-soft">
+                    Nachgesehen wird alle fünf Minuten. Es können also ein paar
+                    Minuten mehr werden, nie weniger.
+                  </p>
+                </>
+              ) : (
+                <p className="mb-4 text-[13.5px] leading-relaxed text-ink-soft">
+                  Ohne Zeitpunkt passiert nichts von selbst. Trägst du einen
+                  ein, schickt die Seite den Newsletter dann auch ohne dich.
+                </p>
+              )}
+
+              <div className="flex flex-wrap items-center gap-2.5">
+                <input
+                  type="datetime-local"
+                  value={termin}
+                  onChange={(e) => setTermin(e.target.value)}
+                  className="rounded-[10px] border border-line px-3 py-2 text-[15px] text-ink"
+                />
+                <button
+                  type="button"
+                  onClick={() => terminAendern(termin)}
+                  disabled={!termin || terminLaeuft || !bereit}
+                  className="rounded-full border border-ink px-5 py-2 text-[14.5px] text-ink transition-colors hover:bg-ink hover:text-cream disabled:opacity-40"
+                >
+                  {geplant ? "Termin ändern" : "Termin setzen"}
+                </button>
+                {geplant && (
+                  <button
+                    type="button"
+                    onClick={() => terminAendern(null)}
+                    disabled={terminLaeuft}
+                    className="text-[13.5px] text-ink-soft underline underline-offset-2 hover:text-rose-deep disabled:opacity-40"
+                  >
+                    Zeitplan aufheben
+                  </button>
+                )}
               </div>
             </div>
 

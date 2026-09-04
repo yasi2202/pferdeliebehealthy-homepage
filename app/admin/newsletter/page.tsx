@@ -43,6 +43,23 @@ function datum(wert: string | null): string {
   });
 }
 
+/** Datum samt Uhrzeit, für die geplanten Mails.
+ *
+ *  ▸ DIE ZEITZONE MUSS HIER STEHEN. Diese Seite wird auf dem Server gebaut,
+ *    und der rechnet in UTC. Ohne die Angabe stünde bei einer auf 18 Uhr
+ *    geplanten Mail „16:00 Uhr", und der Zeitplan sähe kaputt aus, obwohl er
+ *    stimmt. */
+function datumZeit(wert: string | null): string {
+  if (!wert) return "";
+  return new Date(wert).toLocaleString("de-DE", {
+    timeZone: "Europe/Berlin",
+    day: "2-digit",
+    month: "long",
+    hour: "2-digit",
+    minute: "2-digit",
+  });
+}
+
 function anteil(teil: number, ganzes: number): string {
   if (ganzes <= 0) return "—";
   return `${Math.round((teil / ganzes) * 100)} %`;
@@ -213,7 +230,18 @@ export default async function NewsletterUebersicht() {
                     {brief.betreff.trim() || "Noch ohne Betreff"}
                   </p>
                   <p className="mt-1.5 text-[14px] text-ink-soft">
-                    Zuletzt geändert am {datum(brief.geaendert_am)}
+                    {brief.status === "geplant" ? (
+                      <span className="text-rose-deep">
+                        Geht von selbst raus am {datumZeit(brief.versendet_am)}{" "}
+                        Uhr
+                      </span>
+                    ) : brief.status === "laeuft" ? (
+                      <span className="text-rose-deep">
+                        Geht gerade raus …
+                      </span>
+                    ) : (
+                      <>Zuletzt geändert am {datum(brief.geaendert_am)}</>
+                    )}
                   </p>
                 </Link>
               ))}

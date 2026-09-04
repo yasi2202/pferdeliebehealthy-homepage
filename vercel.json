@@ -10,6 +10,10 @@
     {
       "path": "/api/newsletter-strecken",
       "schedule": "0 8 * * *"
+    },
+    {
+      "path": "/api/newsletter-termin",
+      "schedule": "*/5 * * * *"
     }
   ]
 }
