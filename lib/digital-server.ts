@@ -48,6 +48,7 @@ import {
   ANTWORT_AN,
 } from "@/lib/versand";
 import { bewertungslink } from "@/lib/seite";
+import { kaufAufsHandy } from "@/lib/telegram";
 
 const AKADEMIE_WEBHOOK_URL = process.env.AKADEMIE_WEBHOOK_URL;
 const AKADEMIE_WEBHOOK_KEY = process.env.AKADEMIE_WEBHOOK_KEY || "";
@@ -1108,9 +1109,13 @@ export async function nachDerZahlung(b: DigitalBestellung): Promise<void> {
 
   // Die Mails dürfen den Ablauf nicht aufhalten. Hakt eine, steht der Fehler
   // im Vercel-Protokoll, der Zugang ist aber längst vergeben.
+  // Die Meldung aufs Handy laeuft mit im selben Bund: Sie kommt sofort mit
+  // Ton an, waehrend die Mail erst beim naechsten Blick ins Postfach
+  // auffaellt. Siehe lib/telegram.ts.
   const [anKundin, anYasi] = await Promise.all([
     digitalBestaetigungSenden(b),
     digitalMeldenAnYasi(b),
+    kaufAufsHandy(b),
   ]);
 
   if (!anKundin) {

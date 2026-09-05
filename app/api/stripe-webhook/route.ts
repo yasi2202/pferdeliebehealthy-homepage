@@ -9,6 +9,7 @@ import {
   nachDerZahlung,
   zahlungsdatenHolen,
 } from "@/lib/digital-server";
+import { bestellungAufsHandy } from "@/lib/telegram";
 
 // ---------------------------------------------------------------------------
 // Die Rückmeldung von Stripe: hier erfahren wir, dass wirklich bezahlt wurde.
@@ -132,6 +133,9 @@ export async function POST(request: Request) {
   const [anKundin, anYasi] = await Promise.all([
     bestellbestaetigungSenden(bestellung),
     bestellungMeldenAnYasi(bestellung),
+    // Zusaetzlich aufs Handy, damit du vom Paket erfaehrst, ohne ins
+    // Postfach zu schauen. Siehe lib/telegram.ts.
+    bestellungAufsHandy(bestellung),
   ]);
 
   if (!anKundin) {
