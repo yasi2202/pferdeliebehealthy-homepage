@@ -267,12 +267,12 @@ export default function Datenschutz() {
           ist schlimmer als gar keine. */}
       <h3>Öffnungs- und Klickmessung im Newsletter</h3>
       <p>
-        Haben Sie bei der Anmeldung ausdrücklich eingewilligt, werten wir aus,
-        ob und wann Sie unsere Newsletter öffnen und welche Links Sie darin
-        anklicken. Dazu enthält die E-Mail einen unsichtbaren Bildpunkt, der
-        beim Öffnen von unserem Server geladen wird, und die enthaltenen Links
-        führen über eine Zählstelle auf unserer eigenen Seite, die Sie
-        anschliessend sofort an das eigentliche Ziel weiterleitet.
+        Wir werten aus, ob und wann Sie unsere Newsletter öffnen und welche
+        Links Sie darin anklicken. Dazu enthält die E-Mail einen unsichtbaren
+        Bildpunkt, der beim Öffnen von unserem Server geladen wird, und die
+        enthaltenen Links führen über eine Zählstelle auf unserer eigenen
+        Seite, die Sie anschliessend sofort an das eigentliche Ziel
+        weiterleitet.
       </p>
       <p>
         Gespeichert werden dabei Ihre E-Mail-Adresse, um welchen Newsletter es
@@ -284,15 +284,21 @@ export default function Datenschutz() {
         Monate nach dem Versand, bei einer Abmeldung unverzüglich.
       </p>
       <p>
-        Rechtsgrundlage ist Ihre Einwilligung nach Art. 6 Abs. 1 lit. a DSGVO
-        sowie § 25 Abs. 1 TDDDG. Sie können sie jederzeit für die Zukunft
-        widerrufen, formlos per Nachricht an die im Impressum genannte Adresse
-        oder über den Abmeldelink in jeder E-Mail. Ohne diese Einwilligung
-        erhalten Sie unsere E-Mails ohne Bildpunkt und ohne Zählstelle; das ist
-        insbesondere bei allen Empfängerinnen und Empfängern der Fall, die
-        unsere Post als Bestandskundinnen und Bestandskunden bekommen, ohne
-        sich selbst eingetragen zu haben. Am Bezug des Newsletters ändert ein
-        Widerruf nichts.
+        Haben Sie sich selbst für den Insider-Kanal oder den Futter-Check
+        eingetragen, ist Rechtsgrundlage Ihre Einwilligung nach Art. 6 Abs. 1
+        lit. a DSGVO; das Einverständnis mit dieser Auswertung ist Teil des
+        Häkchens bei der Anmeldung. Erhalten Sie unsere E-Mails als Kundin
+        oder Kunde, ohne sich eingetragen zu haben, ist Rechtsgrundlage unser
+        berechtigtes Interesse nach Art. 6 Abs. 1 lit. f DSGVO daran zu
+        erkennen, welche unserer eigenen Inhalte gelesen werden.
+      </p>
+      <p>
+        Sie können der Messung jederzeit widersprechen beziehungsweise Ihre
+        Einwilligung widerrufen, formlos per Nachricht an die im Impressum
+        genannte Adresse. Sie erhalten unsere E-Mails dann weiterhin, aber
+        ohne Bildpunkt und ohne Zählstelle. Am Bezug des Newsletters ändert
+        ein Widerspruch nichts; wollen Sie gar keine Post mehr, nutzen Sie den
+        Abmeldelink in jeder E-Mail.
       </p>
 
       <h3>Direktwerbung per E-Mail</h3>

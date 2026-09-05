@@ -72,26 +72,50 @@ const PAUSE = 600;
  *  ▸ ES WIRD NICHT BEI ALLEN GEMESSEN, siehe `darfGemessenWerden`. */
 const MESSEN = true;
 
-/** Bei wem darf gemessen werden?
+/** Wer der Messung widersprochen hat.
  *
- *  ▸ NUR BEI DEN EINGETRAGENEN, und das ist keine Vorsicht, sondern der
- *    Unterschied zwischen zwei Rechtsgrundlagen. Wer sich selbst eingetragen
- *    und bestätigt hat, hat eingewilligt, und das Häkchen im Formular nennt
- *    die Messung ausdrücklich.
+ *  ▸ WOZU DIESE LISTE DA IST: In der Datenschutzerklärung steht, dass man
+ *    der Messung formlos widersprechen kann, ohne den Newsletter zu
+ *    verlieren. Ohne eine Stelle, an der so ein Widerspruch landet, wäre das
+ *    ein Versprechen ins Leere.
  *
- *    Die anderen drei Gruppen bekommen ihre Post als Bestandskundinnen
- *    (§ 7 Abs. 3 UWG). Diese Regel erlaubt den VERSAND eigener ähnlicher
- *    Angebote, sie ersetzt aber keine Einwilligung in eine Messung. Für den
- *    Bildpunkt und die Zählstelle verlangen Art. 6 Abs. 1 lit. a DSGVO und
- *    § 25 Abs. 1 TDDDG ein ausdrückliches Ja, und das haben diese Menschen
- *    nie gegeben.
+ *  ▸ SO TRÄGST DU JEMANDEN EIN: Adresse kleingeschrieben in die Liste, mit
+ *    Datum als Kommentar dahinter, veröffentlichen. Sie steht hier im Code
+ *    und nicht in der Datenbank, weil eine neue Spalte in Supabase nur von
+ *    Hand anzulegen wäre — dasselbe Muster wie bei der festen Mailsperre in
+ *    lib/newsletter-gruppen.ts. Bei mehr als einer Handvoll Einträgen wird
+ *    daraus besser eine Tabelle.
  *
- *    Folge, damit die Zahlen richtig gelesen werden: Bei einem Rundbrief an
- *    „alle" zählen nur die Eingetragenen mit. Die Öffnungsrate bezieht sich
- *    also auf einen kleinen Teil des Verteilers, nicht auf alle. Genau so
- *    steht es auch auf der Auswertungsseite. */
-export function darfGemessenWerden(gruppe?: string): boolean {
-  return MESSEN && (!gruppe || gruppe === "eingetragen");
+ *  ▸ EIN WIDERSPRUCH GEGEN DIE MESSUNG IST KEINE ABMELDUNG. Wer hier steht,
+ *    bekommt den Newsletter weiter, nur ohne Bildpunkt und ohne Zählstelle. */
+export const OHNE_MESSUNG = new Set<string>([
+  // Noch niemand. Beispiel: "vorname.name@web.de", // widersprochen am 05.09.2026
+]);
+
+/** Darf diese Mail einen Bildpunkt und gezählte Links bekommen?
+ *
+ *  ▸ SEIT DEM 05.09.2026 BEI ALLEN GRUPPEN, so von Yasemin entschieden,
+ *    nachdem sie auf die Rechtslage hingewiesen wurde.
+ *
+ *  ▸ WAS SIE DAMIT ENTSCHIEDEN HAT, damit es später nachvollziehbar ist:
+ *    Bei den Eingetragenen liegt eine Einwilligung vor, die die Messung
+ *    ausdrücklich nennt (das Häkchen in components/InsiderFormular.tsx).
+ *    Bei den übrigen Gruppen stützt sich die Messung auf das berechtigte
+ *    Interesse an der Auswertung der eigenen Mails (Art. 6 Abs. 1 lit. f
+ *    DSGVO). Das ist die Konstruktion, mit der die meisten Anbieter
+ *    arbeiten; sie ist rechtlich nicht unumstritten, denn § 25 Abs. 1 TDDDG
+ *    lässt sich auch strenger lesen. Deshalb: keine IP, kein Gerät, kein
+ *    Profil über mehrere Mails hinweg, ein Widerspruch genügt formlos, und
+ *    nach zwölf Monaten wird gelöscht. Genau so steht es in der
+ *    Datenschutzerklärung, und genau so muss es bleiben.
+ *
+ *  ▸ WER DAS ZURÜCKDREHEN WILL: hier die Gruppenbedingung wieder einbauen
+ *    (`gruppe === "eingetragen"`) und den Abschnitt in der
+ *    Datenschutzerklärung mitändern. Beides gehört zusammen. */
+export function darfGemessenWerden(gruppe?: string, email?: string): boolean {
+  if (!MESSEN) return false;
+  if (email && OHNE_MESSUNG.has(email.trim().toLowerCase())) return false;
+  return true;
 }
 
 /** Damit die Auswertungsseite erklären kann, was die Zahlen bedeuten. */
@@ -646,9 +670,10 @@ export function mailBauen(
     herkunftFuerGruppe(brief.gruppe)
   );
 
-  // Die Gruppe entscheidet mit, nicht nur der Schalter: Ohne Einwilligung
-  // kein Bildpunkt und keine Zählstelle. Siehe `darfGemessenWerden`.
-  const messen = optionen.messen ?? darfGemessenWerden(brief.gruppe);
+  // Wer der Messung widersprochen hat, bekommt die Mail ohne Bildpunkt und
+  // ohne gezählte Links. Siehe `darfGemessenWerden`.
+  const messen =
+    optionen.messen ?? darfGemessenWerden(brief.gruppe, empfaenger.email);
 
   if (messen) {
     html = klicksZaehlen(html, brief.id, empfaenger.email, basisUrl);

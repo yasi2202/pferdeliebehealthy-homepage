@@ -280,17 +280,11 @@ export default async function NewsletterUebersicht() {
                         </p>
                       </div>
 
-                      {/* Prozent nur da, wo die ganze Gruppe gemessen wurde.
-                          Gemessen wird nur bei den Eingetragenen, sonst wäre
-                          der Anteil gegen eine Bezugsgrösse gerechnet, die
-                          gar nicht mitgezählt hat. */}
                       {z && (
                         <div className="flex gap-6 text-right">
                           <div>
                             <p className="font-serif text-[22px] leading-none text-ink">
-                              {brief.gruppe === "eingetragen"
-                                ? anteil(z.geoeffnet, brief.empfaenger)
-                                : z.geoeffnet}
+                              {anteil(z.geoeffnet, brief.empfaenger)}
                             </p>
                             <p className="mt-1 text-[12.5px] uppercase tracking-wide text-ink-soft">
                               geöffnet
@@ -298,9 +292,7 @@ export default async function NewsletterUebersicht() {
                           </div>
                           <div>
                             <p className="font-serif text-[22px] leading-none text-ink">
-                              {brief.gruppe === "eingetragen"
-                                ? anteil(z.geklickt, brief.empfaenger)
-                                : z.geklickt}
+                              {anteil(z.geklickt, brief.empfaenger)}
                             </p>
                             <p className="mt-1 text-[12.5px] uppercase tracking-wide text-ink-soft">
                               geklickt

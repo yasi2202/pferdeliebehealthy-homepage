@@ -47,11 +47,6 @@ export default function Auswertung({
   zahlen: Zahlen;
   misst: boolean;
 }) {
-  // Gemessen wird nur bei den Eingetragenen, siehe darfGemessenWerden in
-  // lib/newsletter-server.ts. Ging der Brief an eine andere Gruppe, sind die
-  // Zahlen unten Anzahlen und keine Anteile.
-  const nurEingetragene = brief.gruppe === "eingetragen";
-
   const html = newsletterRahmen(
     textZuHtml(namenEinsetzen(brief.inhalt, "Anna")),
     namenEinsetzen(brief.vorschautext, "Anna"),
@@ -104,67 +99,33 @@ export default function Auswertung({
               </div>
             )}
 
-            {/* ▸ WARUM DIESER KASTEN SEIN MUSS: Gemessen wird nur bei den
-                Eingetragenen, weil nur die eingewilligt haben. Ging der Brief
-                an eine andere Gruppe, bezögen sich die Prozentzahlen unten auf
-                eine Bezugsgrösse, die gar nicht gemessen wurde — und eine
-                Öffnungsrate von zwei Prozent wäre dann kein schlechter
-                Newsletter, sondern eine falsch gerechnete Zahl. Deshalb stehen
-                dort in dem Fall nur die reinen Anzahlen. */}
-            {misst && !nurEingetragene && (
-              <div className="mb-4 rounded-[18px] border border-rose bg-white p-6">
-                <h2 className="mb-2 font-serif text-[20px]">
-                  Gezählt wurde nur bei den Eingetragenen
-                </h2>
-                <p className="text-[14.5px] leading-relaxed text-ink-soft">
-                  Dieser Newsletter ging an die Gruppe „{brief.gruppe}". Messen
-                  darfst du aber nur bei den Menschen, die sich selbst
-                  eingetragen und dabei ausdrücklich zugestimmt haben. Alle
-                  anderen bekommen deine Post als Bestandskundinnen, und diese
-                  Regel erlaubt den Versand, nicht die Messung.
-                </p>
-                <p className="mt-3 text-[14.5px] leading-relaxed text-ink-soft">
-                  Deshalb stehen unten Anzahlen statt Prozent: Ein Anteil wäre
-                  hier eine Zahl, die kleiner aussieht, als es ist.
-                </p>
-              </div>
-            )}
-
             <div className="grid grid-cols-2 gap-4">
               <div className="rounded-[18px] border border-line bg-white p-6">
                 <p className="font-serif text-[38px] leading-none text-ink">
-                  {nurEingetragene
-                    ? anteil(zahlen.geoeffnet, brief.empfaenger)
-                    : zahlen.geoeffnet}
+                  {anteil(zahlen.geoeffnet, brief.empfaenger)}
                 </p>
                 <p className="mt-2 text-[14px] uppercase tracking-wide text-ink-soft">
                   geöffnet
                 </p>
                 <p className="mt-1 text-[13.5px] text-ink-soft">
-                  {nurEingetragene
-                    ? `${zahlen.geoeffnet} von ${brief.empfaenger}`
-                    : "von den Eingetragenen in dieser Runde"}
+                  {zahlen.geoeffnet} von {brief.empfaenger}
                 </p>
               </div>
 
               <div className="rounded-[18px] border border-line bg-white p-6">
                 <p className="font-serif text-[38px] leading-none text-ink">
-                  {nurEingetragene
-                    ? anteil(zahlen.geklickt, brief.empfaenger)
-                    : zahlen.geklickt}
+                  {anteil(zahlen.geklickt, brief.empfaenger)}
                 </p>
                 <p className="mt-2 text-[14px] uppercase tracking-wide text-ink-soft">
                   geklickt
                 </p>
                 <p className="mt-1 text-[13.5px] text-ink-soft">
-                  {nurEingetragene
-                    ? `${zahlen.geklickt} von ${brief.empfaenger}`
-                    : "von den Eingetragenen in dieser Runde"}
+                  {zahlen.geklickt} von {brief.empfaenger}
                 </p>
               </div>
             </div>
 
-            {misst && nurEingetragene && (
+            {misst && (
             <p className="mt-4 rounded-[16px] border border-line bg-white p-5 text-[14.5px] leading-relaxed text-ink-soft">
               <strong className="text-ink">Zur Einordnung:</strong> Bei einem
               Verteiler wie deinem, der sich selbst eingetragen hat, sind 35
