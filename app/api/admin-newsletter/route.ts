@@ -33,7 +33,7 @@ import { GRUPPEN, type GruppenSchluessel } from "@/lib/newsletter-gruppen";
 // ---------------------------------------------------------------------------
 
 export const runtime = "nodejs";
-export const maxDuration = 60;
+export const maxDuration = 300;
 
 async function gesperrt() {
   return Response.json({ fehler: "Nicht angemeldet." }, { status: 401 });
@@ -122,9 +122,17 @@ export async function POST(request: Request) {
           ? ` ${ergebnis.uebersprungen} unbrauchbare Adressen wurden übersprungen.`
           : "";
 
+      // Die von Resend zurückgewiesenen Adressen werden benannt, nicht nur
+      // gezählt. Nur so kann Yasemin sie in Supabase korrigieren — meist ist
+      // es ein Leerzeichen mitten in der Adresse.
+      const zurueckgewiesen =
+        ergebnis.abgelehnt && ergebnis.abgelehnt.length > 0
+          ? ` Diese Adressen hat Resend nicht angenommen, sie gehören korrigiert: ${ergebnis.abgelehnt.join(", ")}`
+          : "";
+
       return Response.json({
         ok: true,
-        text: `Der Newsletter ist an ${ergebnis.empfaenger} Adressen rausgegangen.${nachsatz}`,
+        text: `Der Newsletter ist an ${ergebnis.empfaenger} Adressen rausgegangen.${nachsatz}${zurueckgewiesen}`,
       });
     }
 

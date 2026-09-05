@@ -16,6 +16,11 @@ import {
   type Brief,
   type Empfaenger,
 } from "@/lib/newsletter";
+import {
+  buendelSenden,
+  antwortEinordnen,
+  type BuendelAntwort,
+} from "@/lib/newsletter-buendel";
 import { vorlageFinden } from "@/lib/newsletter-vorlagen";
 import {
   empfaengerDerGruppe,
@@ -38,6 +43,10 @@ const VON = "Yasi von Pferdeliebehealthy <info@updates.pferdeliebehealthy.de>";
  *  liefe der Versand bei einem wachsenden Verteiler in die Zeitbegrenzung
  *  von Vercel — in Bündeln bleibt er auch bei tausend Adressen schnell. */
 const BUENDEL = 100;
+
+/** Millisekunden zwischen zwei Anfragen an Resend. Resend nimmt zwei je
+ *  Sekunde an; 600 lässt Luft für den Weg hin und zurück. */
+const PAUSE = 600;
 
 /** Öffnungen und Klicks mitzählen?
  *
@@ -265,6 +274,41 @@ export async function terminSetzen(
     : { ok: false, text: "Der Termin liess sich nicht speichern." };
 }
 
+/** Holt Briefe zurück, die beim Versand steckengeblieben sind.
+ *
+ *  ▸ WOZU: Bricht der Versand mitten im Lauf ab, weil Vercel die Zeit
+ *    abschneidet oder der Server neu startet, bleibt der Brief auf `laeuft`
+ *    stehen. Er wäre damit für immer aus dem Rennen: nicht versendet, aber
+ *    auch nicht mehr fällig. Niemand würde es merken, bis jemand die
+ *    Übersicht anschaut.
+ *
+ *  ▸ WARUM ZWANZIG MINUTEN: Der Versand darf höchstens fünf Minuten dauern
+ *    (`maxDuration = 300`). Was zwanzig Minuten auf `laeuft` steht, läuft
+ *    also mit Sicherheit nicht mehr. Die Spanne ist bewusst großzügig — ein
+ *    zu früher Rückholer würde einen noch laufenden Versand ein zweites Mal
+ *    starten, und dann bekäme der halbe Verteiler alles doppelt. */
+async function haengerFreigeben(): Promise<void> {
+  const grenze = new Date(Date.now() - 20 * 60_000).toISOString();
+
+  const res = await supabase(
+    `newsletter_briefe?status=eq.laeuft&geaendert_am=lt.${encodeURIComponent(grenze)}`,
+    {
+      method: "PATCH",
+      headers: { Prefer: "return=representation" },
+      body: JSON.stringify({ status: "geplant" }),
+    }
+  );
+
+  if (!res.ok) return;
+  const zeilen = await res.json().catch(() => null);
+  if (Array.isArray(zeilen) && zeilen.length > 0) {
+    console.error(
+      "Terminlauf: steckengebliebene Briefe zurückgeholt:",
+      zeilen.map((z: Brief) => z.betreff).join(", ")
+    );
+  }
+}
+
 /** Alle Briefe, deren Termin erreicht ist. */
 async function faelligeBriefe(): Promise<Brief[] | null> {
   const jetzt = encodeURIComponent(new Date().toISOString());
@@ -288,7 +332,9 @@ async function briefBeanspruchen(id: string): Promise<boolean> {
     {
       method: "PATCH",
       headers: { Prefer: "return=representation" },
-      body: JSON.stringify({ status: "laeuft" }),
+      // `geaendert_am` ist hier die Startuhr des Versands:
+      // `haengerFreigeben` liest daran ab, ob dieser Lauf noch leben kann.
+      body: JSON.stringify({ status: "laeuft", geaendert_am: new Date().toISOString() }),
     }
   );
   if (!res.ok) return false;
@@ -318,6 +364,10 @@ export type TerminErgebnis = {
 
 /** Der Lauf, den der Cron aufruft: verschickt alles, was fällig ist. */
 export async function terminLauf(basisUrl: string): Promise<TerminErgebnis[]> {
+  // Zuerst aufräumen: Was beim letzten Mal steckengeblieben ist, kommt
+  // zurück ins Rennen, bevor geschaut wird, was ansteht.
+  await haengerFreigeben();
+
   const faellig = await faelligeBriefe();
 
   // Keine leere Liste bei einem Fehler: Ein nicht erreichbares Supabase sieht
@@ -568,7 +618,13 @@ function warte(ms: number): Promise<void> {
 }
 
 export type VersandErgebnis =
-  | { ok: true; empfaenger: number; uebersprungen: number }
+  | {
+      ok: true;
+      empfaenger: number;
+      uebersprungen: number;
+      /** Adressen, die Resend nicht angenommen hat. Die gehören korrigiert. */
+      abgelehnt?: string[];
+    }
   | {
       ok: false;
       grund: "schon-versendet" | "keine-empfaenger" | "unvollstaendig" | "fehler";
@@ -676,54 +732,92 @@ export async function briefVersenden(
     };
   }
 
+  /** Schickt einen Teil des Verteilers wirklich los.
+   *
+   *  Gibt keinen Erfolg und keinen Fehler zurück, sondern eine der drei
+   *  Antworten aus lib/newsletter-buendel.ts. Nur so kann die Aufteilung
+   *  darüber entscheiden, ob Halbieren hilft oder schadet. */
+  async function anResend(teil: Empfaenger[]): Promise<BuendelAntwort> {
+    let antwort: Response;
+    try {
+      antwort = await fetch("https://api.resend.com/emails/batch", {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${RESEND_API_KEY}`,
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(
+          teil.map((e) => {
+            const gebaut = mailBauen(brief, e, basisUrl);
+            return {
+              from: VON,
+              to: [e.email],
+              reply_to: ANTWORT_AN,
+              subject: gebaut.betreff,
+              // Sagt dem Postfach, wo man sich abmeldet. Manche zeigen dafür
+              // einen eigenen Knopf — das ist deutlich besser, als wenn
+              // jemand stattdessen auf „Spam" drückt.
+              headers: {
+                "List-Unsubscribe": `<${gebaut.abmeldenEinKlick}>`,
+                "List-Unsubscribe-Post": "List-Unsubscribe=One-Click",
+              },
+              html: gebaut.html,
+            };
+          })
+        ),
+      });
+    } catch (e) {
+      // Netzwerk weg. Das ist kein Adressproblem, also später noch einmal.
+      return { art: "spaeter", text: `Keine Verbindung zu Resend. ${e}` };
+    }
+
+    if (antwort.ok) return { art: "ok" };
+    return antwortEinordnen(antwort.status, (await antwort.text()).slice(0, 200));
+  }
+
   let verschickt = 0;
   let fehler: string | null = null;
   let hintereinander = 0;
+  const abgelehnt: string[] = [];
 
   for (let i = 0; i < geholt.liste.length; i += BUENDEL) {
     // Resend nimmt zwei Anfragen pro Sekunde entgegen. Ohne Pause laufen
     // wir bei elf Bündeln in die Bremse.
-    if (i > 0) await warte(600);
+    if (i > 0) await warte(PAUSE);
 
     const buendel = geholt.liste.slice(i, i + BUENDEL);
 
-    const antwort = await fetch("https://api.resend.com/emails/batch", {
-      method: "POST",
-      headers: {
-        Authorization: `Bearer ${RESEND_API_KEY}`,
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(
-        buendel.map((e) => {
-          const gebaut = mailBauen(brief, e, basisUrl);
-          return {
-            from: VON,
-            to: [e.email],
-            reply_to: ANTWORT_AN,
-            subject: gebaut.betreff,
-            // Sagt dem Postfach, wo man sich abmeldet. Manche zeigen dafür
-            // einen eigenen Knopf — das ist deutlich besser, als wenn
-            // jemand stattdessen auf „Spam" drückt.
-            headers: {
-              "List-Unsubscribe": `<${gebaut.abmeldenEinKlick}>`,
-              "List-Unsubscribe-Post": "List-Unsubscribe=One-Click",
-            },
-            html: gebaut.html,
-          };
-        })
-      ),
-    });
+    // ▸ HIER STECKT DIE RETTUNG FÜR HUNDERT FRAUEN AUF EINMAL. Weist Resend
+    //   das Bündel wegen einer einzigen faulen Adresse zurück, teilt
+    //   `buendelSenden` es auf und schickt den heilen Teil trotzdem. Vorher
+    //   fielen an dieser Stelle alle hundert aus, siehe den Kopf von
+    //   lib/newsletter-buendel.ts.
+    const ergebnis = await buendelSenden(
+      buendel,
+      (e) => e.email,
+      anResend,
+      warte,
+      PAUSE
+    );
 
-    if (!antwort.ok) {
-      const text = (await antwort.text()).slice(0, 300);
-      console.error("Newsletter-Versand fehlgeschlagen:", antwort.status, text);
-      fehler ??= `${antwort.status} — ${text}`;
-      if (++hintereinander >= 2) break;
-      continue;
+    verschickt += ergebnis.verschickt;
+    abgelehnt.push(...ergebnis.abgelehnt);
+    if (ergebnis.fehler) fehler ??= ergebnis.fehler;
+
+    if (ergebnis.abgelehnt.length > 0) {
+      console.error(
+        "Newsletter: Resend nimmt diese Adressen nicht an:",
+        ergebnis.abgelehnt.join(", ")
+      );
     }
 
-    hintereinander = 0;
-    verschickt += buendel.length;
+    // Geht aus einem Bündel gar nichts raus, ist womöglich etwas
+    // Grundsätzliches kaputt. Zweimal hintereinander, dann ist Schluss.
+    if (ergebnis.verschickt === 0) {
+      if (++hintereinander >= 2) break;
+    } else {
+      hintereinander = 0;
+    }
   }
 
   if (verschickt === 0) {
@@ -746,11 +840,19 @@ export async function briefVersenden(
       status: "versendet",
       versendet_am: new Date().toISOString(),
       empfaenger: verschickt,
-      uebersprungen: geholt.aussortiert.length,
+      // Die von Resend abgelehnten zählen mit: Für Yasemin ist es dasselbe,
+      // ob eine Adresse vorher aussortiert oder nachher zurückgewiesen
+      // wurde. Beide haben die Mail nicht bekommen.
+      uebersprungen: geholt.aussortiert.length + abgelehnt.length,
     }),
   });
 
-  return { ok: true, empfaenger: verschickt, uebersprungen: geholt.aussortiert.length };
+  return {
+    ok: true,
+    empfaenger: verschickt,
+    uebersprungen: geholt.aussortiert.length + abgelehnt.length,
+    abgelehnt,
+  };
 }
 
 // ---------------------------------------------------------------------------

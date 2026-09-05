@@ -35,7 +35,10 @@ import { seitenUrl } from "@/lib/seo";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
-export const maxDuration = 60;
+// 300 statt 60: Ein zurueckgewiesenes Buendel wird aufgeteilt, und jede
+// zusaetzliche Anfrage kostet ihre Pause. Bei drei faulen Adressen im
+// Verteiler sind das schnell vierzig Sekunden obendrauf.
+export const maxDuration = 300;
 
 export async function GET(request: Request) {
   const schluessel = process.env.CRON_SECRET;
