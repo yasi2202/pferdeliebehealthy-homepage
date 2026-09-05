@@ -47,6 +47,11 @@ export default function Auswertung({
   zahlen: Zahlen;
   misst: boolean;
 }) {
+  // Gemessen wird nur bei den Eingetragenen, siehe darfGemessenWerden in
+  // lib/newsletter-server.ts. Ging der Brief an eine andere Gruppe, sind die
+  // Zahlen unten Anzahlen und keine Anteile.
+  const nurEingetragene = brief.gruppe === "eingetragen";
+
   const html = newsletterRahmen(
     textZuHtml(namenEinsetzen(brief.inhalt, "Anna")),
     namenEinsetzen(brief.vorschautext, "Anna"),
@@ -83,21 +88,44 @@ export default function Auswertung({
                   Gemessen wird gerade nicht
                 </h2>
                 <p className="text-[14.5px] leading-relaxed text-ink-soft">
-                  Deshalb stehen unten Nullen. Das ist kein Fehler: In deiner
-                  Datenschutzerklärung steht wörtlich, dass du kein
-                  Öffnungs-Tracking einsetzt. Solange dieser Satz dort steht,
-                  wäre das Messen ein Widerspruch zu deiner eigenen Zusage.
-                </p>
-                <p className="mt-3 text-[14.5px] leading-relaxed text-ink-soft">
-                  Willst du die Zahlen haben, muss zuerst der Abschnitt
-                  „Speicherung und Versand" in der Datenschutzerklärung
-                  angepasst und beim Anmeldeformular ein Hinweis ergänzt
-                  werden. Danach steht in{" "}
+                  Deshalb stehen unten Nullen. Das ist kein Fehler, sondern der
+                  Schalter{" "}
+                  <code className="rounded bg-cream-deep px-1.5 py-0.5 text-[13.5px]">
+                    MESSEN
+                  </code>{" "}
+                  in{" "}
                   <code className="rounded bg-cream-deep px-1.5 py-0.5 text-[13.5px]">
                     lib/newsletter-server.ts
-                  </code>{" "}
-                  ganz oben ein Schalter, der es einschaltet. Die ganze
-                  Anleitung steht als Kommentar daneben.
+                  </code>
+                  . Wird er umgelegt, müssen die Datenschutzerklärung und der
+                  Satz im Anmeldeformular dazu passen. Was zusammengehört,
+                  steht als Kommentar daneben.
+                </p>
+              </div>
+            )}
+
+            {/* ▸ WARUM DIESER KASTEN SEIN MUSS: Gemessen wird nur bei den
+                Eingetragenen, weil nur die eingewilligt haben. Ging der Brief
+                an eine andere Gruppe, bezögen sich die Prozentzahlen unten auf
+                eine Bezugsgrösse, die gar nicht gemessen wurde — und eine
+                Öffnungsrate von zwei Prozent wäre dann kein schlechter
+                Newsletter, sondern eine falsch gerechnete Zahl. Deshalb stehen
+                dort in dem Fall nur die reinen Anzahlen. */}
+            {misst && !nurEingetragene && (
+              <div className="mb-4 rounded-[18px] border border-rose bg-white p-6">
+                <h2 className="mb-2 font-serif text-[20px]">
+                  Gezählt wurde nur bei den Eingetragenen
+                </h2>
+                <p className="text-[14.5px] leading-relaxed text-ink-soft">
+                  Dieser Newsletter ging an die Gruppe „{brief.gruppe}". Messen
+                  darfst du aber nur bei den Menschen, die sich selbst
+                  eingetragen und dabei ausdrücklich zugestimmt haben. Alle
+                  anderen bekommen deine Post als Bestandskundinnen, und diese
+                  Regel erlaubt den Versand, nicht die Messung.
+                </p>
+                <p className="mt-3 text-[14.5px] leading-relaxed text-ink-soft">
+                  Deshalb stehen unten Anzahlen statt Prozent: Ein Anteil wäre
+                  hier eine Zahl, die kleiner aussieht, als es ist.
                 </p>
               </div>
             )}
@@ -105,30 +133,38 @@ export default function Auswertung({
             <div className="grid grid-cols-2 gap-4">
               <div className="rounded-[18px] border border-line bg-white p-6">
                 <p className="font-serif text-[38px] leading-none text-ink">
-                  {anteil(zahlen.geoeffnet, brief.empfaenger)}
+                  {nurEingetragene
+                    ? anteil(zahlen.geoeffnet, brief.empfaenger)
+                    : zahlen.geoeffnet}
                 </p>
                 <p className="mt-2 text-[14px] uppercase tracking-wide text-ink-soft">
                   geöffnet
                 </p>
                 <p className="mt-1 text-[13.5px] text-ink-soft">
-                  {zahlen.geoeffnet} von {brief.empfaenger}
+                  {nurEingetragene
+                    ? `${zahlen.geoeffnet} von ${brief.empfaenger}`
+                    : "von den Eingetragenen in dieser Runde"}
                 </p>
               </div>
 
               <div className="rounded-[18px] border border-line bg-white p-6">
                 <p className="font-serif text-[38px] leading-none text-ink">
-                  {anteil(zahlen.geklickt, brief.empfaenger)}
+                  {nurEingetragene
+                    ? anteil(zahlen.geklickt, brief.empfaenger)
+                    : zahlen.geklickt}
                 </p>
                 <p className="mt-2 text-[14px] uppercase tracking-wide text-ink-soft">
                   geklickt
                 </p>
                 <p className="mt-1 text-[13.5px] text-ink-soft">
-                  {zahlen.geklickt} von {brief.empfaenger}
+                  {nurEingetragene
+                    ? `${zahlen.geklickt} von ${brief.empfaenger}`
+                    : "von den Eingetragenen in dieser Runde"}
                 </p>
               </div>
             </div>
 
-            {misst && (
+            {misst && nurEingetragene && (
             <p className="mt-4 rounded-[16px] border border-line bg-white p-5 text-[14.5px] leading-relaxed text-ink-soft">
               <strong className="text-ink">Zur Einordnung:</strong> Bei einem
               Verteiler wie deinem, der sich selbst eingetragen hat, sind 35

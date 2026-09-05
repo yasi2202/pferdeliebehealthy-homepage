@@ -50,35 +50,51 @@ const PAUSE = 600;
 
 /** Öffnungen und Klicks mitzählen?
  *
- *  ▸ STEHT BEWUSST AUF `false`, UND DAS MUSST DU LESEN, BEVOR DU ES
- *    UMSTELLST.
+ *  ▸ SEIT DEM 05.09.2026 EINGESCHALTET, auf Yasemins Wunsch. Vorher stand
+ *    hier `false`, weil die Datenschutzerklärung das Gegenteil zusagte.
  *
- *    In deiner eigenen Datenschutzerklärung steht wörtlich der Satz:
- *    „Ein Tracking-Pixel oder Öffnungs-Tracking setzen wir nicht ein."
- *    (app/datenschutz/page.tsx, Abschnitt „Speicherung und Versand").
+ *  ▸ WAS DAZU GEHÖRT UND NICHT AUSEINANDERFALLEN DARF:
+ *    1. app/datenschutz/page.tsx, Abschnitt „Öffnungs- und Klickmessung im
+ *       Newsletter": beschreibt Bildpunkt, Zählstelle, was gespeichert wird,
+ *       wie lange, und den Widerruf.
+ *    2. components/InsiderFormular.tsx: Der Satz im Häkchen nennt die
+ *       Messung. Ohne ihn deckt die Einwilligung sie nicht.
+ *    3. Dieser Schalter.
  *
- *    Würde hier `true` stehen, wäre dieser Satz falsch — und eine falsche
- *    Aussage in der Datenschutzerklärung ist schlimmer als gar keine. Das
- *    ist genau die Art Widerspruch, die abgemahnt wird.
+ *    Wer eines davon ändert, muss die anderen mitändern. Eine
+ *    Datenschutzerklärung, die etwas anderes sagt als das Programm tut, ist
+ *    schlimmer als gar keine, und genau das wird abgemahnt.
  *
- *  ▸ SO SCHALTEST DU ES EIN, in dieser Reihenfolge:
- *    1. Den Satz oben in der Datenschutzerklärung ersetzen durch eine
- *       Beschreibung dessen, was wirklich passiert: dass ein unsichtbarer
- *       Bildpunkt die Öffnung meldet, dass Links über eine eigene
- *       Zählstelle laufen, wozu du das auswertest und wie lange du es
- *       aufbewahrst.
- *    2. Beim Anmeldeformular einen Hinweis ergänzen — die Einwilligung
- *       muss die Messung mit umfassen.
- *    3. Beides von deiner Rechtsberatung beim Händlerbund gegenlesen
- *       lassen, die ist in der Mitgliedschaft drin.
- *    4. Erst dann hier `true` eintragen.
+ *  ▸ NOCH OFFEN: Die beiden Texte gehören von der Rechtsberatung beim
+ *    Händlerbund gegengelesen (in der Mitgliedschaft enthalten). Das ist der
+ *    einzige Schritt der alten Anleitung, der noch aussteht.
  *
- *    Bis dahin läuft alles andere ganz normal. Es bleiben nur die beiden
- *    Zahlen „geöffnet" und „geklickt" leer. */
-const MESSEN = false;
+ *  ▸ ES WIRD NICHT BEI ALLEN GEMESSEN, siehe `darfGemessenWerden`. */
+const MESSEN = true;
 
-/** Damit die Auswertungsseite erklären kann, warum dort Nullen stehen,
- *  statt so zu tun, als hätte niemand die Mail geöffnet. */
+/** Bei wem darf gemessen werden?
+ *
+ *  ▸ NUR BEI DEN EINGETRAGENEN, und das ist keine Vorsicht, sondern der
+ *    Unterschied zwischen zwei Rechtsgrundlagen. Wer sich selbst eingetragen
+ *    und bestätigt hat, hat eingewilligt, und das Häkchen im Formular nennt
+ *    die Messung ausdrücklich.
+ *
+ *    Die anderen drei Gruppen bekommen ihre Post als Bestandskundinnen
+ *    (§ 7 Abs. 3 UWG). Diese Regel erlaubt den VERSAND eigener ähnlicher
+ *    Angebote, sie ersetzt aber keine Einwilligung in eine Messung. Für den
+ *    Bildpunkt und die Zählstelle verlangen Art. 6 Abs. 1 lit. a DSGVO und
+ *    § 25 Abs. 1 TDDDG ein ausdrückliches Ja, und das haben diese Menschen
+ *    nie gegeben.
+ *
+ *    Folge, damit die Zahlen richtig gelesen werden: Bei einem Rundbrief an
+ *    „alle" zählen nur die Eingetragenen mit. Die Öffnungsrate bezieht sich
+ *    also auf einen kleinen Teil des Verteilers, nicht auf alle. Genau so
+ *    steht es auch auf der Auswertungsseite. */
+export function darfGemessenWerden(gruppe?: string): boolean {
+  return MESSEN && (!gruppe || gruppe === "eingetragen");
+}
+
+/** Damit die Auswertungsseite erklären kann, was die Zahlen bedeuten. */
 export function messungAn(): boolean {
   return MESSEN;
 }
@@ -519,6 +535,35 @@ export async function ereignisSpeichern(
   });
 }
 
+/** Löscht Öffnungen und Klicks, die älter als ein Jahr sind.
+ *
+ *  ▸ DAS IST KEINE AUFRÄUMARBEIT, SONDERN EINE ZUSAGE. In der
+ *    Datenschutzerklärung steht unter „Öffnungs- und Klickmessung im
+ *    Newsletter" wörtlich: „Wir löschen diese Daten spätestens zwölf Monate
+ *    nach dem Versand." Ohne diese Funktion wäre das eine Behauptung, die
+ *    niemand einlöst — und damit derselbe Widerspruch, wegen dem die Messung
+ *    vorher ganz abgeschaltet war.
+ *
+ *  ▸ Läuft im täglichen Streckenlauf mit. Ein Tag Verzug schadet nicht, die
+ *    Zusage sagt „spätestens zwölf Monate", nicht „auf die Stunde genau". */
+export async function alteEreignisseLoeschen(): Promise<number> {
+  const grenze = new Date(Date.now() - 365 * 24 * 60 * 60_000).toISOString();
+
+  const res = await supabase(
+    `newsletter_ereignisse?zeitpunkt=lt.${encodeURIComponent(grenze)}`,
+    { method: "DELETE", headers: { Prefer: "return=representation" } }
+  );
+  if (!res.ok) {
+    console.error("Alte Messwerte liessen sich nicht löschen:", res.status);
+    return 0;
+  }
+
+  const zeilen = await res.json().catch(() => null);
+  const anzahl = Array.isArray(zeilen) ? zeilen.length : 0;
+  if (anzahl > 0) console.log(`${anzahl} Messwerte älter als ein Jahr gelöscht.`);
+  return anzahl;
+}
+
 export type Auswertung = {
   geoeffnet: number;
   geklickt: number;
@@ -601,7 +646,11 @@ export function mailBauen(
     herkunftFuerGruppe(brief.gruppe)
   );
 
-  if (optionen.messen !== false) {
+  // Die Gruppe entscheidet mit, nicht nur der Schalter: Ohne Einwilligung
+  // kein Bildpunkt und keine Zählstelle. Siehe `darfGemessenWerden`.
+  const messen = optionen.messen ?? darfGemessenWerden(brief.gruppe);
+
+  if (messen) {
     html = klicksZaehlen(html, brief.id, empfaenger.email, basisUrl);
     html += zaehlpixel(brief.id, empfaenger.email, basisUrl);
   }

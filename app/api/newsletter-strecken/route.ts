@@ -1,4 +1,5 @@
 import { streckenLauf } from "@/lib/newsletter-strecken";
+import { alteEreignisseLoeschen } from "@/lib/newsletter-server";
 import { seitenUrl } from "@/lib/seo";
 
 // ---------------------------------------------------------------------------
@@ -42,6 +43,11 @@ export async function GET(request: Request) {
   if (kopf !== `Bearer ${schluessel}`) {
     return Response.json({ fehler: "Nicht erlaubt." }, { status: 401 });
   }
+
+  // Hängt hier mit dran, weil dieser Lauf der einzige ist, der genau einmal
+  // am Tag kommt. Die Zwölfmonatsfrist steht als Zusage in der
+  // Datenschutzerklärung, siehe alteEreignisseLoeschen.
+  await alteEreignisseLoeschen();
 
   const ergebnisse = await streckenLauf(seitenUrl);
 

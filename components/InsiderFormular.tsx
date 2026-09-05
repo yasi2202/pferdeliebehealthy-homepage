@@ -160,9 +160,16 @@ export default function InsiderFormular({
             onChange={(e) => setEinwilligung(e.target.checked)}
             className="mt-1 w-[18px] h-[18px] shrink-0 cursor-pointer accent-rose-deep"
           />
+          {/* ▸ DER SATZ ZUR MESSUNG MUSS HIER STEHEN BLEIBEN, solange
+              `MESSEN` in lib/newsletter-server.ts eingeschaltet ist. Die
+              Einwilligung muss die Messung mit umfassen, sonst trägt sie
+              nicht. Wird die Messung abgeschaltet, gehört der Satz wieder
+              raus, zusammen mit dem Abschnitt in der Datenschutzerklärung. */}
           <span>
-            Ja, schick mir Fütterungswissen per Mail. Ich kann mich jederzeit
-            wieder abmelden.{" "}
+            Ja, schick mir Fütterungswissen per Mail. Ich bin damit
+            einverstanden, dass ausgewertet wird, ob ich die Mails öffne und
+            welche Links ich anklicke. Ich kann mich jederzeit wieder
+            abmelden.{" "}
             <a
               href="/datenschutz"
               target="_blank"

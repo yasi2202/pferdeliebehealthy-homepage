@@ -249,8 +249,7 @@ export default function Datenschutz() {
         E-Mails nutzen wir Resend, Inc., USA. Beide Anbieter verarbeiten die
         Daten in unserem Auftrag auf Grundlage eines
         Auftragsverarbeitungsvertrags; die Übermittlung in die USA erfolgt auf
-        Grundlage von Standardvertragsklauseln. Ein Tracking-Pixel oder
-        Öffnungs-Tracking setzen wir nicht ein. Nähere Informationen unter{" "}
+        Grundlage von Standardvertragsklauseln. Nähere Informationen unter{" "}
         <a href="https://supabase.com/privacy" target="_blank" rel="noopener">
           supabase.com/privacy
         </a>{" "}
@@ -259,6 +258,41 @@ export default function Datenschutz() {
           resend.com/legal/privacy-policy
         </a>
         .
+      </p>
+
+      {/* ▸ DIESER ABSCHNITT UND DER SCHALTER `MESSEN` IN
+          lib/newsletter-server.ts GEHÖREN ZUSAMMEN. Wird dort abgeschaltet,
+          muss hier stehen, dass nicht gemessen wird, und umgekehrt. Eine
+          Datenschutzerklärung, die etwas anderes sagt als das Programm tut,
+          ist schlimmer als gar keine. */}
+      <h3>Öffnungs- und Klickmessung im Newsletter</h3>
+      <p>
+        Haben Sie bei der Anmeldung ausdrücklich eingewilligt, werten wir aus,
+        ob und wann Sie unsere Newsletter öffnen und welche Links Sie darin
+        anklicken. Dazu enthält die E-Mail einen unsichtbaren Bildpunkt, der
+        beim Öffnen von unserem Server geladen wird, und die enthaltenen Links
+        führen über eine Zählstelle auf unserer eigenen Seite, die Sie
+        anschliessend sofort an das eigentliche Ziel weiterleitet.
+      </p>
+      <p>
+        Gespeichert werden dabei Ihre E-Mail-Adresse, um welchen Newsletter es
+        ging, ob es sich um eine Öffnung oder einen Klick handelte, bei einem
+        Klick die angeklickte Adresse, sowie der Zeitpunkt. Ihre IP-Adresse
+        und Angaben zu Ihrem Gerät speichern wir dabei nicht. Wir nutzen diese
+        Auswertung ausschliesslich, um unsere eigenen Inhalte zu verbessern,
+        und geben sie nicht weiter. Wir löschen diese Daten spätestens zwölf
+        Monate nach dem Versand, bei einer Abmeldung unverzüglich.
+      </p>
+      <p>
+        Rechtsgrundlage ist Ihre Einwilligung nach Art. 6 Abs. 1 lit. a DSGVO
+        sowie § 25 Abs. 1 TDDDG. Sie können sie jederzeit für die Zukunft
+        widerrufen, formlos per Nachricht an die im Impressum genannte Adresse
+        oder über den Abmeldelink in jeder E-Mail. Ohne diese Einwilligung
+        erhalten Sie unsere E-Mails ohne Bildpunkt und ohne Zählstelle; das ist
+        insbesondere bei allen Empfängerinnen und Empfängern der Fall, die
+        unsere Post als Bestandskundinnen und Bestandskunden bekommen, ohne
+        sich selbst eingetragen zu haben. Am Bezug des Newsletters ändert ein
+        Widerruf nichts.
       </p>
 
       <h3>Direktwerbung per E-Mail</h3>
