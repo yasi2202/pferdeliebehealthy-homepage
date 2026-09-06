@@ -33,6 +33,10 @@ type Frage = { frage: string; antwort: string };
 function fragenZu(produkt: DigitalProdukt): Frage[] {
   const fernunterricht = produkt.art === "fernunterricht";
   const beratung = produkt.art === "dienstleistung";
+  // ▸ Bei einem Abo ist die Antwort auf "wie lange" eine andere, und die
+  //   Frage nach dem Kündigen kommt dazu. Ohne diese Unterscheidung stünde
+  //   unter einem monatlichen Zugang der Satz "es ist kein Abo".
+  const abo = Boolean(produkt.abo);
 
   const fragen: Frage[] = [
     {
@@ -46,14 +50,36 @@ function fragenZu(produkt: DigitalProdukt): Frage[] {
           "deinen Inhalten. Kein Warten, keine Freischaltung von Hand.",
     },
     {
-      frage: "Wie lange kann ich darauf zugreifen?",
-      antwort: beratung
-        ? "Deine Unterlagen bleiben dauerhaft in deinem Bereich, auch nach " +
-          "Ende der Begleitung. Sie laufen nicht ab."
-        : "Dauerhaft. Es ist kein Abo, du zahlst einmal. Auch beim nächsten " +
-          "Pferd oder in zwei Jahren kannst du wieder nachlesen, " +
-          "Verbesserungen inbegriffen.",
+      frage: abo
+        ? "Wie lange läuft das, und wie komme ich wieder raus?"
+        : "Wie lange kann ich darauf zugreifen?",
+      antwort: abo
+        ? "Der Zugang verlängert sich jeden Monat, solange du ihn willst. " +
+          "Es gibt keine Mindestlaufzeit und keine Kündigungsfrist: Du " +
+          "kündigst unter „Verträge kündigen“ in der Fusszeile, mit einem " +
+          "Klick und ohne dich anzumelden. Der bezahlte Monat läuft dann noch " +
+          "zu Ende, danach wird nichts mehr abgebucht."
+        : beratung
+          ? "Deine Unterlagen bleiben dauerhaft in deinem Bereich, auch nach " +
+            "Ende der Begleitung. Sie laufen nicht ab."
+          : "Dauerhaft. Es ist kein Abo, du zahlst einmal. Auch beim nächsten " +
+            "Pferd oder in zwei Jahren kannst du wieder nachlesen, " +
+            "Verbesserungen inbegriffen.",
     },
+    // ▸ Die drängendste Frage bei einem Werkzeug, in dem Kundendaten liegen.
+    //   Sie kommt vor der Bezahlfrage, weil sie über den Kauf entscheidet.
+    ...(abo
+      ? [
+          {
+            frage: "Was passiert mit meinen Daten, wenn ich kündige?",
+            antwort:
+              "Solange dein Zugang läuft, kannst du deine Kundinnen und ihre " +
+              "Unterlagen jederzeit als Datei herunterladen. Nach einer " +
+              "Kündigung bekommst du sie auf Anfrage, ich lösche nichts " +
+              "überstürzt. Es sind deine Daten, nicht meine.",
+          },
+        ]
+      : []),
     {
       frage: "Womit kann ich bezahlen?",
       antwort:
@@ -62,9 +88,11 @@ function fragenZu(produkt: DigitalProdukt): Frage[] {
     },
     {
       frage: "Bekomme ich eine Rechnung?",
-      antwort:
-        "Ja, automatisch per Mail, mit ausgewiesener Mehrwertsteuer und " +
-        "fortlaufender Rechnungsnummer. Für alle, die das absetzen möchten.",
+      antwort: abo
+        ? "Ja, für jede monatliche Zahlung, automatisch per Mail und mit " +
+          "ausgewiesener Mehrwertsteuer. Für alle, die das absetzen möchten."
+        : "Ja, automatisch per Mail, mit ausgewiesener Mehrwertsteuer und " +
+          "fortlaufender Rechnungsnummer. Für alle, die das absetzen möchten.",
     },
   ];
 

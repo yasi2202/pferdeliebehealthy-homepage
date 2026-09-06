@@ -82,11 +82,11 @@ Teil oben keine Geschichte, sondern eine Vorschau auf das, was in ein paar
 Monaten auf eurem Schreibtisch liegt.
 
 Deshalb gibt es EquiDesk seit ein paar Tagen auch zu kaufen. Dieselbe Software,
-die ich täglich benutze, nur leer, mit euren Kundinnen darin. Und heute,
-Sonntag, ist der letzte Tag, an dem es das für einmalig 29 Euro gibt. Danach
-kostet es 19 Euro im Monat, und wer jetzt zugreift, zahlt einmal und behält
-es dauerhaft. Zum Vergleich: Praxisprogramme für Tierheilpraxen fangen bei
-48 bis 62 Euro im Monat an, und die Rationsberechnung fehlt dort überall.
+die ich täglich benutze, nur leer, mit euren Kundinnen darin.
+
+{{equidesk-angebot}} Zum Vergleich: Praxisprogramme für Tierheilpraxen
+fangen bei 48 bis 62 Euro im Monat an, und die Rationsberechnung fehlt
+dort überall.
 
 Wenn du kein Pferd berätst, sondern deins fütterst, dann ignorier den Kasten
 unten einfach. Für dich war der Rest gedacht, und der gilt so oder so.

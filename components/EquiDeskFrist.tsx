@@ -21,11 +21,12 @@
 // ---------------------------------------------------------------------------
 
 import { useEffect, useState } from "react";
+import { FRIST, FRIST_TEXT } from "@/lib/equidesk-frist";
 
-/** Sonntag, 6. September 2026, 23:59:59 deutscher Zeit. */
-export const FRIST = "2026-09-06T23:59:59+02:00";
-
-export const FRIST_TEXT = "Sonntag, 6. September 2026, 23:59 Uhr";
+// Weiterhin von hier aus lesbar, damit bestehende Importe nicht brechen.
+// Die Zeile mit dem Datum steht aber nur noch in lib/equidesk-frist.ts,
+// siehe die Erklärung dort.
+export { FRIST, FRIST_TEXT };
 
 type Rest = { tage: number; std: number; min: number; sek: number } | null;
 
@@ -60,17 +61,13 @@ export default function EquiDeskFrist() {
     return <div className="min-h-[92px] bg-ink-soft" aria-hidden />;
   }
 
+  // ▸ NACH ABLAUF STEHT HIER NICHTS MEHR.
+  //   Früher meldete dieser Balken "das Angebot ist abgelaufen". Seit es den
+  //   Monatszugang gibt, wäre das irreführend: Die Seite darunter verkauft
+  //   ja etwas, und darüber stünde, es sei vorbei. Verschwunden ist nur das
+  //   einmalige Angebot, nicht EquiDesk.
   if (!rest) {
-    return (
-      <div className="bg-ink-soft px-6 py-5 text-center text-cream">
-        <p className="text-[16px]">
-          Das Angebot für Testkundinnen ist am {FRIST_TEXT} abgelaufen.
-        </p>
-        <p className="mt-1 text-[14px] text-cream/70">
-          Schreib mir gerne trotzdem, dann sage ich dir, was gerade möglich ist.
-        </p>
-      </div>
-    );
+    return null;
   }
 
   const felder: [number | string, string][] = [

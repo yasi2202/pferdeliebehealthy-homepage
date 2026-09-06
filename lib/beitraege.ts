@@ -2,6 +2,7 @@ import fs from "node:fs";
 import path from "node:path";
 import matter from "gray-matter";
 import { marked } from "marked";
+import { aktionLaeuft } from "@/lib/equidesk-frist";
 
 // ---------------------------------------------------------------------------
 // Liest die Insider-Beiträge aus dem Ordner `inhalte/insider`.
@@ -149,8 +150,43 @@ export function beitragLesen(slug: string): Beitrag | null {
     frei: istFrei(datum, oeffentlich),
     bild: String(data.bild ?? ""),
     bildText: String(data.bildText ?? ""),
-    html: marked.parse(content, { async: false }) as string,
+    html: platzhalterFuellen(marked.parse(content, { async: false }) as string),
   };
+}
+
+// ---------------------------------------------------------------------------
+// Platzhalter in Beitragstexten
+//
+// ▸ WOZU DAS DA IST
+//   Ein Beitrag bleibt stehen, ein Preis nicht. Der Text über EquiDesk vom
+//   06.09.2026 nannte ein Angebot, das am selben Abend auslief — ab dem
+//   nächsten Morgen hätte dort eine Unwahrheit gestanden, und zwar so lange,
+//   bis es jemandem auffällt.
+//
+//   Statt nachts eine Datei zu ändern, schreibt man in den Beitrag
+//   {{equidesk-angebot}}, und hier wird daraus der Satz, der gerade stimmt.
+//
+// ▸ WANN DAS DER RICHTIGE WEG IST UND WANN NICHT
+//   Nur für Angaben, die sich zu einem bekannten Zeitpunkt ändern, also
+//   Preise und Fristen. Fachliches gehört in den Text: Wer einen Beitrag
+//   liest, soll ihn in der Datei nachlesen können und nicht raten müssen,
+//   was an dieser Stelle gestanden hat.
+//
+// ▸ EIN UNBEKANNTER PLATZHALTER BLEIBT STEHEN, mitsamt den Klammern. Das
+//   ist Absicht: Ein Tippfehler fällt so beim Gegenlesen auf, statt still
+//   eine Lücke in den Text zu reissen.
+// ---------------------------------------------------------------------------
+
+function platzhalterFuellen(html: string): string {
+  return html.replace(/\{\{equidesk-angebot\}\}/g, () =>
+    aktionLaeuft()
+      ? "Und heute, Sonntag, ist der letzte Tag, an dem es das für einmalig " +
+        "29 Euro gibt. Danach kostet es 19 Euro im Monat, und wer jetzt " +
+        "zugreift, zahlt einmal und behält es."
+      : "Es kostet 19 Euro im Monat, monatlich kündbar, ohne Mindestlaufzeit. " +
+        "Wer damals das einmalige Angebot für Testkundinnen genutzt hat, " +
+        "behält es natürlich dauerhaft.",
+  );
 }
 
 /** Für die Anzeige: 24.08.2026 statt 2026-08-24 */

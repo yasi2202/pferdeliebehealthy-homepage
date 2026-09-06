@@ -438,6 +438,12 @@ export default function DigitalKasse({
               )}
               <span className="font-serif text-[26px] tabular-nums">
                 {preisText(zuZahlen)}
+                {/* Beim Abo gehört der Zeitraum an den Preis, nicht in eine
+                    Fussnote darunter. Ein Betrag ohne "im Monat" liest sich
+                    wie ein Gesamtpreis, und genau das wäre er nicht. */}
+                {produkt.abo && (
+                  <span className="text-[16px] text-ink-soft"> / Monat</span>
+                )}
               </span>
             </span>
           </div>
@@ -445,8 +451,29 @@ export default function DigitalKasse({
           <p className="mt-1.5 text-[12.5px] text-ink-soft">
             {zuZahlen === 0
               ? "Mit diesem Code ist nichts zu zahlen. Du bekommst deinen Zugang sofort."
-              : `Einmalig, inklusive ${produkt.mwst} % Mehrwertsteuer. Kein Abo.`}
+              : produkt.abo
+                ? `Jeden Monat ${preisText(produkt.preis)}, inklusive ${produkt.mwst} % Mehrwertsteuer. Keine Mindestlaufzeit.`
+                : `Einmalig, inklusive ${produkt.mwst} % Mehrwertsteuer. Kein Abo.`}
           </p>
+
+          {/* ▸ DER KÜNDIGUNGSHINWEIS GEHÖRT VOR DEN KAUF, NICHT DANACH.
+              Wer eine wiederkehrende Zahlung eingeht, muss vorher wissen, wie
+              er sie wieder los wird. Der Link führt auf dieselbe Seite wie
+              der Pflichtlink in der Fusszeile. */}
+          {produkt.abo && (
+            <p className="mt-2 rounded-lg bg-cream-deep px-3 py-2 text-[12.5px] leading-relaxed text-ink">
+              Der Zugang verlängert sich jeden Monat, bis du kündigst.
+              Kündigen kannst du jederzeit mit einem Klick unter{" "}
+              <a
+                href="/abo-kuendigen"
+                className="underline underline-offset-2"
+              >
+                Verträge kündigen
+              </a>
+              , ohne Anmeldung und ohne Frist. Der bezahlte Monat läuft dann
+              noch zu Ende.
+            </p>
+          )}
 
           {/* Die Frist steht dort, wo der Preis steht, und nicht irgendwo
               weiter oben: Sie gehört zum Preis, nicht zum Produkt. Gezeigt

@@ -109,6 +109,29 @@ export type DigitalProdukt = {
    */
   verkaufBis?: string;
   /**
+   * Ein Abo statt eines Einmalkaufs: monatliche Zahlung, monatlich kündbar.
+   *
+   * ▸ WAS SICH DADURCH ÄNDERT
+   *   `preis` ist dann der Preis PRO MONAT, nicht der Gesamtpreis. Die Kasse
+   *   legt bei Stripe eine Bezahlseite im Modus `subscription` an statt
+   *   `payment`, und Stripe bucht selbstständig weiter ab, bis gekündigt wird.
+   *
+   * ▸ WAS DARAN HÄNGT, UND WARUM DAS NICHT NUR EIN SCHALTER IST
+   *   - Gekündigt werden muss ohne Nachfrage und ohne Anmeldung möglich sein
+   *     (§ 312k BGB, der Kündigungsknopf). Dafür gibt es /abo-kuendigen.
+   *   - Wird gekündigt oder bleibt die Zahlung aus, muss der Zugang wieder
+   *     weg. Das macht app/api/stripe-webhook über `zugangEntziehen`.
+   *   - Wer dasselbe Produkt ZUSÄTZLICH einmalig gekauft hat, behält es
+   *     trotzdem. Diese Prüfung sitzt in `hatDauerkauf` und ist der Grund,
+   *     warum der Entzug nicht einfach den Zugang wegnimmt.
+   */
+  abo?: {
+    intervall: "monat";
+    /** Der Slug des einmaligen Produkts, das denselben Zugang gibt.
+     *  Wer das gekauft hat, verliert bei einer Kündigung nichts. */
+    dauerkaufSlug?: string;
+  };
+  /**
    * Wohin das Angebot auf der Uebersichtsseite gehoert.
    *
    * ▸ Das ist eine THEMATISCHE Einordnung, nicht dieselbe wie `art`. `art`
@@ -950,6 +973,12 @@ export const digitalprodukte: DigitalProdukt[] = [
   {
     slug: "equidesk",
     gruppe: "werkzeug",
+    // Das Testkundinnen-Angebot war befristet und ist am 06.09.2026 um 23:59
+    // ausgelaufen. Die Kasse weist einen Kauf danach ab, sonst waere die
+    // Frist eine Behauptung gewesen (siehe `verkaufBis` oben). Verkauft wird
+    // seitdem `equidesk-abo` fuer 19 Euro im Monat. Die Kaeuferinnen von
+    // damals behalten ihren Zugang dauerhaft, das ist zugesagt.
+    verkaufBis: "2026-09-06",
     name: "EquiDesk · Kundenverwaltung für Futterberaterinnen",
     kurzname: "EquiDesk",
     preis: 2900,
@@ -1007,6 +1036,85 @@ export const digitalprodukte: DigitalProdukt[] = [
       {
         art: "absatz",
         text: "Zum Vergleich: Praxissoftware für Tierheilpraxen beginnt bei 48 bis 62 € im Monat, und die Rationsberechnung fehlt dort überall.",
+      },
+    ],
+    bild: {
+      datei: "/images/equidesk-kundinnen.webp",
+      alt: "Die Kundinnenliste in EquiDesk mit Filtern nach Leistung",
+      breite: 1100,
+      hoehe: 608,
+    },
+  },
+  {
+    // ▸ DAS ERSTE ABO IM HAUS. Was daran anders ist, steht am Feld `abo`
+    //   oben im Typ. Kurz: Stripe bucht monatlich ab, gekündigt wird ohne
+    //   Anmeldung über /abo-kuendigen, und bei Kündigung nimmt der Webhook den
+    //   Zugang wieder weg — aber nur, wenn dieselbe Adresse EquiDesk nicht
+    //   zusätzlich einmalig gekauft hat.
+    slug: "equidesk-abo",
+    gruppe: "werkzeug",
+    name: "EquiDesk im Monatszugang",
+    kurzname: "EquiDesk",
+    preis: 1900,
+    mwst: 19,
+    art: "kurs",
+    abo: { intervall: "monat", dauerkaufSlug: "equidesk" },
+    // KEIN `statt`: Die 29 Euro waren ein einmaliger Kaufpreis, kein
+    // Monatspreis. 19 neben durchgestrichenen 29 zu stellen wäre ein
+    // Vergleich zwischen zwei verschiedenen Dingen.
+    kurz: "Deine Kundinnen, ihre Pferde und die ganze Beratung an einer Stelle.",
+    leistung:
+      "Zugang zu EquiDesk in der Pferdeliebehealthy Akademie, der " +
+      "Kundenverwaltung für die Futterberatung. Monatlich kündbar.",
+    // Trifft die Regel /equidesk/i in akademieapp/lib/produkt-zugang.ts,
+    // genau wie das einmalige Produkt. Geprüft am 06.09.2026 mit
+    // scripts/zugang-pruefen.mjs: keine frühere Regel und keine
+    // NIEMALS-Regel greift auf diesen Namen.
+    akademieName: "EquiDesk im Monatszugang",
+    erwarteterZugang: "equidesk",
+    beschreibung: [
+      {
+        art: "absatz",
+        text: "Du hast die Ausbildung gemacht und fängst an, eigene Kundinnen zu beraten. Und dann sitzt du da: die Anamnese liegt im Postfach, der Futterplan in Word, die Fotos auf dem Handy, die Rechnung in einer Tabelle, und wann du dich noch mal melden wolltest, weißt nur du. Genau da setzt EquiDesk an.",
+      },
+      { art: "ueberschrift", text: "Was drin ist" },
+      {
+        art: "liste",
+        punkte: [
+          "Kundinnen und ihre Pferde mit Haltung, Fütterung, Gesundheit und Medikamenten",
+          "Beratungsverlauf auf einem Zeitstrahl: Erstberatung, Nachkontrolle, Blutbild, Heuanalyse, Telefonat",
+          "Anamnesebogen zum Verschicken, deine Kundin füllt ihn am Handy aus",
+          "Futterpläne mit Nährstoffrechnung nach GfE, dazu ein Blatt für die Stallwand",
+          "Zehn fertige Textbausteine, mit einem Klick eingefügt",
+          "Ein Glossar mit den Fachbegriffen der Futterberatung, zum Nachschlagen und Weitergeben",
+          "Wiedervorlage mit Erinnerung per E-Mail",
+          "Rechnungen mit fortlaufender Nummer, Kleinunternehmerregelung und eigenem Logo",
+          "Nachrichten und Fotos deiner Kundin direkt am Pferd, mit Antwort per Mail",
+          "Datenexport und Löschung je Kundin, dazu ein Muster für den AV-Vertrag",
+        ],
+      },
+      { art: "ueberschrift", text: "Was es nicht kann" },
+      {
+        art: "liste",
+        punkte: [
+          "Keine App zum Herunterladen, EquiDesk läuft im Browser",
+          "Kein Terminkalender mit Online-Buchung, es gibt die Wiedervorlage",
+          "Keine Abrechnung nach GebüH, du schreibst deine Beträge selbst",
+        ],
+      },
+      { art: "ueberschrift", text: "Was es kostet" },
+      {
+        art: "absatz",
+        betont: true,
+        text: "19 € im Monat, monatlich kündbar. Keine Mindestlaufzeit, keine Kündigungsfrist: Du kündigst mit einem Klick, und der Zugang bleibt bis zum Ende des bezahlten Monats.",
+      },
+      {
+        art: "absatz",
+        text: "Zum Vergleich: Praxissoftware für Tierheilpraxen beginnt bei 48 bis 62 € im Monat, und die Rationsberechnung fehlt dort überall.",
+      },
+      {
+        art: "absatz",
+        text: "Deine Daten bleiben deine. Solange dein Zugang läuft, kannst du sie jederzeit als Datei herunterladen, und nach einer Kündigung bekommst du sie auf Anfrage.",
       },
     ],
     bild: {
@@ -1258,6 +1366,41 @@ export const funnel: Funnel[] = [
     // Wer EquiDesk kauft, ist Beraterin und keine Pferdebesitzerin. Deshalb
     // stehen hier Werkzeuge fuer die tägliche Arbeit und keine Ratgeber.
     produkt: "equidesk",
+    upsell: "ratiopro",
+    upsellPreis: 4900,
+    upsellTitel: "Der Plan ist gerechnet. Aber wo probierst du aus?",
+    upsellGrund:
+      "EquiDesk rechnet dir den Futterplan durch, den du schon zusammengestellt " +
+      "hast. Die Arbeit davor ist eine andere: zwei Mineralfutter vergleichen, " +
+      "sehen was passiert, wenn 200 g Cobs dazukommen, in 480 Futtermitteln " +
+      "nach einer Alternative suchen. Dafür ist RatioPro da. Beide greifen auf " +
+      "dieselbe Futtermitteldatenbank zu, du rechnest also nicht zweimal " +
+      "unterschiedlich.",
+    downsell: "symptom-navigator",
+    downsellPreis: 2900,
+    downsellTitel: "Dann vielleicht das, wenn eine Kundin anruft.",
+    downsellGrund:
+      "Eine Kundin schreibt dir von Kotwasser, schuppiger Haut oder einem " +
+      "Pferd, das plötzlich krüsch ist. Im Symptom-Navigator schlägst du das " +
+      "Zeichen nach und siehst, was dahinterstecken kann und was du zuerst " +
+      "fragen solltest. Das ist die Vorarbeit, die in EquiDesk dann als " +
+      "Beratungsverlauf landet.",
+  },
+  {
+    // Dieselbe Kette wie beim einmaligen EquiDesk, nur für den Monatszugang.
+    // Sie muss doppelt stehen, weil `funnelZu` über den Slug sucht.
+    //
+    // ▸ EIN ANGEBOT NACH EINEM ABO-ABSCHLUSS IST HEIKLER als nach einem
+    //   Einmalkauf: Wer sich gerade auf eine monatliche Zahlung eingelassen
+    //   hat, reagiert empfindlich auf ein zweites Angebot. Deshalb bleibt es
+    //   bei denselben zwei Werkzeugen, die inhaltlich dazugehören, und es
+    //   kommt keins dazu.
+    //
+    // ▸ DER EIN-KLICK-KAUF GREIFT HIER NICHT. Bei einem Abo wird keine
+    //   Zahlungsart für später hinterlegt (siehe `bezahlseiteDigitalAnlegen`),
+    //   das Angebot führt also über die normale Bezahlseite. Das ist
+    //   vorgesehen, app/api/upsell fällt von selbst darauf zurück.
+    produkt: "equidesk-abo",
     upsell: "ratiopro",
     upsellPreis: 4900,
     upsellTitel: "Der Plan ist gerechnet. Aber wo probierst du aus?",

@@ -139,6 +139,14 @@ export default function Footer() {
                 Widerrufsrecht
               </Link>
             </li>
+            {/* § 312k BGB verlangt diesen Link auf jeder Seite, gut sichtbar
+                und wortwörtlich so beschriftet. Er darf nicht hinter einer
+                Anmeldung liegen und nicht "Abo verwalten" heissen. */}
+            <li>
+              <Link href="/abo-kuendigen" className="hover:text-ink">
+                Verträge kündigen
+              </Link>
+            </li>
             {shopSichtbar && (
               <li>
                 <Link href="/zahlung-und-versand" className="hover:text-ink">

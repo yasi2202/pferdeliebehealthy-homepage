@@ -8,6 +8,7 @@ import {
   digitalAlsBezahltMarkieren,
   nachDerZahlung,
   zahlungsdatenHolen,
+  zugangEntziehen,
 } from "@/lib/digital-server";
 import { bestellungAufsHandy } from "@/lib/telegram";
 
@@ -26,6 +27,13 @@ import { bestellungAufsHandy } from "@/lib/telegram";
 //   und als Ereignis `checkout.session.completed` auswählen. Stripe zeigt
 //   danach einen Schlüssel, der mit whsec_ beginnt. Der gehört in die
 //   Vercel-Einstellungen als STRIPE_WEBHOOK_SECRET.
+//
+// ▸ SEIT DEM ABO KOMMT EIN ZWEITES EREIGNIS DAZU:
+//   `customer.subscription.deleted` muss beim selben Endpunkt angehakt sein.
+//   Fehlt es, läuft ein gekündigtes Abo unbegrenzt weiter, ohne dass es
+//   jemandem auffällt — die Kündigung selbst funktioniert nämlich, nur der
+//   Zugang bleibt. Wenn eine Kündigung wirkt und der Zugang trotzdem
+//   bestehen bleibt, sieh zuerst hier nach.
 //
 // ▸ Stripe wiederholt eine Nachricht, wenn sie nicht mit 200 beantwortet
 //   wird. Damit dabei keine zweite Bestätigungsmail rausgeht, setzt
@@ -53,6 +61,47 @@ export async function POST(request: Request) {
     ereignis = JSON.parse(koerper);
   } catch {
     return new Response("Ungültige Nachricht", { status: 400 });
+  }
+
+  // ▸ DAS ENDE EINES ABOS
+  //   Stripe schickt das, wenn ein Abo wirklich abgelaufen ist: nach einer
+  //   Kündigung am Ende des bezahlten Monats, oder wenn die Zahlung
+  //   endgültig ausgeblieben ist. Beides bedeutet dasselbe für uns, der
+  //   Zugang muss weg.
+  //
+  //   ▸ WARUM NICHT SCHON BEI DER KÜNDIGUNG: Wer zum Monatsende kündigt,
+  //     hat den laufenden Monat bezahlt. Er gehört ihr bis zum letzten Tag.
+  //
+  //   ▸ DIE ANGABEN STEHEN IN DEN METADATEN DES ABOS, nicht in einer
+  //     Sitzung: Die Sitzung von damals gibt es Monate später nicht mehr.
+  //     Gesetzt werden sie in `bezahlseiteDigitalAnlegen`.
+  if (ereignis.type === "customer.subscription.deleted") {
+    const abo = ereignis.data?.object ?? {};
+    const angaben = (abo.metadata as Record<string, string> | undefined) ?? {};
+    const email = angaben.email;
+    const slug = angaben.slug;
+
+    if (!email || !slug) {
+      // Ohne die beiden Angaben wissen wir nicht, wessen Zugang gemeint ist.
+      // Ein geratener Entzug wäre schlimmer als keiner, deshalb nur ein
+      // Eintrag ins Protokoll -- dort steht die Abo-Kennung zum Nachsehen.
+      console.error(
+        "Stripe-Webhook: Abo beendet, aber ohne Angaben zu Adresse oder Produkt.",
+        abo.id,
+      );
+      return new Response("ok", { status: 200 });
+    }
+
+    await zugangEntziehen({
+      email,
+      slug,
+      grund:
+        abo.cancel_at_period_end === true
+          ? "gekündigt, bezahlter Zeitraum abgelaufen"
+          : "Abo bei Stripe beendet, meist eine ausgebliebene Zahlung",
+    });
+
+    return new Response("ok", { status: 200 });
   }
 
   // Alles andere quittieren wir freundlich, damit Stripe es nicht wiederholt.

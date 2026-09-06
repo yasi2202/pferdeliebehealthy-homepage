@@ -502,8 +502,23 @@ export async function bezahlseiteDigitalAnlegen(opt: {
   /** Wohin es nach der Zahlung geht. */
   weiterNach: string;
 }): Promise<{ url: string; sitzung: string } | { fehler: string }> {
+  // ▸ ABO ODER EINMALKAUF, UND WAS STRIPE DABEI NICHT ZUSAMMEN ERLAUBT
+  //   Bei einem Abo läuft die Bezahlseite im Modus `subscription`. Damit
+  //   verbieten sich drei Dinge, die beim Einmalkauf richtig sind:
+  //     - `payment_intent_data` gibt es nicht, die Angaben gehören in
+  //       `subscription_data`. Stripe weist die Anfrage sonst ab.
+  //     - `customer_creation` ebenso wenig: Ein Abo braucht immer einen
+  //       Kunden, Stripe legt ihn von sich aus an.
+  //     - `setup_future_usage` erübrigt sich, die Zahlungsart wird beim Abo
+  //       ohnehin für die Folgemonate gespeichert.
+  //   Die Angaben in `subscription_data.metadata` sind kein Beiwerk: Nur
+  //   daran erkennt der Webhook später, wessen Zugang bei einer Kündigung
+  //   erlischt. Eine Kündigung kommt Monate nach dem Kauf, da hilft keine
+  //   Sitzung mehr.
+  const abo = opt.produkt.abo;
+
   const ergebnis = await stripeAnfrage("checkout/sessions", {
-    mode: "payment",
+    mode: abo ? "subscription" : "payment",
     locale: "de",
     customer_email: opt.email,
     client_reference_id: opt.nummer,
@@ -512,7 +527,7 @@ export async function bezahlseiteDigitalAnlegen(opt: {
     ...(STRIPE_ZAHLARTEN
       ? { payment_method_configuration: STRIPE_ZAHLARTEN }
       : {}),
-    ...(opt.zahlungsartMerken
+    ...(opt.zahlungsartMerken && !abo
       ? {
           customer_creation: "always",
           // Nur bei Karte. Siehe die Erklärung über dieser Funktion.
@@ -527,6 +542,7 @@ export async function bezahlseiteDigitalAnlegen(opt: {
         price_data: {
           currency: "eur",
           unit_amount: opt.preis,
+          ...(abo ? { recurring: { interval: "month" } } : {}),
           product_data: {
             name: opt.produkt.name,
             description: opt.produkt.leistung,
@@ -537,10 +553,24 @@ export async function bezahlseiteDigitalAnlegen(opt: {
     // Der Webhook erkennt an `art`, dass es kein Paket zu packen gibt,
     // sondern ein Zugang freizuschalten ist.
     metadata: { bestellnummer: opt.nummer, art: "digital" },
-    payment_intent_data: {
-      description: `${opt.produkt.kurzname} (${opt.nummer})`,
-      metadata: { bestellnummer: opt.nummer, art: "digital" },
-    },
+    ...(abo
+      ? {
+          subscription_data: {
+            description: `${opt.produkt.kurzname} (${opt.nummer})`,
+            metadata: {
+              bestellnummer: opt.nummer,
+              art: "digital",
+              slug: opt.produkt.slug,
+              email: opt.email,
+            },
+          },
+        }
+      : {
+          payment_intent_data: {
+            description: `${opt.produkt.kurzname} (${opt.nummer})`,
+            metadata: { bestellnummer: opt.nummer, art: "digital" },
+          },
+        }),
     success_url: opt.weiterNach,
     cancel_url: `${opt.seitenUrl}/kasse/${opt.produkt.slug}`,
   });
@@ -698,6 +728,300 @@ export async function inAkademieFreischalten(opt: {
   } catch (e) {
     return `Die Akademie war nicht erreichbar: ${String(e)}`;
   }
+}
+
+// ---------------------------------------------------------------------------
+// Das Abo: kündigen, und den Zugang wieder wegnehmen
+//
+// ▸ WARUM DAS NICHT EINFACH "ZUGANG WEG" HEISST
+//   EquiDesk gab es vor dem Abo einmalig für 29 Euro, mit der Zusage
+//   "einmal zahlen und behalten". Wer damals gekauft hat und später
+//   zusätzlich ein Abo abschliesst und wieder kündigt, darf den Zugang
+//   NICHT verlieren. Deshalb steht vor jedem Entzug `hatDauerkauf`.
+//
+// ▸ WO DIE ANGABEN HERKOMMEN
+//   Eine Kündigung erreicht uns Monate nach dem Kauf. Die Bezahlseite von
+//   damals gibt es dann längst nicht mehr. Verlassen können wir uns nur auf
+//   `subscription_data.metadata`, das beim Anlegen mitgegeben wurde
+//   (bestellnummer, slug, email). Siehe `bezahlseiteDigitalAnlegen`.
+// ---------------------------------------------------------------------------
+
+/** Hat diese Adresse dasselbe Produkt schon einmal dauerhaft gekauft?
+ *
+ *  Gibt bei einem Fehler bewusst `true` zurück: Wer nicht sicher weiß, ob
+ *  jemand den Zugang bezahlt hat, nimmt ihn nicht weg. Ein Monat zu viel
+ *  Zugang ist ein kleiner Schaden, ein zu Unrecht gesperrter Zugang ein
+ *  großer. */
+export async function hatDauerkauf(
+  email: string,
+  slug: string,
+): Promise<boolean> {
+  try {
+    const res = await supabase(
+      `digitalbestellungen?email=eq.${encodeURIComponent(email.toLowerCase())}` +
+        `&status=eq.bezahlt&select=artikel`,
+    );
+
+    if (!res.ok) {
+      console.error("Dauerkauf liess sich nicht pruefen:", res.status);
+      return true;
+    }
+
+    const zeilen = await res.json();
+
+    if (!Array.isArray(zeilen)) return true;
+
+    return zeilen.some((zeile: { artikel?: { slug?: string }[] }) =>
+      (zeile.artikel ?? []).some((a) => a?.slug === slug),
+    );
+  } catch (e) {
+    console.error("Dauerkauf liess sich nicht pruefen:", e);
+    return true;
+  }
+}
+
+/** Meldet der Akademie, dass ein Zugang erlischt.
+ *
+ *  Rückgabe wie bei `inAkademieFreischalten`: null heisst, die Meldung ist
+ *  angekommen. Ein Text ist der Grund, warum nicht. */
+export async function inAkademieEntziehen(opt: {
+  email: string;
+  zugang: string;
+  grund: string;
+}): Promise<string | null> {
+  if (!AKADEMIE_WEBHOOK_URL) {
+    return "AKADEMIE_WEBHOOK_URL fehlt in den Vercel-Einstellungen.";
+  }
+
+  const adresse = AKADEMIE_WEBHOOK_KEY
+    ? `${AKADEMIE_WEBHOOK_URL}?key=${encodeURIComponent(AKADEMIE_WEBHOOK_KEY)}`
+    : AKADEMIE_WEBHOOK_URL;
+
+  try {
+    const res = await fetch(adresse, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        event: "access_revoked",
+        data: { email: opt.email, access: opt.zugang, reason: opt.grund },
+      }),
+      cache: "no-store",
+    });
+
+    if (!res.ok) {
+      return `Die Akademie hat die Meldung mit ${res.status} abgelehnt.`;
+    }
+
+    return null;
+  } catch (e) {
+    return `Die Akademie war nicht erreichbar: ${String(e)}`;
+  }
+}
+
+/** Sagt dir Bescheid, wenn ein Abo endet.
+ *
+ *  ▸ WARUM DAS EINE MAIL WERT IST
+ *    Eine Kündigung ist die einzige Rückmeldung, die du zu einem Produkt
+ *    bekommst, ohne dass jemand schreibt. Sie gehört gesehen, nicht ins
+ *    Protokoll. Und wenn der Entzug nicht geklappt hat, musst du ihn von
+ *    Hand nachholen, sonst arbeitet jemand weiter, der nicht mehr zahlt. */
+export async function aboMeldenAnYasi(opt: {
+  email: string;
+  produkt: string;
+  grund: string;
+  entzogen: boolean;
+  hinweis?: string | null;
+}): Promise<boolean> {
+  const kopf = opt.entzogen
+    ? `Abo beendet: ${opt.produkt}`
+    : `Abo beendet, Zugang bleibt: ${opt.produkt}`;
+
+  return sendeMail(
+    ANTWORT_AN,
+    `${kopf} (${opt.email})`,
+    rahmen(`
+      <h1 style="font-size:22px;margin:0 0 16px;">${esc(kopf)}</h1>
+
+      <p style="font-size:16px;line-height:1.6;">
+        <a href="mailto:${esc(opt.email)}" style="color:#B87878;">${esc(opt.email)}</a>
+      </p>
+
+      <p style="font-size:15px;line-height:1.6;color:#8a7070;">
+        Grund: ${esc(opt.grund)}
+      </p>
+
+      ${
+        opt.entzogen
+          ? `<p style="font-size:15px;line-height:1.6;">Der Zugang ist weg, du musst nichts tun.</p>`
+          : opt.hinweis
+            ? `<p style="background:#F9EDED;border-radius:12px;padding:16px;font-size:15px;line-height:1.6;">
+                 <strong>Bitte von Hand nachsehen.</strong> Der Zugang konnte nicht
+                 automatisch entzogen werden: ${esc(opt.hinweis)}
+               </p>`
+            : `<p style="font-size:15px;line-height:1.6;">
+                 Der Zugang bleibt bestehen, weil dieselbe Adresse dasselbe
+                 Produkt schon einmal dauerhaft gekauft hat. Das ist so gewollt.
+               </p>`
+      }
+    `),
+  );
+}
+
+/** Nimmt den Zugang zu einem Abo-Produkt wieder weg, wenn er nicht
+ *  zusätzlich dauerhaft gekauft wurde. Meldet in beiden Fällen an Yasemin,
+ *  damit eine Kündigung nicht unbemerkt bleibt. */
+export async function zugangEntziehen(opt: {
+  email: string;
+  slug: string;
+  grund: string;
+}): Promise<void> {
+  const produkt = digitalFinden(opt.slug);
+
+  if (!produkt?.abo) {
+    console.error(`Entzug fuer ${opt.slug}: kein Abo-Produkt.`);
+    return;
+  }
+
+  const dauerSlug = produkt.abo.dauerkaufSlug;
+
+  if (dauerSlug && (await hatDauerkauf(opt.email, dauerSlug))) {
+    console.warn(
+      `Entzug fuer ${opt.email} uebersprungen: hat ${dauerSlug} dauerhaft gekauft.`,
+    );
+    await aboMeldenAnYasi({
+      email: opt.email,
+      produkt: produkt.kurzname,
+      grund: opt.grund,
+      entzogen: false,
+    });
+    return;
+  }
+
+  const hinweis = await inAkademieEntziehen({
+    email: opt.email,
+    zugang: produkt.erwarteterZugang,
+    grund: opt.grund,
+  });
+
+  if (hinweis) {
+    console.error(`Zugang fuer ${opt.email} liess sich nicht entziehen: ${hinweis}`);
+  }
+
+  await aboMeldenAnYasi({
+    email: opt.email,
+    produkt: produkt.kurzname,
+    grund: opt.grund,
+    entzogen: !hinweis,
+    hinweis,
+  });
+}
+
+/** Ein laufendes Abo, so wie es die Kündigungsseite braucht. */
+export type LaufendesAbo = {
+  /** Die Kennung bei Stripe, sub_... */
+  id: string;
+  slug: string;
+  name: string;
+  /** Wann der bezahlte Zeitraum endet, als Zeitstempel in Sekunden. */
+  laeuftBis: number;
+  /** Schon gekündigt, läuft nur noch aus. */
+  gekuendigt: boolean;
+};
+
+/** Sucht die laufenden Abos zu einer Adresse.
+ *
+ *  ▸ WARUM ÜBER STRIPE UND NICHT ÜBER DIE EIGENE DATENBANK
+ *    Weil Stripe die Wahrheit über ein Abo kennt und wir nicht: ob die
+ *    letzte Abbuchung durchging, wann der bezahlte Monat endet, ob schon
+ *    gekündigt wurde. In `digitalbestellungen` steht nur der erste Kauf.
+ *    Eine zweite Wahrheit daneben würde früher oder später auseinanderlaufen.
+ *
+ *  ▸ Adressen werden bei Stripe gross und klein gemischt gespeichert, die
+ *    Suche ist aber genau. Deshalb wird kleingeschrieben gesucht und, falls
+ *    das nichts findet, noch einmal mit der Schreibweise, die ankam. */
+export async function abosZuAdresse(email: string): Promise<LaufendesAbo[]> {
+  const gefunden: LaufendesAbo[] = [];
+  const versuche = [email.trim().toLowerCase(), email.trim()];
+  const gesehen = new Set<string>();
+
+  for (const adresse of versuche) {
+    if (gesehen.has(adresse)) continue;
+    gesehen.add(adresse);
+
+    const kunden = await stripeHolen(
+      `customers?email=${encodeURIComponent(adresse)}&limit=20`,
+    );
+
+    if (!kunden.ok) continue;
+
+    const liste = (kunden.antwort.data as { id?: string }[] | undefined) ?? [];
+
+    for (const kunde of liste) {
+      if (typeof kunde.id !== "string") continue;
+
+      // `status=all` wäre falsch: Ein abgelaufenes Abo soll nicht mehr
+      // kündbar aussehen. `active` schliesst `trialing` aus, das gibt es
+      // hier nicht, und `past_due` ebenfalls — wer nicht zahlt, kündigt
+      // nicht, dem kündigt Stripe.
+      const abos = await stripeHolen(
+        `subscriptions?customer=${encodeURIComponent(kunde.id)}&status=active&limit=20`,
+      );
+
+      if (!abos.ok) continue;
+
+      const zeilen =
+        (abos.antwort.data as
+          | {
+              id?: string;
+              cancel_at_period_end?: boolean;
+              current_period_end?: number;
+              metadata?: Record<string, string>;
+              items?: { data?: { price?: { current_period_end?: number } }[] };
+            }[]
+          | undefined) ?? [];
+
+      for (const abo of zeilen) {
+        if (typeof abo.id !== "string") continue;
+        if (gefunden.some((a) => a.id === abo.id)) continue;
+
+        const slug = abo.metadata?.slug ?? "";
+        const produkt = slug ? digitalFinden(slug) : null;
+
+        gefunden.push({
+          id: abo.id,
+          slug,
+          name: produkt?.name ?? "EquiDesk im Monatszugang",
+          laeuftBis: abo.current_period_end ?? 0,
+          gekuendigt: abo.cancel_at_period_end === true,
+        });
+      }
+    }
+  }
+
+  return gefunden;
+}
+
+/** Kündigt ein Abo zum Ende des bezahlten Monats.
+ *
+ *  ▸ ZUM MONATSENDE, NICHT SOFORT. Der Monat ist bezahlt, also gehört er
+ *    der Kundin. Sofort abzuschalten hiesse, bezahlte Zeit einzubehalten.
+ *    Stripe schickt am Ende von selbst `customer.subscription.deleted`,
+ *    und erst dann nimmt der Webhook den Zugang weg. */
+export async function aboKuendigen(
+  aboId: string,
+): Promise<{ ok: true; endetAm: number } | { ok: false; fehler: string }> {
+  const ergebnis = await stripeAnfrage(
+    `subscriptions/${encodeURIComponent(aboId)}`,
+    { cancel_at_period_end: true },
+  );
+
+  if (!ergebnis.ok) {
+    return { ok: false, fehler: "Die Kündigung liess sich nicht speichern." };
+  }
+
+  const endetAm = ergebnis.antwort.current_period_end;
+
+  return { ok: true, endetAm: typeof endetAm === "number" ? endetAm : 0 };
 }
 
 // ---------------------------------------------------------------------------
