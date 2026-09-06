@@ -170,6 +170,17 @@ export const angebotsHinweise: Record<string, Angebotshinweis> = {
     // erklärt, und der kostenlose Schnupperkurs steht dort ganz oben.
     url: "/ausbildung",
   },
+  // Das einzige Angebot hier, das sich nicht an Pferdebesitzerinnen richtet,
+  // sondern an Beraterinnen. Bewusst OHNE Preis im Text: Das Testkundinnen-
+  // Angebot ist befristet, ein Preis an dieser Stelle waere nach Ablauf falsch.
+  // Was es kostet, steht auf der Seite selbst.
+  equidesk: {
+    augenbraue: "Für angehende Beraterinnen",
+    name: "EquiDesk",
+    text: "Die Kundenverwaltung für die Futterberatung: deine Kundinnen, ihre Pferde, der Beratungsverlauf, Futterpläne mit Nährstoffrechnung und die Rechnungen an einer Stelle.",
+    knopf: "EquiDesk ansehen",
+    url: "/equidesk",
+  },
   basisfutterkurs: {
     augenbraue: "Dazu passend",
     name: "Der Basisfutterkurs",
