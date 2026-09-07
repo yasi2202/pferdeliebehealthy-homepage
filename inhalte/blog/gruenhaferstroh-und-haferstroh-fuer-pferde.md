@@ -114,11 +114,12 @@ stoffwechselempfindlichen Pferden ausdrücklich der Punkt.
 
 Ein Missverständnis räume ich gleich mit weg: **Stärkearm heißt nicht
 zuckerfrei.** Weil die Pflanze grün geerntet wird, ist Zucker aus dem Blatt
-darin. Beim Grünhafer, also der ganzen Pflanze in Cobs-Form, weist der
-Biohof Elmengrund rund 6 Prozent Zucker aus. Das ist die Größenordnung eines
-durchschnittlichen Heus. Beim später geschnittenen Grünhaferstroh liegt der
-Wert niedriger, aber eben nicht bei null. Für ein Pferd mit EMS ist das der
-Unterschied zwischen „passt schon" und „muss durchgerechnet werden".
+darin. Für Grünhafer, also die ganze Pflanze in Cobs-Form, findet man in
+Analysen je nach Erntejahr Werte um 6 Prozent Zucker. Das ist die
+Größenordnung eines durchschnittlichen Heus. Beim später geschnittenen
+Grünhaferstroh liegt der Wert niedriger, aber eben nicht bei null. Wenn die
+Zuckeraufnahme deines Pferdes begrenzt bleiben soll, ist das der Unterschied
+zwischen „passt schon" und „muss durchgerechnet werden".
 
 ## Die Zahlen, und was sie bedeuten
 
@@ -179,9 +180,8 @@ kauft. Beim Haferstroh bedeuten sie weniger Erde im Ballen.
 
 **Wie getrocknet wird.** Feldtrocknung ist Wetterglück. Eine schonende
 Warmlufttrocknung nach dem Pressen nimmt die Restfeuchte aus dem Ballen, und
-Restfeuchte ist das, woraus im Lager Schimmel wird. Bei Pferden mit
-Atemwegsproblemen ist das der wichtigste Punkt überhaupt, wichtiger als
-jeder Nährwert.
+Restfeuchte ist das, woraus im Lager Schimmel wird. Bei staubempfindlichen Pferden ist
+das der wichtigste Punkt überhaupt, wichtiger als jeder Nährwert.
 
 ## Futterstroh ist nicht Einstreustroh
 
@@ -329,19 +329,19 @@ sonst fehlt. Die Ration muss trotzdem aufgehen.
 | Situation | Passt eher |
 |---|---|
 | Leichtfuttrig, zu rund, zu lange Fresspausen | Haferstroh |
-| EMS, Insulinresistenz, Hufrehe in der Vorgeschichte | Haferstroh, in durchgerechneter Menge |
+| Zucker und Stärke der Ration sollen niedrig bleiben | Haferstroh, in durchgerechneter Menge |
 | Sensibel, eher schmal, braucht Struktur ohne Stärke | Grünhaferstroh |
 | Verweigert klassisches Stroh | Grünhaferstroh, schmackhafter durch den Blattanteil |
 | Heu ist knapp und soll gestreckt werden | Grünhaferstroh als Anteil, Heu bleibt Basis |
-| Husten, Staubempfindlichkeit, Atemwegsprobleme | Beides möglich, aber nur warmluftgetrocknete Ware |
+| Es soll so wenig wie möglich stauben | Beides möglich, entscheidend sind Geruch und Staubanteil |
 | Steht auf Sandboden oder abgefressenem Paddock | Beides möglich, aber nur aus Netz oder Raufe |
 | Senior mit schlechtem Gebiss | Keins von beiden, eingeweichte Cobs |
-| Diagnostiziertes Magengeschwür in Behandlung | Nur nach Rücksprache mit der Tierärztin |
+| Pferd ist in tierärztlicher Behandlung | Erst mit der Tierärztin besprechen |
 
-Bei diagnostizierten Magengeschwüren ist Zurückhaltung angebracht. Die
-Studienlage spricht zwar gegen ein pauschales Strohverbot, sie ist aber an
-gesunden Pferden erhoben worden. Ein Pferd in Behandlung ist kein Ort für
-Experimente.
+Sobald ein Pferd tierärztlich behandelt wird, gehört die Futterfrage in
+diese Hände. Die Studienlage spricht zwar gegen ein pauschales Strohverbot,
+sie ist aber an gesunden Pferden erhoben worden. Ein Pferd in Behandlung ist
+kein Ort für Experimente.
 
 ## Woher ich mein Futterstroh beziehe
 
@@ -455,17 +455,16 @@ oder vor der Kornreife geerntet wurde. Beobachte dein Pferd trotzdem, jedes
 reagiert anders, aber die Stärkefracht, um die es bei der Diskussion geht,
 ist hier nicht drin.
 
-### Darf ein Pferd mit EMS oder Hufrehe in der Vorgeschichte Stroh bekommen?
+### Passt Stroh in eine Ration, die zucker- und stärkearm bleiben soll?
 
-In der Regel ja, und für diese Pferde ist Stroh oft genau das richtige
-Futtermittel, weil es Kauzeit ohne nennenswerte Kalorien bringt. In der
-schwedischen Untersuchung lagen die Insulinwerte auf der Strohration
-niedriger als auf der reinen Heuration. Zwei Einschränkungen: Die Ration
-muss gerechnet werden, nicht geschätzt, und bei akuter Rehe oder einem
-Pferd in tierärztlicher Behandlung entscheidet die Tierärztin, nicht der
-Ratgeber. Wenn du wählen musst, ist Haferstroh hier die klarere Wahl als
-Grünhaferstroh, weil im grün geernteten Material Zucker aus dem Blatt
-steckt.
+Ja, genau dafür ist es gemacht: Stroh bringt Kauzeit, ohne nennenswert
+Energie, Zucker oder Stärke mitzuliefern. In der schwedischen Untersuchung
+lagen die Insulinwerte auf der Strohration niedriger als auf der reinen
+Heuration. Zwei Einschränkungen: Die Ration muss gerechnet werden, nicht
+geschätzt, und sobald dein Pferd tierärztlich betreut wird, entscheidet die
+Tierärztin über das Futter und nicht ein Ratgebertext. Beim Vergleich der
+beiden Sorten gilt, was oben steht: Im ausgedroschenen Halm steckt weniger
+Zucker als im grün geernteten Material, und das gehört in die Rechnung.
 
 ### Ist Haferstroh oder Gerstenstroh besser?
 
@@ -504,7 +503,7 @@ hoch genug hängen, damit sich kein Eisen darin verfängt.
 Am Geruch und am Staub. Gutes Stroh riecht neutral bis leicht süßlich und
 staubt beim Aufschütteln kaum. Muffiger Geruch, graue oder weiße Beläge,
 Klumpen oder ein Ballen, der sich innen warm anfühlt, sind
-Ausschlusskriterien. Bei Pferden mit Atemwegsproblemen ist die Staubfrage
+Ausschlusskriterien. Bei einem staubempfindlichen Pferd ist diese Frage
 ohnehin das erste Kriterium, noch vor dem Nährwert.
 
 ### Wie lagere ich Futterstroh richtig?
