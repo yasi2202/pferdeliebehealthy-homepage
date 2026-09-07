@@ -89,6 +89,12 @@ export default async function AdressenSeite() {
             >
               Rabattcodes
             </Link>
+            <Link
+              href="/admin/stall-organizer"
+              className="text-rose-deep underline underline-offset-2"
+            >
+              Stall Organizer
+            </Link>
           </nav>
         </div>
 

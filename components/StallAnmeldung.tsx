@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 // ---------------------------------------------------------------------------
 // Das Anmeldeformular für den Stall Organizer, auf der Website.
@@ -19,12 +19,46 @@ export const EINWILLIGUNG =
   "Ja, schick mir kostenlose Tipps rund um Fütterung und Pferdegesundheit per E-Mail. " +
   "Ich kann mich jederzeit mit einem Klick wieder abmelden.";
 
+/** Woher die Besucherin kommt, aus `?von=` in der Adresse.
+ *
+ *  WOZU: Der Link zum Organizer wird an mehreren Stellen geteilt, in der
+ *  Instagram-Bio, in einer Story, im Newsletter. Ohne Kennzeichnung steht bei
+ *  jeder Anmeldung nur "website", und man weiss hinterher nicht, was etwas
+ *  gebracht hat.
+ *
+ *  Gemerkt wird sie fuer die Sitzung: Wer ueber `?von=instagram` auf der
+ *  Startseite landet und erst dann auf die Unterseite geht, waere sonst auf
+ *  dem zweiten Klick wieder namenlos.
+ */
+const SPEICHER = "pfh_stall_von";
+
+function herkunftMerken() {
+  try {
+    const von = new URLSearchParams(window.location.search).get("von");
+    if (!von) return;
+    const sauber = von.toLowerCase().replace(/[^a-z0-9_-]/g, "").slice(0, 24);
+    if (sauber) sessionStorage.setItem(SPEICHER, sauber);
+  } catch {
+    /* Privater Modus: dann eben ohne Herkunft, die Anmeldung zaehlt trotzdem. */
+  }
+}
+
+function herkunftHolen(): string | null {
+  try {
+    return sessionStorage.getItem(SPEICHER);
+  } catch {
+    return null;
+  }
+}
+
 export function StallAnmeldung({ kompakt = false }: { kompakt?: boolean }) {
   const [email, setEmail] = useState("");
   const [tipps, setTipps] = useState(false);
   const [hofname, setHofname] = useState(""); // Honigtopf
   const [laeuft, setLaeuft] = useState(false);
   const [antwort, setAntwort] = useState<{ ok: boolean; text: string } | null>(null);
+
+  useEffect(herkunftMerken, []);
 
   async function absenden(e: React.FormEvent) {
     e.preventDefault();
@@ -34,7 +68,7 @@ export function StallAnmeldung({ kompakt = false }: { kompakt?: boolean }) {
       const res = await fetch("/api/stall-organizer", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email, hofname, tipps, einwilligung: EINWILLIGUNG }),
+        body: JSON.stringify({ email, hofname, tipps, einwilligung: EINWILLIGUNG, von: herkunftHolen() }),
       });
       const d = await res.json();
       setAntwort({ ok: !!d.ok, text: d.meldung || "Unbekannte Antwort." });

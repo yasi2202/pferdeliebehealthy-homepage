@@ -16,6 +16,13 @@ import { NextResponse } from "next/server";
 
 const AKADEMIE = process.env.AKADEMIE_URL || "https://akademieapp.vercel.app";
 
+/** Aus der Angabe in `?von=` wird der Eintrag in der Spalte `quelle`. */
+function quelleAus(von: unknown): string {
+  if (typeof von !== "string") return "website";
+  const sauber = von.toLowerCase().replace(/[^a-z0-9_-]/g, "").slice(0, 24);
+  return sauber || "website";
+}
+
 export async function POST(req: Request) {
   const koerper = await req.json().catch(() => null);
 
@@ -30,7 +37,10 @@ export async function POST(req: Request) {
     const res = await fetch(`${AKADEMIE}/api/stall-anmeldung`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ ...koerper, quelle: "website" }),
+      // Die Herkunft aus `?von=` wird zur Quelle, sonst bleibt es "website".
+      // Nochmal gesaeubert, obwohl das Formular es schon tut: Diese Route
+      // nimmt Anfragen von ueberall entgegen, nicht nur vom eigenen Formular.
+      body: JSON.stringify({ ...koerper, quelle: quelleAus(koerper.von) }),
       cache: "no-store",
     });
 
