@@ -162,11 +162,11 @@ export function textZuHtml(text: string): string {
       // Hinweiskasten: Sonst sehen der fachliche Merksatz und das Angebot
       // gleich aus, und das Auge übersieht beim Überfliegen genau das, was
       // verkaufen soll.
-      teile.push(`<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="margin:30px 0;background:#ffffff;border:1px solid ${ROSE};border-radius:14px;">
+      teile.push(`<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="margin:30px 0;background:#ffffff;border:2px solid ${ROSE};border-radius:14px;">
         <tr><td style="padding:24px 26px;">
           <p style="margin:0 0 10px;font-size:11.5px;letter-spacing:2px;text-transform:uppercase;color:${ROSE_TIEF};">Mein Angebot dazu</p>
           <p style="margin:0 0 6px;font-family:Georgia,serif;font-size:19px;line-height:1.35;color:${INK};">${name}</p>
-          ${preis ? `<p style="margin:0 0 10px;font-size:15px;color:${ROSE_TIEF};font-weight:600;">${preis}</p>` : ""}
+          ${preis ? `<p style="margin:0 0 12px;font-family:Georgia,serif;font-size:20px;color:${ROSE_TIEF};">${preis}</p>` : ""}
           ${satz ? `<p style="margin:0 0 18px;font-size:15.5px;line-height:1.7;color:${TEXT};">${satz}</p>` : ""}
           ${
             link
@@ -256,15 +256,23 @@ export function textZuHtml(text: string): string {
       const punkte = block
         .split("\n")
         .filter((z) => /^[-•]\s/.test(z.trim()))
+        // Als Tabelle statt als <ul>: Outlook rueckt Listen eigenwillig ein
+        // und schluckt die Aufzaehlungszeichen ganz. Vorher standen die
+        // Punkte deshalb ohne jedes Zeichen da und sahen aus wie lose
+        // Absaetze. Eine Tabelle mit einer schmalen Spalte sieht ueberall
+        // gleich aus.
         .map(
           (z) =>
-            `<li style="margin:0 0 10px;">${zeileSchmuecken(
-              sicher(z.trim().replace(/^[-•]\s+/, ""))
-            )}</li>`
+            `<tr>
+              <td width="22" valign="top" style="padding:0 0 11px;font-size:16.5px;line-height:1.75;color:${ROSE_TIEF};">&#8226;</td>
+              <td style="padding:0 0 11px;font-size:16.5px;line-height:1.75;color:${TEXT};">${zeileSchmuecken(
+                sicher(z.trim().replace(/^[-•]\s+/, ""))
+              )}</td>
+            </tr>`
         )
         .join("");
       teile.push(
-        `<ul style="font-size:16.5px;line-height:1.75;margin:0 0 20px;padding-left:22px;color:${TEXT};">${punkte}</ul>`
+        `<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="margin:0 0 20px;">${punkte}</table>`
       );
       continue;
     }
@@ -320,11 +328,26 @@ export function vorschauZeile(text: string): string {
 /** Der Kopf jeder Mail: die Wortmarke, schlicht. Kein Bild, weil viele
  *  Postfächer Bilder erst nach einem Klick laden — dann stünde oben ein
  *  leeres Kästchen statt eines Namens. */
+/**
+ * Der Kopf über dem Brief.
+ *
+ * AM 07.09.2026 VON TEXT AUF EIN FARBIGES BAND UMGESTELLT. Vorher stand der
+ * Name klein und rosé auf dem cremefarbenen Grund, und darunter begann direkt
+ * die weisse Fläche. Im Postfach, zwischen zwanzig anderen Mails, fiel davon
+ * nichts auf. Jetzt sitzt der Name in Creme auf einem rosé Band, und das Band
+ * bildet mit dem weissen Kasten darunter eine geschlossene Karte.
+ *
+ * BEWUSST OHNE BILD: Viele Postfächer laden Bilder erst nach einem Klick.
+ * Ein Logo als Grafik wäre bei jeder zweiten Empfängerin ein leerer Kasten.
+ * Farbe und Schrift kommen immer an.
+ */
 function kopf(): string {
-  return `<table role="presentation" width="100%" cellpadding="0" cellspacing="0"><tr><td align="center" style="padding:0 0 26px;">
-      <p style="margin:0;font-family:Georgia,serif;font-size:17px;letter-spacing:3px;text-transform:uppercase;color:${ROSE_TIEF};">Pferdeliebehealthy</p>
-      <p style="margin:6px 0 0;font-size:12px;letter-spacing:1.5px;text-transform:uppercase;color:${LEISE};">Ernährungsberatung für Pferde</p>
-    </td></tr></table>`;
+  return `<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:${ROSE_TIEF};border-radius:18px 18px 0 0;">
+      <tr><td align="center" style="padding:30px 24px 26px;">
+        <p style="margin:0;font-family:Georgia,serif;font-size:20px;letter-spacing:3.5px;text-transform:uppercase;color:${CREME};">Pferdeliebehealthy</p>
+        <p style="margin:8px 0 0;font-size:11.5px;letter-spacing:1.8px;text-transform:uppercase;color:${CREME};opacity:0.78;">Ernährungsberatung für Pferde</p>
+      </td></tr>
+    </table>`;
 }
 
 /** Der Satz in der Fusszeile, der sagt, woher du die Adresse hast.
@@ -371,8 +394,8 @@ export function newsletterRahmen(
 <div style="background:${CREME};padding:36px 14px;font-family:Georgia,'Times New Roman',serif;color:${TEXT};-webkit-text-size-adjust:100%;">
   <table role="presentation" width="100%" cellpadding="0" cellspacing="0"><tr><td align="center">
     <table role="presentation" width="560" cellpadding="0" cellspacing="0" style="width:100%;max-width:560px;">
-      <tr><td style="padding:0 8px 4px;">${kopf()}</td></tr>
-      <tr><td style="background:#ffffff;border-radius:18px;padding:38px 34px;">
+      <tr><td>${kopf()}</td></tr>
+      <tr><td style="background:#ffffff;border-radius:0 0 18px 18px;padding:36px 34px 38px;">
         ${inhaltHtml}
         <p style="font-size:16.5px;line-height:1.75;margin:32px 0 0;color:${TEXT};">Alles Gute für dich und dein Pferd,<br><span style="font-family:Georgia,serif;font-size:19px;color:${ROSE_TIEF};">Yasi</span></p>
       </td></tr>
