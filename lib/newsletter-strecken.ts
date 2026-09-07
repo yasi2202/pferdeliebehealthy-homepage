@@ -34,7 +34,7 @@ export type Strecke = {
   id: string;
   erstellt_am: string;
   name: string;
-  ausloeser: "insider" | "futter-check" | "alle";
+  ausloeser: "insider" | "futter-check" | "stall-organizer" | "alle";
   aktiv: boolean;
   aktiv_seit: string | null;
 };
@@ -174,6 +174,13 @@ async function kandidaten(strecke: Strecke): Promise<Anmeldung[]> {
   }
   if (strecke.ausloeser === "futter-check" || strecke.ausloeser === "alle") {
     quellen.push(`futter_check_anmeldungen?${filter}&${felder}`);
+  }
+  // Der Stall Organizer, seit dem 07.09.2026. Die Adressen stehen in einer
+  // eigenen Tabelle und nicht in `kursteilnehmer`: Dort steht jede Kundin der
+  // Akademie, auch die, die nur einen Kurs gekauft und nie eingewilligt hat.
+  // `bestaetigt` wird gesetzt, wenn sie den Zugangslink anklickt.
+  if (strecke.ausloeser === "stall-organizer" || strecke.ausloeser === "alle") {
+    quellen.push(`stall_anmeldungen?${filter}&${felder}`);
   }
 
   const alle: Anmeldung[] = [];

@@ -2,6 +2,7 @@ import Hero from "@/components/Hero";
 import Gesundheitsakte from "@/components/Gesundheitsakte";
 import ProblemSection from "@/components/ProblemSection";
 import WegeSection from "@/components/WegeSection";
+import StallOrganizerSection from "@/components/StallOrganizerSection";
 import MitgliederStreifen from "@/components/MitgliederStreifen";
 import PillarsSection from "@/components/PillarsSection";
 import AboutSection from "@/components/AboutSection";
@@ -18,6 +19,7 @@ export default function Home() {
       <Hero />
       <Gesundheitsakte />
       <ProblemSection />
+      <StallOrganizerSection />
       <WegeSection />
       <MitgliederStreifen />
       <PillarsSection />

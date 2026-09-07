@@ -6,6 +6,7 @@ import { useRouter } from "next/navigation";
 const AUSLOESER = [
   { wert: "insider", text: "wer sich für den Insider-Kanal einträgt" },
   { wert: "futter-check", text: "wer den Futter-Check macht" },
+  { wert: "stall-organizer", text: "wer sich den Stall Organizer holt" },
   { wert: "alle", text: "jede neue Anmeldung, egal woher" },
 ];
 
