@@ -34,7 +34,17 @@ export const metadata: Metadata = {
     title: `${TITEL} | Pferdeliebehealthy`,
     description: BESCHREIBUNG,
     url: "/stall-organizer",
-    images: [{ url: "/images/vorschau.jpg", width: 1200, height: 630 }],
+    // Eigenes Bild statt des allgemeinen Seitenbildes: Wer den Link geteilt
+    // bekommt, sieht die App und nicht ein Foto, das zu jeder Seite passt.
+    images: [{ url: "/images/stall-organizer-vorschau.jpg", width: 1200, height: 630, alt: TITEL }],
+  },
+  // Ohne diesen Block nimmt Twitter/X die kleine Kachel statt des breiten
+  // Bildes, und WhatsApp entscheidet selbst.
+  twitter: {
+    card: "summary_large_image",
+    title: `${TITEL} | Pferdeliebehealthy`,
+    description: BESCHREIBUNG,
+    images: ["/images/stall-organizer-vorschau.jpg"],
   },
 };
 
