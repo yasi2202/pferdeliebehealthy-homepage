@@ -138,7 +138,7 @@ die dritte Zinkkur.
 Für Pferde mit Nierenproblemen gilt das nicht, dort gehört die Eiweißmenge in
 tierärztliche Hand.
 
-## Die drei Fragen, die ich stelle
+## Die drei Punkte, die ich zuerst prüfe
 
 **Steht die Grundversorgung überhaupt?** Ein bedarfsgerechtes Mineralfutter,
 das auch wirklich in der angegebenen Menge gefressen wird. Eine Kur auf einer
@@ -166,6 +166,54 @@ weg, die er gerade woanders braucht.
   fütterst, siehst du im November.
 
 [[partner:natusat]]
+
+## Häufige Fragen
+
+### Wann beginnt der Fellwechsel beim Pferd?
+
+Der Anstoß kommt kurz nach der Sommersonnenwende, also Ende Juni, und er kommt
+vom Licht und nicht von der Temperatur. Sichtbar wird die Umstellung erst im
+September und Oktober. Wer dann mit der Fütterung anfängt, ist nicht zu spät
+dran, aber eben auch nicht früh. Am meisten bringt es, wenn die Grundversorgung
+schon im Spätsommer steht.
+
+### Wie lange dauert der Fellwechsel?
+
+Rechne mit sechs bis zehn Wochen, bei älteren Pferden und bei solchen mit
+Stoffwechselthemen auch länger. Was du im September in den Trog gibst, siehst
+du im November am Fell. Diese Verzögerung ist der Grund, warum so viele
+Zusatzfutter für unwirksam gehalten werden: Sie werden zu kurz gegeben und zu
+früh beurteilt.
+
+### Braucht mein Pferd im Fellwechsel ein Zusatzfutter?
+
+Meistens nicht, wenn die Grundversorgung stimmt. Ein bedarfsgerechtes
+Mineralfutter, das auch in der angegebenen Menge gefressen wird, und
+ausreichend Eiweiß im Heu decken das Nötige. Eine Kur auf einer löchrigen
+Grundlage bringt dagegen wenig. Prüf zuerst, was täglich ankommt, bevor du
+etwas dazustellst.
+
+### Hilft mehr Zink beim Fellwechsel?
+
+Nicht automatisch, und zu viel schadet sogar. Zink und Kupfer nutzen im Darm
+dieselben Aufnahmewege. Wer Zink hochfährt, ohne Kupfer mitzuziehen, erzeugt
+rechnerisch eine Zinkversorgung und praktisch einen Kupfermangel. Genau der
+zeigt sich am Fell: Ein Rappe wird rostig, ein Brauner fahl.
+
+### Warum verliert mein Pferd sein Winterfell nicht?
+
+Wenn ein Pferd im Frühjahr sein Winterfell gar nicht oder nur teilweise
+verliert, lange Haare an Beinen und Unterbauch behält oder auffällig spät
+wechselt, gehört es auf ECS untersucht, das früher Cushing hieß. Das ist keine
+Fütterungsfrage, sondern eine Diagnose, und je früher sie gestellt wird, desto
+besser lässt sich damit umgehen.
+
+### Hilft tägliches Putzen wirklich?
+
+Ja, und zwar mehr, als es nach Schönheitsprogramm klingt. Es regt die
+Durchblutung der Haut an und hilft dem Pferd, die alten Haare loszuwerden. Es
+ersetzt keine Versorgungslücke, aber es kostet nichts und ist der einzige
+Punkt auf der Liste, der sofort wirkt.
 
 ## Wann es kein normaler Fellwechsel mehr ist
 
