@@ -1,7 +1,7 @@
 ---
 titel: "CBD-Öl bei Pferden: Wirkung, Anwendung und wichtige Hinweise"
 datum: 2025-08-12
-aktualisiert:
+aktualisiert: 2026-09-07
 kategorie: "Kräuter und Öle"
 angebot: ""
 bild: ""
@@ -184,3 +184,47 @@ sind Beobachtungen aus der Praxis und keine Heilversprechen.
 Wichtig also: CBD ersetzt keine tierärztliche Diagnose. Bei Schmerzen,
 anhaltender Unruhe oder Magenproblemen gehört das Pferd untersucht, bevor
 irgendetwas ins Futter kommt.
+
+## Häufige Fragen
+
+### Ist CBD-Öl für Pferde in Deutschland erlaubt?
+
+Besitz und Verkauf von CBD-Produkten sind nicht verboten, aber für Pferde ist
+CBD weder als Arzneimittel zugelassen noch als Futtermittelzusatzstoff
+genehmigt. Ein Hersteller darf deshalb keine Wirkung gegen Krankheiten
+versprechen, und wer es einsetzt, tut das außerhalb einer zugelassenen
+Anwendung. Wer sein Pferd behandelt haben möchte, spricht mit dem Tierarzt,
+statt sich auf Werbetexte zu verlassen.
+
+### Ist CBD im Turniersport verboten?
+
+Cannabinoide stehen auf der Dopingliste, und das schließt CBD ein. Zwischen der
+letzten Gabe und einem Start muss deshalb eine ausreichende Karenzzeit liegen.
+Verlässliche Karenzzeiten für Pferde gibt es für die meisten Produkte nicht,
+weil die dafür nötigen Untersuchungen fehlen. Wer startet, lässt es also besser
+ganz weg.
+
+### Macht CBD Pferde müde?
+
+Beobachtet wird eher, dass Pferde gelassener auf Reize reagieren, nicht dass
+sie schläfrig werden. Wie deutlich das ausfällt, schwankt von Pferd zu Pferd
+stark. Wichtig bleibt der Blick auf die Ursache: Ein Pferd, das unruhig ist,
+weil der Magen schmerzt, weil die Fresspausen zu lang sind oder weil die Herde
+nicht passt, braucht keine Beruhigung, sondern eine Änderung an genau dieser
+Stelle.
+
+### Enthält CBD-Öl THC?
+
+Vollspektrum-Öle aus Nutzhanf enthalten in der Regel Spuren von THC unterhalb
+der gesetzlichen Grenzwerte. Für die Wirkung spielt das kaum eine Rolle, für
+eine Dopingprobe schon. Wer ein Produkt kauft, sollte ein aktuelles
+Laborzeugnis dazu verlangen, denn die Gehalte schwanken zwischen Chargen
+erheblich.
+
+### Ab wann sieht man beim Pferd eine Wirkung?
+
+Bei akuter Unruhe wird oft von einer Reaktion innerhalb von ein bis zwei
+Stunden berichtet, bei den langsameren Themen eher über zwei bis drei Wochen.
+Halte die Beobachtung schriftlich fest und ändere in dieser Zeit nichts
+anderes, sonst weißt du hinterher nicht, was gewirkt hat. Und wenn nach drei
+Wochen nichts anders ist, setz es ab, statt die Dosis zu erhöhen.

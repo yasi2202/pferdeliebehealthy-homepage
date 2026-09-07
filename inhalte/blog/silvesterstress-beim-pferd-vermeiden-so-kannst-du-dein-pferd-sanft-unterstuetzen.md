@@ -1,7 +1,7 @@
 ---
 titel: "Silvesterstress beim Pferd vermeiden: so kannst du dein Pferd sanft unterstützen"
 datum: 2025-10-27
-aktualisiert:
+aktualisiert: 2026-09-07
 kategorie: "Durchs Jahr"
 angebot: "ganzjahresfutterplan"
 bild: ""
@@ -124,3 +124,43 @@ Einzelkräuter zum Selbstmischen findest du bei Hotte Maxe.
 Diese Kombination hilft, das Pferd **frühzeitig zu stabilisieren**, bevor die
 eigentliche Stressphase beginnt, sanft, natürlich und ohne Überforderung des
 Organismus.
+
+## Häufige Fragen
+
+### Sollen Pferde an Silvester in den Stall oder auf die Weide?
+
+Es gibt keine Antwort, die für alle stimmt. Entscheidend ist, wo das Pferd
+normalerweise steht, denn die gewohnte Umgebung ist fast immer die sicherere.
+Ein Pferd, das sonst draußen lebt, gerät in der Box eher in Panik als auf
+seiner Koppel, und umgekehrt gilt dasselbe. Prüf stattdessen die Umzäunung,
+räum weg, woran sich ein durchgehendes Pferd verletzen kann, und sorg dafür,
+dass es nicht allein steht.
+
+### Ab wann fange ich mit der Unterstützung über das Futter an?
+
+Kräuter wie Melisse, Hopfen oder Baldrian sind Futter und kein
+Beruhigungsmittel, sie brauchen Vorlauf. Zwei bis drei Wochen vor Silvester
+anzufangen ist sinnvoller, als am 31. Dezember etwas in den Trog zu kippen. Und
+sie ersetzen keine sichere Umgebung: Ein Pferd, das in Panik gerät, gerät auch
+mit Melisse in Panik.
+
+### Hilft ein Beruhigungsmittel vom Tierarzt?
+
+Bei Pferden, die in der Vergangenheit wirklich durchgegangen sind oder sich
+verletzt haben, ist das eine ernsthafte Möglichkeit, und dafür ist das Gespräch
+mit dem Tierarzt da. Es gehört rechtzeitig geführt, nicht am Nachmittag des 31.
+Dezember. Auf eigene Faust zu dosieren gehört nicht dazu.
+
+### Was ist mit Ohrenstöpseln oder Radio im Stall?
+
+Beides kann helfen, beides kann auch das Gegenteil bewirken. Ein Pferd, das
+seine Umgebung nicht mehr hört, wird bei manchen noch unsicherer. Wenn du es
+ausprobieren willst, dann Wochen vorher an einem ruhigen Abend und nicht zum
+ersten Mal in der Silvesternacht. Es muss bereits gewohnt sein, um zu wirken.
+
+### Sollte ich in der Silvesternacht beim Pferd bleiben?
+
+Wenn deine eigene Ruhe echt ist, ja, denn dann ist deine Anwesenheit der
+stärkste beruhigende Faktor, den es gibt. Wenn du selbst angespannt bist und
+alle fünf Minuten zum Fenster gehst, überträgt sich genau das. Ehrlich mit sich
+zu sein lohnt sich hier mehr als jedes Kraut.

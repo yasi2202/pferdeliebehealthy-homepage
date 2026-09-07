@@ -1,7 +1,7 @@
 ---
 titel: "Von innen nach außen: Wie Stoffwechsel und Darm die Hufhornqualität formen"
 datum: 2025-08-13
-aktualisiert:
+aktualisiert: 2026-09-07
 kategorie: "Haut, Fell und Hufe"
 angebot: "futter-check"
 bild: ""
@@ -125,8 +125,51 @@ oft als „Notlager“ für Abfallstoffe genutzt.
 
 Deshalb setze ich in meiner Arbeit auf einen **3-Phasen-Darmsanierungsplan**:
 
-Mehr Infos zum 3-Phasen-Darmsanierungsplan findest du hier
+Mehr dazu steht auf der Seite zum [3-Phasen-Darmaufbau](/darmaufbau).
 
 Er hilft, den Verdauungstrakt zu stabilisieren, die Nährstoffaufnahme zu
 optimieren und die Entgiftungsleistung zu verbessern. So profitieren nicht nur
 Fell, Energie und Immunsystem, sondern auch die Hufe.
+
+## Häufige Fragen
+
+### Warum hat mein Pferd so schlechte Hufe?
+
+Weil Horn zuletzt versorgt wird. Fehlen Bausteine, spart der Körper erst an
+dem, was nicht überlebenswichtig ist, und dazu gehört Horn genauso wie Fell.
+Die häufigsten Gründe sind eine dünne Versorgung mit Zink, Kupfer und
+schwefelhaltigen Aminosäuren, ein Darm, der das Angebotene nicht aufnimmt, und
+eine Ration mit zu viel Stärke und Zucker. Bearbeitung und Untergrund kommen
+dazu, aber sie erklären selten allein, warum das Horn bröckelt.
+
+### Wie lange dauert es, bis besseres Hufhorn sichtbar ist?
+
+Der Huf wächst im Schnitt sechs bis zehn Millimeter im Monat, und bis neues
+Horn vom Kronrand bis unten durchgewachsen ist, vergehen neun bis zwölf Monate.
+Am Kronrand selbst lässt sich nach etwa drei Monaten erkennen, ob sich etwas
+ändert. Wer nach sechs Wochen ein Urteil fällt, beurteilt Horn, das lange vor
+der Umstellung gewachsen ist.
+
+### Welche Nährstoffe braucht das Hufhorn?
+
+Zink und Kupfer im richtigen Verhältnis, schwefelhaltige Aminosäuren, allen
+voran Methionin und Cystein, dazu Biotin und eine ausreichende
+Eiweißversorgung insgesamt. Biotin ist dabei der am häufigsten gekaufte und am
+seltensten fehlende Baustein: Es wird im Dickdarm von Bakterien gebildet. Wenn
+es knapp ist, liegt das meistens am Darm und nicht am Futter, und dann hilft
+die Dose nur so lange, wie sie gegeben wird.
+
+### Kann man Hufhornqualität überhaupt über die Fütterung ändern?
+
+Ja, aber nur den Teil, der von der Versorgung abhängt, und der ist bei vielen
+Pferden groß. Was die Fütterung nicht ändert, sind Fehlstellungen, zu lange
+Bearbeitungsintervalle, dauerhaft nasser oder steinharter Untergrund und
+Vorschäden im Huf. Am schnellsten kommt man voran, wenn Fütterung und
+Hufbearbeitung gleichzeitig stimmen.
+
+### Wann gehört der Huf in fachliche Hände?
+
+Bei Lahmheit, bei Wärme im Huf, bei pochender Pulsation an der Fessel, bei Blut
+oder Eiter am Kronrand und bei jedem Verdacht auf Hufrehe. Das ist ein Fall für
+den Tierarzt und nicht für den Futtereimer. Auch tiefe, riechende
+Strahlfurchen gehören angesehen, bevor irgendetwas darauf gegeben wird.

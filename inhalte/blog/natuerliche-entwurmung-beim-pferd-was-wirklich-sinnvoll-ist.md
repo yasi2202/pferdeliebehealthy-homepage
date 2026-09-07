@@ -1,7 +1,7 @@
 ---
 titel: "Natürliche Entwurmung beim Pferd: Was wirklich sinnvoll ist"
 datum: 2026-05-07
-aktualisiert:
+aktualisiert: 2026-09-07
 kategorie: "Magen und Darm"
 angebot: "futter-check"
 bild: ""
@@ -132,7 +132,62 @@ Futterplätze tatsächlich sind. Würmer brauchen einen Übertragungsweg, und je
 weniger sich uns dieser bietet, desto seltener brauchen wir die Wurmkur
 überhaupt.
 
-##
+## Häufige Fragen
+
+### Wie oft muss ein Pferd entwurmt werden?
+
+Nach heutigem Stand gar nicht nach Kalender, sondern nach Befund. Bei einem
+gesunden erwachsenen Pferd in stabiler Haltung wird zwei bis vier Mal im Jahr
+eine Kotprobe untersucht, und behandelt wird nur, wenn der Wert es verlangt.
+Viele Pferde kommen so auf eine einzige Kur im Jahr oder auf keine. Ausgenommen
+sind die Fälle, die eine Kotprobe nicht sicher erfasst, also der Bandwurm im
+Spätherbst und die eingekapselten Larven im ausgehenden Winter.
+
+### Kann man ein Pferd ohne Chemie entwurmen?
+
+Vorbeugend lässt sich viel erreichen, einen nachgewiesenen Befall auflösen
+lässt sich damit nicht. Abäppeln, Weideführung, gutes Raufutter und ein
+stabiler Darm senken den Infektionsdruck so weit, dass die meisten Pferde
+selten behandelt werden müssen. Ist der Befund aber deutlich positiv, braucht
+es das passende Mittel vom Tierarzt. Wer darauf verzichtet, riskiert Kolik
+und Darmschäden.
+
+### Welche Kräuter werden zur Wurmprophylaxe eingesetzt?
+
+Gebräuchlich sind Schwarzkümmel, Walnussblätter, Thymian, Oregano und kleine
+Mengen Wermut. Sie sind Futter und kein Arzneimittel: Sie verändern das
+Darmmilieu und unterstützen die Schleimhaut, sie töten keine Würmer ab. Wermut
+gehört wegen des Thujongehalts nur kurweise und in kleinen Mengen in den Trog,
+nicht dauerhaft. Bei tragenden Stuten gehört jede Kräutergabe vorher
+tierärztlich abgesprochen.
+
+### Woran erkenne ich, dass mein Pferd Würmer hat?
+
+Zuverlässig gar nicht, und das ist der Grund für die Kotprobe. Stumpfes Fell,
+ein aufgezogener Bauch, Abmagern trotz guter Fütterung, wiederkehrende
+Koliken oder Scheuern am Schweif können Hinweise sein, kommen aber genauso von
+zwanzig anderen Ursachen. Umgekehrt trägt ein Pferd ohne jedes Anzeichen
+manchmal eine hohe Last. Zählen kann die Eier nur das Labor.
+
+### Wie sieht ein sinnvolles Entwurmungsschema aus?
+
+Als Gerüst: im Frühjahr und im Sommer je eine quantitative Kotprobe und nur
+bei Bedarf behandeln, im Spätherbst die gezielte Bandwurmbehandlung, im
+ausgehenden Winter je nach Vorgeschichte und Haltung eine Larvizidkur. Wie
+dieses Gerüst bei euch aussieht, hängt von Alter, Weidefläche, Besatzdichte
+und den Befunden der letzten Jahre ab, und genau deshalb legt es der Tierarzt
+fest und nicht ein Schema aus dem Netz. Fohlen und Jungpferde folgen ohnehin
+einem eigenen, engeren Plan.
+
+### Belastet eine Wurmkur die Leber?
+
+Jede Wurmkur wird über Leber und Darm verstoffwechselt, das ist keine
+Nebensache, aber auch kein Grund, eine nötige Behandlung zu verschieben. Sinnvoller
+ist, die Zahl der Kuren über Kotproben und Hygiene ehrlich klein zu halten und
+das Pferd in den Wochen um eine nötige Kur herum mit gutem Raufutter und Ruhe
+im Futterplan zu begleiten.
+
+## Alles zusammengenommen
 
 Natürliche Entwurmung ist kein Verzicht auf Verantwortung, sondern eine
 bewusste Entscheidung für ein durchdachtes, individuelles Vorgehen. Sie

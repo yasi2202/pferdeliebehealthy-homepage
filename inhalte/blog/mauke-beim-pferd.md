@@ -1,7 +1,7 @@
 ---
 titel: "Mauke beim Pferd ist kein Hautproblem"
 datum: 2026-09-01
-aktualisiert:
+aktualisiert: 2026-09-07
 kategorie: "Haut, Fell und Hufe"
 angebot: "futter-check"
 bild: "/images/blog/mauke-fessel.webp"
@@ -213,6 +213,59 @@ sind Chorioptesmilben, die sogenannte Fußräude. Sie sitzen tief in der
 Behaarung, sind von außen nicht zu sehen, und der Nachweis gelingt nur über
 ein Hautgeschabsel beim Tierarzt. Solange sie unbehandelt bleiben, kommt keine
 Fütterung dagegen an.
+
+## Häufige Fragen
+
+### Warum kommt die Mauke bei meinem Pferd immer wieder?
+
+Weil in den allermeisten Fällen nur die Haut behandelt wird und nicht das, was
+sie schwach macht. Die Fesselbeuge ist die Stelle, an der ein Mangel als Erstes
+sichtbar wird: dünn behaart, ständig in Bewegung, oft feucht. Solange Zink und
+Kupfer nicht in der richtigen Menge und im richtigen Verhältnis ankommen,
+schließt sich die Haut zwar unter Salbe, hält dem nächsten nassen Herbst aber
+wieder nicht stand.
+
+### Wie viel Zink braucht ein Pferd bei Mauke?
+
+Mehr, als der Sack vermuten lässt. Ein 600-Kilo-Pferd braucht rund 500
+Milligramm Zink am Tag, aus dem Heu kommen im Schnitt etwa 225. Es fehlen also
+rund 275 Milligramm. Ein Mineralfutter mit 2.000 Milligramm Zink je Kilo
+liefert bei 80 Gramm Tagesdosis nur 160 Milligramm und reicht damit nicht. Und
+achte auf das Verhältnis zu Kupfer: vier bis fünf Teile Zink auf einen Teil
+Kupfer, nicht neun.
+
+### Was hilft äußerlich bei Mauke?
+
+Trocken halten, vorsichtig reinigen, Krusten nicht abreißen. Alles, was die
+Stelle luftdicht abschließt oder die Haut zusätzlich austrocknet, verzögert die
+Heilung. Und Vorsicht bei den Hausmitteln aus dem Netz: Was scharf
+desinfiziert, schädigt in der Regel auch die neuen Zellen, die die Wunde
+schließen sollen.
+
+### Kann Mauke von Milben kommen?
+
+Ja, und das wird regelmäßig übersehen. Chorioptesmilben sitzen tief im
+Kötenbehang, sind von außen nicht zu sehen, und nachweisen lässt sich der
+Befall nur über ein Hautgeschabsel beim Tierarzt. Solange sie unbehandelt
+bleiben, kommt keine Fütterung und keine Pflege dagegen an. Bei Pferden mit
+viel Behang lohnt der Verdacht früher, als man denkt.
+
+### Wie lange dauert es, bis Mauke abheilt?
+
+In den ersten ein bis zwei Wochen lösen sich die Krusten und die Haut darunter
+sieht schlechter aus als vorher, das gehört dazu. Ab Woche drei bis sechs
+schließt sich die Haut, ab Woche acht wächst neues Haar nach. Ist bis dahin
+nichts passiert, obwohl es trocken steht und die Ration sitzt, gehört mehr dazu
+als Fütterung. Fotografier die Fessel wöchentlich von derselben Seite, sonst
+siehst du den Fortschritt nicht.
+
+### Darf ein Pferd mit Mauke auf die nasse Weide?
+
+Dauerhaft im Matsch stehen ist der sicherste Weg, dass nichts abheilt.
+Wegsperren muss man das Pferd deswegen aber nicht, denn Bewegung ist für die
+Durchblutung der Fessel wichtig. Der Kompromiss ist, dass die Beine danach
+trocknen können, also trockener Untergrund im Stall oder auf dem Paddock, und
+Abtrocknen statt Abspritzen.
 
 ---
 

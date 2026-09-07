@@ -1,7 +1,7 @@
 ---
 titel: "Kotwasser beim Pferd: woher es kommt und was wirklich hilft"
 datum: 2026-09-01
-aktualisiert:
+aktualisiert: 2026-09-07
 kategorie: "Magen und Darm"
 angebot: "futter-check"
 bild: ""
@@ -203,6 +203,59 @@ Auch wenn das Kotwasser über Monate bleibt, obwohl Fütterung und Haltung
 stimmen, lohnt sich die Abklärung. Dahinter können eine chronische
 Darmentzündung, ein Sandbefund oder eine Zahnerkrankung stecken, und keines
 davon lässt sich mit Kräutern lösen.
+
+## Häufige Fragen
+
+### Was hilft schnell gegen Kotwasser beim Pferd?
+
+Ehrlich beantwortet: nichts. Kotwasser ist das Ergebnis eines verschobenen
+Milieus im Dickdarm, und dieses Milieu baut sich über Wochen um, nicht über
+Tage. Was du sofort tun kannst, ist die Ursache abstellen: Heumenge auf
+mindestens 1,5 Kilo je 100 Kilo Körpergewicht bringen, die längste Fresspause
+unter vier Stunden drücken und die Stärke je Mahlzeit begrenzen. Wer
+stattdessen ein Mittel sucht, verliert genau die Wochen, in denen sich etwas
+hätte ändern können.
+
+### Ist Kotwasser gefährlich?
+
+Für sich genommen nicht. Es ist unangenehm und macht die Haut an den
+Hinterbeinen wund, aber es ist kein Notfall. Ernst wird die Lage, wenn Fieber,
+Gewichtsverlust, Fressunlust oder Kolikanzeichen dazukommen, oder wenn das
+Kotwasser über Monate bleibt, obwohl Fütterung und Haltung stimmen. Dann
+gehört es abgeklärt.
+
+### Bei welcher Heumenge hört Kotwasser auf?
+
+Eine Grenze, ab der es aufhört, gibt es nicht, aber es gibt eine, unter der es
+fast immer bleibt. Unter 1,5 Kilo Heu je 100 Kilo Körpergewicht fehlt dem
+Dickdarm schlicht die Rohfaser, aus der er lebt. Für ein 600-Kilo-Pferd sind
+das 9 Kilo als Untergrenze und 11 bis 12 Kilo als Ziel. Gewogen, nicht
+geschätzt: Die Schätzung liegt in der Praxis fast immer zu hoch.
+
+### Können Kräuter Kotwasser beheben?
+
+Sie können begleiten, die Ursache beheben sie nicht. Bitterkräuter und
+Schleimstoffe unterstützen die Verdauung und die Schleimhaut, aber sie
+ersetzen weder Heu noch kürzere Fresspausen. Ein Kraut in einer Ration mit zu
+wenig Rohfaser und zu viel Stärke arbeitet gegen die Fütterung an, und dieses
+Rennen gewinnt es nicht.
+
+### Wie lange dauert es, bis Kotwasser besser wird?
+
+Rechne mit acht bis zwölf Wochen. In den ersten zwei Wochen passiert nichts
+Sichtbares, ab Woche drei wird es meist seltener und weniger statt schlagartig
+besser. Wer nach zehn Tagen aufgibt und wieder umstellt, fängt jedes Mal von
+vorn an. Ein kurzes Protokoll mit drei Zeilen am Tag hilft, weil das Gefühl
+nach acht Wochen in beide Richtungen täuscht.
+
+### Kommt Kotwasser vom Heuwechsel?
+
+Ein Wechsel auf einen anderen Schnitt oder eine andere Charge kann Kotwasser
+auslösen, weil sich die Bakterien im Dickdarm auf das gewohnte Futter
+eingestellt haben. Deshalb Heu immer über ein bis zwei Wochen anmischen statt
+von einem Tag auf den anderen umzustellen. Hält das Kotwasser länger als vier
+Wochen nach dem Wechsel an, liegt es meist nicht mehr am Wechsel selbst,
+sondern an der Menge oder an der Qualität des neuen Heus.
 
 ## Wo ich anfangen würde
 

@@ -1,7 +1,7 @@
 ---
 titel: "Dein Pferd zeigt Symptome, aber die Ursache bleibt unklar"
 datum: 2025-08-13
-aktualisiert: 2026-09-02
+aktualisiert: 2026-09-07
 kategorie: "Magen und Darm"
 angebot: "futter-check"
 bild: ""
@@ -90,6 +90,49 @@ danach über Fütterung gesprochen.
 
 Auch bei Symptomen, die über Monate bestehen, gehört ein Blutbild dazu, bevor
 weiter an der Ration gedreht wird.
+
+## Häufige Fragen
+
+### Mein Pferd zeigt Symptome, aber der Tierarzt findet nichts. Was nun?
+
+„Kein Befund" heißt fast immer: nichts, was mit dieser einen Untersuchung
+messbar war. Es heißt nicht, dass nichts ist. Der nächste Schritt ist deshalb
+nicht die nächste teurere Untersuchung, sondern die Reihenfolge von oben:
+Zähne, Kotprobe, Ration gewogen, Haltung. Dieser Teil kostet fast nichts und
+erklärt den größten Teil der Fälle. Was dann noch übrig bleibt, lässt sich
+gezielt abklären, statt auf Verdacht.
+
+### Können Kotwasser, Hautprobleme und Husten dieselbe Ursache haben?
+
+Sie können, müssen aber nicht. Drei Stellen verbinden sie: der Darm mit einem
+großen Teil der Immunabwehr, die Entgiftungsorgane, und die Versorgung mit
+Bausteinen, die bei Mangel zuerst an Fell und Horn sparen. Wenn mehrere
+Symptome gleichzeitig neu aufgetreten sind, lohnt der Blick auf das
+Gemeinsame. Wenn sie seit Jahren nebeneinanderher laufen, sind es meist
+mehrere Ursachen.
+
+### Woran erkenne ich, ob es am Darm liegt?
+
+An einem einzelnen Zeichen gar nicht. Verdächtig wird es, wenn wechselnde
+Kotkonsistenz, Blähbauch oder Kotwasser zusammen mit Haut- oder Fellthemen
+auftreten, wenn es nach Futterwechseln deutlich schwankt, und wenn Zähne,
+Würmer und Sand bereits ausgeschlossen sind. Ohne diese drei
+Ausschlüsse vorher ist jede Darmkur ein Schuss ins Blaue.
+
+### Wie lange sollte ich beobachten, bevor ich etwas ändere?
+
+Zwei Wochen mit Notizen sind ein guter Rahmen, außer es geht dem Pferd
+schlecht. Was sich in zwei Wochen nicht als Muster zeigt, ist meist auch keins.
+Und ändere immer nur eine Sache auf einmal: Wer Futter, Zusatz und Haltung
+gleichzeitig umstellt, weiß hinterher nicht, was geholfen hat, und muss beim
+nächsten Mal wieder von vorn anfangen.
+
+### Was soll ich zu einer Beratung mitbringen?
+
+Die gewogene Ration mit Mengen und Uhrzeiten, den Tagesablauf mit der längsten
+Fresspause, und zwei Wochen Notizen zum Verlauf. Dazu, falls vorhanden, das
+letzte Blutbild und die letzte Heuanalyse. Mit diesen Unterlagen ist die
+Hälfte der Arbeit erledigt, bevor das Gespräch anfängt.
 
 ## Wo du anfangen kannst
 
