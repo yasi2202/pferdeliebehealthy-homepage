@@ -23,14 +23,15 @@ const befunde = [
   { name: "Salz", wert: "frei verfügbar", stand: "erfüllt", prozent: 100 },
 ];
 
-/** Liegt ein echtes Bildschirmfoto bereit?
+/** Liegt das echte Bildschirmfoto bereit?
  *
- *  WOZU DIE PRUEFUNG: Ein echter Auszug aus RatioPro zieht mehr als eine
- *  nachgebaute Balkenliste, aber er muss aus dem laufenden Rechner kommen und
- *  den kann nur Yasemin bedienen. Solange die Datei fehlt, steht hier die
- *  nachgebaute Fassung; sobald sie unter public/images/ratiopro-auszug.png
- *  liegt, erscheint sie von selbst. Kein Umbau noetig, kein leerer Platz in
- *  der Zwischenzeit.
+ *  SEIT DEM 07.09.2026 LIEGT ES. Aufgenommen aus dem laufenden RatioPro mit
+ *  einer echten Ration: 9 kg Heu, 0,8 kg Heu-Cobs, 80 g Mineralfutter und
+ *  30 g Hanfoel fuer ein 520-kg-Pferd. Alle Zahlen im Bild sind gerechnet,
+ *  nichts davon ist gesetzt.
+ *
+ *  Die Pruefung bleibt als Sicherung: Verschwindet die Datei bei einem Umbau,
+ *  steht hier wieder die nachgebaute Balkenliste statt eines leeren Platzes.
  */
 function fotoVorhanden(): boolean {
   try {
@@ -53,18 +54,33 @@ export default function RatioProAuszug() {
           <h2 className="text-[12.5px] tracking-[0.14em] uppercase text-rose-deep font-semibold">
             So rechnest du selbst · Auszug aus RatioPro
           </h2>
-          <span className="text-[13px] text-ink-soft tabular-nums">Helena, 28 Jahre</span>
+          <span className="text-[13px] text-ink-soft tabular-nums">520 kg &middot; leichte Arbeit</span>
         </div>
 
         {foto ? (
-          <Image
-            src="/images/ratiopro-auszug.png"
-            alt="Auszug aus RatioPro: Bedarfsdeckung einer durchgerechneten Ration"
-            width={1600}
-            height={900}
-            className="w-full h-auto rounded-[14px] border border-line"
-            priority
-          />
+          <>
+            {/* Zwei Aufnahmen desselben Rechners. Die breite Fassung ist auf
+                dem Handy nicht zu entziffern, die schmale auf dem Rechner zu
+                grob. Beide zeigen dieselbe Ration. */}
+            <Image
+              src="/images/ratiopro-auszug.png"
+              alt="Auszug aus RatioPro: eine durchgerechnete Ration mit Kosten, Hufrehe-Hinweis und Bedarfsdeckung"
+              width={2200}
+              height={1828}
+              className="hidden sm:block w-full h-auto rounded-[14px] border border-line"
+              sizes="(min-width: 1024px) 900px, 100vw"
+              priority
+            />
+            <Image
+              src="/images/ratiopro-auszug-handy.png"
+              alt="Auszug aus RatioPro: die Ration und was sie an Naehrstoffen deckt"
+              width={968}
+              height={1930}
+              className="sm:hidden w-full h-auto rounded-[14px] border border-line"
+              sizes="100vw"
+              priority
+            />
+          </>
         ) : (
         <div className="grid sm:grid-cols-2 gap-x-12 gap-y-7">
           {befunde.map((b) => (
@@ -86,7 +102,7 @@ export default function RatioProAuszug() {
         )}
 
         <p className="text-[13px] text-ink-soft mt-8 pt-6 border-t border-line">
-          Beispielwerte zur Veranschaulichung. Genau so rechnest du mit{" "}
+          Eine echte Ration, durchgerechnet. Genau so rechnest du mit{" "}
           <Link href="/ratiopro" className="text-ink font-medium hover:text-rose-deep">
             RatioPro
           </Link>{" "}
