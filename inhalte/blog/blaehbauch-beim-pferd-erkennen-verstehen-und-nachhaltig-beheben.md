@@ -152,8 +152,12 @@ Bis er da ist:
 
 Blähungen entstehen häufig durch ein Ungleichgewicht in der **Darmflora**.
 Sind „gute“ Mikroorganismen geschwächt, setzen sich Gär- und Fäulnisbakterien
-schneller durch. Das führt nicht nur zu Gasbildung, sondern schwächt den
-gesamten Organismus, von der Nährstoffaufnahme bis zum Immunsystem.
+schneller durch. Das führt nicht nur zu Gasbildung, sondern wirkt sich auf die
+gesamte Nährstoffaufnahme aus.
+
+Kräuter sind dabei Futter und keine Behandlung. Sie kommen bei mir erst, wenn
+Heumenge, Fresspausen und Stärkegehalt sitzen. Wer die Reihenfolge umdreht,
+gibt Geld für Tüten aus und ändert nichts.
 
 [[partner:pernaturam]]
 

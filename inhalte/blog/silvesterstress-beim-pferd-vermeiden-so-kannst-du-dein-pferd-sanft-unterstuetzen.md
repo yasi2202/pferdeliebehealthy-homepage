@@ -101,17 +101,22 @@ Umgebung wirken oft stärker als jede Ergänzung.
 
 Mit etwas Vorbereitung, Geduld und liebevoller Begleitung kannst du deinem
 Pferd helfen, **Silvester entspannter zu erleben**.
-Ein sicheres Umfeld, natürliche Nervenunterstützung und deine ruhige Präsenz
+Ein sicheres Umfeld, eine gedeckte Grundversorgung und deine ruhige Präsenz
 sind die besten Bausteine, um gemeinsam **gelassen ins neue Jahr zu starten**.
 
 ## Mein persönlicher Tipp für entspannte Pferde an Silvester
 
 Ich beginne etwa **8 Wochen vor Silvester**, meine Pferde gezielt auf die
 stressige Zeit vorzubereiten.
-Dafür füttere ich gerne **Magnesiumfumarat oder Magnesiumcitrat**, das
-unterstützt die Nervenfunktion und hilft, innere Ruhe zu fördern.
+Dafür schaue ich zuerst auf **Magnesium**. Es ist ein Mengenelement, das an
+der Reizweiterleitung zwischen Nerven und Muskeln beteiligt ist, und eine
+gedeckte Versorgung gehört ohnehin in jede Ration, nicht nur im Dezember. Gut
+verfügbar sind Magnesiumfumarat und Magnesiumcitrat. Ein Beruhigungsmittel ist
+Magnesium nicht, und mehr als der Bedarf bringt auch nicht mehr Ruhe.
 
-Kombiniert wird das Ganze mit Melisse.
+Dazu gebe ich Melisse. Sie gehört zu den klassischen Futterkräutern und wird
+traditionell kurweise gefüttert. Studien am Pferd gibt es dazu nicht, das
+gehört zur Ehrlichkeit dazu.
 
 [[produkt:mos-grun-melisse]]
 
@@ -121,9 +126,10 @@ Einzelkräuter zum Selbstmischen findest du bei Hotte Maxe.
 
 [[partner:hotte-maxe]]
 
-Diese Kombination hilft, das Pferd **frühzeitig zu stabilisieren**, bevor die
-eigentliche Stressphase beginnt, sanft, natürlich und ohne Überforderung des
-Organismus.
+Der Grund, warum ich so früh anfange, ist banal: Was über das Futter läuft,
+braucht Vorlauf, und am 31. Dezember etwas in den Trog zu kippen bringt
+nichts. Ersetzen kann all das die sichere Umgebung nicht. Ein Pferd, das in
+Panik gerät, gerät auch mit Melisse in Panik.
 
 ## Häufige Fragen
 

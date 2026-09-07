@@ -80,18 +80,20 @@ Und jetzt kommen wir zu dem Teil, den die meisten Pferdebesitzer am liebsten
 lesen. Kräuter haben ihren festen Platz in der natürlichen Wurmprophylaxe.
 Aber sie haben Grenzen, und die gehören ehrlich benannt.
 
-Schwarzkümmel, Walnussblätter, Thymian, Oregano oder kleine Mengen Wermut
-können das Darmmilieu so verändern, dass es für Würmer weniger attraktiv wird.
-Sie unterstützen die Darmschleimhaut, fördern die Verdauung und helfen dem
-Pferd dabei, eine eigene Abwehr aufzubauen. In Phasen rund um eine notwendige
-Wurmkur können sie außerdem Leber und Darm spürbar entlasten.
+Vorweg der Satz, der über allem steht: Kräuter sind Futtermittel und keine
+Wurmkur. Sie entwurmen kein Pferd, und ich setze sie auch nicht so ein.
 
-Wenn du die Kräuter einzeln zusammenstellen möchtest, beziehst du sie am
-besten bei Hotte Maxe. Mit dem Code Pferdeliebe bekommst du dort einen Rabatt
-auf deine Bestellung. Wer es lieber unkompliziert mag, ist mit der PerNaturam
-Mischung Bittermut WurmKräuter gut beraten. Das ist eine bewährte Kombination
-aus bitteren und wurmaktiven Kräutern, die sich besonders gut als saisonale
-Begleitung im Frühjahr und Herbst macht.
+Schwarzkümmel, Walnussblätter, Thymian, Oregano und kleine Mengen Wermut
+gehören zu den Bitter- und Gerbstoffkräutern, die in der Pferdefütterung seit
+Generationen rund um die Wurmsaison gegeben werden, kurweise und in kleinen
+Mengen. Belastbare Studien, die zeigen, dass sie beim Pferd die Wurmlast
+senken, gibt es nicht. Was ich aus der Praxis sagen kann: Sie sind ein
+Bestandteil der Ration in einer Zeit, in der ich ohnehin genauer hinschaue,
+mehr nicht.
+
+Wenn du sie einzeln zusammenstellen möchtest, bekommst du sie bei Hotte Maxe,
+mit dem Code Pferdeliebe. Wer es unkompliziert mag, nimmt eine fertige
+Bittermischung als saisonale Begleitung im Frühjahr und Herbst.
 
 [[partner:pernaturam]]
 

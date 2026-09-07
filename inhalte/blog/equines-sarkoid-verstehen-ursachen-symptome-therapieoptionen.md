@@ -117,7 +117,7 @@ dessen Darm funktioniert, ist in einer besseren Ausgangslage als eines, bei
 dem an dieser Basis etwas fehlt. Das ist kein Wundermittel, es ist
 Grundlagenarbeit.
 
-### Immunsystem & Stoffwechsel stärken
+### Die Grundversorgung sichern
 
 Ein stabiler Stoffwechsel und eine gute Versorgung mit Mikronährstoffen bilden
 die Grundlage, damit der Körper selbst regulierend arbeiten kann.
@@ -127,11 +127,14 @@ ist die Grundlage, auf der Haut, Immunsystem und Zellstoffwechsel überhaupt
 arbeiten können. Empfehlenswert sind [Mineralfutter](/blog/natuerliches-mineralfutter-fuer-pferde-sinnvoll-wirksam-und-selbst-gemischt), die
 Zink, Kupfer, Mangan und Selen in bioverfügbarer Form enthalten.
 
-- **[Leber](/blog/fruehmarker-fuer-leberprobleme-beim-pferd-warnsignale-rechtzeitig-erkennen) und Darm entlasten:** Da der Organismus Stoffwechselrückstände über
-Leber, Nieren und Darm ausscheidet, ist deren Unterstützung sinnvoll, z. B.
-durch Moor, Bitterkräuter oder milde Entgiftungskuren (nach Rücksprache).
+- **[Leber](/blog/fruehmarker-fuer-leberprobleme-beim-pferd-warnsignale-rechtzeitig-erkennen), Nieren und Darm nicht zusätzlich belasten:** Diese Organe
+räumen Stoffwechselrückstände weg, und sie tun das von selbst. Eine
+„Entgiftungskur" im Wortsinn gibt es nicht, das ist ein Werbewort. Was
+tatsächlich hilft, ist eine schadstoffarme, getreidearme Ration und sauberes
+Raufutter. Moor und Bitterkräuter werden traditionell begleitend gefüttert,
+Belege für eine Wirkung beim Pferd gibt es dafür nicht.
 
-### Kräuter zur natürlichen Unterstützung
+### Was ich in der Ration ergänze
 
 Einige Pflanzen bringen sekundäre Pflanzenstoffe mit, die in der
 naturnahen Fütterung seit langem eingesetzt werden. Belege dafür, dass sie

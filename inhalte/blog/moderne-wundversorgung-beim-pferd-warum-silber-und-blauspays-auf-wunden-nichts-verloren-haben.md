@@ -78,23 +78,24 @@ Narbe wird größer.
 
 Eine moderne Wundversorgung folgt drei einfachen Schritten:
 
-### 1️⃣ Sanfte, effektive Reinigung
+### 1️⃣ Reinigen
 
-Mit einem **milden, pH-neutralen Wundreiniger** werden Schmutz, Keime und
-abgestorbenes Gewebe entfernt, ohne das gesunde Gewebe zu reizen.
-Ich arbeite selbst mit dem *Haut-Talent Nr. 1* von Bäralis: Es brennt nicht und lässt die
-Wundfläche sauber zurück, ohne sie auszutrocknen.
+Mit einem **pH-neutralen Wundreiniger** werden Schmutz und lose Beläge von der
+Wundfläche gespült, ohne sie auszutrocknen.
+Ich arbeite selbst mit dem *Haut-Talent Nr. 1* von Bäralis. Es brennt nicht und
+lässt die Wundfläche sauber zurück.
 
 [[produkt:baeralis-hauttalent]]
 
 ### 2️⃣ Keimreduktion
 
 Nach der Reinigung kommt ein **Gel oder eine Lösung zur Keimreduktion** auf
-die Wunde. Weniger Keime heißt weniger Entzündung, und eine Wunde ohne
-Entzündung kann sich um das Schließen kümmern statt um die Abwehr.
-Ich nehme dafür das *Hydro-Gel Nr. 2* aus derselben Reihe. Es hält die Wunde feucht, und genau
-das ist der Punkt: Eine Wunde, die feucht gehalten wird, heilt schneller und
-mit weniger Narbe als eine, die man austrocknen lässt.
+die Wunde. Der fachliche Hintergrund steht oben: Eine Wunde, die feucht
+gehalten wird, verkrustet nicht, und die feuchte Wundbehandlung ist in der
+Wundversorgung gut untersucht.
+
+Ich nehme dafür das *Hydro-Gel Nr. 2* aus derselben Reihe. Es hält die Wunde
+feucht und lässt sich abspülen, ohne dass man am Wundgrund zieht.
 
 [[produkt:baeralis-hydrogel]]
 
