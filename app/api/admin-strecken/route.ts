@@ -86,6 +86,10 @@ export async function POST(request: Request) {
         tage_danach: Number.isFinite(tage) && tage >= 0 ? Math.floor(tage) : 0,
         betreff: kuerzen(daten.betreff, 200),
         inhalt: kuerzen(daten.inhalt, 60000),
+        // Der Zugangsschluessel des beworbenen Produkts. Leer heisst: an alle.
+        nicht_wenn_zugang: daten.nicht_wenn_zugang
+          ? kuerzen(String(daten.nicht_wenn_zugang), 60).trim() || null
+          : null,
       });
 
       if (!ok) return Response.json({ fehler: "Nicht gespeichert." }, { status: 400 });

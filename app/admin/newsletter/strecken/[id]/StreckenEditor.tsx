@@ -29,6 +29,7 @@ type Entwurf = {
   schritt: number;
   tage_danach: number;
   betreff: string;
+  nicht_wenn_zugang?: string | null;
   inhalt: string;
   id?: string;
 };
@@ -49,6 +50,7 @@ export default function StreckenEditor({
           schritt: m.schritt,
           tage_danach: m.tage_danach,
           betreff: m.betreff,
+          nicht_wenn_zugang: m.nicht_wenn_zugang ?? "",
           inhalt: m.inhalt,
         }))
       : [{ schritt: 1, tage_danach: 0, betreff: "", inhalt: "Hallo {{vorname}},\n\n" }]
@@ -80,6 +82,7 @@ export default function StreckenEditor({
           schritt: s.schritt,
           tage_danach: s.tage_danach,
           betreff: s.betreff,
+          nicht_wenn_zugang: (s.nicht_wenn_zugang || "").trim() || null,
           inhalt: s.inhalt,
         }),
       });
@@ -172,6 +175,7 @@ export default function StreckenEditor({
       {
         schritt: (letzter?.schritt ?? 0) + 1,
         tage_danach: (letzter?.tage_danach ?? 0) + 3,
+        nicht_wenn_zugang: "",
         betreff: "",
         inhalt: "Hallo {{vorname}},\n\n",
       },
@@ -297,6 +301,25 @@ export default function StreckenEditor({
                 spellCheck
                 className="min-h-[260px] w-full resize-y rounded-[14px] border border-line p-4 font-mono text-[14px] leading-[1.7] outline-none focus:border-rose-deep"
               />
+
+              {/* Wer das Beworbene schon hat, ueberspringt diese eine Mail.
+                  Ohne das bekommt eine Kundin, die am Tag 12 kauft, am Tag 18
+                  weiter Werbung fuer genau das Gekaufte. */}
+              <label className="mt-3 block">
+                <span className="mb-1 block text-[13px] text-ink-soft">
+                  Nicht senden, wer das hier schon hat (freiwillig)
+                </span>
+                <input
+                  value={s.nicht_wenn_zugang ?? ""}
+                  onChange={(e) => aendern(i, { nicht_wenn_zugang: e.target.value })}
+                  placeholder="z. B. mineral-klarheit"
+                  className="w-full rounded-[14px] border border-line px-5 py-2.5 font-mono text-[13.5px] outline-none focus:border-rose-deep"
+                />
+                <span className="mt-1 block text-[12.5px] text-ink-soft opacity-80">
+                  Der Schlüssel des Produkts, so wie er in der Akademie als Zugang steht. Leer
+                  lassen heißt: geht an alle.
+                </span>
+              </label>
 
               <div className="mt-3 flex flex-wrap gap-2.5">
                 <button

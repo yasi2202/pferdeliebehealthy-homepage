@@ -52,3 +52,25 @@ create index if not exists stall_anmeldungen_bestaetigt_idx
 -- Schlüssel. Ohne eigene Regel kommt mit dem öffentlichen Schlüssel niemand
 -- an die Adressen heran.
 alter table public.stall_anmeldungen enable row level security;
+
+-- ---------------------------------------------------------------------------
+-- ZWEITER TEIL: Mails überspringen, wenn schon gekauft wurde.
+--
+-- ▸ DAS PROBLEM, DAS DAMIT WEGGEHT
+--   Eine Mailstrecke schickt bisher an alle, die im Zeitfenster liegen. Wer
+--   also an Tag 12 Mineral-Klarheit kauft, bekommt an Tag 18 und an Tag 30
+--   weiter Werbung für genau diesen Kurs. Das wirkt, als würdest du nicht
+--   mitbekommen, wer bei dir kauft.
+--
+-- ▸ WIE ES JETZT GEHT
+--   In dieser Spalte steht der Zugangsschlüssel eines Produkts, zum Beispiel
+--   `mineral-klarheit`. Wer ihn schon hat, überspringt diese eine Mail; die
+--   übrigen Mails der Strecke bekommt sie weiter. Leer heisst: geht an alle,
+--   so wie bisher.
+--
+--   Den Schlüssel findest du in lib/digital.ts beim jeweiligen Produkt unter
+--   `slug`.
+-- ---------------------------------------------------------------------------
+
+alter table public.newsletter_strecken_mails
+  add column if not exists nicht_wenn_zugang text;

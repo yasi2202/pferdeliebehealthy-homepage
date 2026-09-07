@@ -46,6 +46,9 @@ export type StreckenMail = {
   tage_danach: number;
   betreff: string;
   inhalt: string;
+  /** Zugangsschlüssel eines Produkts, z. B. "mineral-klarheit". Wer den schon
+   *  hat, überspringt diese eine Mail. Leer heisst: geht an alle. */
+  nicht_wenn_zugang?: string | null;
 };
 
 // ---------------------------------------------------------------------------
@@ -118,7 +121,7 @@ export async function streckeLoeschen(id: string): Promise<boolean> {
 export async function streckenMailSpeichern(
   streckeId: string,
   schritt: number,
-  felder: { tage_danach: number; betreff: string; inhalt: string }
+  felder: { tage_danach: number; betreff: string; inhalt: string; nicht_wenn_zugang?: string | null }
 ): Promise<boolean> {
   const vorhanden = await ersteZeile<StreckenMail>(
     `newsletter_strecken_mails?strecke_id=eq.${encodeURIComponent(
@@ -207,6 +210,37 @@ async function kandidaten(strecke: Strecke): Promise<Anmeldung[]> {
   });
 }
 
+/**
+ * Wer einen bestimmten Zugang schon hat, aus einer Liste von Adressen.
+ *
+ * WOZU: Eine Strecke schickte bisher an alle im Zeitfenster. Wer also an
+ * Tag 12 kaufte, bekam an Tag 18 weiter Werbung für genau das Gekaufte. Das
+ * wirkt, als bekäme Yasemin nicht mit, wer bei ihr kauft.
+ *
+ * Gefragt wird in einem Zug für alle Adressen statt einzeln je Person: Bei
+ * dreihundert Empfängerinnen wären das sonst dreihundert Abfragen je Mail.
+ */
+async function hatSchonGekauft(emails: string[], zugang: string): Promise<Set<string>> {
+  const treffer = new Set<string>();
+  if (!zugang.trim() || emails.length === 0) return treffer;
+
+  // In Blöcken, damit die Adresszeile nicht zu lang wird.
+  const BLOCK = 80;
+  for (let i = 0; i < emails.length; i += BLOCK) {
+    const teil = emails.slice(i, i + BLOCK);
+    const liste = teil.map((e) => `"${e.replace(/"/g, "")}"`).join(",");
+    const zeilen = await supabaseAlle<{ email: string; zugaenge: string[] | null; bereich: string | null }>(
+      `kursteilnehmer?email=in.(${encodeURIComponent(liste)})&select=email,zugaenge,bereich`
+    );
+    for (const z of zeilen ?? []) {
+      const vorhanden =
+        z.zugaenge && z.zugaenge.length > 0 ? z.zugaenge : z.bereich ? [z.bereich] : [];
+      if (vorhanden.includes(zugang)) treffer.add(z.email.toLowerCase());
+    }
+  }
+  return treffer;
+}
+
 /** Wer diese eine Mail schon bekommen hat. */
 async function schonBekommen(mailId: string): Promise<Set<string>> {
   const zeilen = await supabaseAlle<{ email: string }>(
@@ -254,10 +288,19 @@ export async function streckenLauf(basisUrl: string): Promise<LaufErgebnis[]> {
 
       const hatten = await schonBekommen(mail.id);
 
+      // Wer das beworbene Produkt schon hat, überspringt diese Mail. Die
+      // übrigen Mails der Strecke bekommt sie weiter: Die ersten sind
+      // Nutzenmails, und die passen auch für Kundinnen.
+      const gekauft = mail.nicht_wenn_zugang
+        ? await hatSchonGekauft(leute.map((a) => a.email.toLowerCase()), mail.nicht_wenn_zugang)
+        : new Set<string>();
+
       // Fällig ist, wer lange genug dabei ist und die Mail noch nicht hat.
       const faellig = leute.filter((a) => {
         if (!a.bestaetigt_am) return false;
-        if (hatten.has(a.email.toLowerCase())) return false;
+        const klein = a.email.toLowerCase();
+        if (hatten.has(klein)) return false;
+        if (gekauft.has(klein)) return false;
         return tageSeit(a.bestaetigt_am) >= mail.tage_danach;
       });
 
