@@ -81,7 +81,7 @@ export default function WebinarRaum({
 
   if (zustand.art === "wartet") {
     return (
-      <div className="rounded-2xl bg-cream p-8 sm:p-12 text-center">
+      <div className="rounded-2xl bg-white border border-cream-deep p-8 sm:p-12 text-center">
         <p className="text-[13px] tracking-[0.14em] uppercase text-rose-deep font-semibold mb-4">
           {vorname ? `Schön, dass du da bist, ${vorname}` : "Schön, dass du da bist"}
         </p>
@@ -102,7 +102,7 @@ export default function WebinarRaum({
   if (zustand.art === "laeuft") {
     if (!videoId) {
       return (
-        <div className="rounded-2xl bg-cream p-8 text-center">
+        <div className="rounded-2xl bg-white border border-cream-deep p-8 text-center">
           <h2 className="font-serif text-[24px] mb-3">Das Webinar läuft gleich</h2>
           <p className="text-[16px] text-ink-soft">
             Der Film ist noch nicht hinterlegt. Bitte lade die Seite in ein paar
@@ -141,7 +141,7 @@ export default function WebinarRaum({
 
   if (zustand.art === "verpasst") {
     return (
-      <div className="rounded-2xl bg-cream p-8 sm:p-12 text-center">
+      <div className="rounded-2xl bg-white border border-cream-deep p-8 sm:p-12 text-center">
         <h2 className="font-serif text-[26px] mb-3">Das war knapp</h2>
         <p className="text-[17px] text-ink-soft leading-relaxed mb-6 max-w-md mx-auto">
           Der Einstieg ist schon zu weit fortgeschritten, du würdest die Hälfte
@@ -159,7 +159,7 @@ export default function WebinarRaum({
   }
 
   return (
-    <div className="rounded-2xl bg-cream p-8 sm:p-12 text-center">
+    <div className="rounded-2xl bg-white border border-cream-deep p-8 sm:p-12 text-center">
       <h2 className="font-serif text-[26px] mb-3">Dieser Termin ist vorbei</h2>
       <p className="text-[17px] text-ink-soft leading-relaxed mb-6 max-w-md mx-auto">
         Das Webinar läuft mehrmals die Woche. Such dir einen neuen Termin aus,
