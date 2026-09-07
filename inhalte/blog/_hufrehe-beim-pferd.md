@@ -168,6 +168,10 @@ ein Zink-Kupfer-Verhältnis um vier bis fünf zu eins, und eine Tagesdosis, die
 dein Pferd auch tatsächlich frisst. Die schönste Deklaration nützt nichts,
 wenn die halbe Portion im Trog liegen bleibt.
 
+Damit hier keine Verwechslung entsteht: Es geht um eine Nährstofflücke, die
+jedes Pferd mit wenig Heu und ohne Kraftfutter hat. Mit der Rehe selbst hat
+das nichts zu tun, die behandelt die Tierärztin.
+
 [[partner:laurel-nature]]
 
 [[angebot:mineral]]

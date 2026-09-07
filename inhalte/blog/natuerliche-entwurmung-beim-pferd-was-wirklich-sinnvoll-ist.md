@@ -157,8 +157,8 @@ und Darmschäden.
 ### Welche Kräuter werden zur Wurmprophylaxe eingesetzt?
 
 Gebräuchlich sind Schwarzkümmel, Walnussblätter, Thymian, Oregano und kleine
-Mengen Wermut. Sie sind Futter und kein Arzneimittel: Sie verändern das
-Darmmilieu und unterstützen die Schleimhaut, sie töten keine Würmer ab. Wermut
+Mengen Wermut. Sie sind Futter und kein Arzneimittel: Sie töten keine Würmer
+ab, und dass sie einen Befall senken, ist beim Pferd nicht belegt. Wermut
 gehört wegen des Thujongehalts nur kurweise und in kleinen Mengen in den Trog,
 nicht dauerhaft. Bei tragenden Stuten gehört jede Kräutergabe vorher
 tierärztlich abgesprochen.

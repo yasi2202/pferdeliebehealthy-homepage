@@ -66,7 +66,7 @@ insgesamt bekommt, aus [Mineralfutter](/blog/natuerliches-mineralfutter-fuer-pfe
 | Zeit | Was im Pferd passiert | Was du tust |
 |---|---|---|
 | Ab Ende Juni | die Tage werden kürzer, der Hormonhaushalt stellt um | nichts Besonderes, aber die Grundversorgung sollte stehen |
-| September, Oktober | das Winterfell schiebt sich sichtbar durch | Eiweiß und Spurenelemente prüfen, Leber entlasten |
+| September, Oktober | das Winterfell schiebt sich sichtbar durch | Eiweiß und Spurenelemente prüfen, Zucker und Stärke im Blick behalten |
 | November, Dezember | Fell ist fertig, der Bedarf sinkt wieder | Ergänzungen zurückfahren |
 | Ab Ende Dezember | die Tage werden länger, die nächste Umstellung beginnt | nichts tun |
 | März bis Mai | Winterfell fällt aus, oft anstrengender als im Herbst | erneut Eiweiß und Spurenelemente, dazu viel putzen |

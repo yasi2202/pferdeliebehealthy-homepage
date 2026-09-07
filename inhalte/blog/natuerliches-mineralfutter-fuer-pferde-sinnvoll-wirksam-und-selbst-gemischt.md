@@ -33,9 +33,11 @@ isolierter, hochdosierter Einzelstoffe setzt man auf:
 - natürliche Mineralträger
 - sekundäre Pflanzenstoffe
 
-Diese Kombination wirkt **ganzheitlich**: Sie liefert Mineralstoffe,
-unterstützt gleichzeitig die Verdauung, den Stoffwechsel und die
-Nährstoffaufnahme, und passt damit hervorragend zur Physiologie des Pferdes.
+Der Gedanke dahinter: Ein Pferd nimmt in der Natur Dutzende Pflanzenarten
+auf, nicht sechs isolierte Spurenelemente aus einer Dose. Ob eine solche
+Mischung mehr kann als die Summe ihrer Nährstoffe, ist beim Pferd nicht
+untersucht. Was sie sicher liefert, sind die Mineralstoffe, und die lassen
+sich nachrechnen.
 
 Wichtig ist dabei nicht das „Entweder-oder“, sondern das **richtige Maß und
 die passende Zusammensetzung**.
@@ -61,9 +63,9 @@ Besonders sinnvoll sind sie, wenn du:
 
 ## Kräuter, das Herzstück natürlicher Mineralfutter
 
-Kräuter sind aus natürlichen Mineralfuttern nicht wegzudenken. Und das völlig
-zu Recht. Ihr größter Schatz liegt in den **sekundären Pflanzenstoffen**, die
-dein Pferd in vielerlei Hinsicht unterstützen.
+Kräuter sind aus natürlichen Mineralfuttern nicht wegzudenken. Sie bringen
+neben Mineralstoffen die **sekundären Pflanzenstoffe** mit, also Bitterstoffe,
+Gerbstoffe, ätherische Öle und Farbstoffe.
 
 ### Warum Kräuter so wertvoll sind
 
@@ -95,8 +97,9 @@ die sonst aus zwei oder drei Komponenten besteht.
 
 ### Und was Kräuter nicht sind
 
-Kräuter sind kein Dauerfutter. Sie wirken, und was wirkt, gehört dosiert und
-zeitlich begrenzt eingesetzt. Eine Kräutermischung, die seit zwei Jahren
+Kräuter sind kein Dauerfutter. Bitterstoffe, Gerbstoffe und ätherische Öle
+sind starke Inhaltsstoffe, und was stark ist, gehört dosiert und zeitlich
+begrenzt in den Trog. Eine Kräutermischung, die seit zwei Jahren
 jeden Tag im Trog landet, ist keine Kur mehr, sondern ein Bestandteil der
 Ration, dessen Wirkung niemand mehr beurteilen kann.
 
@@ -115,10 +118,10 @@ Natürliche Mineralfutter gleichen das aus, indem sie:
 
 - unterschiedliche Pflanzenarten kombinieren
 - verschiedene Mineralträger nutzen
-- die mikrobielle Vielfalt im Darm fördern
 
-Je vielfältiger die Fütterung, desto stabiler sind Verdauung, Immunsystem und
-Stoffwechsel.
+Dass eine abwechslungsreiche Ration näher an dem liegt, was ein Pferd von
+Natur aus frisst, ist unbestritten. Dass daraus messbar mehr wird als die
+Summe der enthaltenen Nährstoffe, ist beim Pferd nicht belegt.
 
 ## Was natürliche Quellen decken, und wo sie an ihre Grenze kommen
 

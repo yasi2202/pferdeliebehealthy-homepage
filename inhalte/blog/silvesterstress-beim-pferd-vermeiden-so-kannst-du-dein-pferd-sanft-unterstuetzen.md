@@ -47,16 +47,16 @@ Rolle.
 Der Körper benötigt Mineralstoffe, um **Nerven und Stoffwechsel** im
 Gleichgewicht zu halten.
 
-- **Magnesium & B-Vitamine:** Unterstützen die Nervenfunktionen und können
-helfen, die Reizschwelle zu senken.
+- **Magnesium und B-Vitamine:** Magnesium ist an der Reizweiterleitung
+zwischen Nerven und Muskeln beteiligt, B-Vitamine entstehen im Dickdarm.
+Beides gehört gedeckt, das ganze Jahr über und nicht nur im Dezember.
 
-- **Kräuter wie Melisse, Passionsblume oder Hopfen:** können sanft beruhigend
-wirken und eignen sich als natürliche Ergänzung über 1 bis 2 Wochen vor
-Silvester.
+- **Kräuter wie Melisse, Passionsblume oder Hopfen:** klassische
+Futterkräuter, traditionell kurweise gegeben. Belastbare Studien beim Pferd
+gibt es dazu nicht.
 
-- **Magen-Darm-Stabilität:** Stress schlägt oft auch auf den Verdauungstrakt,
-unterstütze den Darm z. B. mit Moor oder speziellen Kräutermischungen, um
-innere Ruhe zu fördern.
+- **Der Magen:** Stress schlägt beim Pferd zuerst auf den Magen. Die Antwort
+darauf sind kurze Fresspausen und genug Raufutter, nicht ein Zusatz.
 
 ## Wann du womit anfängst
 

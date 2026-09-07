@@ -235,8 +235,9 @@ geschätzt: Die Schätzung liegt in der Praxis fast immer zu hoch.
 ### Können Kräuter Kotwasser beheben?
 
 Sie können begleiten, die Ursache beheben sie nicht. Bitterkräuter und
-Schleimstoffe unterstützen die Verdauung und die Schleimhaut, aber sie
-ersetzen weder Heu noch kürzere Fresspausen. Ein Kraut in einer Ration mit zu
+Schleimstoffe werden traditionell kurweise gefüttert, belastbare Studien beim
+Pferd gibt es dazu nicht, und sie ersetzen weder Heu noch kürzere
+Fresspausen. Ein Kraut in einer Ration mit zu
 wenig Rohfaser und zu viel Stärke arbeitet gegen die Fütterung an, und dieses
 Rennen gewinnt es nicht.
 

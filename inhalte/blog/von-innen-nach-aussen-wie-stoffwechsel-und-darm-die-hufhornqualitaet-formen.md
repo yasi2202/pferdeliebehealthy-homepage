@@ -118,8 +118,8 @@ Wird er deutlich überzogen, hilft auch die beste Fütterung nichts: Zu lange
 Hebel brechen jedes Horn.
 
 ## Warum der Darm der Schlüssel zu gesunden Hufen ist
-Ein gesunder Darm nimmt Nährstoffe zuverlässig auf, hält Schadstoffe in Schach und
-unterstützt so indirekt die Hufqualität. Gerät die [Darmflora](/blog/gesunder-darm-gesundes-pferd-was-wirklich-hinter-darmproblemen-steckt) jedoch aus dem
+Ein gesunder Darm nimmt Nährstoffe zuverlässig auf. Und Hufhorn entsteht aus
+genau diesen Nährstoffen, ein Zusammenhang, der oft übersehen wird. Gerät die [Darmflora](/blog/gesunder-darm-gesundes-pferd-was-wirklich-hinter-darmproblemen-steckt) jedoch aus dem
 Gleichgewicht, steigt die Belastung für Leber und Niere, und die Hufe werden
 oft als „Notlager“ für Abfallstoffe genutzt.
 
@@ -127,9 +127,9 @@ Deshalb setze ich in meiner Arbeit auf einen **3-Phasen-Darmsanierungsplan**:
 
 Mehr dazu steht auf der Seite zum [3-Phasen-Darmaufbau](/darmaufbau).
 
-Er hilft, den Verdauungstrakt zu stabilisieren, die Nährstoffaufnahme zu
-optimieren und die Entgiftungsleistung zu verbessern. So profitieren nicht nur
-Fell, Energie und Immunsystem, sondern auch die Hufe.
+Die Reihenfolge dahinter: erst die Reizfaktoren in der Ration wegnehmen, dann
+gezielt aufbauen, dann stabil halten. Der Aufbau vor der Entlastung ist der
+häufigste Fehler und kostet Wochen.
 
 ## Häufige Fragen
 

@@ -104,7 +104,7 @@ mehr.
 | Luzerne | rund 0,7 bis 0,9 g | die verlässlichste Ergänzung aus dem Grundfutter |
 | Leinsamen | rund 0,9 g | dazu Omega-3, gut für Haut und Fell |
 | Hanfsaat | rund 1,0 g | breites Aminosäureprofil |
-| Bierhefe | rund 3 g | kleine Mengen, wirkt schnell |
+| Bierhefe | rund 3 g | hoher Gehalt, deshalb kleine Mengen |
 | Reines Lysin | 100 g | nur bei nachgewiesenem Mangel und gezielt dosiert |
 
 Daran siehst du die Größenordnung: Mit einem Kilo Luzerne deckst du einen

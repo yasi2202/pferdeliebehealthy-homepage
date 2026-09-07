@@ -159,9 +159,9 @@ werden.
 
 Sarkoide sind zwar meist harmlos, aber für Pferd und Besitzer oft eine
 Belastung.
-Mit einer **stabilen Mineralisierung**, einer **ausgewogenen Fütterung** und
-gezielter **pflanzlicher Unterstützung** lässt sich der Organismus des Pferdes
-stärken und das Hautmilieu verbessern.
+Was du in der Hand hast, ist die Grundversorgung: eine gedeckte
+Mineralisierung und eine ausgewogene, getreidearme Ration. Auf das Sarkoid
+selbst hat das keinen belegten Einfluss, und das behaupte ich auch nicht.
 
 Die Fütterung ist dabei **die Begleitung, nicht die Behandlung**. Jede
 Veränderung gehört in Absprache mit Tierarzt oder Futterberaterin, und die

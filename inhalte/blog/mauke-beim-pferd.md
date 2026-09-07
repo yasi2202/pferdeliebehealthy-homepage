@@ -180,7 +180,7 @@ tatsächlich als Baustein braucht, steht in der Tabelle weiter oben.
 1. **Trocken stellen.** Nicht waschen, sondern trocken halten. Wo Krusten
    sind, gehören sie vorsichtig abgelöst, nicht abgerissen.
 2. **Zucker und Stärke herunterfahren.** Getreide raus, Müsli raus, gutes Heu
-   als Basis. Das entlastet Darm und Leber gleichzeitig.
+   als Basis. Damit kommt weniger unverdaute Stärke im Dickdarm an.
 3. **Das Mineralfutter nachrechnen.** Menge und Zink-Kupfer-Verhältnis, wie
    oben beschrieben.
 4. **Zeit einplanen.** Haut erneuert sich langsam.

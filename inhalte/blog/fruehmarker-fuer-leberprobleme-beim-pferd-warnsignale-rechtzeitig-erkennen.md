@@ -90,9 +90,9 @@ Viele Pferde leben **monatelang oder sogar jahrelang mit einer überforderten
 Leber**, ohne dass es auffällt.
 Doch je früher du die Frühmarker kennst und erkennst, desto besser kannst du:
 
-- die Ursachen beheben
-- die Leber entlasten und regenerieren
-- Folgeprobleme wie Hufrehe, EMS oder chronische Hautthemen vermeiden
+- die Ursachen suchen, und zwar gemeinsam mit der Tierärztin
+- die Ration überprüfen, bevor sich etwas festsetzt
+- früher hinsehen, statt einem Verdacht monatelang hinterherzufüttern
 
 Die Leber ist ein stiller Arbeiter, **und sie sendet ihre Signale leise.**
 Schau dir Fell, Augen, Kotkonsistenz und Fresslust über mehrere Wochen an,

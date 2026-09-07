@@ -163,7 +163,8 @@ steigen die meisten aus und wechseln das Mittel.
 
 ### Brauche ich Probiotika für den Darmaufbau?
 
-Sie können unterstützen, aber sie ersetzen die Ursachenarbeit nicht. Solange
+Belastbare Studien beim Pferd sind dünn, und die Ursachenarbeit ersetzen sie
+nicht. Solange
 zu wenig Raufutter im Trog liegt, die Fresspausen zu lang sind oder zu viel
 Stärke gefüttert wird, arbeitet jedes Produkt gegen den Strom. Erst das
 Management, dann die Ergänzung.

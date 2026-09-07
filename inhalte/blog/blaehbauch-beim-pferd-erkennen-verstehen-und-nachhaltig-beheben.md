@@ -161,8 +161,8 @@ gibt Geld für Tüten aus und ändert nichts.
 
 [[partner:pernaturam]]
 
-Genau hier setzt eine **gezielte Darmsanierung** an:
-Nicht Symptome überdecken, sondern das Gleichgewicht wiederherstellen.
+Und genau deshalb arbeite ich der Reihe nach, statt ein Mittel über das
+Symptom zu legen.
 
 ## Wenn du es der Reihe nach angehen willst
 
