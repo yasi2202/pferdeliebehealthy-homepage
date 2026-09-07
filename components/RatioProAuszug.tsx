@@ -1,3 +1,6 @@
+import fs from "node:fs";
+import path from "node:path";
+import Image from "next/image";
 import Link from "next/link";
 
 // ---------------------------------------------------------------------------
@@ -20,7 +23,25 @@ const befunde = [
   { name: "Salz", wert: "frei verfügbar", stand: "erfüllt", prozent: 100 },
 ];
 
+/** Liegt ein echtes Bildschirmfoto bereit?
+ *
+ *  WOZU DIE PRUEFUNG: Ein echter Auszug aus RatioPro zieht mehr als eine
+ *  nachgebaute Balkenliste, aber er muss aus dem laufenden Rechner kommen und
+ *  den kann nur Yasemin bedienen. Solange die Datei fehlt, steht hier die
+ *  nachgebaute Fassung; sobald sie unter public/images/ratiopro-auszug.png
+ *  liegt, erscheint sie von selbst. Kein Umbau noetig, kein leerer Platz in
+ *  der Zwischenzeit.
+ */
+function fotoVorhanden(): boolean {
+  try {
+    return fs.existsSync(path.join(process.cwd(), "public", "images", "ratiopro-auszug.png"));
+  } catch {
+    return false;
+  }
+}
+
 export default function RatioProAuszug() {
+  const foto = fotoVorhanden();
   return (
     <section className="px-6 sm:px-8 -mt-10 sm:-mt-14 relative z-10">
       <div className="fade-in max-w-5xl mx-auto bg-white rounded-[24px] border border-line p-8 sm:p-11 shadow-[0_18px_50px_-30px_rgba(59,42,40,0.5)]">
@@ -35,6 +56,16 @@ export default function RatioProAuszug() {
           <span className="text-[13px] text-ink-soft tabular-nums">Helena, 28 Jahre</span>
         </div>
 
+        {foto ? (
+          <Image
+            src="/images/ratiopro-auszug.png"
+            alt="Auszug aus RatioPro: Bedarfsdeckung einer durchgerechneten Ration"
+            width={1600}
+            height={900}
+            className="w-full h-auto rounded-[14px] border border-line"
+            priority
+          />
+        ) : (
         <div className="grid sm:grid-cols-2 gap-x-12 gap-y-7">
           {befunde.map((b) => (
             <div key={b.name}>
@@ -52,6 +83,7 @@ export default function RatioProAuszug() {
             </div>
           ))}
         </div>
+        )}
 
         <p className="text-[13px] text-ink-soft mt-8 pt-6 border-t border-line">
           Beispielwerte zur Veranschaulichung. Genau so rechnest du mit{" "}
