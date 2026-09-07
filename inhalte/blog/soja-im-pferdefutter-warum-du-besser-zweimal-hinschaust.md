@@ -1,12 +1,12 @@
 ---
-titel: "Soja im Pferdefutter: warum du besser zweimal hinschaust"
+titel: "Soja beim Pferd: die Nachteile, die kaum jemand nennt"
 datum: 2025-08-13
-aktualisiert: 2026-09-03
+aktualisiert: 2026-09-07
 kategorie: "Kritische Futtermittel"
 angebot: "futter-check"
 bild: ""
 bildText: ""
-beschreibung: "Soja, in der Humanernährung als „Pflanzenprotein“ gefeiert, taucht auch immer häufiger in Pferdefuttermitteln auf."
+beschreibung: "Warum Sojaschrot in fast jedem Müsli steckt, welche Nachteile wirklich belegt sind und womit du das Eiweiß deines Pferdes stattdessen deckst."
 ---
 **Kurz gesagt:** Sojaextraktionsschrot ist auf dem Papier eine sehr gute
 Eiweißquelle, es hat von allen pflanzlichen Futtermitteln eines der besten

@@ -1,12 +1,12 @@
 ---
 titel: "Aminosäuren für Pferde: Warum sie unverzichtbar sind"
 datum: 2025-07-08
-aktualisiert: 2026-09-03
+aktualisiert: 2026-09-07
 kategorie: "Nährstoffe"
 angebot: "ratiopro"
 bild: ""
 bildText: ""
-beschreibung: "Warum Rohprotein auf dem Sack fast nichts aussagt, was Lysin damit zu tun hat und woran du erkennst, ob dein Pferd wirklich zu wenig Eiweiß bekommt oder nur das falsche."
+beschreibung: "Warum Rohprotein auf dem Sack fast nichts aussagt, was Lysin damit zu tun hat und woran du zu wenig Eiweiß von falschem Eiweiß unterscheidest."
 ---
 Wenn wir über die Fütterung von Pferden sprechen, fallen oft Begriffe wie
 „Eiweiß", „Rohprotein" oder „Muskelaufbau".

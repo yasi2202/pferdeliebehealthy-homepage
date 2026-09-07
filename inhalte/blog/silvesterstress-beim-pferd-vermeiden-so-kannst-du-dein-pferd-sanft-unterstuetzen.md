@@ -1,5 +1,5 @@
 ---
-titel: "Silvesterstress beim Pferd vermeiden: so kannst du dein Pferd sanft unterstützen"
+titel: "Silvester mit Pferd: so bleibt dein Pferd ruhig"
 datum: 2025-10-27
 aktualisiert: 2026-09-07
 kategorie: "Durchs Jahr"

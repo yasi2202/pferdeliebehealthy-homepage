@@ -1,12 +1,12 @@
 ---
 titel: "Fellwechsel beim Pferd: was jetzt wirklich zählt"
 datum: 2026-09-01
-aktualisiert: 2026-09-03
+aktualisiert: 2026-09-07
 kategorie: "Durchs Jahr"
 angebot: "ganzjahresfutterplan"
 bild: ""
 bildText: ""
-beschreibung: "Der Fellwechsel ist die größte Stoffwechselleistung des Jahres. Warum er im September beginnt, welche Nährstoffe jetzt zählen und warum mehr Zink nicht automatisch besser ist."
+beschreibung: "Warum der Fellwechsel im September beginnt, welche Nährstoffe dann wirklich zählen und warum mehr Zink nicht automatisch besser ist."
 ---
 
 Der Fellwechsel ist die größte Stoffwechselleistung, die ein Pferd im Jahr

@@ -1,12 +1,12 @@
 ---
-titel: "Blähbauch beim Pferd: erkennen, verstehen und nachhaltig beheben"
+titel: "Blähbauch beim Pferd: woher er kommt und was hilft"
 datum: 2025-08-13
-aktualisiert: 2026-09-03
+aktualisiert: 2026-09-07
 kategorie: "Magen und Darm"
 angebot: "futter-check"
 bild: ""
 bildText: ""
-beschreibung: "Ein Blähbauch beim Pferd ist nicht nur ein optisches Problem, sondern kann ernsthafte Folgen haben."
+beschreibung: "Woran du einen Blähbauch erkennst, welche Ursachen im Darm dahinterstecken und in welcher Reihenfolge du die Fütterung umstellst, damit er verschwindet."
 ---
 Ein Blähbauch beim Pferd ist nicht nur ein optisches Problem, sondern kann
 ernsthafte Folgen haben. Gasansammlungen im Verdauungstrakt können zu

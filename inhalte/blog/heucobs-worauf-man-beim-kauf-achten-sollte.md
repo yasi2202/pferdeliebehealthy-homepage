@@ -1,12 +1,12 @@
 ---
-titel: "Heucobs: worauf man beim Kauf achten sollte"
+titel: "Heucobs für Pferde: worauf du beim Kauf achten musst"
 datum: 2025-11-01
-aktualisiert: 2026-09-03
+aktualisiert: 2026-09-07
 kategorie: "Heu und Grundfutter"
 angebot: "ratiopro"
 bild: ""
 bildText: ""
-beschreibung: "Woran du gute Heucobs erkennst, wie viel Wasser und Zeit sie wirklich brauchen, wie viel Heu sie ersetzen und warum die meisten Rationen für Zahnpatienten an derselben Stelle scheitern."
+beschreibung: "Woran du gute Heucobs erkennst, wie viel Wasser und Zeit sie brauchen, wie viel Heu sie wirklich ersetzen und woran Rationen für Zahnpatienten scheitern."
 ---
 Heucobs sind eine beliebte Alternative oder Ergänzung zum klassischen
 Raufutter. Besonders für Pferde mit Zahnproblemen oder empfindlichen

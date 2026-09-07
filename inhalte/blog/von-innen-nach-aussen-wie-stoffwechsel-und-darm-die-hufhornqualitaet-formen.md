@@ -1,5 +1,5 @@
 ---
-titel: "Von innen nach außen: Wie Stoffwechsel und Darm die Hufhornqualität formen"
+titel: "Schlechte Hufe beim Pferd: es liegt selten am Huf"
 datum: 2025-08-13
 aktualisiert: 2026-09-07
 kategorie: "Haut, Fell und Hufe"

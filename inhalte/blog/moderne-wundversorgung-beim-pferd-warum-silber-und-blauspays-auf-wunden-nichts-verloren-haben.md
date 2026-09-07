@@ -1,12 +1,12 @@
 ---
-titel: "Moderne Wundversorgung beim Pferd: warum Silber- und Blausprays auf Wunden nichts verloren haben"
+titel: "Blauspray und Silberspray beim Pferd: besser nicht"
 datum: 2025-08-13
-aktualisiert: 2026-09-03
+aktualisiert: 2026-09-07
 kategorie: "Haut, Fell und Hufe"
 angebot: ""
 bild: ""
 bildText: ""
-beschreibung: "Verletzungen gehören leider zum Pferdealltag, ob kleine Schramme auf der Koppel, eine Scheuerstelle oder eine größere Wunde nach einem unglücklichen Tritt."
+beschreibung: "Warum Blau- und Silbersprays auf offenen Wunden mehr schaden als nutzen, was heute stattdessen empfohlen wird und wann eine Wunde zum Tierarzt gehört."
 ---
 Verletzungen gehören leider zum Pferdealltag, ob kleine Schramme auf der
 Koppel, eine Scheuerstelle oder eine größere Wunde nach einem unglücklichen

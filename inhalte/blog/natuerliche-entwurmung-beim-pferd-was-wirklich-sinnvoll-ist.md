@@ -1,5 +1,5 @@
 ---
-titel: "Natürliche Entwurmung beim Pferd: Was wirklich sinnvoll ist"
+titel: "Pferde entwurmen ohne Chemie: was wirklich geht"
 datum: 2026-05-07
 aktualisiert: 2026-09-07
 kategorie: "Magen und Darm"

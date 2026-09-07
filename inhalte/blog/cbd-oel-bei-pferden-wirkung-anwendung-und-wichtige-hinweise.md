@@ -6,7 +6,7 @@ kategorie: "Kräuter und Öle"
 angebot: ""
 bild: ""
 bildText: ""
-beschreibung: "CBD-Öl (Cannabidiol) ist längst nicht mehr nur in der Humanmedizin ein Thema, auch in der Pferdewelt rückt es immer stärker in den Fokus."
+beschreibung: "Was über die Wirkung von CBD beim Pferd bekannt ist, was der rechtliche Rahmen zulässt, warum es im Turniersport tabu ist und worauf du beim Kauf achtest."
 ---
 CBD-Öl (Cannabidiol) ist längst nicht mehr nur in der Humanmedizin ein Thema,
 auch in der Pferdewelt rückt es immer stärker in den Fokus.

@@ -1,12 +1,12 @@
 ---
-titel: "Futterberatung fürs Pferd: warum „einfach füttern“ nicht mehr reicht"
+titel: "Futterberatung fürs Pferd online: was sie leistet"
 datum: 2025-08-13
-aktualisiert: 2026-09-03
+aktualisiert: 2026-09-07
 kategorie: "Grundlagen"
 angebot: "futter-check"
 bild: ""
 bildText: ""
-beschreibung: "Wann eine Futterberatung wirklich etwas bringt, was sie leisten muss, was sie kostet und welche drei Dinge du vorher zusammenträgst, damit sie nicht bei null anfängt."
+beschreibung: "Wann eine Futterberatung wirklich etwas bringt, was sie leisten muss, was sie kostet und welche drei Dinge du vorher zusammenträgst."
 ---
 „Pferde brauchen Heu und Wasser, fertig."
 

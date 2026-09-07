@@ -1,12 +1,12 @@
 ---
-titel: "Frühmarker für Leberprobleme beim Pferd: Warnsignale rechtzeitig erkennen"
+titel: "Leberprobleme beim Pferd: die frühen Anzeichen"
 datum: 2025-08-13
 aktualisiert: 2026-09-07
 kategorie: "Stoffwechsel"
 angebot: "futter-check"
 bild: ""
 bildText: ""
-beschreibung: "Die Leber ist eines der wichtigsten Organe im Pferdekörper, sie entgiftet, speichert Nährstoffe, reguliert den Stoffwechsel und ist an der Verdauung beteiligt."
+beschreibung: "Woran du eine belastete Leber früh erkennst, was GGT, GLDH und AST wirklich sagen und warum ein einzelner erhöhter Wert noch kein Leberproblem ist."
 ---
 Die **Leber ist eines der wichtigsten Organe im Pferdekörper**, sie entgiftet,
 speichert Nährstoffe, reguliert den Stoffwechsel und ist an der Verdauung

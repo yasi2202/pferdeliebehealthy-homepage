@@ -1,7 +1,7 @@
 ---
-titel: "Gesunder Darm, gesundes Pferd: was wirklich hinter Darmproblemen steckt"
+titel: "Darmprobleme beim Pferd: Ursachen und Darmsanierung"
 datum: 2025-08-13
-aktualisiert: 2026-09-03
+aktualisiert: 2026-09-07
 kategorie: "Magen und Darm"
 angebot: "futter-check"
 bild: ""

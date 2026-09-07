@@ -1,12 +1,12 @@
 ---
-titel: "Salzfütterung beim Pferd: besonders wichtig bei Hitze"
+titel: "Salz fürs Pferd: wie viel es wirklich braucht"
 datum: 2025-08-13
-aktualisiert: 2026-09-03
+aktualisiert: 2026-09-07
 kategorie: "Nährstoffe"
 angebot: "mineral"
 bild: ""
 bildText: ""
-beschreibung: "Warum dein Pferd bei Hitze kein teures Elektrolytpulver braucht, wie viel Salz ein Liter Schweiß wirklich kostet und warum der Leckstein die Versorgung fast nie deckt."
+beschreibung: "Wie viel Salz ein Pferd am Tag braucht, was ein Liter Schweiß kostet, warum der Leckstein fast nie reicht und wozu Elektrolytpulver taugt."
 ---
 Der Sommer bringt nicht nur Sonne und lange Ausritte mit sich, er stellt auch
 den Pferdekörper vor eine echte Aufgabe: **Wasser- und Mineralstoffhaushalt

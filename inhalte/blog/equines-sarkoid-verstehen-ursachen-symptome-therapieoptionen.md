@@ -1,12 +1,12 @@
 ---
-titel: "Equines Sarkoid verstehen: Ursachen, Symptome & Therapieoptionen"
+titel: "Equines Sarkoid beim Pferd: Ursachen und Behandlung"
 datum: 2025-10-06
-aktualisiert: 2026-09-03
+aktualisiert: 2026-09-07
 kategorie: "Haut, Fell und Hufe"
 angebot: "mineral"
 bild: ""
 bildText: ""
-beschreibung: "Sarkoide sind die häufigsten Hauttumoren beim Pferd. Woran du sie erkennst, welche Verfahren es gibt, und was die Fütterung dabei leisten kann und was nicht."
+beschreibung: "Sarkoide sind die häufigsten Hauttumoren beim Pferd. Woran du sie erkennst, welche Verfahren es gibt und was die Fütterung dabei leisten kann."
 ---
 **Kurz gesagt:** Sarkoide sind die häufigsten Hauttumoren beim Pferd. Sie
 streuen in der Regel nicht, wachsen aber örtlich weiter und kommen nach
