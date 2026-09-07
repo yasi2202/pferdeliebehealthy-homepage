@@ -207,3 +207,10 @@ Blähungen sind mehr als ein kosmetisches Problem. Sie sind ein Zeichen dafür,
 dass im Verdauungssystem etwas aus dem Gleichgewicht geraten ist. Fütterung,
 Bewegung und Ruhe wirken dabei zusammen, und keines der drei ersetzt die
 anderen beiden.
+
+
+Wenn zum Blähbauch noch breiiger Kot dazukommt, lies weiter bei
+[Kotwasser](/blog/kotwasser-beim-pferd): Dort stehen die vier Zahlen, die du
+vorher kennen musst. Und wenn gleichzeitig Haut, Fell oder Leistung
+nachlassen, hilft die Reihenfolge aus dem Beitrag
+[wenn die Ursache unklar bleibt](/blog/dein-pferd-zeigt-symptome-aber-die-ursache-bleibt-unklar-dann-schau-in-den-darm).

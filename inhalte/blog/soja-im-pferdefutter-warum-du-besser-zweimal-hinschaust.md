@@ -236,3 +236,19 @@ rechnen, wie viel wirklich fehlt. Ein Eiweißüberschuss belastet Leber und
 Nieren genauso, wie ein Mangel Muskeln und Hufhorn kostet.
 
 [[angebot:ratiopro]]
+
+
+## Womit du das Eiweiß stattdessen deckst
+
+Wer Soja weglässt, muss deswegen keine Lücke in Kauf nehmen. Entscheidend ist
+ohnehin nicht die Eiweißmenge, sondern welche Bausteine darin stecken. Was
+Lysin und Methionin damit zu tun haben und woran du eine echte Lücke von einer
+vermuteten unterscheidest, steht im Beitrag über
+[Aminosäuren](/blog/aminosaeuren-fuer-pferde-warum-sie-unverzichtbar-sind).
+
+Soja ist außerdem nicht das einzige isolierte Eiweiß, das in Müslis wandert.
+Dasselbe Muster findest du beim
+[Kartoffelprotein](/blog/kartoffelprotein-in-der-pferdefuetterung-warum-du-besser-die-finger-davon-laesst).
+Und warum ein verschobenes Milieu im Dickdarm überhaupt so schwer wieder
+einzufangen ist, steht im Beitrag über
+[Darmprobleme](/blog/gesunder-darm-gesundes-pferd-was-wirklich-hinter-darmproblemen-steckt).

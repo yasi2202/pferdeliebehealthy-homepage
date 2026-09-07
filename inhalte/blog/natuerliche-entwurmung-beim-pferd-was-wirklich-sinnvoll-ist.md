@@ -206,3 +206,9 @@ Basisfutterkurs an. Dort gehe ich Schritt für Schritt mit dir durch alles, was
 dein Pferd wirklich braucht, um stabil und gesund zu bleiben.
 
 [Zum Basisfutterkurs](/basisfutterkurs)
+
+
+Wie viel Heu und wie kurze Fresspausen der Darm dafür braucht, steht im
+Beitrag über [Kotwasser](/blog/kotwasser-beim-pferd). Und wie du die
+Mineralversorgung nachrechnest, die dazugehört, beim
+[natürlichen Mineralfutter](/blog/natuerliches-mineralfutter-fuer-pferde-sinnvoll-wirksam-und-selbst-gemischt).

@@ -206,3 +206,10 @@ unterschätzten. Wenn du tiefer einsteigen willst, findest du das im
 
 Und wenn du wissen willst, wie es bei euch insgesamt um die Versorgung steht,
 fang mit dem [Futter-Check](/futter-check) an.
+
+
+Wie viel dein Pferd trinkt, hängt eng damit zusammen, wie viel es frisst und
+wie lange die Pausen dazwischen sind. Genau diese Zahlen stehen auch im
+Beitrag über [Kotwasser](/blog/kotwasser-beim-pferd), denn sie entscheiden
+dort über dasselbe. Und wie Salz in die übrige Mineralversorgung passt, steht
+beim [natürlichen Mineralfutter](/blog/natuerliches-mineralfutter-fuer-pferde-sinnvoll-wirksam-und-selbst-gemischt).

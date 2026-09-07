@@ -173,3 +173,14 @@ Bei Lahmheit, bei Wärme im Huf, bei pochender Pulsation an der Fessel, bei Blut
 oder Eiter am Kronrand und bei jedem Verdacht auf Hufrehe. Das ist ein Fall für
 den Tierarzt und nicht für den Futtereimer. Auch tiefe, riechende
 Strahlfurchen gehören angesehen, bevor irgendetwas darauf gegeben wird.
+
+
+## Zum Weiterlesen
+
+Dieselben Bausteine, die dem Horn fehlen, fehlen meistens auch dem Fell. Wie
+du sie durchrechnest, steht im Beitrag über
+[Mauke](/blog/mauke-beim-pferd), und woran du ein passendes Mineralfutter
+erkennst, beim
+[natürlichen Mineralfutter](/blog/natuerliches-mineralfutter-fuer-pferde-sinnvoll-wirksam-und-selbst-gemischt).
+Wenn dazu noch Streifen im Fell oder angelaufene Beine kommen, lohnt der Blick
+auf die [Leber](/blog/fruehmarker-fuer-leberprobleme-beim-pferd-warnsignale-rechtzeitig-erkennen).

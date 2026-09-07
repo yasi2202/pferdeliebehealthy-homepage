@@ -162,3 +162,23 @@ Keimreduktion, luftdurchlässige Pflaster, eine sterile Kompresse, eine
 elastische Binde und eine Rolle Klebeband. Dazu die Telefonnummer deiner
 Tierärztin an der Innenseite des Schranks.
 
+
+## Wenn Wunden immer wieder schlecht heilen
+
+Eine einzelne Wunde, die langsam heilt, ist meistens eine Frage der Versorgung
+vor Ort. Häufen sich aber schlecht heilende Stellen, lohnt der Blick nach
+innen. Zink und Kupfer sind an jedem Zellaufbau beteiligt, und im deutschen
+Heu sind beide fast immer knapp. Wie du nachrechnest, ob bei euch genug
+ankommt, steht im Beitrag über
+[natürliches Mineralfutter](/blog/natuerliches-mineralfutter-fuer-pferde-sinnvoll-wirksam-und-selbst-gemischt).
+
+Kommt an einer bestimmten Stelle immer wieder etwas wieder, besonders in der
+Fesselbeuge, ist es oft gar keine Wunde im eigentlichen Sinn. Dann lies weiter
+bei [Mauke](/blog/mauke-beim-pferd), denn dort sitzt die Ursache selten in der
+Haut selbst.
+
+Und wenn eine Stelle über Wochen nicht zugeht, immer wieder aufbricht oder
+langsam größer wird, gehört auch ein
+[Sarkoid](/blog/equines-sarkoid-verstehen-ursachen-symptome-therapieoptionen)
+in Betracht gezogen. Es wird häufig monatelang als schlecht heilende Wunde
+behandelt.

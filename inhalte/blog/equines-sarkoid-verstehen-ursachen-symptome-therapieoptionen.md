@@ -196,3 +196,14 @@ Zink, Kupfer, Mangan und Selen sind an Hautbildung und Immunfunktion
 beteiligt. Eine Unterversorgung sieht man Pferden oft am Fell an, bevor
 irgendetwas anderes auffällt. Ob dein Pferd versorgt ist, sagt dir keine
 Verpackung, sondern die Rechnung.
+
+
+## Zum Weiterlesen
+
+Wie du nachrechnest, ob Zink und Kupfer bei deinem Pferd tatsächlich ankommen,
+steht im Beitrag über [Mauke](/blog/mauke-beim-pferd), und welche Mischung
+dafür überhaupt taugt, beim
+[natürlichen Mineralfutter](/blog/natuerliches-mineralfutter-fuer-pferde-sinnvoll-wirksam-und-selbst-gemischt).
+Eine Stelle, die sich als schlecht heilende Wunde tarnt, gehört außerdem
+anders versorgt als eine echte Verletzung, dazu steht das Nötige beim
+[Blauspray und Silberspray](/blog/moderne-wundversorgung-beim-pferd-warum-silber-und-blauspays-auf-wunden-nichts-verloren-haben).

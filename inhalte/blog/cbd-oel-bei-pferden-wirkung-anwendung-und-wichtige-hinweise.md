@@ -228,3 +228,18 @@ Stunden berichtet, bei den langsameren Themen eher über zwei bis drei Wochen.
 Halte die Beobachtung schriftlich fest und ändere in dieser Zeit nichts
 anderes, sonst weißt du hinterher nicht, was gewirkt hat. Und wenn nach drei
 Wochen nichts anders ist, setz es ab, statt die Dosis zu erhöhen.
+
+
+## Bevor du zum Öl greifst
+
+Fast alles, wogegen CBD eingesetzt wird, hat beim Pferd auch eine ganz
+handfeste Erklärung. Unruhe und Schreckhaftigkeit kommen häufig aus dem Magen
+oder aus zu langen Fresspausen. Hautprobleme kommen häufig aus der Versorgung.
+Und wiederkehrende Verdauungsthemen kommen aus dem
+[Darm](/blog/gesunder-darm-gesundes-pferd-was-wirklich-hinter-darmproblemen-steckt).
+
+Deshalb lohnt es sich, vorher die Reihenfolge aus dem Beitrag
+[wenn die Ursache unklar bleibt](/blog/dein-pferd-zeigt-symptome-aber-die-ursache-bleibt-unklar-dann-schau-in-den-darm)
+durchzugehen. Und wenn es um Haut und Fell geht, rechne zuerst nach, ob
+[Zink und Kupfer](/blog/mauke-beim-pferd) überhaupt ankommen. Beides kostet
+nichts und beantwortet mehr Fragen als jede Flasche.

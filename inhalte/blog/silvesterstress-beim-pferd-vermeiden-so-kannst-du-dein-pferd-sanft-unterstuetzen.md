@@ -164,3 +164,19 @@ Wenn deine eigene Ruhe echt ist, ja, denn dann ist deine Anwesenheit der
 stärkste beruhigende Faktor, den es gibt. Wenn du selbst angespannt bist und
 alle fünf Minuten zum Fenster gehst, überträgt sich genau das. Ehrlich mit sich
 zu sein lohnt sich hier mehr als jedes Kraut.
+
+
+## Warum Stress im Bauch ankommt
+
+Anhaltender Stress verschiebt das Milieu im Dickdarm, und das zeigt sich
+danach oft dort, wo man es nicht sucht. Wenn dein Pferd nach der
+Silvesterwoche breiigen Kot oder
+[Kotwasser](/blog/kotwasser-beim-pferd) hat, ist das kein Zufall und kein
+Grund für ein neues Pulver, sondern die Folge der Tage davor.
+
+Wie der Darm arbeitet und woran du eine Verschiebung erkennst, steht im
+Beitrag über [Darmprobleme beim Pferd](/blog/gesunder-darm-gesundes-pferd-was-wirklich-hinter-darmproblemen-steckt).
+Und wenn nach den Feiertagen mehrere Dinge gleichzeitig auffallen, hilft die
+Reihenfolge aus dem Beitrag
+[wenn die Ursache unklar bleibt](/blog/dein-pferd-zeigt-symptome-aber-die-ursache-bleibt-unklar-dann-schau-in-den-darm),
+statt alles auf einmal umzustellen.
