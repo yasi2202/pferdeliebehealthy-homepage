@@ -1,5 +1,5 @@
 import Hero from "@/components/Hero";
-import Gesundheitsakte from "@/components/Gesundheitsakte";
+import RatioProAuszug from "@/components/RatioProAuszug";
 import ProblemSection from "@/components/ProblemSection";
 import WegeSection from "@/components/WegeSection";
 import StallOrganizerSection from "@/components/StallOrganizerSection";
@@ -17,7 +17,7 @@ export default function Home() {
   return (
     <main>
       <Hero />
-      <Gesundheitsakte />
+      <RatioProAuszug />
       <ProblemSection />
       <StallOrganizerSection />
       <WegeSection />

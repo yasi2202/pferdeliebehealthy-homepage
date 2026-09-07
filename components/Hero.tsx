@@ -24,12 +24,16 @@ export default function Hero() {
 
         {/* Text side */}
         <div className="relative order-2 lg:order-1 flex items-center">
-          <div className="w-full px-6 sm:px-10 lg:px-16 py-16 lg:py-24">
-            {/* Creme statt Gold: Gold auf Rosé erreicht nur 1,5:1 Kontrast
-                und ist auf hellen Bildschirmen kaum zu lesen. */}
-            <span className="inline-block text-[13px] tracking-[0.14em] uppercase text-cream/90 font-semibold mb-4">
-              Ernährungsberaterin für Pferde · Odenwald
-            </span>
+          {/* Oben mehr Abstand als unten: Die Kopfleiste liegt ueber dem Hero,
+              und seit die Zeile "Ernährungsberaterin für Pferde" weg ist,
+              fehlt der Puffer, den sie mitgebracht hat. Ohne ihn klebt der
+              erste Satz am Logo. */}
+          <div className="w-full px-6 sm:px-10 lg:px-16 pt-24 pb-16 lg:pt-32 lg:pb-24">
+            {/* Hier stand bis zum 07.09.2026 "Ernährungsberaterin für Pferde
+                · Odenwald". Raus auf Yasemins Wunsch: Die Zeile stellte die
+                Beratung nach vorn, und um die geht es auf dieser Seite nicht
+                mehr zuerst. Für Google steht sie weiter in den Metadaten von
+                app/layout.tsx und im Text von AboutSection. */}
             {/* Anrede: spricht eine konkrete Person an, statt allgemein zu
                 behaupten. Danach erst das Versprechen. */}
             <p className="text-cream/75 text-[17px] sm:text-lg max-w-lg mb-5">
@@ -64,7 +68,7 @@ export default function Hero() {
             </p>
             {/* Die drei Zahlen 28 / 8 / 1:1 standen hier wie eine Statistik,
                 messen aber Verschiedenes. An ihre Stelle tritt der Auszug aus
-                der Gesundheitsakte direkt unter dem Hero. */}
+                dem RatioPro-Auszug direkt unter dem Hero. */}
             <div className="flex flex-wrap gap-4 pb-6 sm:pb-10">
               {/* Der erste Knopf führt zu den Kursen, nicht mehr zum
                   Futter-Check. Der zweite bleibt kostenlos, damit auch

@@ -26,7 +26,7 @@ export default function AboutSection() {
 
               Zwei Angaben sind mit ihr abgestimmt geändert: Helena ist 28,
               nicht 27, und sie hat PPID zusätzlich zu Arthrose und COPD.
-              Ihr Alter steht auch in components/Gesundheitsakte.tsx — die
+              Ihr Alter steht auch in components/RatioProAuszug.tsx — die
               beiden Stellen müssen zusammenpassen. */}
           <p className="text-ink-soft text-base mb-4.5">
             Ich bin Yasi, Ernährungsberaterin für Pferde aus Baden-Württemberg,

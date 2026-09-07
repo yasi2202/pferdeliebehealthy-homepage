@@ -1,12 +1,16 @@
 import Link from "next/link";
 
 // ---------------------------------------------------------------------------
-// Der Auszug aus einer Gesundheitsakte — das wiederkehrende Element der Seite.
-// Er steht direkt unter dem Hero und zeigt, was die Arbeit tatsächlich ist,
-// statt sie zu behaupten.
+// Der Auszug aus einer Rationsberechnung, direkt unter dem Hero.
 //
-// Die Werte unten sind Beispielwerte. Wenn du echte (anonymisierte) Zeilen
-// aus einer deiner Akten einsetzen willst, änderst du nur diese Liste.
+// ▸ WAS ER LEISTET: Er zeigt, wie eine durchgerechnete Ration aussieht,
+//   statt sie zu behaupten. Bis zum 07.09.2026 war er als "Auszug einer
+//   Gesundheitsakte" beschriftet und damit als Yasemins Arbeit. Seit die
+//   Seite auf die Kurse zeigt, ist es ein Auszug aus RatioPro: dasselbe
+//   Können, aber als etwas, das die Besucherin selbst tun kann.
+//
+// ▸ Die Werte unten sind Beispielwerte. Willst du echte (anonymisierte)
+//   Zeilen einsetzen, änderst du nur diese Liste.
 // ---------------------------------------------------------------------------
 
 const befunde = [
@@ -16,13 +20,17 @@ const befunde = [
   { name: "Salz", wert: "frei verfügbar", stand: "erfüllt", prozent: 100 },
 ];
 
-export default function Gesundheitsakte() {
+export default function RatioProAuszug() {
   return (
     <section className="px-6 sm:px-8 -mt-10 sm:-mt-14 relative z-10">
       <div className="fade-in max-w-5xl mx-auto bg-white rounded-[24px] border border-line p-8 sm:p-11 shadow-[0_18px_50px_-30px_rgba(59,42,40,0.5)]">
         <div className="flex flex-wrap items-baseline justify-between gap-3 pb-5 mb-8 border-b border-line">
+          {/* Bis zum 07.09.2026 stand hier "So sieht meine Arbeit aus ·
+              Auszug einer Gesundheitsakte". Das zeigte eine Leistung, die
+              Yasemin erbringt. Derselbe Auszug aus RatioPro zeigt dasselbe
+              Können, aber als etwas, das die Besucherin selbst tun kann. */}
           <h2 className="text-[12.5px] tracking-[0.14em] uppercase text-rose-deep font-semibold">
-            So sieht meine Arbeit aus · Auszug einer Gesundheitsakte
+            So rechnest du selbst · Auszug aus RatioPro
           </h2>
           <span className="text-[13px] text-ink-soft tabular-nums">Helena, 28 Jahre</span>
         </div>
@@ -45,27 +53,13 @@ export default function Gesundheitsakte() {
           ))}
         </div>
 
-        {/* Am 07.09.2026 umgedreht: Vorher stand die Beratung vorn und das
-            Lernen hinten ("bekommst du bei Pferdeliebe 365 ... und lernst sie
-            in der Ausbildung"). Jetzt zuerst, wie man es selbst rechnet, denn
-            genau darauf soll der Blick fallen. Die Beratung bleibt, aber als
-            zweite Möglichkeit. */}
         <p className="text-[13px] text-ink-soft mt-8 pt-6 border-t border-line">
-          Beispielwerte zur Veranschaulichung. So eine Aufstellung rechnest du
-          selbst mit{" "}
+          Beispielwerte zur Veranschaulichung. Genau so rechnest du mit{" "}
           <Link href="/ratiopro" className="text-ink font-medium hover:text-rose-deep">
             RatioPro
           </Link>{" "}
-          oder{" "}
-          <Link href="/mineral-klarheit" className="text-ink font-medium hover:text-rose-deep">
-            Mineral-Klarheit
-          </Link>
-          , und in der{" "}
-          <Link href="/ausbildung" className="text-ink font-medium hover:text-rose-deep">
-            Ausbildung
-          </Link>{" "}
-          lernst du sie für fremde Pferde zu erstellen. Wenn du es lieber abgibst, mache ich es
-          für dich bei{" "}
+          deine eigene Ration durch: Du trägst ein, was dein Pferd bekommt, und siehst, was gedeckt
+          ist und was nicht. Wenn du es lieber abgibst, mache ich es für dich bei{" "}
           <Link href="/pferdeliebe-365" className="text-ink font-medium hover:text-rose-deep">
             Pferdeliebe 365
           </Link>
