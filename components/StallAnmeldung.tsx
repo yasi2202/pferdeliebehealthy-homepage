@@ -91,7 +91,7 @@ export function StallAnmeldung({ kompakt = false }: { kompakt?: boolean }) {
         }}
       >
         <p style={{ fontFamily: "var(--font-serif)", fontSize: 22, color: "var(--ink)", margin: "0 0 8px" }}>
-          Schau in dein Postfach
+          Ein Klick fehlt noch
         </p>
         <p style={{ fontSize: 15, lineHeight: 1.6, color: "var(--ink-soft)", margin: 0 }}>
           {antwort.text}
@@ -197,10 +197,19 @@ export function StallAnmeldung({ kompakt = false }: { kompakt?: boolean }) {
         </p>
       )}
 
-      {!kompakt && (
+      {/* Dass der Zugang über die Mail läuft, muss vor dem Absenden dastehen
+          und nicht erst danach: Wer es nicht weiß, wartet auf der Seite und
+          hält den Organizer für kaputt. In der kompakten Fassung als
+          Einzeiler, sonst wird der Kasten auf der Startseite zur Textwand. */}
+      {kompakt ? (
+        <p style={{ fontSize: 12.5, lineHeight: 1.55, color: "var(--ink-soft)", marginTop: 12, opacity: 0.85 }}>
+          Der Zugang kommt per Mail. Ohne den Klick darin bleibt der Organizer zu.
+        </p>
+      ) : (
         <p style={{ fontSize: 13, lineHeight: 1.6, color: "var(--ink-soft)", marginTop: 14, opacity: 0.85 }}>
-          Du bekommst eine Mail mit deinem persönlichen Zugangslink. Kein Abo, keine Kosten, keine
-          Kündigung nötig. Mehr dazu in der{" "}
+          Du bekommst eine Mail mit deinem persönlichen Zugangslink. Solange du ihn nicht
+          angeklickt hast, ist der Organizer nicht offen. Kein Abo, keine Kosten, keine Kündigung
+          nötig. Mehr dazu in der{" "}
           <a href="/datenschutz" style={{ color: "var(--rose-deep)" }}>
             Datenschutzerklärung
           </a>

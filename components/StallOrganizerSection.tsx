@@ -154,9 +154,7 @@ export default function StallOrganizerSection() {
             Adresse eintragen, Zugangslink kommt per Mail. Mehr braucht es nicht.
           </p>
           <StallAnmeldung kompakt />
-          <p style={{ fontSize: 13, lineHeight: 1.6, color: "var(--ink-soft)", marginTop: 14, opacity: 0.85 }}>
-            Kein Abo, keine Kosten, keine Kündigung nötig.
-          </p>
+
         </div>
       </div>
     </section>
