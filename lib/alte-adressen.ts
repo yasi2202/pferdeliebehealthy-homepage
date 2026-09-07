@@ -59,7 +59,26 @@ const zuordnung: Record<string, string> = {
   "/produkt/rationpro-das-einfache-rationsberechnungs-tool-fuer-pferdebesitzer": "/ratiopro",
   "/produkt/darmsanierung-beim-pferd-schritt-fuer-schritt-zur-gesunden-verdauung-rezept-e-book": "/darmaufbau",
 
-  // ▸ DIE AROMATHERAPIE.
+  // ▸ DIE ADRESSEN DER SHOPIFY-ZEIT.
+  //   Vor WordPress lief die Seite auf Shopify. Diese Adressen stehen NICHT
+  //   im Internet Archive, deshalb fehlten sie in dieser Liste -- gefunden
+  //   am 07.09.2026 in den Suchergebnissen und im Search-Console-Bericht.
+  //   Sie ranken bis heute und liefen bis dahin auf eine Fehlerseite.
+  "/products/futterberatung": "/futterplan",
+
+  // ▸ DER ALTE BLOG DER SHOPIFY-ZEIT.
+  //   Er lag unter /pferdeblog/<thema>/<beitrag>. Die Beitragsnamen waren
+  //   kuerzer als heute, deshalb steht die einzige noch gefundene Adresse
+  //   hier von Hand. Alles Uebrige faengt die Regel fuer /pferdeblog ab.
+  "/pferdeblog/pferdefuetterung/natuerliches-mineralfutter":
+    "/blog/natuerliches-mineralfutter-fuer-pferde-sinnvoll-wirksam-und-selbst-gemischt",
+
+  // ▸ DIE DATEIEN DER WORDPRESS-ZEIT.
+  //   Das Lehrplan-PDF steht bis heute im Suchindex. Es liegt nicht mehr im
+  //   Projekt, die Ausbildungsseite ist der richtige Nachfolger.
+  "/wp-content/uploads/2025/07/Ausbildung-Natuerliche-Pferdefuetterung-Module.pdf": "/ausbildung",
+
+  // ▸ AROMATHERAPIE.
   //   Der Kurs liegt heute in der Akademie und hat auf der Website keine
   //   eigene Seite. Bis es eine gibt, fuehrt die Adresse zur Angebotsuebersicht.
   "/aromatherapie-fuer-pferde": "/#wege",
@@ -78,6 +97,21 @@ const gruppen: Array<{ von: string; nach: string }> = [
   // Beitraege dazu veroeffentlicht sind -- deshalb geht es zur Uebersicht,
   // wo alle Themen nebeneinanderstehen.
   { von: "/category", nach: "/blog" },
+  // Die Gruppen aus der Shopify-Zeit. `/produkt` und `/Sammlungen` oben sind
+  // die deutschen Adressen von WordPress, diese hier die englischen davor.
+  { von: "/products", nach: "/shop" },
+  { von: "/collections", nach: "/shop" },
+  // Der alte Blog. Zur Uebersicht und nicht auf einen einzelnen Beitrag: die
+  // Beitragsnamen von damals lassen sich nicht auf die heutigen abbilden.
+  { von: "/pferdeblog", nach: "/blog" },
+  // Die Autorenarchive von WordPress. Es gab nur eine Autorin, die Seite war
+  // eine Dublette der Blueuebersicht. Heute steht die Vorstellung auf der
+  // Startseite, genau wie bei /uber-mich.
+  { von: "/author", nach: "/#ueber-mich" },
+  // Die Dateiablage von WordPress. Sie liegt nicht mehr im Projekt und
+  // antwortete mit 403 -- in der Search Console als „wegen eines anderen
+  // 4xx-Problems blockiert" gemeldet.
+  { von: "/wp-content", nach: "/" },
 ];
 
 /** Der Mitgliederbereich.
