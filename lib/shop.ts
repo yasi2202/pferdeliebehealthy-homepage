@@ -295,10 +295,18 @@ export const produkte: Produkt[] = [
     kategorie: "zubehoer",
     // Auch hier hat der alte Shop keine Kurzbeschreibung, deshalb der erste
     // Satz der Beschreibung, gekürzt auf Kartenlänge.
+    // ▸ DIE TEXTE HIER SIND BEWUSST NÜCHTERN. Werbung, die einem Gerät eine
+    //   Wirkung auf Krankheiten beim Tier zuschreibt, fällt unter das
+    //   Heilmittelwerbegesetz (Paragraf 1 Abs. 1 Nr. 2 erfasst Verfahren und
+    //   Gegenstände ausdrücklich auch beim Tier). Paragraf 3 verbietet es,
+    //   eine Wirkung zu behaupten, die nicht gesichert ist, und bei der
+    //   Low-Level-Lasertherapie ist die Studienlage genau das nicht.
+    //   Der alte Shop hatte hier eine Liste mit acht Heilversprechen stehen,
+    //   von "Entzündungshemmung" bis "Wirkung bei chronischen Erkrankungen".
+    //   Die ist am 07.09.2026 raus. Nicht wieder eintragen.
     kurz:
-      "Der Kaltlaser (oder Low-Level-Lasertherapie) wird immer häufiger in der " +
-      "Pferdemedizin eingesetzt, um eine Vielzahl von Beschwerden zu behandeln " +
-      "und die Heilung zu unterstützen.",
+      "Ein Lasergerät mit zwei Wellenlängen für die Anwendung am Pferd, " +
+      "wie es in der Physiotherapie eingesetzt wird.",
     preis: 14900,
     mwst: 19,
     vorraetig: true,
@@ -320,24 +328,25 @@ export const produkte: Produkt[] = [
     beschreibung: [
       {
         art: "absatz",
-        text: "Der Kaltlaser (oder Low-Level-Lasertherapie) wird immer häufiger in der Pferdemedizin eingesetzt, um eine Vielzahl von Beschwerden zu behandeln und die Heilung zu unterstützen. Es handelt sich dabei um einen Laser, der mit einer niedrigen Leistungsdichte arbeitet und nicht die Gewebe verbrennt, sondern durch Lichtstrahlen positive biologische Reaktionen im Körper anregt.",
+        text: "Der Kaltlaser, auch Low-Level-Lasertherapie genannt, arbeitet mit einer niedrigen Leistungsdichte. Er erwärmt das Gewebe nicht, sondern bringt Licht einer bestimmten Wellenlänge hinein. In der Physiotherapie am Pferd wird er seit Jahren eingesetzt, überwiegend begleitend zur Arbeit von Tierärztin und Therapeutin.",
       },
       {
         art: "liste",
         punkte: [
-          "Schmerzlinderung und Entzündungshemmung",
-          "Förderung der Heilung von Gewebe und Wunden",
-          "Reduzierung von Ödemen (Schwellungen)",
-          "Verbesserung der Durchblutung",
-          "Muskelentspannung und Verbesserung der Beweglichkeit",
-          "Nicht-invasiv und schmerzfrei",
-          "Verkürzung der Genesungszeit nach Verletzungen",
-          "Wirkung bei chronischen Erkrankungen",
+          "Zwei Wellenlängen: 650 nm und 808 nm",
+          "Berührungslose Anwendung, das Gerät erwärmt das Gewebe nicht",
+          "Anwendungsdauer am Display einstellbar",
+          "Handlich genug für den Stall, mit Akku",
+          "Schutzbrille gehört bei jeder Anwendung dazu",
         ],
       },
       {
         art: "absatz",
-        text: "Der Laser ist ein innovatives Gerät, das zur therapeutischen Anwendung bei Tieren, insbesondere bei Pferden, genutzt wird. Dieser Laser arbeitet mit zwei unterschiedlichen Wellenlängen: 650 nm und 808 nm. Die Kombination dieser beiden Wellenlängen ermöglicht eine tiefgehende und vielseitige Behandlung, da jede Wellenlänge unterschiedliche Gewebetiefen erreicht und so eine umfassende therapeutische Wirkung erzielt werden kann.",
+        text: "Und die ehrliche Einordnung, weil du sie sonst nirgends bekommst: Die Studienlage zur Low-Level-Lasertherapie beim Pferd ist dünn und uneinheitlich. Was ich dir sagen kann, ist, wie das Gerät arbeitet und wofür es in der Praxis genutzt wird. Was ich dir nicht sage, ist, dass es etwas heilt. Eine Diagnose und die Behandlung gehören in tierärztliche Hand, und bei akuten Verletzungen, Tumoren, tragenden Stuten und in Augennähe wird ein Laser nicht ohne tierärztliche Rücksprache eingesetzt.",
+      },
+      {
+        art: "absatz",
+        text: "Technisch arbeitet das Gerät mit zwei Wellenlängen: 650 nm im sichtbaren Rot und 808 nm im nahen Infrarot. Die beiden Wellenlängen dringen unterschiedlich tief ins Gewebe ein, das kürzere Licht bleibt oberflächennah, das längere reicht weiter. Deshalb sind zwei Wellenlängen in einem Gerät verbaut.",
       },
       {
         art: "absatz",
