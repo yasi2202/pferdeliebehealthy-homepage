@@ -4,8 +4,9 @@ datum: 2025-08-13
 aktualisiert: 2026-09-07
 kategorie: "Magen und Darm"
 angebot: "futter-check"
-bild: ""
-bildText: ""
+bild: "/images/blog/blaehbauch-erkennen.webp"
+bildText: "Beispielbild: der Bauch wirkt nach unten gewölbt, die Flanke ist gefüllt, und von hinten fällt es meist am deutlichsten auf."
+bildBreit: true
 beschreibung: "Woran du einen Blähbauch erkennst, welche Ursachen im Darm dahinterstecken und in welcher Reihenfolge du die Fütterung umstellst, damit er verschwindet."
 ---
 Ein Blähbauch beim Pferd ist nicht nur ein optisches Problem, sondern kann
