@@ -979,6 +979,17 @@ export const digitalprodukte: DigitalProdukt[] = [
     // seitdem `equidesk-abo` fuer 19 Euro im Monat. Die Kaeuferinnen von
     // damals behalten ihren Zugang dauerhaft, das ist zugesagt.
     verkaufBis: "2026-09-06",
+    // ▸ SEIT DEM 07.09.2026 VERSTECKT, ABER NICHT GELÖSCHT
+    //   Im Shop standen sonst zwei EquiDesk nebeneinander: dieses hier zu
+    //   29 € und `equidesk-abo` zu 19 € im Monat. Verkauft wird nur noch das
+    //   Abo, also gehört dieses aus der Übersicht raus.
+    //
+    //   Löschen darf man es trotzdem nicht. Drei Dinge hängen daran: der
+    //   Kulanzweg für Nachzüglerinnen (lib/kulanz.ts) verkauft genau dieses
+    //   Produkt weiter, `dauerkaufSlug` am Abo zeigt auf diesen Slug und
+    //   schützt damit die Testkundinnen vor einem Zugangsverlust, und die
+    //   Bestellungen vom September tragen ihn in der Datenbank.
+    versteckt: true,
     name: "EquiDesk · Kundenverwaltung für Futterberaterinnen",
     kurzname: "EquiDesk",
     preis: 2900,
