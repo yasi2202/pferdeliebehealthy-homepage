@@ -1,6 +1,5 @@
 import Image from "next/image";
 import Link from "next/link";
-import { futterCheck } from "@/lib/seite";
 
 export default function Hero() {
   return (
@@ -51,27 +50,36 @@ export default function Hero() {
               Dein Pferd, gut versorgt. Dein Wissen, gut fundiert.
             </p>
 
+            {/* AM 07.09.2026 VON BERATUNG AUF KURSE GEDREHT.
+                Vorher stand hier "Ich schaue mir an ... ich schreibe auf, wo
+                die Lücke ist". Das beschreibt eine Leistung, die Yasemin
+                erbringt, und macht jede Besucherin zur Auftraggeberin. Der
+                Schwerpunkt liegt jetzt auf den Kursen: Wer selbst rechnen
+                kann, braucht niemanden zu fragen. Die Beratung gibt es
+                weiterhin, sie steht nur nicht mehr als Erstes da. */}
             <p className="text-cream/85 text-lg max-w-xl mb-8">
-              Ich schaue mir an, was dein Pferd tatsächlich bekommt, gleiche es
-              mit dem ab, was es braucht, und schreibe auf, wo die Lücke ist.
-              Danach weißt du, woran du bist.
+              In meinen Kursen lernst du, selbst zu sehen, was dein Pferd
+              braucht. Mit Rechnern, die deine Zahlen nehmen, und Erklärungen,
+              die auch dann noch tragen, wenn der nächste Trend kommt.
             </p>
             {/* Die drei Zahlen 28 / 8 / 1:1 standen hier wie eine Statistik,
                 messen aber Verschiedenes. An ihre Stelle tritt der Auszug aus
                 der Gesundheitsakte direkt unter dem Hero. */}
             <div className="flex flex-wrap gap-4 pb-6 sm:pb-10">
-              <Link
-                href={futterCheck.fragebogen}
-                prefetch={false}
-                className="bg-cream text-ink px-7 py-4 rounded-full text-[15px] font-medium hover:bg-rose transition-colors"
-              >
-                Kostenlosen Futter-Check machen
-              </Link>
+              {/* Der erste Knopf führt zu den Kursen, nicht mehr zum
+                  Futter-Check. Der zweite bleibt kostenlos, damit auch
+                  mitnehmen kann, wer heute nichts kaufen will. */}
               <Link
                 href="#wege"
+                className="bg-cream text-ink px-7 py-4 rounded-full text-[15px] font-medium hover:bg-rose transition-colors"
+              >
+                Kurse ansehen
+              </Link>
+              <Link
+                href="/stall-organizer"
                 className="border border-cream text-cream px-7 py-3.5 rounded-full text-[15px] font-medium hover:bg-cream/15 transition-colors"
               >
-                Alle Angebote ansehen
+                Stall Organizer holen, kostenlos
               </Link>
             </div>
           </div>

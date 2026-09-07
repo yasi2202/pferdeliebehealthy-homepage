@@ -45,19 +45,31 @@ export default function Gesundheitsakte() {
           ))}
         </div>
 
+        {/* Am 07.09.2026 umgedreht: Vorher stand die Beratung vorn und das
+            Lernen hinten ("bekommst du bei Pferdeliebe 365 ... und lernst sie
+            in der Ausbildung"). Jetzt zuerst, wie man es selbst rechnet, denn
+            genau darauf soll der Blick fallen. Die Beratung bleibt, aber als
+            zweite Möglichkeit. */}
         <p className="text-[13px] text-ink-soft mt-8 pt-6 border-t border-line">
-          Beispielwerte zur Veranschaulichung. Genau diese Zeilen bekommst du bei{" "}
-          {/* Zeigte bis 03.09.2026 auf den Angebotsblock. Seit die Beratung
-              eine eigene Seite mit Preis hat, fuehrt der Verweis direkt
-              dorthin. */}
-          <Link href="/pferdeliebe-365" className="text-ink font-medium hover:text-rose-deep">
-            Pferdeliebe 365
+          Beispielwerte zur Veranschaulichung. So eine Aufstellung rechnest du
+          selbst mit{" "}
+          <Link href="/ratiopro" className="text-ink font-medium hover:text-rose-deep">
+            RatioPro
           </Link>{" "}
-          für dein eigenes Pferd, und lernst sie in der{" "}
+          oder{" "}
+          <Link href="/mineral-klarheit" className="text-ink font-medium hover:text-rose-deep">
+            Mineral-Klarheit
+          </Link>
+          , und in der{" "}
           <Link href="/ausbildung" className="text-ink font-medium hover:text-rose-deep">
             Ausbildung
           </Link>{" "}
-          selbst zu erstellen.
+          lernst du sie für fremde Pferde zu erstellen. Wenn du es lieber abgibst, mache ich es
+          für dich bei{" "}
+          <Link href="/pferdeliebe-365" className="text-ink font-medium hover:text-rose-deep">
+            Pferdeliebe 365
+          </Link>
+          .
         </p>
       </div>
     </section>

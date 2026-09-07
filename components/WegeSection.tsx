@@ -19,15 +19,21 @@ export default function WegeSection() {
     <section id="wege" className="py-20 sm:py-24">
       <div className="max-w-6xl mx-auto px-6 sm:px-8">
         <span className="fade-in block text-[13px] tracking-[0.14em] uppercase text-rose-deep font-semibold mb-4">
-          Die Angebote
+          Die Kurse
         </span>
         <h2 className="fade-in font-serif font-normal text-[26px] sm:text-[38px] leading-tight max-w-3xl">
-          Zwei Wege, ein Fundament
+          Lern es einmal, dann kannst du es immer
         </h2>
+        {/* Am 07.09.2026 auf Kurse gedreht. Vorher stand hier "Die Angebote"
+            und "Zwei Wege, ein Fundament", was Kurse und Beratung
+            gleichgewichtig nebeneinanderstellte. Die Kurse tragen jetzt die
+            Überschrift; die Beratung steht weiter in derselben Liste, aber
+            als das, was sie ist: der Weg für alle, die es nicht selbst
+            machen wollen. */}
         <p className="fade-in text-[17px] text-ink-soft max-w-xl mt-5 mb-14">
-          Die einen wollen wissen, was ihr eigenes Pferd braucht. Die anderen
-          wollen es für andere herausfinden können. Beide Wege kannst du
-          kostenlos ausprobieren, bevor du dich entscheidest.
+          Die einen wollen die Fütterung ihres Pferdes selbst verstehen. Die
+          anderen wollen es für andere Pferde können. Und wer lieber abgibt,
+          findet unten die Beratung. Anfangen kannst du überall kostenlos.
         </p>
 
         <div className="grid md:grid-cols-2 gap-7 items-start">
