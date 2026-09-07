@@ -166,6 +166,50 @@ Ein Beitrag, auf den nur die Übersicht zeigt, gilt als Randnotiz, einer, auf
 den fünf andere verweisen, als Kernthema der Seite. Drei bis vier Verweise je
 Beitrag sind genug, mehr liest sich wie eine Linksammlung.
 
+## Die Sätze, die nie in einen Beitrag dürfen
+
+Das ist der Abschnitt, der dich vor einer Abmahnung schützt. Er kostet dich
+zwei Minuten je Beitrag, und er ist wichtiger als alles andere auf dieser
+Seite.
+
+**Der Grund in einem Absatz:** Für ein Futtermittel darf nicht damit geworben
+werden, dass es einer Krankheit vorbeugt, sie behandelt oder heilt. So steht
+es in Artikel 13 der Verordnung (EG) 767/2009. Nur eingetragene
+Diätfuttermittel dürfen einen Verwendungszweck nennen, und dafür gibt es eine
+geschlossene EU-Liste. Ein Ratgeberbeitrag für sich genommen ist davon nicht
+betroffen. Sobald aber im selben Beitrag ein Kasten mit Rabattcode und
+Kaufknopf steht, ist die Empfehlung daneben Werbung für genau dieses Produkt,
+und dann greift die Regel.
+
+**Also nicht schreiben:**
+
+- „hilft bei", „lindert", „wirkt gegen", „beugt vor", „heilt"
+- „stärkt das Immunsystem", „stabilisiert die Darmflora", „unterstützt die
+  Leber", „entgiftet", „wirkt antibakteriell", „entzündungshemmend"
+- eine Empfehlung, die ein Krankheitsbild und ein Produkt in denselben Satz
+  stellt: „Bei EMS nimmst du Haferstroh"
+- eine Kauftabelle, in der links eine Diagnose steht und rechts ein Produkt
+
+**Sondern so:**
+
+- „wird traditionell eingesetzt bei", „gehört zu den klassischen
+  Futterkräutern", „enthält Gerbstoffe", „liefert Zink"
+- „Belastbare Studien dazu gibt es beim Pferd nicht." Dieser Satz ist kein
+  Makel, er ist der Unterschied zu den Ratgeberseiten der Hersteller.
+- statt der Diagnose die Fütterungssituation nennen: nicht „bei EMS", sondern
+  „wenn Zucker und Stärke der Ration niedrig bleiben sollen"
+- und immer: wann ein Tierarzt gefragt ist
+
+**Die Gegenprobe vor dem Veröffentlichen:** Lies den Beitrag einmal nur bis
+zum ersten Werbekasten und frag dich, ob im Absatz davor eine Krankheit steht.
+Wenn ja, formulier ihn um. Der Kasten selbst setzt seinen Pflichtsatz („Futter
+ist kein Arzneimittel") von allein, genau wie die Werbekennzeichnung. Um den
+Text davor musst du dich selbst kümmern.
+
+**Und ein Warnhinweis ist etwas anderes als eine Empfehlung.** „Bei diesen
+Anzeichen rufst du die Tierärztin" darf und soll drinstehen, auch im selben
+Beitrag wie ein Kasten. Verboten ist das Versprechen, nicht die Warnung.
+
 ## Was einen guten Blogbeitrag ausmacht
 
 **Beantworte die Frage im ersten Absatz.** Wer „Kotwasser Pferd" googelt, will
