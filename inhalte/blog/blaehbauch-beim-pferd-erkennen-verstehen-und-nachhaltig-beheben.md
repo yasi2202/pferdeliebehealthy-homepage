@@ -47,7 +47,15 @@ Aufblähung), stauen sich Gase zusätzlich.
 ## Dicker Bauch oder aufgegast? So unterscheidest du es
 
 Das ist die Frage, um die es am Anfang meistens geht, und sie lässt sich mit
-ein paar Handgriffen beantworten.
+ein paar Handgriffen beantworten. Der erste Schritt ist aber das Hinsehen:
+Wie sieht die Bauchlinie deines Pferdes überhaupt aus?
+
+![Zwei Pferde im Vergleich, links eine unauffällige Bauchlinie, rechts eine tiefere und vollere](/images/blog/blaehbauch-vergleich.webp)
+
+*Beispielbilder, kein bestimmtes Pferd. Achte weniger auf die Größe des
+Bauches als auf seine Linie: Läuft sie von der letzten Rippe zur Flanke hin
+nach oben, ist das der Normalfall. Hängt sie flach oder fällt sie nach unten
+durch, ist mehr drin, als hineingehört.*
 
 | | Einfach ein voller Bauch | Aufgasung |
 |---|---|---|
