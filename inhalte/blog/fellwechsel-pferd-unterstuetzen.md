@@ -4,8 +4,8 @@ datum: 2026-09-01
 aktualisiert: 2026-09-07
 kategorie: "Durchs Jahr"
 angebot: "ganzjahresfutterplan"
-bild: "/images/blog/fuchs-im-frost.webp"
-bildText: "Ein Fuchs im Winterfell auf gefrorenem Boden. Der Fellwechsel beginnt lange vor dem ersten Frost."
+bild: ""
+bildText: ""
 beschreibung: "Warum der Fellwechsel im September beginnt, welche Nährstoffe dann wirklich zählen und warum mehr Zink nicht automatisch besser ist."
 ---
 
