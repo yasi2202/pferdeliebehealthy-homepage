@@ -56,7 +56,7 @@ export default function WebinarFormular({ termine }: { termine: TerminAngebot[] 
 
   if (fertig) {
     return (
-      <div className="rounded-2xl bg-cream p-6 sm:p-8">
+      <div className="rounded-2xl bg-white border border-cream-deep p-6 sm:p-8">
         <h2 className="font-serif text-[24px] mb-3">Dein Platz ist reserviert</h2>
         <p className="text-[17px] leading-relaxed mb-4">
           <strong>{fertig.text}</strong>
@@ -78,7 +78,7 @@ export default function WebinarFormular({ termine }: { termine: TerminAngebot[] 
   }
 
   return (
-    <form onSubmit={absenden} className="rounded-2xl bg-cream p-6 sm:p-8">
+    <form onSubmit={absenden} className="rounded-2xl bg-white border border-cream-deep p-6 sm:p-8">
       <fieldset className="mb-6">
         <legend className="text-[13px] tracking-[0.12em] uppercase text-rose-deep font-semibold mb-3">
           Wann passt es dir?
@@ -89,8 +89,8 @@ export default function WebinarFormular({ termine }: { termine: TerminAngebot[] 
               key={t.wert}
               className={`flex items-center gap-3 rounded-xl border px-4 py-3 cursor-pointer transition ${
                 gewaehlt === t.wert
-                  ? "border-rose-deep bg-white"
-                  : "border-cream-deep bg-white/50 hover:bg-white"
+                  ? "border-rose-deep bg-cream"
+                  : "border-cream-deep hover:bg-cream/60"
               }`}
             >
               <input
@@ -103,7 +103,9 @@ export default function WebinarFormular({ termine }: { termine: TerminAngebot[] 
               />
               <span className="text-[16px]">
                 {t.text}
-                <span className="text-ink-soft text-[14px]"> · {t.naehe}</span>
+                {(t.naehe === "heute" || t.naehe === "morgen") && (
+                  <span className="text-ink-soft text-[14px]"> · {t.naehe}</span>
+                )}
               </span>
             </label>
           ))}

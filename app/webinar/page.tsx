@@ -14,7 +14,7 @@ export const metadata: Metadata = {
 export const dynamic = "force-dynamic";
 
 export default function WebinarSeite() {
-  const termine: TerminAngebot[] = naechsteTermine(5).map((t) => ({
+  const termine: TerminAngebot[] = naechsteTermine(7).map((t) => ({
     wert: t.toISOString(),
     text: terminText(t),
     naehe: terminNaehe(t),
