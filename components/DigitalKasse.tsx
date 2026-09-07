@@ -160,6 +160,17 @@ export default function DigitalKasse({
           widerrufVerzicht: sofort,
           newsletter,
           rabattcode: rabatt ? rabatt.code : "",
+          // Der Kulanzschlüssel für Nachzüglerinnen, falls die Adresse
+          // einen mitbringt (?kulanz=...). Er wird hier nur weitergereicht,
+          // geprüft wird er auf dem Server (lib/kulanz.ts). Gelesen wird er
+          // erst beim Klick aus window.location und nicht ueber
+          // useSearchParams, damit die Kassenseite weiterhin vorab erzeugt
+          // werden kann.
+          kulanz:
+            typeof window === "undefined"
+              ? ""
+              : (new URLSearchParams(window.location.search).get("kulanz") ??
+                ""),
         }),
       });
 

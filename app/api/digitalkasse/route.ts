@@ -1,5 +1,6 @@
 import { istEingerichtet, EMAIL_MUSTER, kuerzen } from "@/lib/versand";
 import { digitalFinden, funnelZu } from "@/lib/digital";
+import { kulanzGilt } from "@/lib/kulanz";
 import { stripeEingerichtet } from "@/lib/shop-server";
 import {
   bezahlseiteDigitalAnlegen,
@@ -107,7 +108,11 @@ export async function POST(request: Request) {
   if (produkt.verkaufBis) {
     const ende = new Date(`${produkt.verkaufBis}T23:59:59+02:00`);
 
-    if (new Date() > ende) {
+    // Eine Ausnahme gibt es: den Kulanzweg für Nachzüglerinnen. Wer den
+    // Schlüssel an der Adresse mitbringt (?kulanz=...), kauft noch bis zu
+    // 14 Tage nach dem Fristende zum alten Preis. Für alle anderen bleibt
+    // das Angebot zu. Warum das so gebaut ist, steht in lib/kulanz.ts.
+    if (new Date() > ende && !kulanzGilt(daten.kulanz, produkt.verkaufBis)) {
       return Response.json(
         {
           fehler:
