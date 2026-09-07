@@ -1,7 +1,7 @@
 ---
-titel: "Wie kann ich mein Pferd ohne Industriefutter gesund ernähren?"
+titel: "Pferd natürlich füttern, ganz ohne Industriefutter"
 datum: 2025-07-08
-aktualisiert: 2026-09-03
+aktualisiert: 2026-09-07
 kategorie: "Grundlagen"
 angebot: "futter-check"
 bild: ""
@@ -47,7 +47,7 @@ nicht anpassen, wenn etwas nicht stimmt.
 
 ## Schritt 1: Zurück zur Basis, gutes Raufutter
 
-Die **Grundlage jeder natürlichen Fütterung** ist und bleibt Heu, in guter
+Die **Grundlage jeder ganzheitlichen Fütterung** ist und bleibt Heu, in guter
 Qualität und passender Menge.
 
 Faustregel: **mindestens 1,5 kg Heu je 100 kg Körpergewicht**, bei einem
@@ -161,7 +161,7 @@ Arznei, und sie ersetzen keine tierärztliche Behandlung.
 
 ## Schritt 5: Beobachten, anpassen, verstehen
 
-Eine natürliche Fütterung ist kein starres System. Lerne dein Pferd zu lesen:
+Eine ganzheitliche Fütterung ist kein starres System. Lerne dein Pferd zu lesen:
 
 - Wie ist die Verdauung, wie sieht der Kot aus?
 - Wie ist das Fell, wie das Horn?
@@ -213,7 +213,7 @@ In den meisten Fällen nicht. Ein gesundes Pferd im Erhalt oder in leichter
 Arbeit deckt seinen Energiebedarf über gutes Raufutter. Was fast immer fehlt,
 sind Mineralstoffe und Salz, nicht Energie.
 
-### Ist natürlich füttern teurer?
+### Ist ganzheitlich füttern teurer?
 
 Am Anfang oft ja, weil eine Heuanalyse und einzelne Komponenten Geld kosten.
 Auf Dauer meist nicht, weil viele Zusätze wegfallen, die vorher auf Verdacht

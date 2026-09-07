@@ -1,12 +1,12 @@
 ---
-titel: "Natürliches Mineralfutter für Pferde: sinnvoll, wirksam und selbst gemischt"
+titel: "Natürliches Mineralfutter fürs Pferd selbst mischen"
 datum: 2026-01-31
-aktualisiert: 2026-09-03
+aktualisiert: 2026-09-07
 kategorie: "Nährstoffe"
 angebot: "ratiopro"
 bild: "/images/blog/futterproben.webp"
 bildText: "Vier Mischungen nebeneinander: Kräuter, Pellets, Leinsamen und Algen, wie sie in einer selbst gemischten Mineralversorgung zusammenkommen."
-beschreibung: "Warum Kräuter, Samen und Algen als Mineralquelle sinnvoll sind, wo sie an ihre Grenze kommen, worauf du bei fertigen Mischungen achten musst und wie du selbst mischst, ohne ins Blaue zu füttern."
+beschreibung: "Warum Kräuter, Samen und Algen als Mineralquelle taugen, wo sie an ihre Grenze kommen und wie du selbst mischst, ohne ins Blaue zu füttern."
 ---
 Du möchtest dein Pferd möglichst naturnah füttern, ohne unnötige Zusatzstoffe,
 künstliche Aromen oder synthetische Trägerstoffe? Dann bist du nicht allein.
@@ -21,7 +21,7 @@ Basis und einer gezielten Ergänzung genau dort, wo dein Heu zu wenig liefert.
 Wie du beides zusammenbringst, steht weiter unten, mit Zahlen und einer
 Beispielmischung.
 
-## „Natürlich füttern“, mehr als nur ein Trend
+## „Ganzheitlich füttern“, mehr als nur ein Trend
 
 Natürliches Mineralfutter basiert auf dem Gedanken, den Organismus deines
 Pferdes **nicht zu überladen**, sondern ihn gezielt zu unterstützen. Statt
@@ -171,7 +171,7 @@ deshalb gehören sie nicht ins Gefühl, sondern auf die Waage.
 **Arbeit, Wachstum und Trächtigkeit heben den Bedarf an**, teils deutlich.
 Die Tabelle ist der Boden, nicht die Decke.
 
-Was folgt daraus? Nicht, dass natürliche Fütterung sinnlos wäre. Sondern
+Was folgt daraus? Nicht, dass ganzheitliche Fütterung sinnlos wäre. Sondern
 dass sie zwei Aufgaben hat: die Grundversorgung breit und verträglich
 aufstellen, und dort ergänzen, wo das Heu nachweislich zu wenig liefert. Wer
 die Spurenelemente ganz weglässt, spart am falschen Ende.
