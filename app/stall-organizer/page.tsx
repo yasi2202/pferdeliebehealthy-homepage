@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { StallAnmeldung } from "@/components/StallAnmeldung";
+import StallOrganizerBilder from "@/components/StallOrganizerBilder";
 
 // ---------------------------------------------------------------------------
 // Die Seite zum Stall Organizer.
@@ -150,8 +151,10 @@ export default function StallOrganizerSeite() {
         </div>
       </section>
 
+      <StallOrganizerBilder />
+
       {/* Was er kann */}
-      <section style={{ padding: "clamp(32px, 5vw, 64px) 20px", background: "var(--white)" }}>
+      <section style={{ padding: "clamp(32px, 5vw, 64px) 20px" }}>
         <div style={{ maxWidth: 960, margin: "0 auto" }}>
           <h2
             style={{
@@ -207,7 +210,7 @@ export default function StallOrganizerSeite() {
       </section>
 
       {/* Wer dahintersteht */}
-      <section style={{ padding: "clamp(32px, 5vw, 64px) 20px" }}>
+      <section style={{ padding: "clamp(32px, 5vw, 64px) 20px", background: "var(--white)" }}>
         <div style={{ maxWidth: 640, margin: "0 auto", textAlign: "center" }}>
           <h2
             style={{

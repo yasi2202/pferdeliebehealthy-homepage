@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { StallAnmeldung } from "@/components/StallAnmeldung";
 
@@ -30,8 +31,8 @@ export default function StallOrganizerSection() {
           maxWidth: 1040,
           margin: "0 auto",
           display: "grid",
-          gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))",
-          gap: "clamp(28px, 5vw, 56px)",
+          gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))",
+          gap: "clamp(26px, 4vw, 44px)",
           alignItems: "center",
         }}
       >
@@ -109,12 +110,33 @@ export default function StallOrganizerSection() {
           </Link>
         </div>
 
+        {/* Eine echte Aufnahme aus der App. Sie zeigt in einem Blick, was die
+            Punkte daneben beschreiben, und dass es die App wirklich gibt. */}
+        <div style={{ display: "flex", justifyContent: "center" }}>
+          <Image
+            src="/images/stall-organizer-start.webp"
+            alt="Der Stall Organizer auf dem Handy: die Liste, was heute Aufmerksamkeit braucht"
+            width={760}
+            height={1357}
+            sizes="(min-width: 900px) 260px, 240px"
+            style={{
+              width: "100%",
+              maxWidth: 260,
+              height: "auto",
+              borderRadius: 20,
+              border: "1px solid var(--line)",
+              boxShadow: "0 18px 44px -26px rgba(59,42,40,.6)",
+            }}
+          />
+        </div>
+
         <div
           style={{
             background: "var(--white)",
             border: "1px solid var(--line)",
             borderRadius: 22,
             padding: "clamp(22px, 3vw, 32px)",
+            alignSelf: "center",
           }}
         >
           <p
