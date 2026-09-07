@@ -83,6 +83,16 @@ const nextConfig: NextConfig = {
         destination: "/futter-check-start",
         permanent: false,
       },
+      {
+        // Das Monatsabo hat einen eigenen Slug (`equidesk-abo`), aber keine
+        // eigene Verkaufsseite: /equidesk zeigt seit dem 07.09.2026 ohnehin
+        // das Abo. Die Kachel im Shop verlinkt auf /<slug> und lief deshalb
+        // in eine Fehlerseite. permanent: false, weil eine eigene Seite
+        // später durchaus dazukommen kann.
+        source: "/equidesk-abo",
+        destination: "/equidesk",
+        permanent: false,
+      },
     ];
   },
 };
