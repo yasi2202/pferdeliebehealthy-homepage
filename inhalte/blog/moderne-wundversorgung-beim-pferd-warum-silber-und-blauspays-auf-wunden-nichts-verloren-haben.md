@@ -4,8 +4,8 @@ datum: 2025-08-13
 aktualisiert: 2026-09-07
 kategorie: "Haut, Fell und Hufe"
 angebot: ""
-bild: ""
-bildText: ""
+bild: "/images/blog/wundversorgung-verband.webp"
+bildText: "Ein luftdurchlässiger Verband am Pferdebein, angelegt über einer sauberen Wundauflage."
 beschreibung: "Warum Blau- und Silbersprays auf offenen Wunden mehr schaden als nutzen, was heute stattdessen empfohlen wird und wann eine Wunde zum Tierarzt gehört."
 ---
 Verletzungen gehören leider zum Pferdealltag, ob kleine Schramme auf der

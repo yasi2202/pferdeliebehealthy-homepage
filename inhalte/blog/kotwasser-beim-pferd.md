@@ -4,8 +4,8 @@ datum: 2026-09-01
 aktualisiert: 2026-09-07
 kategorie: "Magen und Darm"
 angebot: "futter-check"
-bild: ""
-bildText: ""
+bild: "/images/blog/zwei-pferde-am-heu.webp"
+bildText: "Zwei Pferde fressen gemeinsam Heu. Menge und Fresspausen entscheiden über das Darmmilieu."
 beschreibung: "Kotwasser ist keine Krankheit, sondern ein Hinweis. Was im Darm dahintersteckt, welche Zahlen du kennen musst und wann Laborwerte wirklich etwas bringen."
 ---
 

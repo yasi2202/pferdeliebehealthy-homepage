@@ -4,8 +4,8 @@ datum: 2025-08-13
 aktualisiert: 2026-09-07
 kategorie: "Stoffwechsel"
 angebot: "futter-check"
-bild: ""
-bildText: ""
+bild: "/images/blog/pferdeauge.webp"
+bildText: "Das Auge eines Pferdes aus der Nähe. Wiederkehrende Entzündungen und ein bläulicher Schimmer gehören zu den frühen Zeichen."
 beschreibung: "Woran du eine belastete Leber früh erkennst, was GGT, GLDH und AST wirklich sagen und warum ein einzelner erhöhter Wert noch kein Leberproblem ist."
 ---
 Die **Leber ist eines der wichtigsten Organe im Pferdekörper**, sie entgiftet,

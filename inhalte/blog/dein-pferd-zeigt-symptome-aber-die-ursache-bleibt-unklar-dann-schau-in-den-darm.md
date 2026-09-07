@@ -4,8 +4,8 @@ datum: 2025-08-13
 aktualisiert: 2026-09-07
 kategorie: "Magen und Darm"
 angebot: "futter-check"
-bild: ""
-bildText: ""
+bild: "/images/blog/zaehne-kontrolle.webp"
+bildText: "Die Backenzähne eines Pferdes werden kontrolliert. Die Zähne stehen in der Abklärung an erster Stelle."
 beschreibung: "Kotwasser, Husten, stumpfes Fell, kein Befund. In welcher Reihenfolge du abklärst, wer wofür zuständig ist und wann der Darm die gemeinsame Spur ist."
 ---
 

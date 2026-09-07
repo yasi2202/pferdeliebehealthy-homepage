@@ -4,8 +4,8 @@ datum: 2025-08-13
 aktualisiert: 2026-09-07
 kategorie: "Nährstoffe"
 angebot: "mineral"
-bild: ""
-bildText: ""
+bild: "/images/blog/pferd-frisst-heu-gegenlicht.webp"
+bildText: "Pferdemaul über einem Heuhaufen im Abendlicht. Salz gehört ins Futter, nicht nur an den Leckstein."
 beschreibung: "Wie viel Salz ein Pferd am Tag braucht, was ein Liter Schweiß kostet, warum der Leckstein fast nie reicht und wozu Elektrolytpulver taugt."
 ---
 Der Sommer bringt nicht nur Sonne und lange Ausritte mit sich, er stellt auch

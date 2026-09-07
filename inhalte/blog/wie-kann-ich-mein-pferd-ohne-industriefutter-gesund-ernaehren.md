@@ -4,8 +4,8 @@ datum: 2025-07-08
 aktualisiert: 2026-09-07
 kategorie: "Grundlagen"
 angebot: "futter-check"
-bild: ""
-bildText: ""
+bild: "/images/blog/pferd-in-blumenwiese.webp"
+bildText: "Ein Pferd frisst in einer Blumenwiese. Die Grundration entscheidet, nicht der Futtersack."
 beschreibung: "Volle Futtersäcke und trotzdem Lücken in der Ration. In fünf Schritten von gutem Raufutter über Eiweiß und Mineralstoffe bis zu Kräutern, ohne Fertigfutter."
 ---
 Immer mehr Pferdebesitzerinnen stellen sich genau diese Frage, und das aus

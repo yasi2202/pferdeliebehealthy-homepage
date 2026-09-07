@@ -1,11 +1,11 @@
 ---
 titel: "Haferstroh und Grünhaferstroh fürs Pferd richtig füttern"
 datum: 2026-09-03
-aktualisiert: 2026-09-04
+aktualisiert: 2026-09-07
 kategorie: "Heu und Grundfutter"
 angebot: "ratiopro"
-bild: ""
-bildText: ""
+bild: "/images/blog/stroh-nahaufnahme.webp"
+bildText: "Haferstroh aus der Nähe. Struktur ohne nennenswerte Energie, das macht es als Streckung der Ration brauchbar."
 beschreibung: "Haferstroh streckt die Ration eines zu dicken Pferdes, ohne dass es hungert. Der Unterschied zum Grünhaferstroh, und wie viel davon in die Ration darf."
 ---
 Haferstroh und Grünhaferstroh klingen fast gleich, machen in der Fütterung

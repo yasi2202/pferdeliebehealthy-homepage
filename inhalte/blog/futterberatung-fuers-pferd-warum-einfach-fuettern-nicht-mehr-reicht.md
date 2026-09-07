@@ -4,8 +4,8 @@ datum: 2025-08-13
 aktualisiert: 2026-09-07
 kategorie: "Grundlagen"
 angebot: "futter-check"
-bild: ""
-bildText: ""
+bild: "/images/blog/striegeln.webp"
+bildText: "Ein Pferd wird gestriegelt. Wer sein Pferd täglich anfasst, bemerkt Veränderungen früher als jedes Labor."
 beschreibung: "Wann eine Futterberatung wirklich etwas bringt, was sie leisten muss, was sie kostet und welche drei Dinge du vorher zusammenträgst."
 ---
 „Pferde brauchen Heu und Wasser, fertig."

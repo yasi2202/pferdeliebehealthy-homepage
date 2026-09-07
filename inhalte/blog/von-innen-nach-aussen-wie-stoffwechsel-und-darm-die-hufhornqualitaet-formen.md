@@ -4,8 +4,8 @@ datum: 2025-08-13
 aktualisiert: 2026-09-07
 kategorie: "Haut, Fell und Hufe"
 angebot: "futter-check"
-bild: ""
-bildText: ""
+bild: "/images/blog/hufe-seitlich.webp"
+bildText: "Vorderhufe eines Pferdes auf gepflastertem Boden, seitlich aufgenommen."
 beschreibung: "Brüchiges Horn ist selten ein reines Hufproblem. Wie Stoffwechsel und Darm die Hufhornqualität bestimmen und woran du eine Schwäche früh erkennst."
 ---
 Stabile, tragfähige Hufe sind keine Selbstverständlichkeit. Brüchiges, sprödes

@@ -4,8 +4,8 @@ datum: 2025-07-08
 aktualisiert: 2026-09-07
 kategorie: "Nährstoffe"
 angebot: "ratiopro"
-bild: ""
-bildText: ""
+bild: "/images/blog/pferd-im-galopp.webp"
+bildText: "Ein Pferd im Galopp. Muskulatur entsteht aus Aminosäuren, nicht aus Rohprotein."
 beschreibung: "Warum Rohprotein auf dem Sack fast nichts aussagt, was Lysin damit zu tun hat und woran du zu wenig Eiweiß von falschem Eiweiß unterscheidest."
 ---
 Wenn wir über die Fütterung von Pferden sprechen, fallen oft Begriffe wie

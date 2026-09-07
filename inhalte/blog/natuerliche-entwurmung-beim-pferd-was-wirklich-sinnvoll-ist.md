@@ -4,8 +4,8 @@ datum: 2026-05-07
 aktualisiert: 2026-09-07
 kategorie: "Magen und Darm"
 angebot: "futter-check"
-bild: ""
-bildText: ""
+bild: "/images/blog/herde-am-zaun.webp"
+bildText: "Eine Pferdeherde auf der Weide. Weideführung und Abäppeln senken den Infektionsdruck stärker als jede Kur."
 beschreibung: "Vier feste Wurmkuren im Jahr haben ausgedient. Was selektive Entwurmung bedeutet, wann eine chemische Kur trotzdem sein muss und was Kräuter leisten können."
 ---
 Kaum ein Thema spaltet die Pferdewelt so sehr wie die Entwurmung. Auf der

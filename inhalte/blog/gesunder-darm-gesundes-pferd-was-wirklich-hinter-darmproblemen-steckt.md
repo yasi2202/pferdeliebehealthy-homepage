@@ -4,8 +4,8 @@ datum: 2025-08-13
 aktualisiert: 2026-09-07
 kategorie: "Magen und Darm"
 angebot: "futter-check"
-bild: ""
-bildText: ""
+bild: "/images/blog/darm-leuchtend.webp"
+bildText: "Der Verdauungstrakt des Pferdes im Bauchraum, schematisch hervorgehoben."
 beschreibung: "Der Darm des Pferdes ist ein Gärkessel, kein Rohr. Was dort wirklich passiert, woran du eine Dysbiose erkennst und warum kein Pulver sie allein löst."
 ---
 

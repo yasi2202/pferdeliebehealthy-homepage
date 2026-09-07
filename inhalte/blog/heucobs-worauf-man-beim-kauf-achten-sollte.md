@@ -4,8 +4,8 @@ datum: 2025-11-01
 aktualisiert: 2026-09-07
 kategorie: "Heu und Grundfutter"
 angebot: "ratiopro"
-bild: ""
-bildText: ""
+bild: "/images/blog/heulager-im-stall.webp"
+bildText: "Loses Heu im Stalllager. Die Qualität des Grundfutters entscheidet, was Heucobs überhaupt ersetzen müssen."
 beschreibung: "Woran du gute Heucobs erkennst, wie viel Wasser und Zeit sie brauchen, wie viel Heu sie wirklich ersetzen und woran Rationen für Zahnpatienten scheitern."
 ---
 Heucobs sind eine beliebte Alternative oder Ergänzung zum klassischen
