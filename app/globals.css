@@ -288,6 +288,31 @@ body {
   border-top: 1px solid var(--line);
 }
 
+/* ▸ DER SATZ, DER DEN KASTEN VON EINER HEILAUSSAGE TRENNT.
+   Gesetzt von arzneihinweis() in lib/blog.ts, siehe die Begründung dort.
+   Er steht bewusst über dem Provisionshinweis und in normaler Textfarbe:
+   Wer den Kasten liest, soll ihn mitlesen, ohne ihn zu suchen. */
+.beitrag-prose .partnerkasten-recht {
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--ink);
+  margin: 14px 0 0;
+  padding-top: 12px;
+  border-top: 1px solid var(--line);
+}
+
+/* Das Produktbild sitzt oben im Kasten, auf eigenem Grund, damit ein
+   freigestelltes Herstellerbild nicht im Weiß des Kastens verschwimmt. */
+.beitrag-prose .partnerkasten-bild {
+  display: block;
+  width: 100%;
+  max-width: 240px;
+  height: auto;
+  margin: 0 auto 16px;
+  background: var(--cream);
+  border-radius: 14px;
+}
+
 /* Der Produktkasten ist ein Partnerkasten, der ein bestimmtes Produkt nennt
    statt nur den Shop. Er bekommt deshalb einen Akzent an der Seite: Wer den
    Beitrag überfliegt, soll die konkrete Empfehlung finden, ohne zu lesen. */

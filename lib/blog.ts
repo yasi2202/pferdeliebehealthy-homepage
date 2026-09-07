@@ -199,7 +199,39 @@ function enthaeltWerbung(html: string): boolean {
  *  - `rel="sponsored"` am Link. Damit sagt die Seite Google, dass hinter dem
  *    Link Geld steht. Fehlt es, wertet Google das als Versuch, mit gekauften
  *    Links zu ranken, und das faellt auf die ganze Seite zurueck.
+ *  - Der Satz, dass Futter kein Arzneimittel ist, siehe arzneihinweis().
  */
+
+/** Der Satz, der jeden Kasten von einer Heilaussage trennt.
+ *
+ *  ▸ WARUM DAS IM CODE STEHT UND NICHT IM TEXT:
+ *    Art. 13 Abs. 3 der Verordnung (EG) 767/2009 verbietet es, fuer ein
+ *    Futtermittel damit zu werben, dass es einer Krankheit vorbeugt, sie
+ *    behandelt oder heilt. Nur eingetragene Diaetfuttermittel duerfen einen
+ *    Verwendungszweck nennen, und dafuer gibt es eine geschlossene EU-Liste.
+ *
+ *    Ein Blogbeitrag ueber ein Krankheitsbild ist fuer sich genommen
+ *    redaktionell. Sobald aber im selben Beitrag ein Kasten mit Rabattcode
+ *    und Kaufknopf steht, wird die Empfehlung daneben zu Werbung fuer genau
+ *    dieses Produkt, und der Abstand zwischen Krankheit und Kaufknopf ist
+ *    das, worauf eine Abmahnung zielt (UWG Paragraf 3a).
+ *
+ *    Deshalb steht der Hinweis nicht im Text, wo man ihn vergessen kann,
+ *    sondern im Kasten selbst: Er ist da, sobald ein Kasten da ist. Genau wie
+ *    die Werbekennzeichnung und der Biozidhinweis.
+ *
+ *    Er ersetzt keine saubere Formulierung im Fliesstext. Was ein Futter im
+ *    Pferd bewirken soll, gehoert dort gar nicht erst hin. */
+function arzneihinweis(art: "futter" | "pflege" | "shop"): string {
+  const satz =
+    art === "pflege"
+      ? "Pflegeprodukt, kein Arzneimittel. Über die Behandlung einer Verletzung entscheidet die Tierärztin."
+      : art === "shop"
+        ? "Futter und Pflege sind kein Arzneimittel. Krankheiten gehören in tierärztliche Hand."
+        : "Futtermittel, kein Arzneimittel. Es heilt, lindert und verhütet keine Krankheiten.";
+  return `<p class="partnerkasten-recht">${satz}</p>`;
+}
+
 function partnerkaestenSetzen(html: string): string {
   // Die eigenen Angebote. Marker: [[angebot:mineral]]
   //
@@ -249,7 +281,15 @@ function partnerkaestenSetzen(html: string): string {
         ? `<a class="partnerkasten-knopf" href="${ziel}" target="_blank" rel="sponsored noopener">${knopfText}</a>`
         : "";
 
+      // Das Produktbild kommt als schlichtes <img>: Der Kasten wird hier als
+      // HTML-Text gebaut, in dem next/image nicht laufen kann. Die Dateien
+      // liegen deshalb schon klein und als webp in public/images/produkte/.
+      const bild = produkt.bild
+        ? `<img class="partnerkasten-bild" src="/images/produkte/${produkt.bild}" alt="${produkt.name}" width="600" height="600" loading="lazy" decoding="async">`
+        : "";
+
       return `<aside class="partnerkasten partnerkasten-produkt">
+  ${bild}
   <p class="partnerkasten-marke">${partner.bezahlt ? "Werbung · " : ""}Produkt dazu</p>
   <p class="partnerkasten-name">${produkt.name}</p>
   <p class="partnerkasten-partner">von ${partner.partner}</p>
@@ -257,6 +297,7 @@ function partnerkaestenSetzen(html: string): string {
   <p class="partnerkasten-code">Mein Rabattcode: <strong>${partner.code}</strong>${partner.rabatt ? `, ${partner.rabatt}` : ""}</p>
   ${knopf}
   ${partner.bezahlt ? `<p class="partnerkasten-hinweis">Für den Code bekomme ich eine Provision, für dich wird es dadurch nicht teurer.</p>` : ""}
+  ${arzneihinweis(produkt.art ?? "futter")}
   ${produkt.biozid ? `<p class="partnerkasten-biozid">Biozidprodukte vorsichtig verwenden. Vor Gebrauch stets Etikett und Produktinformation lesen.</p>` : ""}
 </aside>`;
     }
@@ -281,6 +322,7 @@ function partnerkaestenSetzen(html: string): string {
   <p class="partnerkasten-code">Mein Rabattcode: <strong>${partner.code}</strong>${partner.rabatt ? `, ${partner.rabatt}` : ""}</p>
   ${knopf}
   ${partner.bezahlt ? `<p class="partnerkasten-hinweis">Für den Code bekomme ich eine Provision, für dich wird es dadurch nicht teurer.</p>` : ""}
+  ${arzneihinweis("shop")}
 </aside>`;
     }
   );

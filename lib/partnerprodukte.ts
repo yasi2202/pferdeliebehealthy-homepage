@@ -34,6 +34,22 @@ export type Partnerprodukt = {
   url?: string;
   /** Ein Satz: was es ist, nicht was es kann. */
   kurz: string;
+  /** Produktbild in public/images/produkte/, ohne Ordner geschrieben.
+   *  Nur echte Herstellerbilder, nichts Nachgebautes. */
+  bild?: string;
+  /**
+   * Was für ein Produkt ist das? Steuert den Pflichthinweis im Kasten.
+   *
+   * ▸ "futter" (Voreinstellung): Futter- und Ergänzungsfuttermittel. Der
+   *   Kasten setzt dann den Satz, dass Futter kein Arzneimittel ist.
+   *   Grundlage ist Art. 13 Abs. 3 der Verordnung (EG) 767/2009: Für ein
+   *   Futtermittel darf nicht damit geworben werden, dass es einer Krankheit
+   *   vorbeugt, sie behandelt oder heilt. Nur eingetragene Diätfuttermittel
+   *   dürfen einen Verwendungszweck nennen, und dafür gibt es eine
+   *   geschlossene EU-Liste.
+   * ▸ "pflege": Pflege- und Wundprodukte, die man nicht füttert.
+   */
+  art?: "futter" | "pflege";
   /**
    * Ist das ein **Biozidprodukt**, also ein Desinfektionsmittel?
    *
@@ -76,6 +92,7 @@ export const partnerprodukte: Partnerprodukt[] = [
   {
     schluessel: "baeralis-hauttalent",
     partner: "Bäralis",
+    art: "pflege",
     name: "Haut-Talent Nr. 1",
     url: "https://baeralis.de/nr-1-haut-talent-fuer-pferde?sPartner=d1c04513",
     kurz: "Der Wundreiniger der Reihe. Brennt nicht, ist alkoholfrei und muss nicht abgespült werden.",
@@ -84,6 +101,7 @@ export const partnerprodukte: Partnerprodukt[] = [
   {
     schluessel: "baeralis-hydrogel",
     partner: "Bäralis",
+    art: "pflege",
     name: "Hydro-Gel Nr. 2",
     url: "https://baeralis.de/baeralis-hydro-gel-pferd-desinfektion?sPartner=d1c04513",
     kurz: "Das Gel für den zweiten Schritt. Es bleibt auf der Wunde und hält sie feucht.",
@@ -92,6 +110,7 @@ export const partnerprodukte: Partnerprodukt[] = [
   {
     schluessel: "baeralis-fliegenpflaster",
     partner: "Bäralis",
+    art: "pflege",
     name: "Pferde-Pflaster",
     url: "https://baeralis.de/pferdepflaster-wundschutz-fliegenschutz?sPartner=d1c04513",
     kurz: "Luftdurchlässiger Wundschutz, der Fliegen fernhält. Die Alternative zum Farbspray im Sommer.",
@@ -176,6 +195,7 @@ export const partnerprodukte: Partnerprodukt[] = [
     partner: "Biohof Elmengrund",
     name: "BIO Hafer-Stroh, Probeballen",
     url: "https://biohof-elmengrund.de/products/bio-hafer-stroh-futterprobe-ca-11-kg",
+    bild: "elmengrund-haferstroh.webp",
     kurz: "Ausgedroschenes Haferstroh in Bioland-Qualität, warmluftgetrocknet. Einzelner Ballen von rund 11 Kilo zum Ausprobieren.",
   },
   {
@@ -183,6 +203,7 @@ export const partnerprodukte: Partnerprodukt[] = [
     partner: "Biohof Elmengrund",
     name: "BIO Grünhafer-Stroh, Probeballen",
     url: "https://biohof-elmengrund.de/products/bio-grunhafer-stroh-futterprobe-ca-11-kg",
+    bild: "elmengrund-gruenhaferstroh.webp",
     kurz: "Die ganze Haferpflanze, kurz nach der Blüte geerntet, mit Blattanteil. Einzelner Ballen von rund 11 Kilo zum Ausprobieren.",
   },
 ];
