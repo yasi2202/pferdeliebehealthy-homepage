@@ -6,6 +6,7 @@ kategorie: "Sonstiges"
 angebot: ""
 bild: ""
 bildText: ""
+bildBreit: false
 beschreibung: "Diese Datei ist eine Vorlage. Sie erscheint nicht auf der Website, weil ihr Name mit einem Unterstrich beginnt."
 ---
 
@@ -80,7 +81,15 @@ und `masterclass`. **Lass die Zeile leer, wenn keins wirklich passt.**
 **`bild`** und **`bildText`** — ein Foto oben im Beitrag. Leg die Datei unter
 `public/images/blog/` ab und schreib hier den Pfad hinein, zum Beispiel
 `/images/blog/kotwasser.jpg`. Der `bildText` steht als Zeile unter dem Bild
-und wird von Vorlesegeräten genutzt.
+und wird von Vorlesegeräten genutzt. Schreib dort, was auf dem Bild zu sehen
+ist, nicht den Titel noch einmal: Google liest diese Zeile mit, und über die
+Bildersuche kommen Leute auf die Seite.
+
+**`bildBreit`** — nur bei beschrifteten Bildern auf `true` setzen. Dann läuft
+das Bild über die volle Textbreite und wird nicht beschnitten. Der Normalfall
+ist der schmale, hochkante Platz: Ein einzelnes Motiv wirkt dort besser und
+schiebt den Text nicht nach unten. Ein breites Bild im schmalen Platz würde
+zusammengestaucht, die Beschriftungen wären unlesbar.
 
 ## Wie du formatierst
 

@@ -58,6 +58,13 @@ export type BlogBeitrag = {
   angebot: string;
   bild: string;
   bildText: string;
+  /** Breite Bilder mit Beschriftung brauchen die volle Textbreite, sonst
+   *  sind die Bildunterschriften darin nicht mehr zu lesen. Der schmale,
+   *  hochkante Platz bleibt der Normalfall: Ein einzelnes Motiv wirkt dort
+   *  besser und schiebt den Text nicht nach unten.
+   *
+   *  In der Beitragsdatei: `bildBreit: true`. */
+  bildBreit: boolean;
   /** Geschaetzte Lesezeit in Minuten. Steht auf der Karte und im Kopf des
    *  Beitrags: Wer weiss, dass es sechs Minuten dauert, faengt eher an als
    *  jemand, der vor einer Textwand unbekannter Laenge steht. */
@@ -392,6 +399,7 @@ function kopfBauen(
     angebot: String(data.angebot ?? ""),
     bild: String(data.bild ?? ""),
     bildText: String(data.bildText ?? ""),
+    bildBreit: data.bildBreit === true,
     lesezeit: lesezeitSchaetzen(inhalt),
   };
 }
