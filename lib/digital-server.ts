@@ -1287,6 +1287,70 @@ export async function bewertungsbitteSenden(
 }
 
 /**
+ * Die Erinnerung an eine angefangene und nicht bezahlte Bestellung.
+ *
+ * ▸ SIE GEHT NUR AUF KNOPFDRUCK RAUS, es gibt bewusst keinen täglichen Lauf
+ *   dafür. Wer automatisch hinterherschreibt, schreibt irgendwann auch der
+ *   Kundin, die aus gutem Grund abgebrochen hat.
+ *
+ * ▸ WARUM SIE NICHT DRÄNGT
+ *   Kein Countdown, kein Rabatt, kein „nur noch heute". Der häufigste Grund
+ *   für einen Abbruch ist eine offene Frage, nicht ein zu hoher Preis. Also
+ *   fragt die Mail danach und bietet den Weg zurück an, mehr nicht. Ein
+ *   Rabatt hier wäre ausserdem unfair gegenüber allen, die eben bezahlt
+ *   haben.
+ *
+ * ▸ DER HINWEIS AUF DIE EINWILLIGUNG BLEIBT DRIN. § 7 Abs. 3 UWG verlangt
+ *   ihn in jeder solchen Mail, und wer widersprechen will, soll nicht suchen
+ *   müssen.
+ */
+export async function abbruchErinnerungSenden(opt: {
+  email: string;
+  vorname: string;
+  /** Was im Warenkorb lag, als lesbarer Text. */
+  produkt: string;
+  /** Vollständige Adresse zurück zur Kasse. Leer: dann ohne Knopf. */
+  link: string | null;
+}): Promise<boolean> {
+  return sendeMail(
+    opt.email,
+    "Deine Bestellung ist liegengeblieben",
+    rahmen(`
+      <h1 style="font-size:24px;margin:0 0 16px;">Da ist etwas liegengeblieben</h1>
+
+      <p style="font-size:16px;line-height:1.6;">${anrede(opt.vorname)}</p>
+
+      <p style="font-size:16px;line-height:1.6;">
+        du hattest vor Kurzem ${esc(opt.produkt)} in der Kasse, die Bestellung
+        ist dann aber nicht zu Ende gegangen. Das passiert öfter, als man
+        denkt: eine Karte, die nicht durchgeht, ein Fenster, das zufällt.
+      </p>
+
+      <p style="font-size:16px;line-height:1.6;">
+        Falls du weitermachen möchtest, geht es hier weiter. Falls nicht, ist
+        das auch völlig in Ordnung, dann brauchst du nichts zu tun.
+      </p>
+
+      ${opt.link ? knopf(opt.link, "Bestellung abschliessen") : ""}
+
+      <p style="font-size:16px;line-height:1.6;">
+        Und wenn eine Frage offen geblieben ist, ob das Richtige für dein
+        Pferd dabei ist oder wie das Ganze abläuft: Antworte einfach auf diese
+        Mail, ich lese jede selbst.
+      </p>
+
+      <p style="font-size:12px;line-height:1.6;color:#8a7070;">
+        Du bekommst diese Mail, weil du beim Bestellen zugestimmt hast, Post
+        von mir zu bekommen. Wenn du das nicht mehr möchtest, antworte kurz,
+        dann trage ich dich aus.
+      </p>
+
+      <p style="font-size:16px;line-height:1.6;">Liebe Grüße<br>Yasemin</p>
+    `),
+  );
+}
+
+/**
  * Die Bitte um eine Google-Bewertung, unten in der Bestellbestätigung.
  *
  * ▸ SIE GEHT NICHT AN ALLE, UND DAS HAT EINEN GRUND.

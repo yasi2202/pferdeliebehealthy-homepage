@@ -5,6 +5,8 @@ import { adminEingerichtet, istAngemeldet } from "@/lib/admin-zugang";
 import { auswerten, zeitraumWahl } from "@/lib/auswertung";
 import { supabaseAlle } from "@/lib/versand";
 import BewertungKnopf from "@/components/BewertungKnopf";
+import ErinnernKnopf from "@/components/ErinnernKnopf";
+import { abbrueche } from "@/lib/abbrueche";
 import { preisText } from "@/lib/shop";
 
 // ---------------------------------------------------------------------------
@@ -117,6 +119,7 @@ export default async function AuswertungSeite({
 
   const a = await auswerten(30, zeitraum ?? "alles");
   const wahl = zeitraumWahl();
+  const offene = await abbrueche();
 
   // Die letzten Verkaefe mit Rechnungsnummer, fuer die Ablage. Bewusst nur
   // die letzten fuenfzig: Wer aeltere braucht, nimmt den CSV-Export.
@@ -364,6 +367,90 @@ export default async function AuswertungSeite({
             <span>{a.verlauf[a.verlauf.length - 1]?.tag}</span>
           </div>
         </div>
+
+        {/* ------------------------------------------- Liegengeblieben */}
+        {/* Wer angefangen hat zu bestellen und nicht bezahlt hat. Steht
+            bewusst NICHT bei den Zahlen oben: Das ist kein Umsatz, das ist
+            eine Liste zum Handeln. */}
+        {offene.liste.length > 0 && (
+          <div className="mb-10 rounded-[18px] border border-line bg-white p-6 sm:p-7">
+            <h2 className="mb-1 font-serif text-[21px]">
+              Angefangen und nicht bezahlt
+            </h2>
+
+            <p className="mb-5 text-[13.5px] leading-relaxed text-ink-soft">
+              Die Kasse war offen, das Geld kam nicht an. Ob abgebrochen oder
+              an der Karte gescheitert, sieht die Seite nicht, das bleibt bei
+              Stripe.
+            </p>
+
+            {offene.spalteFehlt && (
+              <p className="mb-5 rounded-[12px] border border-rose-deep p-4 text-[13.5px] leading-relaxed">
+                Zum Erinnern fehlt noch eine Spalte in der Datenbank. Führ
+                einmal <code>datenbank/erinnerung-abbruch.sql</code> im
+                SQL-Editor von Supabase aus, im Projekt
+                pferdeliebehealthy-akademie. Danach steht hier ein Knopf.
+              </p>
+            )}
+
+            <div className="overflow-x-auto">
+              <table className="w-full text-[14.5px]">
+                <thead>
+                  <tr className="border-b border-line text-left text-[13px] uppercase tracking-[0.08em] text-ink-soft">
+                    <th className="pb-2 pr-5 font-normal">Datum</th>
+                    <th className="pb-2 pr-5 font-normal">Kundin</th>
+                    <th className="pb-2 pr-5 font-normal">Wollte</th>
+                    <th className="pb-2 pl-5 text-right font-normal">Betrag</th>
+                    <th className="pb-2 pl-5 text-right font-normal">Erinnern</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {offene.liste.map((o) => (
+                    <tr key={o.nummer} className="border-b border-line last:border-0">
+                      <td className="py-2.5 pr-5 whitespace-nowrap text-ink-soft">
+                        {new Date(o.angelegt_am).toLocaleDateString("de-DE")}
+                      </td>
+
+                      <td className="py-2.5 pr-5">
+                        {o.name}
+                        <div className="text-[13px] text-ink-soft">{o.email}</div>
+                      </td>
+
+                      <td className="py-2.5 pr-5">{o.produkt}</td>
+
+                      <td className="py-2.5 pl-5 text-right tabular-nums whitespace-nowrap">
+                        {preisText(o.gesamt)}
+                      </td>
+
+                      {/* ▸ DER KNOPF STEHT NUR DA, WO ER HINGEHÖRT.
+                          Sonst steht dort der Grund, warum nicht. Ein Knopf,
+                          der immer dasselbe absagt, ist schlimmer als
+                          keiner. */}
+                      <td className="py-2.5 pl-5 text-right whitespace-nowrap">
+                        {o.erinnerbar ? (
+                          <ErinnernKnopf nummer={o.nummer} name={o.name} />
+                        ) : (
+                          <span className="text-[13px] text-ink-soft">
+                            {o.grund}
+                          </span>
+                        )}
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+
+            <p className="mt-4 text-[13px] leading-relaxed text-ink-soft">
+              Erinnert wird nur, wo beim Bestellen zugestimmt wurde, Post zu
+              bekommen. Eine Erinnerung an einen liegengebliebenen Einkauf ist
+              Werbung, und die Ausnahme für Bestandskundinnen greift hier
+              nicht, weil kein Kauf zustande gekommen ist. Zusatzangebote nach
+              einem Kauf bleiben ebenfalls aussen vor: Die sind abgelehnt
+              worden, nicht liegengeblieben.
+            </p>
+          </div>
+        )}
 
         {/* -------------------------------------------------- Die Rechnungen */}
         {/* Die letzten Verkäufe mit einem Weg zur einzelnen Rechnung. Die
