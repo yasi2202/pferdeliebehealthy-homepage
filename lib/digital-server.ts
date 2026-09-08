@@ -1311,6 +1311,12 @@ export async function abbruchErinnerungSenden(opt: {
   produkt: string;
   /** Vollständige Adresse zurück zur Kasse. Leer: dann ohne Knopf. */
   link: string | null;
+  /**
+   * Nur gesetzt, wenn das Angebot eigentlich schon abgelaufen ist und der
+   * Link ausnahmsweise noch öffnet. Dann muss in der Mail stehen, wie lange,
+   * sonst wäre die Frist im Nachhinein doch keine gewesen.
+   */
+  gueltigBis?: string | null;
 }): Promise<boolean> {
   return sendeMail(
     opt.email,
@@ -1330,6 +1336,18 @@ export async function abbruchErinnerungSenden(opt: {
         Falls du weitermachen möchtest, geht es hier weiter. Falls nicht, ist
         das auch völlig in Ordnung, dann brauchst du nichts zu tun.
       </p>
+
+      ${
+        opt.gueltigBis
+          ? `<p style="font-size:16px;line-height:1.6;">
+        Eine Sache dazu: Der Preis von damals war ein befristetes Angebot und
+        ist inzwischen ausgelaufen. Weil du es vorher schon in der Kasse
+        hattest, halte ich ihn für dich noch bis zum
+        ${esc(opt.gueltigBis)} offen. Der Knopf unten ist dein persönlicher
+        Weg dorthin, danach gilt der neue Preis.
+      </p>`
+          : ""
+      }
 
       ${opt.link ? knopf(opt.link, "Bestellung abschliessen") : ""}
 

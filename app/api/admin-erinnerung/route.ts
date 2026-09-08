@@ -5,6 +5,7 @@ import { abbruchErinnerungSenden } from "@/lib/digital-server";
 import { lageBestimmen, spalteDaIst } from "@/lib/abbrueche";
 import { digitalFinden } from "@/lib/digital";
 import { url } from "@/lib/seo";
+import { kulanzEnde, kulanzSchluessel } from "@/lib/kulanz";
 
 // ---------------------------------------------------------------------------
 // Eine Erinnerung an eine liegengebliebene Bestellung verschicken.
@@ -156,12 +157,50 @@ export async function POST(request: NextRequest) {
     "etwas aus meinem Angebot";
 
   const slug = artikel[0]?.slug ?? null;
+  const katalog = slug ? digitalFinden(slug) : null;
+
+  // ▸ EIN ABGELAUFENES ANGEBOT BRAUCHT DEN KULANZLINK.
+  //   Sonst führt der Knopf in der Mail auf eine Kasse, die den Kauf mit
+  //   „Dieses Angebot ist ausgelaufen" abweist. Jemanden anzuschreiben und
+  //   ihn dann vor eine verschlossene Tür zu schicken, ist schlimmer, als
+  //   gar nicht zu schreiben. Genau für diesen Fall gibt es lib/kulanz.ts:
+  //   Der Schlüssel an der Adresse öffnet den alten Preis noch, aber nur
+  //   für die, der du ihn schickst, und nur bis zur Nachfrist.
+  let link = slug ? url(`/kasse/${slug}`) : null;
+  let gueltigBis: string | null = null;
+
+  if (slug && katalog?.verkaufBis) {
+    const ende = new Date(`${katalog.verkaufBis}T23:59:59+02:00`);
+
+    if (new Date() > ende) {
+      const schluessel = kulanzSchluessel(katalog.verkaufBis);
+
+      if (!schluessel) {
+        return NextResponse.json(
+          {
+            fehler:
+              `Das Angebot für ${produkt} ist am ` +
+              `${ende.toLocaleDateString("de-DE")} ausgelaufen, und ein ` +
+              `Kulanzlink ist nicht möglich: Entweder ist die Nachfrist von ` +
+              `14 Tagen vorbei, oder KULANZ_SCHLUESSEL steht nicht in den ` +
+              `Vercel-Einstellungen. Ohne den Link würde die Kasse ihren ` +
+              `Kauf abweisen. Schreib ihr in dem Fall lieber von Hand.`,
+          },
+          { status: 400 },
+        );
+      }
+
+      link = url(`/kasse/${slug}?kulanz=${encodeURIComponent(schluessel)}`);
+      gueltigBis = kulanzEnde(katalog.verkaufBis).toLocaleDateString("de-DE");
+    }
+  }
 
   const ok = await abbruchErinnerungSenden({
     email: b.email,
     vorname: b.vorname,
     produkt,
-    link: slug ? url(`/kasse/${slug}`) : null,
+    link,
+    gueltigBis,
   });
 
   if (!ok) {

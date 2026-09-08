@@ -57,3 +57,36 @@ export function kulanzGilt(
 
   return jetzt <= nachfrist;
 }
+
+/** Wann die Nachfrist für einen Kulanzkauf endet. */
+export function kulanzEnde(verkaufBis: string): Date {
+  const ende = new Date(`${verkaufBis}T23:59:59+02:00`);
+  return new Date(ende.getTime() + KULANZ_NACHFRIST_TAGE * 24 * 60 * 60 * 1000);
+}
+
+/**
+ * Der Schlüssel für einen Kulanzlink, oder null.
+ *
+ * Gedacht für den einen Fall, für den dieser Weg gebaut wurde: Jemand wollte
+ * am letzten Abend kaufen, es hat nicht geklappt, und du schreibst ihr
+ * hinterher. Dann gehört an den Link in dieser Mail der Schlüssel, sonst
+ * schickst du sie auf eine Seite, die ihren Kauf abweist.
+ *
+ * Null kommt zurück, wenn `KULANZ_SCHLUESSEL` bei Vercel gar nicht gesetzt
+ * ist oder die Nachfrist vorbei ist. Wer die Antwort bekommt, darf keinen
+ * Link bauen, sondern muss den Fall anders lösen.
+ *
+ * ▸ NUR AUF DEM SERVER AUFRUFEN. Der Schlüssel ist keine
+ *   NEXT_PUBLIC-Variable und hat im Browser nichts zu suchen.
+ */
+export function kulanzSchluessel(
+  verkaufBis: string,
+  jetzt: Date = new Date(),
+): string | null {
+  const schluessel = process.env.KULANZ_SCHLUESSEL?.trim();
+
+  if (!schluessel) return null;
+  if (jetzt > kulanzEnde(verkaufBis)) return null;
+
+  return schluessel;
+}

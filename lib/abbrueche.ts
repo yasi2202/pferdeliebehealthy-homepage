@@ -1,5 +1,6 @@
 import { supabaseAlle, supabase } from "@/lib/versand";
 import { digitalFinden } from "@/lib/digital";
+import { kulanzEnde } from "@/lib/kulanz";
 
 // ---------------------------------------------------------------------------
 // Angefangene Bestellungen, bei denen kein Geld angekommen ist.
@@ -70,7 +71,33 @@ export type Abbruch = {
   erinnerbar: boolean;
   /** Wenn nicht: warum nicht, in einem Satz. */
   grund: string | null;
+  /**
+   * Nur gesetzt, wenn das Produkt ein befristetes Angebot war und die Frist
+   * durch ist. Dann muss man wissen, dass die Erinnerung den Kulanzlink
+   * mitschickt und wie lange der noch trägt.
+   */
+  fristHinweis: string | null;
 };
+
+/** Der Satz zur abgelaufenen Frist, oder null, wenn keine Frist im Weg ist. */
+function fristHinweisText(slug: string | null): string | null {
+  const katalog = slug ? digitalFinden(slug) : null;
+  if (!katalog?.verkaufBis) return null;
+
+  const ende = new Date(`${katalog.verkaufBis}T23:59:59+02:00`);
+  if (new Date() <= ende) return null;
+
+  const bis = kulanzEnde(katalog.verkaufBis);
+
+  if (new Date() > bis) {
+    return `Angebot lief am ${ende.toLocaleDateString("de-DE")} aus, auch die Kulanzfrist ist vorbei`;
+  }
+
+  return (
+    `Angebot lief am ${ende.toLocaleDateString("de-DE")} aus, ` +
+    `alter Preis per Kulanzlink noch bis ${bis.toLocaleDateString("de-DE")}`
+  );
+}
 
 /** Gehört dieser Artikel zu dieser Bestellung? Verglichen wird über den Slug. */
 function slugsVon(z: Zeile): string[] {
@@ -127,6 +154,7 @@ export async function abbrueche(): Promise<{
     const erinnert = o.erinnert_am ?? null;
 
     const artikel = Array.isArray(o.artikel) ? o.artikel : [];
+    const slug = artikel[0]?.slug ?? null;
 
     return {
       nummer: o.nummer,
@@ -138,13 +166,14 @@ export async function abbrueche(): Promise<{
         artikel
           .map((a) => digitalFinden(a.slug)?.kurzname ?? a.name)
           .join(", ") || "—",
-      slug: artikel[0]?.slug ?? null,
+      slug,
       newsletter: o.newsletter,
       erinnert_am: erinnert,
       lage,
       erinnerbar:
         lage === "offen" && o.newsletter && !erinnert && !spalteFehlt,
       grund: grundText(lage, o.newsletter, erinnert, spalteFehlt),
+      fristHinweis: lage === "offen" ? fristHinweisText(slug) : null,
     };
   });
 

@@ -416,7 +416,14 @@ export default async function AuswertungSeite({
                         <div className="text-[13px] text-ink-soft">{o.email}</div>
                       </td>
 
-                      <td className="py-2.5 pr-5">{o.produkt}</td>
+                      <td className="py-2.5 pr-5">
+                        {o.produkt}
+                        {o.fristHinweis && (
+                          <div className="text-[13px] text-rose-deep">
+                            {o.fristHinweis}
+                          </div>
+                        )}
+                      </td>
 
                       <td className="py-2.5 pl-5 text-right tabular-nums whitespace-nowrap">
                         {preisText(o.gesamt)}
