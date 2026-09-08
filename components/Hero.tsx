@@ -41,12 +41,24 @@ export default function Hero() {
               du weißt immer noch nicht, ob es reicht?
             </p>
 
+            {/* ▸ AM 08.09.2026 EIN WORT GEAENDERT: "ein Fundament" heisst jetzt
+                "eine Fütterung".
+
+                Grund: Die Überschrift ist das stärkste Signal, das Google auf
+                einer Seite liest, und in dieser stand bisher nicht, worum es
+                geht. "Fundament" kann alles sein, ein Hausbau, ein
+                Sparvertrag. Jetzt steht das Thema drin, ohne dass der Satz
+                seinen Klang verliert: Es bleibt derselbe Rhythmus und
+                derselbe hervorgehobene Gegensatz zu "Vermutungen".
+
+                Bitte kein Stichwortstapeln daraus machen. Eine Überschrift,
+                die verkauft, ist mehr wert als eine, die Begriffe aufzählt. */}
             <h1 className="font-serif font-normal text-cream text-[34px] sm:text-5xl lg:text-[52px] leading-[1.12] tracking-tight mb-6">
               Dein Pferd verdient keine{" "}
               <em className="italic text-cream underline decoration-gold decoration-2 underline-offset-[6px]">
                 Vermutungen
               </em>
-              , sondern ein Fundament, das wirklich trägt
+              , sondern eine Fütterung, die wirklich trägt
             </h1>
 
             {/* Der Slogan stand bisher versteckt unter „Über mich". */}
