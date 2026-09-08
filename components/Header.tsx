@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 import { insider } from "@/lib/insider";
-import { futterCheck, mitgliederbereich } from "@/lib/seite";
+import { mitgliederbereich } from "@/lib/seite";
 import WarenkorbKnopf from "@/components/WarenkorbKnopf";
 
 const links = [
@@ -219,9 +219,19 @@ export default function Header() {
               <Schloss groesse={17} />
             </a>
 
+            {/* ▸ SEIT DEM 08.09.2026 FUEHRT DER KNOPF ZUM STALL ORGANIZER.
+                Vorher stand hier "Zum Futter-Check". Damit warben drei
+                kostenlose Angebote gleichzeitig um dieselbe Besucherin:
+                Stall Organizer im Hero, Futter-Check in der Kopfleiste,
+                Insider unten. Seit dem 07.09.2026 ist der Stall Organizer
+                der Einstieg, mit eigener Seite und Mailstrecke, also zieht
+                die Kopfleiste nach.
+
+                Der Futter-Check bleibt erreichbar: im Abschnitt "Die Kurse"
+                auf der Startseite, in der Fusszeile und auf seiner eigenen
+                Seite fuer Google. */}
             <Link
-              href={futterCheck.fragebogen}
-              prefetch={false}
+              href="/stall-organizer"
               onClick={() => setMenuOpen(false)}
               className={`hidden whitespace-nowrap rounded-full px-5 py-2.5 text-sm font-medium transition-colors 2xl:inline-block ${
                 transparent
@@ -229,7 +239,7 @@ export default function Header() {
                   : "bg-ink text-cream hover:bg-rose-deep"
               }`}
             >
-              Zum Futter-Check
+              Stall Organizer holen
             </Link>
 
             <button
@@ -293,13 +303,13 @@ export default function Header() {
             ),
           )}
 
+          {/* Im Klappmenue derselbe Weg wie in der Kopfleiste. */}
           <Link
-            href={futterCheck.fragebogen}
-            prefetch={false}
+            href="/stall-organizer"
             onClick={() => setMenuOpen(false)}
             className="mt-4 rounded-full bg-rose px-8 py-3.5 text-[15px] font-medium text-ink"
           >
-            Zum Futter-Check
+            Stall Organizer holen, kostenlos
           </Link>
 
           <a
