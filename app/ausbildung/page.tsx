@@ -336,11 +336,17 @@ export default function AusbildungSeite() {
             </li>
           </ul>
 
+          {/* ▸ AM 08.09.2026 GEAENDERT, und zwar als Letztes von fuenf Stellen
+              auf dieser Seite. Hier stand woertlich das Gegenteil der neuen
+              Regel: "Nicht fuer ein Jahr, sondern solange du damit arbeiten
+              willst." Wer eine Zusage aendert, muss die Seite ganz lesen,
+              Suchen nach "dauerhaft" reicht nicht. */}
           <p className="text-[15px] text-ink-soft leading-relaxed mt-7 max-w-2xl">
-            Beides bleibt dir nach der Ausbildung. Nicht für ein Jahr, sondern
-            solange du damit arbeiten willst. Das ist mir wichtig, weil eine
-            Beraterin ohne Werkzeug wieder von vorn anfängt, und genau das
-            wollte ich dir ersparen.
+            Beides gehört ein Jahr lang dazu, gerechnet ab deiner Anmeldung.
+            Danach entscheidest du selbst, ob du weiter damit arbeitest. Mir
+            war wichtig, dass du deine erste eigene Beratung nicht in einer
+            Tabellendatei machst, sondern mit demselben Werkzeug, mit dem ich
+            jeden Tag arbeite.
           </p>
         </div>
       </section>
