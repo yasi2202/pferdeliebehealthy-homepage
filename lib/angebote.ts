@@ -85,15 +85,22 @@ type Masterclass = {
  *  „Masterclass". Zwei Gründe: Die ZFU prüft im Verfahren auch das
  *  Werbematerial, und der Lehrgangstitel muss überall derselbe sein. Und
  *  „Masterclass" führt eine Wettbewerberin für ihre Profi-Ausbildung, du
- *  würdest also mit ihr verwechselt. In der Akademie darf der alte Name
- *  bleiben, dort sieht ihn nur, wer schon gekauft hat.
+ *  würdest also mit ihr verwechselt.
+ *
+ *  Seit dem 07.09.2026 heißt er auch in der Akademie so, in RatioPro und im
+ *  Ganzjahresfutterplan ebenfalls. Der alte Name durfte dort eine Weile
+ *  stehen bleiben, weil ihn nur sieht, wer schon gekauft hat; jetzt ist er
+ *  überall derselbe. Der Bezeichner `masterclass` in diesem Code bleibt
+ *  dagegen, wie er ist: Blogbeiträge schalten ihren Empfehlungskasten über
+ *  `angebot: "masterclass"` im Frontmatter, ein Umbenennen würde sie
+ *  stillschweigend leerlaufen lassen.
  *
  *  Die Kennzahl „∞ Zugang" ist bewusst raus: Die Lehrgangsdauer sind laut
  *  Antrag 12 Monate, ein unbefristeter Zugang stünde dagegen. */
 export const masterclass: Masterclass = {
   name: "Ausbildung Ganzheitliche Pferdefütterung",
   beschreibung:
-    "Von den Grundlagen bis zur eigenen Beratungspraxis. Am Ende steht deine individuelle Abschlussprüfung, ein Zertifikat, und mit RatioPro und EquiDesk zwei Werkzeuge, die dir dauerhaft bleiben.",
+    "Von den Grundlagen bis zur eigenen Beratungspraxis. Am Ende steht deine individuelle Abschlussprüfung, ein Zertifikat, und mit RatioPro und EquiDesk zwei Werkzeuge, die im ersten Jahr dabei sind.",
   kennzahlen: [
     { zahl: "8", label: "Module" },
     { zahl: "899 €", label: "einmalig" },
@@ -164,7 +171,7 @@ export const angebotsHinweise: Record<string, Angebotshinweis> = {
   masterclass: {
     augenbraue: "Für angehende Beraterinnen",
     name: "Die Ausbildung Ganzheitliche Pferdefütterung",
-    text: "Von den Grundlagen bis zur eigenen Beratungspraxis, mit individueller Abschlussprüfung, Zertifikat und den Werkzeugen RatioPro und EquiDesk, die dir dauerhaft bleiben.",
+    text: "Von den Grundlagen bis zur eigenen Beratungspraxis, mit individueller Abschlussprüfung, Zertifikat und den Werkzeugen RatioPro und EquiDesk, die im ersten Jahr dabei sind.",
     knopf: "Die Ausbildung ansehen",
     // Führt auf die eigene Seite statt direkt zu alfima: dort steht alles
     // erklärt, und der kostenlose Schnupperkurs steht dort ganz oben.

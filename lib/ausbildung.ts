@@ -110,14 +110,23 @@ export const ausbildung = {
 // ---------------------------------------------------------------------------
 // Die enthaltenen Werkzeuge.
 //
-// Von Yasemin entschieden am 27.08.2026: RatioPro und EquiDesk gehören zur
-// Ausbildung, dauerhaft, ohne Frist und ohne Anschlussgebühr.
+// ▸ SEIT DEM 08.09.2026: RatioPro und EquiDesk gehören EIN JAHR lang zur
+//   Ausbildung, nicht mehr dauerhaft. So von Yasemin entschieden. Vorher
+//   stand hier "dauerhaft, ohne Frist und ohne Anschlussgebühr", und genau
+//   das steht auch noch im ZFU-Antrag vom 20.08.2026 und im Lehrplan-PDF.
+//   Beides gehört nachgezogen.
 //
 // Das ist eine Zusage an jede Käuferin. Sie steht im Kopf der Seite, im
 // eigenen Abschnitt und im Preisblock. Wenn du das Modell je änderst, gilt
-// die Änderung nur für neue Anmeldungen — wer zu diesen Bedingungen gekauft
-// hat, behält sie. Bevor die erste Anmeldung reinkommt, muss die Freischaltung
-// beider Zugänge nach bestandener Prüfung eingerichtet sein.
+// die Änderung nur für neue Anmeldungen, wer zu diesen Bedingungen gekauft
+// hat, behält sie. Über die Seite verkauft wurde noch nicht, der Verkauf
+// öffnet zum 01.10.2026. Bevor die erste Anmeldung reinkommt, muss die
+// Freischaltung beider Zugänge nach bestandener Prüfung eingerichtet sein.
+//
+// ▸ DAS JAHR ENDET NOCH NICHT VON SELBST. In der Akademie hat eine
+//   Teilnehmerin kein Ablaufdatum, die Zugänge `ratiopro` und `equidesk`
+//   stehen einfach in ihrer Zeile. Wer die Frist durchsetzen will, muss sie
+//   dort erst bauen.
 //
 // Warum es sich lohnt: Keine Wettbewerberin am deutschsprachigen Markt gibt
 // Software zur Ausbildung dazu. VETogether (749 €), Sarah Ullrich (1.111 €)
@@ -125,7 +134,9 @@ export const ausbildung = {
 // von ihnen kopieren kann.
 // ---------------------------------------------------------------------------
 
-export const werkzeugeDauerhaft = true;
+/** Wie lange RatioPro und EquiDesk zur Ausbildung gehören. Steht als Wort da,
+ *  weil er in Sätzen auftaucht, nicht in einer Rechnung. */
+export const werkzeugeZeitraum = "ein Jahr";
 
 // ---------------------------------------------------------------------------
 // Die Module.

@@ -39,7 +39,7 @@ import {
 //   lib/ausbildung.ts kommt und deshalb immer stimmt.
 const TITEL = "Ausbildung Ganzheitliche Pferdefütterung";
 const BESCHREIBUNG =
-  "Werde Ernährungsberaterin für Pferde: acht Module in zwölf Monaten, persönliche Betreuung, Abschlussprüfung. RatioPro und EquiDesk dauerhaft inklusive.";
+  "Werde Ernährungsberaterin für Pferde: acht Module in zwölf Monaten, persönliche Betreuung, Abschlussprüfung. RatioPro und EquiDesk ein Jahr lang inklusive.";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/ausbildung" },
@@ -91,8 +91,8 @@ export default function AusbildungSeite() {
             <p className="text-[16px] text-cream/70 leading-relaxed mb-8 max-w-xl">
               Zwölf Monate Zeit, in deinem Tempo, mit einer Abschlussprüfung,
               die für dich zusammengestellt wird. Danach berätst du selbst, mit
-              meiner Rationsberechnung und meiner Kundenverwaltung, die dir
-              dauerhaft bleiben.
+              meiner Rationsberechnung und meiner Kundenverwaltung, die im
+              ersten Jahr dabei sind.
             </p>
 
             {/* Die Kennzahlen. Alle vier stehen so im ZFU-Antrag. */}
@@ -275,12 +275,20 @@ export default function AusbildungSeite() {
       </section>
 
       {/* ------------------------------------------------------- Werkzeuge */}
-      {/* Von Yasemin bestätigt am 27.08.2026: RatioPro und EquiDesk sind in
-          der Ausbildung enthalten, und zwar DAUERHAFT, ohne Frist und ohne
-          Anschlussgebühr. Das ist eine Zusage an jede Käuferin, die du später
-          nicht mehr einseitig zurücknehmen kannst — wer zu diesen Bedingungen
-          gekauft hat, behält sie. Wenn du das Modell je änderst, gilt die
-          Änderung nur für neue Anmeldungen.
+      {/* ▸ AM 08.09.2026 GEAENDERT: RatioPro und EquiDesk sind EIN JAHR lang
+          enthalten, nicht mehr dauerhaft. So von Yasemin entschieden.
+          Vorher stand hier "dauerhaft, ohne Frist und ohne Anschlussgebühr".
+
+          Was das bedeutet: Es ist weiterhin eine Zusage an jede Käuferin, die
+          du später nicht mehr einseitig zurücknehmen kannst. Wer zu den alten
+          Bedingungen gekauft hat, behält sie. Verkauft wurde zu diesen
+          Bedingungen über die Seite noch nicht, der Verkauf öffnet erst zum
+          01.10.2026.
+
+          ▸ TECHNISCH ENDET DER ZUGANG NOCH NICHT VON SELBST. In der Akademie
+            gibt es kein Ablaufdatum je Teilnehmerin, die Zugänge `ratiopro`
+            und `equidesk` stehen einfach da. Wer die Frist wirklich
+            durchsetzen will, braucht dafür erst etwas Gebautes.
 
           Warum das hier so prominent steht: Keine deiner Wettbewerberinnen
           hat Software. VETogether, Sarah Ullrich und Naturnahes Pferd liefern
@@ -293,14 +301,14 @@ export default function AusbildungSeite() {
               Nicht nur Wissen
             </span>
             <h2 className="font-serif font-normal text-[26px] sm:text-[34px] leading-[1.15] tracking-tight mb-5">
-              Meine Werkzeuge gehören dir. Dauerhaft.
+              Meine Werkzeuge bekommst du dazu. Ein Jahr lang.
             </h2>
             <p className="text-[16px] text-ink-soft leading-relaxed">
               Wissen allein hilft dir am ersten echten Beratungstag wenig. Was
               du dann brauchst, ist etwas, worin du rechnest, und etwas, worin
-              deine Kundinnen stehen. Beides bekommst du hier, ohne Aufpreis
-              und ohne Frist. Es sind dieselben zwei Programme, mit denen ich
-              selbst jeden Tag arbeite.
+              deine Kundinnen stehen. Beides bekommst du hier ohne Aufpreis,
+              ein Jahr lang ab deiner Anmeldung. Es sind dieselben zwei
+              Programme, mit denen ich selbst jeden Tag arbeite.
             </p>
           </div>
 
@@ -422,7 +430,7 @@ export default function AusbildungSeite() {
               {ausbildung.preisRaten}. Darin enthalten sind alle{" "}
               {ausbildung.module} Module, die Betreuung über{" "}
               {ausbildung.dauerMonate} Monate, deine individuelle
-              Abschlussprüfung, das Zertifikat und dauerhaft RatioPro und
+              Abschlussprüfung, das Zertifikat und ein Jahr lang RatioPro und
               EquiDesk.
             </p>
             <p className="text-[15px] text-cream/70 leading-relaxed mb-8">
