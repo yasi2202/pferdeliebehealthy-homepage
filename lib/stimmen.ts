@@ -93,6 +93,11 @@ const ALLE_KURSE = [
 //   gefragt und haben zugestimmt, dass ihr Satz mit Vornamen auf der Seite
 //   stehen darf. Ohne diese Zusage darf hier nichts hinein: Lob aus einer
 //   privaten Mail ist keine Veröffentlichung.
+//
+//   ▸ EINE AUSNAHME GIBT ES SEIT DEM 08.09.2026: Marens Satz steht auf der
+//     Seite, bevor sie gefragt wurde. Yasemin hat das so entschieden und
+//     holt die Zusage nach. Wer hier etwas hinzufügt, nimmt das bitte
+//     nicht als neuen Maßstab: Der Weg bleibt erst fragen, dann eintragen.
 export const stimmen: Stimme[] = [
   {
     // Die stärkste Stimme überhaupt: ein Ergebnis, das man nachfühlen kann.
@@ -159,6 +164,29 @@ export const stimmen: Stimme[] = [
       "so viel Wissen, verständlich zusammengefasst. Ich bin total begeistert " +
       "und würde den Kurs uneingeschränkt weiterempfehlen. Richtig top!",
     name: "Juliane",
+    rolle: "Teilnehmerin der Ausbildung",
+    produkte: ["ausbildung"],
+  },
+  {
+    // ▸ ZUSTIMMUNG STEHT NOCH AUS. Yasemin hat am 08.09.2026 entschieden,
+    //   diesen Satz sofort zu zeigen und Maren die Zusage nachträglich
+    //   abzunehmen. Das ist die Ausnahme von der Regel weiter oben, nicht
+    //   der neue Normalfall: Sagt Maren nein, gehört der Eintrag hier raus.
+    //
+    // ▸ EIN EINGRIFF AM WORTLAUT, und nur dieser: Maren hat "bin immer noch
+    //   richtig begeistert von der Ausbildung" geschrieben, klein und ohne
+    //   "Ich" davor, wie man das am Anfang einer Mail eben tippt. Als Zitat
+    //   fängt der Satz jetzt mit großem B an. Kein Wort dazu, keine Aussage
+    //   gedreht.
+    //
+    // ▸ SIE STEHT HINTER JULIANE, nicht davor. Julianes Satz sagt etwas über
+    //   den Kurs selbst, Marens sagt, dass die Begeisterung bleibt. Beides
+    //   zusammen ist stärker als jedes für sich, und die Reihenfolge
+    //   entscheidet: Gezeigt werden nur die ersten beiden. Hanna rutscht
+    //   dadurch von der Ausbildungsseite, bleibt aber beim Basisfutterkurs
+    //   und bei Mineral-Klarheit sichtbar.
+    zitat: "Bin immer noch richtig begeistert von der Ausbildung.",
+    name: "Maren",
     rolle: "Teilnehmerin der Ausbildung",
     produkte: ["ausbildung"],
   },

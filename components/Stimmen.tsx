@@ -59,14 +59,20 @@ export default function Stimmen({ slug }: { slug: string }) {
             ▸ WENN DIE BEWERTUNGEN MEHR WERDEN, kann die Zeile zurück, mit
               Note UND Anzahl. Die Daten stehen weiter in lib/stimmen.ts. */}
 
-        <div className="grid gap-5 sm:grid-cols-2">
+        {/* ▸ items-start: JEDE KARTE IST SO HOCH WIE IHR TEXT.
+            Vorher zog das Raster beide auf dieselbe Höhe, und der Name klebte
+            unten am Rand. Bei zwei ähnlich langen Zitaten fällt das nicht auf,
+            bei ungleichen schon: Neben einem sechszeiligen Zitat stand ein
+            zweizeiliges mit einem handbreiten Loch darunter, als fehlte da
+            etwas. Ungleich hohe Karten sind ehrlicher als ein leerer Kasten. */}
+        <div className="grid items-start gap-5 sm:grid-cols-2">
           {liste.map((s) => (
             <figure
               key={s.name}
-              className="flex h-full flex-col rounded-[18px] border border-line bg-white p-6 sm:p-7"
+              className="flex flex-col rounded-[18px] border border-line bg-white p-6 sm:p-7"
             >
-              <blockquote className="flex-grow text-[15px] leading-relaxed text-ink-soft">
-                „{s.zitat}"
+              <blockquote className="text-[15px] leading-relaxed text-ink-soft">
+                „{s.zitat}“
               </blockquote>
 
               <figcaption className="mt-5 text-[14px]">
@@ -77,9 +83,13 @@ export default function Stimmen({ slug }: { slug: string }) {
           ))}
         </div>
 
+        {/* ▸ HIER STAND „Eine Auswahl aus den Bewertungen im Google-Profil".
+            Das stimmte nie ganz: Sieben der Stimmen kommen aus Mails, nicht
+            aus Google. Ein Satz, der die Quelle falsch angibt, ist auf einer
+            Verkaufsseite genauso angreifbar wie eine falsche Zahl. */}
         <p className="mt-5 text-[13.5px] leading-relaxed text-ink-soft">
-          Eine Auswahl aus den Bewertungen im Google-Profil, wörtlich
-          übernommen und mit dem Vornamen der Kundin.{" "}
+          Eine Auswahl aus Bewertungen und Rückmeldungen von Kundinnen,
+          wörtlich übernommen und mit dem Vornamen.{" "}
           {googleBewertung.url ? (
             <a
               href={googleBewertung.url}
@@ -90,7 +100,10 @@ export default function Stimmen({ slug }: { slug: string }) {
               Alle Bewertungen bei Google ansehen
             </a>
           ) : (
-            "Dort stehen alle, auch die kritischen."
+            // ▸ VORHER: „Dort stehen alle, auch die kritischen." Das „dort"
+            //   zeigte auf das Google-Profil, das im Satz davor nicht mehr
+            //   vorkommt. Der Hinweis bleibt, er sagt jetzt nur selbst, wohin.
+            "Im Google-Profil stehen alle, auch die kritischen."
           )}
         </p>
       </div>
