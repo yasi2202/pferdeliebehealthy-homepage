@@ -60,22 +60,25 @@ export const ausbildung = {
    *  Verkaufsseite, die Shop-Karte in lib/digital.ts und der Lehrplan als PDF
    *  holen sie sich alle von hier.
    *
-   *  ▸ AM 08.09.2026 VON 110 AUF 122 GESETZT, von Yasemin so entschieden.
-   *    Nachgezählt in der Akademie (Tabelle `lessons`, Phasen mit
-   *    role = 'ausbildung'): Modul 1 hat 12, Modul 2 hat 11, Modul 3 hat 15,
-   *    Modul 4 hat 11, Modul 5 hat 9, Modul 6 hat 40, Modul 7 hat 11,
-   *    Modul 8 hat 13. Zusammen 122.
+   *  ▸ AM 08.09.2026 AUF 111 GESETZT. Vorher stand hier 110, in der
+   *    Shop-Karte sogar 104.
    *
-   *  ▸ ACHTUNG, DIE UNTERLAGEN BEI DER ZFU NENNEN NOCH 110.
-   *    Antrag und Werbung sollten dasselbe sagen, solange das Verfahren
-   *    unter Reg.-Nr. 76270 läuft. Die Anlage mit dem Lehrplan gehört also
-   *    nachgereicht.
+   *    Gezählt wird, was FREIGESCHALTET ist. In der Akademie stehen 122
+   *    Zeilen in `lessons`, aber elf davon sind Entwürfe und für keine
+   *    Teilnehmerin sichtbar. Genau so zählen es auch die ZFU-Unterlagen,
+   *    deshalb steht dort dieselbe 111.
+   *
+   *    (Ein Zwischenstand am selben Tag nannte 122, das war falsch: Die Zahl
+   *    kam aus einer Abfrage ohne den Filter auf `is_published`.)
+   *
+   *  ▸ WIRD EINE DER ELF FREIGESCHALTET, steigt die Zahl. Dann hier
+   *    nachziehen und das PDF neu drucken, beides zusammen.
    *
    *  ▸ WER DIE ZAHL ÄNDERT, MUSS DAS PDF NEU DRUCKEN:
    *    in akademieapp `node scripts/lehrplan.mjs`. Es holt die Lektionstitel
    *    live aus der Akademie und schreibt das PDF nach public/. Sonst nennt
    *    die Seite eine Zahl, die der Lehrplan darunter nicht bestätigt. */
-  lektionen: 122,
+  lektionen: 111,
 
   // Das Feld `plattform` stand hier bis zum 08.09.2026 und hielt die Adresse
   // der Akademie. Entfernt: Sie steht jetzt nur noch als `mitgliederbereich`
@@ -179,7 +182,9 @@ export const module: Modul[] = [
     verb: "Lesen",
     titel: "Nährstoffe, Energie und echte Bedarfe",
     text: "Makronährstoffe, Aminosäuren, Mengen- und Spurenelemente mit ihren Wechselwirkungen, Vitamine, Mineralspeicher. Hier lernst du, einen Bedarf zu berechnen statt zu schätzen.",
-    lektionen: 10,
+    // Am 08.09.2026 von 10 auf 11: Die acht Modulzahlen ergaben zusammen 110,
+    // freigeschaltet sind aber 111. Die Summe muss zu `lektionen` oben passen.
+    lektionen: 11,
   },
   {
     nummer: 3,
