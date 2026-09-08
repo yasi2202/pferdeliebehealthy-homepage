@@ -96,6 +96,115 @@ function wochenanfang(datum: Date): string {
   return d.toISOString().slice(0, 10);
 }
 
+/** Ein Tag, um so viele Tage verschoben: "2026-09-07" und -7 gibt "2026-08-31". */
+function tagVerschieben(tag: string, tage: number): string {
+  const d = new Date(`${tag}T12:00:00Z`);
+  d.setUTCDate(d.getUTCDate() + tage);
+  return d.toISOString().slice(0, 10);
+}
+
+/** Ein Monat, um so viele Monate verschoben: "2026-09" und -1 gibt "2026-08". */
+function monatVerschieben(monat: string, monate: number): string {
+  // Gerechnet wird auf dem 15., damit kein Monatsende überläuft: Der 31.
+  // März minus einen Monat wäre sonst der 3. März.
+  const d = new Date(`${monat}-15T12:00:00Z`);
+  d.setUTCMonth(d.getUTCMonth() + monate);
+  return d.toISOString().slice(0, 7);
+}
+
+/** "2026-08" wird zu "August", bei anderem Jahr zu "August 2025". */
+function monatsname(monat: string, aktuellesJahr: string): string {
+  const name = new Date(`${monat}-15T12:00:00Z`).toLocaleDateString("de-DE", {
+    month: "long",
+    timeZone: "UTC",
+  });
+
+  return monat.slice(0, 4) === aktuellesJahr ? name : `${name} ${monat.slice(0, 4)}`;
+}
+
+/**
+ * Ein Zeitraum, den man auf der Auswertungsseite auswählen kann.
+ *
+ * `bis` ist ausschliesslich gemeint: Bei "Gestern" ist `bis` der heutige
+ * Tagesbeginn, und der zählt schon nicht mehr dazu. So kann kein Kauf in
+ * zwei Zeiträume gleichzeitig fallen und keiner zwischen zwei Tagen
+ * verschwinden.
+ */
+export type Wahl = {
+  schluessel: string;
+  name: string;
+  /** Ab wann gezählt wird, einschliesslich. null heisst: von Anfang an. */
+  von: Date | null;
+  /** Bis wann gezählt wird, ausschliesslich. null heisst: bis jetzt. */
+  bis: Date | null;
+};
+
+/** Alle wählbaren Zeiträume, in der Reihenfolge der Knöpfe. */
+export function zeitraumWahl(jetzt: Date = new Date()): Wahl[] {
+  const heute = tagesschluessel(jetzt);
+  const gestern = tagVerschieben(heute, -1);
+  const woche = wochenanfang(jetzt);
+  const vorwoche = tagVerschieben(woche, -7);
+  const monat = heute.slice(0, 7);
+  const vormonat = monatVerschieben(monat, -1);
+  const jahr = heute.slice(0, 4);
+  const vorjahr = String(Number(jahr) - 1);
+
+  return [
+    { schluessel: "heute", name: "Heute", von: tagesbeginn(heute), bis: null },
+    {
+      schluessel: "gestern",
+      name: "Gestern",
+      von: tagesbeginn(gestern),
+      bis: tagesbeginn(heute),
+    },
+    {
+      schluessel: "diese-woche",
+      name: "Diese Woche",
+      von: tagesbeginn(woche),
+      bis: null,
+    },
+    {
+      schluessel: "letzte-woche",
+      name: "Letzte Woche",
+      von: tagesbeginn(vorwoche),
+      bis: tagesbeginn(woche),
+    },
+    {
+      schluessel: "dieser-monat",
+      name: "Dieser Monat",
+      von: tagesbeginn(`${monat}-01`),
+      bis: null,
+    },
+    {
+      schluessel: "letzter-monat",
+      name: monatsname(vormonat, jahr),
+      von: tagesbeginn(`${vormonat}-01`),
+      bis: tagesbeginn(`${monat}-01`),
+    },
+    {
+      schluessel: "dieses-jahr",
+      name: "Dieses Jahr",
+      von: tagesbeginn(`${jahr}-01-01`),
+      bis: null,
+    },
+    {
+      schluessel: "letztes-jahr",
+      name: vorjahr,
+      von: tagesbeginn(`${vorjahr}-01-01`),
+      bis: tagesbeginn(`${jahr}-01-01`),
+    },
+    { schluessel: "alles", name: "Alles", von: null, bis: null },
+  ];
+}
+
+/** Liegt der Zeitpunkt im Zeitraum? */
+function imZeitraum(zeit: Date, w: Wahl): boolean {
+  if (w.von && zeit < w.von) return false;
+  if (w.bis && zeit >= w.bis) return false;
+  return true;
+}
+
 export type Zeitraum = {
   name: string;
   von: Date;
@@ -115,6 +224,12 @@ export type ProduktZahl = {
 
 export type Auswertung = {
   zeitraeume: Zeitraum[];
+  /**
+   * Der gewählte Zeitraum. Die Produkttabelle bezieht sich auf ihn, die vier
+   * Kacheln oben dagegen immer auf denselben Überblick.
+   */
+  gewaehlt: { schluessel: string; name: string; umsatz: number; anzahl: number };
+  /** Was sich im gewählten Zeitraum verkauft hat. */
   produkte: ProduktZahl[];
   /** Die letzten Tage für den kleinen Verlauf, ältester zuerst. */
   verlauf: { tag: string; umsatz: number; anzahl: number }[];
@@ -133,9 +248,19 @@ function zeitpunkt(b: { bezahlt_am: string | null; angelegt_am: string }): Date 
   return new Date(b.bezahlt_am ?? b.angelegt_am);
 }
 
-export async function auswerten(tageImVerlauf = 30): Promise<Auswertung> {
+export async function auswerten(
+  tageImVerlauf = 30,
+  /** Schlüssel aus `zeitraumWahl()`. Unbekanntes fällt auf "alles" zurück. */
+  gewaehlterZeitraum = "alles",
+): Promise<Auswertung> {
+  const wahl = zeitraumWahl();
+  const gewaehlt =
+    wahl.find((w) => w.schluessel === gewaehlterZeitraum) ??
+    wahl[wahl.length - 1];
+
   const leer: Auswertung = {
     zeitraeume: [],
+    gewaehlt: { schluessel: gewaehlt.schluessel, name: gewaehlt.name, umsatz: 0, anzahl: 0 },
     produkte: [],
     verlauf: [],
     gesamtUmsatz: 0,
@@ -169,20 +294,14 @@ export async function auswerten(tageImVerlauf = 30): Promise<Auswertung> {
   }
 
   const jetzt = new Date();
-  const heute = tagesschluessel(jetzt);
 
-  const grenzen: { name: string; von: Date }[] = [
-    { name: "Heute", von: tagesbeginn(heute) },
-    { name: "Diese Woche", von: tagesbeginn(wochenanfang(jetzt)) },
-    { name: "Dieser Monat", von: tagesbeginn(`${heute.slice(0, 7)}-01`) },
-    { name: "Dieses Jahr", von: tagesbeginn(`${heute.slice(0, 4)}-01-01`) },
-  ];
+  // Die vier Kacheln oben. Sie kommen aus derselben Liste wie die Knöpfe,
+  // damit die Wochengrenze nur an einer Stelle festgelegt ist.
+  const ueberblick = ["heute", "diese-woche", "dieser-monat", "dieses-jahr"];
 
-  const zeitraeume: Zeitraum[] = grenzen.map((g) => ({
-    ...g,
-    umsatz: 0,
-    anzahl: 0,
-  }));
+  const zeitraeume: Zeitraum[] = wahl
+    .filter((w) => ueberblick.includes(w.schluessel))
+    .map((w) => ({ name: w.name, von: w.von as Date, umsatz: 0, anzahl: 0 }));
 
   const proProdukt = new Map<string, ProduktZahl>();
   const proTag = new Map<string, { umsatz: number; anzahl: number }>();
@@ -190,6 +309,8 @@ export async function auswerten(tageImVerlauf = 30): Promise<Auswertung> {
   let gesamtUmsatz = 0;
   let gesamtAnzahl = 0;
   let rabattSumme = 0;
+  let wahlUmsatz = 0;
+  let wahlAnzahl = 0;
 
   /** Trägt eine Bestellung in alle Auswertungen ein. */
   function zaehlen(
@@ -211,6 +332,12 @@ export async function auswerten(tageImVerlauf = 30): Promise<Auswertung> {
     const tag = tagesschluessel(zeit);
     const bisher = proTag.get(tag) ?? { umsatz: 0, anzahl: 0 };
     proTag.set(tag, { umsatz: bisher.umsatz + betrag, anzahl: bisher.anzahl + 1 });
+
+    // Ab hier zählt nur noch, was im gewählten Zeitraum liegt.
+    if (!imZeitraum(zeit, gewaehlt)) return;
+
+    wahlUmsatz += betrag;
+    wahlAnzahl += 1;
 
     for (const p of posten) {
       const eintrag = proProdukt.get(p.slug) ?? {
@@ -304,6 +431,12 @@ export async function auswerten(tageImVerlauf = 30): Promise<Auswertung> {
 
   return {
     zeitraeume,
+    gewaehlt: {
+      schluessel: gewaehlt.schluessel,
+      name: gewaehlt.name,
+      umsatz: wahlUmsatz,
+      anzahl: wahlAnzahl,
+    },
     produkte: [...proProdukt.values()].sort((a, b) => b.umsatz - a.umsatz),
     verlauf,
     gesamtUmsatz,

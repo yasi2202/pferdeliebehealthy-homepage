@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import AdminAnmeldung from "@/components/AdminAnmeldung";
 import { adminEingerichtet, istAngemeldet } from "@/lib/admin-zugang";
-import { auswerten } from "@/lib/auswertung";
+import { auswerten, zeitraumWahl } from "@/lib/auswertung";
 import { supabaseAlle } from "@/lib/versand";
 import BewertungKnopf from "@/components/BewertungKnopf";
 import { preisText } from "@/lib/shop";
@@ -18,6 +18,13 @@ import { preisText } from "@/lib/shop";
 //   Keine Namen einzelner Kundinnen und keine Bestelldetails. Wer wissen
 //   will, wer was gekauft hat, sieht in Supabase nach. Eine Auswertung soll
 //   Entscheidungen ermöglichen, nicht Personen zeigen.
+//
+// ▸ DER ZEITRAUM STEHT IN DER ADRESSE, nicht im Browser.
+//   Die Knöpfe sind Verweise mit ?zeitraum=letzte-woche. Damit rechnet der
+//   Server, die Seite braucht kein eigenes Programm im Browser, und ein
+//   Zeitraum lässt sich als Lesezeichen ablegen. Ausgewertet wird ohnehin
+//   auf dem Server, ein Umschalten im Browser hätte alle Bestellungen
+//   dorthin schicken müssen.
 // ---------------------------------------------------------------------------
 
 export const dynamic = "force-dynamic";
@@ -52,7 +59,39 @@ function Kachel({
   );
 }
 
-export default async function AuswertungSeite() {
+/** Ein Knopf der Zeitraumleiste. Ein Verweis, kein Formular. */
+function Zeitknopf({
+  name,
+  schluessel,
+  aktiv,
+}: {
+  name: string;
+  schluessel: string;
+  aktiv: boolean;
+}) {
+  return (
+    <Link
+      href={`/admin?zeitraum=${schluessel}#zeitraum`}
+      scroll={false}
+      aria-current={aktiv ? "true" : undefined}
+      className={
+        aktiv
+          ? "rounded-full bg-ink px-4 py-2 text-[14px] text-cream"
+          : "rounded-full border border-line bg-white px-4 py-2 text-[14px] transition-colors hover:bg-cream-deep"
+      }
+    >
+      {name}
+    </Link>
+  );
+}
+
+export default async function AuswertungSeite({
+  searchParams,
+}: {
+  searchParams: Promise<{ zeitraum?: string }>;
+}) {
+  const { zeitraum } = await searchParams;
+
   if (!adminEingerichtet()) {
     return (
       <main className="px-6 py-20">
@@ -76,7 +115,8 @@ export default async function AuswertungSeite() {
     );
   }
 
-  const a = await auswerten();
+  const a = await auswerten(30, zeitraum ?? "alles");
+  const wahl = zeitraumWahl();
 
   // Die letzten Verkaefe mit Rechnungsnummer, fuer die Ablage. Bewusst nur
   // die letzten fuenfzig: Wer aeltere braucht, nimmt den CSV-Export.
@@ -192,43 +232,74 @@ export default async function AuswertungSeite() {
           ))}
         </div>
 
-        {/* ------------------------------------------------------- Verlauf */}
-        <div className="mb-10 rounded-[18px] border border-line bg-white p-6 sm:p-7">
-          <h2 className="mb-1 font-serif text-[21px]">Die letzten 30 Tage</h2>
-          <p className="mb-6 text-[13.5px] text-ink-soft">
-            Höchster Tag: {preisText(hoechster)}
-          </p>
+        {/* ----------------------------------------------------- Zeitraum */}
+        {/* Die Kacheln oben zeigen immer denselben Überblick. Hier lässt
+            sich ein Zeitraum aussuchen, auch ein vergangener, und die
+            Produkttabelle darunter richtet sich danach. */}
+        <div
+          id="zeitraum"
+          className="mb-10 scroll-mt-6 rounded-[18px] border border-line bg-white p-6 sm:p-7"
+        >
+          <h2 className="mb-4 font-serif text-[21px]">Zeitraum ansehen</h2>
 
-          <div className="flex h-32 items-end gap-[3px]">
-            {a.verlauf.map((v) => (
-              <div
-                key={v.tag}
-                title={`${v.tag}: ${preisText(v.umsatz)} aus ${v.anzahl} Käufen`}
-                className="flex-1 rounded-t-[3px] bg-rose transition-colors hover:bg-rose-deep"
-                style={{
-                  // Mindestens ein Pixel, damit man auch leere Tage sieht und
-                  // nicht rätselt, ob die Anzeige kaputt ist.
-                  height: `${Math.max((v.umsatz / hoechster) * 100, 1)}%`,
-                }}
+          <div className="mb-7 flex flex-wrap gap-2">
+            {wahl.map((w) => (
+              <Zeitknopf
+                key={w.schluessel}
+                name={w.name}
+                schluessel={w.schluessel}
+                aktiv={w.schluessel === a.gewaehlt.schluessel}
               />
             ))}
           </div>
 
-          <div className="mt-2 flex justify-between text-[12px] text-ink-soft">
-            <span>{a.verlauf[0]?.tag}</span>
-            <span>{a.verlauf[a.verlauf.length - 1]?.tag}</span>
+          <div className="grid grid-cols-2 gap-5 sm:grid-cols-3">
+            <div>
+              <div className="text-[13px] uppercase tracking-[0.1em] text-ink-soft">
+                {a.gewaehlt.name}
+              </div>
+              <div className="mt-2 font-serif text-[30px] tabular-nums">
+                {preisText(a.gewaehlt.umsatz)}
+              </div>
+            </div>
+
+            <div>
+              <div className="text-[13px] uppercase tracking-[0.1em] text-ink-soft">
+                Käufe
+              </div>
+              <div className="mt-2 font-serif text-[30px] tabular-nums">
+                {a.gewaehlt.anzahl}
+              </div>
+            </div>
+
+            <div>
+              <div className="text-[13px] uppercase tracking-[0.1em] text-ink-soft">
+                Je Kauf
+              </div>
+              <div className="mt-2 font-serif text-[30px] tabular-nums">
+                {/* Ohne Kauf gibt es keinen Durchschnitt. 0,00 € stünde da
+                    wie eine Aussage, dabei ist schlicht nichts passiert. */}
+                {a.gewaehlt.anzahl > 0
+                  ? preisText(Math.round(a.gewaehlt.umsatz / a.gewaehlt.anzahl))
+                  : "–"}
+              </div>
+            </div>
           </div>
         </div>
 
         {/* ------------------------------------------------------ Produkte */}
         <div className="mb-10 rounded-[18px] border border-line bg-white p-6 sm:p-7">
-          <h2 className="mb-5 font-serif text-[21px]">
+          <h2 className="mb-1 font-serif text-[21px]">
             Was sich verkauft, nach Umsatz
           </h2>
 
+          <p className="mb-5 text-[13.5px] text-ink-soft">
+            Zeitraum: {a.gewaehlt.name}
+          </p>
+
           {a.produkte.length === 0 ? (
             <p className="text-[15px] text-ink-soft">
-              Noch keine bezahlten Käufe.
+              In diesem Zeitraum wurde nichts gekauft.
             </p>
           ) : (
             <div className="overflow-x-auto">
@@ -264,6 +335,34 @@ export default async function AuswertungSeite() {
             Ersatzangebot nach einem anderen Kauf. Daran siehst du, welches
             Produkt sich allein verkauft und welches nur im Windschatten.
           </p>
+        </div>
+
+        {/* ------------------------------------------------------- Verlauf */}
+        <div className="mb-10 rounded-[18px] border border-line bg-white p-6 sm:p-7">
+          <h2 className="mb-1 font-serif text-[21px]">Die letzten 30 Tage</h2>
+          <p className="mb-6 text-[13.5px] text-ink-soft">
+            Höchster Tag: {preisText(hoechster)}
+          </p>
+
+          <div className="flex h-32 items-end gap-[3px]">
+            {a.verlauf.map((v) => (
+              <div
+                key={v.tag}
+                title={`${v.tag}: ${preisText(v.umsatz)} aus ${v.anzahl} Käufen`}
+                className="flex-1 rounded-t-[3px] bg-rose transition-colors hover:bg-rose-deep"
+                style={{
+                  // Mindestens ein Pixel, damit man auch leere Tage sieht und
+                  // nicht rätselt, ob die Anzeige kaputt ist.
+                  height: `${Math.max((v.umsatz / hoechster) * 100, 1)}%`,
+                }}
+              />
+            ))}
+          </div>
+
+          <div className="mt-2 flex justify-between text-[12px] text-ink-soft">
+            <span>{a.verlauf[0]?.tag}</span>
+            <span>{a.verlauf[a.verlauf.length - 1]?.tag}</span>
+          </div>
         </div>
 
         {/* -------------------------------------------------- Die Rechnungen */}
