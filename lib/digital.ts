@@ -577,6 +577,11 @@ export const digitalprodukte: DigitalProdukt[] = [
     // 899 € einmalig, so im ZFU-Antrag vom 20.08.2026 verbindlich angegeben.
     // Der Streichpreis ist belegt, es wurde nachweislich zu 1.050 und 1.100 €
     // verkauft.
+    //
+    // ▸ DIESELBEN ZWEI ZAHLEN STEHEN IN lib/ausbildung.ts als `preis` und
+    //   `preisVorher`, dort als Text mit Eurozeichen, hier in Cent. Bis zum
+    //   08.09.2026 nannte die Verkaufsseite 999 € und diese Karte 1.100 €.
+    //   Wer eine der beiden ändert, ändert die andere mit.
     preis: 89900,
     statt: 110000,
     mwst: 19,

@@ -40,8 +40,14 @@ export const ausbildung = {
 
   preis: "899 €",
   preisRaten: "904 €",
-  /** Belegt: es wurden schon 1.050 und 1.100 € gezahlt. Kein Wettbewerbsproblem. */
-  preisVorher: "999 €",
+  /** Belegt: es wurden schon 1.050 und 1.100 € gezahlt. Kein Wettbewerbsproblem.
+   *
+   *  ▸ AM 08.09.2026 VON 999 AUF 1.100 € GESETZT, von Yasemin so entschieden.
+   *    Grund: Der Shop nannte 1.100 €, diese Seite 999 €. Derselbe Kurs mit
+   *    zwei verschiedenen Streichpreisen auf derselben Website ist der Fall,
+   *    den ein Wettbewerber abmahnt. Die Zahl steht jetzt nur noch hier,
+   *    lib/digital.ts holt sie sich von hier. */
+  preisVorher: "1.100 €",
   ratenModelle: "2, 4, 6, 8 oder 12 Raten",
 
   dauerMonate: 12,
@@ -50,11 +56,26 @@ export const ausbildung = {
   mindestbearbeitung: "6 Monate",
 
   module: 8,
-  /** Stand 28.08.2026: Alle acht Module haben Inhalt, Modul 4 seit dem 28.08.
-   *  Vorher stand hier 104 — das war die Zahl aus dem Zulassungsantrag vom
-   *  20.08.2026. Die Unterlagen, die seither bei der ZFU liegen, zeigen 110
-   *  Lektionen; beide Seiten müssen dieselbe Zahl nennen. */
-  lektionen: 110,
+  /** Die Zahl der Lektionen. Sie steht an genau dieser einen Stelle: Die
+   *  Verkaufsseite, die Shop-Karte in lib/digital.ts und der Lehrplan als PDF
+   *  holen sie sich alle von hier.
+   *
+   *  ▸ AM 08.09.2026 VON 110 AUF 122 GESETZT, von Yasemin so entschieden.
+   *    Nachgezählt in der Akademie (Tabelle `lessons`, Phasen mit
+   *    role = 'ausbildung'): Modul 1 hat 12, Modul 2 hat 11, Modul 3 hat 15,
+   *    Modul 4 hat 11, Modul 5 hat 9, Modul 6 hat 40, Modul 7 hat 11,
+   *    Modul 8 hat 13. Zusammen 122.
+   *
+   *  ▸ ACHTUNG, DIE UNTERLAGEN BEI DER ZFU NENNEN NOCH 110.
+   *    Antrag und Werbung sollten dasselbe sagen, solange das Verfahren
+   *    unter Reg.-Nr. 76270 läuft. Die Anlage mit dem Lehrplan gehört also
+   *    nachgereicht.
+   *
+   *  ▸ WER DIE ZAHL ÄNDERT, MUSS DAS PDF NEU DRUCKEN:
+   *    in akademieapp `node scripts/lehrplan.mjs`. Es holt die Lektionstitel
+   *    live aus der Akademie und schreibt das PDF nach public/. Sonst nennt
+   *    die Seite eine Zahl, die der Lehrplan darunter nicht bestätigt. */
+  lektionen: 122,
 
   // Das Feld `plattform` stand hier bis zum 08.09.2026 und hielt die Adresse
   // der Akademie. Entfernt: Sie steht jetzt nur noch als `mitgliederbereich`
