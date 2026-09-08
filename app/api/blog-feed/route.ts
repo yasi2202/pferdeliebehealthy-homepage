@@ -28,6 +28,11 @@ export async function GET() {
     beschreibung: b.beschreibung,
     kategorie: b.kategorie,
     url: `https://www.pferdeliebehealthy.de/blog/${b.slug}`,
+    // Als vollständige Adresse, nicht als Pfad: Wer den Feed liest, sitzt auf
+    // einer anderen Domain (der Stall Organizer in der Akademie), und
+    // "/images/blog/…" zeigt dort ins Leere.
+    bild: b.bild ? `https://www.pferdeliebehealthy.de${b.bild}` : null,
+    bildText: b.bildText || null,
   }));
 
   return NextResponse.json(
