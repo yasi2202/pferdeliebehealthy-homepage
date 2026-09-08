@@ -434,9 +434,22 @@ export default function AusbildungSeite() {
                 >
                   Jetzt anmelden
                 </a>
+                {/* Bis zum 08.09.2026 stand hier "Die Anmeldung läuft über
+                    meine Kursplattform alfima". Alfima wird seit dem
+                    02.09.2026 nicht mehr genutzt, verkauft wird über die
+                    eigene Kasse. Der Absatz erscheint erst, wenn
+                    `verkaufOffen` auf true steht, war also nie sichtbar
+                    falsch, er wäre es aber im selben Moment geworden, in
+                    dem der Verkauf aufgeht.
+
+                    Auch die Adresse der Akademie steht hier nicht mehr im
+                    Text. Sie gehört an eine einzige Stelle, `mitgliederbereich`
+                    in lib/seite.ts, sonst muss man sie beim Umzug auf eine
+                    eigene Subdomain an zwei Stellen suchen. */}
                 <p className="text-[13px] text-cream/65 mt-4">
-                  Die Anmeldung läuft über meine Kursplattform alfima. Gelernt
-                  wird danach auf {ausbildung.plattform}.
+                  Die Anmeldung läuft über meine eigene Kasse. Gelernt wird
+                  danach in meiner Akademie, den Zugang bekommst du direkt
+                  nach der Anmeldung per E-Mail.
                 </p>
               </>
             ) : (

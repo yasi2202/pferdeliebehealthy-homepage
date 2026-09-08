@@ -26,7 +26,7 @@
 //   läuft noch, der Vertriebsbeginn steht im Antrag auf dem 01.10.2026.
 //
 //   Erst wenn die Zulassung schriftlich vorliegt: hier auf `true` stellen
-//   und unten bei `kauf` die alfima-Adresse eintragen.
+//   und unten bei `kauf` die eigene Kasse eintragen, /kasse/ausbildung.
 export const verkaufOffen = false;
 
 export const ausbildung = {
@@ -56,8 +56,10 @@ export const ausbildung = {
    *  Lektionen; beide Seiten müssen dieselbe Zahl nennen. */
   lektionen: 110,
 
-  /** Die Lernplattform. Nicht die Website, sondern die Akademie. */
-  plattform: "akademieapp.vercel.app",
+  // Das Feld `plattform` stand hier bis zum 08.09.2026 und hielt die Adresse
+  // der Akademie. Entfernt: Sie steht jetzt nur noch als `mitgliederbereich`
+  // in lib/seite.ts, damit der Umzug auf eine eigene Subdomain eine einzige
+  // Zeile bleibt.
 
   // ▸ HIER MUSST DU RAN, sobald `verkaufOffen` auf `true` geht:
   //   die eigene Kasse eintragen, /kasse/ausbildung.
