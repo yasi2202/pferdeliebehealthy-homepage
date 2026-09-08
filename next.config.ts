@@ -95,6 +95,44 @@ const nextConfig: NextConfig = {
       },
     ];
   },
+
+  // -------------------------------------------------------------------------
+  // Schutzkopfzeilen, seit 08.09.2026.
+  //
+  // Vercel setzt von sich aus nur Strict-Transport-Security. Die vier hier
+  // kosten nichts und schliessen die ueblichen Luecken:
+  //
+  //   nosniff            Der Browser haelt sich an den angegebenen Dateityp
+  //                      und macht aus einer hochgeladenen Datei kein Skript.
+  //   Referrer-Policy    Beim Klick auf einen fremden Link erfaehrt die
+  //                      andere Seite nur noch die Domain, nicht die genaue
+  //                      Adresse. Wichtig bei Seiten wie /danke/<nummer>.
+  //   X-Frame-Options    Niemand kann die Seite unsichtbar in seine eigene
+  //                      einbauen und Klicks abfangen (Clickjacking). Eigene
+  //                      Einbettungen bleiben erlaubt.
+  //   Permissions-Policy Kamera, Mikrofon und Standort sind fuer alle
+  //                      abgeschaltet. Die Seite braucht nichts davon.
+  //
+  // Bewusst NICHT dabei: eine Content-Security-Policy. Die Seite laedt
+  // Stripe, Vimeo und Vercel Analytics; eine zu enge Regel legt die Kasse
+  // still, und das faellt erst auf, wenn jemand nicht bezahlen kann.
+  // -------------------------------------------------------------------------
+  async headers() {
+    return [
+      {
+        source: "/:pfad*",
+        headers: [
+          { key: "X-Content-Type-Options", value: "nosniff" },
+          { key: "Referrer-Policy", value: "strict-origin-when-cross-origin" },
+          { key: "X-Frame-Options", value: "SAMEORIGIN" },
+          {
+            key: "Permissions-Policy",
+            value: "camera=(), microphone=(), geolocation=()",
+          },
+        ],
+      },
+    ];
+  },
 };
 
 export default nextConfig;
