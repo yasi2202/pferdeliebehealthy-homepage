@@ -29,6 +29,8 @@
 //   - Stall Organizer (kostenlos) und die Masterclass als Buch (Beigabe).
 // ---------------------------------------------------------------------------
 
+import { ausbildung } from "@/lib/ausbildung";
+
 export type DigitalBlock =
   | { art: "absatz"; text: string; betont?: boolean }
   | { art: "ueberschrift"; text: string }
@@ -585,14 +587,19 @@ export const digitalprodukte: DigitalProdukt[] = [
     //   Kauf ab. Warum das wichtig ist, steht ausführlich in
     //   app/api/digitalkasse/route.ts.
     verkaufAb: "2026-10-01",
+    // ▸ DIE ZAHL DER LEKTIONEN KOMMT AUS lib/ausbildung.ts (seit 08.09.2026).
+    //   Vorher stand hier zweimal 104, waehrend die Verkaufsseite 110 sagte.
+    //   Dieselbe Ausbildung mit zwei verschiedenen Zahlen auf derselben Seite
+    //   ist ein Widerspruch, den eine Kaeuferin findet. Jetzt gibt es die
+    //   Zahl nur noch an einer Stelle.
     kurz:
-      "Zwölf Monate, acht Module, 104 Lektionen, mit Abschlussprüfung und " +
-      "Zertifikat.",
+      `Zwölf Monate, acht Module, ${ausbildung.lektionen} Lektionen, mit ` +
+      "Abschlussprüfung und Zertifikat.",
     leistung:
       "Fernlehrgang Ganzheitliche Pferdefütterung über zwölf Monate, acht " +
-      "Module mit 104 Lektionen, Lernerfolgskontrollen, persönliche " +
-      "Betreuung, Abschlussprüfung und Zertifikat. Umfang rund 155 " +
-      "Zeitstunden, etwa drei Wochenstunden.",
+      `Module mit ${ausbildung.lektionen} Lektionen, Lernerfolgskontrollen, ` +
+      "persönliche Betreuung, Abschlussprüfung und Zertifikat. Umfang rund " +
+      "155 Zeitstunden, etwa drei Wochenstunden.",
     // Trifft in der Akademie die Regel
     // /ausbildung (nat[üu]rliche|ganzheitliche) pferdef[üu]tterung/i.
     // Geprüft gegen die Ausschlussliste: weder /warteliste/i noch

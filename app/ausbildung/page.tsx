@@ -29,10 +29,17 @@ import {
 // Alles Änderbare steht in lib/ausbildung.ts, nicht hier.
 // ---------------------------------------------------------------------------
 
-const TITEL =
-  "Ausbildung Ganzheitliche Pferdefütterung: in 12 Monaten zur Ernährungsberaterin für Pferde";
+// ▸ AM 08.09.2026 GEKUERZT. Der Titel hatte mit dem Markennamen dahinter
+//   109 Zeichen, Google schnitt ihn mitten im Satz ab. Jetzt sind es 61.
+//
+//   Die Beschreibung war ein Datenblatt (Module, Lektionen, Zeitstunden) mit
+//   206 Zeichen und nannte ausserdem 104 Lektionen, waehrend die Seite selbst
+//   110 sagt. Eine Zahl, die an zwei Stellen verschieden ist, gehoert nicht in
+//   den Google-Eintrag: Sie steht jetzt nur noch dort, wo sie aus
+//   lib/ausbildung.ts kommt und deshalb immer stimmt.
+const TITEL = "Ausbildung Ganzheitliche Pferdefütterung";
 const BESCHREIBUNG =
-  "Acht Module, 104 Lektionen, 155 Zeitstunden über zwölf Monate. Mit individueller Abschlussprüfung statt Standardklausur, und der Rationsberechnung RatioPro und der Kundenverwaltung EquiDesk dauerhaft inklusive.";
+  "Werde Ernährungsberaterin für Pferde: acht Module in zwölf Monaten, persönliche Betreuung, Abschlussprüfung. RatioPro und EquiDesk dauerhaft inklusive.";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/ausbildung" },
