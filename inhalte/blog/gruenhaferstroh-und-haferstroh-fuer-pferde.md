@@ -180,8 +180,9 @@ kauft. Beim Haferstroh bedeuten sie weniger Erde im Ballen.
 
 **Wie getrocknet wird.** Feldtrocknung ist Wetterglück. Eine schonende
 Warmlufttrocknung nach dem Pressen nimmt die Restfeuchte aus dem Ballen, und
-Restfeuchte ist das, woraus im Lager Schimmel wird. Bei staubempfindlichen Pferden ist
-das der wichtigste Punkt überhaupt, wichtiger als jeder Nährwert.
+Restfeuchte ist das, woraus im Lager Schimmel wird. Bei einem
+staubempfindlichen Pferd ist das der wichtigste Punkt überhaupt, wichtiger
+als jeder Nährwert.
 
 ## Futterstroh ist nicht Einstreustroh
 
@@ -338,10 +339,11 @@ sonst fehlt. Die Ration muss trotzdem aufgehen.
 | Senior mit schlechtem Gebiss | Keins von beiden, eingeweichte Cobs |
 | Pferd ist in tierärztlicher Behandlung | Erst mit der Tierärztin besprechen |
 
-Sobald ein Pferd tierärztlich behandelt wird, gehört die Futterfrage in
-diese Hände. Die Studienlage spricht zwar gegen ein pauschales Strohverbot,
-sie ist aber an gesunden Pferden erhoben worden. Ein Pferd in Behandlung ist
-kein Ort für Experimente.
+Die letzte Zeile ist die wichtigste. Die schwedische Untersuchung weiter
+oben spricht zwar gegen ein pauschales Strohverbot, sie ist aber an gesunden
+Pferden erhoben worden. Sobald ein Pferd in Behandlung ist, entscheidet die
+Tierärztin über das Futter, und nicht dieser Text. Ein Pferd in Behandlung
+ist kein Ort für Experimente.
 
 ## Woher ich mein Futterstroh beziehe
 
