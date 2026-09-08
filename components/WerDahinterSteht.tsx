@@ -11,9 +11,11 @@ import Image from "next/image";
 //   führt.
 //
 // ▸ DIE ZAHLEN SIND DIESELBEN WIE AUF /ausbildung. Dort stehen sie seit
-//   jeher: über 500 Einzelberatungen, über 1.000 Kursteilnehmende. Wenn sie
-//   sich ändern, ändern sie sich an BEIDEN Stellen, sonst widerspricht sich
-//   die Seite selbst.
+//   jeher: über 500 Einzelberatungen, über 1.300 Kursteilnehmende (am
+//   08.09.2026 von 1.000 angehoben, gezählt in der Akademie: 1.365 Adressen
+//   mit Kurszugang). Wenn sie sich ändern, ändern sie sich an ALLEN DREI
+//   Stellen, hier, auf /ausbildung und in components/AboutSection.tsx, sonst
+//   widerspricht sich die Seite selbst.
 //
 // ▸ WAS HIER BEWUSST NICHT STEHT
 //   Keine Berufsbezeichnung außer „Futtermittelberaterin für Pferde".
@@ -54,7 +56,7 @@ export default function WerDahinterSteht() {
                 sie lernen musste.
               </p>
               <p>
-                Seitdem sind über 500 Einzelberatungen und über 1.000
+                Seitdem sind über 500 Einzelberatungen und über 1.300
                 Kursteilnehmende dazugekommen. Was du hier liest, kommt aus
                 dieser Arbeit und nicht aus einem Lehrbuch.
               </p>

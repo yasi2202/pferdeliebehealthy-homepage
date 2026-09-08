@@ -389,7 +389,7 @@ export default function AusbildungSeite() {
                 ich es für sie lernen musste, nicht weil es im Lehrplan stand.
               </p>
               <p>
-                Seitdem sind über 500 Einzelberatungen und über 1.000
+                Seitdem sind über 500 Einzelberatungen und über 1.300
                 Kursteilnehmende dazugekommen. Die Fälle, die du in Modul 6
                 durchrechnest, sind echte Pferde aus dieser Arbeit.
               </p>

@@ -86,6 +86,16 @@ export default function AboutSection() {
                 sie sich an allen drei Stellen, sonst widerspricht sich
                 die Seite selbst.
 
+              ▸ AM 08.09.2026 VON 1.000 AUF 1.300 GESETZT. Gezählt in der
+                Akademie, Tabelle `kursteilnehmer`: 1.373 Zeilen, davon
+                1.365 mit mindestens einem echten Kurszugang, jede mit
+                eigener Adresse. Abgerundet, damit die Zahl auch in ein
+                paar Monaten noch stimmt.
+
+              ▸ Die 500 Einzelberatungen stehen so im ZFU-Antrag und
+                lassen sich nicht aus der Datenbank belegen. Nicht
+                anheben, ohne dass Yasemin sie bestätigt.
+
               ▸ WAS HIER BEWUSST NICHT STEHT
                 Tierheilpraktikerin. Die Ausbildung läuft noch (Stand
                 08.09.2026), und ein Titel, den man noch nicht führen darf,
@@ -98,7 +108,7 @@ export default function AboutSection() {
             <dl className="grid grid-cols-3 gap-4 sm:gap-6">
               {[
                 { zahl: "500+", was: "Einzel­beratungen" },
-                { zahl: "1.000+", was: "Kurs­teilnehmende" },
+                { zahl: "1.300+", was: "Kurs­teilnehmende" },
                 { zahl: "seit 2022", was: "Pferdeliebehealthy" },
               ].map((z) => (
                 <div key={z.zahl}>
