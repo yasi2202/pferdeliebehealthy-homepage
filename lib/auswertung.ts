@@ -51,13 +51,49 @@ export function tagesschluessel(datum: Date): string {
   return datum.toLocaleDateString("sv-SE", { timeZone: "Europe/Berlin" });
 }
 
-/** Der Montag der Woche, in der das Datum liegt. */
-function wochenanfang(datum: Date): Date {
-  const d = new Date(tagesschluessel(datum) + "T12:00:00");
-  // getDay(): 0 ist Sonntag. Wir wollen Montag als ersten Tag.
-  const versatz = (d.getDay() + 6) % 7;
-  d.setDate(d.getDate() - versatz);
-  return d;
+/**
+ * Der Beginn eines Tages in deutscher Zeit, als echter Zeitpunkt.
+ *
+ * Der Versatz zu UTC darf nicht fest eingetragen werden: Im Sommer sind es
+ * zwei Stunden, im Winter eine. Mit einem festen "+02:00" würde "Heute" ab
+ * der Zeitumstellung im Oktober schon um 23 Uhr des Vortags beginnen, und
+ * die letzten Kaeufe des Abends landeten auf dem falschen Tag.
+ *
+ * Bestimmt wird der Versatz für die Mittagszeit des Tages. Mittags liegt
+ * sicher innerhalb des Tages, auch an den beiden Umstellungstagen.
+ */
+function tagesbeginn(tag: string): Date {
+  const mittags = new Date(`${tag}T12:00:00Z`);
+
+  const name =
+    new Intl.DateTimeFormat("en-US", {
+      timeZone: "Europe/Berlin",
+      timeZoneName: "longOffset",
+    })
+      .formatToParts(mittags)
+      .find((t) => t.type === "timeZoneName")?.value ?? "GMT+01:00";
+
+  // "GMT+02:00" wird zu "+02:00". Bei reinem "GMT" bleibt nichts uebrig.
+  const versatz = name.replace("GMT", "") || "+00:00";
+
+  return new Date(`${tag}T00:00:00${versatz}`);
+}
+
+/**
+ * Der Montag der Woche, in der das Datum liegt, als "2026-09-07".
+ *
+ * Gerechnet wird auf der Mittagszeit in UTC, nicht in der Zeit des Servers.
+ * Der Server steht irgendwo, und mit einer Uhrzeit ohne Zeitzone hängt das
+ * Ergebnis davon ab, wo er steht. Genau daran fiel bis zum 08.09.2026 der
+ * Montagsumsatz aus der Wochenzahl: Die Woche begann nicht um Mitternacht,
+ * sondern mittags.
+ */
+function wochenanfang(datum: Date): string {
+  const d = new Date(`${tagesschluessel(datum)}T12:00:00Z`);
+  // getUTCDay(): 0 ist Sonntag. Wir wollen Montag als ersten Tag.
+  const versatz = (d.getUTCDay() + 6) % 7;
+  d.setUTCDate(d.getUTCDate() - versatz);
+  return d.toISOString().slice(0, 10);
 }
 
 export type Zeitraum = {
@@ -135,15 +171,11 @@ export async function auswerten(tageImVerlauf = 30): Promise<Auswertung> {
   const jetzt = new Date();
   const heute = tagesschluessel(jetzt);
 
-  const monatsanfang = new Date(
-    `${heute.slice(0, 7)}-01T00:00:00+02:00`,
-  );
-
   const grenzen: { name: string; von: Date }[] = [
-    { name: "Heute", von: new Date(`${heute}T00:00:00+02:00`) },
-    { name: "Diese Woche", von: wochenanfang(jetzt) },
-    { name: "Dieser Monat", von: monatsanfang },
-    { name: "Dieses Jahr", von: new Date(`${heute.slice(0, 4)}-01-01T00:00:00+02:00`) },
+    { name: "Heute", von: tagesbeginn(heute) },
+    { name: "Diese Woche", von: tagesbeginn(wochenanfang(jetzt)) },
+    { name: "Dieser Monat", von: tagesbeginn(`${heute.slice(0, 7)}-01`) },
+    { name: "Dieses Jahr", von: tagesbeginn(`${heute.slice(0, 4)}-01-01`) },
   ];
 
   const zeitraeume: Zeitraum[] = grenzen.map((g) => ({
