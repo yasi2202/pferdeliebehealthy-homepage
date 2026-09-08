@@ -1239,12 +1239,28 @@ export const funnel: Funnel[] = [
     produkt: "mineral-klarheit",
     upsell: "ratiopro",
     upsellPreis: 4900,
-    upsellTitel: "Du kannst es jetzt rechnen. Soll ich es dir abnehmen?",
+    // ▸ DER TEXT SAGTE BIS ZUM 08.09.2026, RatioPro rechne "die ganze Ration,
+    //   nicht nur das Mineralfutter". Das stimmt so nicht: In Mineral-Klarheit
+    //   steckt ein Fütterungsplan, der mehrere Futtermittel kombiniert. Wer den
+    //   Kurs gerade durchgearbeitet hat, weiß das und liest den Satz als
+    //   Wiederholung dessen, was sie schon gekauft hat.
+    //
+    //   Der echte Unterschied steht im Kurs selbst ganz am Schluss: Der
+    //   Kursrechner rechnet 13 Nährstoffe, also Mineralstoffe, Vitamine und
+    //   Aminosäuren. Energie, Rohprotein und Rohfaser kommen dort nicht vor,
+    //   und jedes Futtermittel muss von Hand vom Etikett abgetippt werden.
+    //   Genau diese zwei Lücken füllt RatioPro. Wer den Text ändert, sollte
+    //   diese beiden Punkte stehen lassen, alles andere ist austauschbar.
+    upsellTitel: "Die Mineralien stimmen. Und der Rest der Ration?",
     upsellGrund:
-      "In Mineral-Klarheit hast du gelernt, eine Deklaration zu lesen und " +
-      "auf dein Pferd umzurechnen. RatioPro macht genau das für die ganze " +
-      "Ration, nicht nur für das Mineralfutter, und zwar in Minuten statt " +
-      "in einem Abend mit Taschenrechner.",
+      "Mineral-Klarheit prüft Mineralstoffe, Vitamine und Aminosäuren. Was " +
+      "der Kurs bewusst offenlässt, sind Energie, Rohprotein und Rohfaser, " +
+      "und daran hängt, ob dein Pferd zunimmt, abnimmt oder Muskeln " +
+      "aufbaut. Ein perfekt passendes Mineralfutter rettet keine Ration, " +
+      "in der zu wenig Eiweiß steckt. RatioPro rechnet beides zusammen, mit " +
+      "über 470 hinterlegten Futtermitteln statt Werten, die du selbst " +
+      "abtippst, und du rechnest bei jedem Futterwechsel neu, für jedes " +
+      "deiner Pferde.",
     downsell: "ganzjahresfutterplan",
     // Mit dem Sprung des Einzelpreises auf 59 Euro mitgezogen.
     downsellPreis: 3900,
