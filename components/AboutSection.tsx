@@ -72,6 +72,54 @@ export default function AboutSection() {
             </p>
           </blockquote>
 
+          {/* ------------------------------------------------------------
+              Die Zahlen und die Qualifikation, seit 08.09.2026.
+
+              ▸ WARUM SIE HIER STEHEN
+                Der Text darüber trägt emotional, belegt aber nichts. Wer
+                Yasemin nicht kennt, liest eine schöne Geschichte und weiß
+                danach immer noch nicht, ob dahinter Erfahrung steckt.
+                Die Zahlen sind der Beleg, die Geschichte der Grund.
+
+              ▸ DIESELBEN ZAHLEN WIE AUF /ausbildung UND IN
+                components/WerDahinterSteht.tsx. Ändern sie sich, ändern
+                sie sich an allen drei Stellen, sonst widerspricht sich
+                die Seite selbst.
+
+              ▸ WAS HIER BEWUSST NICHT STEHT
+                Tierheilpraktikerin. Die Ausbildung läuft noch (Stand
+                08.09.2026), und ein Titel, den man noch nicht führen darf,
+                gehört nicht auf eine Seite, die etwas verkauft. Genannt
+                wird nur der Abschluss, den es wirklich gibt.
+              ------------------------------------------------------------ */}
+          <div className="my-8 border-t border-line pt-7">
+            <dl className="grid grid-cols-3 gap-4 sm:gap-6">
+              {[
+                { zahl: "500+", was: "Einzel­beratungen" },
+                { zahl: "1.000+", was: "Kurs­teilnehmende" },
+                { zahl: "seit 2022", was: "Pferdeliebehealthy" },
+              ].map((z) => (
+                <div key={z.zahl}>
+                  <dt className="font-serif text-[26px] sm:text-[32px] leading-none text-rose-deep tabular-nums">
+                    {z.zahl}
+                  </dt>
+                  <dd className="mt-2 text-[13.5px] leading-snug text-ink-soft">
+                    {z.was}
+                  </dd>
+                </div>
+              ))}
+            </dl>
+
+            {/* Genannt wird nur, was abgeschlossen ist. Keine ZFU-Zulassung
+                behaupten: Das Verfahren unter Reg.-Nr. 76270 läuft noch,
+                dieselbe Regel gilt auf /ausbildung. */}
+            <p className="mt-6 text-[14px] leading-relaxed text-ink-soft">
+              Ausgebildete Futtermittelberaterin für Pferde (DELST, 2023),
+              eigene Pferde seit 2006, seit Mai 2025 hauptberuflich. Alles, was
+              ich unterrichte, habe ich vorher an echten Pferden gerechnet.
+            </p>
+          </div>
+
           <p className="text-[15px] font-medium">Yasemin Halac</p>
           <p className="text-[14px] text-ink-soft">Pferdeernährungsberaterin</p>
 
