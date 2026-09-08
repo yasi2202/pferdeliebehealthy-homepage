@@ -360,6 +360,13 @@ export function herkunftFuerGruppe(gruppe?: string): string {
   if (!gruppe || gruppe === "eingetragen")
     return "Du bekommst diese Mail, weil du dich auf pferdeliebehealthy.de eingetragen hast.";
 
+  // Bei der Warteliste stimmt weder „eingetragen" noch „gekauft": Die
+  // meisten haben sich in eine Liste bei Tentary, alfima oder ThriveCart
+  // gesetzt, nicht auf der Website, und gekauft haben sie gerade nicht.
+  // Der Satz muss aber für jede einzelne Empfängerin zutreffen.
+  if (gruppe === "warteliste")
+    return "Du bekommst diese Mail, weil du dich in die Warteliste für die Ausbildung Ganzheitliche Pferdefütterung eingetragen hast.";
+
   return "Du bekommst diese Mail, weil du dich auf pferdeliebehealthy.de eingetragen oder bei mir gekauft hast.";
 }
 
@@ -486,6 +493,7 @@ export type GruppenSchluessel =
   | "kundinnen"
   | "beratung"
   | "fruehere"
+  | "warteliste"
   | "alle";
 
 export const GRUPPEN: {
@@ -523,11 +531,18 @@ export const GRUPPEN: {
       "Wer früher über Tentary bei dir gekauft hat, E-Books, Ratgeber, Fütterungskalender. Sie haben nie auf einen Bestätigungslink geklickt, aber sie haben bezahlt: In der Kundenliste vom 27.08.2026 steht zu 856 von ihnen mindestens eine Bestellung. Gleiche Regel wie oben, eigene ähnliche Angebote.",
   },
   {
+    schluessel: "warteliste",
+    name: "Warteliste Ausbildung",
+    grundlage: "Warteliste",
+    woher:
+      "Wer sich für die Ausbildung in eine Warteliste eingetragen hat, bei Tentary, alfima oder ThriveCart, und sie bis heute nicht gekauft hat. Wer inzwischen bucht, fällt automatisch heraus. Nur für Post zur Ausbildung: Die Eintragung ist eine Bitte um Nachricht zu diesem einen Angebot, nicht zu allen.",
+  },
+  {
     schluessel: "alle",
     name: "Alle zusammen",
     grundlage: "gemischt",
     woher:
-      "Die vier Gruppen von oben, ohne Doppelte. Nimm sie für fachliche Rundbriefe, nicht für reine Werbung.",
+      "Die vier Gruppen von oben, ohne Doppelte. Die Warteliste ist NICHT dabei: Ein Teil von ihr hat nie gekauft und sich nie eingetragen, dort trägt nur die Warteliste selbst, und die gilt allein für die Ausbildung. Nimm „alle“ für fachliche Rundbriefe, nicht für reine Werbung.",
   },
 ];
 

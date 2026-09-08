@@ -1,4 +1,5 @@
 import { supabaseAlle, EMAIL_MUSTER } from "@/lib/versand";
+import { WARTELISTE_AUSBILDUNG } from "@/lib/newsletter-warteliste";
 import {
   GRUPPEN,
   type Empfaenger,
@@ -209,6 +210,57 @@ async function fruehereKaeuferinnen(): Promise<Empfaenger[] | null> {
   return zeilen.map((z) => ({ email: z.email, vorname: z.vorname }));
 }
 
+/** Die Warteliste für die Ausbildung, ohne alle, die sie inzwischen haben.
+ *
+ *  ▸ WARUM DIE ADRESSEN AUS EINER DATEI KOMMEN UND NICHT AUS SUPABASE:
+ *    Die drei Systeme, die die Wartelisten führten, sind abgeschaltet:
+ *    Tentary, alfima und ThriveCart. Die Listen liegen nur noch in den
+ *    Ausfuhrdateien. Die Begründung steht ausführlich in
+ *    lib/newsletter-warteliste.ts.
+ *
+ *  ▸ DER FILTER IST DER EIGENTLICHE ZWECK DIESER FUNKTION:
+ *    Wer die Ausbildung gekauft hat, darf das Angebot nicht noch einmal
+ *    bekommen. Deshalb wird bei JEDEM Versand frisch nachgesehen, wer den
+ *    Zugang `ausbildung` hat, statt die Liste einmalig zu kürzen. Bucht
+ *    jemand morgen, fällt sie übermorgen von selbst heraus.
+ *
+ *  ▸ googlemail UND gmail SIND DASSELBE POSTFACH. Steht die Kundin in
+ *    `kursteilnehmer` unter der einen und in der Warteliste unter der
+ *    anderen Schreibweise, würde ein stumpfer Vergleich sie übersehen und
+ *    ihr das Angebot schicken, obwohl sie die Ausbildung hat. Deshalb wird
+ *    für den Vergleich beides auf @gmail.com vereinheitlicht.
+ *
+ *  Scheitert die Abfrage, kommt `null` zurück und der Versand hält an. Eine
+ *  leere Antwort würde hier bedeuten: niemand hat die Ausbildung, und dann
+ *  ginge das Angebot an genau die Kundinnen, die schon bezahlt haben. */
+function postfachSchluessel(adresse: string): string {
+  return adresse.trim().toLowerCase().replace(/@googlemail\.com$/, "@gmail.com");
+}
+
+async function wartelisteAusbildung(): Promise<Empfaenger[] | null> {
+  const zeilen = await supabaseAlle<Kursteilnehmerin>(
+    "kursteilnehmer?select=email,aktiv,bereich,zugaenge,notiz,mails_abgemeldet"
+  );
+  if (!zeilen) return null;
+
+  const hatAusbildung = new Set<string>();
+  const keinePost = new Set<string>();
+  for (const k of zeilen) {
+    const schluessel = postfachSchluessel(k.email ?? "");
+    if (!schluessel) continue;
+    if (Array.isArray(k.zugaenge) && k.zugaenge.includes("ausbildung"))
+      hatAusbildung.add(schluessel);
+    // Widerspruch und stillgelegte Konten wiegen hier genauso schwer wie bei
+    // den Kundinnen. `bekommtPost` prüft beides mit.
+    if (!bekommtPost(k)) keinePost.add(schluessel);
+  }
+
+  return WARTELISTE_AUSBILDUNG.filter((adresse) => {
+    const schluessel = postfachSchluessel(adresse);
+    return !hatAusbildung.has(schluessel) && !keinePost.has(schluessel);
+  }).map((email) => ({ email, vorname: null }));
+}
+
 async function beratungskundinnen(): Promise<Empfaenger[] | null> {
   const zeilen = await supabaseAlle<{ email: string | null; vorname: string | null }>(
     "ed_kunden?select=email,vorname"
@@ -300,6 +352,13 @@ export async function empfaengerDerGruppe(
       roh = a;
     } else if (gruppe === "fruehere") {
       const a = await fruehereKaeuferinnen();
+      if (!a) return null;
+      roh = a;
+    } else if (gruppe === "warteliste") {
+      // ▸ DIESER ZWEIG MUSS HIER STEHEN, und zwar vor dem `else`. Der letzte
+      //   Zweig bedeutet „alle zusammen". Eine Gruppe, die hier fehlt,
+      //   landet dort und ginge an über 3.000 Menschen statt an 66.
+      const a = await wartelisteAusbildung();
       if (!a) return null;
       roh = a;
     } else {
