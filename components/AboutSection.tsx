@@ -101,8 +101,11 @@ export default function AboutSection() {
                 08.09.2026), und ein Titel, den man noch nicht führen darf,
                 gehört nicht auf eine Seite, die etwas verkauft. Und seit
                 dem 08.09.2026 auch nicht mehr die ausbildende Stelle des
-                Abschlusses, von Yasemin so entschieden. Genannt wird die
-                Tätigkeit, nicht wer sie ihr bescheinigt hat.
+                Abschlusses und nicht, seit wann sie hauptberuflich davon
+                lebt. Beides hat Yasemin ausdrücklich gestrichen, das
+                zweite, weil sie es nicht teilen möchte. Genannt wird die
+                Tätigkeit, nicht wer sie ihr bescheinigt hat, und nicht,
+                wovon sie lebt.
               ------------------------------------------------------------ */}
           <div className="my-8 border-t border-line pt-7">
             <dl className="grid grid-cols-3 gap-4 sm:gap-6">
@@ -127,8 +130,8 @@ export default function AboutSection() {
                 dieselbe Regel gilt auf /ausbildung. */}
             <p className="mt-6 text-[14px] leading-relaxed text-ink-soft">
               Ausgebildete Futtermittelberaterin für Pferde, eigene Pferde
-              seit 2006, seit Mai 2025 hauptberuflich. Alles, was
-              ich unterrichte, habe ich vorher an echten Pferden gerechnet.
+              seit 2006. Alles, was ich unterrichte, habe ich vorher an echten
+              Pferden gerechnet.
             </p>
           </div>
 
