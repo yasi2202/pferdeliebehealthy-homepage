@@ -66,6 +66,14 @@ const TEXT = "#4A3636";
 const LEISE = "#8a7070";
 const LINIE = "#EAD8D8";
 
+// ▸ WARUM HIER EINE VOLLE ADRESSE STEHT: In einer Mail gibt es keine
+//   Seite, zu der ein Pfad wie „/images/…" gehören könnte. Jedes Bild
+//   braucht die komplette Adresse, sonst bleibt das Feld leer.
+// ▸ WARUM JPG UND NICHT WEBP: Outlook zeigt WebP nicht an. Die Bilder
+//   unter /images/mail/ liegen deshalb ausdrücklich als JPG dort und
+//   sind Kopien, keine Originale.
+const PORTRAIT = "https://www.pferdeliebehealthy.de/images/mail/portrait.jpg";
+
 // ---------------------------------------------------------------------------
 // Die Auszeichnung
 //
@@ -82,8 +90,11 @@ const LINIE = "#EAD8D8";
 //     " Zitat | Name                eine Kundenstimme
 //     ---                           eine Trennlinie mit kleiner Zierde
 //     ![Beschreibung](https://…)    ein Bild über die ganze Breite
+//     [![Beschreibung](Bild)](Ziel)  dasselbe Bild, aber anklickbar
 //     [[knopf: Ansehen | https://…]]                 ein grosser Knopf
 //     [[angebot: Name | 29 € | https://… | Satz ]]   ein Angebotskasten
+//     [[angebot: … | Satz | Knopfbeschriftung]]      derselbe Kasten mit
+//                                                    eigenem Knopftext
 //     PS: …                         das Nachwort, abgesetzt am Ende
 //     {{vorname}}                   wird durch ihren Vornamen ersetzt
 //
@@ -150,13 +161,33 @@ export function textZuHtml(text: string): string {
       continue;
     }
 
-    // ---- Angebotskasten: Name | Preis | Link | Satz
-    const angebot = block.match(/^\[\[angebot:\s*([^|]+)\|([^|]*)\|([^|]+)\|([\s\S]*)\]\]$/i);
+    // ---- Angebotskasten: Name | Preis | Link | Satz [| Knopfbeschriftung]
+    //
+    // ▸ WARUM HIER PER HAND GETEILT WIRD und nicht mit einem längeren
+    //   regulären Ausdruck: Der Satz darf selbst einen senkrechten Strich
+    //   enthalten. Nur wenn es fünf Felder gibt, ist das letzte die
+    //   Beschriftung des Knopfes; bei vier gehört alles ab dem vierten
+    //   zum Satz. So bleiben alle älteren Briefe unverändert gültig.
+    const angebot = block.match(/^\[\[angebot:\s*([\s\S]*)\]\]$/i);
     if (angebot) {
-      const link = linkPruefen(angebot[3]);
-      const name = sicher(angebot[1].trim());
-      const preis = sicher(angebot[2].trim());
-      const satz = zeileSchmuecken(sicher(angebot[4].replace(/\]\]$/, "").trim()));
+      const felder = angebot[1].split("|");
+      const link = linkPruefen(felder[2] ?? "");
+      const name = sicher((felder[0] ?? "").trim());
+      const preis = sicher((felder[1] ?? "").trim());
+      const satzRoh =
+        felder.length >= 5 ? felder.slice(3, -1).join("|") : felder.slice(3).join("|");
+      const satz = zeileSchmuecken(sicher(satzRoh.trim()));
+
+      // ▸ WARUM DER KNOPF NICHT MEHR „Ansehen" HEISST: Eine Beschriftung,
+      //   die das Ziel benennt, wird deutlich häufiger geklickt als ein
+      //   blosses Verb. Steht kein eigener Text da, nimmt der Knopf den
+      //   Namen des Angebots — ausser der ist zu lang für eine Zeile auf
+      //   dem Handy, dann bleibt es beim kurzen Satz.
+      const eigeneBeschriftung = felder.length >= 5 ? (felder[felder.length - 1] ?? "").trim() : "";
+      const knopftext = sicher(
+        eigeneBeschriftung ||
+          (name.length > 0 && name.length <= 26 ? `${angebot[1].split("|")[0].trim()} ansehen` : "Jetzt ansehen")
+      );
 
       // Weisser Grund mit rosé Rand, nicht cremefarben wie der
       // Hinweiskasten: Sonst sehen der fachliche Merksatz und das Angebot
@@ -170,7 +201,7 @@ export function textZuHtml(text: string): string {
           ${satz ? `<p style="margin:0 0 18px;font-size:15.5px;line-height:1.7;color:${TEXT};">${satz}</p>` : ""}
           ${
             link
-              ? `<a href="${link}" style="background:${ROSE_TIEF};color:#ffffff;padding:12px 26px;border-radius:999px;text-decoration:none;font-size:15.5px;display:inline-block;font-weight:600;">Ansehen</a>`
+              ? `<a href="${link}" style="background:${ROSE_TIEF};color:#ffffff;padding:13px 28px;border-radius:999px;text-decoration:none;font-size:15.5px;display:inline-block;font-weight:600;">${knopftext}</a>`
               : ""
           }
         </td></tr>
@@ -195,12 +226,22 @@ export function textZuHtml(text: string): string {
       continue;
     }
 
-    // ---- Bild
-    const bild = block.match(/^!\[([^\]]*)\]\(([^)]+)\)$/);
+    // ---- Bild, wahlweise mit Ziel: [![Beschreibung](Bild)](Ziel)
+    //
+    // ▸ WARUM EIN BILD VERLINKBAR SEIN MUSS: Wer ein Produktbild sieht,
+    //   klickt darauf. Führt es nirgendwohin, ist der Klick verloren, und
+    //   die Leserin hält die Mail für kaputt.
+    // ▸ WARUM DER FEINE RAND: Helle Aufnahmen mit weissem Grund
+    //   verschwimmen sonst mit dem weissen Briefbogen; das Bild hat dann
+    //   keine Kante und sieht aus wie ein Ladefehler.
+    const bildMitZiel = block.match(/^\[!\[([^\]]*)\]\(([^)]+)\)\]\(([^)]+)\)$/);
+    const bild = bildMitZiel ?? block.match(/^!\[([^\]]*)\]\(([^)]+)\)$/);
     if (bild) {
       const quelle = linkPruefen(bild[2]);
+      const ziel = bildMitZiel ? linkPruefen(bildMitZiel[3]) : null;
       if (quelle) {
-        teile.push(`<img src="${quelle}" alt="${sicher(bild[1])}" width="100%" style="width:100%;max-width:100%;height:auto;border-radius:14px;display:block;margin:26px 0;border:0;">`);
+        const markierung = `<img src="${quelle}" alt="${sicher(bild[1])}" width="100%" style="width:100%;max-width:100%;height:auto;border-radius:14px;display:block;margin:26px 0;border:1px solid ${LINIE};">`;
+        teile.push(ziel ? `<a href="${ziel}" style="text-decoration:none;">${markierung}</a>` : markierung);
         continue;
       }
     }
@@ -345,7 +386,8 @@ function kopf(): string {
   return `<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:${ROSE_TIEF};border-radius:18px 18px 0 0;">
       <tr><td align="center" style="padding:30px 24px 26px;">
         <p style="margin:0;font-family:Georgia,serif;font-size:20px;letter-spacing:3.5px;text-transform:uppercase;color:${CREME};">Pferdeliebehealthy</p>
-        <p style="margin:8px 0 0;font-size:11.5px;letter-spacing:1.8px;text-transform:uppercase;color:${CREME};opacity:0.78;">Ernährungsberatung für Pferde</p>
+        <table role="presentation" cellpadding="0" cellspacing="0" align="center" style="margin:12px auto 10px;"><tr><td width="46" style="border-top:1px solid ${CREME};opacity:0.45;font-size:0;line-height:0;">&nbsp;</td></tr></table>
+        <p style="margin:0;font-size:11.5px;letter-spacing:1.8px;text-transform:uppercase;color:${CREME};opacity:0.78;">Ernährungsberatung für Pferde</p>
       </td></tr>
     </table>`;
 }
@@ -404,7 +446,14 @@ export function newsletterRahmen(
       <tr><td>${kopf()}</td></tr>
       <tr><td style="background:#ffffff;border-radius:0 0 18px 18px;padding:36px 34px 38px;">
         ${inhaltHtml}
-        <p style="font-size:16.5px;line-height:1.75;margin:32px 0 0;color:${TEXT};">Alles Gute für dich und dein Pferd,<br><span style="font-family:Georgia,serif;font-size:19px;color:${ROSE_TIEF};">Yasi</span></p>
+        <table role="presentation" cellpadding="0" cellspacing="0" style="margin:34px 0 0;"><tr>
+          <td width="64" valign="top" style="padding:0 16px 0 0;">
+            <img src="${PORTRAIT}" alt="Yasemin Halac" width="64" height="64" style="width:64px;height:64px;border-radius:50%;display:block;border:0;">
+          </td>
+          <td valign="middle">
+            <p style="font-size:16.5px;line-height:1.6;margin:0;color:${TEXT};">Alles Gute für dich und dein Pferd,<br><span style="font-family:Georgia,serif;font-size:19px;color:${ROSE_TIEF};">Yasi</span></p>
+          </td>
+        </tr></table>
       </td></tr>
       <tr><td style="padding:22px 30px 0;font-size:13px;line-height:1.75;color:${LEISE};text-align:center;">
         <p style="margin:0 0 10px;">
