@@ -240,7 +240,7 @@ export function textZuHtml(text: string): string {
       const quelle = linkPruefen(bild[2]);
       const ziel = bildMitZiel ? linkPruefen(bildMitZiel[3]) : null;
       if (quelle) {
-        const markierung = `<img src="${quelle}" alt="${sicher(bild[1])}" width="100%" style="width:100%;max-width:100%;height:auto;border-radius:14px;display:block;margin:26px 0;border:1px solid ${LINIE};">`;
+        const markierung = `<img src="${quelle}" alt="${sicher(bild[1])}" width="100%" style="width:100%;max-width:100%;height:auto;border-radius:14px;display:block;margin:26px 0;border:1px solid ${LINIE};font-size:14px;line-height:1.6;color:${LEISE};">`;
         teile.push(ziel ? `<a href="${ziel}" style="text-decoration:none;">${markierung}</a>` : markierung);
         continue;
       }
@@ -448,7 +448,13 @@ export function newsletterRahmen(
         ${inhaltHtml}
         <table role="presentation" cellpadding="0" cellspacing="0" style="margin:34px 0 0;"><tr>
           <td width="64" valign="top" style="padding:0 16px 0 0;">
-            <img src="${PORTRAIT}" alt="Yasemin Halac" width="64" height="64" style="width:64px;height:64px;border-radius:50%;display:block;border:0;">
+            <!-- ▸ WARUM DAS PORTRAIT KEINEN ALTERNATIVTEXT HAT: Outlook und
+                 Gmail laden fremde Bilder erst nach einem Klick. Steht dann
+                 ein Name im Bild, quetscht er sich in diese 64 Pixel breite
+                 Spalte und bricht mitten im Wort um. Das Bild schmueckt nur,
+                 der Name steht daneben im Text — ein leerer Alternativtext
+                 ist hier also auch fuer Vorleseprogramme richtig. -->
+            <img src="${PORTRAIT}" alt="" width="64" height="64" style="width:64px;height:64px;border-radius:50%;display:block;border:0;font-size:0;line-height:0;">
           </td>
           <td valign="middle">
             <p style="font-size:16.5px;line-height:1.6;margin:0;color:${TEXT};">Alles Gute für dich und dein Pferd,<br><span style="font-family:Georgia,serif;font-size:19px;color:${ROSE_TIEF};">Yasi</span></p>
