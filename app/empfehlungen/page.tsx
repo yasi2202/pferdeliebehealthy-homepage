@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { teilen } from "@/lib/seo";
 import RabattCode from "@/components/RabattCode";
 import { empfehlungen, werbehinweis } from "@/lib/empfehlungen";
 
@@ -8,6 +9,12 @@ export const metadata: Metadata = {
   title: "Rabattcodes auf einen Blick",
   description:
     "Alle Codes, mit denen du bei meinen Partnern sparst: Biohof Elmengrund, PerNaturam, Natusat, CDVet und weitere.",
+  ...teilen({
+    titel: "Rabattcodes auf einen Blick",
+    beschreibung:
+      "Alle Codes, mit denen du bei meinen Partnern sparst: Biohof Elmengrund, PerNaturam, Natusat, CDVet und weitere.",
+    pfad: "/empfehlungen",
+  }),
 };
 
 export default function EmpfehlungenSeite() {

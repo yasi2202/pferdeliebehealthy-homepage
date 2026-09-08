@@ -33,9 +33,19 @@ const workSans = Work_Sans({
   variable: "--font-work-sans",
 });
 
-const TITEL = "Pferdeliebehealthy | Ganzheitliche Pferdefütterung mit Yasemin Halac";
+// ▸ AM 08.09.2026 GEKUERZT, beides war fuer Google zu lang.
+//   Der Titel hatte 68 Zeichen und wurde im Ergebnis abgeschnitten, jetzt
+//   sind es 49. Der Markenname und das Hauptstichwort reichen, der Name
+//   Yasemin Halac steht ohnehin im Text der Seite und in den
+//   strukturierten Daten weiter unten.
+//
+//   Die Beschreibung war eine Aufzaehlung aller Produkte, 199 Zeichen lang
+//   und damit ebenfalls abgeschnitten. Jetzt steht dort ein Grund zu
+//   klicken statt einer Liste. Faustregel: Titel unter 60 Zeichen,
+//   Beschreibung unter 155.
+const TITEL = "Pferdeliebehealthy | Ganzheitliche Pferdefütterung";
 const BESCHREIBUNG =
-  "Ernährungsberaterin für Pferde aus dem Odenwald. Kostenloser Futter-Check, Mineral-Klarheit, RatioPro, Futterberatung 365 und die Ausbildung Ganzheitliche Pferdefütterung.";
+  "Ernährungsberaterin für Pferde: kostenloser Futter-Check, Rationsberechnung und die Ausbildung Ganzheitliche Pferdefütterung. Fütterung, die zu deinem Pferd passt.";
 
 export const metadata: Metadata = {
   // metadataBase macht aus allen relativen Angaben unten vollstaendige
@@ -52,16 +62,10 @@ export const metadata: Metadata = {
   authors: [{ name: "Yasemin Halac" }],
   creator: "Yasemin Halac",
   publisher: "Pferdeliebehealthy",
-  keywords: [
-    "Pferdefütterung",
-    "Ernährungsberatung Pferd",
-    "Pferdeernährungsberaterin",
-    "Mineralfutter Pferd",
-    "Heuanalyse",
-    "Rationsberechnung Pferd",
-    "PPID Cushing Fütterung",
-    "Odenwald",
-  ],
+  // Das Feld `keywords` stand hier bis zum 08.09.2026 mit acht Begriffen.
+  // Entfernt: Google wertet <meta name="keywords"> seit 2009 ausdruecklich
+  // nicht mehr aus, Bing ebenso wenig. Es stand auf jeder Seite gleich und
+  // hat nie etwas bewirkt.
   // Sagt Google, welche Adresse die richtige ist -- wichtig, solange die
   // Seite unter mehreren Adressen erreichbar ist.
   alternates: { canonical: "/" },
@@ -91,11 +95,17 @@ export const metadata: Metadata = {
       },
     ],
   },
+  // ▸ HIER STEHT ABSICHTLICH NUR DIE KARTENFORM (seit 08.09.2026).
+  //   Vorher standen hier auch Titel, Text und Bild der Startseite. Next.js
+  //   vererbt Metadaten an jede Seite, die sie nicht selbst setzt, und keine
+  //   einzige Unterseite setzte `twitter`. Ergebnis: Wer den Blog oder die
+  //   Ausbildung bei X teilte, bekam die Vorschau der Startseite zu sehen.
+  //
+  //   Fehlen Titel und Text hier, nimmt X die Open-Graph-Angaben der
+  //   jeweiligen Seite. Damit ist die Karte ueberall von selbst richtig.
+  //   Also nicht wieder auffuellen, siehe `teilen()` in lib/seo.ts.
   twitter: {
     card: "summary_large_image",
-    title: TITEL,
-    description: BESCHREIBUNG,
-    images: ["/images/vorschau.jpg"],
   },
   robots: {
     index: true,

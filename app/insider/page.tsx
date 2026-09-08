@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { teilen } from "@/lib/seo";
 import Link from "next/link";
 import { alleBeitraege } from "@/lib/beitraege";
 import { insider } from "@/lib/insider";
@@ -15,6 +16,12 @@ export const metadata: Metadata = {
   title: "Pferdeliebe Insider | Kostenloses Futterwissen",
   description:
     "Kostenloses Wissen zur Pferdefütterung: was in Rationen wirklich schiefgeht, Zusatzfutter ehrlich eingeordnet und wie du Laborwerte liest.",
+  ...teilen({
+    titel: "Pferdeliebe Insider | Kostenloses Futterwissen",
+    beschreibung:
+      "Kostenloses Wissen zur Pferdefütterung: was in Rationen wirklich schiefgeht, Zusatzfutter ehrlich eingeordnet und wie du Laborwerte liest.",
+    pfad: "/insider",
+  }),
 };
 
 export default async function InsiderSeite() {

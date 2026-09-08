@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { teilen } from "@/lib/seo";
 import WebinarFormular, { type TerminAngebot } from "@/components/WebinarFormular";
 import { naechsteTermine, terminText, terminNaehe } from "@/lib/webinar";
 
@@ -7,6 +8,12 @@ export const metadata: Metadata = {
   title: "Kostenloses Webinar: Was steckt wirklich in deinem Heu?",
   description:
     "45 Minuten über die Heuernte, zwei echte Laboranalysen im Vergleich und einen Futterplan, der Schritt für Schritt durchgerechnet wird. Kostenlos, mehrmals die Woche.",
+  ...teilen({
+    titel: "Kostenloses Webinar: Was steckt wirklich in deinem Heu?",
+    beschreibung:
+      "45 Minuten über die Heuernte, zwei echte Laboranalysen im Vergleich und einen Futterplan, der Schritt für Schritt durchgerechnet wird.",
+    pfad: "/webinar",
+  }),
 };
 
 // Die Terminliste haengt an der Uhrzeit des Aufrufs, darf also nicht in den

@@ -6,7 +6,7 @@ import {
   beitraegeNachKategorie,
   alleBlogBeitraege,
 } from "@/lib/blog";
-import { url } from "@/lib/seo";
+import { teilen, url } from "@/lib/seo";
 import BlogListe from "@/components/BlogListe";
 
 // ---------------------------------------------------------------------------
@@ -33,10 +33,14 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const treffer = beitraegeNachKategorie(kategorie);
   if (!treffer) return { title: "Thema nicht gefunden" };
 
+  const titel = `${treffer.name}: Beiträge zur Pferdefütterung`;
+  const beschreibung = `Alle Beiträge zum Thema ${treffer.name}: verständlich erklärt von Ernährungsberaterin Yasemin Halac, frei zu lesen und ohne Anmeldung.`;
+
   return {
-    title: `${treffer.name}: Beiträge zur Pferdefütterung`,
-    description: `Alle Beiträge zum Thema ${treffer.name}: verständlich erklärt von Ernährungsberaterin Yasemin Halac, frei zu lesen und ohne Anmeldung.`,
+    title: titel,
+    description: beschreibung,
     alternates: { canonical: `/blog/thema/${kategorie}` },
+    ...teilen({ titel, beschreibung, pfad: `/blog/thema/${kategorie}` }),
   };
 }
 

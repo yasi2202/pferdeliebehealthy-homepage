@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { alleBlogBeitraege, alleKategorien } from "@/lib/blog";
-import { url } from "@/lib/seo";
+import { teilen, url } from "@/lib/seo";
 import { insider } from "@/lib/insider";
 import InsiderFormular from "@/components/InsiderFormular";
 import BlogListe from "@/components/BlogListe";
@@ -28,6 +28,15 @@ export function generateMetadata(): Metadata {
     title: "Blog | Pferdefütterung verstehen",
     description:
       "Fachbeiträge zur Pferdefütterung: Kotwasser, Mauke, Fellwechsel, Magen und Darm, Mineralstoffe. Verständlich erklärt von Ernährungsberaterin Yasemin Halac.",
+    // Ohne diesen Block erbte die Uebersicht die Vorschau der Startseite:
+    // Wer den Blog bei WhatsApp verschickte, sah "Pferdeliebehealthy |
+    // Ganzheitliche Pferdefuetterung" statt des Blogs. Gefunden 08.09.2026.
+    ...teilen({
+      titel: "Blog | Pferdefütterung verstehen",
+      beschreibung:
+        "Fachbeiträge zur Pferdefütterung: Kotwasser, Mauke, Fellwechsel, Magen und Darm, Mineralstoffe. Verständlich erklärt von Ernährungsberaterin Yasemin Halac.",
+      pfad: "/blog",
+    }),
     // Solange kein Beitrag steht, bleibt die Seite aus dem Suchindex. Eine
     // leere Übersicht anzumelden schadet: Google merkt sich eine Seite ohne
     // Inhalt und schaut so schnell nicht wieder vorbei.
