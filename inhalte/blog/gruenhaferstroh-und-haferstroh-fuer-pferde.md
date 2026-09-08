@@ -107,6 +107,13 @@ Rispe. Dadurch bleibt Blattmasse im Futter, und mit ihr Eiweiß,
 Mineralstoffe und sekundäre Pflanzenstoffe, die im ausgedroschenen Halm
 schlicht nicht mehr vorhanden sind.
 
+Den Unterschied siehst du sofort, sobald beide nebeneinanderstehen. Links
+das ausgedroschene Haferstroh, goldgelb, weil in der Pflanze nichts Grünes
+mehr steckt. Rechts das Grünhaferstroh, dessen Farbe von der Blattmasse
+kommt.
+
+![Zwei Paletten Kleinballen nebeneinander, links das goldgelbe ausgedroschene Haferstroh, rechts das deutlich grünere Grünhaferstroh mit Blattanteil](/images/blog/stroh-vergleich-ballen.webp)
+
 Grünhaferstroh liegt damit zwischen Stroh und Heu. Es ist kein Kraftfutter
 und auch kein Haferersatz, trotz des Namens. Wer von „Hafer" den
 klassischen Energieschub erwartet, liegt hier falsch, und das ist bei
