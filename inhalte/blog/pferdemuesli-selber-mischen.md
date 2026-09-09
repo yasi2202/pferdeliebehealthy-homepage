@@ -132,9 +132,8 @@ Luzerne nehmen kann, wenn ein Pferd mit Eiweiß sparsam umgehen soll.
 
 Kerne, Blüten und Beeren machen zusammen 14,3 % der Mischung aus und tragen
 nährstofflich wenig bei. Die Sonnenblumenkerne liefern Fett und Vitamin E, die
-beiden Blüten Farbe und Geschmack, die Heidelbeeren nichts als Optik. Das ist
-ein legitimer Grund, er sollte nur so dastehen und nicht als
-Gesundheitsversprechen verkleidet.
+beiden Blüten Farbe und Geschmack, die Heidelbeeren nichts als Optik. Wer
+mehr davon erwartet, kauft die Werbung mit und nicht das Futter.
 
 Jetzt also der Teil, bei dem ich ehrlicher bin als die Verpackungen im Regal.
 
@@ -246,13 +245,15 @@ gerade beim Selen ist der Abstand zwischen Bedarf und Zuviel eng.
 
 [[angebot:futter-check]]
 
-## Wie viel davon in den Trog
+## Wie viel Müsli am Tag füttern?
 
-Ich füttere **400 bis 500 g am Tag**, aufgeteilt auf zwei Mahlzeiten. Bei
-einem Pony entsprechend weniger, bei einem großen Pferd in Arbeit darf es auch
-etwas mehr sein.
+Ich füttere **400 bis 500 g am Tag**, aufgeteilt auf zwei Mahlzeiten, und mehr
+als 600 g würde ich von dieser Mischung nicht geben. Die Obergrenze kommt
+nicht von den Pellets, sondern von den Kräutern darin. Bei einem Pony sind es
+entsprechend weniger, bei einem großen Pferd in Arbeit darf es etwas mehr
+sein.
 
-**Nach oben gibt es eine klare Grenze, und sie kommt von den Kräutern.** Bei
+**So kommt die Grenze nach oben zustande.** Bei
 500 g Müsli sind rund 27 g Ringelblume und 16 g Hibiskus im Trog. Hotte Maxe
 empfiehlt für ein Pferd von 500 kg 20 bis 30 g Ringelblumenblüten am Tag. Die
 Portion liegt damit am oberen Rand dessen, was der Hersteller vorsieht, und
@@ -283,8 +284,13 @@ obendrauf und ersetzt kein Kilo Raufutter.
 
 ## Woher ich die Zutaten beziehe
 
-Die beiden Pellets kommen vom **Biohof Elmengrund**. Ich arbeite beim
-Strukturfutter mit dem Hof zusammen, weil dort die ganze Kette auf einem
+Die beiden Pellets kommen vom Biohof Elmengrund, die beiden Blüten von Hotte
+Maxe, Sonnenblumenkerne und Heidelbeeren aus dem Futtermittelhandel.
+Ausschlaggebend waren bei den Pellets die veröffentlichten Analysen je
+Erntejahr und bei den Kräutern die Packungsgrößen, mit denen man ohne
+Abwiegen mischen kann.
+
+Ich arbeite beim Strukturfutter mit dem **Biohof Elmengrund** zusammen, weil dort die ganze Kette auf einem
 Betrieb liegt, vom Feld über die Trocknung bis zur Pelletierung, und weil zu
 jedem Produkt eine Analyse veröffentlicht wird. Genau diese Analysen sind die
 Grundlage der Zahlen weiter oben.
