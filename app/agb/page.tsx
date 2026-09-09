@@ -26,16 +26,27 @@ export default function Agb() {
         Tätigkeit handelt.
       </p>
 
+      {/* ▸ VORHER STAND HIER: „Mit Einstellung eines Angebots auf unserer
+          Website geben wir ein verbindliches Angebot ab." Das war die falsche
+          Richtung: Damit kaeme der Vertrag schon durch die Bestellung der
+          Kundin zustande, und eine Bestellung liesse sich nicht mehr ablehnen,
+          auch nicht bei einem Preisfehler oder wenn die Ware aus ist. Üblich
+          und richtig ist die umgekehrte Reihenfolge: Die Produktseite ist eine
+          unverbindliche Aufforderung, das Angebot gibt die Kundin ab, wir
+          nehmen es an. */}
       <h3>§ 2 Zustandekommen des Vertrages</h3>
       <p>
         Gegenstand des Vertrages ist der Verkauf von Waren, digitalen
         Inhalten sowie Dienstleistungen, insbesondere Futterberatungen und
-        Kurse. Mit Einstellung eines Angebots auf unserer Website geben wir
-        ein verbindliches Angebot ab. Der Vertrag kommt über das
-        Warenkorbsystem zustande, durch Auswahl der Produkte, Eingabe der
-        Daten und Bestätigung über „zahlungspflichtig bestellen&quot;. Die
-        Abwicklung erfolgt per E-Mail, der Kunde stellt sicher, dass die
-        E-Mail-Adresse korrekt ist.
+        Kurse. Die Darstellung der Angebote auf unserer Website ist kein
+        bindendes Angebot, sondern eine unverbindliche Aufforderung an Sie,
+        eine Bestellung abzugeben. Ein verbindliches Angebot geben Sie ab,
+        indem Sie im Warenkorbsystem die Produkte auswählen, Ihre Daten
+        eingeben und auf „zahlungspflichtig bestellen&quot; klicken. Der
+        Vertrag kommt zustande, sobald wir die Bestellung ausdrücklich
+        bestätigen oder die Leistung bereitstellen. Die Abwicklung erfolgt
+        per E-Mail, der Kunde stellt sicher, dass die E-Mail-Adresse korrekt
+        ist.
       </p>
 
       <h3>§ 3 Digitale Inhalte und Nutzungslizenz</h3>
