@@ -1,7 +1,7 @@
 ---
 titel: "Haferstroh und Grünhaferstroh fürs Pferd richtig füttern"
 datum: 2026-09-03
-aktualisiert: 2026-09-07
+aktualisiert: 2026-09-09
 kategorie: "Heu und Grundfutter"
 angebot: "ratiopro"
 bild: "/images/blog/stroh-nahaufnahme.webp"
@@ -34,9 +34,17 @@ Energieaufnahme.
 Stroh hat in der Pferdefütterung einen zweifelhaften Ruf, und der stammt
 fast immer aus Fällen, in denen es falsch eingesetzt wurde. Richtig dosiert
 ist es eines der nützlichsten Futtermittel überhaupt, gerade in Zeiten, in
-denen gutes Heu teuer und energiereiches Heu das eigentliche Problem ist.
+denen gutes Heu teuer und energiereiches Heu das eigentliche Problem ist. Ich
+rechne solche Rationen beruflich durch, und Stroh ist das Futtermittel, bei
+dem ich die meisten Missverständnisse auf dem Tisch habe.
 
 ## Warum überhaupt Stroh, wenn es Heu gibt
+
+Stroh bringt Kauzeit, ohne nennenswert Energie mitzuliefern. Genau das
+braucht ein Pferd, das abnehmen soll und trotzdem nicht stundenlang vor
+leerem Netz stehen darf. Bei einem 600-Kilo-Pferd spart der Tausch von drei
+Kilo Heu gegen drei Kilo Stroh rund sechs Megajoule am Tag, und im Netz liegt
+trotzdem dieselbe Menge.
 
 Der Pferdemagen produziert Magensäure rund um die Uhr, unabhängig davon,
 ob gerade etwas darin liegt. Gepuffert wird sie im Wesentlichen durch
@@ -50,12 +58,28 @@ automatisch mitkommen. Genau diese Lücke füllt Stroh: Es bringt Volumen und
 Kauzeit, ohne die Energiebilanz nennenswert zu verschieben.
 
 Wie viel das ausmacht, sieht man am besten an einer Rechnung. Ein
-600-Kilo-Pferd bekommt 10 Kilo Heu am Tag, das sind mit einem mittleren Heu
-rund **73 MJ**. Tauschst du davon 3 Kilo gegen Haferstroh, bleiben 7 Kilo
-Heu und 3 Kilo Stroh, zusammen rund **67 MJ**. Die Futtermenge im Netz ist
-dieselbe, die Fresszeit wird eher länger, weil Stroh langsamer gefressen
-wird, und trotzdem sind gut sechs Megajoule am Tag weg, also knapp ein
-Zehntel der Ration.
+600-Kilo-Pferd bekommt 10 Kilo Heu am Tag. Tauschst du davon 3 Kilo gegen
+Haferstroh, verschiebt sich die Ration so:
+
+| je Tag | 10 kg Heu | 7 kg Heu und 3 kg Stroh | Unterschied |
+|---|---|---|---|
+| Energie | 73 MJ DE | 67 MJ DE | gut 6 MJ weniger |
+| Rohprotein | 1.000 g | 820 g | 180 g weniger |
+| Rohfaser | 3.000 g | 3.360 g | 360 g mehr |
+| Menge im Netz | 10 kg | 10 kg | gleich |
+| Fresszeit | Ausgangswert | eher länger | Stroh wird langsamer gefressen |
+
+Gerechnet mit den Richtwerten aus der Tabelle weiter unten, also 7,3 MJ DE,
+10 % Rohprotein und 30 % Rohfaser für ein mittleres Wiesenheu, 5,2 MJ DE, 4 %
+Rohprotein und 42 % Rohfaser für Getreidestroh. Unterm Strich sind gut sechs
+Megajoule weg, also knapp ein Zehntel der Ration, ohne dass weniger im Netz
+liegt.
+
+**Die Zeile, die man dabei leicht übersieht, ist das Rohprotein.** Mit dem Heu
+verschwinden 180 Gramm davon, und aus dem Stroh kommen sie nicht zurück. Bei
+einem Pferd im Erhalt und ordentlichem Heu fällt das meist nicht auf. Bei
+magerem Heu, im Fellwechsel oder bei einem Pferd, das Muskeln aufbauen soll,
+sehr wohl. Deshalb gehört eine Strohration gerechnet und nicht geschätzt.
 
 Das ist kein Abnehmprogramm, und so verkaufe ich es auch nicht. Es ist ein
 Baustein, mit dem eine Diät überhaupt durchzuhalten ist, weil das Pferd
@@ -82,9 +106,16 @@ sind wenig, und es waren gesunde Pferde. Sie widerlegt das pauschale
 Strohverbot, sie ist aber kein Freibrief für ein Pferd, das gerade wegen
 Magengeschwüren in Behandlung ist.
 
-## Der Unterschied zwischen Haferstroh und Grünhaferstroh
+## Was ist der Unterschied zwischen Haferstroh und Grünhaferstroh?
 
-Es hilft, sich den Erntezeitpunkt vorzustellen.
+Der Unterschied ist der Erntezeitpunkt. Haferstroh ist der ausgedroschene
+Halm nach der Kornernte, also fast reine Zellwand mit wenig Eiweiß und wenig
+Energie. Grünhaferstroh wird kurz nach der Blüte als ganze Pflanze geerntet,
+mit Blättern und unreifer Rispe, und liegt damit zwischen Stroh und Heu.
+Stärkearm sind beide, weil das Korn entweder ausgedroschen oder noch nicht
+gefüllt ist.
+
+Es hilft, sich das am Feld vorzustellen.
 
 **Haferstroh** entsteht, wenn der Hafer bis zur Kornreife auf dem Feld
 steht, gedroschen wird und der Halm übrig bleibt. Die Pflanze hat zu diesem
@@ -128,7 +159,12 @@ Grünhaferstroh liegt der Wert niedriger, aber eben nicht bei null. Wenn die
 Zuckeraufnahme deines Pferdes begrenzt bleiben soll, ist das der Unterschied
 zwischen „passt schon" und „muss durchgerechnet werden".
 
-## Die Zahlen, und was sie bedeuten
+## Wie viel Energie und Rohfaser hat Stroh?
+
+Getreidestroh liefert rund 5,2 MJ verdauliche Energie je Kilo, ein mittleres
+Wiesenheu rund 7,3 MJ. Stroh hat damit etwa zwei Drittel der Energie von Heu
+und nicht, wie oft angenommen, gar keine. Beim Rohfasergehalt liegt es mit
+39 bis 45 % über dem Heu, beim Rohprotein mit 3 bis 5 % deutlich darunter.
 
 Konkrete Analysewerte schwanken bei Naturprodukten von Jahr zu Jahr, von
 Schlag zu Schlag und sogar von Ballen zu Ballen. Die folgenden Werte sind
@@ -142,8 +178,7 @@ einen bestimmten Sack.
 | Rohprotein | rund 3 bis 5 % | rund 8 bis 12 % |
 | Zucker und Stärke | sehr niedrig | je nach Schnitt stark schwankend |
 
-Stroh liefert im Mittel etwa **zwei Drittel der Energie von Wiesenheu**. Das
-ist mehr, als viele erwarten. Wer glaubt, mit Stroh eine Nullkalorie zu
+Zwei Drittel der Heuenergie sind mehr, als viele erwarten. Wer glaubt, mit Stroh eine Nullkalorie zu
 füttern, verrechnet sich. Bei drei Kilo Stroh am Tag kommen immer noch rund
 16 MJ zusammen, und die stehen in der Rationsberechnung genauso auf dem
 Zettel wie das Heu.
@@ -168,11 +203,17 @@ liegen.
 
 ## Was die Ernte mit der Qualität macht
 
+Über die Qualität von Futterstroh entscheiden drei Dinge auf dem Feld:
+Schnitthöhe, Schwadtechnik und Trocknung. Hoch geschnittenes Stroh bringt
+weniger Erde und Sand mit, ein Bandschwader zerbröselt die Blattmasse nicht,
+und eine Warmlufttrocknung nach dem Pressen nimmt die Restfeuchte, aus der im
+Lager Schimmel wird. Nach allen dreien kannst du beim Anbieter fragen.
+
 Beim Heu redet jede über den Schnittzeitpunkt. Beim Stroh redet fast niemand
 über die Ernte, dabei entscheidet sie über die zwei Dinge, an denen Stroh in
 der Praxis scheitert: Staub und Sand.
 
-Drei Punkte machen den Unterschied, und nach allen dreien kannst du fragen.
+Diese drei Punkte machen den Unterschied.
 
 **Wie hoch geschnitten wird.** Wer knapp über dem Boden erntet, nimmt Erde
 mit. Hochschnittkufen am Mähwerk halten Abstand zum Boden, und was gar nicht
@@ -192,6 +233,12 @@ staubempfindlichen Pferd ist das der wichtigste Punkt überhaupt, wichtiger
 als jeder Nährwert.
 
 ## Futterstroh ist nicht Einstreustroh
+
+Einstreustroh ist kein Futtermittel. Es unterliegt nicht dem
+Futtermittelrecht, wird nicht auf Schimmelpilze und Verunreinigungen geprüft,
+und niemand garantiert dir die Lagerbedingungen. Wer Stroh planmäßig füttert,
+kauft deshalb Ware in Futtermittelqualität, und aus Bioanbau auch deshalb,
+weil dort keine Halmverkürzer zugelassen sind.
 
 Das ist der Punkt, an dem in der Praxis das meiste schiefgeht, und er hat
 mit Nährwerten überhaupt nichts zu tun.
@@ -227,6 +274,11 @@ auf den gespritzt wird.
 
 ## Wie viel Stroh darf in die Ration
 
+Als Obergrenze für den Alltag gelten 0,5 kg Stroh je 100 kg Sollgewicht, bei
+einem 600-Kilo-Pferd also 3 Kilo am Tag. Diese Menge ist Teil der
+Raufutterration und kommt nicht obendrauf. Stroh als einziges Raufutter ist
+keine Option, auch nicht kurzfristig.
+
 Die Gesamtmenge Raufutter liegt bei **1,5 bis 2,0 kg je 100 kg
 Sollgewicht** am Tag. Für ein 600-Kilo-Pferd sind das 9 bis 12 Kilo, und
 zwar Heu, Heulage, Cobs und Stroh zusammengerechnet.
@@ -257,10 +309,13 @@ auch Nährstoffe wegfallen, die vorher niemand auf dem Zettel hatte.
 
 ## So stellst du um, Woche für Woche
 
-Die Dickdarmflora braucht Zeit, sich auf faserreicheres Futter einzustellen.
-Wer von heute auf morgen umstellt, bekommt Kotwasser und einen aufgeblähten
-Bauch, und schreibt das dann dem Stroh zu, obwohl es an der Geschwindigkeit
-lag. Rechne mit drei bis vier Wochen bis zur Zielmenge.
+Rechne mit drei bis vier Wochen bis zur Zielmenge und steigere in Vierteln.
+Der Grund ist die Dickdarmflora, die sich auf faserreicheres Futter erst
+einstellen muss. Wer von heute auf morgen umstellt, bekommt Kotwasser und
+einen aufgeblähten Bauch und schreibt das dann dem Stroh zu, obwohl es an der
+Geschwindigkeit lag.
+
+So sieht der Plan aus:
 
 | Woche | Anteil der Zielmenge | Worauf du schaust |
 |---|---|---|
@@ -276,6 +331,11 @@ nimmst also Heu weg, während du Stroh dazugibst, sonst frisst das Pferd am
 Ende mehr als vorher.
 
 ## Die vier Fehler, die Stroh gefährlich machen
+
+Gefährlich wird Stroh durch vier Dinge: zu wenig Wasser, schlechte Zähne, eine
+zu schnelle Umstellung und Sand. Alle vier haben nichts mit dem Nährwert zu
+tun und lassen sich abstellen. Wer sie kennt, kann Stroh füttern, ohne dass
+daraus eine Verstopfungskolik oder eine Sandansammlung im Dickdarm wird.
 
 **Zu wenig Wasser.** Stroh bindet im Darm Flüssigkeit, und die muss von
 irgendwoher kommen. Der häufigste Kolikfall im Zusammenhang mit Stroh ist
@@ -308,6 +368,11 @@ zu tief geschnitten wurde. Beides addiert sich.
 
 ## Was Stroh nicht kann
 
+Stroh ersetzt kein Mineralfutter und keinen Teil davon. Es streckt die
+Ration, es füllt sie nicht auf. Die Spurenelemente darin liegen nicht über
+denen von Heu, beim Rohprotein liefert es nur ein Drittel bis die Hälfte, und
+einen Heumangel kaschiert es auch nicht.
+
 Man liest gelegentlich, Stroh sei das „Ur-Mineralfutter" des Pferdes. Der
 Satz steht so auf mehreren Ratgeberseiten, und er hält der Rechnung nicht
 stand.
@@ -334,6 +399,12 @@ sonst fehlt. Die Ration muss trotzdem aufgehen.
 
 ## Für welches Pferd welches Stroh
 
+Kurz gesagt: Haferstroh für das leichtfuttrige, zu runde Pferd, dessen Ration
+gestreckt werden soll. Grünhaferstroh für das sensible oder eher schmale
+Pferd, das Struktur braucht, aber keine Nulldiät verträgt, und für jedes, das
+klassisches Stroh stehen lässt. Für Senioren mit schlechtem Gebiss keins von
+beiden, sondern eingeweichte Cobs.
+
 | Situation | Passt eher |
 |---|---|
 | Leichtfuttrig, zu rund, zu lange Fresspausen | Haferstroh |
@@ -353,6 +424,12 @@ Tierärztin über das Futter, und nicht dieser Text. Ein Pferd in Behandlung
 ist kein Ort für Experimente.
 
 ## Woher ich mein Futterstroh beziehe
+
+Mein Futterstroh kommt vom Biohof Elmengrund in Mauenheim, beide Sorten in
+Bioland-Qualität. Ausschlaggebend waren die drei Erntepunkte von weiter oben,
+Hochschnittkufen, Bandschwader und Warmlufttrocknung, und dass der Hof die
+Analysen zum jeweiligen Erntejahr veröffentlicht, samt dem Hinweis, dass die
+Werte schwanken.
 
 Wer Stroh als Futtermittel einsetzt, und nicht nur als Bodenbelag, sollte
 Ware in Futtermittelqualität kaufen. Bioanbau löst das Rückstandsproblem an
