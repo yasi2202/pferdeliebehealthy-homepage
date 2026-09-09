@@ -110,16 +110,15 @@ und 12,5 g Calcium je Kilo. Grünhafer bringt die Struktur, 30,4 % Rohfaser bei
 nur 8,4 % Rohprotein. Getreide ist keins drin, und genau deshalb bleibt die
 Stärke unten.
 
-**Luzerne** ist eine Leguminose und bringt das Eiweiß mit, 18,1 % Rohprotein,
-davon 13,1 % verdaulich. Dazu 12,5 g Calcium je Kilo. Sie ist der Grund, warum
+**Luzerne** ist eine Leguminose, und das erklärt den Eiweißgehalt. Verdaulich
+sind davon 13,1 %, also gut 70 % des Rohproteins. Sie ist der Grund, warum
 diese Mischung beim Protein tatsächlich etwas beiträgt und nicht nur
 Beschäftigung ist.
 
 **Grünhafer** ist die ganze Haferpflanze, kurz nach der Blüte geerntet, bevor
 sich nennenswerte Stärke im Korn bildet. Botanisch ist er in diesem Stadium
-ein Gras. Er liefert 30,4 % Rohfaser bei nur 8,4 % Rohprotein und ist damit
-der ruhige Gegenpol zur Luzerne. Wer das Prinzip dahinter genauer nachlesen
-will, findet es im Beitrag zu
+ein Gras, und das macht ihn zum ruhigen Gegenpol der Luzerne. Wer das Prinzip
+dahinter genauer nachlesen will, findet es im Beitrag zu
 [Haferstroh und Grünhaferstroh](/blog/gruenhaferstroh-und-haferstroh-fuer-pferde).
 
 Zusammen ergeben die beiden ein Grundgerüst, das strukturreich ist, wenig
@@ -130,7 +129,7 @@ Luzerne nehmen kann, wenn ein Pferd mit Eiweiß sparsam umgehen soll.
 
 ## Was Kerne, Blüten und Beeren wirklich beitragen
 
-Kerne, Blüten und Beeren machen zusammen 14,3 % der Mischung aus und tragen
+Kerne, Blüten und Beeren machen zusammen 14,2 % der Mischung aus und tragen
 nährstofflich wenig bei. Die Sonnenblumenkerne liefern Fett und Vitamin E, die
 beiden Blüten Farbe und Geschmack, die Heidelbeeren nichts als Optik. Wer
 mehr davon erwartet, kauft die Werbung mit und nicht das Futter.
@@ -286,12 +285,12 @@ obendrauf und ersetzt kein Kilo Raufutter.
 
 Die beiden Pellets kommen vom Biohof Elmengrund, die beiden Blüten von Hotte
 Maxe, Sonnenblumenkerne und Heidelbeeren aus dem Futtermittelhandel.
-Ausschlaggebend waren bei den Pellets die veröffentlichten Analysen je
-Erntejahr und bei den Kräutern die Packungsgrößen, mit denen man ohne
-Abwiegen mischen kann.
+Ausschlaggebend war bei den Pellets, dass der Hof zu jedem Produkt eine
+Analyse veröffentlicht, und bei den Kräutern die Packungsgrößen, mit denen man
+ohne Abwiegen mischen kann.
 
-Ich arbeite beim Strukturfutter mit dem **Biohof Elmengrund** zusammen, weil dort die ganze Kette auf einem
-Betrieb liegt, vom Feld über die Trocknung bis zur Pelletierung, und weil zu
+Ich arbeite beim Strukturfutter mit dem **Biohof Elmengrund** zusammen, weil
+dort die ganze Kette auf einem Betrieb liegt, vom Feld über die Trocknung bis zur Pelletierung, und weil zu
 jedem Produkt eine Analyse veröffentlicht wird. Genau diese Analysen sind die
 Grundlage der Zahlen weiter oben.
 
