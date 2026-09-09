@@ -160,7 +160,7 @@ export function rahmen(inhalt: string): string {
     ${inhalt}
     <p style="font-size:14px;color:#8a7070;margin-top:32px;border-top:1px solid #EAD8D8;padding-top:20px;">
       Yasemin Halac · Pferdeliebehealthy · Ernährungsberaterin für Pferde<br>
-      <a href="mailto:${ANTWORT_AN}" style="color:#B87878;">${ANTWORT_AN}</a>
+      <a href="mailto:${ANTWORT_AN}" style="color:#95534F;">${ANTWORT_AN}</a>
     </p>
   </div>
 </div>`;
@@ -169,7 +169,7 @@ export function rahmen(inhalt: string): string {
 /** Ein Knopf im Mail-Layout. */
 export function knopf(link: string, text: string): string {
   return `<p style="margin:28px 0;">
-      <a href="${link}" style="background:#B87878;color:#fff;padding:14px 28px;border-radius:999px;text-decoration:none;font-size:16px;display:inline-block;">
+      <a href="${link}" style="background:#95534F;color:#fff;padding:14px 28px;border-radius:999px;text-decoration:none;font-size:16px;display:inline-block;">
         ${text}
       </a>
     </p>`;

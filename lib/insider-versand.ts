@@ -220,12 +220,12 @@ export async function beitragVersenden(
             es gibt einen neuen Beitrag für dich:
           </p>
           <div style="background:#F9EDED;border-radius:12px;padding:20px;margin:24px 0;">
-            <p style="font-size:12px;letter-spacing:2px;text-transform:uppercase;color:#B87878;margin:0 0 8px;">${esc(beitrag.kategorie)}</p>
+            <p style="font-size:12px;letter-spacing:2px;text-transform:uppercase;color:#95534F;margin:0 0 8px;">${esc(beitrag.kategorie)}</p>
             <p style="font-size:21px;line-height:1.35;margin:0 0 12px;">${esc(beitrag.titel)}</p>
             <p style="font-size:15px;line-height:1.7;margin:0;">${esc(beitrag.beschreibung)}</p>
           </div>
           <p style="margin:28px 0;">
-            <a href="${beitragsLink}" style="background:#B87878;color:#fff;padding:14px 28px;border-radius:999px;text-decoration:none;font-size:16px;display:inline-block;">
+            <a href="${beitragsLink}" style="background:#95534F;color:#fff;padding:14px 28px;border-radius:999px;text-decoration:none;font-size:16px;display:inline-block;">
               Beitrag lesen
             </a>
           </p>
@@ -357,7 +357,7 @@ export async function nachfrageVersenden(basisUrl: string): Promise<VersandErgeb
             alle Beiträge stehen dir offen.
           </p>
           <p style="margin:28px 0;">
-            <a href="${link}" style="background:#B87878;color:#fff;padding:14px 28px;border-radius:999px;text-decoration:none;font-size:16px;display:inline-block;">
+            <a href="${link}" style="background:#95534F;color:#fff;padding:14px 28px;border-radius:999px;text-decoration:none;font-size:16px;display:inline-block;">
               Ja, ich bleibe dabei
             </a>
           </p>
@@ -464,7 +464,7 @@ export async function einladungVersenden(basisUrl: string): Promise<VersandErgeb
             ${esc(insider.name)}. Sie kosten nichts, und ich lade dich dazu ein.
           </p>
           <p style="margin:28px 0;">
-            <a href="${link}" style="background:#B87878;color:#fff;padding:14px 28px;border-radius:999px;text-decoration:none;font-size:16px;display:inline-block;">
+            <a href="${link}" style="background:#95534F;color:#fff;padding:14px 28px;border-radius:999px;text-decoration:none;font-size:16px;display:inline-block;">
               Ja, ich bin dabei
             </a>
           </p>
@@ -569,7 +569,7 @@ function bewertungsbitteText(vorname: string | null, abmeldeLink: string): strin
           </p>
 
           <p style="margin:28px 0;">
-            <a href="${bewertungslink}" style="background:#B87878;color:#fff;padding:14px 28px;border-radius:999px;text-decoration:none;font-size:16px;display:inline-block;">
+            <a href="${bewertungslink}" style="background:#95534F;color:#fff;padding:14px 28px;border-radius:999px;text-decoration:none;font-size:16px;display:inline-block;">
               Bewertung schreiben
             </a>
           </p>

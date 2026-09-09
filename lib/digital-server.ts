@@ -843,7 +843,7 @@ export async function aboMeldenAnYasi(opt: {
       <h1 style="font-size:22px;margin:0 0 16px;">${esc(kopf)}</h1>
 
       <p style="font-size:16px;line-height:1.6;">
-        <a href="mailto:${esc(opt.email)}" style="color:#B87878;">${esc(opt.email)}</a>
+        <a href="mailto:${esc(opt.email)}" style="color:#95534F;">${esc(opt.email)}</a>
       </p>
 
       <p style="font-size:15px;line-height:1.6;color:#8a7070;">
@@ -1428,7 +1428,7 @@ export async function digitalMeldenAnYasi(b: DigitalBestellung): Promise<boolean
       </p>
 
       <p style="font-size:15px;line-height:1.6;">
-        <a href="mailto:${esc(b.email)}" style="color:#B87878;">${esc(b.email)}</a>
+        <a href="mailto:${esc(b.email)}" style="color:#95534F;">${esc(b.email)}</a>
       </p>
 
       ${rechnungsblock(b)}

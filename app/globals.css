@@ -1,11 +1,25 @@
 @import "tailwindcss";
 
 :root {
-  /* Deine Farben, unverändert. */
   --cream: #F9EDED;
   --cream-deep: #F3E1E1;
   --rose: #DFA9A9;
-  --rose-deep: #B87878;
+
+  /* Rosé dunkel war bis zum 09.09.2026 #B87878. Der Ton hat als Textfarbe
+     nirgends gereicht: auf Creme kam er auf 3,06, auf Weiss auf 3,50, auf
+     dem hellen Rosé der Kacheln auf 2,77. Gefordert sind 4,5. Und dort, wo
+     er als Fläche unter cremefarbenem Text lag, also im ganzen Kopfbereich,
+     galt dasselbe von der anderen Seite. Eine Prüfung über zwölf Seiten fand
+     247 solche Stellen, praktisch jede Kleinüberschrift und jeden Knopf.
+
+     #95534F ist derselbe Ton, nur tiefer: 5,06 auf Creme, 5,79 auf Weiss,
+     4,59 auf hellem Rosé, und cremefarbener Text darauf kommt auf 5,06.
+
+     Wichtig für später: Auf dunklem Grund (--ink) wäre der neue Ton
+     schlechter als der alte, 2,34 statt 3,87. Die Prüfung hat keine einzige
+     solche Stelle gefunden, sonst wäre der Tausch so nicht gegangen. Wer
+     rosé Text auf dunklen Grund setzen will, nimmt --rose oder --cream. */
+  --rose-deep: #95534F;
   --ink: #3B2A28;
   --ink-soft: #6B5450;
   --gold: #C9A467;
@@ -106,6 +120,28 @@ body {
   .spaeter-zeichnen {
     contain-intrinsic-size: auto calc(var(--geschaetzte-hoehe, 1200px) * 0.62);
   }
+}
+
+/* ---------------------------------------------------------------------------
+   Cremefarbener Text auf der Rosé-Fläche (seit 09.09.2026)
+
+   Auf den Rosé-Bannern steht der Fliesstext abgeschwächt: text-cream/85,
+   /80, /75, /70, /65. Das war als leise Abstufung gedacht, kostet aber genau
+   dort Lesbarkeit, wo ohnehin wenig Spielraum ist: text-cream/70 kommt auf
+   dem tiefen Rosé auf 3,4, nötig sind 4,5. Selbst /90 bleibt mit 4,45 knapp
+   darunter.
+
+   Innerhalb einer Rosé-Fläche wird jede Creme-Abstufung deshalb auf volle
+   Deckkraft gehoben. Die Abstufung übernehmen dort Grösse, Strichstärke und
+   Abstand, die tragen genauso und kosten keine Lesbarkeit. Auf dunklem Grund
+   (--ink) bleiben die Abstufungen, dort ist genug Abstand.
+
+   Als Regel und nicht als Änderung an den einzelnen Stellen, weil dieselben
+   Banner auf jeder Produktseite stehen und neue dazukommen.
+--------------------------------------------------------------------------- */
+.bg-rose-deep [class*="text-cream/"],
+.bg-rose-deep[class*="text-cream/"] {
+  color: var(--cream);
 }
 
 /* Kursive Fraunces. Sie kommt aus einem eigenen Schriftaufruf, der nicht

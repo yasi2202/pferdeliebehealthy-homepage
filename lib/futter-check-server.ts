@@ -147,7 +147,7 @@ export async function sendeErgebnisMail(anmeldung: Anmeldung, basisUrl: string) 
       <p style="font-size:17px;">Hallo ${esc(anmeldung.vorname)},</p>
       <p style="font-size:16px;line-height:1.6;">danke dir. Hier ist dein Ergebnis noch einmal zum Nachlesen:</p>
       <div style="background:#F9EDED;border-radius:12px;padding:20px;margin:24px 0;">
-        <p style="font-size:12px;letter-spacing:2px;text-transform:uppercase;color:#B87878;margin:0 0 8px;">Dein Fütterungstyp</p>
+        <p style="font-size:12px;letter-spacing:2px;text-transform:uppercase;color:#95534F;margin:0 0 8px;">Dein Fütterungstyp</p>
         <p style="font-size:20px;margin:0 0 12px;">${esc(anmeldung.ergebnis_titel ?? "")}</p>
         <p style="font-size:15px;line-height:1.7;margin:0;">${esc(anmeldung.ergebnis_text ?? "")}</p>
       </div>

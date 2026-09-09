@@ -27,7 +27,7 @@ export default function manifest(): MetadataRoute.Manifest {
     // Creme als Hintergrund beim Starten, Rosé als Farbe der Statusleiste —
     // dieselben Farben wie auf der Seite.
     background_color: "#F9EDED",
-    theme_color: "#B87878",
+    theme_color: "#95534F",
     categories: ["health", "education", "lifestyle"],
     icons: [
       {

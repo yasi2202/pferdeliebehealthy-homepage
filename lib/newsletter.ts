@@ -60,7 +60,7 @@ export type Empfaenger = {
 
 const CREME = "#F9EDED";
 const ROSE = "#DFA9A9";
-const ROSE_TIEF = "#B87878";
+const ROSE_TIEF = "#95534F";
 const INK = "#3B2A28";
 const TEXT = "#4A3636";
 const LEISE = "#8a7070";

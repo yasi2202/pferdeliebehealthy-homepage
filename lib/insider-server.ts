@@ -144,7 +144,7 @@ export async function sendeInsiderWillkommen(
       <p style="font-size:16px;line-height:1.6;">
         Und falls du deinen Futter-Check noch nicht gemacht hast, der dauert
         keine drei Minuten und sagt dir, wo dein Pferd gerade steht:
-        <a href="${basisUrl}/futter-check" style="color:#B87878;">${basisUrl.replace(/^https?:\/\//, "")}/futter-check</a>
+        <a href="${basisUrl}/futter-check" style="color:#95534F;">${basisUrl.replace(/^https?:\/\//, "")}/futter-check</a>
       </p>
       <p style="font-size:16px;line-height:1.6;">Alles Gute für dich und dein Pferd,<br>Yasi</p>
     `)

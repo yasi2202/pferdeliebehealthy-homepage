@@ -200,13 +200,20 @@ export function StallAnmeldung({ kompakt = false }: { kompakt?: boolean }) {
       {/* Dass der Zugang über die Mail läuft, muss vor dem Absenden dastehen
           und nicht erst danach: Wer es nicht weiß, wartet auf der Seite und
           hält den Organizer für kaputt. In der kompakten Fassung als
-          Einzeiler, sonst wird der Kasten auf der Startseite zur Textwand. */}
+          Einzeiler, sonst wird der Kasten auf der Startseite zur Textwand.
+
+          Beide Absätze standen bis zum 09.09.2026 auf opacity 0.85. Das ist
+          der Unterschied zwischen 6,1 und 4,35 an Kontrast, also zwischen
+          lesbar und knapp unter der Anforderung, und es hat den Link zur
+          Datenschutzerklärung gleich mitgezogen. Die Zurückhaltung machen
+          hier Schriftgrösse und die weichere Textfarbe, dafür braucht es
+          keine Deckkraft. */}
       {kompakt ? (
-        <p style={{ fontSize: 12.5, lineHeight: 1.55, color: "var(--ink-soft)", marginTop: 12, opacity: 0.85 }}>
+        <p style={{ fontSize: 12.5, lineHeight: 1.55, color: "var(--ink-soft)", marginTop: 12 }}>
           Der Zugang kommt per Mail. Ohne den Klick darin bleibt der Organizer zu.
         </p>
       ) : (
-        <p style={{ fontSize: 13, lineHeight: 1.6, color: "var(--ink-soft)", marginTop: 14, opacity: 0.85 }}>
+        <p style={{ fontSize: 13, lineHeight: 1.6, color: "var(--ink-soft)", marginTop: 14 }}>
           Du bekommst eine Mail mit deinem persönlichen Zugangslink. Solange du ihn nicht
           angeklickt hast, ist der Organizer nicht offen. Kein Abo, keine Kosten, keine Kündigung
           nötig. Mehr dazu in der{" "}

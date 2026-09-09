@@ -588,7 +588,7 @@ export async function bestellungMeldenAnYasi(b: Bestellung): Promise<boolean> {
       <p style="font-size:15px;line-height:1.6;margin-top:24px;">
         <strong>Lieferanschrift</strong><br>
         ${anschrift(b)}<br>
-        <a href="mailto:${esc(b.email)}" style="color:#B87878;">${esc(b.email)}</a>
+        <a href="mailto:${esc(b.email)}" style="color:#95534F;">${esc(b.email)}</a>
       </p>
 
       ${
