@@ -33,6 +33,10 @@ export async function GET() {
     // "/images/blog/…" zeigt dort ins Leere.
     bild: b.bild ? `https://www.pferdeliebehealthy.de${b.bild}` : null,
     bildText: b.bildText || null,
+    // Welcher Teil des Fotos zu sehen sein soll. Die Karten drüben sind
+    // ebenfalls breite Streifen, und ohne diese Angabe schneidet auch der
+    // Stall Organizer mittig zu.
+    bildFokus: b.bildFokus || null,
   }));
 
   return NextResponse.json(
