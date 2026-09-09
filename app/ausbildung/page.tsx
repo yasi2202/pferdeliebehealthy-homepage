@@ -274,6 +274,95 @@ export default function AusbildungSeite() {
         </div>
       </section>
 
+      {/* ----------------------------------------------------------- Üben */}
+      {/* ▸ AM 09.09.2026 DAZUGEKOMMEN. Die Seite verkaufte bis dahin Inhalt
+          und Software: acht Module, Betreuung, Abschlussprüfung, RatioPro und
+          EquiDesk. Vom Üben stand nichts, obwohl genau das der Teil ist, den
+          keine Wettbewerberin hat.
+
+          Marktabgleich vom 09.09.2026: Der Standard im Feld ist Video, PDF,
+          Selbsttest, Fragerunde, Zertifikat. Sarah Ullrich bewirbt auf ihrer
+          Kursseite keine einzige interaktive Funktion, Naturnahes Pferd hat
+          Fallstudien zum Lesen, Sanoanimal monatliche Fragerunden, und das
+          IST-Studieninstitut nennt als Höhepunkt seines Online-Campus die
+          "Quizfunktion zur Prüfungsvorbereitung". Fallsimulation mit
+          sofortigem Feedback gibt es in der Humanmedizin, in der
+          Pferdefütterung war nichts zu finden.
+
+          Die Zahlen stehen nicht zufällig hier, sie sind nachgezählt:
+          769 Karteikarten aus akademieapp/lib/karteikarten-stand.json,
+          366 Prüfungsfragen aus lib/pruefungssimulator-stand.json,
+          drei Fälle aus lib/faelle.ts. Wer eine davon ändert, ändert sie
+          bitte auch hier.
+
+          Der Satz zum Markt ist bewusst in der ersten Person gehalten ("ich
+          kenne keine"), weil sich eine Behauptung über alle Anbieter nicht
+          beweisen lässt, die eigene Kenntnis aber schon. */}
+      <section className="px-6 sm:px-8 pb-16 sm:pb-24">
+        <div className="max-w-5xl mx-auto">
+          <div className="max-w-2xl mb-9">
+            <span className="block text-[13px] tracking-[0.14em] uppercase text-rose-deep font-semibold mb-4">
+              Üben statt auswendig lernen
+            </span>
+            <h2 className="font-serif font-normal text-[26px] sm:text-[34px] leading-[1.15] tracking-tight mb-5">
+              Wissen prüft sich nicht selbst.
+            </h2>
+            <p className="text-[16px] text-ink-soft leading-relaxed">
+              Videos und PDFs hat jede Ausbildung. Den Unterschied macht, wie
+              oft du das Gelernte anwendest, bevor die erste echte Kundin
+              schreibt. Dafür gibt es hier drei Dinge, und ich kenne keine
+              andere Fütterungsausbildung, in der du so arbeitest.
+            </p>
+          </div>
+
+          <ul className="grid grid-cols-1 md:grid-cols-3 gap-5">
+            <li className="bg-white rounded-[18px] border border-line p-7">
+              <h3 className="font-serif text-[20px] leading-snug mb-3">
+                Die Fallwerkstatt
+              </h3>
+              <p className="text-[14.5px] text-ink-soft leading-relaxed">
+                Eine Anfrage kommt herein, so wie sie wirklich hereinkommt. Du
+                entscheidest, welche vier Fragen du stellst, liest den
+                Laborbogen, beurteilst die Ration und schreibst die Empfehlung
+                in drei Sätzen. Nach jedem Schritt siehst du, was deine Wahl
+                wert war, und am Ende, wie der Fall wirklich ausgegangen ist.
+              </p>
+            </li>
+            <li className="bg-white rounded-[18px] border border-line p-7">
+              <h3 className="font-serif text-[20px] leading-snug mb-3">
+                769 Karteikarten
+              </h3>
+              <p className="text-[14.5px] text-ink-soft leading-relaxed">
+                Zu jeder Lektion, Frage und Antwort. Der Kasten merkt sich,
+                was du wusstest: Was sitzt, kommt seltener wieder, was hakt,
+                öfter. Du kannst am Bildschirm arbeiten oder die Karten
+                ausdrucken und mit in den Stall nehmen.
+              </p>
+            </li>
+            <li className="bg-white rounded-[18px] border border-line p-7">
+              <h3 className="font-serif text-[20px] leading-snug mb-3">
+                Prüfungssimulator, 366 Fragen
+              </h3>
+              <p className="text-[14.5px] text-ink-soft leading-relaxed">
+                Quer durch alle acht Module. Eine Antwort ist richtig, die
+                Begründung kommt sofort, und am Ende siehst du, in welchem
+                Modul es noch hakt. Danach kannst du gezielt nur die falschen
+                noch einmal durchgehen. So weißt du vor der Abschlussprüfung,
+                wo du stehst.
+              </p>
+            </li>
+          </ul>
+
+          <p className="text-[14.5px] text-ink-soft leading-relaxed mt-6 max-w-2xl">
+            Unnötige Diagnostik kostet dich in der Fallwerkstatt Punkte, so
+            wie sie im echten Leben deine Kundin Geld kostet. Und sie bleibt
+            nicht theoretisch: Der Fall öffnet sich auf Knopfdruck in
+            RatioPro, mit Pferd und Heuanalyse, und du rechnest ihn im echten
+            Rechner nach.
+          </p>
+        </div>
+      </section>
+
       {/* ------------------------------------------------------- Werkzeuge */}
       {/* ▸ AM 08.09.2026 GEAENDERT: RatioPro und EquiDesk sind EIN JAHR lang
           enthalten, nicht mehr dauerhaft. So von Yasemin entschieden.
