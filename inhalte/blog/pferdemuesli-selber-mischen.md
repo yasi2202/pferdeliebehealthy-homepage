@@ -7,6 +7,7 @@ angebot: "ratiopro"
 bild: "/images/blog/muesli-aus-der-hand.webp"
 bildText: ""
 bildBreit: false
+bildFokus: "50% 80%"
 beschreibung: "Luzerne, Grünhafer, Sonnenblumenkerne und drei Kräuter: das Rezept für mein Fit Müsli, alle Nährwerte dazu und ehrlich, was es nicht kann."
 ---
 Ein Pferdemüsli selber zu mischen ist einfacher, als es klingt, und du weißt

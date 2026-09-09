@@ -30,6 +30,7 @@ type Eintrag = {
   lesezeit: number;
   bild: string;
   bildText: string;
+  bildFokus?: string;
 };
 
 type Thema = { name: string; slug: string; anzahl: number };
@@ -59,6 +60,12 @@ function Kopfbild({
           alt={beitrag.bildText || beitrag.titel}
           fill
           sizes="(max-width: 768px) 100vw, 50vw"
+          /* Die Karte ist ein breiter Streifen, die Fotos sind es nicht. Ohne
+             `bildFokus` schneidet der Browser mittig zu, und das trifft bei
+             einem hochkanten Foto selten das Motiv. */
+          style={
+            beitrag.bildFokus ? { objectPosition: beitrag.bildFokus } : undefined
+          }
           className="object-cover transition-transform duration-500 group-hover:scale-[1.03]"
         />
       </div>

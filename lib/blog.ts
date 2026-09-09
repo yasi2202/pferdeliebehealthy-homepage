@@ -65,6 +65,17 @@ export type BlogBeitrag = {
    *
    *  In der Beitragsdatei: `bildBreit: true`. */
   bildBreit: boolean;
+  /** Welcher Teil des Fotos auf der Übersichtskarte zu sehen sein soll.
+   *
+   *  Die Karten sind breite Streifen, die meisten Fotos sind es nicht. Ohne
+   *  Angabe schneidet der Browser mittig zu, und bei einem hochkanten Foto
+   *  bleibt dann oft die uninteressante Mitte übrig, beim Müsli-Foto zum
+   *  Beispiel der Pferdehals statt Maul und Hand.
+   *
+   *  In der Beitragsdatei: `bildFokus: "50% 80%"`, also links nach rechts
+   *  und oben nach unten. 50 % 80 % heißt waagerecht mittig, senkrecht weit
+   *  unten. Leer lassen heißt mittig. */
+  bildFokus: string;
   /** Geschaetzte Lesezeit in Minuten. Steht auf der Karte und im Kopf des
    *  Beitrags: Wer weiss, dass es sechs Minuten dauert, faengt eher an als
    *  jemand, der vor einer Textwand unbekannter Laenge steht. */
@@ -442,6 +453,7 @@ function kopfBauen(
     bild: String(data.bild ?? ""),
     bildText: String(data.bildText ?? ""),
     bildBreit: data.bildBreit === true,
+    bildFokus: String(data.bildFokus ?? ""),
     lesezeit: lesezeitSchaetzen(inhalt),
   };
 }

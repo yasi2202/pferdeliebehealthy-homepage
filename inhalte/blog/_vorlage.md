@@ -91,6 +91,16 @@ ist der schmale, hochkante Platz: Ein einzelnes Motiv wirkt dort besser und
 schiebt den Text nicht nach unten. Ein breites Bild im schmalen Platz würde
 zusammengestaucht, die Beschriftungen wären unlesbar.
 
+**`bildFokus`** — welcher Teil des Fotos auf der Übersichtsseite zu sehen sein
+soll. Die Karten dort sind breite Streifen, die meisten Fotos sind es nicht,
+also schneidet der Browser oben und unten etwas weg, und zwar von der Mitte
+aus. Bei einem hochkanten Foto bleibt dann oft die langweiligste Stelle übrig.
+Schreib in dem Fall zwei Prozentzahlen hinein, erst links nach rechts, dann
+oben nach unten: `bildFokus: "50% 80%"` heißt waagerecht mittig und senkrecht
+weit unten. Beim Müsli-Beitrag sorgt genau das dafür, dass Maul und Hand mit
+dem Futter zu sehen sind statt des Halses. Lass die Zeile leer, wenn die Mitte
+passt.
+
 ## Wie du formatierst
 
 Eine Überschrift beginnt mit `##`, eine kleinere mit `###`.
