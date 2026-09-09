@@ -204,6 +204,17 @@ const strukturierteDaten = {
       "@id": url("/#yasemin"),
       name: "Yasemin Halac",
       jobTitle: "Ernährungsberaterin für Pferde",
+      // Google will bei Gesundheitsthemen sehen, wer schreibt. Der Satz sagt
+      // dasselbe wie der Autorinnenkasten unter jedem Blogbeitrag und darf
+      // deshalb nur behaupten, was belegbar ist: Die beiden
+      // Tierheilpraktiker-Ausbildungen laufen noch, der Titel steht ihr also
+      // noch nicht zu, und die ZFU-Zulassung der eigenen Ausbildung wird
+      // gerade erst geprüft.
+      description:
+        "Ernährungsberaterin für Pferde im Odenwald, in Ausbildung zur " +
+        "Tierheilpraktikerin. Bildet selbst Beraterinnen für ganzheitliche " +
+        "Pferdefütterung aus und pflegt eine Futtermitteldatenbank mit über " +
+        "500 Einträgen.",
       image: url("/images/yasi-portrait.jpg"),
       worksFor: { "@id": url("/#unternehmen") },
       knowsAbout: [

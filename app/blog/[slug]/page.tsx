@@ -351,10 +351,21 @@ export default async function BlogBeitragSeite({ params }: Props) {
             />
             <div>
               <p className="font-serif text-[19px] mb-1.5">Yasemin Halac</p>
+              {/* Die Qualifikation steht hier bewusst so vorsichtig: "in
+                  Ausbildung zur Tierheilpraktikerin" und nicht
+                  "Tierheilpraktikerin". Beide Ausbildungen laufen noch, bei
+                  Ellinghaus fehlt die Facharbeit, bei der SGD die Präsenztage.
+                  Ein Titel, den man noch nicht hat, ist irreführende Werbung.
+                  Aus demselben Grund steht hier nichts zur ZFU: Die Zulassung
+                  der eigenen Ausbildung wird unter Reg.-Nr. 76270 noch geprüft. */}
               <p className="text-[14.5px] text-ink-soft leading-relaxed">
-                Ernährungsberaterin für Pferde im Odenwald. Ich schaue mir an,
-                was ein Pferd tatsächlich bekommt, gleiche es mit dem ab, was es
-                braucht, und schreibe auf, wo die Lücke ist.{" "}
+                Ernährungsberaterin für Pferde im Odenwald, in Ausbildung zur
+                Tierheilpraktikerin. Ich bilde selbst Beraterinnen für
+                ganzheitliche Pferdefütterung aus und pflege eine
+                Futtermitteldatenbank mit über 500 Einträgen. Angefangen hat es
+                mit meiner Stute Helena und ihrer PPID-Diagnose: Ich schaue mir
+                an, was ein Pferd tatsächlich bekommt, gleiche es mit dem ab,
+                was es braucht, und schreibe auf, wo die Lücke ist.{" "}
                 <Link
                   href="/#ueber-mich"
                   className="text-rose-deep underline underline-offset-2 hover:text-ink"
