@@ -1,6 +1,6 @@
 export default function ProblemSection() {
   const items = [
-    "Du brauchst kein Blattfüttern nach Gefühl mehr, bei dem du nie sicher weißt, ob dein Pferd wirklich versorgt ist.",
+    "Du brauchst kein Füttern auf gut Glück mehr, bei dem du nie sicher weißt, ob dein Pferd wirklich versorgt ist.",
     "Du brauchst keine widersprüchlichen Ratschläge aus zehn verschiedenen Foren mehr, die dich am Ende noch unsicherer machen.",
     "Du brauchst keine teuren Zusatzfutter, die niemand wirklich auf euer Pferd oder eure Kundschaft abgestimmt hat.",
   ];
