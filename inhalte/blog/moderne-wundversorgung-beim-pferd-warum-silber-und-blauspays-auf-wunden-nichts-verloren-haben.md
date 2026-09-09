@@ -1,7 +1,7 @@
 ---
 titel: "Blauspray und Silberspray beim Pferd: besser nicht"
 datum: 2025-08-13
-aktualisiert: 2026-09-07
+aktualisiert: 2026-09-09
 kategorie: "Haut, Fell und Hufe"
 angebot: ""
 bild: "/images/blog/wundversorgung-verband.webp"
@@ -24,15 +24,54 @@ den Tierarzt, bevor du selbst anfängst, wenn eines davon zutrifft:
   Regel nur in den ersten Stunden, danach heilt sie offen und mit Narbe.
 - **Sie liegt über einem Gelenk, einer Sehnenscheide oder am Huf.** Eine
   Gelenkbeteiligung ist ein Notfall, auch wenn die Wunde winzig aussieht.
-- **Nageltritt oder ein anderer Stich in die Sohle.** Nagel möglichst stecken
-  lassen oder Lage genau markieren, das ist für die Beurteilung wichtig.
-- **Die Blutung hört nach zehn Minuten Druck nicht auf**, oder das Blut ist
-  hellrot und spritzt.
-- **Das Pferd lahmt**, die Stelle schwillt stark an oder wird heiß.
-- **Der Tetanusschutz ist unklar oder älter als zwei Jahre.** Tetanus verläuft
-  beim Pferd fast immer tödlich, die Impfung ist der einzige Schutz.
+- **Nageltritt oder ein anderer Stich in die Sohle.** Den Nagel darfst du
+  ziehen. Merk dir vorher genau, an welcher Stelle er saß, in welchem Winkel
+  und wie tief er steckte, am besten fotografierst du ihn neben der Stelle,
+  bevor du ihn wegnimmst. Diese Angaben sind für die Beurteilung wichtiger
+  als der Nagel selbst. Danach die Eintrittsstelle bis zum Tierarzt vor
+  Schmutz schützen.
+- **Jeder Verdacht, dass sich das Pferd am Huf in etwas Spitzes getreten
+  hat.** Solche Verletzungen sind tückisch, weil oben nur eine kleine
+  Eintrittsstelle zu sehen ist und der Kanal darunter tief gehen kann. Der
+  Tierarzt spült gründlich und verbindet.
+- **Die Blutung hört nach zehn Minuten Druck nicht auf**, oder das Blut tritt
+  pulsartig im Takt des Herzschlags aus. Dann kann ein größeres Blutgefäß
+  verletzt sein.
+- **Das Pferd lahmt, die Stelle schwillt an, wird heiß oder ist
+  schmerzempfindlich.** Das sind deutliche Entzündungszeichen und gehören
+  angesehen.
+- **Der Tetanusschutz ist unklar.** Leg den Equidenpass bereit und lass die
+  Impfung bei Gelegenheit auffrischen, wenn der letzte Eintrag länger
+  zurückliegt.
 
 Bleibt es bei der Schramme auf der Koppel, geht es so weiter.
+
+## Trau dich, die kleinen Sachen selbst zu versorgen
+
+Rund achtzig Prozent dessen, was sich ein Pferd im Alltag holt, ist
+oberflächlich: Schrammen, Kratzer, aufgescheuerte Stellen. Da brauchst du
+niemanden, der dir die Hand führt. Du kannst deinem Pferd hier selbst gut zur
+Seite stehen, wenn du fünf Dinge beachtest.
+
+- **Sei schnell.** Je früher du dich um eine frische Schramme kümmerst, desto
+  weniger Schmutz und Keime sitzen darin fest. Die Stelle, die du morgens
+  gleich sauber machst, macht abends meist weniger Arbeit.
+- **Halte die Wunde sauber.** Nur eine saubere Wunde kann zugehen. Belag und
+  eitrige Stellen also lieber einmal mehr vorsichtig abspülen als einmal zu
+  wenig.
+- **Denk an die Hygiene bei dir selbst.** Zieh Einmalhandschuhe an, auch bei
+  einer kleinen offenen Stelle. So trägst du nichts von deinen Händen in die
+  frische Wunde, und du schützt dich selbst gleich mit.
+- **Nimm passende Mittel.** In eine frische Wunde gehören keine Fremdstoffe,
+  also kein Silber- oder Blauspray, kein Zinkspray, keine Salbe und keine
+  Creme. Was einen Film bildet oder Farbe hinterlässt, hat dort nichts
+  verloren.
+- **Arbeite feucht.** Das ist der Kern der modernen Wundversorgung und der
+  Punkt, an dem sie sich von allem unterscheidet, was seit dreißig Jahren im
+  Stallschrank steht. Warum, steht gleich weiter unten.
+
+Und die Grenze bleibt die von oben: Alles, was tief geht, klafft, stark
+blutet oder das Pferd lahmen lässt, ist kein Fall für den eigenen Putzkasten.
 
 ## Warum Silber- und Blausprays problematisch sind
 
@@ -47,9 +86,17 @@ ist etwas anderes.
 
 - **Blausprays** enthalten oft Farbstoffe und Desinfektionsmittel, die reizend
 wirken. Das Einfärben erschwert zudem die Beurteilung der Wunde und ihrer
-Heilung.
+Heilung. Bei einem Teil der blauen Präparate kommt die Farbe von
+Gentianaviolett, auch Kristallviolett genannt. Dieser Farbstoff gilt
+inzwischen als bedenklich und ist bei Tieren, die der Lebensmittelgewinnung
+dienen, nicht zugelassen. Für Pferde ist das nicht nebensächlich: Sie gelten
+rechtlich als lebensmittelliefernd, solange das im Equidenpass nicht
+ausdrücklich ausgeschlossen wurde. Ein Blick auf die Zutatenliste lohnt sich
+also.
 
-Kurz gesagt: Beide gehören nicht auf **Wunden**.
+Kurz gesagt: Beide gehören nicht auf **Wunden**. Auch in der Tiermedizin
+gelten sie längst als überholt, sie stammen aus einer älteren Generation der
+Wundversorgung.
 
 ## Was heute stattdessen empfohlen wird
 
@@ -64,7 +111,11 @@ sich drei Wirkstoffgruppen durchgesetzt, und keine davon färbt.
 - **Hypochlorige Säure**, auf Flaschen als HOCl abgekürzt, ist die neuere
   Option. Der Stoff kommt dem nahe, was körpereigene Abwehrzellen selbst
   bilden, er wirkt sehr schnell und darf als eines der wenigen Mittel auch
-  mit Knorpel in Berührung kommen. Genau damit arbeite ich, dazu gleich mehr.
+  mit Knorpel in Berührung kommen. Entscheidend ist dabei, dass Konzentration
+  und Aufmachung auf das Pferd abgestimmt sind und nicht einfach aus der
+  Humanmedizin übernommen wurden. Pferdehaut, Wundgrößen und die Mengen, die
+  man im Stall braucht, sind andere als beim Menschen. Genau damit arbeite
+  ich, dazu gleich mehr.
 
 Was alle drei gemeinsam haben: Sie brennen nicht, sie färben nicht, und sie
 lassen die Wunde beurteilbar. Genau daran scheitern Blau- und Silberspray.
@@ -76,30 +127,32 @@ Narbe wird größer.
 
 ## So geht pferdegerechte Wunddesinfektion heute
 
-Eine moderne Wundversorgung folgt drei einfachen Schritten:
+Eine moderne Wundversorgung folgt drei einfachen Schritten.
 
-### 1️⃣ Reinigen
+### Schritt 1: reinigen und desinfizieren
 
-Mit einem **pH-neutralen Wundreiniger** werden Schmutz und lose Beläge von der
-Wundfläche gespült, ohne sie auszutrocknen.
-Ich arbeite selbst mit dem *Haut-Talent Nr. 1* von Bäralis. Es brennt nicht und
-lässt die Wundfläche sauber zurück.
+Mit einer **Wundspüllösung oder einem Desinfektionsmittel für Pferde** wird
+Schmutz von der Hautoberfläche gespült, ohne sie zu reizen.
+Ich arbeite selbst mit dem *Haut-Talent Nr. 1* von Bäralis. Die flüssige
+Lösung brennt nicht und lässt die Wundumgebung sauber zurück.
 
 [[produkt:baeralis-hauttalent]]
 
-### 2️⃣ Keimreduktion
+### Schritt 2: feucht halten
 
-Nach der Reinigung kommt ein **Gel oder eine Lösung zur Keimreduktion** auf
-die Wunde. Der fachliche Hintergrund steht oben: Eine Wunde, die feucht
-gehalten wird, verkrustet nicht, und die feuchte Wundbehandlung ist in der
-Wundversorgung gut untersucht.
+Nach der Reinigung kommt ein **Gel** auf die betroffene Stelle. Es reduziert
+die Keimzahl über einen längeren Zeitraum als eine Spülung, die nach ein paar
+Minuten abgetrocknet ist. Der fachliche Hintergrund steht oben: Eine feucht
+gehaltene Wunde verkrustet kaum. Die feuchte Wundbehandlung ist gut
+untersucht und gilt heute als Standard.
 
-Ich nehme dafür das *Hydro-Gel Nr. 2* aus derselben Reihe. Es hält die Wunde
-feucht und lässt sich abspülen, ohne dass man am Wundgrund zieht.
+Ich nehme dafür das *Hydro-Gel Nr. 2* aus derselben Reihe. Es unterstützt die
+Keimreduktion und legt einen Feuchtigkeitsfilm über die Stelle, die
+Wundfläche bleibt dabei jederzeit einsehbar.
 
 [[produkt:baeralis-hydrogel]]
 
-### 3️⃣ Schutz vor Fliegen & Schmutz
+### Schritt 3: Schutz vor Fliegen und Schmutz
 
 Gerade im Sommer sind offene Wunden ein Magnet für Fliegen. Statt Farbspray
 eignet sich ein **Fliegenschutz-Pflaster**, das die Wunde sauber hält,
@@ -107,7 +160,22 @@ Insekten fernhält und trotzdem Luft durchlässt.
 Ich nehme das *Pferde-Pflaster* von Bäralis: durchsichtig, luftdurchlässig und einfach
 anzubringen.
 
+Ein Hinweis aus der Praxis, damit du nicht enttäuscht bist: Am ruhigen Pferd
+hält so ein Pflaster gut, an Stellen mit viel Bewegung nicht ewig. An Bein,
+Bauch und Brust verstärkst du die Ränder deshalb am besten gleich mit, zum
+Beispiel mit einem elastischen Pflaster oder einem Streifen Tape rundherum.
+Das kostet dreißig Sekunden und spart dir das dritte Pflaster am selben Tag.
+
 [[produkt:baeralis-fliegenpflaster]]
+
+### Und wenn du es dir einfach machen willst
+
+Die drei Schritte brauchen drei Sachen, und die einzeln zusammenzusuchen ist
+lästig. Es gibt sie zusammen als Stallapotheke, mit Preisvorteil gegenüber
+dem Einzelkauf. Das ist der bequemste Weg, den Schrank einmal richtig zu
+bestücken, statt beim nächsten Mal wieder mit dem Farbspray dazustehen.
+
+[[produkt:baeralis-stallapotheke]]
 
 ## Worauf es am Ende ankommt
 
@@ -157,11 +225,18 @@ Weil sie billig sind, ewig halten und die Wunde sofort versorgt aussehen
 lassen. Das ist eine ehrliche Antwort: Sie geben ein gutes Gefühl. Nur nützt
 das dem Gewebe darunter nichts.
 
+### Brauche ich für eine kleine Schramme wirklich Handschuhe?
+Ja, und zwar aus zwei Richtungen. An deinen Händen sitzt alles, was du
+vorher angefasst hast, von der Stallgasse bis zum Hufkratzer, und das willst
+du nicht in einer frischen Wunde haben. Umgekehrt schützt du auch dich
+selbst. Eine Schachtel Einmalhandschuhe kostet fast nichts und gehört in
+jede Stallapotheke.
+
 ### Was gehört in eine Stallapotheke, wenn nicht Farbspray?
 Ein mildes Mittel zum Reinigen, ein Gel oder eine Lösung für die
-Keimreduktion, luftdurchlässige Pflaster, eine sterile Kompresse, eine
-elastische Binde und eine Rolle Klebeband. Dazu die Telefonnummer deiner
-Tierärztin an der Innenseite des Schranks.
+Keimreduktion, luftdurchlässige Pflaster, Einmalhandschuhe, eine sterile
+Kompresse, eine elastische Binde und eine Rolle Klebeband. Dazu die
+Telefonnummer deiner Tierärztin an der Innenseite des Schranks.
 
 
 ## Wenn Wunden immer wieder schlecht heilen
