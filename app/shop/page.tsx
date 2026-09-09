@@ -231,7 +231,23 @@ const FOTO: Record<
     alt: "Schale mit Mineralpulver neben einem Messbecher mit Pellets",
     schnitt: "object-center",
   },
+  // ▸ ZWEIMAL EQUIDESK, UND DAS MIT ABSICHT.
+  //   Beide Tabellen hier gehen nach `slug`. Seit dem 07.09.2026 steht in der
+  //   Übersicht nicht mehr `equidesk` (einmalig 29 €, versteckt), sondern
+  //   `equidesk-abo`. Weil dort kein Eintrag stand, fiel die Kachel auf die
+  //   Farbfläche der Gruppe zurück: kein Bild, und darunter „Werkzeug" statt
+  //   „Software". Der alte Eintrag bleibt trotzdem stehen, das Produkt ist
+  //   über den Kulanzweg weiter kaufbar und hat eine eigene Seite.
+  //
+  //   Merke: Wird ein Angebot durch ein Abo ersetzt, gehören FOTO und ZEILE
+  //   auf den neuen Slug mitgenommen. Sonst verliert die Kachel still ihr
+  //   Bild, ohne dass irgendwo ein Fehler erscheint.
   equidesk: {
+    datei: "/images/kacheln/schreibtisch.jpg",
+    alt: "Schreibtisch mit Laptop, Notizbuch und Kaffeetasse, daneben ein Halfter",
+    schnitt: "object-center",
+  },
+  "equidesk-abo": {
     datei: "/images/kacheln/schreibtisch.jpg",
     alt: "Schreibtisch mit Laptop, Notizbuch und Kaffeetasse, daneben ein Halfter",
     schnitt: "object-center",
@@ -266,6 +282,10 @@ const ZEILE: Record<string, string> = {
   "symptom-navigator": "Nachschlagewerk",
   ratiopro: "Rechner",
   equidesk: "Software",
+  // Auf dem Cover steht, was man kauft. Beim Abo ist das nicht nur eine
+  // Software, sondern ein laufender Zugang, und das soll man schon in der
+  // Übersicht sehen und nicht erst an der Kasse.
+  "equidesk-abo": "Software im Abo",
   ausbildung: "Ausbildung",
   "pferdeliebe-365": "1:1 Begleitung",
 };
@@ -415,6 +435,18 @@ function DigitalKarte({ p }: { p: DigitalProdukt }) {
             )}
             <span className="font-serif text-[18px] tabular-nums sm:text-[22px]">
               {preisText(p.preis)}
+              {/* ▸ BEIM ABO GEHÖRT DER ZEITRAUM AN DEN PREIS.
+                  Ohne diesen Zusatz stand in der Übersicht schlicht „19,00 €"
+                  neben lauter Einmalpreisen, und genau so las es sich auch:
+                  als Gesamtpreis. Bei EquiDesk sind es 19 € pro Monat. Der
+                  Wortlaut ist derselbe wie an der Kasse (DigitalKasse.tsx),
+                  damit von der Kachel bis zum Bezahlen dasselbe dasteht. */}
+              {p.abo && (
+                <span className="text-[13px] text-ink-soft sm:text-[15px]">
+                  {" "}
+                  / Monat
+                </span>
+              )}
             </span>
 
             {/* Ein Angebot, das noch nicht buchbar ist, gehört trotzdem in die
