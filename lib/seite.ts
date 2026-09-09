@@ -7,19 +7,27 @@ export const mitgliederbereich = {
 
   // Seit 28.08.2026 führt der Knopf in die eigene Akademie statt zu alfima.
   //
-  // ▸ HIER MUSST DU RAN, sobald die Akademie eine eigene Domain bekommt
-  //   (z. B. https://akademie.pferdeliebehealthy.de/login): einfach die
-  //   Adresse hier austauschen, alle vier Wege in die Akademie folgen
-  //   automatisch (Kopfzeile, Klappmenü, Schloss-Symbol, Mitglieder-Streifen).
+  // ▸ SEIT DEM 09.09.2026 AUF DER EIGENEN SUBDOMAIN. Vorher stand hier
+  //   https://akademieapp.vercel.app/login, und diese Adresse sah jede
+  //   zahlende Kundin an der auffälligsten Stelle der Seite.
   //
-  //   ▸ DAS IST NUR DIE HALBE MIETE. Diese Zeile steuert nur die Links VON
-  //     der Website AUS. Die Links, die die Akademie selbst verschickt, also
+  //   Von dieser einen Zeile hängen alle vier Wege in die Akademie ab:
+  //   Kopfzeile, Klappmenü, Schloss-Symbol und Mitglieder-Streifen.
+  //
+  //   ▸ SIE IST ABER NUR DIE HALBE MIETE. Sie steuert die Links VON der
+  //     Website AUS. Die Links, die die Akademie selbst verschickt, also
   //     Anmeldelinks, Erinnerungen, Rechnungen, und die Adresse unten auf der
   //     Urkunde, hängen an der Einstellung BASE_URL im Vercel-Projekt
-  //     `akademieapp`. Wird nur hier getauscht und BASE_URL vergessen,
-  //     schickt die Akademie ihre Kundinnen weiter auf die alte Adresse.
-  //     Reihenfolge: erst Domain in Vercel, dann BASE_URL, dann diese Zeile.
-  url: "https://akademieapp.vercel.app/login",
+  //     `akademieapp`. Wer nur hier tauscht und BASE_URL vergisst, schickt
+  //     seine Kundinnen weiter auf die alte Adresse.
+  //
+  //     Reihenfolge bei einem erneuten Umzug: erst Domain in Vercel anmelden
+  //     und den CNAME beim Domainanbieter setzen (die Domain liegt bei
+  //     Hostinger), dann BASE_URL, dann diese Zeile.
+  //
+  //   Die alte Adresse akademieapp.vercel.app bleibt erreichbar. Anmeldelinks
+  //   aus schon verschickten Mails funktionieren also weiter.
+  url: "https://akademie.pferdeliebehealthy.de/login",
 };
 
 // ---------------------------------------------------------------------------
