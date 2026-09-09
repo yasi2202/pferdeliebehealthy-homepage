@@ -117,6 +117,28 @@ const nextConfig: NextConfig = {
   // Stripe, Vimeo und Vercel Analytics; eine zu enge Regel legt die Kasse
   // still, und das faellt erst auf, wenn jemand nicht bezahlen kann.
   // -------------------------------------------------------------------------
+  // -------------------------------------------------------------------------
+  // Zwischenstufen fuer die Bildbreiten.
+  //
+  // next/image baut die Auswahl an Bildbreiten aus zwei Listen: deviceSizes
+  // fuer Bilder, die die volle Breite einnehmen, imageSizes fuer Bilder mit
+  // fester Breite. Die Werkseinstellung springt bei imageSizes von 384 direkt
+  // auf 640 (die erste deviceSize).
+  //
+  // Genau in dieser Luecke liegen mehrere Bilder der Seite. Das Handybild vom
+  // Stall Organizer zum Beispiel ist auf 260 Punkte gedeckelt und braucht auf
+  // einem heutigen Handy (Bildschirm rechnet mit Faktor 1,75 bis 3) also rund
+  // 460 bis 780 echte Bildpunkte. Der Browser fand nichts dazwischen und nahm
+  // 640, wo 512 gereicht haetten.
+  //
+  // 512 schliesst die Luecke. Mehr Zwischenstufen sind nicht ratsam: Jede
+  // zusaetzliche Breite ist eine weitere Fassung, die Vercel berechnen und
+  // vorhalten muss.
+  // -------------------------------------------------------------------------
+  images: {
+    imageSizes: [16, 32, 48, 64, 96, 128, 256, 384, 512],
+  },
+
   async headers() {
     return [
       {

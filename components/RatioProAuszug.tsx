@@ -61,15 +61,34 @@ export default function RatioProAuszug() {
           <>
             {/* Zwei Aufnahmen desselben Rechners. Die breite Fassung ist auf
                 dem Handy nicht zu entziffern, die schmale auf dem Rechner zu
-                grob. Beide zeigen dieselbe Ration. */}
+                grob. Beide zeigen dieselbe Ration.
+
+                KEIN priority hier. Bis zum 09.09.2026 stand es an beiden
+                Bildern, und das war teuer: priority setzt fetchpriority="high"
+                und laedt sofort. Dieser Kasten beginnt aber erst rund 1.500
+                Pixel unter der Bildschirmkante, die beiden Aufnahmen haben
+                sich also vor dem Heldenfoto in die Leitung gedraengt, das die
+                Seite als Erstes zeichnen muss.
+
+                Ohne priority laedt next/image mit loading="lazy". Das spart
+                nebenbei die jeweils andere Fassung: Ein Bild, das per
+                display:none versteckt ist (hidden / sm:hidden), bekommt keinen
+                Platz im Layout, gilt damit nie als sichtbar und wird gar nicht
+                erst geholt. Vorher lud jedes Handy die breite Fassung mit,
+                ohne sie je zu zeigen.
+
+                Die sizes-Angaben rechnen den Rahmen mit ab, in dem das Bild
+                wirklich steht: aussen der Abstand der Sektion (px-6 / sm:px-8),
+                innen die Polsterung der Karte (p-8 / sm:p-11), gedeckelt durch
+                max-w-5xl. Ohne diese Rechnung hielt der Browser das Bild fuer
+                bildschirmbreit und holte eine Stufe zu gross. */}
             <Image
               src="/images/ratiopro-auszug.png"
               alt="Auszug aus RatioPro: eine durchgerechnete Ration mit Kosten, Hufrehe-Hinweis und Bedarfsdeckung"
               width={2200}
               height={1828}
               className="hidden sm:block w-full h-auto rounded-[14px] border border-line"
-              sizes="(min-width: 1024px) 900px, 100vw"
-              priority
+              sizes="(min-width: 1176px) 936px, calc(100vw - 152px)"
             />
             <Image
               src="/images/ratiopro-auszug-handy.png"
@@ -77,8 +96,7 @@ export default function RatioProAuszug() {
               width={968}
               height={1930}
               className="sm:hidden w-full h-auto rounded-[14px] border border-line"
-              sizes="100vw"
-              priority
+              sizes="calc(100vw - 112px)"
             />
           </>
         ) : (
