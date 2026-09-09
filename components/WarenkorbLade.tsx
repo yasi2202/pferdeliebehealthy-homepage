@@ -57,11 +57,20 @@ export default function WarenkorbLade() {
         }`}
       />
 
+      {/* inert statt aria-hidden, geaendert am 09.09.2026.
+          aria-hidden versteckt die Lade nur vor dem Vorleseprogramm, laesst
+          die Knoepfe darin aber in der Tab-Reihenfolge. Wer sich mit der
+          Tastatur durch die Seite bewegte, verschwand also mitten im Text in
+          einen unsichtbaren Warenkorb und drueckte auf Schaltflaechen, die
+          niemand sehen konnte. Genau das meldet auch die Pruefung von Google
+          ("[aria-hidden] elements contain focusable descendents").
+          inert nimmt den ganzen Bereich aus Tab-Reihenfolge UND Vorlesebaum,
+          solange die Lade zu ist, und gibt ihn beim Oeffnen wieder frei. */}
       <aside
         role="dialog"
         aria-modal="true"
         aria-label="Warenkorb"
-        aria-hidden={!ladeOffen}
+        inert={!ladeOffen}
         className={`fixed right-0 top-0 z-[200] flex h-full w-full flex-col bg-cream shadow-2xl transition-transform duration-300 ease-out sm:w-[420px] ${
           ladeOffen ? "translate-x-0" : "pointer-events-none translate-x-full"
         }`}

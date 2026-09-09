@@ -2,6 +2,11 @@ import Link from "next/link";
 import { futterCheck, mineralKlarheit } from "@/lib/seite";
 import { shopSichtbar } from "@/lib/shop";
 
+// Die drei Spaltenueberschriften sind h2, nicht h4. Bis zum 09.09.2026 waren
+// es h4, und damit sprang die Gliederung der Seite von h2 auf h4: Ein
+// Vorleseprogramm meldet dann eine Ebene, die es nicht gibt, und Google
+// bemaengelt es als fehlerhafte Reihenfolge. Die Groesse macht die Klasse,
+// nicht die Ebene, sichtbar aendert sich also nichts.
 export default function Footer() {
   return (
     <footer className="px-6 sm:px-8 pt-16 pb-10">
@@ -16,9 +21,9 @@ export default function Footer() {
           </p>
         </div>
         <div>
-          <h4 className="text-[13px] font-semibold uppercase tracking-wide text-rose-deep mb-4">
+          <h2 className="text-[13px] font-semibold uppercase tracking-wide text-rose-deep mb-4">
             Angebote
-          </h4>
+          </h2>
           <ul className="space-y-2.5 text-sm text-ink-soft">
             <li>
               {/* Zeigt bewusst auf die Infoseite, nicht direkt zu alfima:
@@ -68,9 +73,9 @@ export default function Footer() {
           </ul>
         </div>
         <div>
-          <h4 className="text-[13px] font-semibold uppercase tracking-wide text-rose-deep mb-4">
+          <h2 className="text-[13px] font-semibold uppercase tracking-wide text-rose-deep mb-4">
             Über
-          </h4>
+          </h2>
           <ul className="space-y-2.5 text-sm text-ink-soft">
             <li>
               <Link href="/#ueber-mich" className="hover:text-ink">
@@ -115,9 +120,9 @@ export default function Footer() {
           </ul>
         </div>
         <div>
-          <h4 className="text-[13px] font-semibold uppercase tracking-wide text-rose-deep mb-4">
+          <h2 className="text-[13px] font-semibold uppercase tracking-wide text-rose-deep mb-4">
             Rechtliches
-          </h4>
+          </h2>
           <ul className="space-y-2.5 text-sm text-ink-soft">
             <li>
               <Link href="/impressum" className="hover:text-ink">
