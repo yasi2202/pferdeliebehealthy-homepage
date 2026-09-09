@@ -1,7 +1,7 @@
 ---
 titel: "Mauke beim Pferd ist kein Hautproblem"
 datum: 2026-09-01
-aktualisiert: 2026-09-07
+aktualisiert: 2026-09-09
 kategorie: "Haut, Fell und Hufe"
 angebot: "futter-check"
 bild: "/images/blog/mauke-fessel.webp"
@@ -168,6 +168,18 @@ gehört abgeklärt, bevor man weiter cremt.
   über die [moderne Wundversorgung](/blog/moderne-wundversorgung-beim-pferd-warum-silber-und-blauspays-auf-wunden-nichts-verloren-haben).
 - Dicke, luftdichte Salbenschichten auf nässenden Stellen. Darunter wird es
   warm und feucht.
+
+**Zum Krustenlösen, ohne zu waschen.** Das ist der Punkt, an dem die meisten
+hängenbleiben: Abreißen tut weh und reißt die Haut wieder auf, Einweichen
+macht die Fessel nass, und nass ist genau das, was du hier nicht willst. Es
+gibt dafür Schäume, die ohne Wasser arbeiten. Aufsprühen, sanft einmassieren,
+kurz warten und den gelösten Schmutz mit einer sterilen Kompresse abnehmen.
+Ich nehme den *Fessel-Schaum Nr. 3* von Bäralis, er enthält Panthenol und
+kommt ohne Wasser aus. Das ist Hautpflege und kein Ersatz für die Arbeit an
+der Ursache: An dem, was weiter oben in diesem Beitrag steht, ändert er
+nichts. Er macht nur den Teil leichter, der sonst am unangenehmsten ist.
+
+[[produkt:baeralis-fesselschaum]]
 
 Kräuter und Pflegemittel stehen bei alldem am Ende der Reihe, nicht am Anfang.
 Sie sind Ergänzung der Ration und der Pflege, keine Behandlung. Was die Haut

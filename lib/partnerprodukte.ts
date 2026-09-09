@@ -129,6 +129,23 @@ export const partnerprodukte: Partnerprodukt[] = [
     biozid: true,
   },
   {
+    // Der Krustenlöser aus dem Mauke-Beitrag. Von Susan Bär am 09.09.2026
+    // vorgeschlagen, von Yasemin freigegeben.
+    //
+    // ▸ KEIN BIOZID, sondern ein Pflegeprodukt. Deshalb steht hier kein
+    //   `biozid: true`, der Warnhinweis wäre sonst falsch.
+    // ▸ IM MAUKE-BEITRAG STEHT ER BEWUSST IM PFLEGEABSCHNITT und nicht neben
+    //   dem Krankheitsbild. Er löst Krusten, er behandelt keine Mauke. Der
+    //   Hersteller nennt die Adresse zwar "nr-3-mauke-schaum", der Name auf
+    //   der Packung ist aber "Fessel-Schaum". Wir schreiben den.
+    schluessel: "baeralis-fesselschaum",
+    partner: "Bäralis",
+    art: "pflege",
+    name: "Fessel-Schaum Nr. 3",
+    url: "https://baeralis.de/nr-3-mauke-schaum?sPartner=d1c04513",
+    kurz: "Schaum zum Lösen von Krusten, der ohne Wasser auskommt. Mit Panthenol, für den Fesselbereich gedacht.",
+  },
+  {
     // Oregano gibt es bei beiden Partnern, aber nicht als dasselbe Produkt:
     // Der "Kretische Oregano" ist der von PerNaturam, Mo's Grun führt
     // Pellets. Von Yasemin am 02.09.2026 richtiggestellt.
