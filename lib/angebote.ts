@@ -19,7 +19,12 @@ export type Angebot = {
   url?: string;
 };
 
-/** Weg 1 — für Leute mit eigenem Pferd. Reihenfolge = Einstieg zuerst. */
+/** Weg 1 — für Leute mit eigenem Pferd.
+ *
+ *  ▸ REIHENFOLGE: der günstigste Einstieg zuerst, dann aufsteigend nach
+ *    Preis. Am 09.09.2026 so festgelegt, weil vorher RatioPro (69 €) vor dem
+ *    Ganzjahresfutterplan (59 €) stand und die Liste damit mittendrin
+ *    zurücksprang. Wer hier ein Angebot einfügt, sortiert es nach Preis ein. */
 export const fuerDeinPferd: Angebot[] = [
   // ▸ HIER STAND "Die Basis einer guten Versorgung", ein kostenloses Heft bei
   //   alfima. Am 02.09.2026 entfernt: Die Adresse antwortet mit 404, das
@@ -34,19 +39,19 @@ export const fuerDeinPferd: Angebot[] = [
     url: "/mineral-klarheit",
   },
   {
+    name: "Ganzjahresfutterplan",
+    untertitel: "Ganzheitlich durchs Jahr",
+    // Am 02.09.2026 von 29 auf 59 € angehoben, siehe lib/digital.ts.
+    preis: "59 €",
+    url: "/ganzjahresfutterplan",
+  },
+  {
     name: "RatioPro",
     untertitel: "Die einfache Rationsberechnung für dein Pferd",
     // Regulaer 99 €, zurzeit 69 €. Die Liste zeigt bewusst nur eine Zahl,
     // pro Zeile ist nur fuer eine Platz.
     preis: "69 €",
     url: "/ratiopro",
-  },
-  {
-    name: "Ganzjahresfutterplan",
-    untertitel: "Ganzheitlich durchs Jahr",
-    // Am 02.09.2026 von 29 auf 59 € angehoben, siehe lib/digital.ts.
-    preis: "59 €",
-    url: "/ganzjahresfutterplan",
   },
   // Die Beratung hat seit dem 03.09.2026 eine Treppe. Hier stehen bewusst nur
   // zwei Stufen: der Einstieg und das große Angebot. Nachberatung (69 €),
@@ -76,7 +81,7 @@ type Masterclass = {
   name: string;
   beschreibung: string;
   kennzahlen: { zahl: string; label: string }[];
-  schnupperkurs: { name: string; untertitel: string; url?: string };
+  schnupperkurs: { name: string; untertitel: string };
 };
 
 /** Weg 2 — für angehende Beraterinnen.
@@ -106,11 +111,22 @@ export const masterclass: Masterclass = {
     { zahl: "899 €", label: "einmalig" },
     { zahl: "12", label: "Monate" },
   ],
-  /** Kostenloser Einstieg. Link fehlt noch. */
+  /** Kostenloser Einstieg, nur Beschriftung.
+   *
+   *  ▸ DIE ADRESSE STEHT ABSICHTLICH NICHT HIER, sondern als
+   *    `schnupperkurs` in lib/ausbildung.ts. Bis zum 09.09.2026 lag sie
+   *    doppelt im Haus, hier und dort. Wer den Schnupperkurs auf die eigene
+   *    Seite umzieht, hätte nur eine der beiden geändert, und die Startseite
+   *    wäre still weiter bei alfima gelandet.
+   *
+   *    Diese Datei darf lib/ausbildung.ts NICHT importieren: next.config.ts
+   *    zieht lib/angebote.ts über lib/blog.ts mit herein, und der
+   *    Config-Übersetzer von Next scheitert dann an lib/ausbildung.ts, der
+   *    Server startet gar nicht mehr. Am 09.09.2026 ausprobiert. Die
+   *    Startseite holt die Adresse deshalb erst in components/WegeSection.tsx. */
   schnupperkurs: {
     name: "Kostenloser Schnupperkurs",
     untertitel: "Schau erst rein, bevor du dich entscheidest",
-    url: "https://alfima.com/pferdeliebehealthy/kostenloser-einblick-in-die-ausbildung-zur-ganzheitlichen-pferdefutterung",
   },
 };
 

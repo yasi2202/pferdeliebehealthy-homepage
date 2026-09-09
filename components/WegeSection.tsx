@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { fuerDeinPferd, masterclass } from "@/lib/angebote";
+import { ausbildung } from "@/lib/ausbildung";
 import { futterCheck } from "@/lib/seite";
 
 // ---------------------------------------------------------------------------
@@ -15,6 +16,38 @@ import { futterCheck } from "@/lib/seite";
 // ---------------------------------------------------------------------------
 
 export default function WegeSection() {
+  // ▸ SEIT DEM 09.09.2026 IST DER SCHNUPPERKURS-KASTEN SELBST EIN LINK.
+  //   Vorher stand dort nur Text, und der einzige Knopf der Ausbildungs-Box
+  //   führte auf /ausbildung. Wer direkt reinschnuppern wollte, musste sich
+  //   erst durchklicken, obwohl der Kasten „Kostenlos reinschnuppern" heißt.
+  //
+  //   Die Adresse kommt aus lib/ausbildung.ts, also dieselbe, die auch die
+  //   beiden Knöpfe auf /ausbildung benutzen. Sie darf NICHT nach
+  //   lib/angebote.ts wandern, die Begründung steht dort. Ist sie leer,
+  //   bleibt der Kasten stummer Text statt eines toten Links.
+  const schnupperkurs = masterclass.schnupperkurs;
+  const schnupperUrl = ausbildung.schnupperkurs;
+
+  const schnupperInhalt = (
+    <>
+      <div className="text-[11px] tracking-[0.14em] uppercase text-pfirsich font-semibold mb-2">
+        Kostenlos reinschnuppern
+      </div>
+      <div className="text-[15.5px] font-medium">{schnupperkurs.name}</div>
+      <div className="text-[13.5px] text-cream/70 mt-1">
+        {schnupperkurs.untertitel}
+      </div>
+      {schnupperUrl && (
+        <div className="mt-3.5 text-[13.5px] font-medium text-pfirsich underline decoration-pfirsich/50 underline-offset-4 group-hover:decoration-pfirsich">
+          Direkt reinschauen
+        </div>
+      )}
+    </>
+  );
+
+  const schnupperKlassen =
+    "bg-cream/10 border border-cream/20 rounded-xl p-5 mb-7 flex-grow";
+
   return (
     <section id="wege" className="py-20 sm:py-24">
       <div className="max-w-6xl mx-auto px-6 sm:px-8">
@@ -151,17 +184,18 @@ export default function WegeSection() {
             </div>
 
             {/* Der kostenlose Einstieg, optisch abgesetzt */}
-            <div className="bg-cream/10 border border-cream/20 rounded-xl p-5 mb-7 flex-grow">
-              <div className="text-[11px] tracking-[0.14em] uppercase text-pfirsich font-semibold mb-2">
-                Kostenlos reinschnuppern
-              </div>
-              <div className="text-[15.5px] font-medium">
-                {masterclass.schnupperkurs.name}
-              </div>
-              <div className="text-[13.5px] text-cream/70 mt-1">
-                {masterclass.schnupperkurs.untertitel}
-              </div>
-            </div>
+            {schnupperUrl ? (
+              <a
+                href={schnupperUrl}
+                target="_blank"
+                rel="noopener"
+                className={`group block transition-colors hover:bg-cream/[0.16] hover:border-cream/40 ${schnupperKlassen}`}
+              >
+                {schnupperInhalt}
+              </a>
+            ) : (
+              <div className={schnupperKlassen}>{schnupperInhalt}</div>
+            )}
 
             {/* Der Knopf führt seit 27.08.2026 auf die eigene Seite /ausbildung
                 und nicht mehr direkt zu alfima. Grund: Dort steht erklärt,
