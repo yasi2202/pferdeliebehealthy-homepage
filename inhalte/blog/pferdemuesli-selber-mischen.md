@@ -29,7 +29,7 @@ Nährwerte je Kilo, die Menge, die ich davon füttere, und ein ehrlicher
 Abschnitt darüber, was dieses Müsli **nicht** leistet. Denn das ist der Teil,
 den die Ratgeberseiten der Hersteller gern weglassen.
 
-## Das Rezept
+## Was kommt in ein selbst gemischtes Pferdemüsli?
 
 Das Rezept besteht aus sechs Zutaten und ergibt 9,325 kg fertige Mischung:
 4 kg Luzerne-Pellets, 4 kg Grünhafer-Pellets, 500 g Sonnenblumenkerne, 500 g
@@ -62,7 +62,7 @@ Transport nach oben ab, also vor jedem Abfüllen nochmal umrühren. Gefüttert
 wird trocken oder eingeweicht, beide Pelletsorten quellen in kaltem Wasser
 auf.
 
-## Die Nährwerte je Kilo
+## Wie viel Zucker, Eiweiß und Energie hat das Müsli?
 
 Ein Kilo dieser Mischung enthält 275 g Rohfaser, 129 g Rohprotein, 43,2 g
 Zucker und 5,42 MJ umsetzbare Energie, dazu 6,44 g Calcium und 2,43 g
@@ -102,7 +102,7 @@ gegenrechnen, denn Getreide kippt das Verhältnis in die andere Richtung.
 Datenbank liegen zwischen 8,6 und 11,7 MJ. Das ist kein Mangel, sondern die Bauart: Hier sind
 Raufutterpellets die Basis und kein Getreide.
 
-## Warum Luzerne und Grünhafer die Basis sind
+## Warum sind Luzerne und Grünhafer die Basis?
 
 86 % der Mischung sind Raufutterpellets, und das ist die eigentliche
 Entscheidung an diesem Rezept. Luzerne bringt das Eiweiß, 18,1 % Rohprotein
@@ -127,14 +127,12 @@ Dasselbe gilt übrigens für gute
 [Heucobs](/blog/heucobs-worauf-man-beim-kauf-achten-sollte), die man statt der
 Luzerne nehmen kann, wenn ein Pferd mit Eiweiß sparsam umgehen soll.
 
-## Was Kerne, Blüten und Beeren wirklich beitragen
+## Was bringen Sonnenblumenkerne, Ringelblume und Hibiskus?
 
 Kerne, Blüten und Beeren machen zusammen 14,2 % der Mischung aus und tragen
 nährstofflich wenig bei. Die Sonnenblumenkerne liefern Fett und Vitamin E, die
 beiden Blüten Farbe und Geschmack, die Heidelbeeren nichts als Optik. Wer
 mehr davon erwartet, kauft die Werbung mit und nicht das Futter.
-
-Jetzt also der Teil, bei dem ich ehrlicher bin als die Verpackungen im Regal.
 
 **Sonnenblumenkerne, 500 g.** Sie sind die einzige fettreiche Zutat und
 liefern Vitamin E. Sie sind aber auch sehr einseitig bei den Fettsäuren, rund
@@ -202,7 +200,7 @@ Selbstmischung kennst du jede Zutat und jeden Gramm, und du kannst eine davon
 tauschen, ohne alles andere aufzugeben. Mehr dazu steht im Beitrag
 [ohne Industriefutter füttern](/blog/wie-kann-ich-mein-pferd-ohne-industriefutter-gesund-ernaehren).
 
-## Was dieses Müsli nicht kann
+## Ersetzt selbst gemischtes Müsli das Mineralfutter?
 
 Dieses Müsli ersetzt kein Mineralfutter, nicht annähernd. Eine Portion von
 500 g deckt beim 500-Kilo-Pferd 1,7 % des Zinkbedarfs und 2,2 % des
@@ -281,7 +279,7 @@ Luzerneprodukt kannte.
 Und das Grundsätzliche: Heu bleibt die Basis. Ein Müsli ist eine Ergänzung
 obendrauf und ersetzt kein Kilo Raufutter.
 
-## Woher ich die Zutaten beziehe
+## Wo kaufe ich die Zutaten fürs Pferdemüsli?
 
 Die beiden Pellets kommen vom Biohof Elmengrund, die beiden Blüten von Hotte
 Maxe, Sonnenblumenkerne und Heidelbeeren aus dem Futtermittelhandel.
@@ -328,7 +326,11 @@ dem Backregal gehört nicht in den Trog.
 ## Wann ein Tierarzt gefragt ist
 
 Ein selbst gemischtes Müsli ist eine Fütterungsentscheidung, keine Behandlung.
-Zur Tierärztin gehst du unabhängig davon, und zwar:
+Bei Koliksymptomen, Fieber oder plötzlicher Futterverweigerung rufst du sofort
+die Tierärztin und nicht den Futterberater. Hat dein Pferd eine Vorerkrankung,
+besprichst du jede Rationsumstellung vorher mit ihr.
+
+Unabhängig vom Futter gehört dein Pferd in tierärztliche Hände:
 
 - wenn dein Pferd trotz ausreichender Ration abnimmt oder deutlich zunimmt
 - bei wiederkehrendem Kotwasser, Durchfall oder Koliksymptomen
