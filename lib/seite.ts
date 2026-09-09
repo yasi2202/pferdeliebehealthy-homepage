@@ -9,8 +9,16 @@ export const mitgliederbereich = {
   //
   // ▸ HIER MUSST DU RAN, sobald die Akademie eine eigene Domain bekommt
   //   (z. B. https://akademie.pferdeliebehealthy.de/login): einfach die
-  //   Adresse hier austauschen, der Knopf im Mitglieder-Streifen folgt
-  //   automatisch.
+  //   Adresse hier austauschen, alle vier Wege in die Akademie folgen
+  //   automatisch (Kopfzeile, Klappmenü, Schloss-Symbol, Mitglieder-Streifen).
+  //
+  //   ▸ DAS IST NUR DIE HALBE MIETE. Diese Zeile steuert nur die Links VON
+  //     der Website AUS. Die Links, die die Akademie selbst verschickt, also
+  //     Anmeldelinks, Erinnerungen, Rechnungen, und die Adresse unten auf der
+  //     Urkunde, hängen an der Einstellung BASE_URL im Vercel-Projekt
+  //     `akademieapp`. Wird nur hier getauscht und BASE_URL vergessen,
+  //     schickt die Akademie ihre Kundinnen weiter auf die alte Adresse.
+  //     Reihenfolge: erst Domain in Vercel, dann BASE_URL, dann diese Zeile.
   url: "https://akademieapp.vercel.app/login",
 };
 
