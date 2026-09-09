@@ -119,6 +119,20 @@ export default function Agb() {
         ursprünglich genutzten Zahlungsweg.
       </p>
 
+      {/* ▸ DAS PDF LIEGT IN public/ und wird mit
+          „05 Rechtliches und ZFU/AGB-Besondere-Bestimmungen-bauen.py“ gebaut.
+          Es ist wortgleich mit diesem § 6, und das muss es bleiben: Wer den
+          Text hier ändert, baut das Blatt neu und legt es wieder in public/.
+          Der Dateiname traegt bewusst kein Datum, damit der Link stehen
+          bleibt. */}
+      <p>
+        Diese besonderen Bestimmungen gibt es auch als{" "}
+        <a href="/Besondere-Bestimmungen-Futterberatung.pdf">
+          PDF zum Ausdrucken
+        </a>
+        .
+      </p>
+
       {/* ▸ HIER STANDEN BIS ZUM 02.09.2026 PayPal, Klarna, Ratepay und
           Überweisung. Ratepay und Überweisung gab es nie, die Kreditkarte
           fehlte. Bezahlt wird ausschliesslich über Stripe, und welche Wege
