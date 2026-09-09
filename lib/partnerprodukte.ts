@@ -189,6 +189,30 @@ export const partnerprodukte: Partnerprodukt[] = [
     kurz: "Brennnessel als sortenreine Pellets.",
   },
 
+  // Die beiden Blüten sind am 09.09.2026 im Shop geprüft worden, beide
+  // sofort versandfertig. Ringelblume gibt es in 100 g, 500 g, 1 kg und 7 kg,
+  // Hibiskus in 150 g, 500 g und 1 kg. Sie sind die Kräuter aus dem
+  // Müsli-Rezept in inhalte/blog/pferdemuesli-selber-mischen.md.
+  //
+  // ACHTUNG beim Hibiskus: Hotte Maxe empfiehlt ihn ausdrücklich nur
+  // "für bis zu sechs Wochen". Diese Grenze gehört in jeden Text, in dem
+  // der Kasten steht, sonst empfiehlt der Beitrag eine Dauerfütterung, von
+  // der der Hersteller selbst abrät.
+  {
+    schluessel: "hotte-maxe-ringelblume",
+    partner: "Hotte Maxe",
+    name: "Ringelblumenblüten mit Kelch, getrocknet",
+    url: "https://www.hottemaxe.de/ringelblumenblueten-mit-kelch-getrocknet-ganz-383",
+    kurz: "Ganze getrocknete Ringelblumenblüten mit Kelch. Der Hersteller empfiehlt 20 bis 30 g am Tag für ein Pferd von 500 kg.",
+  },
+  {
+    schluessel: "hotte-maxe-hibiskus",
+    partner: "Hotte Maxe",
+    name: "Hibiskusblüten, getrocknet",
+    url: "https://www.hottemaxe.de/hibiskusblueten-getrocknet-ganz-385",
+    kurz: "Ganze getrocknete Hibiskusblüten, säuerlich im Geschmack. Der Hersteller empfiehlt 25 g am Tag für ein Pferd von 500 kg, und das nur für bis zu sechs Wochen.",
+  },
+
   // Ohne Produktadresse: Diese Shops geben ihre Produktseiten nicht so
   // preis, dass ich sie sicher prüfen konnte. Der Kasten verlinkt deshalb
   // auf den Shop. Trag die Adresse ein, wenn du sie zur Hand hast.
@@ -215,6 +239,24 @@ export const partnerprodukte: Partnerprodukt[] = [
     partner: "Biohof Elmengrund",
     name: "Kräuter-Heucobs",
     kurz: "Heucobs aus Kräuterheu vom eigenen Hof, in Bio-Qualität.",
+  },
+  // Die beiden FeedFix-Pellets sind am 09.09.2026 im Shop geprüft worden:
+  // Futterprobe 4 kg und Einzelsack 20 kg, beide lieferbar. Verlinkt ist die
+  // Produktseite, dort wählt man die Menge selbst. Die 4-Kilo-Probe ist genau
+  // die Menge, die ins Müsli-Rezept geht.
+  {
+    schluessel: "elmengrund-luzerne-pellets",
+    partner: "Biohof Elmengrund",
+    name: "BIO Luzerne-Pellets (feed fix)",
+    url: "https://biohof-elmengrund.de/products/bio-luzerne-pellets-feedfix-trocken-futtern",
+    kurz: "Die ganze Luzernepflanze, warmluftgetrocknet und kurzfaserig pelletiert. Für die Trockenverfütterung freigegeben, quillt aber auch in kaltem Wasser auf.",
+  },
+  {
+    schluessel: "elmengrund-gruenhafer-pellets",
+    partner: "Biohof Elmengrund",
+    name: "BIO Grünhafer-Pellets (feed fix)",
+    url: "https://biohof-elmengrund.de/products/bio-grunhafer-pellets-feedfix-trocken-futtern",
+    kurz: "Die ganze Haferpflanze, kurz nach der Blüte geerntet und kurzfaserig pelletiert. Strukturreich und stark reduziert in der Stärke.",
   },
   // Die beiden Strohsorten sind am 04.09.2026 im Shop geprüft worden:
   // einzelner Probeballen von rund 11 kg, Kleinballen nur als Palette mit
