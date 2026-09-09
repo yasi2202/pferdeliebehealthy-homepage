@@ -5,7 +5,7 @@ aktualisiert:
 kategorie: "Heu und Grundfutter"
 angebot: "ratiopro"
 bild: "/images/blog/muesli-aus-der-hand.webp"
-bildText: "Ein Brauner nimmt das fertige Müsli aus der Hand. Zwischen den grünen Pellets sind die orangen Ringelblumen und die dunkelroten Hibiskusblüten zu erkennen."
+bildText: ""
 bildBreit: false
 beschreibung: "Luzerne, Grünhafer, Sonnenblumenkerne und drei Kräuter: das Rezept für mein Fit Müsli, alle Nährwerte dazu und ehrlich, was es nicht kann."
 ---
@@ -20,12 +20,21 @@ Vergleich: Von den elf Fertigmüslis, die in meiner Futtermitteldatenbank
 stehen, liegt der Zucker im Mittel bei 6,2 %, und beim Rohfasergehalt kommt
 keines an diese Mischung heran.
 
+Ich bin Ernährungsberaterin für Pferde und rechne jede Ration durch, bevor sie
+im Trog landet. Genau so ist dieses Rezept entstanden, nicht aus einer Idee,
+sondern aus den veröffentlichten Analysen der Einzelzutaten.
+
 Was du unten bekommst, ist das komplette Rezept, die durchgerechneten
 Nährwerte je Kilo, die Menge, die ich davon füttere, und ein ehrlicher
 Abschnitt darüber, was dieses Müsli **nicht** leistet. Denn das ist der Teil,
 den die Ratgeberseiten der Hersteller gern weglassen.
 
 ## Das Rezept
+
+Das Rezept besteht aus sechs Zutaten und ergibt 9,325 kg fertige Mischung:
+4 kg Luzerne-Pellets, 4 kg Grünhafer-Pellets, 500 g Sonnenblumenkerne, 500 g
+Ringelblumenblüten, 300 g Hibiskusblüten und 25 g getrocknete Heidelbeeren.
+Alles wird trocken gemischt, nichts gekocht, nichts vorbereitet.
 
 | Zutat | Menge | Anteil |
 |---|---|---|
@@ -54,6 +63,11 @@ wird trocken oder eingeweicht, beide Pelletsorten quellen in kaltem Wasser
 auf.
 
 ## Die Nährwerte je Kilo
+
+Ein Kilo dieser Mischung enthält 275 g Rohfaser, 129 g Rohprotein, 43,2 g
+Zucker und 5,42 MJ umsetzbare Energie, dazu 6,44 g Calcium und 2,43 g
+Phosphor. Damit ist sie faserreicher und deutlich energieärmer als jedes
+Fertigmüsli in meiner Datenbank, und beides ist Absicht.
 
 Ich habe die Mischung nicht ins Labor geschickt, sondern aus den Analysen der
 Einzelkomponenten hochgerechnet, gewichtet nach ihrem Anteil an den 9.325 g.
@@ -91,7 +105,10 @@ Raufutterpellets die Basis und kein Getreide.
 ## Warum Luzerne und Grünhafer die Basis sind
 
 86 % der Mischung sind Raufutterpellets, und das ist die eigentliche
-Entscheidung an diesem Rezept.
+Entscheidung an diesem Rezept. Luzerne bringt das Eiweiß, 18,1 % Rohprotein
+und 12,5 g Calcium je Kilo. Grünhafer bringt die Struktur, 30,4 % Rohfaser bei
+nur 8,4 % Rohprotein. Getreide ist keins drin, und genau deshalb bleibt die
+Stärke unten.
 
 **Luzerne** ist eine Leguminose und bringt das Eiweiß mit, 18,1 % Rohprotein,
 davon 13,1 % verdaulich. Dazu 12,5 g Calcium je Kilo. Sie ist der Grund, warum
@@ -113,7 +130,13 @@ Luzerne nehmen kann, wenn ein Pferd mit Eiweiß sparsam umgehen soll.
 
 ## Was Kerne, Blüten und Beeren wirklich beitragen
 
-Jetzt der Teil, bei dem ich ehrlicher sein will als die Verpackungen im Regal.
+Kerne, Blüten und Beeren machen zusammen 14,3 % der Mischung aus und tragen
+nährstofflich wenig bei. Die Sonnenblumenkerne liefern Fett und Vitamin E, die
+beiden Blüten Farbe und Geschmack, die Heidelbeeren nichts als Optik. Das ist
+ein legitimer Grund, er sollte nur so dastehen und nicht als
+Gesundheitsversprechen verkleidet.
+
+Jetzt also der Teil, bei dem ich ehrlicher bin als die Verpackungen im Regal.
 
 **Sonnenblumenkerne, 500 g.** Sie sind die einzige fettreiche Zutat und
 liefern Vitamin E. Sie sind aber auch sehr einseitig bei den Fettsäuren, rund
@@ -152,7 +175,12 @@ Wenn du im Turniersport startest, gleichst du die Kräuter vorher mit der
 ADMR-Liste deines Verbandes ab. Das gilt für jede Kräutermischung, nicht nur
 für diese.
 
-## Der Vergleich mit gekauftem Müsli
+## Ist selbst gemischtes Müsli besser als gekauftes?
+
+Gemessen an elf Fertigmüslis aus meiner Futtermitteldatenbank liegt diese
+Mischung bei der Rohfaser über allen elf (27,5 % gegen 16,7 % im Mittel), beim
+Zucker unter sieben von neun (4,3 % gegen 6,2 %) und bei der Energie mit
+5,42 MJ weit darunter. Beim Eiweiß liegt sie im Mittelfeld.
 
 In meiner Futtermitteldatenbank stehen elf Fertigmüslis, die Teilnehmerinnen
 selbst vom Sack abgetippt haben. Neun davon haben eine Zuckerangabe. So sieht
@@ -166,10 +194,6 @@ der Vergleich aus:
 | Rohprotein | 9,3 bis 18,0 % | 13,5 % | 12,9 % |
 | Energie | 8,6 bis 11,7 MJ | 10,0 MJ | 5,42 MJ |
 
-Beim Rohfasergehalt liegt diese Mischung über allen elf, beim Zucker unter
-sieben von neun. Beim Eiweiß liegt sie knapp unter dem Mittel, bei der Energie
-mit Abstand darunter.
-
 Zwei Einschränkungen gehören dazu. Erstens ist die Datenbank keine
 Laborreihe, sondern Etikettenwerte, und Etiketten haben Lücken. Zweitens sind
 elf Müslis kein Marktüberblick. Es ist ein Anhaltspunkt, keine Studie.
@@ -181,6 +205,11 @@ tauschen, ohne alles andere aufzugeben. Mehr dazu steht im Beitrag
 [ohne Industriefutter füttern](/blog/wie-kann-ich-mein-pferd-ohne-industriefutter-gesund-ernaehren).
 
 ## Was dieses Müsli nicht kann
+
+Dieses Müsli ersetzt kein Mineralfutter, nicht annähernd. Eine Portion von
+500 g deckt beim 500-Kilo-Pferd 1,7 % des Zinkbedarfs und 2,2 % des
+Kupferbedarfs. Bei Eiweiß und Calcium sind es 14 und 18 %, bei der Energie
+5 %. Es ist ein Struktur- und Eiweißfutter, mehr nicht.
 
 Das ist der wichtigste Abschnitt auf dieser Seite.
 
