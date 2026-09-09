@@ -116,6 +116,19 @@ export const partnerprodukte: Partnerprodukt[] = [
     kurz: "Luftdurchlässiger Wundschutz, der Fliegen fernhält. Die Alternative zum Farbspray im Sommer.",
   },
   {
+    // Das Set aus den drei Produkten oben. Susan Bär hat es am 09.09.2026
+    // vorgeschlagen: Wer die drei Schritte einzeln zusammensuchen muss,
+    // bricht unterwegs ab. Deshalb steht der Kasten am Ende der
+    // Schritt-für-Schritt-Anleitung, zusätzlich zu den Einzelkästen.
+    schluessel: "baeralis-stallapotheke",
+    partner: "Bäralis",
+    art: "pflege",
+    name: "Stallapotheke BASIS",
+    url: "https://baeralis.de/stallapotheke-mit-pferdepflaster-pferd?number=1092&sPartner=d1c04513",
+    kurz: "Haut-Talent, Hydro-Gel und Pferde-Pflaster als Set, günstiger als die drei Teile einzeln.",
+    biozid: true,
+  },
+  {
     // Oregano gibt es bei beiden Partnern, aber nicht als dasselbe Produkt:
     // Der "Kretische Oregano" ist der von PerNaturam, Mo's Grun führt
     // Pellets. Von Yasemin am 02.09.2026 richtiggestellt.
