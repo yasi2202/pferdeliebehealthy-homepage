@@ -19,12 +19,49 @@ import WarenkorbLade from "@/components/WarenkorbLade";
 // Vorher standen hier <link>-Tags auf fonts.googleapis.com.
 // ---------------------------------------------------------------------------
 
+// ---------------------------------------------------------------------------
+// Warum die Kursive einen eigenen Aufruf hat (09.09.2026)
+//
+// Vorher stand hier ein einziger Aufruf mit style: ["normal", "italic"].
+// next/font laedt dann beide Schnitte vorab, und der Kursivschnitt von
+// Fraunces ist mit 80 KB die groesste Datei der ganzen Startseite. Zusammen
+// mit den beiden anderen Schriften hingen 200 KB vor dem Heldenfoto in der
+// Leitung, und genau darauf wartete die Seite: Das Foto war messbar nach
+// einer halben Sekunde geladen und wurde trotzdem erst nach vier Sekunden
+// gezeichnet.
+//
+// Kursiv steht auf der ganzen Seite an drei Stellen: das hervorgehobene Wort
+// in der Ueberschrift, der Satz darunter, die Kundenstimmen. Dafuer 80 KB
+// vorab zu laden, ist zu teuer. preload: false laedt den Schnitt erst, wenn
+// die Seite ihn wirklich braucht.
+//
+// Sichtbar aendert das nichts: display "swap" und der massgeschneiderte
+// Ersatz (size-adjust, ascent-override) sorgen dafuer, dass der Text sofort
+// dasteht, an derselben Stelle und in derselben Groesse, und die echte
+// Kursive einen Wimpernschlag spaeter einrastet. Die Messung zeigt dafuer
+// keine Verschiebung (CLS bleibt 0).
+//
+// Zwei getrennte Aufrufe heissen zwei getrennte Schriftfamilien. Kursiver
+// Text muss deshalb die Klasse .serif-kursiv tragen (in app/globals.css),
+// ein blosses "italic" greift auf die aufrechte Familie zu und der Browser
+// wuerde sie schraeg stellen statt die echte Kursive zu nehmen.
+// ---------------------------------------------------------------------------
+
 const fraunces = Fraunces({
   subsets: ["latin"],
-  style: ["normal", "italic"],
+  style: ["normal"],
   axes: ["opsz"],
   display: "swap",
   variable: "--font-fraunces",
+});
+
+const frauncesKursiv = Fraunces({
+  subsets: ["latin"],
+  style: ["italic"],
+  axes: ["opsz"],
+  display: "swap",
+  preload: false,
+  variable: "--font-fraunces-kursiv",
 });
 
 const workSans = Work_Sans({
@@ -193,7 +230,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="de" className={`${fraunces.variable} ${workSans.variable}`}>
+    <html
+      lang="de"
+      className={`${fraunces.variable} ${frauncesKursiv.variable} ${workSans.variable}`}
+    >
       <body className="font-sans antialiased text-ink bg-cream">
         <script
           type="application/ld+json"

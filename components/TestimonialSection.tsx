@@ -42,7 +42,7 @@ export default function TestimonialSection() {
               className="bg-cream-deep rounded-[18px] p-9 sm:p-12 flex flex-col"
             >
               <blockquote
-                className={`font-serif italic leading-snug flex-grow ${
+                className={`serif-kursiv leading-snug flex-grow ${
                   einzeln ? "text-[22px] max-w-2xl" : "text-[19px]"
                 }`}
               >

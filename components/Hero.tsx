@@ -55,14 +55,14 @@ export default function Hero() {
                 die verkauft, ist mehr wert als eine, die Begriffe aufzählt. */}
             <h1 className="font-serif font-normal text-cream text-[34px] sm:text-5xl lg:text-[52px] leading-[1.12] tracking-tight mb-6">
               Dein Pferd verdient keine{" "}
-              <em className="italic text-cream underline decoration-gold decoration-2 underline-offset-[6px]">
+              <em className="serif-kursiv text-cream underline decoration-gold decoration-2 underline-offset-[6px]">
                 Vermutungen
               </em>
               , sondern eine Fütterung, die wirklich trägt
             </h1>
 
             {/* Der Slogan stand bisher versteckt unter „Über mich". */}
-            <p className="font-serif italic text-cream text-[19px] sm:text-[22px] mb-7">
+            <p className="serif-kursiv text-cream text-[19px] sm:text-[22px] mb-7">
               Dein Pferd, gut versorgt. Dein Wissen, gut fundiert.
             </p>
 

@@ -63,6 +63,60 @@ body {
   transform: translateY(0);
 }
 
+/* ---------------------------------------------------------------------------
+   Abschnitte, die weit unter der Bildschirmkante liegen (seit 09.09.2026)
+
+   Die Startseite ist auf dem Handy rund 16.600 Pixel hoch. Ein Browser rechnet
+   davon beim Aufbau erst einmal alles durch: Groessen, Positionen, Schriften,
+   jede einzelne Kachel ganz unten. Erst danach kommt er dazu, oben das erste
+   Bild zu malen. Genau das hat die Messung gezeigt: Das Foto von Yasi und
+   Helena war nach einer halben Sekunde fertig geladen und wurde trotzdem erst
+   nach vier Sekunden sichtbar.
+
+   content-visibility: auto sagt dem Browser, dass er einen Abschnitt
+   ueberspringen darf, solange er nicht in die Naehe des Bildschirms kommt.
+   contain-intrinsic-size gibt ihm dafuer eine Platzschaetzung, damit die
+   Bildlaufleiste stimmt; das Schluesselwort auto laesst ihn die einmal
+   gemessene echte Hoehe behalten.
+
+   Drei Dinge, die man wissen muss, wenn man das auf weitere Abschnitte
+   ausweitet:
+   - Ein so ausgezeichneter Abschnitt schneidet ab, was ueber seinen Rand
+     hinausragt. Abschnitte mit negativem Aussenabstand oder Schmuck, der
+     bewusst ueberlappt, duerfen die Klasse deshalb NICHT bekommen. Der
+     RatioPro-Kasten ist so einer, er schiebt sich mit -mt-10 ins Heldenbild.
+   - Was uebersprungen wird, findet die Suche im Browser (Strg+F) trotzdem,
+     und Sprungmarken wie #ueber-mich funktionieren weiter.
+   - Jeder Abschnitt braucht in app/page.tsx seine eigene Platzschaetzung
+     (--geschaetzte-hoehe). Ohne sie nimmt der Browser den Ersatzwert, und
+     wenn der danebenliegt, waechst oder schrumpft die Seite beim ersten
+     Durchscrollen unter der Bildlaufleiste. Bei einer pauschalen Schaetzung
+     von 900px waren das 3.900 Pixel Unterschied.
+--------------------------------------------------------------------------- */
+.spaeter-zeichnen {
+  content-visibility: auto;
+  contain-intrinsic-size: auto var(--geschaetzte-hoehe, 1200px);
+}
+
+/* Auf breiten Bildschirmen laufen dieselben Abschnitte in mehreren Spalten
+   und sind dadurch rund 60 Prozent so hoch wie auf dem Handy. Die Schaetzung
+   wird mitskaliert, sonst waere sie hier genauso falsch wie vorher, nur
+   andersherum. */
+@media (min-width: 1024px) {
+  .spaeter-zeichnen {
+    contain-intrinsic-size: auto calc(var(--geschaetzte-hoehe, 1200px) * 0.62);
+  }
+}
+
+/* Kursive Fraunces. Sie kommt aus einem eigenen Schriftaufruf, der nicht
+   vorab geladen wird (Begruendung in app/layout.tsx), und liegt deshalb in
+   einer eigenen Schriftfamilie. Ueberall, wo Text in kursiver Fraunces
+   stehen soll, gehoert diese Klasse hin statt eines blossen "italic". */
+.serif-kursiv {
+  font-family: var(--font-fraunces-kursiv), Georgia, serif;
+  font-style: italic;
+}
+
 /* --- Insider-Beiträge: Formatierung des Textes aus den Markdown-Dateien --- */
 .beitrag-prose {
   font-size: 17px;
@@ -117,7 +171,7 @@ body {
   border-left: 3px solid var(--rose);
   padding: 4px 0 4px 22px;
   margin: 30px 0;
-  font-family: var(--font-fraunces), Georgia, serif;
+  font-family: var(--font-fraunces-kursiv), Georgia, serif;
   font-style: italic;
   font-size: 20px;
   line-height: 1.5;
