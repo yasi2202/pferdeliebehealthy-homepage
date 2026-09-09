@@ -71,6 +71,10 @@ export const ausbildung = {
    *    (Ein Zwischenstand am selben Tag nannte 122, das war falsch: Die Zahl
    *    kam aus einer Abfrage ohne den Filter auf `is_published`.)
    *
+   *  ▸ AM 09.09.2026 AUF 121: Zehn der elf Entwürfe sind freigeschaltet
+   *    worden. Als Entwurf bleibt nur die Musterlösung zur Abschlussprüfung,
+   *    die die Teilnehmerinnen nicht sehen sollen.
+   *
    *  ▸ WIRD EINE DER ELF FREIGESCHALTET, steigt die Zahl. Dann hier
    *    nachziehen und das PDF neu drucken, beides zusammen.
    *
@@ -78,7 +82,7 @@ export const ausbildung = {
    *    in akademieapp `node scripts/lehrplan.mjs`. Es holt die Lektionstitel
    *    live aus der Akademie und schreibt das PDF nach public/. Sonst nennt
    *    die Seite eine Zahl, die der Lehrplan darunter nicht bestätigt. */
-  lektionen: 111,
+  lektionen: 121,
 
   // Das Feld `plattform` stand hier bis zum 08.09.2026 und hielt die Adresse
   // der Akademie. Entfernt: Sie steht jetzt nur noch als `mitgliederbereich`
@@ -175,7 +179,7 @@ export const module: Modul[] = [
     verb: "Verstehen",
     titel: "Wie der Pferdekörper funktioniert",
     text: "Von der Zelle bis zum Huf: Stoffwechselorgane, Verdauung, Zähne, Kreislauf, Haut und Nervensystem. Und wie diese Systeme zusammenarbeiten, statt einzeln betrachtet zu werden.",
-    lektionen: 11,
+    lektionen: 12,
   },
   {
     nummer: 2,
@@ -198,21 +202,21 @@ export const module: Modul[] = [
     verb: "Erkennen",
     titel: "Sichtanalyse und körperliche Hinweise",
     text: "Ein Pferd lesen, bevor ein Blutbild auffällig wird: Fellbild, Hufqualität, Bemuskelung, Körperhaltung, Schleimhäute. Dazu die häufigsten Fehldeutungen und eine Übung an echten Pferdebildern.",
-    lektionen: 9,
+    lektionen: 11,
   },
   {
     nummer: 5,
     verb: "Diagnostizieren",
     titel: "Befunde, Frühmarker und Analysen",
     text: "Heuanalysen, Fellmineralanalysen, Blutbilder, Kotbefunde, Allergietests und Urintests selbstständig auswerten. Und Frühmarker erkennen, bevor ein Pferd wirklich krank ist.",
-    lektionen: 8,
+    lektionen: 9,
   },
   {
     nummer: 6,
     verb: "Anwenden",
     titel: "Krankheitsbilder und Fütterungsstrategien",
     text: "Das größte Modul: Atemwege, Stoffwechsel, KPU, Haut, Magen und Darm, Muskeln, Leber, Nieren, Parasiten, toxische Belastungen. Dazu zwei durchgerechnete Fallbeispiele aus der Praxis.",
-    lektionen: 36,
+    lektionen: 40,
   },
   {
     nummer: 7,
@@ -226,7 +230,7 @@ export const module: Modul[] = [
     verb: "Beraten",
     titel: "Praxisaufbau und Selbstständigkeit",
     text: "Rechtliche Grundlagen, Beratungsablauf, Umgang mit Kundinnen, Organisation der eigenen Praxis, Sichtbarkeit auf Instagram und wie du neue Forschung selbst einordnest.",
-    lektionen: 10,
+    lektionen: 12,
   },
 ];
 
