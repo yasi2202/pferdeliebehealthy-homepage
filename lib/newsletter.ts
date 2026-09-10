@@ -409,6 +409,9 @@ export function herkunftFuerGruppe(gruppe?: string): string {
   if (gruppe === "warteliste")
     return "Du bekommst diese Mail, weil du dich in die Warteliste für die Ausbildung Ganzheitliche Pferdefütterung eingetragen hast.";
 
+  if (gruppe === "equidesk")
+    return "Du bekommst diese Mail, weil du EquiDesk nutzt.";
+
   if (gruppe === "equidesk-angebot")
     return "Du bekommst diese Mail, weil du dich auf pferdeliebehealthy.de eingetragen hast oder an meiner Ausbildung teilnimmst.";
 
@@ -553,6 +556,7 @@ export type GruppenSchluessel =
   | "fruehere"
   | "warteliste"
   | "equidesk-angebot"
+  | "equidesk"
   | "alle";
 
 export const GRUPPEN: {
@@ -595,6 +599,13 @@ export const GRUPPEN: {
     grundlage: "Warteliste",
     woher:
       "Wer sich für die Ausbildung in eine Warteliste eingetragen hat, bei Tentary, alfima oder ThriveCart, und sie bis heute nicht gekauft hat. Wer inzwischen bucht, fällt automatisch heraus. Nur für Post zur Ausbildung: Die Eintragung ist eine Bitte um Nachricht zu diesem einen Angebot, nicht zu allen.",
+  },
+  {
+    schluessel: "equidesk",
+    name: "EquiDesk-Kundinnen",
+    grundlage: "Bestandskundinnen",
+    woher:
+      "Wer EquiDesk hat, im Abo oder einmalig gekauft. Für Neuigkeiten zu EquiDesk selbst, etwa eine neue Funktion. Kein Angebot für EquiDesk an diese Gruppe, sie hat es ja schon.",
   },
   {
     schluessel: "equidesk-angebot",

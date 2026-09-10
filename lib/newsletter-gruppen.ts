@@ -261,6 +261,19 @@ async function wartelisteAusbildung(): Promise<Empfaenger[] | null> {
   }).map((email) => ({ email, vorname: null }));
 }
 
+/** Wer EquiDesk hat, im Abo oder einmalig gekauft. Für Neuigkeiten zu
+ *  EquiDesk selbst, etwa eine neue Funktion. Dieselben Filter wie bei den
+ *  Kundinnen der Akademie, Widerspruch und stillgelegte Konten fallen raus. */
+async function equideskKundinnen(): Promise<Empfaenger[] | null> {
+  const zeilen = await supabaseAlle<Kursteilnehmerin>(
+    "kursteilnehmer?select=email,aktiv,bereich,zugaenge,notiz,mails_abgemeldet"
+  );
+  if (!zeilen) return null;
+  return zeilen
+    .filter((k) => bekommtPost(k) && Array.isArray(k.zugaenge) && k.zugaenge.includes("equidesk"))
+    .map((k) => ({ email: k.email, vorname: null }));
+}
+
 /** Für das EquiDesk-Angebot vom September 2026: die Eingetragenen und die
  *  Teilnehmerinnen der Ausbildung, ohne alle, die EquiDesk schon haben.
  *
@@ -401,6 +414,11 @@ export async function empfaengerDerGruppe(
       //   Zweig bedeutet „alle zusammen". Eine Gruppe, die hier fehlt,
       //   landet dort und ginge an über 3.000 Menschen statt an 66.
       const a = await wartelisteAusbildung();
+      if (!a) return null;
+      roh = a;
+    } else if (gruppe === "equidesk") {
+      // Auch dieser Zweig muss vor dem `else` stehen, siehe oben.
+      const a = await equideskKundinnen();
       if (!a) return null;
       roh = a;
     } else if (gruppe === "equidesk-angebot") {
