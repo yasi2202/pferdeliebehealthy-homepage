@@ -10,8 +10,8 @@ import {
   streckeLoeschen,
   streckenMailSpeichern,
   streckenMailLoeschen,
-  type Strecke,
 } from "@/lib/newsletter-strecken";
+import { ausloeserPruefen } from "@/lib/strecken-ausloeser";
 
 // ---------------------------------------------------------------------------
 // Die Steuerung der Mailstrecken.
@@ -20,8 +20,6 @@ import {
 // ---------------------------------------------------------------------------
 
 export const runtime = "nodejs";
-
-const AUSLOESER: Strecke["ausloeser"][] = ["insider", "futter-check", "alle"];
 
 export async function POST(request: Request) {
   if (!(await istAngemeldet())) {
@@ -46,8 +44,16 @@ export async function POST(request: Request) {
         return Response.json({ fehler: "Die Strecke braucht einen Namen." }, { status: 400 });
       }
 
-      const ausloeserRoh = kuerzen(daten.ausloeser, 30) as Strecke["ausloeser"];
-      const ausloeser = AUSLOESER.includes(ausloeserRoh) ? ausloeserRoh : "insider";
+      // Ein unbekannter Auslöser wird abgelehnt, nicht still zu „insider".
+      // Genau so ist früher aus einer Stall-Organizer-Strecke eine
+      // Insider-Strecke geworden.
+      const ausloeser = ausloeserPruefen(kuerzen(daten.ausloeser, 80));
+      if (!ausloeser) {
+        return Response.json(
+          { fehler: "Diesen Auslöser gibt es nicht. Bitte aus der Liste wählen." },
+          { status: 400 }
+        );
+      }
 
       const strecke = await streckeAnlegen(name, ausloeser);
       if (!strecke) {

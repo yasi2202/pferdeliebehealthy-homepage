@@ -2,10 +2,12 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { adminEingerichtet, istAngemeldet } from "@/lib/admin-zugang";
 import { streckenHolen, streckenMailsHolen } from "@/lib/newsletter-strecken";
+import { ausloeserText } from "@/lib/strecken-ausloeser";
 import NeueStrecke from "./NeueStrecke";
 
 // ---------------------------------------------------------------------------
-// Die Mailstrecken: Serien, die nach der Anmeldung von selbst loslaufen.
+// Die Mailstrecken: Serien, die nach einer Anmeldung oder einem Kauf von
+// selbst loslaufen.
 // ---------------------------------------------------------------------------
 
 export const dynamic = "force-dynamic";
@@ -13,12 +15,6 @@ export const dynamic = "force-dynamic";
 export const metadata: Metadata = {
   title: "Mailstrecken",
   robots: { index: false, follow: false },
-};
-
-const AUSLOESER_TEXT: Record<string, string> = {
-  insider: "wer sich für den Insider-Kanal einträgt",
-  "futter-check": "wer den Futter-Check macht",
-  alle: "jede neue Anmeldung",
 };
 
 export default async function StreckenSeite() {
@@ -60,9 +56,10 @@ export default async function StreckenSeite() {
         </h1>
 
         <p className="mt-4 text-[16px] leading-relaxed text-ink-soft">
-          Eine Strecke ist eine Kette von Mails, die nach der Anmeldung von
-          selbst losläuft. Mail 1 am ersten Tag, Mail 2 nach drei Tagen, Mail
-          3 nach sieben. So lernt jemand dich kennen, ohne dass du daran
+          Eine Strecke ist eine Kette von Mails, die nach einer Anmeldung oder
+          nach einem Kauf von selbst losläuft. Mail 1 am ersten Tag, Mail 2
+          nach drei Tagen, Mail 3 nach sieben. So lernt jemand dich kennen und
+          findet Schritt für Schritt zum nächsten Angebot, ohne dass du daran
           denken musst.
         </p>
 
@@ -75,6 +72,13 @@ export default async function StreckenSeite() {
             Willkommensgruss an tausend Menschen, die seit Jahren dabei sind.
             Zweitens: Die Mails gehen einmal täglich raus, nicht auf die
             Minute genau. Für eine Willkommensserie reicht das völlig.
+          </p>
+          <p className="mt-3 text-[15px] leading-relaxed text-ink-soft">
+            <strong className="text-ink">Nach einem Kauf</strong> läuft nur
+            hinein, wer zugestimmt hat, Post von dir zu bekommen, beim Kauf
+            oder bei einer Anmeldung. Wer das Beworbene schon hat, überspringt
+            die Mail, dafür ist bei jeder Mail das Feld „Nicht senden, wer das
+            hier schon hat" da.
           </p>
         </div>
 
@@ -113,7 +117,7 @@ export default async function StreckenSeite() {
                       </span>
                     </div>
                     <p className="mt-1.5 text-[14px] text-ink-soft">
-                      Läuft los für {AUSLOESER_TEXT[s.ausloeser] ?? s.ausloeser} ·{" "}
+                      Läuft los für {ausloeserText(s.ausloeser)} ·{" "}
                       {schritte.get(s.id) ?? 0}{" "}
                       {schritte.get(s.id) === 1 ? "Mail" : "Mails"}
                     </p>

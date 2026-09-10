@@ -6,6 +6,7 @@ import {
   type Empfaenger,
 } from "@/lib/newsletter";
 import { abmeldeLink, abmeldeLinkEinKlick } from "@/lib/newsletter-server";
+import { ausloeserKauf, ausloeserTyp, FUTTER_CHECK_TYPEN } from "@/lib/strecken-ausloeser";
 
 // ---------------------------------------------------------------------------
 // Mailstrecken: Serien, die nach der Anmeldung von selbst loslaufen.
@@ -34,7 +35,8 @@ export type Strecke = {
   id: string;
   erstellt_am: string;
   name: string;
-  ausloeser: "insider" | "futter-check" | "stall-organizer" | "alle";
+  /** Wer hineinläuft. Welche Werte es gibt, steht in lib/strecken-ausloeser.ts. */
+  ausloeser: string;
   aktiv: boolean;
   aktiv_seit: string | null;
 };
@@ -76,7 +78,7 @@ export async function streckenMailsHolen(streckeId: string): Promise<StreckenMai
 
 export async function streckeAnlegen(
   name: string,
-  ausloeser: Strecke["ausloeser"]
+  ausloeser: string
 ): Promise<Strecke | null> {
   const res = await supabase("newsletter_strecken", {
     method: "POST",
@@ -159,17 +161,67 @@ export async function streckenMailLoeschen(id: string): Promise<boolean> {
 type Anmeldung = {
   email: string;
   vorname: string | null;
+  /** Ab hier zählen die Tage der Strecke: die Bestätigung der Adresse, bei
+   *  einer Kaufstrecke der Zeitpunkt der Zahlung. */
   bestaetigt_am: string | null;
 };
 
-/** Wer für diese Strecke in Frage kommt: bestätigt, angemeldet nach dem
- *  Einschalten, nicht auf der Sperrliste. */
+/** Alle Adressen, die irgendwo zugestimmt haben, Post zu bekommen. */
+async function einwilligungen(): Promise<Set<string>> {
+  const pfade = [
+    "insider_anmeldungen?bestaetigt=eq.true&select=email",
+    "futter_check_anmeldungen?bestaetigt=eq.true&select=email",
+    "stall_anmeldungen?bestaetigt=eq.true&select=email",
+    "digitalbestellungen?status=eq.bezahlt&newsletter=eq.true&select=email",
+  ];
+  const ja = new Set<string>();
+  for (const pfad of pfade) {
+    for (const z of (await supabaseAlle<{ email: string }>(pfad)) ?? []) {
+      if (z.email) ja.add(z.email.trim().toLowerCase());
+    }
+  }
+  return ja;
+}
+
+/**
+ * Wer ein Produkt nach dem Einschalten gekauft hat, für eine Kaufstrecke.
+ *
+ * ▸ NUR MIT EINWILLIGUNG. Eine Mail, die nach dem Kauf das nächste Produkt
+ *   empfiehlt, ist Werbung. Ohne Einwilligung ginge das nur über die
+ *   Ausnahme für Bestandskundinnen (§ 7 Abs. 3 UWG), und die verlangt schon
+ *   beim Kauf einen Hinweis auf das Widerspruchsrecht, den die Kasse nicht
+ *   gibt. Deshalb zählt nur, wer zugestimmt hat: mit dem Häkchen in der
+ *   Kasse, bei irgendeinem Kauf, oder bei einer bestätigten Anmeldung.
+ *   Stand 10.09.2026 hatten 24 von 53 Käufen das Häkchen.
+ *
+ * ▸ DER UPSELL ZÄHLT MIT. Er ist eine eigene bezahlte Zeile mit demselben
+ *   Artikelfeld, und wer ihn angenommen hat, hat das Produkt gekauft.
+ */
+async function kaeuferinnen(slug: string, aktivSeit: string): Promise<Anmeldung[]> {
+  const artikel = encodeURIComponent(JSON.stringify([{ slug }]));
+  const zeilen = await supabaseAlle<{ email: string; vorname: string | null; bezahlt_am: string | null }>(
+    `digitalbestellungen?status=eq.bezahlt&bezahlt_am=gte.${encodeURIComponent(
+      aktivSeit
+    )}&artikel=cs.${artikel}&select=email,vorname,bezahlt_am&order=bezahlt_am.asc`
+  );
+  if (!zeilen || zeilen.length === 0) return [];
+
+  const ja = await einwilligungen();
+  return zeilen
+    .filter((z) => z.bezahlt_am && ja.has((z.email ?? "").trim().toLowerCase()))
+    .map((z) => ({ email: z.email, vorname: z.vorname, bestaetigt_am: z.bezahlt_am }));
+}
+
+/** Wer für diese Strecke in Frage kommt: bestätigt (oder bezahlt), nach dem
+ *  Einschalten dazugekommen, nicht auf der Sperrliste. */
 async function kandidaten(strecke: Strecke): Promise<Anmeldung[]> {
   if (!strecke.aktiv_seit) return [];
 
   const ab = encodeURIComponent(strecke.aktiv_seit);
   const felder = "select=email,vorname,bestaetigt_am";
   const filter = `bestaetigt=eq.true&bestaetigt_am=gte.${ab}`;
+  const typ = ausloeserTyp(strecke.ausloeser);
+  const kaufSlug = ausloeserKauf(strecke.ausloeser);
 
   const quellen: string[] = [];
   if (strecke.ausloeser === "insider" || strecke.ausloeser === "alle") {
@@ -177,6 +229,16 @@ async function kandidaten(strecke: Strecke): Promise<Anmeldung[]> {
   }
   if (strecke.ausloeser === "futter-check" || strecke.ausloeser === "alle") {
     quellen.push(`futter_check_anmeldungen?${filter}&${felder}`);
+  }
+  // Nur ein Typ des Futter-Checks. Der Typ steht als Titel in der Zeile,
+  // siehe FUTTER_CHECK_TYPEN. Wer den Check wiederholt, bekommt sein neues
+  // Ergebnis gespeichert und landet ab dann in der Strecke des neuen Typs.
+  if (typ) {
+    quellen.push(
+      `futter_check_anmeldungen?${filter}&ergebnis_titel=eq.${encodeURIComponent(
+        FUTTER_CHECK_TYPEN[typ]
+      )}&${felder}`
+    );
   }
   // Der Stall Organizer, seit dem 07.09.2026. Die Adressen stehen in einer
   // eigenen Tabelle und nicht in `kursteilnehmer`: Dort steht jede Kundin der
@@ -191,6 +253,7 @@ async function kandidaten(strecke: Strecke): Promise<Anmeldung[]> {
     const zeilen = await supabaseAlle<Anmeldung>(pfad);
     if (zeilen) alle.push(...zeilen);
   }
+  if (kaufSlug) alle.push(...(await kaeuferinnen(kaufSlug, strecke.aktiv_seit)));
 
   // Abgemeldete raus. Wer sich abgemeldet hat, ist zwar meist schon aus der
   // Tabelle gelöscht — aber eine Adresse, die über zwei Wege hereinkam,

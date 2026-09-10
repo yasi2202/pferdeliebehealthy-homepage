@@ -2,19 +2,15 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import { ausloeserKauf, ausloeserWahl } from "@/lib/strecken-ausloeser";
 
-const AUSLOESER = [
-  { wert: "insider", text: "wer sich für den Insider-Kanal einträgt" },
-  { wert: "futter-check", text: "wer den Futter-Check macht" },
-  { wert: "stall-organizer", text: "wer sich den Stall Organizer holt" },
-  { wert: "alle", text: "jede neue Anmeldung, egal woher" },
-];
+const WAHL = ausloeserWahl();
 
 export default function NeueStrecke() {
   const router = useRouter();
   const [offen, setOffen] = useState(false);
   const [name, setName] = useState("");
-  const [ausloeser, setAusloeser] = useState("insider");
+  const [ausloeser, setAusloeser] = useState("futter-check");
   const [laeuft, setLaeuft] = useState(false);
   const [fehler, setFehler] = useState<string | null>(null);
 
@@ -69,24 +65,27 @@ export default function NeueStrecke() {
       <label className="mb-2 block text-[13px] uppercase tracking-[0.14em] text-ink-soft">
         Für wen läuft sie los?
       </label>
-      <div className="mb-6 space-y-2">
-        {AUSLOESER.map((a) => (
-          <label
-            key={a.wert}
-            className="flex cursor-pointer items-center gap-3 rounded-[12px] border border-line p-3 text-[15px]"
-          >
-            <input
-              type="radio"
-              name="ausloeser"
-              value={a.wert}
-              checked={ausloeser === a.wert}
-              onChange={() => setAusloeser(a.wert)}
-              className="accent-rose-deep"
-            />
-            {a.text}
-          </label>
+      <select
+        value={ausloeser}
+        onChange={(e) => setAusloeser(e.target.value)}
+        className="mb-3 w-full rounded-[14px] border border-line bg-white px-4 py-3 text-[15.5px] outline-none focus:border-rose-deep"
+      >
+        {WAHL.map((g) => (
+          <optgroup key={g.gruppe} label={g.gruppe}>
+            {g.optionen.map((o) => (
+              <option key={o.wert} value={o.wert}>
+                {o.text}
+              </option>
+            ))}
+          </optgroup>
         ))}
-      </div>
+      </select>
+
+      <p className="mb-6 text-[13.5px] leading-relaxed text-ink-soft">
+        {ausloeserKauf(ausloeser)
+          ? "Die Tage zählen ab der Zahlung. Hinein läuft nur, wer zugestimmt hat, Post von dir zu bekommen, beim Kauf oder bei einer Anmeldung. Ohne diese Zustimmung wäre die Mail unerlaubte Werbung."
+          : "Die Tage zählen ab der Bestätigung der Adresse."}
+      </p>
 
       <div className="flex flex-wrap gap-2.5">
         <button

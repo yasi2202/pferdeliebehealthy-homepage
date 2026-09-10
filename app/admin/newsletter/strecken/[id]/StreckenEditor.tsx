@@ -4,6 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import type { Strecke, StreckenMail } from "@/lib/newsletter-strecken";
+import { ausloeserKauf, ausloeserText, zugangsWahl } from "@/lib/strecken-ausloeser";
 
 // ---------------------------------------------------------------------------
 // Die Schritte einer Mailstrecke bearbeiten.
@@ -19,11 +20,7 @@ import type { Strecke, StreckenMail } from "@/lib/newsletter-strecken";
 //   die du noch gar nicht fertig hast.
 // ---------------------------------------------------------------------------
 
-const AUSLOESER_TEXT: Record<string, string> = {
-  insider: "wer sich für den Insider-Kanal einträgt",
-  "futter-check": "wer den Futter-Check macht",
-  alle: "jede neue Anmeldung",
-};
+const ZUGAENGE = zugangsWahl();
 
 type Entwurf = {
   schritt: number;
@@ -42,6 +39,8 @@ export default function StreckenEditor({
   mails: StreckenMail[];
 }) {
   const router = useRouter();
+  // Bei einer Kaufstrecke heißt es „Kauf" statt „Anmeldung" in den Hinweisen.
+  const neu = ausloeserKauf(strecke.ausloeser) ? "neuer Kauf" : "neue Anmeldung";
 
   const [schritte, setSchritte] = useState<Entwurf[]>(
     mails.length > 0
@@ -142,7 +141,7 @@ export default function StreckenEditor({
     if (res.ok) {
       setMeldung(
         neu
-          ? "Die Strecke läuft. Ab jetzt bekommt jede neue Anmeldung die Kette."
+          ? `Die Strecke läuft. Ab jetzt bekommt jede ${neu} die Kette.`
           : "Die Strecke ist aus. Es geht nichts mehr raus."
       );
       router.refresh();
@@ -208,7 +207,7 @@ export default function StreckenEditor({
         </div>
 
         <p className="mt-2 text-[15px] text-ink-soft">
-          Läuft los für {AUSLOESER_TEXT[strecke.ausloeser] ?? strecke.ausloeser}
+          Läuft los für {ausloeserText(strecke.ausloeser)}
         </p>
 
         {/* ------------------------------------------------ Ein- und Ausschalten */}
@@ -220,7 +219,7 @@ export default function StreckenEditor({
               </p>
               <p className="mt-1.5 text-[14.5px] leading-relaxed text-ink-soft">
                 {aktiv
-                  ? "Jede neue Anmeldung läuft hinein und bekommt die Kette der Reihe nach."
+                  ? `Jede ${neu} läuft hinein und bekommt die Kette der Reihe nach.`
                   : fertig === 0
                     ? "Schreib zuerst mindestens eine Mail, dann kannst du einschalten."
                     : "Es geht nichts raus, solange sie aus ist."}
@@ -244,8 +243,8 @@ export default function StreckenEditor({
           {!strecke.aktiv_seit && (
             <p className="mt-4 border-t border-line pt-4 text-[14px] leading-relaxed text-ink-soft">
               Beim ersten Einschalten merkt sich die Strecke den Zeitpunkt. Es
-              läuft nur hinein, wer sich danach anmeldet — deine
-              Bestandsadressen bekommen nichts.
+              läuft nur hinein, wer {ausloeserKauf(strecke.ausloeser) ? "danach kauft" : "sich danach anmeldet"}.
+              Wer schon vorher da war, bekommt nichts.
             </p>
           )}
         </div>
@@ -313,6 +312,7 @@ export default function StreckenEditor({
                   value={s.nicht_wenn_zugang ?? ""}
                   onChange={(e) => aendern(i, { nicht_wenn_zugang: e.target.value })}
                   placeholder="z. B. mineral-klarheit"
+                  list="strecken-zugaenge"
                   className="w-full rounded-[14px] border border-line px-5 py-2.5 font-mono text-[13.5px] outline-none focus:border-rose-deep"
                 />
                 <span className="mt-1 block text-[12.5px] text-ink-soft opacity-80">
@@ -342,6 +342,15 @@ export default function StreckenEditor({
             </div>
           ))}
         </div>
+
+        {/* Die Vorschläge für „Nicht senden, wer das hier schon hat". */}
+        <datalist id="strecken-zugaenge">
+          {ZUGAENGE.map((z) => (
+            <option key={z.wert} value={z.wert}>
+              {z.text}
+            </option>
+          ))}
+        </datalist>
 
         <button
           type="button"
