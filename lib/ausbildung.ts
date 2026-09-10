@@ -93,22 +93,23 @@ export const ausbildung = {
   //   die eigene Kasse eintragen, /kasse/ausbildung.
   kauf: "",
 
-  /** Der kostenlose Einstieg. Läuft schon und darf beworben werden, weil er
-   *  keine Lernerfolgskontrolle und keine Betreuung enthält.
+  /** Der kostenlose Schnupperkurs. IM MOMENT LEER, und das ist Absicht.
    *
-   *  ▸ DIE LETZTE ADRESSE, DIE NOCH BEI ALFIMA LIEGT.
-   *    Am 02.09.2026 sind alle anderen Verweise auf alfima und Tentary aus
-   *    beiden Projekten entfernt worden, beide Plattformen werden nicht mehr
-   *    genutzt. Diese eine steht noch, weil sie funktioniert und weil es auf
-   *    der eigenen Seite bisher keinen Ersatz gibt.
-   *
-   *    Das ist kein Dauerzustand: Wird alfima abgeschaltet, laufen die beiden
-   *    Knöpfe „Kostenlos reinschnuppern" auf /ausbildung ins Leere, und das
+   *  ▸ WAS PASSIERT IST: Bis zum 10.09.2026 stand hier die Adresse bei
+   *    alfima. alfima gibt es nicht mehr, die Seite lieferte nur noch dieselbe
+   *    Fehlerseite wie eine erfundene Adresse. Damit führten zwei Knöpfe auf
+   *    /ausbildung und der Schnupperkurs-Kasten auf der Startseite ins Leere,
    *    ausgerechnet auf der Seite, die das teuerste Angebot verkauft.
-   *    Yasemin baut den Schnupperkurs in den nächsten Tagen selbst nach
-   *    (Gespräch vom 02.09.2026); danach gehört hier ein eigener Pfad hin. */
-  schnupperkurs:
-    "https://alfima.com/pferdeliebehealthy/kostenloser-einblick-in-die-ausbildung-zur-ganzheitlichen-pferdefutterung",
+   *
+   *  ▸ WAS EINE LEERE ADRESSE BEWIRKT: Die beiden Knöpfe auf /ausbildung
+   *    verschwinden, oben steht stattdessen „Für den Start vormerken“. Der
+   *    Kasten auf der Startseite bleibt als Text stehen, ohne Link. Kein
+   *    Knopf zeigt mehr ins Leere.
+   *
+   *  ▸ SOBALD YASEMIN DEN SCHNUPPERKURS NACHGEBAUT HAT, kommt hier sein
+   *    eigener Pfad hinein, und alle drei Stellen sind von selbst wieder da.
+   *    Keine fremde Plattform mehr, siehe die Erfahrung mit alfima. */
+  schnupperkurs: "",
 
   /** Für die Vormerkung, solange nicht verkauft werden darf. */
   mail: "info@pferdeliebehealthy.de",

@@ -133,7 +133,7 @@ export default function AusbildungSeite() {
                     Oder in Raten: {ausbildung.preisRaten}
                   </span>
                 </>
-              ) : (
+              ) : ausbildung.schnupperkurs ? (
                 <>
                   <a
                     href={ausbildung.schnupperkurs}
@@ -147,6 +147,16 @@ export default function AusbildungSeite() {
                     Ohne Anmeldung zur Ausbildung
                   </span>
                 </>
+              ) : (
+                /* Ohne Schnupperkurs-Adresse steht hier die Vormerkung, damit
+                   der Kopf der Seite nicht ohne jeden Knopf dasteht. Warum
+                   die Adresse leer sein kann, steht in lib/ausbildung.ts. */
+                <a
+                  href={`mailto:${ausbildung.mail}?subject=Vormerkung%20Ausbildung%20Ganzheitliche%20Pferdef%C3%BCtterung`}
+                  className="inline-block bg-rose text-ink px-8 py-4 rounded-full text-[15px] font-medium hover:bg-cream transition-colors"
+                >
+                  Für den Start vormerken
+                </a>
               )}
             </div>
           </div>
@@ -565,14 +575,18 @@ export default function AusbildungSeite() {
             ) : (
               <>
                 <div className="flex flex-wrap gap-4">
-                  <a
-                    href={ausbildung.schnupperkurs}
-                    target="_blank"
-                    rel="noopener"
-                    className="inline-block bg-cream text-ink px-8 py-4 rounded-full text-[15px] font-medium hover:bg-rose transition-colors"
-                  >
-                    Kostenlos reinschnuppern
-                  </a>
+                  {/* Nur mit Adresse. Ohne bleibt der Vormerken-Knopf daneben
+                      allein stehen, siehe lib/ausbildung.ts. */}
+                  {ausbildung.schnupperkurs && (
+                    <a
+                      href={ausbildung.schnupperkurs}
+                      target="_blank"
+                      rel="noopener"
+                      className="inline-block bg-cream text-ink px-8 py-4 rounded-full text-[15px] font-medium hover:bg-rose transition-colors"
+                    >
+                      Kostenlos reinschnuppern
+                    </a>
+                  )}
                   <a
                     href={`mailto:${ausbildung.mail}?subject=Vormerkung%20Ausbildung%20Ganzheitliche%20Pferdef%C3%BCtterung`}
                     className="inline-block border border-cream/40 px-8 py-4 rounded-full text-[15px] font-medium hover:bg-cream/10 transition-colors"
