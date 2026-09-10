@@ -164,6 +164,13 @@ export const metadata: Metadata = {
   // -------------------------------------------------------------------------
   verification: {
     google: "2iG62PmBewzCcBQY3cZEolcGSvFobhPMavLmY1Uctlw",
+    // Der Nachweis für Pinterest (Konto @pferdeliebehealthyde, angelegt am
+    // 10.09.2026). Wird zu <meta name="p:domain_verify">. Ebenso NICHT
+    // ENTFERNEN, sonst verliert das Konto die bestätigte Website samt
+    // Statistik und Profilangabe an jedem Pin von dieser Seite.
+    other: {
+      "p:domain_verify": "27e7495e2823b1438d0c723e53f232da",
+    },
   },
 };
 
