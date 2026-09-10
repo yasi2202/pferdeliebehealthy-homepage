@@ -43,6 +43,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
         ] as const)
       : []),
     { pfad: "/empfehlungen", prioritaet: 0.6, takt: "monthly" },
+    // Das Empfehlungsprogramm: Menschen, die Yasemin weiterempfehlen und
+    // dafuer Provision bekommen. Nicht zu verwechseln mit /empfehlungen
+    // darueber, das ist die Liste der Partner-Rabattcodes.
+    // Das Konto und die Kasse gehoeren nicht hierher: Beide tragen
+    // `noindex`, das eine wegen des persoenlichen Schluessels in der Adresse.
+    { pfad: "/weiterempfehlen", prioritaet: 0.5, takt: "monthly" },
+    { pfad: "/weiterempfehlen/bedingungen", prioritaet: 0.2, takt: "yearly" },
     { pfad: "/impressum", prioritaet: 0.2, takt: "yearly" },
     { pfad: "/datenschutz", prioritaet: 0.2, takt: "yearly" },
     { pfad: "/agb", prioritaet: 0.2, takt: "yearly" },

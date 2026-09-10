@@ -49,6 +49,7 @@ import {
 } from "@/lib/versand";
 import { bewertungslink } from "@/lib/seite";
 import { kaufAufsHandy } from "@/lib/telegram";
+import { provisionGutschreiben } from "@/lib/empfehlungsprogramm-server";
 
 const AKADEMIE_WEBHOOK_URL = process.env.AKADEMIE_WEBHOOK_URL;
 const AKADEMIE_WEBHOOK_KEY = process.env.AKADEMIE_WEBHOOK_KEY || "";
@@ -116,6 +117,11 @@ export type DigitalBestellung = {
    *  nachvollziehbar bleibt, warum weniger gezahlt wurde als der Listenpreis. */
   rabattcode?: string | null;
   rabatt_cent?: number;
+  /** Wer diesen Kauf vermittelt hat, als Code aus dem Empfehlungsprogramm.
+   *  Kommt aus dem Keks, den /e/<code> im Browser abgelegt hat. Null, wenn
+   *  die Käuferin nicht über eine Empfehlung kam, und das ist der Normalfall.
+   *  Siehe lib/empfehlungsprogramm.ts. */
+  empfehler_code?: string | null;
   /** Hat sie dem sofortigen Zugang zugestimmt und damit auf den Widerruf
    *  verzichtet? Ohne ein true hier gilt das Widerrufsrecht weiter. */
   widerruf_verzicht: boolean;
@@ -1437,6 +1443,19 @@ export async function digitalMeldenAnYasi(b: DigitalBestellung): Promise<boolean
         Newsletter: ${b.newsletter ? "ja" : "nein"} &middot;
         Sofortzugang zugestimmt: ${b.widerruf_verzicht ? "ja" : "nein"}
       </p>
+
+      ${
+        // Nur wenn der Kauf über eine Empfehlung kam. Sonst stünde bei jedem
+        // normalen Kauf eine Zeile "vermittelt von: niemand", und die liest
+        // man nach dem dritten Mal nicht mehr.
+        b.empfehler_code
+          ? `<p style="font-size:14px;color:#8a7070;">
+               Vermittelt über <strong>${esc(b.empfehler_code)}</strong>.
+               Die Provision steht unter
+               <a href="https://www.pferdeliebehealthy.de/admin/empfehler" style="color:#95534F;">/admin/empfehler</a>.
+             </p>`
+          : ""
+      }
     `),
   );
 }
@@ -1511,6 +1530,20 @@ export async function nachDerZahlung(b: DigitalBestellung): Promise<void> {
       vorname: b.vorname,
       quelle: `kauf-${b.artikel[0]?.slug ?? "unbekannt"}`,
     });
+  }
+
+  // ▸ DIE PROVISION, FALLS DER KAUF VERMITTELT WURDE.
+  //   Steht bewusst NACH der Freischaltung: Wenn hier etwas schiefgeht, hat
+  //   die Kundin ihren Zugang trotzdem längst. Eine fehlende Provisionszeile
+  //   lässt sich nachtragen, ein fehlender Zugang macht Ärger.
+  //
+  //   Ohne Code an der Bestellung passiert hier gar nichts, und das ist der
+  //   Normalfall. Was sonst noch dazu führen kann, dass es keine Provision
+  //   gibt, steht bei `provisionGutschreiben`.
+  const provisionshinweis = await provisionGutschreiben(b);
+
+  if (provisionshinweis) {
+    console.error(`Provision zu ${b.nummer}: ${provisionshinweis}`);
   }
 
   // Die Mails dürfen den Ablauf nicht aufhalten. Hakt eine, steht der Fehler

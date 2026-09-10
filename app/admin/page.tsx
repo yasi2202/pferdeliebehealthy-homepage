@@ -190,6 +190,12 @@ export default async function AuswertungSeite({
             >
               Stall Organizer
             </Link>
+            <Link
+              href="/admin/empfehler"
+              className="text-rose-deep underline underline-offset-2"
+            >
+              Empfehlungen
+            </Link>
           </nav>
         </div>
 

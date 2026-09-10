@@ -70,6 +70,14 @@ export default function Footer() {
                 Rabattcodes &amp; Empfehlungen
               </Link>
             </li>
+            {/* Das Empfehlungsprogramm. Steht bewusst direkt unter den
+                Rabattcodes: Wer sich für das eine interessiert, ist oft auch
+                für das andere die richtige Person. */}
+            <li>
+              <Link href="/weiterempfehlen" className="hover:text-ink">
+                Mich weiterempfehlen
+              </Link>
+            </li>
           </ul>
         </div>
         <div>

@@ -161,6 +161,24 @@ export type DigitalProdukt = {
    *   in der noch gesperrten Karte.
    */
   versteckt?: boolean;
+  /**
+   * Ein eigener Provisionssatz für das Empfehlungsprogramm, in Prozent.
+   *
+   * Normalerweise braucht es das nicht: Die Staffel in
+   * lib/empfehlungsprogramm.ts gibt 20 % unter 100 € und 10 % darüber.
+   * Ein Wert hier schlägt die Staffel, für den Fall, dass du bei einem
+   * einzelnen Angebot einmal etwas anderes willst.
+   */
+  provision?: number;
+  /**
+   * Von der Empfehlung ausgenommen: Für dieses Angebot gibt es keine
+   * Provision, auch nicht über einen Empfehlungslink.
+   *
+   * ▸ WANN DAS RICHTIG IST: Wenn deine Marge den Satz nicht trägt, oder bei
+   *   einem Angebot, das niemand fremdes anpreisen soll. Bisher steht es
+   *   nirgends, alle Angebote sind dabei.
+   */
+  keineProvision?: boolean;
   /** Die Zeile unter dem Namen, kurz. */
   kurz: string;
   /** Was in der Kasse als Leistungsbeschreibung über dem Knopf steht. */

@@ -1,5 +1,7 @@
+import { cookies } from "next/headers";
 import { istEingerichtet, EMAIL_MUSTER, kuerzen } from "@/lib/versand";
 import { digitalFinden, funnelZu } from "@/lib/digital";
+import { KEKS_NAME as EMPFEHLUNG_KEKS } from "@/lib/empfehlungsprogramm";
 import { kulanzGilt } from "@/lib/kulanz";
 import { stripeEingerichtet } from "@/lib/shop-server";
 import {
@@ -236,6 +238,20 @@ export async function POST(request: Request) {
   const jetzt = new Date().toISOString();
   const seitenUrl = new URL(request.url).origin;
 
+  // ▸ KAM DIE KÄUFERIN ÜBER EINE EMPFEHLUNG?
+  //   Der Code steht im Keks, den /e/<code> gesetzt hat. Gelesen wird er
+  //   HIER auf dem Server und nicht im Browser mitgeschickt: Der Keks ist
+  //   httpOnly, an ihn kommt also kein JavaScript heran, auch kein fremdes.
+  //   Und niemand kann sich beim Bestellen einen Code von Hand in die
+  //   Anfrage schreiben, um eine Provision auf den eigenen Kauf zu erzeugen.
+  //
+  //   Ob der Code etwas wert ist, wird bewusst nicht jetzt geprüft, sondern
+  //   erst nach der Zahlung in `provisionGutschreiben`. Die Prüfung im
+  //   Moment des Kaufs würde nichts verbessern und könnte im Fehlerfall den
+  //   Kauf aufhalten.
+  const empfehlerCode =
+    (await cookies()).get(EMPFEHLUNG_KEKS)?.value?.slice(0, 24) || null;
+
   // Gibt es ein Angebot nach dem Kauf? Dann führt der Weg dort entlang.
   const anschluss = funnelZu(produkt.slug);
 
@@ -267,6 +283,7 @@ export async function POST(request: Request) {
     gesamt: preis,
     rabattcode,
     rabatt_cent: rabattCent,
+    empfehler_code: empfehlerCode,
     widerruf_verzicht: true,
     widerruf_verzicht_am: jetzt,
     newsletter,

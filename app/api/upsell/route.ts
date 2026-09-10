@@ -218,6 +218,12 @@ export async function POST(request: Request) {
       },
     ],
     gesamt: angebotPreis,
+    // ▸ DIE EMPFEHLUNG WIRD VOM ERSTKAUF ÜBERNOMMEN, nicht neu aus dem Keks
+    //   gelesen. Grund: Das Angebot gehört zu diesem einen Kauf. Wer ihn
+    //   vermittelt hat, hat auch das Angebot vermittelt, und daran ändert
+    //   sich nichts, wenn die Kundin zwischendurch einen anderen
+    //   Empfehlungslink angeklickt hat.
+    empfehler_code: kauf.empfehler_code ?? null,
     // Die Zustimmung zum sofortigen Zugang gilt auch hier: Sie steht auf der
     // Angebotsseite unmittelbar über dem Bestellknopf.
     widerruf_verzicht: true,
