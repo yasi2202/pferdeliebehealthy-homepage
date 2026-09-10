@@ -111,7 +111,32 @@ export async function ersteZeile<T>(pfad: string): Promise<T | null> {
 // Mails
 // ---------------------------------------------------------------------------
 
-export async function sendeMail(an: string, betreff: string, html: string) {
+/** Verschickt eine Mail.
+ *
+ *  ▸ GEHT SIE AN DICH (info@), KOMMT SIE AUCH AUFS HANDY, über Telegram, mit
+ *    dem Betreff als Nachricht. Gewünscht am 10.09.2026: „alles was aus
+ *    meinen Bereichen kommt will ich aufs Handy“. So reicht eine Stelle für
+ *    jede Meldung an dich, auch für solche, die erst noch dazukommen.
+ *    `{ handy: false }` schaltet das ab, wo schon eine eigene, ausführlichere
+ *    Telegram-Nachricht rausgeht (Kauf, Shop-Bestellung) oder wo es nur ein
+ *    Test ist. Die Nachricht geht auch dann raus, wenn die Mail scheitert:
+ *    Dann ist sie der einzige Hinweis.
+ *
+ *  ▸ TELEGRAM WIRD ERST HIER DRIN GELADEN, nicht oben in der Datei. Die
+ *    Telegram-Datei holt sich über die Auswertung wieder diese Datei, ein
+ *    Import oben wäre ein Ringschluss. */
+export async function sendeMail(
+  an: string,
+  betreff: string,
+  html: string,
+  opt: { handy?: boolean } = {},
+) {
+  if (opt.handy !== false && an.trim().toLowerCase() === ANTWORT_AN) {
+    const { aufsHandy } = await import("@/lib/telegram");
+    const sicher = betreff.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+    await aufsHandy(`🔔 ${sicher}`);
+  }
+
   const res = await fetch("https://api.resend.com/emails", {
     method: "POST",
     headers: {

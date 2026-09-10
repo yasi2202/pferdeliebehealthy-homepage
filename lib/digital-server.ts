@@ -1466,6 +1466,8 @@ export async function digitalMeldenAnYasi(b: DigitalBestellung): Promise<boolean
           : ""
       }
     `),
+    // Den Kauf meldet kaufAufsHandy() schon, ausführlicher als nur der Betreff.
+    { handy: false },
   );
 }
 

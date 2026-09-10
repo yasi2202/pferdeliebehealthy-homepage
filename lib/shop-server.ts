@@ -599,5 +599,7 @@ export async function bestellungMeldenAnYasi(b: Bestellung): Promise<boolean> {
           : ""
       }
     `),
+    // Die Bestellung meldet bestellungAufsHandy() schon, samt Anschrift.
+    { handy: false },
   );
 }

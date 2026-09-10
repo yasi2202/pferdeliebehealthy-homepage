@@ -130,7 +130,7 @@ export async function POST(request: Request) {
         abmeldeLink(an, seitenUrl)
       );
 
-      const raus = await sendeMail(an, `[Test] ${namenEinsetzen(betreff, "Yasi")}`, html);
+      const raus = await sendeMail(an, `[Test] ${namenEinsetzen(betreff, "Yasi")}`, html, { handy: false });
       if (!raus) {
         return Response.json(
           { fehler: "Die Testmail ging nicht raus. Steht der Resend-Schlüssel bei Vercel?" },
