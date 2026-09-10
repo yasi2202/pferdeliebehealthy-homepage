@@ -129,9 +129,9 @@ export type DigitalProdukt = {
    */
   abo?: {
     intervall: "monat";
-    /** Der Slug des einmaligen Produkts, das denselben Zugang gibt.
-     *  Wer das gekauft hat, verliert bei einer Kündigung nichts. */
-    dauerkaufSlug?: string;
+    /** Die Slugs der einmaligen Produkte, die denselben Zugang geben.
+     *  Wer eins davon gekauft hat, verliert bei einer Kündigung nichts. */
+    dauerkaufSlug?: string | string[];
   };
   /**
    * Wohin das Angebot auf der Uebersichtsseite gehoert.
@@ -1104,6 +1104,85 @@ export const digitalprodukte: DigitalProdukt[] = [
     },
   },
   {
+    // ▸ DAS EINMALANGEBOT VOM SEPTEMBER 2026: 69 €, BIS 17.09.2026.
+    //   Beschlossen von Yasemin am 10.09.2026: EquiDesk noch einmal einmalig,
+    //   aber nur für Menschen, die es noch nicht haben, und nur über den Link
+    //   in der Mail. Deshalb versteckt und mit eigener Seite unter
+    //   /equidesk-einmalig. Die Verkaufsseite /equidesk zeigt weiter das Abo,
+    //   damit Abo-Kundinnen dort nicht auf den günstigeren Einmalpreis stoßen.
+    //   Verschickt wird über die Newsletter-Gruppe `equidesk-angebot`, die
+    //   alle mit Zugang `equidesk` bei jedem Versand frisch aussortiert.
+    //
+    //   Kein `statt`: 69 € einmalig und 19 € im Monat sind zwei verschiedene
+    //   Dinge, ein Streichpreis wäre ein Vergleich, der nicht stimmt.
+    //
+    //   Den Dauerzugang schützt `dauerkaufSlug` am Abo: Wer das hier kauft und
+    //   später doch ein Abo abschließt und kündigt, verliert nichts.
+    slug: "equidesk-einmalig",
+    gruppe: "werkzeug",
+    versteckt: true,
+    verkaufBis: "2026-09-17",
+    name: "EquiDesk · Kundenverwaltung für Futterberaterinnen, einmalig",
+    kurzname: "EquiDesk einmalig",
+    preis: 6900,
+    mwst: 19,
+    art: "kurs",
+    kurz: "Deine Kundinnen, ihre Pferde und die ganze Beratung an einer Stelle.",
+    leistung:
+      "Dauerhafter Zugang zu EquiDesk in der Pferdeliebehealthy Akademie, " +
+      "der Kundenverwaltung für die Futterberatung. Einmalig bezahlt, kein Abo.",
+    // Trifft die Regel /equidesk/i in akademieapp/lib/produkt-zugang.ts. Keine
+    // NIEMALS-Regel greift, am 10.09.2026 gegen die Liste geprüft.
+    akademieName: "EquiDesk · Kundenverwaltung für Futterberaterinnen, einmalig",
+    erwarteterZugang: "equidesk",
+    beschreibung: [
+      {
+        art: "absatz",
+        text: "Du berätst Pferdebesitzerinnen in der Fütterung oder fängst gerade damit an. Und dann sitzt du da: die Anamnese liegt im Postfach, der Futterplan in Word, die Fotos auf dem Handy, die Rechnung in einer Tabelle, und wann du dich noch mal melden wolltest, weißt nur du. Genau da setzt EquiDesk an.",
+      },
+      { art: "ueberschrift", text: "Was drin ist" },
+      {
+        art: "liste",
+        punkte: [
+          "Dein Futterplan im eigenen Design: ein Vordruck mit deinen Farben, deiner Schrift und deinem Logo",
+          "Kundinnen und ihre Pferde mit Haltung, Fütterung, Gesundheit und Medikamenten",
+          "Beratungsverlauf auf einem Zeitstrahl: Erstberatung, Nachkontrolle, Blutbild, Heuanalyse, Telefonat",
+          "Anamnesebogen zum Verschicken, deine Kundin füllt ihn am Handy aus",
+          "Futterpläne mit Nährstoffrechnung nach GfE, dazu ein Blatt für die Stallwand",
+          "Wiedervorlage mit Erinnerung per E-Mail",
+          "Rechnungen mit fortlaufender Nummer, Kleinunternehmerregelung und eigenem Logo",
+          "Nachrichten und Fotos deiner Kundin direkt am Pferd, mit Antwort per Mail",
+          "Datenexport und Löschung je Kundin, dazu ein Muster für den AV-Vertrag",
+        ],
+      },
+      { art: "ueberschrift", text: "Was es nicht kann" },
+      {
+        art: "liste",
+        punkte: [
+          "Keine App zum Herunterladen, EquiDesk läuft im Browser",
+          "Kein Terminkalender mit Online-Buchung, es gibt die Wiedervorlage",
+          "Keine Abrechnung nach GebüH, du schreibst deine Beträge selbst",
+        ],
+      },
+      { art: "ueberschrift", text: "Was es kostet" },
+      {
+        art: "absatz",
+        betont: true,
+        text: "Einmalig 69 €, bis 17. September 2026. Du zahlst einmal und behältst EquiDesk dauerhaft. Danach gibt es EquiDesk nur noch als Abo für 19 € im Monat.",
+      },
+      {
+        art: "absatz",
+        text: "Zum Vergleich: Praxissoftware für Tierheilpraxen beginnt bei 48 bis 62 € im Monat, und die Rationsberechnung fehlt dort überall.",
+      },
+    ],
+    bild: {
+      datei: "/images/equidesk-kundinnen.webp",
+      alt: "Die Kundinnenliste in EquiDesk mit Filtern nach Leistung",
+      breite: 1100,
+      hoehe: 608,
+    },
+  },
+  {
     // ▸ DAS ERSTE ABO IM HAUS. Was daran anders ist, steht am Feld `abo`
     //   oben im Typ. Kurz: Stripe bucht monatlich ab, gekündigt wird ohne
     //   Anmeldung über /abo-kuendigen, und bei Kündigung nimmt der Webhook den
@@ -1116,7 +1195,7 @@ export const digitalprodukte: DigitalProdukt[] = [
     preis: 1900,
     mwst: 19,
     art: "kurs",
-    abo: { intervall: "monat", dauerkaufSlug: "equidesk" },
+    abo: { intervall: "monat", dauerkaufSlug: ["equidesk", "equidesk-einmalig"] },
     // KEIN `statt`: Die 29 Euro waren ein einmaliger Kaufpreis, kein
     // Monatspreis. 19 neben durchgestrichenen 29 zu stellen wäre ein
     // Vergleich zwischen zwei verschiedenen Dingen.
@@ -1440,6 +1519,30 @@ export const funnel: Funnel[] = [
     // Wer EquiDesk kauft, ist Beraterin und keine Pferdebesitzerin. Deshalb
     // stehen hier Werkzeuge fuer die tägliche Arbeit und keine Ratgeber.
     produkt: "equidesk",
+    upsell: "ratiopro",
+    upsellPreis: 4900,
+    upsellTitel: "Der Plan ist gerechnet. Aber wo probierst du aus?",
+    upsellGrund:
+      "EquiDesk rechnet dir den Futterplan durch, den du schon zusammengestellt " +
+      "hast. Die Arbeit davor ist eine andere: zwei Mineralfutter vergleichen, " +
+      "sehen was passiert, wenn 200 g Cobs dazukommen, in 480 Futtermitteln " +
+      "nach einer Alternative suchen. Dafür ist RatioPro da. Beide greifen auf " +
+      "dieselbe Futtermitteldatenbank zu, du rechnest also nicht zweimal " +
+      "unterschiedlich.",
+    downsell: "symptom-navigator",
+    downsellPreis: 2900,
+    downsellTitel: "Dann vielleicht das, wenn eine Kundin anruft.",
+    downsellGrund:
+      "Eine Kundin schreibt dir von Kotwasser, schuppiger Haut oder einem " +
+      "Pferd, das plötzlich krüsch ist. Im Symptom-Navigator schlägst du das " +
+      "Zeichen nach und siehst, was dahinterstecken kann und was du zuerst " +
+      "fragen solltest. Das ist die Vorarbeit, die in EquiDesk dann als " +
+      "Beratungsverlauf landet.",
+  },
+  {
+    // Dieselbe Kette für das Einmalangebot zu 69 € vom September 2026.
+    // `funnelZu` sucht über den Slug, deshalb steht sie noch einmal da.
+    produkt: "equidesk-einmalig",
     upsell: "ratiopro",
     upsellPreis: 4900,
     upsellTitel: "Der Plan ist gerechnet. Aber wo probierst du aus?",

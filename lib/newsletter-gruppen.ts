@@ -261,6 +261,48 @@ async function wartelisteAusbildung(): Promise<Empfaenger[] | null> {
   }).map((email) => ({ email, vorname: null }));
 }
 
+/** Für das EquiDesk-Angebot vom September 2026: die Eingetragenen und die
+ *  Teilnehmerinnen der Ausbildung, ohne alle, die EquiDesk schon haben.
+ *
+ *  ▸ DER FILTER IST DER EIGENTLICHE ZWECK, wie bei der Warteliste: Wer
+ *    EquiDesk hat, egal ob im Abo oder einmalig gekauft, darf das Angebot
+ *    nicht bekommen. So von Yasemin am 10.09.2026 festgelegt. Nachgesehen
+ *    wird bei jedem Versand frisch, über denselben Postfachschlüssel wie bei
+ *    der Warteliste, damit googlemail und gmail nicht aneinander vorbeilaufen.
+ *
+ *  ▸ AUCH EINGETRAGENE KÖNNEN EQUIDESK HABEN. Sie stehen dann zusätzlich in
+ *    `kursteilnehmer` und fallen hier über ihre Adresse heraus. Wer dort
+ *    widersprochen hat, fällt ebenfalls heraus, auch als Eingetragene.
+ *
+ *  Scheitert eine Abfrage, kommt `null` zurück und der Versand hält an. Eine
+ *  leere Antwort hieße sonst: niemand hat EquiDesk. */
+async function equideskAngebot(): Promise<Empfaenger[] | null> {
+  const [eingetragen, zeilen] = await Promise.all([
+    eingetragene(),
+    supabaseAlle<Kursteilnehmerin>(
+      "kursteilnehmer?select=email,aktiv,bereich,zugaenge,notiz,mails_abgemeldet"
+    ),
+  ]);
+  if (!eingetragen || !zeilen) return null;
+
+  const hatEquiDesk = new Set<string>();
+  const keinePost = new Set<string>();
+  const ausbildung: Empfaenger[] = [];
+  for (const k of zeilen) {
+    const schluessel = postfachSchluessel(k.email ?? "");
+    if (!schluessel) continue;
+    const zugaenge = Array.isArray(k.zugaenge) ? k.zugaenge : [];
+    if (zugaenge.includes("equidesk")) hatEquiDesk.add(schluessel);
+    if (!bekommtPost(k)) keinePost.add(schluessel);
+    else if (zugaenge.includes("ausbildung")) ausbildung.push({ email: k.email, vorname: null });
+  }
+
+  return [...eingetragen, ...ausbildung].filter((e) => {
+    const schluessel = postfachSchluessel(e.email ?? "");
+    return Boolean(schluessel) && !hatEquiDesk.has(schluessel) && !keinePost.has(schluessel);
+  });
+}
+
 async function beratungskundinnen(): Promise<Empfaenger[] | null> {
   const zeilen = await supabaseAlle<{ email: string | null; vorname: string | null }>(
     "ed_kunden?select=email,vorname"
@@ -359,6 +401,12 @@ export async function empfaengerDerGruppe(
       //   Zweig bedeutet „alle zusammen". Eine Gruppe, die hier fehlt,
       //   landet dort und ginge an über 3.000 Menschen statt an 66.
       const a = await wartelisteAusbildung();
+      if (!a) return null;
+      roh = a;
+    } else if (gruppe === "equidesk-angebot") {
+      // Auch dieser Zweig muss vor dem `else` stehen, siehe den Kommentar
+      // bei der Warteliste.
+      const a = await equideskAngebot();
       if (!a) return null;
       roh = a;
     } else {

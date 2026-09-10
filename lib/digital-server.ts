@@ -888,9 +888,18 @@ export async function zugangEntziehen(opt: {
     return;
   }
 
-  const dauerSlug = produkt.abo.dauerkaufSlug;
+  // Mehrere Einmalprodukte können denselben Zugang geben, bei EquiDesk das
+  // Testkundinnen-Angebot vom September und das Einmalangebot zu 69 €.
+  const dauerSlugs = ([] as string[]).concat(produkt.abo.dauerkaufSlug ?? []);
+  let dauerSlug: string | null = null;
+  for (const slug of dauerSlugs) {
+    if (await hatDauerkauf(opt.email, slug)) {
+      dauerSlug = slug;
+      break;
+    }
+  }
 
-  if (dauerSlug && (await hatDauerkauf(opt.email, dauerSlug))) {
+  if (dauerSlug) {
     console.warn(
       `Entzug fuer ${opt.email} uebersprungen: hat ${dauerSlug} dauerhaft gekauft.`,
     );

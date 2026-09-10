@@ -508,6 +508,70 @@ export const verkaufstexte: Record<string, Verkaufstext> = {
       "Danach nimmt die Kasse ihn nicht mehr an. Kein Abo, keine Begrenzung der Berechnungen, beide Zugänge bleiben dauerhaft.",
   },
 
+  // -------------------------------------------------------------------------
+  // EquiDesk einmalig für 69 €, das Angebot vom September 2026, bis 17.09.
+  // Nur über den Link in der Mail erreichbar, siehe app/equidesk-einmalig.
+  // Die Inhalte entsprechen der Leistungsbeschreibung in lib/digital.ts.
+  "equidesk-einmalig": {
+    augenbraue: "Für Futterberaterinnen, einmalig",
+    ueberschrift: "EquiDesk",
+    seitentitel: "EquiDesk einmalig: die Kundenverwaltung für Futterberaterinnen",
+    einleitung: [
+      "Deine Kundinnen, ihre Pferde, der Beratungsverlauf, die Futterpläne mit Nährstoffrechnung und die Rechnungen. Alles an einer Stelle, statt verteilt auf Postfach, Word und Handy.",
+      "Bis 17. September 2026 gibt es EquiDesk einmalig für 69 € statt als Abo. Du zahlst einmal und behältst es dauerhaft.",
+    ],
+
+    problemAugenbraue: "Warum es das gibt",
+    problemTitel: "Die Beratung ist das eine. Der Papierkram ist das andere.",
+    problem: [
+      "Die Anamnese liegt im Postfach, der Futterplan in Word, die Fotos auf dem Handy, die Rechnung in einer Tabelle. Und wann du dich bei welcher Kundin noch mal melden wolltest, weißt nur du.",
+      "Solange du drei Kundinnen hast, geht das. Bei fünfzehn nicht mehr. Dann rutscht die eine durch, die eigentlich nach vier Wochen eine Rückmeldung bekommen sollte.",
+      "Genau die Arbeit nimmt dir EquiDesk ab.",
+    ],
+
+    inhaltAugenbraue: "Was drin ist",
+    inhaltTitel: "Was du bekommst",
+    inhalte: [
+      {
+        titel: "Dein Futterplan im eigenen Design",
+        text: "Ein Vordruck mit deinen Farben, deiner Schrift und deinem Logo. Bei jeder Kundin legst du mit einem Klick einen neuen Plan an, Name, Pferd und Datum stehen schon drin.",
+      },
+      {
+        titel: "Kundinnen und ihre Pferde",
+        text: "Mit Haltung, Fütterung, Gesundheit und Medikamenten, dazu der Beratungsverlauf auf einem Zeitstrahl: Erstberatung, Nachkontrolle, Blutbild, Heuanalyse, Telefonat.",
+      },
+      {
+        titel: "Anamnesebogen zum Verschicken",
+        text: "Deine Kundin füllt ihn am Handy aus, und die Angaben landen direkt an ihrem Pferd.",
+      },
+      {
+        titel: "Futterpläne mit Nährstoffrechnung",
+        text: "Nach GfE gerechnet, dazu ein Blatt für die Stallwand.",
+      },
+      {
+        titel: "Wiedervorlage mit Erinnerung",
+        text: "Per E-Mail, damit keine Kundin durchrutscht, die nach vier Wochen eine Rückmeldung bekommen sollte.",
+      },
+      {
+        titel: "Rechnungen",
+        text: "Mit fortlaufender Nummer, Kleinunternehmerregelung und eigenem Logo.",
+      },
+    ],
+    inhaltSchluss:
+      "Dazu Textbausteine, ein Glossar der Fachbegriffe, Nachrichten und Fotos deiner Kundin direkt am Pferd, Datenexport je Kundin und ein Muster für den AV-Vertrag.",
+
+    fuerWenTitel: "Für wen das gemacht ist",
+    fuerWen: [
+      "Für dich, wenn du Pferdebesitzerinnen in der Fütterung berätst oder gerade damit anfängst.",
+      "Für dich, wenn deine Beratung heute zwischen Postfach, Word und Handy verteilt ist.",
+      "Nicht für dich, wenn du eine Praxissoftware mit Online-Terminbuchung oder Abrechnung nach GebüH suchst. Das kann EquiDesk nicht.",
+    ],
+
+    abschlussTitel: "Der Preis gilt bis zum 17. September.",
+    abschlussText:
+      "Danach gibt es EquiDesk nur noch als Abo für 19 € im Monat, und die Kasse nimmt den Einmalpreis nicht mehr an. Kein Abo, keine Verlängerung, der Zugang bleibt dauerhaft.",
+  },
+
   ratiopro: {
     augenbraue: "Das Werkzeug",
     ueberschrift: "RatioPro",
