@@ -139,6 +139,33 @@ const nextConfig: NextConfig = {
     imageSizes: [16, 32, 48, 64, 96, 128, 256, 384, 512],
   },
 
+  // -------------------------------------------------------------------------
+  // Das Stylesheet steht seit dem 09.09.2026 im Seitenkopf statt in einer
+  // eigenen Datei.
+  //
+  // Ein <link rel="stylesheet"> haelt den Browser an: Er zeichnet nichts, bevor
+  // die Datei da ist. Bei uns waren das 12 KB in einer eigenen Anfrage, und im
+  // Mobilfunknetz kostet allein das Hin und Her rund 750 Millisekunden, in
+  // denen die Seite weiss bleibt. Genau so weist es die Google-Messung aus
+  // ("Anfragen zum Blockieren des Renderings").
+  //
+  // inlineCss legt die Regeln direkt in die HTML-Seite. Damit faellt die
+  // Anfrage weg, und der Browser kann zeichnen, sobald die Seite da ist.
+  //
+  // Der Preis: Die Seite selbst wird um diese 12 KB groesser, und sie sind
+  // nicht mehr getrennt zwischengespeichert, kommen also bei jedem Aufruf
+  // wieder mit. Fuer eine Seite, auf die Leute ueber Google und Instagram zum
+  // ersten Mal kommen, ist das der bessere Tausch: Der erste Eindruck zaehlt
+  // mehr als der zweite Aufruf.
+  //
+  // Die Einstellung ist bei Next.js noch als "experimental" gefuehrt. Wenn nach
+  // einem Versionssprung die Seite ploetzlich ohne Gestaltung ankommt, ist das
+  // hier die erste Stelle zum Nachsehen.
+  // -------------------------------------------------------------------------
+  experimental: {
+    inlineCss: true,
+  },
+
   async headers() {
     return [
       {
