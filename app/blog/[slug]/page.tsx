@@ -40,8 +40,13 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     title: beitrag.titel,
     description: beitrag.beschreibung,
     alternates: { canonical: adresse },
+    // Ein eigenes `openGraph` ersetzt das aus app/layout.tsx ganz, nicht nur
+    // die Felder, die hier stehen. Ohne diese beiden Zeilen fehlte also der
+    // Seitenname, und genau den liest Pinterest für die Artikel-Pins.
     openGraph: {
       type: "article",
+      locale: "de_DE",
+      siteName: "Pferdeliebehealthy",
       title: beitrag.titel,
       description: beitrag.beschreibung,
       url: adresse,
