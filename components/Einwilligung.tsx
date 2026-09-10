@@ -22,6 +22,14 @@ import { PIXEL, beobachten, gewaehlt, melde, offen, pixelStarten, waehlen } from
 //   wäre bequem, wird aber als stille Ablehnung gewertet und dann müsste
 //   die Frage bei jedem Besuch neu kommen.
 //
+// ▸ DER TEXT IST ABSICHTLICH KURZ. Die erste Fassung deckte auf dem Handy
+//   fast den ganzen Bildschirm ab. Pflicht im Banner sind nur: Meta als
+//   Empfänger, der Zweck, dass im Browser etwas gespeichert wird, und der
+//   Hinweis auf den Widerruf (Art. 7 Abs. 3 DSGVO verlangt ihn VOR dem Ja).
+//   Alles Weitere, auch die USA über das Data Privacy Framework, steht im
+//   Datenschutztext. Die Knöpfe bleiben auch auf dem Handy nebeneinander
+//   und gleich groß.
+//
 // Der Baustein meldet außerdem jeden Seitenwechsel als Seitenaufruf. Next.js
 // tauscht beim Klick nur den Inhalt aus, der Pixel merkt davon von sich aus
 // nichts und würde sonst nur die erste Seite eines Besuchs zählen.
@@ -79,49 +87,46 @@ export default function Einwilligung() {
         style={{
           pointerEvents: "auto",
           width: "100%",
-          maxWidth: 660,
+          maxWidth: 820,
           background: "var(--white)",
           border: "1px solid var(--line)",
-          borderRadius: 18,
-          padding: "20px 22px",
-          boxShadow: "0 18px 46px rgba(60, 40, 40, .16)",
+          borderRadius: 14,
+          padding: "12px 14px",
+          boxShadow: "0 12px 32px rgba(60, 40, 40, .14)",
+          display: "flex",
+          flexWrap: "wrap",
+          alignItems: "center",
+          gap: "10px 16px",
         }}
       >
         <p
           style={{
-            fontFamily: "var(--font-serif)",
-            fontSize: 19,
-            lineHeight: 1.25,
-            color: "var(--ink)",
-            margin: "0 0 8px",
+            flex: "3 1 340px",
+            fontSize: 13.5,
+            lineHeight: 1.5,
+            color: "var(--ink-soft)",
+            margin: 0,
           }}
         >
-          Darf ich messen, ob meine Werbung etwas bringt?
-        </p>
-
-        <p style={{ fontSize: 14.5, lineHeight: 1.6, color: "var(--ink-soft)", margin: "0 0 16px" }}>
-          Ich schalte Anzeigen bei Instagram und Facebook. Mit deinem Einverständnis
-          setze ich dafür ein Messwerkzeug von Meta ein. Es legt eine Kennung in
-          deinem Browser ab und meldet an Meta Platforms Ireland, ob du dich hier
-          angemeldet oder etwas gekauft hast; dabei werden Daten auch in die USA
-          übertragen. Nur so sehe ich, welche Anzeige sich lohnt. Du kannst jederzeit
-          im{" "}
+          Darf ich mit einem Werkzeug von Meta messen, welche meiner Anzeigen bei
+          Instagram und Facebook etwas bringt? Dafür wird eine Kennung in deinem
+          Browser gespeichert. Widerrufen kannst du jederzeit im{" "}
           <Link href="/datenschutz" style={{ color: "var(--rose-deep)" }}>
             Datenschutz
-          </Link>{" "}
-          widerrufen. Sagst du nein, funktioniert hier alles genauso.
+          </Link>
+          .
         </p>
 
-        <div style={{ display: "flex", gap: 10, flexWrap: "wrap" }}>
+        <div style={{ display: "flex", gap: 8, flex: "1 1 240px" }}>
           <button
             type="button"
             onClick={() => waehlen("ja")}
             style={{
-              flex: "1 1 180px",
+              flex: "1 1 0",
               border: "none",
-              borderRadius: 12,
-              padding: "13px 20px",
-              fontSize: 15.5,
+              borderRadius: 10,
+              padding: "10px 12px",
+              fontSize: 14.5,
               fontWeight: 700,
               fontFamily: "inherit",
               cursor: "pointer",
@@ -135,11 +140,11 @@ export default function Einwilligung() {
             type="button"
             onClick={() => waehlen("nein")}
             style={{
-              flex: "1 1 180px",
+              flex: "1 1 0",
               border: "1px solid var(--line)",
-              borderRadius: 12,
-              padding: "13px 20px",
-              fontSize: 15.5,
+              borderRadius: 10,
+              padding: "10px 12px",
+              fontSize: 14.5,
               fontWeight: 700,
               fontFamily: "inherit",
               cursor: "pointer",
