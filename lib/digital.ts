@@ -778,7 +778,7 @@ export const digitalprodukte: DigitalProdukt[] = [
       { art: "ueberschrift", text: "Wichtige Hinweise" },
       {
         art: "absatz",
-        text: "Die Nachberatung setzt voraus, dass ich dein Pferd schon einmal beraten habe. Wenn wir noch nie zusammengearbeitet haben, ist der Futterplan der richtige Einstieg, denn dort entsteht die Grundlage erst. Die Auswertung dauert in der Regel bis zu 14 Werktage nach vollständigem Eingang aller Unterlagen. Die Nachberatung gilt pro Pferd.",
+        text: "Die Nachberatung setzt voraus, dass ich dein Pferd schon einmal beraten habe. Wenn wir noch nie zusammengearbeitet haben, ist der Futterplan der richtige Einstieg, denn dort entsteht die Grundlage erst. Die Auswertung dauert in der Regel bis zu drei Wochen nach vollständigem Eingang aller Unterlagen. Die Nachberatung gilt pro Pferd.",
       },
     ],
   },
@@ -825,7 +825,7 @@ export const digitalprodukte: DigitalProdukt[] = [
       { art: "ueberschrift", text: "Wichtige Hinweise" },
       {
         art: "absatz",
-        text: "Ich stelle keine Diagnosen und ersetze keinen Tierarzt. Ich ordne Werte fachlich ein und sage dir, was daraus für die Fütterung folgt. Die Auswertung dauert in der Regel bis zu 14 Werktage nach vollständigem Eingang aller Unterlagen. Die Einschätzung gilt pro Pferd.",
+        text: "Ich stelle keine Diagnosen und ersetze keinen Tierarzt. Ich ordne Werte fachlich ein und sage dir, was daraus für die Fütterung folgt. Die Auswertung dauert in der Regel bis zu drei Wochen nach vollständigem Eingang aller Unterlagen. Die Einschätzung gilt pro Pferd.",
       },
     ],
   },
@@ -889,7 +889,7 @@ export const digitalprodukte: DigitalProdukt[] = [
       { art: "ueberschrift", text: "Wichtige Hinweise" },
       {
         art: "absatz",
-        text: "Nach deiner Buchung bekommst du einen ausführlichen Fragebogen zu Haltung, Fütterung und Gesundheitszustand, dazu bitte ich dich um ein paar Fotos. Die Auswertung dauert in der Regel bis zu 14 Werktage nach vollständigem Eingang aller Unterlagen. Danach begleite ich dich vier Wochen bei der Umsetzung. Der Futterplan gilt pro Pferd.",
+        text: "Nach deiner Buchung bekommst du einen ausführlichen Fragebogen zu Haltung, Fütterung und Gesundheitszustand, dazu bitte ich dich um ein paar Fotos. Die Auswertung dauert in der Regel bis zu drei Wochen nach vollständigem Eingang aller Unterlagen. Danach begleite ich dich vier Wochen bei der Umsetzung. Der Futterplan gilt pro Pferd.",
       },
     ],
   },
@@ -936,7 +936,7 @@ export const digitalprodukte: DigitalProdukt[] = [
       { art: "ueberschrift", text: "Wichtige Hinweise" },
       {
         art: "absatz",
-        text: "Die drei Monate laufen ab dem Tag, an dem dein Futterplan fertig ist, nicht ab dem Kauf. Die Auswertung dauert in der Regel bis zu 14 Werktage nach vollständigem Eingang aller Unterlagen. Damit jede Begleitung die Aufmerksamkeit bekommt, die sie braucht, nehme ich bewusst nur wenige Pferde gleichzeitig an. Die Begleitung gilt pro Pferd.",
+        text: "Die drei Monate laufen ab dem Tag, an dem dein Futterplan fertig ist, nicht ab dem Kauf. Die Auswertung dauert in der Regel bis zu drei Wochen nach vollständigem Eingang aller Unterlagen. Damit jede Begleitung die Aufmerksamkeit bekommt, die sie braucht, nehme ich bewusst nur wenige Pferde gleichzeitig an. Die Begleitung gilt pro Pferd.",
       },
     ],
   },
@@ -965,7 +965,7 @@ export const digitalprodukte: DigitalProdukt[] = [
     //   das leisten, was bis dahin gemacht wurde -- und zwar NUR, wenn sie
     //   beim Kauf ausdrücklich zugestimmt hat, dass vor Ablauf der Frist
     //   begonnen wird. Genau dafür ist der eigene Häkchentext in der Kasse
-    //   da. Ohne ihn arbeitest du bis zu vierzehn Werktage an einer Akte und
+    //   da. Ohne ihn arbeitest du bis zu drei Wochen an einer Akte und
     //   bekommst bei einem Widerruf gar nichts.
     art: "dienstleistung",
     kurz:
@@ -1013,7 +1013,7 @@ export const digitalprodukte: DigitalProdukt[] = [
       { art: "ueberschrift", text: "Wichtige Hinweise" },
       {
         art: "absatz",
-        text: "Damit jede Akte die Aufmerksamkeit bekommt, die sie verdient, nehme ich bewusst nur wenige Pferde gleichzeitig an. Die Auswertungsdauer beträgt in der Regel bis zu 14 Werktage nach vollständigem Eingang aller Unterlagen. Die Beratung gilt pro Pferd.",
+        text: "Damit jede Akte die Aufmerksamkeit bekommt, die sie verdient, nehme ich bewusst nur wenige Pferde gleichzeitig an. Die Auswertungsdauer beträgt in der Regel bis zu drei Wochen nach vollständigem Eingang aller Unterlagen. Die Beratung gilt pro Pferd.",
       },
     ],
   },

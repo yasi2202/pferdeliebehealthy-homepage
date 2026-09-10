@@ -558,7 +558,7 @@ export default function DigitalKasse({
                 Kundin widerrufen. Sie schuldet dann aber Wertersatz für das,
                 was bis dahin gemacht wurde -- und zwar nur, wenn sie genau
                 das hier vorher bestätigt hat. Ohne diesen Satz arbeitest du
-                bis zu vierzehn Werktage an einer Akte und bekommst bei einem
+                bis zu drei Wochen an einer Akte und bekommst bei einem
                 Widerruf nichts. */}
           {/* ▸ BEI EINEM FERNLEHRGANG STEHT HIER KEIN HÄKCHEN, SONDERN EIN
               HINWEIS. Das ist kein Versehen und auch keine Bequemlichkeit:
