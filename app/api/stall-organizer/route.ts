@@ -19,7 +19,7 @@ const AKADEMIE = process.env.AKADEMIE_URL || "https://akademieapp.vercel.app";
 /** Aus der Angabe in `?von=` wird der Eintrag in der Spalte `quelle`. */
 function quelleAus(von: unknown): string {
   if (typeof von !== "string") return "website";
-  const sauber = von.toLowerCase().replace(/[^a-z0-9_-]/g, "").slice(0, 24);
+  const sauber = von.toLowerCase().replace(/[^a-z0-9_-]/g, "").slice(0, 40);
   return sauber || "website";
 }
 

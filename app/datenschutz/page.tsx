@@ -1,4 +1,6 @@
 import LegalLayout from "@/components/LegalLayout";
+import EinwilligungWiderruf from "@/components/EinwilligungWiderruf";
+import { PIXEL } from "@/lib/messung";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -8,6 +10,13 @@ export const metadata: Metadata = {
 };
 
 export default function Datenschutz() {
+  // ▸ DER PIXELABSCHNITT ERSCHEINT NUR, WENN AUCH EIN PIXEL LAEUFT.
+  //   Steht NEXT_PUBLIC_META_PIXEL nicht in den Umgebungsvariablen, laedt
+  //   nichts, es erscheint kein Banner, und dann darf hier auch nichts
+  //   Gegenteiliges stehen. Eine Erklaerung, die Vorgaenge beschreibt, die es
+  //   nicht gibt, macht die uebrigen Angaben unglaubwuerdig.
+  const messung = Boolean(PIXEL);
+
   return (
     <LegalLayout eyebrow="Rechtliches" title="Datenschutzerklärung">
       <p style={{ marginBottom: "30px" }}>
@@ -310,6 +319,65 @@ export default function Datenschutz() {
         per Mitteilung an uns möglich.
       </p>
 
+      {/* ▸ DIESER ABSCHNITT UND DER PIXEL GEHOEREN ZUSAMMEN. Faellt die
+          Variable NEXT_PUBLIC_META_PIXEL weg, laedt nichts mehr, und dann
+          darf hier auch nichts mehr stehen. Umgekehrt gilt dasselbe: Wer
+          eine weitere Werbeplattform einbaut, traegt sie hier ein, bevor
+          sie live geht. */}
+      {messung && (
+        <>
+      <h3>Meta-Pixel (Facebook und Instagram)</h3>
+      <p>
+        Wir bewerben unsere Angebote bei Facebook und Instagram. Um zu
+        erkennen, welche Anzeige zu einer Anmeldung oder einer Bestellung
+        geführt hat, setzen wir den „Meta-Pixel&quot; der Meta Platforms
+        Ireland Limited, Merrion Road, Dublin 4, D04 X2K5, Irland ein. Er
+        wird ausschließlich nach Ihrer ausdrücklichen Einwilligung geladen.
+        Erteilen Sie sie nicht, wird der Pixel nicht ausgeführt, es wird
+        nichts an Meta übermittelt, und die Website steht Ihnen in vollem
+        Umfang zur Verfügung.
+      </p>
+      <p>
+        Nach erteilter Einwilligung legt der Pixel eine Kennung in Ihrem
+        Browser ab und übermittelt an Meta, dass Sie unsere Website
+        aufgerufen und dort gegebenenfalls ein Formular abgesendet oder eine
+        Bestellung abgeschlossen haben, dazu Ihre IP-Adresse, Angaben zu
+        Browser und Gerät sowie bei einer Bestellung den Bestellwert. Sind
+        Sie bei Facebook oder Instagram angemeldet, kann Meta diese Vorgänge
+        Ihrem dortigen Konto zuordnen. Für die Erhebung und Übermittlung
+        sind wir und Meta gemeinsam Verantwortliche nach Art. 26 DSGVO; die
+        Vereinbarung dazu ist unter{" "}
+        <a
+          href="https://www.facebook.com/legal/controller_addendum"
+          target="_blank"
+          rel="noopener"
+        >
+          facebook.com/legal/controller_addendum
+        </a>{" "}
+        abrufbar. Die Daten werden auch an Meta Platforms Inc. in die USA
+        übermittelt, für die das EU-US Data Privacy Framework als
+        Angemessenheitsbeschluss der EU-Kommission gilt. Nähere Angaben
+        finden Sie unter{" "}
+        <a
+          href="https://www.facebook.com/privacy/policy"
+          target="_blank"
+          rel="noopener"
+        >
+          facebook.com/privacy/policy
+        </a>
+        .
+      </p>
+      <p>
+        Rechtsgrundlage für das Speichern und Auslesen von Informationen in
+        Ihrem Endgerät ist § 25 Abs. 1 TDDDG, für die anschließende
+        Verarbeitung Art. 6 Abs. 1 lit. a DSGVO. Sie können Ihre Einwilligung
+        jederzeit mit Wirkung für die Zukunft widerrufen; die Rechtmäßigkeit
+        der bis dahin erfolgten Verarbeitung bleibt davon unberührt.
+      </p>
+      <EinwilligungWiderruf />
+        </>
+      )}
+
       <h2>Versanddienstleister</h2>
       <p>
         Wir geben Ihre E-Mail-Adresse im Rahmen der Vertragsabwicklung an
@@ -433,21 +501,72 @@ export default function Datenschutz() {
         .
       </p>
 
+      <h2>Empfehlungsprogramm</h2>
+      <p>
+        Wir betreiben ein Empfehlungsprogramm. Wer daran teilnimmt, empfiehlt
+        unsere digitalen Angebote weiter und erhält dafür eine Provision. Die
+        Einzelheiten stehen in den{" "}
+        <a href="/weiterempfehlen/bedingungen">Teilnahmebedingungen</a>.
+      </p>
+      <p>
+        <strong>Wenn Sie teilnehmen möchten</strong>, verarbeiten wir die
+        Angaben aus dem Bewerbungsformular: Vor- und Nachname,
+        E-Mail-Adresse, den gewünschten Namen für Ihren Empfehlungslink, Ihre
+        Angabe dazu, wo Sie empfehlen möchten, Ihre Zahlungsverbindung sowie
+        die Angabe, ob Sie unternehmerisch tätig sind, und gegebenenfalls Ihre
+        Steuernummer. Hinzu kommen die über Ihren Link zustande gekommenen
+        Käufe mit Betrag und Datum sowie die Anzahl der Klicks auf Ihren Link.
+        Rechtsgrundlage ist Art. 6 Abs. 1 lit. b DSGVO, für die Aufbewahrung
+        der Abrechnungen Art. 6 Abs. 1 lit. c DSGVO in Verbindung mit den
+        handels- und steuerrechtlichen Aufbewahrungsfristen von bis zu zehn
+        Jahren.
+      </p>
+      <p>
+        <strong>Wenn Sie über einen Empfehlungslink zu uns kommen</strong>,
+        wird in Ihrem Browser ausschließlich die Kennung der empfehlenden
+        Person gespeichert, damit ein späterer Kauf ihr zugeordnet werden
+        kann. Eine Kennung, die Sie betrifft, speichern wir dabei nicht, und
+        wir legen kein Profil über Ihr Verhalten an. Kaufen Sie etwas, wird
+        die Kennung der empfehlenden Person zu Ihrer Bestellung gespeichert.
+        Die empfehlende Person erfährt nur, dass und was verkauft wurde, nicht
+        jedoch, wer gekauft hat. Näheres zum Cookie steht im folgenden
+        Abschnitt.
+      </p>
+
       <h2>Cookies und Speicherung in Ihrem Browser</h2>
       <p>
         Cookies sind kleine Textdateien, die eine Website in Ihrem Browser
-        ablegt. Wir setzen ausschließlich solche ein, die für den Betrieb der
-        Seite und für die von Ihnen aufgerufenen Funktionen notwendig sind.
-        Cookies zu Werbezwecken, zur Reichweitenmessung oder von
-        Drittanbietern setzen wir nicht ein. Deshalb erscheint auf unserer
-        Website auch kein Einwilligungsbanner.
+        ablegt. Von uns selbst stammen ausschließlich solche, die für den
+        Betrieb der Seite und für die von Ihnen aufgerufenen Funktionen
+        notwendig sind. Zur Reichweitenmessung setzen wir keine Cookies ein.
+        {messung ? (
+          <>
+            {" "}Werbliche Kennungen legt allein der oben beschriebene
+            Meta-Pixel ab, und das erst, nachdem Sie im Banner eingewilligt
+            haben.
+          </>
+        ) : (
+          <>
+            {" "}Cookies zu Werbezwecken oder von Drittanbietern setzen wir
+            nicht ein. Deshalb erscheint auf unserer Website auch kein
+            Einwilligungsbanner.
+          </>
+        )}
       </p>
-      <p>Im Einzelnen sind das zwei Cookies:</p>
+      <p>Im Einzelnen sind das drei Cookies:</p>
       <ul>
         <li>
           <strong>pfh_insider_zugang</strong>, Laufzeit ein Jahr. Er öffnet
           den Insider-Bereich, nachdem Sie sich über den Bestätigungslink in
           unserer E-Mail angemeldet haben.
+        </li>
+        <li>
+          <strong>pfh_empfehlung</strong>, Laufzeit 30 Tage. Er wird nur
+          gesetzt, wenn Sie einen Empfehlungslink der Form <em>/e/KENNUNG</em>{" "}
+          anklicken, und enthält allein die Kennung der empfehlenden Person.
+          Er dient dazu, einen späteren Kauf der Provisionsabrechnung
+          zuzuordnen, und wird zu keinem anderen Zweck ausgelesen. Eine
+          Kennung, die Sie betrifft, enthält er nicht.
         </li>
         <li>
           <strong>pfh_admin</strong>, Laufzeit eine Woche. Er hält die
@@ -456,12 +575,21 @@ export default function Datenschutz() {
         </li>
       </ul>
       <p>
-        Daneben legt Ihr Browser zwei Angaben in seinem eigenen Speicher ab,
-        die unseren Server nie erreichen: den Inhalt Ihres Warenkorbs, damit
-        er beim Wechsel zwischen den Seiten erhalten bleibt, und den Vermerk,
-        dass Sie den Hinweis auf unseren Insider-Kanal weggeklickt haben.
-        Beide enthalten keine Kennung, mit der sich jemand wiedererkennen
-        ließe.
+        Daneben legt Ihr Browser einige Angaben in seinem eigenen Speicher
+        ab, die unseren Server nie erreichen: den Inhalt Ihres Warenkorbs,
+        damit er beim Wechsel zwischen den Seiten erhalten bleibt, den
+        Vermerk, dass Sie den Hinweis auf unseren Insider-Kanal weggeklickt
+        haben{messung ? ", und Ihre Antwort auf die Frage nach der Werbemessung samt Datum" : ""}.
+        Keine dieser Angaben enthält eine Kennung, mit der sich jemand
+        wiedererkennen ließe.
+        {messung && (
+          <>
+            {" "}Ihre Antwort auf die Frage nach der Werbemessung bewahren wir
+            auf, weil wir nachweisen können müssen, dass eine Einwilligung
+            vorlag, und weil wir Sie sonst bei jedem Besuch erneut fragen
+            müssten.
+          </>
+        )}
       </p>
       <p>
         Rechtsgrundlage für die Speicherung und das Auslesen ist § 25 Abs. 2

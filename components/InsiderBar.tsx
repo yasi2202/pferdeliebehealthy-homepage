@@ -5,6 +5,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { insider } from "@/lib/insider";
 import { istInsider } from "@/lib/insider-merker";
+import { offen } from "@/lib/messung";
 
 // ---------------------------------------------------------------------------
 // Der Balken am unteren Bildschirmrand.
@@ -40,6 +41,13 @@ export default function InsiderBar() {
     if (schonGeschlossen) return;
 
     function pruefen() {
+      // Solange das Einwilligungsbanner unten steht, bleibt der Balken weg:
+      // Zwei Kaesten uebereinander verdecken auf dem Handy die halbe Seite,
+      // und die Einwilligung ist die Frage, die zuerst beantwortet gehoert.
+      if (offen()) {
+        setSichtbar(false);
+        return;
+      }
       const hoehe = document.body.scrollHeight - window.innerHeight;
       const anteil = hoehe > 0 ? window.scrollY / hoehe : 0;
       setSichtbar(anteil > 0.35);

@@ -8,6 +8,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import ScrollFade from "@/components/ScrollFade";
 import InsiderBar from "@/components/InsiderBar";
+import Einwilligung from "@/components/Einwilligung";
 import WarenkorbProvider from "@/components/WarenkorbProvider";
 import WarenkorbLade from "@/components/WarenkorbLade";
 
@@ -261,6 +262,10 @@ export default function RootLayout({
         </WarenkorbProvider>
         <ScrollFade />
         <InsiderBar />
+        {/* Fragt nach der Einwilligung in die Werbemessung und laedt danach
+            den Meta-Pixel. Erscheint nur, wenn NEXT_PUBLIC_META_PIXEL
+            gesetzt ist, siehe lib/messung.ts. */}
+        <Einwilligung />
         {/* Besucherzählung ohne Cookies: erkennt niemanden wieder, speichert
             keine Kennung im Browser, deshalb ohne Einwilligung zulässig.
             Zählt erst, wenn Web Analytics im Vercel-Konto aktiviert ist. */}

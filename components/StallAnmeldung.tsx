@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { melde } from "@/lib/messung";
 
 // ---------------------------------------------------------------------------
 // Das Anmeldeformular für den Stall Organizer, auf der Website.
@@ -26,6 +27,14 @@ export const EINWILLIGUNG =
  *  jeder Anmeldung nur "website", und man weiss hinterher nicht, was etwas
  *  gebracht hat.
  *
+ *  40 Zeichen, weil bei bezahlter Werbung nicht nur der Kanal darin steht,
+ *  sondern auch die Anzeige: `?von=meta-fellwechsel-3` sagt hinterher, welche
+ *  der sechs Anzeigen die Anmeldung gebracht hat. Die Spalte `quelle` in der
+ *  Akademie nimmt genau 40 Zeichen, deshalb dieselbe Grenze. Erlaubt sind nur
+ *  Kleinbuchstaben, Ziffern, Bindestrich und Unterstrich; Anzeigennamen mit
+ *  Leerzeichen kommen also gekuerzt an und sollten im Werbekonto gleich ohne
+ *  gesetzt werden.
+ *
  *  Gemerkt wird sie fuer die Sitzung: Wer ueber `?von=instagram` auf der
  *  Startseite landet und erst dann auf die Unterseite geht, waere sonst auf
  *  dem zweiten Klick wieder namenlos.
@@ -36,7 +45,7 @@ function herkunftMerken() {
   try {
     const von = new URLSearchParams(window.location.search).get("von");
     if (!von) return;
-    const sauber = von.toLowerCase().replace(/[^a-z0-9_-]/g, "").slice(0, 24);
+    const sauber = von.toLowerCase().replace(/[^a-z0-9_-]/g, "").slice(0, 40);
     if (sauber) sessionStorage.setItem(SPEICHER, sauber);
   } catch {
     /* Privater Modus: dann eben ohne Herkunft, die Anmeldung zaehlt trotzdem. */
@@ -72,6 +81,13 @@ export function StallAnmeldung({ kompakt = false }: { kompakt?: boolean }) {
       });
       const d = await res.json();
       setAntwort({ ok: !!d.ok, text: d.meldung || "Unbekannte Antwort." });
+      // Fuer die Werbemessung. Gemeldet wird das Absenden, nicht die
+      // Bestaetigung per Mail: Der Klick auf den Link in der Mail passiert
+      // oft auf einem anderen Geraet, und dort wuesste der Pixel nichts mehr
+      // von der Anzeige. Die verlaesslichere Zahl steht ohnehin in der
+      // eigenen Auswertung unter /admin/stall-organizer, dort getrennt nach
+      // bestaetigt und offen.
+      if (d.ok) melde("Lead", { content_name: "Equista" });
     } catch {
       setAntwort({ ok: false, text: "Keine Verbindung. Bitte prüf dein Internet." });
     } finally {

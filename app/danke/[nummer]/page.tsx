@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { preisText } from "@/lib/shop";
 import { digitalAnhaenge, digitalLaden } from "@/lib/digital-server";
+import KaufMeldung from "@/components/KaufMeldung";
 
 // ---------------------------------------------------------------------------
 // Die Dankeseite nach einem Kauf.
@@ -43,8 +44,21 @@ export default async function DankeSeite({
   const teile =
     darfSehen && kauf ? [kauf, ...(await digitalAnhaenge(kauf.nummer))] : [];
 
+  // Fuer die Werbemessung: nur ein geprueftes, bezahltes Geschaeft wird
+  // gemeldet, und der Betrag ist die Summe aus Erstkauf und angenommenem
+  // Angebot. Ohne Schluessel oder ohne Zahlung bleibt es still.
+  const bezahlteTeile = teile.filter((t) => t.status === "bezahlt");
+  const kaufWert = bezahlteTeile.reduce((summe, t) => summe + (t.gesamt || 0), 0);
+
   return (
     <main className="px-6 py-14 sm:px-8 sm:py-20">
+      {kauf && bezahlteTeile.length > 0 && (
+        <KaufMeldung
+          nummer={kauf.nummer}
+          centBetrag={kaufWert}
+          artikel={bezahlteTeile.flatMap((t) => t.artikel.map((a) => a.name))}
+        />
+      )}
       <div className="mx-auto max-w-2xl">
         <span className="mb-4 block text-[13px] font-semibold uppercase tracking-[0.14em] text-rose-deep">
           Alles erledigt
