@@ -20,7 +20,7 @@ import { futterCheck } from "@/lib/seite";
 
 const TITEL = "Der kostenlose Futter-Check für dein Pferd";
 const BESCHREIBUNG =
-  "In fünf Fragen eine erste ehrliche Einschätzung, ob die Fütterung deines Pferdes wirklich zu seiner Situation passt. Kostenlos, in unter drei Minuten, von Ernährungsberaterin Yasemin Halac.";
+  "In sechs Fragen eine erste ehrliche Einschätzung, ob die Fütterung deines Pferdes wirklich zu seiner Situation passt. Kostenlos, in unter drei Minuten, von Ernährungsberaterin Yasemin Halac.";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/futter-check" },
@@ -46,6 +46,7 @@ const fragen = [
   "Bekommt dein Pferd aktuell ein Mineralfutter?",
   "Welche Auffälligkeiten fallen dir gerade auf?",
   "Wie würdest du deine Fütterung selbst beschreiben?",
+  "Wie möchtest du am liebsten weitermachen?",
 ];
 
 const antworten = [
@@ -77,7 +78,7 @@ export default function FutterCheckSeite() {
               Der Futter-Check
             </h1>
             <p className="text-[18px] sm:text-[19px] text-cream/90 leading-relaxed mb-4 max-w-xl">
-              Fünf Fragen zu deinem Pferd, und danach weißt du, ob seine
+              Sechs Fragen zu deinem Pferd, und danach weißt du, ob seine
               Fütterung wirklich zu seiner Situation passt, oder ob du gerade
               etwas fütterst, das an ihm vorbeigeht.
             </p>
@@ -151,7 +152,7 @@ export default function FutterCheckSeite() {
                 Das wird gefragt
               </span>
               <h2 className="font-serif font-normal text-[26px] sm:text-[34px] leading-[1.15] tracking-tight mb-5">
-                Fünf Fragen, keine Fangfragen.
+                Sechs Fragen, keine Fangfragen.
               </h2>
               <p className="text-[16px] text-ink-soft leading-relaxed">
                 Du brauchst nichts vorzubereiten, keine Heuanalyse, keine
@@ -211,10 +212,10 @@ export default function FutterCheckSeite() {
               Dann schauen wir mal, wo dein Pferd steht.
             </h2>
             <p className="text-[16px] text-cream/75 leading-relaxed mb-8">
-              Du trägst kurz deinen Namen und deine E-Mail-Adresse ein, danach
-              geht es direkt los. Ich schicke dir das Ergebnis zusätzlich ins
-              Postfach und melde mich ein paar Tage später noch einmal, um es mit
-              dir einzuordnen.
+              Du beantwortest die sechs Fragen und trägst am Ende deinen Namen
+              und deine E-Mail-Adresse ein. Dein Ergebnis schicke ich dir ins
+              Postfach, und ein paar Tage später melde ich mich noch einmal, um
+              es mit dir einzuordnen.
             </p>
             <Link
               href={futterCheck.fragebogen}

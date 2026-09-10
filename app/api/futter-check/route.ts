@@ -2,7 +2,10 @@ import { istEingerichtet, EMAIL_MUSTER, kuerzen } from "@/lib/versand";
 import {
   speichereAnmeldung,
   sendeBestaetigungsMail,
+  sendeErgebnisMail,
+  sendeBenachrichtigung,
 } from "@/lib/futter-check-server";
+import { seitenUrl } from "@/lib/seo";
 
 // ---------------------------------------------------------------------------
 // Nimmt die Anmeldung aus dem Futter-Check entgegen.
@@ -12,7 +15,11 @@ import {
 //   2. Wir speichern das in der Datenbank — zunaechst als unbestaetigt.
 //   3. Wir schicken eine Bestaetigungsmail mit einem Link.
 //   4. Erst der Klick auf diesen Link macht die Adresse zu einer, an die
-//      geworben werden darf. Das passiert in app/futter-check-bestaetigt.
+//      geworben werden darf. Das passiert in app/futter-check-bestaetigt,
+//      und dort gibt es auch das Ergebnis.
+//   5. Ist die Adresse schon bestaetigt (der Check wird wiederholt), geht
+//      das neue Ergebnis sofort per Mail raus. Der Fragebogen zeigt seit
+//      10.09.2026 kein Ergebnis mehr an, ohne diese Mail bekaeme sie nichts.
 //
 // Das Ergebnis wird bewusst vom Browser mitgeschickt statt hier noch einmal
 // berechnet: die Auswertungslogik steht komplett im Fragebogen, und sie
@@ -69,12 +76,23 @@ export async function POST(request: Request) {
     );
   }
 
+  // Woher sie kam, aus /futter-check-start?von=instagram. Gleiche Regel wie
+  // beim Stall Organizer: nur Kleinbuchstaben, Ziffern, - und _.
+  const quelle =
+    kuerzen(daten.von, 40).toLowerCase().replace(/[^a-z0-9_-]/g, "") || null;
+
+  // Die Antworten sind ein kleines Objekt. Alles, was deutlich groesser ist,
+  // kommt nicht vom Fragebogen.
+  const antworten =
+    daten.antworten && JSON.stringify(daten.antworten).length <= 2000 ? daten.antworten : null;
+
   const anmeldung = await speichereAnmeldung({
     vorname,
     email,
     ergebnisTitel: kuerzen(daten.ergebnisTitel, 200),
     ergebnisText: kuerzen(daten.ergebnisText, 4000),
-    antworten: daten.antworten ?? null,
+    antworten,
+    quelle,
   });
 
   if (!anmeldung) {
@@ -89,14 +107,19 @@ export async function POST(request: Request) {
     );
   }
 
-  // Wer schon bestaetigt hat, bekommt keine zweite Bestaetigungsmail — das
-  // waere unnoetig und wirkt wie ein Fehler.
   if (!anmeldung.bestaetigt) {
     const basisUrl = new URL(request.url).origin;
     const verschickt = await sendeBestaetigungsMail(anmeldung, basisUrl);
     if (!verschickt) {
       console.error("Futter-Check: Bestaetigungsmail konnte nicht versendet werden.");
     }
+  } else {
+    // Schon bestaetigt: keine zweite Bestaetigung, das neue Ergebnis direkt.
+    const verschickt = await sendeErgebnisMail(anmeldung, seitenUrl);
+    if (!verschickt) {
+      console.error("Futter-Check: Ergebnismail bei Wiederholung nicht versendet.");
+    }
+    await sendeBenachrichtigung(anmeldung, true);
   }
 
   return Response.json({ ok: true, schonBestaetigt: anmeldung.bestaetigt });

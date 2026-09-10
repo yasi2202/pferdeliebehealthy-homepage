@@ -63,7 +63,7 @@ export const bewertungslink = "https://g.page/r/CUJ2-gPlofQhEBM/review";
 //
 //   1. `infoseite` erklaert den Check und steht bei Google. Von der Startseite
 //      geht es ueber die Knoepfe direkt zum `fragebogen`.
-//   2. Im Fragebogen kommt nach der fuenften Frage das Feld fuer Name und
+//   2. Im Fragebogen kommt nach der letzten Frage das Feld fuer Name und
 //      E-Mail. Es geht an app/api/futter-check und landet in Supabase.
 //   3. Die Interessentin bekommt eine Bestaetigungsmail. Erst der Klick auf
 //      den Link darin (`bestaetigt`) macht die Adresse zu einer, an die
