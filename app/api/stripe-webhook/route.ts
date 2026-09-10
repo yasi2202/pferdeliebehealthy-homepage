@@ -10,7 +10,7 @@ import {
   zahlungsdatenHolen,
   zugangEntziehen,
 } from "@/lib/digital-server";
-import { bestellungAufsHandy } from "@/lib/telegram";
+import { bestellungAufsHandy } from "@/lib/handy";
 
 // ---------------------------------------------------------------------------
 // Die Rückmeldung von Stripe: hier erfahren wir, dass wirklich bezahlt wurde.
@@ -183,7 +183,7 @@ export async function POST(request: Request) {
     bestellbestaetigungSenden(bestellung),
     bestellungMeldenAnYasi(bestellung),
     // Zusaetzlich aufs Handy, damit du vom Paket erfaehrst, ohne ins
-    // Postfach zu schauen. Siehe lib/telegram.ts.
+    // Postfach zu schauen. Siehe lib/handy.ts.
     bestellungAufsHandy(bestellung),
   ]);
 

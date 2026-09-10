@@ -1,4 +1,4 @@
-import { tagesberichtAufsHandy, telegramEingerichtet } from "@/lib/telegram";
+import { tagesberichtAufsHandy, handyEingerichtet } from "@/lib/handy";
 
 // ---------------------------------------------------------------------------
 // Die Übersicht am Abend, aufs Handy.
@@ -8,9 +8,13 @@ import { tagesberichtAufsHandy, telegramEingerichtet } from "@/lib/telegram";
 //   Vercel rechnet in UTC, das sind also 20 Uhr im Sommer und 19 Uhr im
 //   Winter. Genauer geht es nicht, Vercel kennt keine Zeitzonen im Zeitplan.
 //
+// ▸ WIE SIE ANKOMMT
+//   Seit dem 10.09.2026 als Meldung der Akademie-App, nicht mehr über
+//   Telegram. Den Weg dorthin beschreibt lib/handy.ts.
+//
 // ▸ WARUM DER SCHLÜSSEL GEPRÜFT WIRD
 //   Die Adresse ist öffentlich erreichbar. Ohne Prüfung könnte jeder sie
-//   aufrufen und dir damit Nachrichten schicken. Vercel sendet bei jedem
+//   aufrufen und dir damit Meldungen schicken. Vercel sendet bei jedem
 //   Cron-Aufruf den Wert aus CRON_SECRET im Authorization-Kopf mit. Es ist
 //   dieselbe Variable, die der Streckenlauf und die Bewertungsbitte schon
 //   benutzen, es muss also nichts Neues angelegt werden.
@@ -38,10 +42,10 @@ export async function GET(request: Request) {
     return Response.json({ fehler: "Nicht erlaubt." }, { status: 401 });
   }
 
-  if (!telegramEingerichtet()) {
-    // Kein Fehler: Solange der Bot nicht eingerichtet ist, soll der tägliche
-    // Lauf still bleiben und nicht jeden Abend im Protokoll Alarm schlagen.
-    return Response.json({ ok: true, uebersprungen: "Telegram fehlt." });
+  if (!handyEingerichtet()) {
+    // Kein Fehler: Ohne Schlüssel soll der tägliche Lauf still bleiben und
+    // nicht jeden Abend im Protokoll Alarm schlagen.
+    return Response.json({ ok: true, uebersprungen: "Schlüssel fehlt." });
   }
 
   const verschickt = await tagesberichtAufsHandy();

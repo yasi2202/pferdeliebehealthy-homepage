@@ -48,7 +48,7 @@ import {
   ANTWORT_AN,
 } from "@/lib/versand";
 import { bewertungslink } from "@/lib/seite";
-import { kaufAufsHandy } from "@/lib/telegram";
+import { kaufAufsHandy } from "@/lib/handy";
 import { provisionGutschreiben } from "@/lib/empfehlungsprogramm-server";
 
 const AKADEMIE_WEBHOOK_URL = process.env.AKADEMIE_WEBHOOK_URL;
@@ -1561,7 +1561,7 @@ export async function nachDerZahlung(b: DigitalBestellung): Promise<void> {
   // im Vercel-Protokoll, der Zugang ist aber längst vergeben.
   // Die Meldung aufs Handy laeuft mit im selben Bund: Sie kommt sofort mit
   // Ton an, waehrend die Mail erst beim naechsten Blick ins Postfach
-  // auffaellt. Siehe lib/telegram.ts.
+  // auffaellt. Siehe lib/handy.ts.
   const [anKundin, anYasi] = await Promise.all([
     digitalBestaetigungSenden(b),
     digitalMeldenAnYasi(b),

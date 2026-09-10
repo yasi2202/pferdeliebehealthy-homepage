@@ -113,18 +113,18 @@ export async function ersteZeile<T>(pfad: string): Promise<T | null> {
 
 /** Verschickt eine Mail.
  *
- *  ▸ GEHT SIE AN DICH (info@), KOMMT SIE AUCH AUFS HANDY, über Telegram, mit
- *    dem Betreff als Nachricht. Gewünscht am 10.09.2026: „alles was aus
- *    meinen Bereichen kommt will ich aufs Handy“. So reicht eine Stelle für
- *    jede Meldung an dich, auch für solche, die erst noch dazukommen.
- *    `{ handy: false }` schaltet das ab, wo schon eine eigene, ausführlichere
- *    Telegram-Nachricht rausgeht (Kauf, Shop-Bestellung) oder wo es nur ein
- *    Test ist. Die Nachricht geht auch dann raus, wenn die Mail scheitert:
+ *  ▸ GEHT SIE AN DICH (info@), KOMMT SIE AUCH AUFS HANDY, als Meldung der
+ *    Akademie-App mit dem Betreff als Titel. Gewünscht am 10.09.2026: „alles
+ *    was aus meinen Bereichen kommt will ich aufs Handy“. So reicht eine
+ *    Stelle für jede Meldung an dich, auch für solche, die erst noch
+ *    dazukommen. `{ handy: false }` schaltet das ab, wo schon eine eigene,
+ *    ausführlichere Meldung rausgeht (Kauf, Shop-Bestellung) oder wo es nur
+ *    ein Test ist. Die Meldung geht auch dann raus, wenn die Mail scheitert:
  *    Dann ist sie der einzige Hinweis.
  *
- *  ▸ TELEGRAM WIRD ERST HIER DRIN GELADEN, nicht oben in der Datei. Die
- *    Telegram-Datei holt sich über die Auswertung wieder diese Datei, ein
- *    Import oben wäre ein Ringschluss. */
+ *  ▸ lib/handy.ts WIRD ERST HIER DRIN GELADEN, nicht oben in der Datei. Sie
+ *    holt sich über die Auswertung wieder diese Datei, ein Import oben wäre
+ *    ein Ringschluss. */
 export async function sendeMail(
   an: string,
   betreff: string,
@@ -132,9 +132,12 @@ export async function sendeMail(
   opt: { handy?: boolean } = {},
 ) {
   if (opt.handy !== false && an.trim().toLowerCase() === ANTWORT_AN) {
-    const { aufsHandy } = await import("@/lib/telegram");
-    const sicher = betreff.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
-    await aufsHandy(`🔔 ${sicher}`);
+    const { aufsHandy } = await import("@/lib/handy");
+    await aufsHandy({
+      titel: `🔔 ${betreff}`.slice(0, 120),
+      text: "Die Mail dazu liegt in deinem Postfach.",
+      kennung: `hinweis-${Date.now()}`,
+    });
   }
 
   const res = await fetch("https://api.resend.com/emails", {
