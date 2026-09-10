@@ -7,12 +7,21 @@ export default function Hero() {
       <div className="grid lg:grid-cols-2">
         {/* Image side — full photo, no crop */}
         <div className="relative order-1 lg:order-2 flex items-center justify-center bg-rose-deep">
+          {/* fetchPriority steht hier zusaetzlich zu priority, seit
+              09.09.2026. priority sorgt dafuer, dass next/image das Bild oben
+              im Seitenkopf ankuendigt, es sagt aber nicht, wie dringend es ist.
+              Ohne den Zusatz behandelt der Browser es wie jedes andere Bild und
+              laesst ihm den Vortritt, was gerade sonst noch in der Leitung
+              haengt. Das ist genau der Punkt, den die Google-Messung unter
+              "LCP-Anfrageerkennung" bemaengelt: Dieses Foto ist das Bild, auf
+              das die ganze Seite wartet. */}
           <Image
             src="/images/yasi-helena.jpg"
             alt="Yasi mit ihrer Stute Helena"
             width={1122}
             height={1402}
             priority
+            fetchPriority="high"
             sizes="(min-width: 1024px) 50vw, 100vw"
             className="w-full h-auto"
           />
