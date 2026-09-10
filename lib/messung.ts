@@ -15,6 +15,8 @@
 // Zeile Fremdcode zu sehen, und die Seite kann alles, was sie vorher konnte.
 //
 // OHNE PIXELNUMMER PASSIERT GAR NICHTS
+// Die Nummer steht in .env.production (seit 10.09.2026: 1061479973538555,
+// Datensatz "Pferdeliebehealthy Website" im Ereignismanager).
 // Steht NEXT_PUBLIC_META_PIXEL nicht in den Umgebungsvariablen, erscheint
 // auch kein Banner. Solange keine Anzeigen laufen, sieht die Seite also aus
 // wie immer. Das ist Absicht: Ein Einwilligungsbanner kostet Anmeldungen,
@@ -170,6 +172,9 @@ export function pixelStarten() {
       },
       { queue: [] as unknown[][], loaded: true, version: "2.0" },
     ) as Fbq;
+    // Wie im Schnipsel von Meta: `fbq.push` zeigt auf fbq selbst. Aeltere
+    // Teile von fbevents.js rufen die Warteschlange ueber `_fbq.push` auf.
+    (f as Fbq & { push?: Fbq }).push = f;
     window.fbq = f;
     window._fbq = f;
 

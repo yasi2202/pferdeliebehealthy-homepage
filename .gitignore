@@ -25,3 +25,6 @@ Thumbs.db
 
 .vercel
 .env*
+
+# Enthaelt nur die oeffentliche Pixelnummer, nichts Geheimes.
+!.env.production
