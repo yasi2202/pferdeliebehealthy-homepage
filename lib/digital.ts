@@ -837,6 +837,23 @@ export const digitalprodukte: DigitalProdukt[] = [
     preis: 14900,
     mwst: 19,
     art: "dienstleistung",
+    // ▸ EIGENER PROVISIONSSATZ, UND WARUM AUSGERECHNET HIER
+    //   Die Staffel im Empfehlungsprogramm gibt 20 % unter 100 € und 10 %
+    //   darüber. Genau an dieser Stufe entsteht eine Schieflage, und der
+    //   Futterplan ist das einzige Angebot, das hineinfällt: Mit 10 % brächte
+    //   er einer Empfehlerin 12,52 €, die Befund-Einschätzung für 79 € aber
+    //   13,28 €. Das teurere Angebot wäre also das schlechtere Geschäft, und
+    //   sie hätte einen Grund, die kleinere Leistung zu empfehlen.
+    //
+    //   15 % ergeben 18,78 € und stellen die Reihenfolge wieder her:
+    //   79 € → 13,28, 149 € → 18,78, 249 € → 20,92. Von unten nach oben
+    //   steigend, so wie es sein soll.
+    //
+    //   ▸ Wer die Schwelle in lib/empfehlungsprogramm.ts verschiebt, sieht
+    //     bitte hier noch einmal nach. Und wer ein Angebot mit einem Preis
+    //     zwischen 100 und 200 € neu anlegt, prüft, ob es dieselbe Stufe
+    //     trifft.
+    provision: 15,
     kurz: "Eine vollständige Rationsberechnung und ein Plan, der zu deinem Pferd passt.",
     leistung:
       "Analyse deiner aktuellen Fütterung, vollständige Rationsberechnung " +
