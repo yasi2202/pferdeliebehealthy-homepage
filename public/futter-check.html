@@ -419,7 +419,7 @@ const TYPES = {
           : "Auch ohne akute Auff\älligkeiten bleibt dabei offen, ob wirklich alles bei deinem Pferd ankommt, was du ihm f\ütterst.";
       return `Bei deinem Pferd kommen aktuell mehrere Futterkomponenten zusammen, ohne dass ein klarer roter Faden erkennbar ist. Genau das begegnet mir in der Beratung immer wieder, viele einzelne Zus\ätze und Bausteine nebeneinander, und trotzdem bleibt die eigentliche Grundversorgung l\ückenhaft, weil niemand mehr den vollst\ändigen \Überblick hat, was sich wo erg\änzt oder sogar \überschneidet. Besonders bei Spurenelementen wie Zink, Kupfer und Selen kann das zum Problem werden, denn hier stehen sich einzelne Mineralstoffe bei zu hoher Dosierung gegenseitig im Weg und blockieren sich in der Aufnahme, statt sich zu erg\änzen. ${symptomText}`;
     },
-    step: "Der erste Schritt ist deshalb nicht, noch etwas hinzuzuf\ügen, sondern einmal in Ruhe zu verstehen, was dein Pferd \über Heu und Grundfutter bereits bekommt und was davon tats\ächlich fehlt. Genau diese Klarheit schaffst du dir im Mineralfinder Kurs.",
+    step: "Der erste Schritt ist deshalb nicht, noch etwas hinzuzuf\ügen, sondern einmal in Ruhe zu verstehen, was dein Pferd \über Heu und Grundfutter bereits bekommt und was davon tats\ächlich fehlt. Genau diese Klarheit schaffst du dir im Kurs Mineral-Klarheit.",
   },
   mineral_blindflug: {
     title: "Mineral-Blindflug",
@@ -431,7 +431,7 @@ const TYPES = {
           : "Heu und dein Grundfutter";
       return `Deine Grundf\ütterung ist \überschaubar und solide aufgebaut, ${grund} bildet eine gute Basis f\ür dein Pferd. Was aktuell fehlt oder unklar ist, ist die Mineralversorgung. Weil dein Pferd kein oder nur unregelm\ä\ßig Mineralfutter bekommt, f\ütterst du an dieser Stelle im Grunde auf gut Gl\ück, denn Heu allein deckt vor allem den Bedarf an Spurenelementen wie Zink, Kupfer und Selen so gut wie nie zuverl\ässig, ganz unabh\ängig von der Qualit\ät und selbst bei sehr gutem Heu schwankt der Mineralgehalt je nach Region und Boden erheblich. Ganzheitlich betrachtet ist das genau die Stelle, die am meisten Einfluss auf das Gesamtbild deines Pferdes hat, auch wenn sie sich selten sofort zeigt, sondern erst \über Monate hinweg, am Fell, an den Hufen oder an der allgemeinen Verfassung.`;
     },
-    step: "Der naheliegendste n\ächste Schritt ist, die Mineralversorgung deines Pferdes einmal wirklich zu verstehen, statt sie zu sch\ätzen. Genau darum geht es im Mineralfinder Kurs.",
+    step: "Der naheliegendste n\ächste Schritt ist, die Mineralversorgung deines Pferdes einmal wirklich zu verstehen, statt sie zu sch\ätzen. Genau darum geht es im Kurs Mineral-Klarheit.",
   },
   symptom_feuerwehr: {
     title: "Symptom-Feuerwehr",
@@ -442,17 +442,29 @@ const TYPES = {
         symptome.length > 0
           ? symptome.map((s) => LABELS[s]).join(", ")
           : "die aktuellen Auff\älligkeiten";
-      return `Bei deinem Pferd zeigen sich bereits konkrete Anzeichen, zum Beispiel ${symptomListe}. Das ist der Moment, in dem die meisten beginnen zu reagieren statt vorzubeugen, hier ein Zusatzfutter, dort ein Mittel, immer dem aktuellen Symptom hinterher. Aus meiner Erfahrung liegt hinter Symptomen wie Kotwasser fast immer eine Rohfaser- oder Darmflorafrage, hinter Fellproblemen oder einem z\ähen Fellwechsel h\äufig ein Mangel an Zink, Kupfer oder Biotin, hinter Juckreiz und Ekzem oft ein Ungleichgewicht bei den Fetts\äuren, und hinter Hufproblemen, Atemwegsthemen oder ersten Stoffwechselauff\älligkeiten meistens eine tiefer liegende Baustelle im Mineralhaushalt. Ganzheitlich betrachtet hilft es deinem Pferd wenig, immer nur das aktuelle Symptom zu behandeln, solange die Ursache dahinter nicht angeschaut wird, kommt das n\ächste Symptom \über kurz oder lang wieder.`;
+      // Seit 10.09.2026 landen hier auch Pferde ohne Mineralfutter. Ihr Text
+      // soll die fehlende Versorgung nicht verschweigen.
+      const mineral =
+        a.mineralstatus === "kein_mineral"
+          ? " Dazu kommt, dass dein Pferd im Moment kein Mineralfutter bekommt. Das ist eine der ersten Stellen, die ich mir bei solchen Anzeichen ansehen würde."
+          : a.mineralstatus === "unregelmaessig"
+          ? " Dazu kommt, dass dein Pferd sein Mineralfutter nur unregelmäßig bekommt. Das ist eine der ersten Stellen, die ich mir bei solchen Anzeichen ansehen würde."
+          : "";
+      return `Bei deinem Pferd zeigen sich bereits konkrete Anzeichen, zum Beispiel ${symptomListe}. Das ist der Moment, in dem die meisten beginnen zu reagieren statt vorzubeugen, hier ein Zusatzfutter, dort ein Mittel, immer dem aktuellen Symptom hinterher. Aus meiner Erfahrung liegt hinter Symptomen wie Kotwasser fast immer eine Rohfaser- oder Darmflorafrage, hinter Fellproblemen oder einem z\ähen Fellwechsel h\äufig ein Mangel an Zink, Kupfer oder Biotin, hinter Juckreiz und Ekzem oft ein Ungleichgewicht bei den Fetts\äuren, und hinter Hufproblemen, Atemwegsthemen oder ersten Stoffwechselauff\älligkeiten meistens eine tiefer liegende Baustelle im Mineralhaushalt. Ganzheitlich betrachtet hilft es deinem Pferd wenig, immer nur das aktuelle Symptom zu behandeln, solange die Ursache dahinter nicht angeschaut wird, kommt das n\ächste Symptom \über kurz oder lang wieder.${mineral}`;
     },
-    step: "Der wichtigste n\ächste Schritt ist deshalb, einmal von der Ursache aus zu denken statt vom Symptom. Wie das f\ür dein Pferd konkret aussehen kann, lernst du im Mineralfinder Kurs.",
+    step: "Der wichtigste n\ächste Schritt ist deshalb, einmal von der Ursache aus zu denken statt vom Symptom. Wie das f\ür dein Pferd konkret aussehen kann, lernst du im Kurs Mineral-Klarheit.",
   },
   auf_gutem_weg: {
     title: "Auf gutem Weg",
     kicker: "Dein F\ütterungstyp",
     text: (a) => {
-      return `Bei deinem Pferd stimmt die Grundstruktur bereits, eine durchdachte F\ütterung, ein regelm\ä\ßiges Mineralfutter und aktuell keine gro\ßen Auff\älligkeiten. Das ist keine Selbstverst\ändlichkeit, den meisten Pferdebesitzern fehlt genau das. Was jetzt noch den Unterschied macht, sind die Feinheiten, ob die Mineralversorgung ganzheitlich und individuell wirklich zu Alter, Haltung und Belastung deines Pferdes passt, oder ob sie eher pauschal gew\ählt ist. Selbst ein gutes Standard-Mineralfutter deckt selten exakt das, was dein Pferd in seiner konkreten Lebensphase braucht.`;
+      const struktur =
+        a.selbstbild === "durchdacht"
+          ? "eine durchdachte Fütterung, ein regelmäßiges Mineralfutter und aktuell keine Auffälligkeiten"
+          : "ein regelmäßiges Mineralfutter, eine überschaubare Grundfütterung und aktuell keine Auffälligkeiten, auch wenn du selbst sagst, dass eher gefüttert wird, was gerade passt";
+      return `Bei deinem Pferd stimmt die Grundstruktur bereits: ${struktur}. Das ist keine Selbstverst\ändlichkeit, den meisten Pferdebesitzern fehlt genau das. Was jetzt noch den Unterschied macht, sind die Feinheiten, ob die Mineralversorgung ganzheitlich und individuell wirklich zu Alter, Haltung und Belastung deines Pferdes passt, oder ob sie eher pauschal gew\ählt ist. Selbst ein gutes Standard-Mineralfutter deckt selten exakt das, was dein Pferd in seiner konkreten Lebensphase braucht.`;
     },
-    step: "Der n\ächste sinnvolle Schritt ist nicht, alles umzuwerfen, sondern die Feinjustierung vorzunehmen. Genau da setzt der Mineralfinder Kurs an.",
+    step: "Der n\ächste sinnvolle Schritt ist nicht, alles umzuwerfen, sondern die Feinjustierung vorzunehmen. Genau da setzt der Kurs Mineral-Klarheit an.",
   },
 };
 
@@ -472,70 +484,44 @@ function altersHinweis(alter) {
   return null;
 }
 
+// Feste Regeln statt Punkte, in dieser Reihenfolge. Bis 10.09.2026 wurde hier
+// gepunktet, und das ergab in 39 von 180 Antwortkombinationen „Auf gutem Weg"
+// für Pferde mit Beschwerden (sogar mit Rehe-Anzeichen), und „Durcheinander"
+// für Pferde, die nur Heu bekommen. Jede Regel stellt sicher, dass der Text
+// des Typs auf die Antworten auch wirklich zutrifft:
+//   Durcheinander  nur, wenn Zusätze gefüttert werden
+//   Blindflug      nur ohne Zusätze und ohne regelmäßiges Mineralfutter
+//   Auf gutem Weg  nur ohne Beschwerden und mit regelmäßigem Mineralfutter
 function computeResult(a) {
-  const score = {
-    durcheinander: 0,
-    mineral_blindflug: 0,
-    symptom_feuerwehr: 0,
-    auf_gutem_weg: 0,
-  };
-
-  switch (a.grundfuetterung) {
-    case "nur_heu":
-      break;
-    case "heu_grundfutter":
-      score.auf_gutem_weg += 1;
-      break;
-    case "heu_grundfutter_kraeuter":
-      score.auf_gutem_weg += 1;
-      break;
-    case "heu_grundfutter_zusaetze":
-      score.durcheinander += 1;
-      break;
-    case "nur_zusaetze":
-      score.durcheinander += 2;
-      break;
-  }
-
-  switch (a.mineralstatus) {
-    case "kein_mineral":
-      score.mineral_blindflug += 2;
-      break;
-    case "regelmaessig":
-      score.auf_gutem_weg += 2;
-      break;
-    case "unregelmaessig":
-      score.durcheinander += 2;
-      score.mineral_blindflug += 1;
-      break;
-  }
+  const ohneGrundfutter = a.grundfuetterung === "nur_zusaetze";
+  const mitZusaetzen = a.grundfuetterung === "heu_grundfutter_zusaetze";
+  const mineralLuecke = a.mineralstatus !== "regelmaessig";
 
   const symptome = a.aﾮlligkeiten.filter((s) => s !== "keine");
-  if (symptome.length === 0) {
-    score.auf_gutem_weg += 2;
-  } else {
-    score.symptom_feuerwehr += Math.min(symptome.length, 3);
-    if (symptome.includes("stoffwechsel")) {
-      score.symptom_feuerwehr += 1;
-    }
-  }
+  // Ohne festes Grundfutter ist das Durcheinander der Kern, egal was sonst ist.
+  if (ohneGrundfutter) return "durcheinander";
+  // Zusätze allein machen noch kein Durcheinander. Erst wenn nach eigener
+  // Aussage gefüttert wird, was gerade passt, oder das Mineralfutter wackelt.
+  if (mitZusaetzen && (a.selbstbild === "passt" || mineralLuecke)) return "durcheinander";
+  if (symptome.length > 0) return "symptom_feuerwehr";
+  if (mineralLuecke) return "mineral_blindflug";
+  return "auf_gutem_weg";
+}
 
-  switch (a.selbstbild) {
-    case "passt":
-      score.durcheinander += 2;
-      score.symptom_feuerwehr += 1;
-      break;
-    case "durchdacht":
-      score.auf_gutem_weg += 2;
-      break;
+// Bei Rehe-Anzeichen oder Stoffwechselverdacht darf das Ergebnis nicht so
+// klingen, als ließe sich das allein über die Fütterung lösen. Der Hinweis
+// steht auf dem Bildschirm und geht auch in die Ergebnismail.
+function tierarztHinweis(a) {
+  const symptome = a.aﾮlligkeiten;
+  const nachsatz =
+    " Die Fütterung ist danach der Teil, den du selbst in der Hand hast, aber sie ersetzt diese Abklärung nicht.";
+  if (symptome.includes("huf")) {
+    return "Wenn du bei deinem Pferd Rehe-Anzeichen siehst, ruf bitte zuerst deinen Tierarzt." + nachsatz;
   }
-
-  const order = ["durcheinander", "mineral_blindflug", "symptom_feuerwehr", "auf_gutem_weg"];
-  let best = order[0];
-  for (const key of order) {
-    if (score[key] > score[best]) best = key;
+  if (symptome.includes("stoffwechsel")) {
+    return "Ein Verdacht auf EMS oder PPID gehört tierärztlich abgeklärt." + nachsatz;
   }
-  return best;
+  return null;
 }
 
 // ---- State ----
@@ -832,7 +818,9 @@ function renderEmail(container) {
         email: kontakt.email,
         webseite: webseiteFeld ? webseiteFeld.value : "",
         ergebnisTitel: type.title,
-        ergebnisText: type.text(state.answers),
+        ergebnisText: [type.text(state.answers), tierarztHinweis(state.answers)]
+          .filter(Boolean)
+          .join(" "),
         antworten: state.answers,
       }),
     })
@@ -882,6 +870,7 @@ function renderResult(container) {
   const typeKey = computeResult(state.answers);
   const type = TYPES[typeKey];
   const hinweis = altersHinweis(state.answers.alter);
+  const tierarzt = tierarztHinweis(state.answers);
 
   container.innerHTML = `
     <div class="col gap-5">
@@ -892,6 +881,7 @@ function renderResult(container) {
           <div class="result-rule"></div>
         </div>
         <p>${esc(type.text(state.answers))}</p>
+        ${tierarzt ? `<p class="alter-note">${esc(tierarzt)}</p>` : ""}
         ${hinweis ? `<p class="alter-note">${esc(hinweis)}</p>` : ""}
         <div class="callout"><p>${esc(type.step)}</p></div>
       </div>
@@ -912,7 +902,7 @@ function renderResult(container) {
           Dein F\ütterungstyp zeigt dir, wo die gr\ö\ßte L\ücke bei deinem Pferd
           liegt. Wenn du die Mineralversorgung deines Pferdes ganzheitlich
           und individuell verstehen und gezielt schlie\ßen m\öchtest, ist genau
-          das dein n\ächster Schritt im Mineralfinder Kurs.
+          das dein n\ächster Schritt im Kurs Mineral-Klarheit.
         </p>
         <a class="cta-btn" href="/mineral-klarheit">Mineral-Klarheit ansehen</a>
       </div>
