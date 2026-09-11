@@ -3,26 +3,27 @@
 // Die Auswertung dazu steht unter /admin/werbung.
 //
 // ▸ ZWEI QUELLEN, DIE NICHTS VONEINANDER WISSEN
-//   Die Anmeldungen zählt die eigene Datenbank: Jede Anzeige führt auf
-//   /stall-organizer?von=meta-<name>, und dieser Name steht danach in der
-//   Spalte `quelle` von `stall_anmeldungen`. Die Ausgaben kennt nur Meta.
-//   Sie kommen über die Marketing-Schnittstelle, sobald META_ZUGRIFF gesetzt
-//   ist. Ohne den Zugang zeigt die Seite die Anmeldungen trotzdem, nur eben
-//   ohne Kosten.
+//   Was eine Anzeige gebracht hat, zählt die eigene Datenbank: Jede Anzeige
+//   führt auf eine Seite mit ?von=meta-<name>, und dieser Name landet danach
+//   in der Spalte `quelle`, bei Anmeldungen in `stall_anmeldungen`, bei
+//   Käufen in `digitalbestellungen` (dorthin bringt ihn KasseLink über die
+//   Kasse mit). Die Ausgaben kennt nur Meta. Sie kommen über die
+//   Marketing-Schnittstelle, sobald META_ZUGRIFF gesetzt ist. Ohne den Zugang
+//   zeigt die Seite die Ergebnisse trotzdem, nur eben ohne Kosten.
 //
 // ▸ DER TAG IST EIN META-TAG
 //   Das Werbekonto 87791925 rechnet in der Zeitzone Los Angeles, ein Tag bei
 //   Meta läuft deshalb von 9 bis 9 Uhr deutscher Zeit. Damit Ausgaben und
-//   Anmeldungen zum selben Tag gezählt werden, sortiert diese Datei auch die
-//   Anmeldungen nach dem Datum in Los Angeles. Wer hier auf Berliner Zeit
+//   Ergebnisse zum selben Tag gezählt werden, sortiert diese Datei auch die
+//   eigenen Zahlen nach dem Datum in Los Angeles. Wer hier auf Berliner Zeit
 //   umstellt, vergleicht die Ausgaben vom Montag mit den Anmeldungen vom
 //   Dienstag.
 //
 // ▸ EINE NEUE KAMPAGNE kommt als weiterer Eintrag unten in KAMPAGNEN dazu.
-//   Die Auswertung zeigt immer die letzte. Der Name jeder Anzeige muss genau
-//   dem Anzeigennamen im Werbeanzeigenmanager entsprechen und zugleich dem
-//   Teil hinter `meta-` im Link, sonst finden Ausgaben und Anmeldungen nicht
-//   zueinander.
+//   Die Auswertung zeigt vorne die letzte und bietet die übrigen zum Umschalten
+//   an. Der Name jeder Anzeige muss genau dem Anzeigennamen im
+//   Werbeanzeigenmanager entsprechen und zugleich dem Teil hinter `meta-` im
+//   Link, sonst finden Ausgaben und Ergebnisse nicht zueinander.
 // ---------------------------------------------------------------------------
 
 export const WERBE_ZEITZONE = "America/Los_Angeles";
@@ -30,29 +31,36 @@ export const WERBE_ZEITZONE = "America/Los_Angeles";
 export type Kampagne = {
   /** Wie im Werbeanzeigenmanager. */
   name: string;
+  /** Worauf die Kampagne zielt. Danach richtet sich, was als Ergebnis zählt:
+   *  eine bestätigte Equista-Anmeldung oder ein bezahlter Kauf. */
+  ziel: "anmeldungen" | "verkauf";
   /** Erster Meta-Tag, als JJJJ-MM-TT. */
   start: string;
   /** Wie viele Tage der Test laufen soll. */
   tage: number;
   budgetTag: number;
-  /** Aufgeladenes Guthaben. Das Konto läuft mit Vorauszahlung, mehr als das
-   *  kann nicht ausgegeben werden. */
+  /** Aufgeladenes Guthaben für diese Kampagne. Das Konto läuft mit
+   *  Vorauszahlung, alle Kampagnen teilen sich dasselbe Guthaben. */
   guthaben: number;
-  /** Kosten je bestätigter Anmeldung, ab der eine Anzeige als zu teuer gilt.
-   *  Eine gesetzte Grenze, kein Erfahrungswert: Was eine Anmeldung wirklich
-   *  wert ist, zeigt sich erst nach etwa hundert davon. */
+  /** Kosten je Ergebnis, ab der eine Anzeige als zu teuer gilt. Eine gesetzte
+   *  Grenze, kein Erfahrungswert. */
   grenze: number;
+  /** Ab so vielen Ergebnissen lässt sich eine Anzeige beurteilen. Darunter
+   *  ist der Preis je Ergebnis Zufall. */
+  mindestens: number;
   anzeigen: { name: string; titel: string }[];
 };
 
 export const KAMPAGNEN: Kampagne[] = [
   {
     name: "Equista Leads 09/2026",
+    ziel: "anmeldungen",
     start: "2026-09-10",
     tage: 14,
     budgetTag: 10,
     guthaben: 140,
     grenze: 3,
+    mindestens: 10,
     anzeigen: [
       { name: "ordnung", titel: "Alles über dein Pferd an einem Ort" },
       { name: "termine", titel: "Der Termin meldet sich, nicht du" },
@@ -60,10 +68,6 @@ export const KAMPAGNEN: Kampagne[] = [
     ],
   },
 ];
-
-/** Ab so vielen bestätigten Anmeldungen lässt sich eine Anzeige beurteilen.
- *  Darunter ist der Preis je Anmeldung Zufall. */
-export const MINDESTENS_FUER_URTEIL = 10;
 
 /** Das Datum eines Zeitpunkts, gerechnet in der Zeitzone des Werbekontos. */
 export function metaTag(zeitpunkt: string | Date): string {
@@ -103,9 +107,10 @@ export function tageZwischen(von: string, bis: string): number {
 //   Meldet die Seite eines Tages „unsupported version“, reicht es, sie hier
 //   hochzusetzen.
 //
-// ▸ LEADS LAUT META sind die vom Pixel gemeldeten Anmeldungen. Meta zählt sie
-//   unter „offsite_conversion.fb_pixel_lead“, in manchen Konten nur unter dem
-//   Sammelbegriff „lead“. Deshalb wird beides versucht.
+// ▸ WAS META ZÄHLT, steht unter `actions`. Die Pixel-Ereignisse heißen dort
+//   „offsite_conversion.fb_pixel_…“, in manchen Konten nur unter einem
+//   Sammelbegriff. Deshalb wird beides versucht. Meta zählt nur, wer
+//   eingewilligt hat, die eigene Datenbank zählt alle.
 // ---------------------------------------------------------------------------
 
 const META_VERSION = "v23.0";
@@ -117,6 +122,8 @@ export type MetaZeile = {
   klicks: number;
   einblendungen: number;
   leads: number;
+  kassen: number;
+  kaeufe: number;
 };
 
 export type MetaErgebnis =
@@ -124,14 +131,23 @@ export type MetaErgebnis =
   | { stand: "fehler"; meldung: string }
   | { stand: "ok"; zeilen: MetaZeile[] };
 
+type MetaAktion = { action_type: string; value: string };
+
 type MetaRoh = {
   ad_name?: string;
   date_start?: string;
   spend?: string;
   impressions?: string;
   inline_link_clicks?: string;
-  actions?: { action_type: string; value: string }[];
+  actions?: MetaAktion[];
 };
+
+function aktion(aktionen: MetaAktion[], pixel: string, sammel: string): number {
+  const a =
+    aktionen.find((x) => x.action_type === `offsite_conversion.fb_pixel_${pixel}`) ??
+    aktionen.find((x) => x.action_type === sammel);
+  return Number(a?.value || 0);
+}
 
 export async function metaZahlen(k: Kampagne, bis: string): Promise<MetaErgebnis> {
   const zugang = process.env.META_ZUGRIFF;
@@ -166,20 +182,19 @@ export async function metaZahlen(k: Kampagne, bis: string): Promise<MetaErgebnis
       }
       for (const z of (d.data ?? []) as MetaRoh[]) {
         const name = String(z.ad_name || "").trim().toLowerCase();
-        // Nur die Anzeigen dieser Kampagne. Alte, abgeschlossene Kampagnen
-        // desselben Kontos tauchen im Zeitraum sonst mit auf.
+        // Nur die Anzeigen dieser Kampagne. Andere Kampagnen desselben
+        // Kontos tauchen im Zeitraum sonst mit auf.
         if (!namen.has(name)) continue;
         const aktionen = z.actions ?? [];
-        const lead =
-          aktionen.find((a) => a.action_type === "offsite_conversion.fb_pixel_lead") ??
-          aktionen.find((a) => a.action_type === "lead");
         zeilen.push({
           anzeige: name,
           tag: String(z.date_start || ""),
           ausgabe: Number(z.spend || 0),
           klicks: Number(z.inline_link_clicks || 0),
           einblendungen: Number(z.impressions || 0),
-          leads: Number(lead?.value || 0),
+          leads: aktion(aktionen, "lead", "lead"),
+          kassen: aktion(aktionen, "initiate_checkout", "initiate_checkout"),
+          kaeufe: aktion(aktionen, "purchase", "purchase"),
         });
       }
       adresse = d.paging?.next ?? null;

@@ -252,6 +252,15 @@ export async function POST(request: Request) {
   const empfehlerCode =
     (await cookies()).get(EMPFEHLUNG_KEKS)?.value?.slice(0, 24) || null;
 
+  // ▸ WOHER KAM DIE KÄUFERIN? Aus ?von= in der Adresse, etwa "meta-zink"
+  //   für eine Anzeige. Anders als der Empfehlungscode löst die Herkunft
+  //   nichts aus, kein Geld und keinen Zugang, deshalb darf sie aus dem
+  //   Browser kommen. Gesäubert wie bei den Equista-Anmeldungen.
+  const quelle =
+    typeof daten.von === "string"
+      ? daten.von.toLowerCase().replace(/[^a-z0-9_-]/g, "").slice(0, 40) || null
+      : null;
+
   // Gibt es ein Angebot nach dem Kauf? Dann führt der Weg dort entlang.
   const anschluss = funnelZu(produkt.slug);
 
@@ -284,6 +293,7 @@ export async function POST(request: Request) {
     rabattcode,
     rabatt_cent: rabattCent,
     empfehler_code: empfehlerCode,
+    quelle,
     widerruf_verzicht: true,
     widerruf_verzicht_am: jetzt,
     newsletter,

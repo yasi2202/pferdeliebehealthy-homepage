@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import Link from "next/link";
+import KasseLink from "@/components/KasseLink";
 import { digitalFinden } from "@/lib/digital";
 import { preisText } from "@/lib/shop";
 import Kauffragen from "@/components/Kauffragen";
@@ -51,7 +51,7 @@ export const metadata: Metadata = {
 function Kaufknopf({ hell = false }: { hell?: boolean }) {
   return (
     <div className="flex flex-wrap items-center gap-5">
-      <Link
+      <KasseLink
         href={`/kasse/${produkt.slug}`}
         className={
           hell
@@ -60,7 +60,7 @@ function Kaufknopf({ hell = false }: { hell?: boolean }) {
         }
       >
         Für {preisText(produkt.preis)} freischalten
-      </Link>
+      </KasseLink>
 
       <span
         className={

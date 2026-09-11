@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import KasseLink from "@/components/KasseLink";
 import { preisText } from "@/lib/shop";
 import { url } from "@/lib/seo";
 import Stimmen from "@/components/Stimmen";
@@ -112,12 +113,12 @@ export default function Verkaufsseite({
             ))}
 
             <div className="flex flex-wrap items-center gap-5">
-              <Link
+              <KasseLink
                 href={kasse}
                 className="inline-block rounded-full bg-rose px-8 py-4 text-[15px] font-medium text-ink transition-colors hover:bg-cream"
               >
                 Für {preisText(produkt.preis)} freischalten
-              </Link>
+              </KasseLink>
 
               {/* Der frühere Preis gehört neben den Knopf, nicht erst ganz
                   unten. Wer oben abspringt, hat sonst nie erfahren, dass es
@@ -320,12 +321,12 @@ export default function Verkaufsseite({
               {text.abschlussText}
             </p>
 
-            <Link
+            <KasseLink
               href={kasse}
               className="inline-block rounded-full bg-cream px-8 py-4 text-[15px] font-medium text-ink transition-colors hover:bg-rose"
             >
               Jetzt freischalten
-            </Link>
+            </KasseLink>
 
             <p className="mt-4 text-[13px] text-cream/65">
               Einmalig, kein Abo. Nach dem Kauf bekommst du deinen Zugang

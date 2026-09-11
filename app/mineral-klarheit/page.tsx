@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
+import KasseLink from "@/components/KasseLink";
 import { mineralKlarheit } from "@/lib/seite";
 import { digitalFinden } from "@/lib/digital";
 import { preisText } from "@/lib/shop";
@@ -125,12 +126,12 @@ export default function MineralKlarheitSeite() {
             </p>
 
             <div className="flex flex-wrap items-center gap-5">
-              <a
+              <KasseLink
                 href={mineralKlarheit.kauf}
                 className="inline-block bg-rose text-ink px-8 py-4 rounded-full text-[15px] font-medium hover:bg-cream transition-colors"
               >
                 Für {preisText(produkt.preis)} freischalten
-              </a>
+              </KasseLink>
               {/* Der frühere Preis gehört neben den Knopf, nicht erst ganz
                   unten auf der Seite. Wer oben abspringt, hat sonst nie
                   erfahren, dass es gerade günstiger ist. */}
@@ -327,12 +328,12 @@ export default function MineralKlarheitSeite() {
               gebraucht hättest. Der Zugang bleibt dir, auch wenn du erst in
               einem halben Jahr dazu kommst.
             </p>
-            <a
+            <KasseLink
               href={mineralKlarheit.kauf}
               className="inline-block bg-cream text-ink px-8 py-4 rounded-full text-[15px] font-medium hover:bg-rose transition-colors"
             >
               Jetzt freischalten
-            </a>
+            </KasseLink>
             <p className="text-[13px] text-cream/65 mt-4">
               Einmalig, kein Abo. Nach dem Kauf bekommst du deinen Zugang
               direkt per Mail.

@@ -33,7 +33,8 @@
 // ---------------------------------------------------------------------------
 
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { melde } from "@/lib/messung";
 import { preisText } from "@/lib/shop";
 import type { DigitalProdukt } from "@/lib/digital";
 
@@ -65,6 +66,18 @@ export default function DigitalKasse({
   const [plz, setPlz] = useState("");
   const [ort, setOrt] = useState("");
   const [land, setLand] = useState("DE");
+
+  // Für die Werbemessung: Die Kasse ist offen. Bei kleinem Werbebudget sind
+  // Käufe selten, und aus so wenigen lernt Meta kaum. Wer die Kasse öffnet,
+  // ist das nächstbeste Signal. Gemeldet wird nur mit Einwilligung, siehe
+  // lib/messung.ts.
+  useEffect(() => {
+    melde("InitiateCheckout", {
+      value: produkt.preis / 100,
+      currency: "EUR",
+      content_name: produkt.name,
+    });
+  }, [produkt.preis, produkt.name]);
 
   // Der Rabattcode. `rabatt` ist erst gesetzt, wenn der Server ihn bestätigt
   // hat. Was hier steht, ist nur die Anzeige: Gerechnet wird noch einmal
@@ -171,6 +184,13 @@ export default function DigitalKasse({
               ? ""
               : (new URLSearchParams(window.location.search).get("kulanz") ??
                 ""),
+          // Woher die Käuferin kam, aus ?von= in der Adresse. KasseLink hat es
+          // von der Verkaufsseite mitgebracht. Gelesen wie der Kulanzschlüssel
+          // erst beim Klick, gespeichert wird im Browser nichts.
+          von:
+            typeof window === "undefined"
+              ? ""
+              : (new URLSearchParams(window.location.search).get("von") ?? ""),
         }),
       });
 

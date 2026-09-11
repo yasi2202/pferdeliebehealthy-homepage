@@ -122,6 +122,10 @@ export type DigitalBestellung = {
    *  die Käuferin nicht über eine Empfehlung kam, und das ist der Normalfall.
    *  Siehe lib/empfehlungsprogramm.ts. */
   empfehler_code?: string | null;
+  /** Woher die Käuferin kam, aus ?von= in der Adresse, etwa "meta-zink" für
+   *  eine Anzeige bei Meta. Null, wenn sie ohne Kennzeichnung kam. Die Spalte
+   *  entsteht mit datenbank/werbung-quelle.sql. Siehe /admin/werbung. */
+  quelle?: string | null;
   /** Hat sie dem sofortigen Zugang zugestimmt und damit auf den Widerruf
    *  verzichtet? Ohne ein true hier gilt das Widerrufsrecht weiter. */
   widerruf_verzicht: boolean;
@@ -160,11 +164,32 @@ export function zugriffToken(): string {
 }
 
 export async function digitalSpeichern(b: DigitalBestellung): Promise<boolean> {
-  const res = await supabase("digitalbestellungen", {
-    method: "POST",
-    headers: { Prefer: "return=minimal" },
-    body: JSON.stringify(b),
-  });
+  const senden = (zeile: DigitalBestellung) =>
+    supabase("digitalbestellungen", {
+      method: "POST",
+      headers: { Prefer: "return=minimal" },
+      body: JSON.stringify(zeile),
+    });
+
+  let res = await senden(b);
+
+  // ▸ DER RÜCKFALL FÜR DIE SPALTE `quelle`. Solange datenbank/werbung-quelle.sql
+  //   nicht ausgeführt ist, kennt die Datenbank die Spalte nicht und lehnt die
+  //   ganze Zeile ab, also den ganzen Kauf. Dann ein zweiter Versuch ohne sie:
+  //   Ein Kauf ohne Herkunft ist ärgerlich, ein Kauf, der gar nicht zustande
+  //   kommt, wäre ein Schaden. Der Rückfall darf erst verschwinden, wenn die
+  //   Spalte sicher überall existiert.
+  if (!res.ok && b.quelle !== undefined) {
+    const meldung = await res.text();
+    if (!meldung.includes("quelle")) {
+      console.error("Digitalbestellung liess sich nicht speichern:", meldung);
+      return false;
+    }
+    console.error("Spalte quelle fehlt noch, Kauf wird ohne Herkunft gespeichert.");
+    const ohne = { ...b };
+    delete ohne.quelle;
+    res = await senden(ohne);
+  }
 
   if (!res.ok) {
     console.error("Digitalbestellung liess sich nicht speichern:", await res.text());
