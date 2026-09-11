@@ -1,0 +1,23 @@
+{
+  "kampagne": {
+    "name": "Beispiel Verkauf 10/2026",
+    "ziel": "verkauf",
+    "tagesbudget_eur": 10
+  },
+  "anzeigengruppe": {
+    "name": "Beispiel Instagram 365",
+    "laender": ["DE", "AT", "CH"],
+    "custom_audience": "Instagram Interaktion 365 Tage",
+    "nur_custom_audience": true
+  },
+  "anzeigen": [
+    {
+      "name": "verstehen",
+      "bild": "C:/Users/Yasi/OneDrive/Dokumente/09 Grafiken und Social Media/Werbeanzeigen Mineral-Klarheit 09-2026/Einzelbild A verstehen.jpg",
+      "text": "Hier steht der Haupttext der Anzeige.",
+      "ueberschrift": "Hier die Überschrift",
+      "beschreibung": "27 €, einmalig",
+      "link": "https://www.pferdeliebehealthy.de/mineral-klarheit?von=meta-verstehen"
+    }
+  ]
+}
