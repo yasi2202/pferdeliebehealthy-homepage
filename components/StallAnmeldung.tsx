@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { melde } from "@/lib/messung";
 
 // ---------------------------------------------------------------------------
@@ -23,38 +23,30 @@ export const EINWILLIGUNG =
 /** Woher die Besucherin kommt, aus `?von=` in der Adresse.
  *
  *  WOZU: Der Link zum Organizer wird an mehreren Stellen geteilt, in der
- *  Instagram-Bio, in einer Story, im Newsletter. Ohne Kennzeichnung steht bei
- *  jeder Anmeldung nur "website", und man weiss hinterher nicht, was etwas
- *  gebracht hat.
+ *  Instagram-Bio, in einer Story, im Newsletter, in Anzeigen. Ohne
+ *  Kennzeichnung steht bei jeder Anmeldung nur "website", und man weiss
+ *  hinterher nicht, was etwas gebracht hat.
  *
  *  40 Zeichen, weil bei bezahlter Werbung nicht nur der Kanal darin steht,
- *  sondern auch die Anzeige: `?von=meta-fellwechsel-3` sagt hinterher, welche
- *  der sechs Anzeigen die Anmeldung gebracht hat. Die Spalte `quelle` in der
- *  Akademie nimmt genau 40 Zeichen, deshalb dieselbe Grenze. Erlaubt sind nur
- *  Kleinbuchstaben, Ziffern, Bindestrich und Unterstrich; Anzeigennamen mit
- *  Leerzeichen kommen also gekuerzt an und sollten im Werbekonto gleich ohne
- *  gesetzt werden.
+ *  sondern auch die Anzeige: `?von=meta-futter` sagt hinterher, welche
+ *  Anzeige die Anmeldung gebracht hat. Die Spalte `quelle` in der Akademie
+ *  nimmt genau 40 Zeichen. Erlaubt sind nur Kleinbuchstaben, Ziffern,
+ *  Bindestrich und Unterstrich.
  *
- *  Gemerkt wird sie fuer die Sitzung: Wer ueber `?von=instagram` auf der
- *  Startseite landet und erst dann auf die Unterseite geht, waere sonst auf
- *  dem zweiten Klick wieder namenlos.
+ *  ▸ SEIT DEM 11.09.2026 NUR NOCH AUS DER ADRESSE, NICHTS IM BROWSER. Vorher
+ *    wurde die Angabe für die Sitzung im Browser gemerkt, damit sie einen
+ *    Seitenwechsel überlebt. Etwas im Browser abzulegen, das nicht unbedingt
+ *    nötig ist, verlangt nach § 25 TDDDG aber eine Einwilligung, und die gab
+ *    es dafür nicht. Gelesen wird deshalb erst beim Absenden, wie in der
+ *    Kasse. Verloren geht dadurch nur, wer mit `?von=` ankommt und vor dem
+ *    Anmelden noch auf eine andere Seite wechselt. Anzeigen und Links führen
+ *    direkt auf eine Seite mit dem Formular, dort bleibt die Angabe stehen.
  */
-const SPEICHER = "pfh_stall_von";
-
-function herkunftMerken() {
+function herkunft(): string | null {
   try {
     const von = new URLSearchParams(window.location.search).get("von");
-    if (!von) return;
-    const sauber = von.toLowerCase().replace(/[^a-z0-9_-]/g, "").slice(0, 40);
-    if (sauber) sessionStorage.setItem(SPEICHER, sauber);
-  } catch {
-    /* Privater Modus: dann eben ohne Herkunft, die Anmeldung zaehlt trotzdem. */
-  }
-}
-
-function herkunftHolen(): string | null {
-  try {
-    return sessionStorage.getItem(SPEICHER);
+    const sauber = (von || "").toLowerCase().replace(/[^a-z0-9_-]/g, "").slice(0, 40);
+    return sauber || null;
   } catch {
     return null;
   }
@@ -67,7 +59,6 @@ export function StallAnmeldung({ kompakt = false }: { kompakt?: boolean }) {
   const [laeuft, setLaeuft] = useState(false);
   const [antwort, setAntwort] = useState<{ ok: boolean; text: string } | null>(null);
 
-  useEffect(herkunftMerken, []);
 
   async function absenden(e: React.FormEvent) {
     e.preventDefault();
@@ -77,7 +68,7 @@ export function StallAnmeldung({ kompakt = false }: { kompakt?: boolean }) {
       const res = await fetch("/api/stall-organizer", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email, hofname, tipps, einwilligung: EINWILLIGUNG, von: herkunftHolen() }),
+        body: JSON.stringify({ email, hofname, tipps, einwilligung: EINWILLIGUNG, von: herkunft() }),
       });
       const d = await res.json();
       setAntwort({ ok: !!d.ok, text: d.meldung || "Unbekannte Antwort." });
