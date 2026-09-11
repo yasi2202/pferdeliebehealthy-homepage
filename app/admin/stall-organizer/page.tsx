@@ -148,6 +148,9 @@ export default async function StallOrganizerAuswertung() {
             <Link href="/admin/newsletter" className="text-rose-deep underline underline-offset-2">
               Newsletter
             </Link>
+            <Link href="/admin/werbung" className="text-rose-deep underline underline-offset-2">
+              Werbung
+            </Link>
           </nav>
         </div>
 

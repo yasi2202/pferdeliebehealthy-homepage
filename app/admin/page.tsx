@@ -191,6 +191,12 @@ export default async function AuswertungSeite({
               Stall Organizer
             </Link>
             <Link
+              href="/admin/werbung"
+              className="text-rose-deep underline underline-offset-2"
+            >
+              Werbung
+            </Link>
+            <Link
               href="/admin/empfehler"
               className="text-rose-deep underline underline-offset-2"
             >
