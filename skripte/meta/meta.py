@@ -131,7 +131,45 @@ def anlegen(datei):
         if not ca:
             sys.exit(f"Zielgruppe nicht gefunden: {ag['custom_audience']}")
 
-    protokoll = {"datei": str(datei)}
+    # ▸ ERST DIE ANZEIGEN, DANN DIE KAMPAGNE. Bilder und Anzeigenbeiträge
+    #   hängen an keiner Kampagne und lassen sich vorab anlegen. Scheitern sie
+    #   (am 11.09.2026: „App im Entwicklungsmodus“), bleibt so keine halbe,
+    #   leere Kampagne im Werbekonto liegen.
+    protokoll = {"datei": str(datei), "anzeigen": {}}
+    hinweise = []
+    kreative = []
+    import base64
+    for a in plan["anzeigen"]:
+        roh = base64.b64encode(pathlib.Path(a["bild"]).read_bytes()).decode("ascii")
+        bild = graph("POST", f"{KONTO}/adimages", {"bytes": roh})
+        bild_hash = next(iter(bild["images"].values()))["hash"]
+        kreativ_daten = {
+            "name": f'{plan["kampagne"]["name"]} · {a["name"]}',
+            "object_story_spec": {
+                "page_id": seite["id"],
+                "instagram_user_id": ig["id"],
+                "link_data": {
+                    "link": a["link"],
+                    "message": a["text"],
+                    "name": a["ueberschrift"],
+                    "description": a["beschreibung"],
+                    "image_hash": bild_hash,
+                    "call_to_action": {"type": "LEARN_MORE", "value": {"link": a["link"]}},
+                },
+            },
+            "degrees_of_freedom_spec": {"creative_features_spec": {f: {"enroll_status": "OPT_OUT"} for f in KI_AUS}},
+        }
+        try:
+            kreativ = graph("POST", f"{KONTO}/adcreatives", kreativ_daten)
+        except MetaFehler as f:
+            if "Entwicklungsmodus" in str(f) or "development mode" in str(f).lower():
+                raise
+            hinweise.append(f'{a["name"]}: KI-Schalter nicht gesetzt ({f}). Im Werbeanzeigenmanager bei „Standardeinstellungen überprüfen“ ausschalten.')
+            del kreativ_daten["degrees_of_freedom_spec"]
+            kreativ = graph("POST", f"{KONTO}/adcreatives", kreativ_daten)
+        kreative.append((a, kreativ["id"]))
+        print("Anzeigenbeitrag vorbereitet:", a["name"])
+
     kampagne = graph("POST", f"{KONTO}/campaigns", {
         "name": plan["kampagne"]["name"],
         "objective": ziel["objective"],
@@ -162,38 +200,10 @@ def anlegen(datei):
     protokoll["anzeigengruppe"] = gruppe["id"]
     print("Anzeigengruppe angelegt:", gruppe["id"])
 
-    hinweise = []
-    protokoll["anzeigen"] = {}
-    for a in plan["anzeigen"]:
-        import base64
-        roh = base64.b64encode(pathlib.Path(a["bild"]).read_bytes()).decode("ascii")
-        bild = graph("POST", f"{KONTO}/adimages", {"bytes": roh})
-        bild_hash = next(iter(bild["images"].values()))["hash"]
-        kreativ_daten = {
-            "name": f'{plan["kampagne"]["name"]} · {a["name"]}',
-            "object_story_spec": {
-                "page_id": seite["id"],
-                "instagram_user_id": ig["id"],
-                "link_data": {
-                    "link": a["link"],
-                    "message": a["text"],
-                    "name": a["ueberschrift"],
-                    "description": a["beschreibung"],
-                    "image_hash": bild_hash,
-                    "call_to_action": {"type": "LEARN_MORE", "value": {"link": a["link"]}},
-                },
-            },
-            "degrees_of_freedom_spec": {"creative_features_spec": {f: {"enroll_status": "OPT_OUT"} for f in KI_AUS}},
-        }
-        try:
-            kreativ = graph("POST", f"{KONTO}/adcreatives", kreativ_daten)
-        except MetaFehler as f:
-            hinweise.append(f'{a["name"]}: KI-Schalter nicht gesetzt ({f}). Im Werbeanzeigenmanager bei „Standardeinstellungen überprüfen“ ausschalten.')
-            del kreativ_daten["degrees_of_freedom_spec"]
-            kreativ = graph("POST", f"{KONTO}/adcreatives", kreativ_daten)
+    for a, kreativ_id in kreative:
         anzeige = graph("POST", f"{KONTO}/ads", {
             "name": a["name"], "adset_id": gruppe["id"],
-            "creative": {"creative_id": kreativ["id"]}, "status": "PAUSED",
+            "creative": {"creative_id": kreativ_id}, "status": "PAUSED",
         })
         protokoll["anzeigen"][a["name"]] = anzeige["id"]
         print("Anzeige angelegt:", a["name"], anzeige["id"])

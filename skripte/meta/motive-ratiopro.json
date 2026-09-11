@@ -1,0 +1,42 @@
+{
+  "ziel": "C:/Users/Yasi/OneDrive/Dokumente/09 Grafiken und Social Media/Werbeanzeigen RatioPro 09-2026",
+  "preis": "69 € · einmalig",
+  "von": "Von Yasemin Halac, Ernährungsberaterin für Pferde",
+  "motive": [
+    {
+      "name": "A rechner",
+      "quelle": "C:/Users/Yasi/OneDrive/Dokumente/website/pferdeliebehealthy-homepage/public/images/ratiopro/rechner.webp",
+      "ausschnitt": {
+        "oben": 40,
+        "hoehe": 540
+      },
+      "abdecken": [
+        {
+          "x": 728,
+          "y": 276,
+          "b": 110,
+          "h": 30,
+          "kopie": {
+            "x": 900,
+            "y": 276
+          }
+        }
+      ],
+      "rahmen": "fenster",
+      "kicker": "RatioPro · Rationsrechner",
+      "titel": "Die Ration deines Pferds.<br>Selbst berechnet."
+    },
+    {
+      "name": "B auswertung",
+      "quelle": "C:/Users/Yasi/OneDrive/Dokumente/website/pferdeliebehealthy-homepage/public/images/ratiopro-auszug-handy.png",
+      "ausschnitt": {
+        "oben": 955,
+        "hoehe": 955
+      },
+      "rahmen": "karte",
+      "breite": 660,
+      "kicker": "RatioPro · Auswertung",
+      "titel": "Auf einen Blick, was<br>gedeckt ist und was nicht."
+    }
+  ]
+}

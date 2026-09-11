@@ -1,0 +1,31 @@
+{
+  "kampagne": {
+    "name": "RatioPro Verkauf 09/2026",
+    "ziel": "verkauf",
+    "tagesbudget_eur": 10
+  },
+  "anzeigengruppe": {
+    "name": "RatioPro Instagram 365",
+    "laender": ["DE", "AT", "CH"],
+    "custom_audience": "Instagram Interaktion 365 Tage",
+    "nur_custom_audience": true
+  },
+  "anzeigen": [
+    {
+      "name": "rechner",
+      "bild": "C:/Users/Yasi/OneDrive/Dokumente/09 Grafiken und Social Media/Werbeanzeigen RatioPro 09-2026/Einzelbild A rechner.jpg",
+      "text": "Wie viel Heu, welches Mineralfutter, reicht das Kraftfutter? Statt zu schätzen, rechnest du es aus.\n\nRatioPro berechnet den Bedarf deines Pferdes aus Gewicht, Alter, Typ und Nutzung. Dann trägst du ein, was es bekommt, und siehst sofort, was gedeckt ist und wo es fehlt.\n\n✓ Über 500 Futtermittel zur Auswahl, eigene kannst du dazulegen\n✓ Bedarf metabolisch gerechnet, nicht über den Daumen\n✓ Die Kosten je Tag gleich mit\n✓ Unbegrenzt rechnen, dauerhaft abrufbar\n\n69 €, einmalig, kein Abo.",
+      "ueberschrift": "Die Ration deines Pferds, selbst berechnet",
+      "beschreibung": "69 €, einmalig",
+      "link": "https://www.pferdeliebehealthy.de/ratiopro?von=meta-rechner"
+    },
+    {
+      "name": "auswertung",
+      "bild": "C:/Users/Yasi/OneDrive/Dokumente/09 Grafiken und Social Media/Werbeanzeigen RatioPro 09-2026/Einzelbild B auswertung.jpg",
+      "text": "Kupfer bei 78 Prozent, Selen bei 248 Prozent: So zeigt dir RatioPro die Versorgung deines Pferdes.\n\nDer Rechner sortiert jeden Nährstoff ein, von wichtig über zu wenig und zu viel bis in Ordnung. So siehst du, wo du nachbessern solltest und wo du Geld für Zusätze sparen kannst, die dein Pferd gar nicht braucht.\n\n69 €, einmalig, kein Abo. Von Yasemin Halac, Ernährungsberaterin für Pferde.",
+      "ueberschrift": "Auf einen Blick, was gedeckt ist",
+      "beschreibung": "69 €, einmalig",
+      "link": "https://www.pferdeliebehealthy.de/ratiopro?von=meta-auswertung"
+    }
+  ]
+}
