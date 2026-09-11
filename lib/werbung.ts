@@ -67,6 +67,25 @@ export const KAMPAGNEN: Kampagne[] = [
       { name: "futter", titel: "Reicht der Sack noch bis Freitag?" },
     ],
   },
+  {
+    // Der kleine Versuch mit einem Produkt, das Geld bringt. Retargeting auf
+    // alle, die im letzten Jahr mit dem Instagram-Konto zu tun hatten.
+    // Grenze: Ein Kauf darf höchstens so viel Werbung kosten, wie der Kurs
+    // selbst einbringt. Was das Angebot danach dazubringt, ist der Gewinn.
+    name: "Mineral-Klarheit Verkauf 09/2026",
+    ziel: "verkauf",
+    start: "2026-09-11",
+    tage: 7,
+    budgetTag: 10,
+    guthaben: 70,
+    grenze: 27,
+    mindestens: 3,
+    anzeigen: [
+      { name: "verstehen", titel: "Mineralfutter verstehen, selbst entscheiden" },
+      { name: "naehrstoffe", titel: "Jeder Nährstoff einzeln erklärt" },
+      { name: "check", titel: "Prüf dein Mineralfutter selbst nach" },
+    ],
+  },
 ];
 
 /** Das Datum eines Zeitpunkts, gerechnet in der Zeitzone des Werbekontos. */
