@@ -40,6 +40,18 @@ export default function Verkaufsseite({
   const kasse = `/kasse/${produkt.slug}`;
   const rabatt = produkt.statt && produkt.statt > produkt.preis;
 
+  // Noch nicht buchbar? Siehe `verkaufAb` in lib/digital.ts. Die Kasse weist
+  // einen Kauf davor ohnehin ab; die Seite zeigt deshalb statt des Knopfs den
+  // Termin, sonst liefe die Leserin in eine Absage. Damit der Knopf am
+  // Stichtag von selbst erscheint, muss die Seite neu gerechnet werden: Wer
+  // `verkaufAb` setzt, gibt der Seite `export const revalidate` mit (siehe
+  // app/drei-toepfe-methode/page.tsx).
+  const start = produkt.verkaufAb ? new Date(`${produkt.verkaufAb}T00:00:00+02:00`) : null;
+  const nochNicht = start && new Date() < start ? start : null;
+  const startText = nochNicht
+    ? nochNicht.toLocaleDateString("de-DE", { day: "numeric", month: "long", year: "numeric", timeZone: "Europe/Berlin" })
+    : "";
+
   // -------------------------------------------------------------------------
   // Was Google ueber dieses Angebot wissen soll.
   //
@@ -76,7 +88,8 @@ export default function Verkaufsseite({
       priceCurrency: "EUR",
       // In digital.ts stehen Cent, schema.org will Euro.
       price: (produkt.preis / 100).toFixed(2),
-      availability: "https://schema.org/InStock",
+      availability: nochNicht ? "https://schema.org/PreOrder" : "https://schema.org/InStock",
+      ...(nochNicht ? { availabilityStarts: nochNicht.toISOString() } : {}),
       seller: { "@id": url("/#unternehmen") },
     },
   };
@@ -113,12 +126,18 @@ export default function Verkaufsseite({
             ))}
 
             <div className="flex flex-wrap items-center gap-5">
-              <KasseLink
-                href={kasse}
-                className="inline-block rounded-full bg-rose px-8 py-4 text-[15px] font-medium text-ink transition-colors hover:bg-cream"
-              >
-                Für {preisText(produkt.preis)} freischalten
-              </KasseLink>
+              {nochNicht ? (
+                <span className="inline-block rounded-full border border-rose/60 px-8 py-4 text-[15px] font-medium text-cream">
+                  Buchbar ab {startText} · {preisText(produkt.preis)}
+                </span>
+              ) : (
+                <KasseLink
+                  href={kasse}
+                  className="inline-block rounded-full bg-rose px-8 py-4 text-[15px] font-medium text-ink transition-colors hover:bg-cream"
+                >
+                  Für {preisText(produkt.preis)} freischalten
+                </KasseLink>
+              )}
 
               {/* Der frühere Preis gehört neben den Knopf, nicht erst ganz
                   unten. Wer oben abspringt, hat sonst nie erfahren, dass es
@@ -321,16 +340,23 @@ export default function Verkaufsseite({
               {text.abschlussText}
             </p>
 
-            <KasseLink
-              href={kasse}
-              className="inline-block rounded-full bg-cream px-8 py-4 text-[15px] font-medium text-ink transition-colors hover:bg-rose"
-            >
-              Jetzt freischalten
-            </KasseLink>
+            {nochNicht ? (
+              <span className="inline-block rounded-full border border-cream/60 px-8 py-4 text-[15px] font-medium text-cream">
+                Buchbar ab {startText}
+              </span>
+            ) : (
+              <KasseLink
+                href={kasse}
+                className="inline-block rounded-full bg-cream px-8 py-4 text-[15px] font-medium text-ink transition-colors hover:bg-rose"
+              >
+                Jetzt freischalten
+              </KasseLink>
+            )}
 
             <p className="mt-4 text-[13px] text-cream/65">
-              Einmalig, kein Abo. Nach dem Kauf bekommst du deinen Zugang
-              direkt per Mail.
+              {nochNicht
+                ? "Vorher ist kein Kauf möglich. Ab dem Starttermin: einmalig, kein Abo, Zugang direkt per Mail."
+                : "Einmalig, kein Abo. Nach dem Kauf bekommst du deinen Zugang direkt per Mail."}
             </p>
           </div>
         </div>

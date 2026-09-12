@@ -281,6 +281,7 @@ const ZEILE: Record<string, string> = {
   basisfutterkurs: "Online-Kurs",
   "symptom-navigator": "Nachschlagewerk",
   ratiopro: "Rechner",
+  "heuanalyse-lesen": "Lesehilfe",
   equidesk: "Software",
   // Auf dem Cover steht, was man kauft. Beim Abo ist das nicht nur eine
   // Software, sondern ein laufender Zugang, und das soll man schon in der

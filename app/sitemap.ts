@@ -25,6 +25,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { pfad: "/befund-einschaetzung", prioritaet: 0.7, takt: "monthly" },
     { pfad: "/nachberatung", prioritaet: 0.6, takt: "monthly" },
     { pfad: "/ratiopro", prioritaet: 0.8, takt: "monthly" },
+    { pfad: "/drei-toepfe-methode", prioritaet: 0.7, takt: "monthly" },
+    { pfad: "/heuanalyse-lesen", prioritaet: 0.6, takt: "monthly" },
     { pfad: "/symptom-navigator", prioritaet: 0.8, takt: "monthly" },
     { pfad: "/basisfutterkurs", prioritaet: 0.7, takt: "monthly" },
     { pfad: "/darmaufbau", prioritaet: 0.7, takt: "monthly" },

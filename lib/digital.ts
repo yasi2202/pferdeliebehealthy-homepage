@@ -558,6 +558,64 @@ export const digitalprodukte: DigitalProdukt[] = [
     ],
   },
   {
+    // Seit 12.09.2026. Die Lesehilfe zur Heuanalyse, entstanden mit dem
+    // Minikurs Heu 2026. In der Akademie liegt sie als eigenständige Seite
+    // unter inhalte/lektionen/heuanalyse-lesen.html.
+    slug: "heuanalyse-lesen",
+    gruppe: "einstieg",
+    name: "Heuanalyse selbst lesen",
+    kurzname: "Heuanalyse selbst lesen",
+    preis: 1900,
+    mwst: 19,
+    art: "kurs",
+    kurz: "Deinen Prüfbericht Zeile für Zeile verstehen, mit Auswertebogen.",
+    leistung:
+      "Digitaler Zugang zur Lesehilfe „Heuanalyse selbst lesen“ mit " +
+      "Auswertebogen in der Pferdeliebehealthy Akademie, dauerhaft abrufbar.",
+    // Trifft /heuanalyse selbst lesen/i in akademieapp/lib/produkt-zugang.ts.
+    // Geprüft: keine NIEMALS-Regel greift, und die Regel der
+    // Befund-Einschätzung („heuanalyse, blutbild“) trifft nicht.
+    akademieName: "Heuanalyse selbst lesen",
+    erwarteterZugang: "heuanalyse-lesen",
+    beschreibung: [
+      {
+        art: "absatz",
+        text: "Sieben Schritte durch deinen Prüfbericht und ein Auswertebogen, der zeigt, was dein Heu allein für dein Pferd deckt.",
+      },
+    ],
+  },
+  {
+    // Seit 12.09.2026 mit Verkaufsseite, buchbar ab dem Kursstart am
+    // 01.10.2026. Vorher weist die Kasse jeden Kauf ab, und die Seite zeigt
+    // statt des Knopfs den Termin (components/Verkaufsseite.tsx).
+    //
+    // ▸ DER akademieName TRÄGT BEWUSST NICHT DAS WORT „Rationsberechnung“.
+    //   Die RatioPro-Regel in akademieapp/lib/produkt-zugang.ts fängt genau
+    //   dieses Wort. Die Drei-Töpfe-Regel steht dort ganz oben, aber zwei
+    //   Sicherungen sind besser als eine. Der volle Name steht nur in `name`.
+    slug: "drei-toepfe-methode",
+    gruppe: "kurs",
+    name: "Die Drei-Töpfe-Methode: Rationsberechnung ohne Heuanalyse",
+    kurzname: "Drei-Töpfe-Methode",
+    preis: 6900,
+    mwst: 19,
+    art: "kurs",
+    verkaufAb: "2026-10-01",
+    kurz: "Rationsberechnung ohne Heuanalyse: an den Rändern rechnen statt mit einem Durchschnitt.",
+    leistung:
+      "Digitaler Zugang zum Kurs „Die Drei-Töpfe-Methode“ in der " +
+      "Pferdeliebehealthy Akademie, dauerhaft abrufbar.",
+    // Trifft /drei-?\s?t[öo]pfe/i, die oberste Regel in produkt-zugang.ts.
+    akademieName: "Die Drei-Töpfe-Methode",
+    erwarteterZugang: "drei-toepfe-methode",
+    beschreibung: [
+      {
+        art: "absatz",
+        text: "Du rechnest deine Ration mit einem mageren und mit einem guten Heu und weißt danach bei jedem Nährstoff, ob er ergänzt wird, ob nicht, oder ob er offen bleibt.",
+      },
+    ],
+  },
+  {
     slug: "ratiopro",
     gruppe: "werkzeug",
     name: "RatioPro",
@@ -1514,6 +1572,47 @@ export const funnel: Funnel[] = [
       "Erhaltungsbedarf nach Pferdetyp und eine Anleitung, mit der du jeden " +
       "Wert von Hand nachrechnest. Es sitzt direkt im Rechner, du musst " +
       "nichts zusätzlich öffnen.",
+  },
+  {
+    // Seit 12.09.2026. Wer die Lesehilfe kauft, kennt jetzt ihr Heu. Der
+    // naheliegende nächste Schritt ist die ganze Ration.
+    produkt: "heuanalyse-lesen",
+    upsell: "ratiopro",
+    upsellPreis: 4900,
+    upsellTitel: "Du kennst jetzt dein Heu. Und die ganze Ration?",
+    upsellGrund:
+      "Der Auswertebogen zeigt, was dein Heu allein deckt. Was dein Pferd " +
+      "wirklich bekommt, hängt am Rest: Mineralfutter, Zusatzfutter, Salz. In " +
+      "RatioPro trägst du deine Heuwerte ein, nimmst das Mineralfutter dazu " +
+      "und siehst, ob die Lücke geschlossen ist.",
+    downsell: "mineral-klarheit",
+    downsellPreis: 1900,
+    downsellTitel: "Dann das, was an der Lücke hängt.",
+    downsellGrund:
+      "Die Lücke im Heu schließt meist ein Mineralfutter. Mineral-Klarheit " +
+      "zeigt dir, wie du seine Deklaration liest und auf dein Pferd " +
+      "umrechnest, statt der Empfehlung auf der Verpackung zu glauben.",
+  },
+  {
+    // Seit 12.09.2026, greift ab dem ersten Kauf am 01.10.2026.
+    // ▸ 30 € FÜR RATIOPRO, damit Kurs und Rechner zusammen 99 € kosten. So
+    //   stand es im Kursplan vom 08.09.2026 („Kurs 69 €, mit RatioPro im
+    //   Bündel 99 €“). Im Kurs wird die Doppelrechnung in RatioPro gezeigt.
+    produkt: "drei-toepfe-methode",
+    upsell: "ratiopro",
+    upsellPreis: 3000,
+    upsellTitel: "Die Doppelrechnung läuft in RatioPro.",
+    upsellGrund:
+      "Im Kurs rechne ich die Ration zweimal vor, mit magerem und mit gutem " +
+      "Heu, und zwar in RatioPro. Mit eigenem Zugang rechnest du jeden " +
+      "Schritt direkt mit, für jedes deiner Pferde und bei jedem neuen Heu.",
+    downsell: "heuanalyse-lesen",
+    downsellPreis: 1300,
+    downsellTitel: "Und für den Tag, an dem doch eine Analyse kommt.",
+    downsellGrund:
+      "Irgendwann liegt vielleicht doch ein Prüfbericht vor. Die Lesehilfe " +
+      "zeigt dir, welche Zeilen zählen, und ihr Auswertebogen ersetzt die " +
+      "beiden Ränder deiner Doppelrechnung durch dein echtes Heu.",
   },
   {
     // Wer EquiDesk kauft, ist Beraterin und keine Pferdebesitzerin. Deshalb

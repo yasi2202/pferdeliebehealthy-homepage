@@ -636,6 +636,124 @@ export const verkaufstexte: Record<string, Verkaufstext> = {
 };
 
 // -------------------------------------------------------------------------
+// Heuanalyse selbst lesen, 19 €, seit 12.09.2026.
+// ENTWURF von Claude, noch nicht von Yasemin gegengelesen. Jede Zahl darin
+// steht so in der Lesehilfe selbst (inhalte/lektionen/heuanalyse-lesen.html
+// in der Akademie), die Quellen stehen dort am Ende.
+// -------------------------------------------------------------------------
+verkaufstexte["heuanalyse-lesen"] = {
+  augenbraue: "Die Lesehilfe",
+  ueberschrift: "Heuanalyse selbst lesen",
+  seitentitel:
+    "Heuanalyse selbst lesen: den Prüfbericht verstehen und auswerten, mit Auswertebogen",
+  einleitung: [
+    "Dein Prüfbericht ist da, zwei Seiten voller Zahlen. In sieben Schritten lernst du, welche Zeilen zählen, wie du sie umrechnest und woran du sie misst.",
+    "Dazu ein Auswertebogen für 16 Werte: Du trägst ein, was im Bericht steht, und siehst sofort, was dein Heu allein für dein Pferd deckt. Einmal kaufen, für jede neue Analyse nutzen.",
+  ],
+
+  problemAugenbraue: "Warum das nötig ist",
+  problemTitel: "Die Zahlen stehen da. Was sie heißen, steht nirgends.",
+  problem: [
+    "Ein Prüfbericht nennt Werte in Prozent, in g je kg und in mg je kg, einmal für die Frischmasse und einmal für die Trockenmasse. Welche Spalte gilt, steht nicht dabei.",
+    "Dazu kommen Kennzahlen wie pcv XP, ME oder Fruktan und Zielwerte, die je nach Labor anders heißen. Kein Wunder, wenn der Bericht dann im Ordner landet und alles bleibt, wie es war.",
+    "Dabei steht darin genau das, was du für die Wahl des Mineralfutters brauchst: wie viel Kupfer, Zink und Eiweiß dein Heu mitbringt und wo die Lücke sitzt.",
+  ],
+
+  inhaltAugenbraue: "Was drin ist",
+  inhaltTitel: "Sieben Schritte und ein Bogen, der für dich rechnet.",
+  inhalte: [
+    {
+      titel: "Die richtige Spalte",
+      text: "Trockenmasse oder Frischmasse, Prozent oder g je kg, und warum manche Labore eine dritte Spalte haben.",
+    },
+    {
+      titel: "Zucker, Eiweiß, Energie",
+      text: "Zucker und Fruktan zusammen lesen, pcv XP statt Rohprotein, Energie und Rohfaser als Paar.",
+    },
+    {
+      titel: "Mengen- und Spurenelemente",
+      text: "Die Zielwerte der LUFA, der Bedarf nach GfE und die Verhältnisse Calcium zu Phosphor und Zink zu Kupfer.",
+    },
+    {
+      titel: "Der Auswertebogen",
+      text: "16 Werte eintragen, Gewicht und Heumenge dazu. Er zeigt, was im Zielbereich liegt, was dein Heu allein deckt und was gar nicht gemessen wurde. Zum Ausdrucken.",
+    },
+  ],
+  inhaltSchluss:
+    "Jede Zahl darin hat eine Quelle: LUFA Nord-West, GfE 2014, Landwirtschaftskammer NRW und LfL Bayern. Die Quellen stehen am Ende der Lesehilfe.",
+
+  fuerWenTitel: "Für wen die Lesehilfe gedacht ist",
+  fuerWen: [
+    "Für dich, wenn du eine Heuanalyse hast oder bald eine machen lässt und selbst verstehen willst, was darin steht.",
+    "Für dich, wenn du Heu kaufst und zwei Angebote mit Analyse vergleichen willst.",
+    "Nicht für dich, wenn du gar keine Analyse hast, dann ist die Drei-Töpfe-Methode der bessere Weg. Und nicht, wenn du die ganze Ration mit Mineralfutter gerechnet haben willst: Das macht RatioPro oder die Befund-Einschätzung.",
+  ],
+
+  abschlussTitel: "Den Bericht verstehen, statt ihn abzuheften.",
+  abschlussText:
+    "Einmal kaufen, für jede neue Analyse nutzen. Nach dem Kauf findest du die Lesehilfe in deiner Akademie.",
+};
+
+// -------------------------------------------------------------------------
+// Die Drei-Töpfe-Methode, 69 €, buchbar ab 01.10.2026.
+// ENTWURF von Claude nach dem Kursplan vom 08.09.2026 (acht Lektionen, drei
+// Videos, Arbeitsbögen, Volltextsuche). Die Seite verspricht damit, was der
+// Kurs zum Start enthalten muss. Ändert sich der Plan, gehört der Satz in
+// `inhaltSchluss` mitgezogen.
+// -------------------------------------------------------------------------
+verkaufstexte["drei-toepfe-methode"] = {
+  augenbraue: "Der Kurs",
+  ueberschrift: "Die Drei-Töpfe-Methode",
+  seitentitel: "Die Drei-Töpfe-Methode: Rationsberechnung ohne Heuanalyse",
+  einleitung: [
+    "Rationsberechnung ohne Heuanalyse. Du rechnest deine Ration zweimal, mit einem mageren und mit einem guten Heu, und weißt danach bei jedem Nährstoff, ob er ergänzt wird, ob nicht, oder ob er offen bleibt.",
+    "Ein Kurs über das Entscheiden, wenn eine Zahl fehlt: mit echten Heuanalysen, Arbeitsbögen und der Doppelrechnung Schritt für Schritt.",
+  ],
+
+  problemAugenbraue: "Warum ein Durchschnitt nicht reicht",
+  problemTitel: "Kaum ein Heu ist durchschnittlich.",
+  problem: [
+    "Die meisten Rechner und Ratgeber setzen für Heu einen Durchschnitt ein. Nur streut Heu enorm: Bei der LUFA Nord-West lagen 2021 fast alle Proben beim Eiweiß (pcv XP) zwischen 2,3 und 8,8 Prozent, beim Zink zwischen 10 und 119 mg je kg.",
+    "Wer mit dem Mittel rechnet, bekommt eine Zahl, die genau aussieht und im Stall nicht stimmt. Gar nicht zu rechnen ist aber auch keine Lösung.",
+    "Die Drei-Töpfe-Methode geht einen dritten Weg: Sie rechnet an den Rändern und zeigt dir, welche Entscheidung auch dann hält, wenn du dein Heu nicht kennst.",
+  ],
+
+  inhaltAugenbraue: "Was dich erwartet",
+  inhaltTitel: "Drei Töpfe statt einer falschen Zahl.",
+  inhalte: [
+    {
+      titel: "Die Doppelrechnung",
+      text: "Deine Ration einmal mit magerem und einmal mit gutem Heu, in RatioPro Schritt für Schritt vorgemacht.",
+    },
+    {
+      titel: "Die drei Töpfe",
+      text: "Wird ergänzt, wird nicht ergänzt, bleibt offen. Jeder Nährstoff landet in einem davon, und du weißt, warum.",
+    },
+    {
+      titel: "Echte Heuanalysen",
+      text: "Wie weit Heu wirklich auseinandergeht, an Laborberichten statt an Lehrbuchwerten.",
+    },
+    {
+      titel: "Was sich ohne Labor messen lässt",
+      text: "Heu wiegen, Trockenmasse umrechnen, und was ein Refraktometer beim Zucker leisten kann und was nicht.",
+    },
+  ],
+  inhaltSchluss:
+    "Acht Lektionen, drei Videos und Arbeitsbögen, dazu eine Volltextsuche über den ganzen Kurs. Die Doppelrechnung zeige ich in RatioPro. Wer RatioPro noch nicht hat, bekommt es nach dem Kauf zum Vorzugspreis angeboten.",
+
+  fuerWenTitel: "Für wen der Kurs gedacht ist",
+  fuerWen: [
+    "Für dich, wenn dein Heu nicht untersucht ist, weil der Stall wechselt, die Ballen gemischt sind oder sich eine Analyse nicht lohnt.",
+    "Für dich, wenn du wissen willst, welches Mineralfutter du auch ohne Laborwerte vertreten kannst.",
+    "Nicht für dich, wenn du schon eine Heuanalyse hast. Dann lies sie mit der Lesehilfe „Heuanalyse selbst lesen“ oder lass sie in der Befund-Einschätzung einordnen.",
+  ],
+
+  abschlussTitel: "Entscheiden, auch wenn eine Zahl fehlt.",
+  abschlussText:
+    "Einmal kaufen, dauerhafter Zugang in deiner Akademie. Nach dem Kauf bekommst du deinen Zugang direkt per Mail.",
+};
+
+// -------------------------------------------------------------------------
 // Pferdeliebe 365, 599 € (bis 03.09.2026: 399 €, davor eine Aktion mit 249 €)
 // Der Text stammt wörtlich von Yasemin, 01.09.2026. Nur die Gliederung ist
 // an die Vorlage angepasst, kein Satz umformuliert.
