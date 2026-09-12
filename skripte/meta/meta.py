@@ -82,11 +82,18 @@ def graph(methode, pfad, daten=None):
         req = urllib.request.Request(adresse, data=urllib.parse.urlencode(felder).encode("utf-8"), method="POST")
     try:
         with urllib.request.urlopen(req) as a:
-            return json.loads(a.read().decode("utf-8"))
+            antwort = json.loads(a.read().decode("utf-8"))
     except urllib.error.HTTPError as f:
-        fehler = json.loads(f.read().decode("utf-8") or "{}").get("error", {})
+        antwort = json.loads(f.read().decode("utf-8") or "{}")
+    # Meta schickt manche Fehler mit Status 200 und einem Feld „error“ (am
+    # 12.09.2026 die Sicherheitsprüfung „Bitte authentifiziere dein Konto“).
+    # Ohne diese Prüfung lief das Werkzeug weiter und brach dann an einer
+    # fehlenden Kennung ab.
+    if isinstance(antwort, dict) and "error" in antwort:
+        fehler = antwort["error"]
         raise MetaFehler(" | ".join(x for x in [fehler.get("message"), fehler.get("error_user_title"),
                                                  fehler.get("error_user_msg")] if x))
+    return antwort
 
 
 def grundlagen():
