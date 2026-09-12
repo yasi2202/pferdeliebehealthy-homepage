@@ -211,6 +211,14 @@ export const angebotsHinweise: Record<string, Angebotshinweis> = {
     knopf: "Basisfutterkurs ansehen",
     url: "/kasse/basisfutterkurs",
   },
+  // Der Ratgeber zum Blogbeitrag über Sträucher und Bäume, seit 12.09.2026.
+  knabberecke: {
+    augenbraue: "Dazu passend",
+    name: "Knabberecke",
+    text: "Der Ratgeber für die Praxis: welche Zweige du wann anbietest, wie viel, wie du Laub für den Winter trocknest und wie du eine Knabberecke am Paddock anlegst.",
+    knopf: "Knabberecke ansehen",
+    url: "/knabberecke",
+  },
   darmaufbau: {
     augenbraue: "Dazu passend",
     name: "Darmaufbau beim Pferd",

@@ -173,6 +173,12 @@ export default async function AuswertungSeite({
               Newsletter
             </Link>
             <Link
+              href="/admin/blog"
+              className="text-rose-deep underline underline-offset-2"
+            >
+              Blog
+            </Link>
+            <Link
               href="/admin/rabattcodes"
               className="text-rose-deep underline underline-offset-2"
             >

@@ -488,7 +488,16 @@ export function blogBeitragLesen(slug: string): BlogBeitrag | null {
   }
   if (!fs.existsSync(pfad)) return null;
 
-  const { data, content } = matter(fs.readFileSync(pfad, "utf8"));
+  return beitragAusText(slug, fs.readFileSync(pfad, "utf8"));
+}
+
+/** Baut einen Beitrag aus dem Text einer Beitragsdatei, Kopf samt Inhalt.
+ *
+ *  Steht für sich, damit die Vorschau im Blog-Editor der Verwaltung
+ *  (app/admin/blog) genau so rechnet wie die fertige Seite: dieselben
+ *  Kästen, dieselbe Werbekennzeichnung, dieselben Sprungmarken. */
+export function beitragAusText(slug: string, text: string): BlogBeitrag {
+  const { data, content } = matter(text);
   const roh = marked.parse(content, { async: false }) as string;
   const { html, kapitel } = ankerSetzen(tabellenEinfassen(partnerkaestenSetzen(roh)));
 
