@@ -43,6 +43,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
         ] as const)
       : []),
     { pfad: "/empfehlungen", prioritaet: 0.6, takt: "monthly" },
+    // Pferdebusinessmitherz, die Untermarke für Business-Kurse (12.09.2026).
+    // /links steht bewusst nicht hier, die Seite trägt noindex.
+    { pfad: "/business", prioritaet: 0.6, takt: "monthly" },
     // Das Empfehlungsprogramm: Menschen, die Yasemin weiterempfehlen und
     // dafuer Provision bekommen. Nicht zu verwechseln mit /empfehlungen
     // darueber, das ist die Liste der Partner-Rabattcodes.
