@@ -129,7 +129,7 @@ export async function sendeMail(
   an: string,
   betreff: string,
   html: string,
-  opt: { handy?: boolean } = {},
+  opt: { handy?: boolean; von?: string } = {},
 ) {
   if (opt.handy !== false && an.trim().toLowerCase() === ANTWORT_AN) {
     const { aufsHandy } = await import("@/lib/handy");
@@ -147,7 +147,9 @@ export async function sendeMail(
       "Content-Type": "application/json",
     },
     body: JSON.stringify({
-      from: VON,
+      // Eigener Absender nur für die zweite Marke (Öl-Guide von aromahorseoil),
+      // gleiche freigeschaltete Domain.
+      from: opt.von ?? VON,
       to: [an],
       reply_to: ANTWORT_AN,
       subject: betreff,
