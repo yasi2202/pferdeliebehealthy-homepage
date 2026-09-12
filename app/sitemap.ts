@@ -27,6 +27,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { pfad: "/ratiopro", prioritaet: 0.8, takt: "monthly" },
     { pfad: "/drei-toepfe-methode", prioritaet: 0.7, takt: "monthly" },
     { pfad: "/heuanalyse-lesen", prioritaet: 0.6, takt: "monthly" },
+    // Der kostenlose Minikurs Heu 2026, seit 12.09.2026.
+    { pfad: "/heu-2026", prioritaet: 0.6, takt: "monthly" },
     { pfad: "/symptom-navigator", prioritaet: 0.8, takt: "monthly" },
     { pfad: "/basisfutterkurs", prioritaet: 0.7, takt: "monthly" },
     { pfad: "/darmaufbau", prioritaet: 0.7, takt: "monthly" },

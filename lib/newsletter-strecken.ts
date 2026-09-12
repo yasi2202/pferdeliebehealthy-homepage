@@ -172,6 +172,7 @@ async function einwilligungen(): Promise<Set<string>> {
     "insider_anmeldungen?bestaetigt=eq.true&select=email",
     "futter_check_anmeldungen?bestaetigt=eq.true&select=email",
     "stall_anmeldungen?bestaetigt=eq.true&select=email",
+    "heu_minikurs_anmeldungen?bestaetigt=eq.true&select=email",
     "digitalbestellungen?status=eq.bezahlt&newsletter=eq.true&select=email",
   ];
   const ja = new Set<string>();
@@ -246,6 +247,13 @@ async function kandidaten(strecke: Strecke): Promise<Anmeldung[]> {
   // `bestaetigt` wird gesetzt, wenn sie den Zugangslink anklickt.
   if (strecke.ausloeser === "stall-organizer" || strecke.ausloeser === "alle") {
     quellen.push(`stall_anmeldungen?${filter}&${felder}`);
+  }
+  // Der Minikurs Heu 2026, seit dem 12.09.2026. Eigene Tabelle aus demselben
+  // Grund wie beim Stall Organizer. `bestaetigt` setzt der Klick in der
+  // Bestätigungsmail (app/api/heu-minikurs/bestaetigen). Fehlt die Tabelle
+  // noch, liefert die Abfrage null und die Strecke findet einfach niemanden.
+  if (strecke.ausloeser === "heu-minikurs" || strecke.ausloeser === "alle") {
+    quellen.push(`heu_minikurs_anmeldungen?${filter}&${felder}`);
   }
 
   const alle: Anmeldung[] = [];

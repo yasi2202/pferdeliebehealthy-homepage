@@ -37,6 +37,8 @@ const ANMELDUNG: Record<string, string> = {
   insider: "wer sich für den Insider-Kanal einträgt",
   "futter-check": "wer den Futter-Check macht, egal mit welchem Ergebnis",
   "stall-organizer": "wer sich den Stall Organizer holt",
+  // Seit 12.09.2026, Anmeldung auf /heu-2026, Tabelle heu_minikurs_anmeldungen.
+  "heu-minikurs": "wer sich für den Minikurs Heu 2026 einträgt",
   alle: "jede neue Anmeldung, egal woher",
 };
 
@@ -99,6 +101,7 @@ export function ausloeserWahl(): { gruppe: string; optionen: { wert: string; tex
           text: `Futter-Check, nur „${FUTTER_CHECK_TYPEN[typ]}“`,
         })),
         { wert: "stall-organizer", text: "Stall Organizer" },
+        { wert: "heu-minikurs", text: "Minikurs Heu 2026" },
         { wert: "insider", text: "Insider-Kanal" },
         { wert: "alle", text: "Jede neue Anmeldung, egal woher" },
       ],
