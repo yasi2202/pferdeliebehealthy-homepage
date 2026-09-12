@@ -378,6 +378,32 @@ export default function Datenschutz() {
         </>
       )}
 
+      {/* ▸ SEIT 12.09.2026, gehört zu app/api/instagram/webhook und zur
+          Seite /instagram-daten. Beides muss dasselbe sagen: dieselben
+          Daten, dieselben zwölf Monate. Entwurf, beim Händlerbund-Gegenlesen
+          mit vorlegen. */}
+      <h2>Automatische Antworten auf Instagram-Kommentare</h2>
+      <p>
+        Wenn Sie unter einem unserer Beiträge auf Instagram ein Stichwort
+        kommentieren, schicken wir Ihnen automatisch eine Direktnachricht mit
+        dem angefragten Link und antworten kurz unter Ihrem Kommentar. Dazu
+        übermittelt uns die Meta Platforms Ireland Limited, Merrion Road,
+        Dublin 4, D04 X2K5, Irland, über ihre Schnittstelle Ihren
+        Instagram-Nutzernamen, die Kennung Ihres Kontos, den Kommentartext,
+        den Beitrag und den Zeitpunkt. Wir speichern diese Angaben, um
+        doppelte Antworten zu vermeiden und auszuwerten, welche Beiträge
+        Anfragen auslösen, und löschen sie nach zwölf Monaten.
+      </p>
+      <p>
+        Rechtsgrundlage ist Art. 6 Abs. 1 lit. b DSGVO, weil Sie den Link mit
+        Ihrem Kommentar anfordern, für die Auswertung Art. 6 Abs. 1 lit. f
+        DSGVO. Unser berechtigtes Interesse liegt darin, Anfragen schnell zu
+        beantworten und unsere Beiträge zu verbessern. Die Löschung Ihrer
+        Angaben können Sie jederzeit per Mail an uns verlangen; wie das geht,
+        steht auch unter{" "}
+        <a href="/instagram-daten">pferdeliebehealthy.de/instagram-daten</a>.
+      </p>
+
       <h2>Versanddienstleister</h2>
       <p>
         Wir geben Ihre E-Mail-Adresse im Rahmen der Vertragsabwicklung an

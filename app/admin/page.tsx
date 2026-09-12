@@ -203,6 +203,12 @@ export default async function AuswertungSeite({
               Werbung
             </Link>
             <Link
+              href="/admin/instagram"
+              className="text-rose-deep underline underline-offset-2"
+            >
+              Instagram
+            </Link>
+            <Link
               href="/admin/empfehler"
               className="text-rose-deep underline underline-offset-2"
             >
