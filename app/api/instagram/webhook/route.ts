@@ -23,11 +23,13 @@ export const maxDuration = 30;
 
 export async function GET(request: Request) {
   const u = new URL(request.url);
-  const erwartet = process.env.INSTAGRAM_WEBHOOK_TOKEN;
+  // Getrimmt, weil beim Einfügen in Vercel leicht ein Leerzeichen oder
+  // Zeilenumbruch mitkommt, und dann sagt die Seite still „Nicht erlaubt“.
+  const erwartet = (process.env.INSTAGRAM_WEBHOOK_TOKEN || "").trim();
   if (
     erwartet &&
     u.searchParams.get("hub.mode") === "subscribe" &&
-    u.searchParams.get("hub.verify_token") === erwartet
+    (u.searchParams.get("hub.verify_token") || "").trim() === erwartet
   ) {
     return new Response(u.searchParams.get("hub.challenge") ?? "", { status: 200 });
   }

@@ -117,7 +117,7 @@ export default async function InstagramAuswertung() {
           <ul className="grid gap-2">
             <Punkt ok={!!zugang} text={zugang ? `Instagram-Schlüssel vorhanden (${zugang.woher === "tabelle" ? "erneuert" : "aus Vercel"}${zugang.gueltigBis ? `, gültig bis ${new Date(zugang.gueltigBis).toLocaleDateString("de-DE")}` : ""})` : "Kein Instagram-Schlüssel: INSTAGRAM_ZUGANG bei Vercel eintragen"} />
             <Punkt ok={!!process.env.INSTAGRAM_APP_GEHEIMNIS} text={process.env.INSTAGRAM_APP_GEHEIMNIS ? "App-Geheimnis gesetzt, Meldungen von Meta werden geprüft" : "INSTAGRAM_APP_GEHEIMNIS fehlt: ohne es wird jede Meldung abgelehnt"} />
-            <Punkt ok={!!process.env.INSTAGRAM_WEBHOOK_TOKEN} text={process.env.INSTAGRAM_WEBHOOK_TOKEN ? "Webhook-Wort gesetzt" : "INSTAGRAM_WEBHOOK_TOKEN fehlt: Meta kann den Webhook nicht einrichten"} />
+            <Punkt ok={!!process.env.INSTAGRAM_WEBHOOK_TOKEN} text={process.env.INSTAGRAM_WEBHOOK_TOKEN ? `Webhook-Wort gesetzt (${(process.env.INSTAGRAM_WEBHOOK_TOKEN || "").trim().length} Zeichen, beginnt mit „${(process.env.INSTAGRAM_WEBHOOK_TOKEN || "").trim().slice(0, 4)}“)` : "INSTAGRAM_WEBHOOK_TOKEN fehlt: Meta kann den Webhook nicht einrichten"} />
             <Punkt ok={tabelleDa} text={tabelleDa ? "Tabelle vorhanden" : "Tabelle fehlt: datenbank/instagram-kommentare.sql im SQL Editor ausführen"} />
           </ul>
           <p className="mt-4 text-[13.5px] text-ink-soft">

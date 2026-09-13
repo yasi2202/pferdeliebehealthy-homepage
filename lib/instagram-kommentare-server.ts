@@ -38,7 +38,7 @@ const TABELLE = "instagram_kommentar_antworten";
 
 /** Vergleicht die Unterschrift im Kopf `x-hub-signature-256` mit dem Inhalt. */
 export function unterschriftStimmt(roh: string, kopf: string | null): boolean {
-  const geheimnis = process.env.INSTAGRAM_APP_GEHEIMNIS;
+  const geheimnis = (process.env.INSTAGRAM_APP_GEHEIMNIS || "").trim();
   if (!geheimnis || !kopf || !kopf.startsWith("sha256=")) return false;
   const erwartet = createHmac("sha256", geheimnis).update(roh, "utf8").digest("hex");
   const a = Buffer.from(erwartet);
