@@ -7,6 +7,7 @@ import {
   beitragSpeichern,
   beitragStatusSetzen,
   beitragAnlegen,
+  bildHochladen,
   type Ergebnis,
 } from "@/lib/blog-github";
 import { beitragZusammensetzen, LEERER_KOPF } from "@/lib/blog-kopf";
@@ -75,7 +76,7 @@ export async function POST(request: Request) {
   }
   if (text.length > HOECHSTENS) return fehler("Der Text ist zu lang.", 400);
 
-  if (was !== "anlegen") {
+  if (was !== "anlegen" && was !== "bild") {
     try {
       matter(text);
     } catch {
@@ -109,6 +110,31 @@ export async function POST(request: Request) {
         return antwort(await beitragStatusSetzen(slug, text, sha, true));
       case "zurueckziehen":
         return antwort(await beitragStatusSetzen(slug, text, sha, false));
+      case "bild": {
+        // Das Bild kommt verkleinert aus dem Browser. Geprüft wird trotzdem,
+        // ob es wirklich ein WebP oder JPG ist: Über diese Stelle soll nichts
+        // anderes in den öffentlichen Ordner der Website gelangen.
+        const roh = String(d.daten ?? "");
+        if (!roh || roh.length > 4_000_000) return fehler("Das Bild ist zu groß oder leer.", 400);
+        const daten = Buffer.from(roh, "base64");
+        const istWebp =
+          daten.subarray(0, 4).toString("latin1") === "RIFF" &&
+          daten.subarray(8, 12).toString("latin1") === "WEBP";
+        const istJpg = daten[0] === 0xff && daten[1] === 0xd8 && daten[2] === 0xff;
+        if (!istWebp && !istJpg) return fehler("Das ist kein Bild, das die Website anzeigen kann.", 400);
+        const name =
+          String(d.name ?? "")
+            .toLowerCase()
+            .replace(/ä/g, "ae")
+            .replace(/ö/g, "oe")
+            .replace(/ü/g, "ue")
+            .replace(/ß/g, "ss")
+            .replace(/[^a-z0-9]+/g, "-")
+            .replace(/^-+|-+$/g, "")
+            .slice(0, 60) || slug;
+        const r = await bildHochladen(name, istWebp ? "webp" : "jpg", daten);
+        return r.ok ? Response.json(r) : fehler(r.meldung, 502);
+      }
       case "anlegen": {
         const titel = String(d.titel ?? "").trim().slice(0, 200);
         const heute = new Date().toISOString().slice(0, 10);

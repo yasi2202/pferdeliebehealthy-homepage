@@ -8,6 +8,7 @@ import {
   beitragZusammensetzen,
   type BlogKopfFelder,
 } from "@/lib/blog-kopf";
+import { alsBase64, bildname, bildVorbereiten } from "./bildVorbereiten";
 
 // ---------------------------------------------------------------------------
 // Der Blog-Editor: oben die Angaben, darunter der Text, daneben die Hinweise.
@@ -21,6 +22,11 @@ import {
 // ▸ DIE VORSCHAU RECHNET AUF DEM SERVER, mit genau dem Code der Blogseite.
 //   Kästen, Tabellen und Sprungmarken sehen darin also so aus wie später
 //   online.
+//
+// ▸ BILDER werden im Browser verkleinert (bildVorbereiten.ts) und sofort
+//   hochgeladen. Auf der Website liegen sie erst nach dem nächsten Neubau,
+//   im Editor und in der Vorschau erscheinen sie trotzdem gleich: Bis dahin
+//   zeigt der Editor die Fassung aus dem Browser.
 // ---------------------------------------------------------------------------
 
 type Stand = "ruhe" | "laeuft" | "ok" | "fehler";
@@ -96,8 +102,14 @@ export default function BlogEditor(props: {
   const [meldung, setMeldung] = useState<string | null>(null);
   const [ansicht, setAnsicht] = useState<"schreiben" | "vorschau">("schreiben");
   const [vorschau, setVorschau] = useState<{ html: string; lesezeit: number; werbung: boolean } | null>(null);
+  const [laedtBild, setLaedtBild] = useState(false);
+  /** Hochgeladene Bilder, die auf der Website noch nicht liegen: Pfad → Fassung aus dem Browser. */
+  const [lokal, setLokal] = useState<Record<string, string>>({});
 
   const textfeld = useRef<HTMLTextAreaElement>(null);
+  const kopfDatei = useRef<HTMLInputElement>(null);
+  const textDatei = useRef<HTMLInputElement>(null);
+  const cursor = useRef(0);
   const gespeichert = useRef(beitragZusammensetzen(props.kopf, props.inhalt, extras));
 
   const text = useMemo(() => beitragZusammensetzen(kopf, inhalt, extras), [kopf, inhalt, extras]);
@@ -119,6 +131,16 @@ export default function BlogEditor(props: {
     setKopf((k) => ({ ...k, [schluessel]: wert }));
   }
 
+  function einfuegenAn(stelle: number, bis: number, neu: string) {
+    setInhalt((alt) => alt.slice(0, stelle) + neu + alt.slice(bis));
+    requestAnimationFrame(() => {
+      const el = textfeld.current;
+      if (!el) return;
+      el.focus();
+      el.selectionStart = el.selectionEnd = stelle + neu.length;
+    });
+  }
+
   function baustein(b: (typeof BAUSTEINE)[number]) {
     const el = textfeld.current;
     if (!el) return;
@@ -126,14 +148,8 @@ export default function BlogEditor(props: {
     const bis = el.selectionEnd;
     const markiert = inhalt.slice(von, bis);
     const neu =
-      b.umschliessen && markiert
-        ? `${b.umschliessen[0]}${markiert}${b.umschliessen[1]}`
-        : b.einfuegen;
-    setInhalt(inhalt.slice(0, von) + neu + inhalt.slice(bis));
-    requestAnimationFrame(() => {
-      el.focus();
-      el.selectionStart = el.selectionEnd = von + neu.length;
-    });
+      b.umschliessen && markiert ? `${b.umschliessen[0]}${markiert}${b.umschliessen[1]}` : b.einfuegen;
+    einfuegenAn(von, bis, neu);
   }
 
   async function anfrage(was: string): Promise<Record<string, unknown> | null> {
@@ -151,6 +167,86 @@ export default function BlogEditor(props: {
     return j;
   }
 
+  // -------------------------------------------------------------- Bilder
+  async function bildHochladen(datei: File, art: "kopf" | "text") {
+    setMeldung(null);
+    setLaedtBild(true);
+    try {
+      let fertig;
+      try {
+        fertig = await bildVorbereiten(datei, art);
+      } catch {
+        setStand("fehler");
+        setMeldung(
+          "Dieses Bild kann der Browser nicht öffnen. Fotos vom iPhone liegen oft als HEIC vor, speichere sie bitte als JPG und versuch es noch einmal."
+        );
+        return;
+      }
+
+      let bildtext = "";
+      if (art === "text") {
+        bildtext =
+          window.prompt(
+            "Was ist auf dem Bild zu sehen? Das steht unsichtbar im Bild für Google und Vorlesegeräte, zum Beispiel: Pony knabbert an einem Haselzweig."
+          ) ?? "";
+      }
+
+      const res = await fetch("/api/admin-blog", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          was: "bild",
+          slug,
+          name: bildname(datei, slug, art),
+          daten: await alsBase64(fertig.blob),
+        }),
+      });
+      const j = (await res.json().catch(() => ({}))) as Record<string, unknown>;
+      if (!res.ok) {
+        setStand("fehler");
+        setMeldung(String(j.fehler ?? "Das Bild ließ sich nicht hochladen."));
+        return;
+      }
+      const pfad = String(j.pfad);
+      setLokal((l) => ({ ...l, [pfad]: URL.createObjectURL(fertig.blob) }));
+
+      if (art === "kopf") {
+        setze("bild", pfad);
+      } else {
+        const stelle = Math.min(cursor.current, inhalt.length);
+        einfuegenAn(stelle, stelle, `\n\n![${bildtext.replace(/[[\]]/g, "")}](${pfad})\n\n`);
+      }
+      setStand("ok");
+      setMeldung(
+        (art === "kopf"
+          ? "Kopfbild hochgeladen und auf das Format der Kopfbilder zugeschnitten."
+          : "Bild hochgeladen und an der Stelle im Text eingefügt.") +
+          " Jetzt noch speichern, dann steht es nach etwa zwei Minuten auf der Website." +
+          (fertig.klein ? " Das Original war recht klein, es kann etwas unscharf wirken." : "")
+      );
+    } catch {
+      setStand("fehler");
+      setMeldung("Keine Verbindung. Noch einmal versuchen.");
+    } finally {
+      setLaedtBild(false);
+    }
+  }
+
+  function dateiGewaehlt(e: React.ChangeEvent<HTMLInputElement>, art: "kopf" | "text") {
+    const datei = e.target.files?.[0];
+    e.target.value = "";
+    if (datei) void bildHochladen(datei, art);
+  }
+
+  /** Setzt in der Vorschau die Fassung aus dem Browser ein, solange die Website das Bild noch nicht hat. */
+  function mitLokalenBildern(html: string): string {
+    let neu = html;
+    for (const [pfad, url] of Object.entries(lokal)) {
+      neu = neu.split(`src="${pfad}"`).join(`src="${url}"`);
+    }
+    return neu;
+  }
+
   async function vorschauLaden() {
     setAnsicht("vorschau");
     setVorschau(null);
@@ -165,12 +261,18 @@ export default function BlogEditor(props: {
   }
 
   async function speichern(was: "speichern" | "veroeffentlichen" | "zurueckziehen") {
-    if (was === "veroeffentlichen" && !window.confirm(
-      "Jetzt veröffentlichen? Der Beitrag steht dann nach etwa zwei Minuten öffentlich auf der Website und bei Google."
-    )) return;
-    if (was === "zurueckziehen" && !window.confirm(
-      "Den Beitrag von der Website nehmen? Er bleibt hier als Entwurf erhalten."
-    )) return;
+    if (
+      was === "veroeffentlichen" &&
+      !window.confirm(
+        "Jetzt veröffentlichen? Der Beitrag steht dann nach etwa zwei Minuten öffentlich auf der Website und bei Google."
+      )
+    )
+      return;
+    if (
+      was === "zurueckziehen" &&
+      !window.confirm("Den Beitrag von der Website nehmen? Er bleibt hier als Entwurf erhalten.")
+    )
+      return;
 
     setStand("laeuft");
     setMeldung(null);
@@ -199,9 +301,14 @@ export default function BlogEditor(props: {
     ? BEKANNTE_KATEGORIEN
     : [kopf.kategorie, ...BEKANNTE_KATEGORIEN];
   const heute = new Date().toISOString().slice(0, 10);
+  const kopfbildQuelle = lokal[kopf.bild] ?? kopf.bild;
 
   return (
     <main className="px-6 py-10 sm:px-8 sm:py-12">
+      {/* Die beiden Dateiauswahlen sind unsichtbar, die Knöpfe öffnen sie. */}
+      <input ref={kopfDatei} type="file" accept="image/*" hidden onChange={(e) => dateiGewaehlt(e, "kopf")} />
+      <input ref={textDatei} type="file" accept="image/*" hidden onChange={(e) => dateiGewaehlt(e, "text")} />
+
       <div className="mx-auto max-w-6xl">
         {/* ------------------------------------------------ Kopfleiste */}
         <div className="mb-6 flex flex-wrap items-center justify-between gap-4">
@@ -229,7 +336,7 @@ export default function BlogEditor(props: {
             <button
               type="button"
               onClick={() => speichern("speichern")}
-              disabled={stand === "laeuft" || !geaendert}
+              disabled={stand === "laeuft" || laedtBild || !geaendert}
               className="rounded-full bg-ink px-6 py-2.5 text-[15px] text-cream disabled:opacity-40"
             >
               {stand === "laeuft" ? "Speichert …" : "Speichern"}
@@ -238,7 +345,7 @@ export default function BlogEditor(props: {
               <button
                 type="button"
                 onClick={() => speichern("veroeffentlichen")}
-                disabled={stand === "laeuft"}
+                disabled={stand === "laeuft" || laedtBild}
                 className="rounded-full bg-rose-deep px-6 py-2.5 text-[15px] text-cream disabled:opacity-40"
               >
                 Veröffentlichen
@@ -247,7 +354,7 @@ export default function BlogEditor(props: {
               <button
                 type="button"
                 onClick={() => speichern("zurueckziehen")}
-                disabled={stand === "laeuft"}
+                disabled={stand === "laeuft" || laedtBild}
                 className="rounded-full border border-line bg-white px-5 py-2.5 text-[14px] text-ink disabled:opacity-40"
               >
                 Zurück in den Entwurf
@@ -256,14 +363,16 @@ export default function BlogEditor(props: {
           </div>
         </div>
 
-        {meldung && (
+        {(meldung || laedtBild) && (
           <p
             className={
               "mb-6 rounded-[12px] border p-4 text-[14.5px] leading-relaxed " +
-              (stand === "fehler" ? "border-rose-deep bg-white text-rose-deep" : "border-line bg-cream-deep text-ink")
+              (stand === "fehler" && !laedtBild
+                ? "border-rose-deep bg-white text-rose-deep"
+                : "border-line bg-cream-deep text-ink")
             }
           >
-            {meldung}
+            {laedtBild ? "Das Bild wird verkleinert und hochgeladen …" : meldung}
           </p>
         )}
 
@@ -272,7 +381,11 @@ export default function BlogEditor(props: {
             {/* -------------------------------------------- Angaben */}
             <section className="mb-6 rounded-[18px] border border-line bg-white p-5 sm:p-6">
               <label className={etikett}>Titel</label>
-              <input className={`${feld} mb-4 font-serif text-[20px]`} value={kopf.titel} onChange={(e) => setze("titel", e.target.value)} />
+              <input
+                className={`${feld} mb-4 font-serif text-[20px]`}
+                value={kopf.titel}
+                onChange={(e) => setze("titel", e.target.value)}
+              />
 
               <label className={etikett}>Beschreibung für Google</label>
               <textarea
@@ -336,12 +449,23 @@ export default function BlogEditor(props: {
                 </div>
               </div>
 
-              <details className="mt-5">
-                <summary className="cursor-pointer text-[14px] text-ink">Bild</summary>
-                <div className="mt-4 grid gap-4 sm:grid-cols-[1fr_140px]">
+              {/* ---------------------------------------- Kopfbild */}
+              <div className="mt-6 border-t border-line pt-5">
+                <p className={etikett}>Kopfbild</p>
+                <div className="grid gap-4 sm:grid-cols-[1fr_160px]">
                   <div>
-                    <label className={etikett}>Bilddatei</label>
-                    <input className={`${feld} mb-3`} value={kopf.bild} onChange={(e) => setze("bild", e.target.value)} />
+                    <button
+                      type="button"
+                      onClick={() => kopfDatei.current?.click()}
+                      disabled={laedtBild}
+                      className="mb-2 rounded-full border border-line bg-white px-4 py-2 text-[14px] hover:border-rose-deep disabled:opacity-40"
+                    >
+                      {kopf.bild ? "Anderes Kopfbild hochladen" : "Kopfbild hochladen"}
+                    </button>
+                    <p className="mb-3 text-[12.5px] leading-relaxed text-ink-soft">
+                      Wird automatisch auf 1344 × 1260 zugeschnitten, wie alle Kopfbilder. Nur echte
+                      Fotos, keine gezeichneten Pferde, und nur Bilder, die du verwenden darfst.
+                    </p>
                     <label className={etikett}>Bildtext, was darauf zu sehen ist</label>
                     <textarea
                       className={`${feld} mb-3`}
@@ -349,21 +473,26 @@ export default function BlogEditor(props: {
                       value={kopf.bildText}
                       onChange={(e) => setze("bildText", e.target.value)}
                     />
-                    <label className="flex items-center gap-2 text-[14px]">
-                      <input
-                        type="checkbox"
-                        checked={kopf.bildBreit}
-                        onChange={(e) => setze("bildBreit", e.target.checked)}
-                      />
-                      Breites Bild mit Beschriftung (volle Textbreite)
-                    </label>
+                    <details>
+                      <summary className="cursor-pointer text-[13px] text-ink-soft">Mehr zum Bild</summary>
+                      <label className={`${etikett} mt-3`}>Bilddatei</label>
+                      <input className={`${feld} mb-3`} value={kopf.bild} onChange={(e) => setze("bild", e.target.value)} />
+                      <label className="flex items-center gap-2 text-[14px]">
+                        <input
+                          type="checkbox"
+                          checked={kopf.bildBreit}
+                          onChange={(e) => setze("bildBreit", e.target.checked)}
+                        />
+                        Breites Bild mit Beschriftung (volle Textbreite)
+                      </label>
+                    </details>
                   </div>
-                  {kopf.bild.startsWith("/") && (
+                  {kopfbildQuelle.startsWith("/") || kopfbildQuelle.startsWith("blob:") ? (
                     // eslint-disable-next-line @next/next/no-img-element
-                    <img src={kopf.bild} alt="" className="w-full rounded-[12px] object-cover" />
-                  )}
+                    <img src={kopfbildQuelle} alt="" className="w-full rounded-[12px] object-cover" />
+                  ) : null}
                 </div>
-              </details>
+              </div>
             </section>
 
             {/* -------------------------------------------- Text */}
@@ -404,6 +533,18 @@ export default function BlogEditor(props: {
                       {b.name}
                     </button>
                   ))}
+                  <button
+                    type="button"
+                    title="Ein Foto an der Stelle einfügen, an der der Mauszeiger im Text steht."
+                    onClick={() => {
+                      cursor.current = textfeld.current?.selectionStart ?? inhalt.length;
+                      textDatei.current?.click();
+                    }}
+                    disabled={laedtBild}
+                    className="rounded-full border border-rose-deep bg-white px-3 py-1.5 text-[13px] text-rose-deep disabled:opacity-40"
+                  >
+                    Bild einfügen
+                  </button>
                 </div>
                 <textarea
                   ref={textfeld}
@@ -432,7 +573,10 @@ export default function BlogEditor(props: {
                     {kopf.beschreibung && (
                       <p className="mb-8 text-[17px] leading-relaxed text-ink-soft">{kopf.beschreibung}</p>
                     )}
-                    <div className="beitrag-prose" dangerouslySetInnerHTML={{ __html: vorschau.html }} />
+                    <div
+                      className="beitrag-prose"
+                      dangerouslySetInnerHTML={{ __html: mitLokalenBildern(vorschau.html) }}
+                    />
                   </>
                 )}
               </section>
@@ -459,7 +603,10 @@ export default function BlogEditor(props: {
                 Deine Regeln {hinweise.length === 0 ? "" : `(${hinweise.length})`}
               </p>
               {hinweise.length === 0 ? (
-                <p className="text-[14px] text-ink">Nichts gefunden. Keine Gedankenstriche, keine Heilversprechen.</p>
+                <p className="text-[14px] text-ink">
+                  Alles erfüllt: keine Gedankenstriche, keine Heilversprechen, und die Punkte für
+                  Google stimmen.
+                </p>
               ) : (
                 <ul className="space-y-3">
                   {hinweise.map((h, i) => (

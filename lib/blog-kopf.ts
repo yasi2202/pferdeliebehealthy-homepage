@@ -203,5 +203,55 @@ export function beitragPruefen(kopf: BlogKopfFelder, inhalt: string): Hinweis[] 
   if (kopf.bild && !kopf.bildText.trim()) {
     hinweise.push({ text: "Zum Bild fehlt der Bildtext. Er steht unter dem Bild und wird von Google gelesen." });
   }
+
+  // ------------------------------------------------ Die SEO-Handwerksregeln
+  // Aus der Recherche vom 09.09.2026 (Notiz „Blogbeiträge schreiben“) und aus
+  // der Bewertung in der Akademie unter Homepage → Blog und SEO. Die Zahlen
+  // sind dort begründet: Antwortkapseln von 40 bis 60 Wörtern werden in
+  // KI-Antworten am häufigsten zitiert, ausgebaut heißt ab 9.000 Zeichen.
+  const abschnitte = inhalt.split(/^##\s+/m).slice(1);
+  const ueberschriften = abschnitte.map((a) => a.split("\n")[0].trim());
+  const kapseln = abschnitte
+    .map((a) => {
+      const koerper = a.split("\n").slice(1).join("\n").trim();
+      const erster = koerper.split(/\n\s*\n/)[0] ?? "";
+      // Tabellen, Aufzählungen und Kästen sind keine Antwortkapsel.
+      if (/^(\||-|\*|>|\[\[|!\[)/.test(erster.trim())) return 0;
+      return erster.split(/\s+/).filter(Boolean).length;
+    });
+  const ohneKapsel = ueberschriften.filter(
+    (_, i) => !/fragen|quellen/i.test(ueberschriften[i]) && (kapseln[i] < 25 || kapseln[i] > 90)
+  );
+  if (ohneKapsel.length > 0) {
+    hinweise.push({
+      text: `Unter ${ohneKapsel.length === 1 ? "einer Überschrift" : `${ohneKapsel.length} Überschriften`} fehlt die kurze Antwort gleich zu Beginn (40 bis 60 Wörter, die die Frage ganz beantworten). Google und KI-Antworten zitieren genau diese Sätze.`,
+      stelle: ohneKapsel.slice(0, 3).join(" · "),
+    });
+  }
+  const inhaltlich = ueberschriften.filter((u) => !/fragen|quellen/i.test(u));
+  const alsFrage = inhaltlich.filter((u) => u.endsWith("?")).length;
+  if (inhaltlich.length >= 3 && alsFrage < inhaltlich.length / 2) {
+    hinweise.push({
+      text: `Nur ${alsFrage} von ${inhaltlich.length} Überschriften sind eine Frage. „Wie viel Zink braucht ein Pferd?“ wird gefunden, „Zinkbedarf“ kaum.`,
+    });
+  }
+  const verweise = (inhalt.match(/\]\(\/blog\/[a-z0-9-]+/g) ?? []).length;
+  if (verweise < 2) {
+    hinweise.push({
+      text: `${verweise === 0 ? "Kein Verweis" : "Nur ein Verweis"} auf andere Beiträge. Zwei bis vier sind gut: Google hält einen Beitrag, auf den viele zeigen, für ein Kernthema.`,
+    });
+  }
+  const zeichen = inhalt.replace(/\s+/g, " ").length;
+  if (zeichen < 9000) {
+    hinweise.push({
+      text: `Der Text hat gut ${Math.round(zeichen / 100) * 100} Zeichen. Als ausgebaut gilt ein Beitrag ab 9.000 Zeichen, kürzere ranken bei Fachthemen selten.`,
+    });
+  }
+  const bilderOhneText = (inhalt.match(/!\[\s*\]\(/g) ?? []).length;
+  if (bilderOhneText > 0) {
+    hinweise.push({
+      text: `${bilderOhneText === 1 ? "Ein Bild" : `${bilderOhneText} Bilder`} im Text ohne Bildtext. Zwischen die eckigen Klammern gehört, was auf dem Bild zu sehen ist.`,
+    });
+  }
   return hinweise;
 }

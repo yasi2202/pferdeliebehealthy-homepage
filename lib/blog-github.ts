@@ -261,6 +261,39 @@ export async function beitragStatusSetzen(
   return { ok: true, sha: neu.sha, pfad: ziel, entwurf: !veroeffentlichen };
 }
 
+/** Legt ein Bild unter public/images/blog/ ab.
+ *
+ *  Das Bild kommt schon verkleinert aus dem Browser (siehe
+ *  app/admin/blog/[slug]/bildVorbereiten.ts). Gibt es den Namen schon, wird
+ *  eine Ziffer angehängt: Ein vorhandenes Bild wird nie überschrieben, sonst
+ *  änderte sich still das Bild in einem anderen Beitrag. */
+export async function bildHochladen(
+  name: string,
+  endung: "webp" | "jpg",
+  daten: Buffer
+): Promise<{ ok: true; pfad: string } | { ok: false; meldung: string }> {
+  for (let n = 1; n < 20; n++) {
+    const datei = `${name}${n > 1 ? `-${n}` : ""}.${endung}`;
+    const repoPfad = `public/images/blog/${datei}`;
+    const da = await gh(`contents/${repoPfad}?ref=${ZWEIG}`);
+    if (da.status === 200) continue;
+    if (da.status !== 404) return { ok: false, meldung: `GitHub antwortet mit ${da.status}.` };
+    const r = await gh(`contents/${repoPfad}`, {
+      method: "PUT",
+      body: JSON.stringify({
+        message: `Blog: Bild ${datei} in der Verwaltung hochgeladen`,
+        content: daten.toString("base64"),
+        branch: ZWEIG,
+        committer: KENNUNG,
+        author: KENNUNG,
+      }),
+    });
+    if (!r.ok) return { ok: false, meldung: `GitHub hat das Bild abgelehnt (${r.status}).` };
+    return { ok: true, pfad: `/images/blog/${datei}` };
+  }
+  return { ok: false, meldung: "Unter diesem Namen liegen schon zu viele Bilder." };
+}
+
 /** Legt einen neuen Entwurf an. */
 export async function beitragAnlegen(slug: string, text: string): Promise<Ergebnis> {
   if (await beitragHolen(slug)) {
