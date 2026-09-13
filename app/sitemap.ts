@@ -33,6 +33,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { pfad: "/basisfutterkurs", prioritaet: 0.7, takt: "monthly" },
     { pfad: "/darmaufbau", prioritaet: 0.7, takt: "monthly" },
     { pfad: "/magen-reset", prioritaet: 0.7, takt: "monthly" },
+    { pfad: "/knabberecke", prioritaet: 0.6, takt: "monthly" },
     { pfad: "/salzratgeber", prioritaet: 0.7, takt: "monthly" },
     { pfad: "/equidesk", prioritaet: 0.8, takt: "monthly" },
     { pfad: "/blog", prioritaet: 0.9, takt: "weekly" },

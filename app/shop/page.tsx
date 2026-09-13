@@ -173,6 +173,14 @@ const FOTO: Record<
     alt: "Pferd frisst Heu aus einem engmaschigen Heunetz",
     schnitt: "object-center",
   },
+  // Adobe-Stock-Foto 36830591. Die roten Früchte sind Hagebutten an einer
+  // Hundsrose, nicht die Früchte einer Eibe: länglich, an dornigen Trieben,
+  // keine Nadeln. Am 12.09.2026 groß und im Ausschnitt geprüft.
+  knabberecke: {
+    datei: "/images/kacheln/heckenrose.jpg",
+    alt: "Pony streckt den Kopf in eine Hundsrose voller roter Hagebutten",
+    schnitt: "object-center",
+  },
   "symptom-navigator": {
     datei: "/images/kacheln/nuestern.jpg",
     alt: "Nahaufnahme der Nüstern eines Pferdes",
@@ -275,6 +283,7 @@ const TRENNUNG: Record<string, string> = {
 const ZEILE: Record<string, string> = {
   salzratgeber: "E-Book",
   "magen-reset": "E-Book",
+  knabberecke: "E-Book",
   darmaufbau: "E-Book",
   "mineral-klarheit": "Online-Kurs",
   ganzjahresfutterplan: "Online-Kurs",

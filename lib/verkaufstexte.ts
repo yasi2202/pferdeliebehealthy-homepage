@@ -182,6 +182,65 @@ export const verkaufstexte: Record<string, Verkaufstext> = {
   },
 
   // -------------------------------------------------------------------------
+  // Knabberecke, 5,99 €, seit 12.09.2026
+  // Aus dem Heft selbst gebaut (inhalte/quelldateien/knabberecke.py in der
+  // Akademie). 18 Seiten, am 12.09.2026 am PDF nachgezählt. Die Zahlen im
+  // Problemteil stehen so im Heft und im Blogbeitrag, mit Quelle.
+  // -------------------------------------------------------------------------
+  knabberecke: {
+    augenbraue: "Für die Praxis",
+    ueberschrift: "Knabberecke",
+    seitentitel:
+      "Knabberecke: welche Zweige Pferde fressen dürfen und wie du sie fütterst",
+    einleitung: [
+      "Der Ratgeber auf 18 Seiten zeigt dir, welche Bäume und Sträucher dein Pferd knabbern darf, welche nie, und wie du Zweige, Laub und eine eigene Knabberecke in die Fütterung einbaust.",
+      "Mit Ampel und Giftmengen, zehn Steckbriefen, einem Kalender durchs Jahr und einer Checkliste zum Abhaken.",
+    ],
+
+    problemAugenbraue: "Warum das nötig ist",
+    problemTitel: "Gut gemeint ist am Zaun oft gefährlich.",
+    problem: [
+      "Pferde knabbern von Natur aus an Gehölzen. Verwilderte Pferde fressen in schneereichen Wintern teils ein Drittel und mehr Zweige, Rinde und Laub. Im Stall fehlt das meistens, dabei ist es eine der einfachsten Formen von Beschäftigung.",
+      "Nur: Bergahorn und Spitzahorn sehen sich sehr ähnlich, und nur einer von beiden ist giftig. 100 bis 200 g Eibennadeln können ein Pferd töten. Und wie viele Zweige ein Pferd am Tag verträgt, hat bis heute niemand untersucht.",
+      "Dieser Ratgeber sagt dir ehrlich, was belegt ist und was nicht, und gibt dir einen Weg, mit dem du sicher anfängst.",
+    ],
+
+    inhaltAugenbraue: "Das steht drin",
+    inhaltTitel: "Zwölf Kapitel, direkt umsetzbar.",
+    inhalte: [
+      {
+        titel: "Die Ampel",
+        text: "Grün, Gelb und Rot für über 40 Gehölze, mit dem Gift, dem Pflanzenteil und den Mengen, die gefährlich werden.",
+      },
+      {
+        titel: "Sicher unterscheiden",
+        text: "Bergahorn, Spitz- und Feldahorn, Eibe und Tanne, Roter und Schwarzer Holunder: die Merkmale, auf die du dich verlassen kannst.",
+      },
+      {
+        titel: "Richtig füttern",
+        text: "Der Einstieg in drei Wochen, woran du merkst, dass es zu viel ist, warum welkes Steinobst gefährlich ist, und wie du Laubheu für den Winter machst.",
+      },
+      {
+        titel: "Die eigene Knabberecke",
+        text: "Standort, Pflanzliste, Weiden aus dem Steckling, und woher du gute Zweige bekommst.",
+      },
+    ],
+    inhaltSchluss:
+      "Mit Kalender durchs Jahr, Checkliste zum Abhaken und allen Quellen.",
+
+    fuerWenTitel: "Für wen das gemacht ist",
+    fuerWen: [
+      "Für dich, wenn dein Pferd an allem knabbert, was über den Zaun hängt, und du wissen willst, was davon in Ordnung ist.",
+      "Für dich, wenn du deinem Pferd mehr Beschäftigung geben willst und über eine Knabberecke nachdenkst.",
+      "Nicht für dich, wenn du gerade einen Vergiftungsverdacht hast. Dann ruf sofort die Tierärztin an.",
+    ],
+
+    abschlussTitel: "Ein Heft, eine Ampel, ein sicherer Anfang.",
+    abschlussText:
+      "Für weniger als einen Sack Heucobs. Der Zugang bleibt dir dauerhaft.",
+  },
+
+  // -------------------------------------------------------------------------
   // Basisfutterkurs, 69 €
   // Aus der Kursbeschreibung und dem Kursinhalt gebaut, es gab keine
   // alfima-Seite: Der Kurs wurde bisher nie einzeln verkauft.

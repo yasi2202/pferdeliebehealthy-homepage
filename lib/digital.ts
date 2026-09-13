@@ -206,6 +206,33 @@ export type DigitalProdukt = {
 
 export const digitalprodukte: DigitalProdukt[] = [
   {
+    // Seit 12.09.2026. Der Ratgeber hinter dem Blogbeitrag
+    // /blog/straeucher-und-baeume-fuer-pferde: Der Beitrag sagt, welche
+    // Gehölze geeignet sind, das Heft zeigt, wie man sie füttert.
+    slug: "knabberecke",
+    gruppe: "einstieg",
+    name: "Knabberecke: Zweige, Laub und Sträucher für dein Pferd",
+    kurzname: "Knabberecke",
+    preis: 599,
+    mwst: 19,
+    art: "kurs",
+    kurz: "Welche Zweige dein Pferd knabbern darf und wie du sie in die Fütterung einbaust.",
+    leistung:
+      "Digitaler Zugang zum Ratgeber „Knabberecke“ in der Pferdeliebehealthy " +
+      "Akademie, dauerhaft abrufbar.",
+    // Trifft /knabberecke/i in akademieapp/lib/produkt-zugang.ts.
+    // Geprüft: keine der NIEMALS-Regeln greift (kein guide, mini,
+    // checkliste, gratis im Namen).
+    akademieName: "Knabberecke",
+    erwarteterZugang: "knabberecke",
+    beschreibung: [
+      {
+        art: "absatz",
+        text: "Welche Bäume und Sträucher dein Pferd knabbern darf, welche du meiden musst, und wie du Zweige, Laub und eine Knabberecke Schritt für Schritt in die Fütterung einbaust.",
+      },
+    ],
+  },
+  {
     slug: "salzratgeber",
     gruppe: "einstieg",
     name: "Natürliche Salzversorgung für dein Pferd",
