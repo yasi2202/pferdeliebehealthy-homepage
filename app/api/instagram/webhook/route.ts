@@ -1,5 +1,5 @@
 import { stichwortIn } from "@/lib/instagram-stichwoerter";
-import { beantworte, unterschriftStimmt } from "@/lib/instagram-kommentare-server";
+import { beantworte, merkeLetzteMeldung, unterschriftStimmt } from "@/lib/instagram-kommentare-server";
 
 // ---------------------------------------------------------------------------
 // Hier meldet Meta neue Kommentare auf Instagram (Ersatz für ManyChat).
@@ -49,16 +49,20 @@ type Meldung = { object?: string; entry?: { id?: string; changes?: Aenderung[] }
 
 export async function POST(request: Request) {
   const roh = await request.text();
-  if (!unterschriftStimmt(roh, request.headers.get("x-hub-signature-256"))) {
-    console.error("Instagram-Webhook: Unterschrift fehlt oder stimmt nicht. Ist INSTAGRAM_APP_GEHEIMNIS gesetzt?");
-    return new Response("Nicht erlaubt.", { status: 403 });
-  }
+  const kopf = request.headers.get("x-hub-signature-256");
 
-  let meldung: Meldung;
+  let meldung: Meldung = {};
   try {
     meldung = JSON.parse(roh);
   } catch {
-    return Response.json({ ok: true });
+    // unlesbar, bleibt leer
+  }
+  const felder = (meldung.entry ?? []).flatMap((e) => (e.changes ?? []).map((c) => c.field ?? "?"));
+
+  if (!unterschriftStimmt(roh, kopf)) {
+    console.error("Instagram-Webhook: Unterschrift fehlt oder stimmt nicht. Ist INSTAGRAM_APP_GEHEIMNIS gesetzt?");
+    await merkeLetzteMeldung({ unterschriftOk: false, unterschriftDa: !!kopf, art: meldung.object ?? null, felder });
+    return new Response("Nicht erlaubt.", { status: 403 });
   }
 
   const ergebnisse: string[] = [];
@@ -89,6 +93,7 @@ export async function POST(request: Request) {
     }
   }
 
+  await merkeLetzteMeldung({ unterschriftOk: true, art: meldung.object ?? null, felder, ergebnisse });
   return Response.json({ ok: true, ergebnisse });
 }
 // ENDE DER DATEI

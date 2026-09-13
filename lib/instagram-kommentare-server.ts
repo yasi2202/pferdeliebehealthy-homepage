@@ -191,6 +191,44 @@ export async function beantworte(k: Kommentar, s: Stichwort): Promise<string> {
   return fehlerNachricht ?? "beantwortet";
 }
 
+/**
+ * Hält fest, wann zuletzt eine Meldung von Meta ankam und ob ihre Unterschrift
+ * stimmte. Ohne das endet ein Fehler still: Eine abgewiesene Meldung
+ * hinterlässt sonst nur eine Zeile im Vercel-Protokoll, und von außen sieht
+ * „Meta schickt nichts“ genauso aus wie „die Website weist alles ab“.
+ *
+ * Liegt als Zeile `letzte-meldung` in instagram_zugang (Feld `token` trägt hier
+ * eine kleine JSON-Angabe, kein Schlüssel), damit keine neue Tabelle nötig ist.
+ * Gespeichert werden nur Zeit, Unterschrift ja/nein, Art und Felder der
+ * Meldung und ob ein Stichwort dabei war, kein Kommentartext.
+ */
+export async function merkeLetzteMeldung(angaben: Record<string, unknown>): Promise<void> {
+  try {
+    await supabase("instagram_zugang?on_conflict=schluessel", {
+      method: "POST",
+      headers: { Prefer: "resolution=merge-duplicates,return=minimal" },
+      body: JSON.stringify({
+        schluessel: "letzte-meldung",
+        token: JSON.stringify({ zeit: new Date().toISOString(), ...angaben }),
+        erneuert_am: new Date().toISOString(),
+      }),
+    });
+  } catch {
+    // Die Eingangsmeldung ist nur Hilfe beim Suchen, sie darf nichts aufhalten.
+  }
+}
+
+/** Die letzte Eingangsmeldung, für die Übersicht. */
+export async function letzteMeldung(): Promise<Record<string, unknown> | null> {
+  const zeile = await ersteZeile<{ token: string }>("instagram_zugang?schluessel=eq.letzte-meldung&select=token&limit=1");
+  if (!zeile) return null;
+  try {
+    return JSON.parse(zeile.token);
+  } catch {
+    return null;
+  }
+}
+
 /** Der Link zu einem Beitrag, für die Übersicht. Scheitert still. */
 export async function beitragsLink(token: string, beitragId: string): Promise<string | null> {
   try {
