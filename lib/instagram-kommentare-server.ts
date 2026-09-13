@@ -36,14 +36,36 @@ const TABELLE = "instagram_kommentar_antworten";
 // Prüfen, dass eine Meldung wirklich von Meta kommt
 // ---------------------------------------------------------------------------
 
-/** Vergleicht die Unterschrift im Kopf `x-hub-signature-256` mit dem Inhalt. */
+/**
+ * Prüft die Unterschrift im Kopf `x-hub-signature-256` und sagt, mit welchem
+ * Geheimnis sie gemacht ist, oder null.
+ *
+ * ▸ ZWEI GEHEIMNISSE, WEIL META ZWEI HAT. Die App hat einen eigenen
+ *   Geheimcode (App-Einstellungen → Allgemein, bei Vercel META_APP_GEHEIMNIS),
+ *   der Instagram-Teil einen zweiten (API-Einrichtung mit Instagram-Login, bei
+ *   Vercel INSTAGRAM_APP_GEHEIMNIS). Am 13.09.2026 kam Metas Testmeldung mit
+ *   einer Unterschrift an, die zum Instagram-Geheimcode NICHT passte. Welches
+ *   Meta für echte Kommentare nimmt, ist nicht sauber dokumentiert; es zählt
+ *   deshalb jedes der beiden, und die Eingangsmeldung hält fest, welches passte.
+ */
+export function unterschriftVon(roh: string, kopf: string | null): "instagram" | "meta" | null {
+  if (!kopf || !kopf.startsWith("sha256=")) return null;
+  const gegeben = Buffer.from(kopf.slice("sha256=".length));
+  const kandidaten: ["instagram" | "meta", string][] = [
+    ["instagram", (process.env.INSTAGRAM_APP_GEHEIMNIS || "").trim()],
+    ["meta", (process.env.META_APP_GEHEIMNIS || "").trim()],
+  ];
+  for (const [name, geheimnis] of kandidaten) {
+    if (!geheimnis) continue;
+    const erwartet = Buffer.from(createHmac("sha256", geheimnis).update(roh, "utf8").digest("hex"));
+    if (erwartet.length === gegeben.length && timingSafeEqual(erwartet, gegeben)) return name;
+  }
+  return null;
+}
+
+/** Ja oder nein, für Stellen, die nicht wissen müssen, welches Geheimnis passte. */
 export function unterschriftStimmt(roh: string, kopf: string | null): boolean {
-  const geheimnis = (process.env.INSTAGRAM_APP_GEHEIMNIS || "").trim();
-  if (!geheimnis || !kopf || !kopf.startsWith("sha256=")) return false;
-  const erwartet = createHmac("sha256", geheimnis).update(roh, "utf8").digest("hex");
-  const a = Buffer.from(erwartet);
-  const b = Buffer.from(kopf.slice("sha256=".length));
-  return a.length === b.length && timingSafeEqual(a, b);
+  return unterschriftVon(roh, kopf) !== null;
 }
 
 // ---------------------------------------------------------------------------

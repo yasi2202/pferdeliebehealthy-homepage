@@ -1,5 +1,5 @@
 import { stichwortIn } from "@/lib/instagram-stichwoerter";
-import { beantworte, merkeLetzteMeldung, unterschriftStimmt } from "@/lib/instagram-kommentare-server";
+import { beantworte, merkeLetzteMeldung, unterschriftVon } from "@/lib/instagram-kommentare-server";
 
 // ---------------------------------------------------------------------------
 // Hier meldet Meta neue Kommentare auf Instagram (Ersatz für ManyChat).
@@ -59,8 +59,9 @@ export async function POST(request: Request) {
   }
   const felder = (meldung.entry ?? []).flatMap((e) => (e.changes ?? []).map((c) => c.field ?? "?"));
 
-  if (!unterschriftStimmt(roh, kopf)) {
-    console.error("Instagram-Webhook: Unterschrift fehlt oder stimmt nicht. Ist INSTAGRAM_APP_GEHEIMNIS gesetzt?");
+  const geheimnis = unterschriftVon(roh, kopf);
+  if (!geheimnis) {
+    console.error("Instagram-Webhook: Unterschrift fehlt oder stimmt nicht. Sind INSTAGRAM_APP_GEHEIMNIS und META_APP_GEHEIMNIS gesetzt?");
     await merkeLetzteMeldung({ unterschriftOk: false, unterschriftDa: !!kopf, art: meldung.object ?? null, felder });
     return new Response("Nicht erlaubt.", { status: 403 });
   }
@@ -93,7 +94,7 @@ export async function POST(request: Request) {
     }
   }
 
-  await merkeLetzteMeldung({ unterschriftOk: true, art: meldung.object ?? null, felder, ergebnisse });
+  await merkeLetzteMeldung({ unterschriftOk: true, geheimnis, art: meldung.object ?? null, felder, ergebnisse });
   return Response.json({ ok: true, ergebnisse });
 }
 // ENDE DER DATEI
