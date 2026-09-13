@@ -1,6 +1,6 @@
 import { createHmac, timingSafeEqual } from "node:crypto";
 import { supabase, ersteZeile } from "@/lib/versand";
-import { KOMMENTAR_ANTWORTEN, type Stichwort } from "@/lib/instagram-stichwoerter";
+import { KOMMENTAR_ANTWORTEN, stichwortIn, type Stichwort } from "@/lib/instagram-stichwoerter";
 
 // ---------------------------------------------------------------------------
 // Die eigene Antwort auf Instagram-Kommentare, als Ersatz für ManyChat
@@ -24,8 +24,13 @@ import { KOMMENTAR_ANTWORTEN, type Stichwort } from "@/lib/instagram-stichwoerte
 // ▸ WAS META ERLAUBT: auf einen Kommentar genau EINE private Antwort, und
 //   zwar innerhalb von sieben Tagen. Genau das tut diese Datei.
 //
-// ▸ SOLANGE META DIE APP NICHT GEPRÜFT HAT (App Review), kommen Meldungen nur
-//   von Konten an, die in der App eine Rolle haben. Zum Testen reicht das.
+// ▸ ECHTE KOMMENTARE MELDET META ERST NACH DER APP-PRÜFUNG. So steht es auf
+//   Metas Webhook-Seite: Die App muss auf „Live“ stehen, und für das Feld
+//   comments braucht es „Advanced Access“ (App Review plus
+//   Unternehmensverifizierung). Vorher kommt nur der Testknopf an, auch
+//   Kommentare von Tester-Konten nicht (am 13.09.2026 so erlebt). Antworten
+//   geht dagegen schon: an Konten mit Rolle in der App. Bis dahin, und danach
+//   als Reserve, holt pruefeNeueKommentare() die Kommentare selbst ab.
 // ---------------------------------------------------------------------------
 
 export const IG_VERSION = "v23.0";
@@ -211,6 +216,88 @@ export async function beantworte(k: Kommentar, s: Stichwort): Promise<string> {
   }
   if (fehlerNachricht) console.error("Instagram:", fehlerNachricht);
   return fehlerNachricht ?? "beantwortet";
+}
+
+// ---------------------------------------------------------------------------
+// Kommentare selbst abholen (Knopf in /admin/instagram)
+// ---------------------------------------------------------------------------
+
+/** So weit zurück wird gesucht. Meta erlaubt die private Antwort bis sieben Tage nach dem Kommentar. */
+const TAGE_ZURUECK = 3;
+/** So viele der neuesten Beiträge und Reels werden durchgesehen. */
+const BEITRAEGE = 12;
+
+type IgKommentar = { id: string; text?: string; timestamp?: string; from?: { id?: string; username?: string } };
+
+async function igHole<T>(token: string, pfad: string): Promise<T | null> {
+  try {
+    const res = await fetch(`${IG}/${pfad}`, { headers: { Authorization: `Bearer ${token}` }, cache: "no-store" });
+    return res.ok ? ((await res.json()) as T) : null;
+  } catch {
+    return null;
+  }
+}
+
+/**
+ * Sieht die neuesten Beiträge durch und beantwortet jeden Kommentar mit
+ * Stichwort aus den letzten Tagen, genau wie der Webhook es tut.
+ *
+ * ▸ WOZU, WENN ES DEN WEBHOOK GIBT? Meta meldet echte Kommentare erst nach
+ *   der App-Prüfung (siehe oben). Bis dahin zeigt dieser Weg mit den
+ *   Tester-Konten den ganzen Ablauf, auch im Video für die Prüfung. Danach
+ *   bleibt er als Reserve, falls Meta eine Meldung verschluckt.
+ *
+ * ▸ DOPPELT ANTWORTEN GEHT NICHT: beantworte() merkt sich jeden Kommentar in
+ *   der Tabelle, bevor es schreibt, und ein zweites Mal gibt es „schon
+ *   beantwortet“. Das gilt auch zwischen Knopf und Webhook.
+ *
+ * ▸ ACHTUNG BEIM UMZUG VON MANYCHAT: Kommentare, die ManyChat schon
+ *   beantwortet hat, stehen nicht in der Tabelle. Ein Stichwort, das in
+ *   ManyChat noch läuft, hier also erst eintragen, wenn es dort aus ist,
+ *   sonst bekommen Leute aus den letzten Tagen eine zweite Nachricht.
+ */
+export async function pruefeNeueKommentare(): Promise<{ ok: boolean; meldung: string }> {
+  const zugang = await holeZugang();
+  if (!zugang) return { ok: false, meldung: "Kein Instagram-Schlüssel vorhanden." };
+
+  const ich = await igHole<{ user_id?: string }>(zugang.token, "me?fields=user_id");
+  const medien = await igHole<{ data?: { id: string }[] }>(zugang.token, `me/media?fields=id&limit=${BEITRAEGE}`);
+  if (!medien?.data) return { ok: false, meldung: "Instagram gibt die Beiträge nicht heraus. Ist der Schlüssel noch gültig?" };
+
+  const seit = Date.now() - TAGE_ZURUECK * 86400000;
+  let gesehen = 0;
+  let beantwortet = 0;
+  let schonErledigt = 0;
+  const fehler: string[] = [];
+
+  for (const m of medien.data) {
+    const k = await igHole<{ data?: IgKommentar[] }>(
+      zugang.token,
+      `${encodeURIComponent(m.id)}/comments?fields=id,text,timestamp,from&limit=50`,
+    );
+    for (const c of k?.data ?? []) {
+      if (!c.timestamp || new Date(c.timestamp).getTime() < seit) continue;
+      gesehen++;
+      if (ich?.user_id && c.from?.id === ich.user_id) continue;
+      const s = stichwortIn(c.text ?? "");
+      if (!s) continue;
+      const ergebnis = await beantworte(
+        { id: c.id, text: c.text ?? "", beitragId: m.id, vonId: c.from?.id ?? null, vonName: c.from?.username ?? null },
+        s,
+      );
+      if (ergebnis === "beantwortet") beantwortet++;
+      else if (ergebnis === "schon beantwortet") schonErledigt++;
+      else fehler.push(ergebnis);
+    }
+  }
+
+  const teile = [
+    `${gesehen} Kommentare aus den letzten ${TAGE_ZURUECK} Tagen durchgesehen`,
+    `${beantwortet} neu beantwortet`,
+  ];
+  if (schonErledigt) teile.push(`${schonErledigt} waren schon beantwortet`);
+  if (fehler.length) teile.push(`${fehler.length} gingen nicht raus (${fehler[0]})`);
+  return { ok: fehler.length === 0, meldung: teile.join(", ") + "." };
 }
 
 /**

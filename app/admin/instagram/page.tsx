@@ -3,7 +3,8 @@ import Link from "next/link";
 import { adminEingerichtet, istAngemeldet } from "@/lib/admin-zugang";
 import { supabaseAlle } from "@/lib/versand";
 import { STICHWOERTER } from "@/lib/instagram-stichwoerter";
-import { beitragsLink, holeZugang } from "@/lib/instagram-kommentare-server";
+import { beitragsLink, holeZugang, letzteMeldung } from "@/lib/instagram-kommentare-server";
+import KommentarePruefen from "./KommentarePruefen";
 
 // ---------------------------------------------------------------------------
 // Die Übersicht der eigenen Kommentar-Antwort (Ersatz für ManyChat).
@@ -73,6 +74,7 @@ export default async function InstagramAuswertung() {
   }
 
   const zugang = await holeZugang();
+  const meldung = await letzteMeldung();
   const alle = await supabaseAlle<Eintrag>(
     "instagram_kommentar_antworten?select=erstellt_am,kommentar_id,beitrag_id,von_name,text,stichwort,nachricht_ok,antwort_ok,fehler&order=erstellt_am.desc",
   );
@@ -122,11 +124,30 @@ export default async function InstagramAuswertung() {
             />
             <Punkt ok={!!process.env.INSTAGRAM_WEBHOOK_TOKEN} text={process.env.INSTAGRAM_WEBHOOK_TOKEN ? `Webhook-Wort gesetzt (${(process.env.INSTAGRAM_WEBHOOK_TOKEN || "").trim().length} Zeichen, beginnt mit „${(process.env.INSTAGRAM_WEBHOOK_TOKEN || "").trim().slice(0, 4)}“)` : "INSTAGRAM_WEBHOOK_TOKEN fehlt: Meta kann den Webhook nicht einrichten"} />
             <Punkt ok={tabelleDa} text={tabelleDa ? "Tabelle vorhanden" : "Tabelle fehlt: datenbank/instagram-kommentare.sql im SQL Editor ausführen"} />
+            <Punkt
+              ok={meldung?.unterschriftOk === true}
+              text={
+                meldung
+                  ? `Letzte Meldung von Meta: ${typeof meldung.zeit === "string" ? zeit(meldung.zeit) : "unbekannt"}, Unterschrift ${meldung.unterschriftOk ? "passt" : "passt nicht"}`
+                  : "Von Meta ist noch keine Meldung angekommen"
+              }
+            />
           </ul>
           <p className="mt-4 text-[13.5px] text-ink-soft">
             Webhook-Adresse für Meta: https://www.pferdeliebehealthy.de/api/instagram/webhook · Feld „comments“ ·
             Seite zur Datenlöschung: https://www.pferdeliebehealthy.de/instagram-daten
           </p>
+        </section>
+
+        <section className="mb-10 rounded-[16px] border border-line bg-white p-6">
+          <h2 className="mb-2 font-serif text-[20px]">Kommentare jetzt prüfen</h2>
+          <p className="mb-4 max-w-2xl text-[14.5px] text-ink-soft">
+            Sieht die Kommentare der letzten drei Tage unter den neuesten zwölf Beiträgen durch und beantwortet
+            jeden mit Stichwort. Nötig, solange Meta die App nicht geprüft hat, denn bis dahin meldet Meta echte
+            Kommentare nicht von selbst. Danach die Reserve, falls eine Meldung fehlt. Doppelt beantwortet wird
+            nichts.
+          </p>
+          <KommentarePruefen />
         </section>
 
         <section className="mb-10">
